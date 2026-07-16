@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr.Reju — Da liễu dựa trên bằng chứng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper: '#f9f9fc', 'paper-alt': '#f3f3f6',
+          ink: '#1a1c1e', 'ink-soft': '#40484b', 'ink-faint': '#70787c',
+          line: '#dfe4e5',
+          'teal-deep': '#003441', 'teal-mid': '#0f4c5c', 'teal-label': '#36656e',
+          sky: '#9acee1', 'sky-soft': '#eef7fa', alert: '#ba1a1a', zalo: '#0068ff'
+        },
+        fontFamily: {
+          serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+          sans: ['"Public Sans"', 'system-ui', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<style>
+  body{-webkit-font-smoothing:antialiased}
+  [v-cloak]{display:none}
+  .zfloat{transition:transform .18s, box-shadow .18s}
+  .zfloat:hover{transform:translateY(-3px)}
+  ::selection{background:#c9e6ee}
+</style>
+</head>
+<body class="bg-paper text-ink font-sans">
+
+<div id="app" v-cloak>
+
+  <!-- ===== HEADER ===== -->
+  <header class="sticky top-0 z-50 bg-paper/95 backdrop-blur border-b border-line">
+    <div class="max-w-[1360px] mx-auto flex items-center justify-between h-[76px] px-6 md:px-10 gap-6">
+      <a href="#top" class="flex items-center gap-3 flex-none">
+        <div class="w-10 h-10 border-2 border-teal-deep rounded-[11px] flex items-center justify-center text-teal-deep font-serif font-bold text-lg">✿</div>
+        <div class="leading-tight">
+          <div class="font-serif font-bold text-xl text-teal-deep">Dr.REJU</div>
+          <div class="text-[8.5px] tracking-[.14em] text-teal-label">BÁC SĨ NGUYỄN HUỆ</div>
+        </div>
+      </a>
+      <nav class="hidden lg:flex gap-6 items-center">
+        <a class="text-ink-soft font-semibold text-[13.5px] hover:text-teal-deep transition-colors" href="#why">Vì sao chọn Dr.Reju</a>
+        <a class="text-ink-soft font-semibold text-[13.5px] hover:text-teal-deep transition-colors" href="#concerns">Vấn đề da của bạn</a>
+        <a class="text-ink-soft font-semibold text-[13.5px] hover:text-teal-deep transition-colors" href="#products">Sản phẩm khuyên dùng</a>
+        <a class="text-ink-soft font-semibold text-[13.5px] hover:text-teal-deep transition-colors" href="#services">Dịch vụ điều trị</a>
+        <a class="text-ink-soft font-semibold text-[13.5px] hover:text-teal-deep transition-colors" href="#contact">Liên hệ tư vấn</a>
+      </nav>
+      <a href="#quiz" class="flex-none bg-teal-deep text-white rounded-lg px-4 py-2.5 font-semibold text-[13.5px] flex items-center gap-2 hover:opacity-90 transition">
+        Khởi tạo hồ sơ da <i class="fa-solid fa-arrow-right text-[12px]"></i>
+      </a>
+    </div>
+  </header>
+
+  <div id="top"></div>
+
+  <!-- ===== HERO ===== -->
+  <section class="relative min-h-[540px] flex items-center overflow-hidden bg-paper-alt">
+    <div class="absolute inset-0">
+      <img src="https://picsum.photos/seed/drreju-hero/1600/1000" alt="Bác sĩ da liễu đang thăm khám cho khách hàng" class="w-full h-full object-cover opacity-90">
+      <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(243,243,246,.96) 0%,rgba(243,243,246,.6) 46%,rgba(243,243,246,0) 100%)"></div>
+    </div>
+    <div class="relative z-10 max-w-[1360px] mx-auto w-full px-6 md:px-10 py-16">
+      <div class="max-w-[620px] flex flex-col gap-5 items-start">
+        <span class="font-semibold text-[13px] tracking-[.22em] text-teal-label uppercase">Da liễu dựa trên bằng chứng, phác đồ 1:1</span>
+        <h1 class="font-serif font-semibold text-teal-deep leading-[1.15] tracking-tight text-[30px] md:text-[42px]">Chấm dứt điều trị da theo cảm tính, bằng phác đồ dữ liệu lâm sàng 1:1.</h1>
+        <p class="text-ink-soft text-lg leading-relaxed max-w-[500px]">Mỗi làn da một hồ sơ. Bác sĩ đọc dữ liệu thật trên da bạn rồi mới quyết định phác đồ, không đoán mò và không chạy theo trend.</p>
+        <div class="flex flex-wrap gap-3 mt-1">
+          <a href="#quiz" class="bg-teal-deep text-white rounded-lg px-6 py-3.5 font-semibold text-sm flex items-center gap-2 shadow-lg shadow-teal-deep/25 hover:opacity-90 transition">Khởi tạo hồ sơ da số hóa <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#concerns" class="border border-teal-deep text-teal-deep rounded-lg px-5 py-3.5 font-semibold text-sm hover:bg-teal-deep hover:text-white transition-colors">Xem vấn đề da</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VÌ SAO CHỌN DR.REJU (bỏ eyebrow — đủ 4 eyebrow toàn trang) ===== -->
+  <section id="why" class="pt-20 pb-16 px-6 md:px-10 bg-paper">
+    <div class="max-w-[1360px] mx-auto">
+      <div class="max-w-[680px] mb-10">
+        <h2 class="font-serif font-semibold text-teal-deep text-[26px] md:text-[34px] leading-tight">Tại sao chúng tôi từ chối những yêu cầu "trị mụn cấp tốc"?</h2>
+        <p class="text-ink-soft mt-3 leading-relaxed">Một nơi làm nghề tử tế, có nguyên tắc. Tôi biết bạn nóng lòng, nhưng da khỏe thật thì không thể cấp tốc, và tôi chọn nói thật với bạn điều đó.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="bg-white border border-line rounded-2xl p-6">
+          <div class="w-11 h-11 rounded-[11px] bg-teal-mid text-sky flex items-center justify-center mb-4"><i class="fa-solid fa-user-doctor text-lg"></i></div>
+          <h3 class="font-semibold text-teal-deep mb-1.5">Bác sĩ trực tiếp xây phác đồ</h3>
+          <p class="text-sm text-ink-soft leading-relaxed">Từng đổi toàn bộ hoạt chất cho một khách ở tuần 3 chỉ vì chỉ số độ ẩm biểu bì thay đổi. Sự linh hoạt đó là lý do bạn cần bác sĩ đồng hành, không phải một bộ sản phẩm bán sẵn.</p>
+        </div>
+        <div class="bg-white border border-line rounded-2xl p-6">
+          <div class="w-11 h-11 rounded-[11px] bg-teal-mid text-sky flex items-center justify-center mb-4"><i class="fa-solid fa-award text-lg"></i></div>
+          <h3 class="font-semibold text-teal-deep mb-1.5">Chỉ thứ đã kiểm chứng lâm sàng</h3>
+          <p class="text-sm text-ink-soft leading-relaxed">Chỉ mã hàng đã theo dõi trên nhiều case lâm sàng thực tế, không theo trend, review hay quảng cáo sai.</p>
+        </div>
+        <div class="bg-white border border-line rounded-2xl p-6">
+          <div class="w-11 h-11 rounded-[11px] bg-teal-mid text-sky flex items-center justify-center mb-4"><i class="fa-solid fa-prescription-bottle-medical text-lg"></i></div>
+          <h3 class="font-semibold text-teal-deep mb-1.5">Không lạm dụng thuốc</h3>
+          <p class="text-sm text-ink-soft leading-relaxed">Chúng tôi chọn con đường khó hơn: phục hồi hàng rào bảo vệ tự nhiên, thay vì kháng sinh liều cao cho kết quả ảo làm suy yếu hệ vi sinh của da.</p>
+        </div>
+        <div class="bg-white border border-line rounded-2xl p-6">
+          <div class="w-11 h-11 rounded-[11px] bg-teal-mid text-sky flex items-center justify-center mb-4"><i class="fa-solid fa-layer-group text-lg"></i></div>
+          <h3 class="font-semibold text-teal-deep mb-1.5">Phân loại theo mức độ</h3>
+          <p class="text-sm text-ink-soft leading-relaxed">Sản phẩm và dịch vụ xếp theo cấp thiết hoặc bổ trợ, ưu tiên đúng thứ cần thiết nhất trước.</p>
+        </div>
+        <div class="bg-white border border-line rounded-2xl p-6">
+          <div class="w-11 h-11 rounded-[11px] bg-teal-mid text-sky flex items-center justify-center mb-4"><i class="fa-solid fa-comment-dots text-lg"></i></div>
+          <h3 class="font-semibold text-teal-deep mb-1.5">Theo sát 1:1 qua Zalo</h3>
+          <p class="text-sm text-ink-soft leading-relaxed">Đồng hành suốt quá trình, điều chỉnh phác đồ mỗi 2 tuần.</p>
+        </div>
+        <div class="bg-white border border-line rounded-2xl p-6">
+          <div class="w-11 h-11 rounded-[11px] bg-teal-mid text-sky flex items-center justify-center mb-4"><i class="fa-solid fa-heart text-lg"></i></div>
+          <h3 class="font-semibold text-teal-deep mb-1.5">Đạo đức và cái tâm làm nghề</h3>
+          <p class="text-sm text-ink-soft leading-relaxed">Giá trị cho làn da và sức khỏe tinh thần, tư vấn đúng, đủ, minh bạch.</p>
+        </div>
+      </div>
+
+      <div class="mt-11 flex flex-col lg:flex-row gap-7 items-stretch">
+        <div class="w-full lg:w-[340px] flex-none bg-white border border-line rounded-2xl overflow-hidden flex flex-col">
+          <div class="aspect-[4/5] overflow-hidden"><img src="https://picsum.photos/seed/drhue2/640/800" alt="Chân dung Bác sĩ Nguyễn Huệ" class="w-full h-full object-cover"></div>
+          <div class="p-6">
+            <div class="font-serif font-semibold text-teal-deep text-2xl">Bác sĩ Nguyễn Huệ</div>
+            <div class="text-[13px] text-ink-soft mt-1">Chuyên gia Da liễu Lâm sàng, Người sáng lập</div>
+            <div class="text-[12.5px] text-teal-mid font-semibold mt-1.5">Xây ma trận dữ liệu số để chấm dứt điều trị theo cảm tính</div>
+            <p class="font-serif italic text-[15px] text-teal-label mt-4 border-l-2 border-teal-deep pl-3.5 leading-relaxed">"Tôi biết bạn đang lo về những vết nám. Tôi sẽ không hứa kết quả sau 7 ngày, tôi hứa đồng hành để da bạn khỏe thật, từ gốc."</p>
+          </div>
+        </div>
+        <div class="flex-1 flex flex-col gap-4">
+          <div class="flex-1 bg-white border border-line rounded-2xl p-6">
+            <div class="text-[11px] font-semibold tracking-[.16em] text-teal-label uppercase pb-3 border-b border-line mb-1">Nguyên tắc làm việc của Dr.Reju</div>
+            <ul class="divide-y divide-[#eef0f1]">
+              <li class="flex gap-3.5 py-3.5">
+                <span class="w-7 h-7 flex-none rounded-full bg-sky-soft text-teal-mid flex items-center justify-center font-bold text-sm">1</span>
+                <div><div class="font-semibold text-[15px]">Tư vấn theo tình trạng da</div><div class="text-[13.5px] text-ink-soft mt-0.5 leading-relaxed">Sản phẩm không cố định, điều chỉnh theo diễn biến thật của làn da bạn.</div></div>
+              </li>
+              <li class="flex gap-3.5 py-3.5">
+                <span class="w-7 h-7 flex-none rounded-full bg-sky-soft text-teal-mid flex items-center justify-center font-bold text-sm">2</span>
+                <div><div class="font-semibold text-[15px]">Chỉ tư vấn thứ đã kiểm chứng</div><div class="text-[13.5px] text-ink-soft mt-0.5 leading-relaxed">Đã dùng và theo dõi trên nhiều case lâm sàng thực tế.</div></div>
+              </li>
+              <li class="flex gap-3.5 py-3.5">
+                <span class="w-7 h-7 flex-none rounded-full bg-sky-soft text-teal-mid flex items-center justify-center font-bold text-sm">3</span>
+                <div><div class="font-semibold text-[15px]">Không lạm dụng thuốc</div><div class="text-[13.5px] text-ink-soft mt-0.5 leading-relaxed">Ưu tiên phục hồi hàng rào da hơn là kháng sinh liều cao cho kết quả ảo.</div></div>
+              </li>
+              <li class="flex gap-3.5 py-3.5">
+                <span class="w-7 h-7 flex-none rounded-full bg-teal-deep text-white flex items-center justify-center font-bold text-sm">4</span>
+                <div><div class="font-semibold text-[15px]">Giữ vững đạo đức y khoa</div><div class="text-[13.5px] text-ink-soft mt-0.5 leading-relaxed">Khách hàng được tư vấn đúng, đủ và theo sát quá trình.</div></div>
+              </li>
+            </ul>
+          </div>
+          <div class="flex flex-wrap gap-3.5">
+            <div class="flex-1 min-w-[200px] flex items-center gap-2.5 bg-white border border-line rounded-xl p-3">
+              <img src="https://picsum.photos/seed/exp1/120/120" alt="Dược sĩ Trần Mai Linh" class="w-10 h-10 rounded-full object-cover">
+              <div class="leading-tight"><div class="font-semibold text-[13.5px]">DS. Trần Mai Linh</div><div class="text-[11.5px] text-ink-soft">Dược sĩ lâm sàng</div></div>
+            </div>
+            <div class="flex-1 min-w-[200px] flex items-center gap-2.5 bg-white border border-line rounded-xl p-3">
+              <img src="https://picsum.photos/seed/exp2/120/120" alt="Kỹ thuật viên Lê Quốc Anh" class="w-10 h-10 rounded-full object-cover">
+              <div class="leading-tight"><div class="font-semibold text-[13.5px]">KTV. Lê Quốc Anh</div><div class="text-[11.5px] text-ink-soft">Kỹ thuật viên trị liệu</div></div>
+            </div>
+            <div class="flex-1 min-w-[200px] flex items-center gap-2.5 bg-white border border-line rounded-xl p-3">
+              <img src="https://picsum.photos/seed/exp3/120/120" alt="Chuyên viên Phạm Thu Hà" class="w-10 h-10 rounded-full object-cover">
+              <div class="leading-tight"><div class="font-semibold text-[13.5px]">CVCS. Phạm Thu Hà</div><div class="text-[11.5px] text-ink-soft">Chuyên viên chăm sóc da</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VẤN ĐỀ DA CỦA BẠN ===== -->
+  <section id="concerns" class="py-16 px-6 md:px-10 bg-paper-alt border-t border-line">
+    <div class="max-w-[1360px] mx-auto">
+      <div class="max-w-[680px] mb-8">
+        <span class="font-semibold text-xs tracking-[.22em] text-teal-label uppercase">Vấn đề da của bạn</span>
+        <h2 class="font-serif font-semibold text-teal-deep text-[26px] md:text-[30px] mt-2 leading-tight">Bắt đầu từ đúng vấn đề</h2>
+        <p class="text-ink-soft mt-2 leading-relaxed">Chọn tình trạng bạn quan tâm. Với da nhạy cảm, chúng tôi luôn ưu tiên phục hồi chức năng sinh lý trước khi trị liệu chuyên sâu.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <a href="#quiz" class="bg-white border border-line rounded-2xl p-5 flex flex-col gap-2.5 hover:border-teal-mid transition-colors">
+          <div class="w-11 h-11 rounded-[10px] bg-teal-mid text-sky flex items-center justify-center"><i class="fa-solid fa-band-aid"></i></div>
+          <div class="font-semibold text-teal-deep">Mụn & bít tắc</div>
+          <div class="text-[13px] text-ink-soft leading-relaxed">Mụn viêm, đầu đen, cồi ẩn, da dầu.</div>
+        </a>
+        <a href="#quiz" class="bg-white border border-line rounded-2xl p-5 flex flex-col gap-2.5 hover:border-teal-mid transition-colors">
+          <div class="w-11 h-11 rounded-[10px] bg-teal-mid text-sky flex items-center justify-center"><i class="fa-solid fa-circle-half-stroke"></i></div>
+          <div class="font-semibold text-teal-deep">Nám & sắc tố</div>
+          <div class="text-[13px] text-ink-soft leading-relaxed">Nám mảng, tàn nhang, thâm sau mụn.</div>
+        </a>
+        <a href="#quiz" class="bg-white border border-line rounded-2xl p-5 flex flex-col gap-2.5 hover:border-teal-mid transition-colors">
+          <div class="w-11 h-11 rounded-[10px] bg-teal-mid text-sky flex items-center justify-center"><i class="fa-solid fa-hand-holding-medical"></i></div>
+          <div class="font-semibold text-teal-deep">Da nhạy cảm & đỏ</div>
+          <div class="text-[13px] text-ink-soft leading-relaxed">Đỏ rát, châm chích, phục hồi trước, trị liệu sau.</div>
+        </a>
+        <a href="#quiz" class="bg-white border border-line rounded-2xl p-5 flex flex-col gap-2.5 hover:border-teal-mid transition-colors">
+          <div class="w-11 h-11 rounded-[10px] bg-teal-mid text-sky flex items-center justify-center"><i class="fa-solid fa-hourglass-half"></i></div>
+          <div class="font-semibold text-teal-deep">Lão hóa</div>
+          <div class="text-[13px] text-ink-soft leading-relaxed">Nếp nhăn, chảy xệ, da kém đàn hồi.</div>
+        </a>
+        <a href="#quiz" class="bg-white border border-line rounded-2xl p-5 flex flex-col gap-2.5 hover:border-teal-mid transition-colors">
+          <div class="w-11 h-11 rounded-[10px] bg-teal-mid text-sky flex items-center justify-center"><i class="fa-solid fa-droplet-slash"></i></div>
+          <div class="font-semibold text-teal-deep">Da khô & thiếu ẩm</div>
+          <div class="text-[13px] text-ink-soft leading-relaxed">Bong tróc, căng rát, xỉn màu.</div>
+        </a>
+        <a href="#quiz" class="bg-white border border-line rounded-2xl p-5 flex flex-col gap-2.5 hover:border-teal-mid transition-colors">
+          <div class="w-11 h-11 rounded-[10px] bg-teal-mid text-sky flex items-center justify-center"><i class="fa-solid fa-magnifying-glass"></i></div>
+          <div class="font-semibold text-teal-deep">Lỗ chân lông to</div>
+          <div class="text-[13px] text-ink-soft leading-relaxed">Da sần, bóng dầu vùng chữ T.</div>
+        </a>
+        <a href="#quiz" class="bg-white border border-line rounded-2xl p-5 flex flex-col gap-2.5 hover:border-teal-mid transition-colors">
+          <div class="w-11 h-11 rounded-[10px] bg-teal-mid text-sky flex items-center justify-center"><i class="fa-solid fa-person-pregnant"></i></div>
+          <div class="font-semibold text-teal-deep">Da khi mang thai</div>
+          <div class="text-[13px] text-ink-soft leading-relaxed">Nám thai kỳ, mụn nội tiết, cần an toàn.</div>
+        </a>
+        <a href="#quiz" class="bg-teal-deep border border-teal-deep rounded-2xl p-5 flex flex-col gap-2.5 justify-center hover:opacity-95 transition">
+          <div class="font-semibold text-white flex items-center gap-2"><i class="fa-solid fa-clipboard-question"></i> Chưa rõ vấn đề?</div>
+          <div class="text-[13px] text-sky leading-relaxed">Làm bài test 2 phút để Dr.Reju xác định giúp bạn →</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TEST TÌNH TRẠNG DA (QUIZ — Vue thật, không còn mockup tĩnh) ===== -->
+  <section id="quiz" class="py-20 px-6 md:px-10 bg-teal-deep text-white">
+    <div class="max-w-[820px] mx-auto">
+      <div class="text-center mb-9">
+        <span class="font-semibold text-xs tracking-[.24em] text-sky uppercase">Khởi tạo hồ sơ da số hóa</span>
+        <h2 class="font-serif font-semibold text-[28px] md:text-[34px] mt-3 leading-tight">Khởi tạo hồ sơ da số hóa trong 2 phút</h2>
+        <p class="text-sky mt-2 max-w-md mx-auto">Đây là bước đầu của hành trình 1:1. Dữ liệu bạn nhập giúp bác sĩ lập phác đồ cá nhân hóa, kết quả không thay thế thăm khám trực tiếp.</p>
+      </div>
+
+      <div class="bg-white text-ink rounded-2xl p-8 shadow-2xl">
+        <!-- INTRO -->
+        <div v-if="step === -1" class="text-center py-5">
+          <i class="fa-solid fa-notes-medical text-teal-mid text-5xl"></i>
+          <h3 class="font-serif font-semibold text-teal-deep text-2xl mt-3.5 mb-2">Sẵn sàng chưa?</h3>
+          <p class="text-ink-soft max-w-md mx-auto mb-6 leading-relaxed">4 câu hỏi ngắn về loại da, vấn đề và mục tiêu. Dữ liệu này khởi tạo hồ sơ da số hóa để bác sĩ dẫn dắt bạn qua lộ trình. Chưa tới 2 phút.</p>
+          <button @click="startQuiz" type="button" class="bg-teal-deep text-white rounded-lg px-8 py-3.5 font-semibold text-[15px] inline-flex items-center gap-2 hover:opacity-90 transition">Bắt đầu <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+
+        <!-- QUESTION -->
+        <div v-else-if="inQuestion">
+          <div class="flex justify-between items-center mb-2">
+            <span class="font-semibold text-xs tracking-[.08em] text-teal-label uppercase">Câu {{ step + 1 }} / {{ quiz.length }}</span>
+            <span class="text-xs text-ink-faint">{{ progressPct }}% hoàn thành</span>
+          </div>
+          <div class="h-1.5 bg-[#e2e2e5] rounded-full overflow-hidden mb-6">
+            <div class="h-full bg-teal-mid rounded-full transition-all" :style="{ width: progressPct + '%' }"></div>
+          </div>
+          <h3 class="font-serif font-semibold text-teal-deep text-2xl mb-5">{{ currentQ.q }}</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <button v-for="opt in currentQ.opts" :key="opt[1]" @click="pick(opt[1])" type="button"
+              class="text-left bg-paper border-[1.5px] border-line rounded-xl px-4.5 py-4 font-semibold text-[15px] flex items-center gap-3 hover:bg-sky-soft hover:border-teal-mid transition-colors">
+              <span class="w-6 h-6 flex-none rounded-full border-2 border-[#b6ccd2]"></span>{{ opt[0] }}
+            </button>
+          </div>
+          <button v-if="step > 0" @click="backQuiz" type="button" class="mt-5 text-ink-faint font-semibold text-[13px] inline-flex items-center gap-1.5 hover:text-teal-mid transition-colors">
+            <i class="fa-solid fa-arrow-left text-xs"></i> Quay lại
+          </button>
+        </div>
+
+        <!-- RESULT -->
+        <div v-else>
+          <div class="text-center mb-6">
+            <span class="font-semibold text-xs tracking-[.1em] text-teal-label uppercase">Kết quả của bạn</span>
+            <h3 class="font-serif font-bold text-teal-deep text-[28px] mt-2 mb-1.5">{{ result.title }}</h3>
+            <p class="text-ink-soft max-w-lg mx-auto leading-relaxed">{{ result.desc }}</p>
+          </div>
+          <div class="bg-paper-alt rounded-2xl p-6 mb-5">
+            <div class="font-semibold text-[11px] tracking-[.14em] text-teal-label uppercase mb-3.5">Routine gợi ý</div>
+            <ul class="flex flex-col gap-3.5">
+              <li v-for="s in result.routine" :key="s.n" class="flex gap-3.5 items-start">
+                <span class="w-7 h-7 flex-none rounded-full bg-teal-deep text-white flex items-center justify-center font-bold text-[13px]">{{ s.n }}</span>
+                <div>
+                  <div class="font-semibold text-[15px]">{{ s.title }}</div>
+                  <a href="#products" class="text-[13.5px] text-teal-mid font-semibold inline-flex items-center gap-1 mt-0.5">{{ s.product }} <i class="fa-solid fa-arrow-right text-[11px]"></i></a>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a href="#contact" class="flex-1 min-w-[220px] text-center bg-teal-deep text-white rounded-lg px-5 py-3.5 font-semibold text-sm flex items-center justify-center gap-2 hover:opacity-90 transition">
+              <i class="fa-solid fa-comment-dots"></i> Nhận tư vấn 1:1 qua Zalo
+            </a>
+            <button @click="restartQuiz" type="button" class="flex-none border-[1.5px] border-teal-deep text-teal-deep rounded-lg px-5.5 py-3.5 font-semibold text-sm hover:bg-teal-deep hover:text-white transition-colors">Làm lại</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SẢN PHẨM KHUYÊN DÙNG ===== -->
+  <section id="products" class="py-20 px-6 md:px-10 bg-paper">
+    <div class="max-w-[1360px] mx-auto">
+      <div class="flex flex-wrap justify-between items-end gap-5 mb-7">
+        <div class="max-w-[640px]">
+          <span class="font-semibold text-xs tracking-[.22em] text-teal-label uppercase">Sản phẩm khuyên dùng</span>
+          <h2 class="font-serif font-semibold text-teal-deep text-[26px] md:text-[30px] mt-2 leading-tight">Chỉ những gì đã kiểm chứng lâm sàng</h2>
+          <p class="text-ink-soft mt-1.5">Bác sĩ Nguyễn Huệ chỉ chọn lọc mã hàng tương thích cao nhất với phác đồ 1:1 của bạn.</p>
+        </div>
+        <div class="flex gap-1.5 bg-[#eef0f1] rounded-xl p-1.5">
+          <button @click="pf = 'concern'" type="button" class="rounded-lg px-4 py-2.5 font-semibold text-[13.5px] transition-colors" :class="pf==='concern' ? 'bg-teal-deep text-white' : 'text-ink-soft hover:text-teal-deep'">Theo vấn đề da</button>
+          <button @click="pf = 'line'" type="button" class="rounded-lg px-4 py-2.5 font-semibold text-[13.5px] transition-colors" :class="pf==='line' ? 'bg-teal-deep text-white' : 'text-ink-soft hover:text-teal-deep'">Theo dòng sản phẩm</button>
+          <button @click="pf = 'price'" type="button" class="rounded-lg px-4 py-2.5 font-semibold text-[13.5px] transition-colors" :class="pf==='price' ? 'bg-teal-deep text-white' : 'text-ink-soft hover:text-teal-deep'">Theo mức giá</button>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 bg-sky-soft border border-[#cfe6ee] rounded-xl px-4.5 py-3.5 mb-6 text-teal-mid font-semibold text-[13.5px] leading-relaxed">
+        <i class="fa-solid fa-shield-heart text-lg flex-none"></i> Vì sao được chọn? Mỗi mã hàng do bác sĩ chọn dựa trên dữ liệu lâm sàng thực tế, không theo trend hay quảng cáo.
+      </div>
+
+      <div class="flex flex-col gap-9">
+        <div v-for="grp in groups" :key="grp.label">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-5.5 h-0.5 bg-teal-deep"></span>
+            <h3 class="font-bold text-teal-deep text-lg">{{ grp.label }}</h3>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4.5">
+            <div v-for="p in grp.items" :key="p.name" class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col">
+              <div class="aspect-square bg-paper-alt overflow-hidden relative">
+                <img :src="p.img" :alt="p.name" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 left-2.5 font-semibold text-[10.5px] tracking-wide rounded-full px-2.5 py-1" :class="tagFor(p)[1] + ' ' + tagFor(p)[2]">{{ tagFor(p)[0] }}</span>
+              </div>
+              <div class="p-4 flex flex-col gap-1.5 flex-1">
+                <div class="font-semibold text-[10.5px] tracking-wide text-teal-label uppercase">{{ p.brand }}</div>
+                <div class="text-[15px] font-semibold leading-tight flex-1">{{ p.name }}</div>
+                <div class="flex justify-between items-center mt-1.5">
+                  <span class="text-base font-bold text-teal-deep">{{ p.price }}</span>
+                  <a href="#contact" class="w-8.5 h-8.5 rounded-[9px] bg-teal-deep text-white flex items-center justify-center hover:opacity-90 transition"><i class="fa-solid fa-cart-plus"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DỊCH VỤ ĐIỀU TRỊ (bỏ eyebrow) ===== -->
+  <section id="services" class="py-20 px-6 md:px-10 bg-paper-alt">
+    <div class="max-w-[1360px] mx-auto">
+      <div class="text-center max-w-[720px] mx-auto mb-9">
+        <h2 class="font-serif font-semibold text-teal-deep text-[26px] md:text-[30px] leading-tight">Ứng dụng ma trận công nghệ y khoa cho các bệnh lý da phức tạp</h2>
+        <p class="text-ink-soft mt-2.5">Mỗi công nghệ là một quyết định có lý do, chọn vì bảo vệ hàng rào da của bạn, không vì "cho có".</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5.5">
+        <div class="bg-white border border-line rounded-2xl overflow-hidden">
+          <div class="aspect-[16/10] overflow-hidden"><img src="https://picsum.photos/seed/svc1/600/380" alt="Thiết bị laser PicoSure Pro" class="w-full h-full object-cover"></div>
+          <div class="p-6">
+            <div class="w-11 h-11 rounded-[10px] bg-teal-mid text-sky flex items-center justify-center mb-4"><i class="fa-solid fa-bolt"></i></div>
+            <h3 class="font-semibold text-teal-deep mb-1">Điều trị sắc tố & nám</h3>
+            <p class="text-[13.5px] text-teal-label font-semibold mb-1">Laser PicoSure Pro</p>
+            <p class="text-sm text-ink-soft leading-relaxed">Chọn PicoSure Pro vì ưu tiên hiệu quả sắc tố mà không gây tổn thương nhiệt, một quyết định bảo vệ hàng rào da.</p>
+          </div>
+        </div>
+        <div class="bg-white border border-line rounded-2xl overflow-hidden">
+          <div class="aspect-[16/10] overflow-hidden"><img src="https://picsum.photos/seed/svc2/600/380" alt="Máy soi và phân tích da bằng AI" class="w-full h-full object-cover"></div>
+          <div class="p-6">
+            <div class="w-11 h-11 rounded-[10px] bg-teal-mid text-sky flex items-center justify-center mb-4"><i class="fa-solid fa-brain"></i></div>
+            <h3 class="font-semibold text-teal-deep mb-1">Soi và phân tích da AI</h3>
+            <p class="text-[13.5px] text-teal-label font-semibold mb-1">Skin Analysis AI</p>
+            <p class="text-sm text-ink-soft leading-relaxed">Khởi tạo hồ sơ số hóa, nhìn thấy điều mắt thường bỏ sót, để bác sĩ có đủ dữ liệu thay vì đoán mò phác đồ.</p>
+          </div>
+        </div>
+        <div class="bg-white border border-line rounded-2xl overflow-hidden">
+          <div class="aspect-[16/10] overflow-hidden"><img src="https://picsum.photos/seed/svc3/600/380" alt="Liệu trình Mesotherapy" class="w-full h-full object-cover"></div>
+          <div class="p-6">
+            <div class="w-11 h-11 rounded-[10px] bg-teal-mid text-sky flex items-center justify-center mb-4"><i class="fa-solid fa-syringe"></i></div>
+            <h3 class="font-semibold text-teal-deep mb-1">Phục hồi và nuôi dưỡng sâu</h3>
+            <p class="text-[13.5px] text-teal-label font-semibold mb-1">Mesotherapy</p>
+            <p class="text-sm text-ink-soft leading-relaxed">Đưa dưỡng chất vào đúng tầng da cần thiết.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TPCN (bỏ eyebrow) ===== -->
+  <section id="tpcn" class="py-20 px-6 md:px-10 bg-paper">
+    <div class="max-w-[1360px] mx-auto">
+      <div class="max-w-[680px] mb-8">
+        <h2 class="font-serif font-semibold text-teal-deep text-[26px] md:text-[30px] leading-tight">Tôn chỉ bổ trợ: chỉ kê thực phẩm chức năng khi thực sự cần</h2>
+        <p class="text-ink-soft mt-2.5 leading-relaxed">Tôi thường từ chối bán Glutathione cho khách có nền da đang viêm nặng. Chúng tôi ưu tiên phục hồi hàng rào bảo vệ da trước khi làm sáng từ bên trong, thực phẩm chức năng chỉ là bổ trợ.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4.5">
+        <div class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col">
+          <div class="aspect-square bg-paper-alt overflow-hidden"><img src="https://picsum.photos/seed/tpcn1/400/400" alt="Viên uống chống nắng" class="w-full h-full object-cover"></div>
+          <div class="p-4 flex flex-col gap-1.5 flex-1"><span class="text-[10px] font-semibold tracking-wide text-teal-label uppercase">Bổ trợ</span><div class="text-[15px] font-semibold flex-1">Viên uống chống nắng</div><span class="text-base font-bold text-teal-deep">450.000đ</span></div>
+        </div>
+        <div class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col">
+          <div class="aspect-square bg-paper-alt overflow-hidden"><img src="https://picsum.photos/seed/tpcn2/400/400" alt="Kẽm và Vitamin B5 hỗ trợ da mụn" class="w-full h-full object-cover"></div>
+          <div class="p-4 flex flex-col gap-1.5 flex-1"><span class="text-[10px] font-semibold tracking-wide text-teal-label uppercase">Bổ trợ</span><div class="text-[15px] font-semibold flex-1">Kẽm + Vitamin B5 (hỗ trợ da mụn)</div><span class="text-base font-bold text-teal-deep">320.000đ</span></div>
+        </div>
+        <div class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col">
+          <div class="aspect-square bg-paper-alt overflow-hidden"><img src="https://picsum.photos/seed/tpcn3/400/400" alt="Collagen peptide thủy phân" class="w-full h-full object-cover"></div>
+          <div class="p-4 flex flex-col gap-1.5 flex-1"><span class="text-[10px] font-semibold tracking-wide text-teal-label uppercase">Bổ trợ</span><div class="text-[15px] font-semibold flex-1">Collagen peptide thủy phân</div><span class="text-base font-bold text-teal-deep">890.000đ</span></div>
+        </div>
+        <div class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col">
+          <div class="aspect-square bg-paper-alt overflow-hidden"><img src="https://picsum.photos/seed/tpcn4/400/400" alt="Glutathione hỗ trợ sáng da" class="w-full h-full object-cover"></div>
+          <div class="p-4 flex flex-col gap-1.5 flex-1"><span class="text-[10px] font-semibold tracking-wide text-teal-label uppercase">Bổ trợ</span><div class="text-[15px] font-semibold flex-1">Glutathione hỗ trợ sáng da</div><span class="text-base font-bold text-teal-deep">1.150.000đ</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BLOG KIẾN THỨC DA (bỏ eyebrow) ===== -->
+  <section id="blog" class="py-20 px-6 md:px-10 bg-paper-alt border-t border-line">
+    <div class="max-w-[1360px] mx-auto">
+      <div class="border-b-2 border-teal-deep pb-3.5 mb-9 flex justify-between items-end flex-wrap gap-3">
+        <h2 class="font-serif font-semibold text-teal-deep text-[24px] md:text-[28px]">Giải mã làn da: câu chuyện từ phòng lab và case lâm sàng</h2>
+        <a href="#blog" class="font-semibold text-[13px] text-teal-mid flex items-center gap-1.5 flex-none">Xem tất cả bài viết <i class="fa-solid fa-arrow-right text-xs"></i></a>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-7.5">
+        <article class="bg-white border border-line rounded-2xl overflow-hidden">
+          <div class="aspect-[16/8] overflow-hidden"><img src="https://picsum.photos/seed/blogpreg/900/450" alt="Minh hoạ chăm sóc da khi mang thai" class="w-full h-full object-cover"></div>
+          <div class="p-7">
+            <span class="font-semibold text-[11px] tracking-wide text-alert flex items-center gap-1.5 mb-3"><i class="fa-solid fa-person-pregnant"></i> DA VÀ THAI KỲ</span>
+            <h3 class="font-serif font-semibold text-teal-deep text-[24px] leading-tight mb-3">Mẹ bầu A, tuần 20: chúng tôi đã đổi phác đồ thế nào khi nám thai kỳ xuất hiện?</h3>
+            <p class="text-[15px] text-ink-soft leading-relaxed mb-3.5">Khi nám xuất hiện ở tuần 20, chúng tôi không thêm hoạt chất mạnh. Bác sĩ giữ nguyên chống nắng nghiêm ngặt, chuyển sang niacinamide và vitamin C an toàn, loại bỏ hoàn toàn retinoid suốt thai kỳ và cho con bú. Sản phẩm điều chỉnh theo thực tế, không cố định.</p>
+            <div class="bg-paper-alt rounded-xl p-4">
+              <div class="font-semibold text-[10.5px] tracking-wide text-teal-label uppercase mb-2.5">Sản phẩm gợi ý trong bài</div>
+              <div class="flex flex-wrap gap-2">
+                <a href="#products" class="bg-white border border-line rounded-full px-3.5 py-1.5 font-semibold text-[13px] text-teal-mid inline-flex items-center gap-1.5"><i class="fa-solid fa-link text-xs"></i> Serum Vitamin C 15%</a>
+                <a href="#products" class="bg-white border border-line rounded-full px-3.5 py-1.5 font-semibold text-[13px] text-teal-mid inline-flex items-center gap-1.5"><i class="fa-solid fa-link text-xs"></i> Serum Niacinamide 10%</a>
+                <a href="#products" class="bg-white border border-line rounded-full px-3.5 py-1.5 font-semibold text-[13px] text-teal-mid inline-flex items-center gap-1.5"><i class="fa-solid fa-link text-xs"></i> Kem chống nắng SPF50</a>
+              </div>
+            </div>
+          </div>
+        </article>
+        <div class="flex flex-col gap-4.5">
+          <article class="bg-white border border-line rounded-2xl p-5 flex gap-4">
+            <div class="w-24 h-24 flex-none rounded-xl overflow-hidden"><img src="https://picsum.photos/seed/blogretinol/200/200" alt="Minh hoạ sử dụng Retinol" class="w-full h-full object-cover"></div>
+            <div><span class="font-semibold text-[10.5px] tracking-wide text-teal-label uppercase">Hoạt chất</span><h3 class="font-semibold text-teal-deep text-base leading-tight my-1.5">Retinol và Retinoid: dùng sao cho đúng</h3><a href="#products" class="font-semibold text-[12.5px] text-teal-mid inline-flex items-center gap-1">Xem sản phẩm liên quan <i class="fa-solid fa-arrow-right text-[10px]"></i></a></div>
+          </article>
+          <article class="bg-white border border-line rounded-2xl p-5 flex gap-4">
+            <div class="w-24 h-24 flex-none rounded-xl overflow-hidden"><img src="https://picsum.photos/seed/blogmelasma/200/200" alt="Minh hoạ điều trị nám mảng" class="w-full h-full object-cover"></div>
+            <div><span class="font-semibold text-[10.5px] tracking-wide text-teal-label uppercase">Case lâm sàng</span><h3 class="font-semibold text-teal-deep text-base leading-tight my-1.5">Vì sao nám mảng cần kiên nhẫn hơn nám thường</h3><a href="#products" class="font-semibold text-[12.5px] text-teal-mid inline-flex items-center gap-1">Xem sản phẩm liên quan <i class="fa-solid fa-arrow-right text-[10px]"></i></a></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THƯƠNG HIỆU HỢP TÁC (bỏ eyebrow, logo-only) ===== -->
+  <section id="brands" class="py-16 px-6 md:px-10 bg-paper">
+    <div class="max-w-[1360px] mx-auto">
+      <div class="text-center max-w-[680px] mx-auto mb-8">
+        <h2 class="font-serif font-semibold text-teal-deep text-[24px] md:text-[28px] leading-tight">Tại sao chúng tôi khắt khe khi chọn hoạt chất?</h2>
+        <p class="text-ink-soft mt-2.5">Chúng tôi không nhập mọi sản phẩm của một thương hiệu. Dựa trên dữ liệu lâm sàng thực tế, bác sĩ Nguyễn Huệ chỉ chọn những mã hàng tương thích cao nhất với phác đồ 1:1.</p>
+      </div>
+      <div class="grid grid-cols-3 md:grid-cols-6 gap-4">
+        <div v-for="b in ['SkinCeuticals','La Roche-Posay','EltaMD','Obagi','PCA Skin','Paula\'s Choice','Revision','Alastin','Martiderm','Bioderma','Vichy','Some By Mi']" :key="b"
+          class="bg-white border border-line rounded-xl h-[84px] flex items-center justify-center font-serif font-bold text-teal-label text-center px-2 text-[15px]">{{ b }}</div>
+      </div>
+      <div class="text-center mt-6">
+        <span class="inline-flex items-center gap-2 font-semibold text-sm text-teal-mid bg-sky-soft border border-[#cfe6ee] rounded-full px-5 py-3">
+          <i class="fa-solid fa-shield-heart"></i> Mọi nhãn hàng đều có nguồn gốc rõ ràng, được cộng đồng y khoa tin dùng
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== KẾT QUẢ THỰC TẾ (bỏ eyebrow) ===== -->
+  <section id="results" class="py-16 px-6 md:px-10 bg-paper-alt">
+    <div class="max-w-[1360px] mx-auto">
+      <div class="text-center max-w-[720px] mx-auto mb-8">
+        <h2 class="font-serif font-semibold text-teal-deep text-[24px] md:text-[28px] leading-tight">Kết quả không đến từ phép màu, mà từ những quyết định khó</h2>
+        <p class="text-ink-soft mt-2.5 leading-relaxed">Mỗi ca là một hành trình có lúc hỗn loạn. Chúng tôi kể lại quyết định bước ngoặt thay vì chỉ khoe ảnh. Mỗi vấn đề da sẽ có thư viện 8 đến 12 ảnh thực tế kèm chú thích khi cập nhật tại cơ sở.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white border border-line rounded-2xl overflow-hidden">
+          <div class="flex h-[200px]">
+            <div class="w-1/2 relative overflow-hidden border-r-2 border-white"><img src="https://picsum.photos/seed/caseAb/500/400" alt="Da mụn viêm trước điều trị" class="w-full h-full object-cover"><span class="absolute top-2.5 left-2.5 bg-black/60 text-white text-[11px] font-semibold rounded px-2 py-1">Trước</span></div>
+            <div class="w-1/2 relative overflow-hidden"><img src="https://picsum.photos/seed/caseAa/500/400" alt="Da sau 12 tuần điều trị mụn viêm" class="w-full h-full object-cover"><span class="absolute top-2.5 left-2.5 bg-teal-mid text-white text-[11px] font-semibold rounded px-2 py-1">Sau 12 tuần</span></div>
+          </div>
+          <div class="p-5.5">
+            <h4 class="font-semibold text-teal-deep text-lg mb-2.5">Mụn viêm nặng, 12 tuần</h4>
+            <div class="bg-paper-alt border-l-[3px] border-teal-mid rounded-r-lg px-3.5 py-3">
+              <div class="font-semibold text-[11px] tracking-wide text-teal-label uppercase mb-1">Quyết định bước ngoặt</div>
+              <p class="text-[13.5px] text-ink-soft leading-relaxed">Tuần 4, khi hàng rào da có dấu hiệu quá tải, bác sĩ tạm dừng hoạt chất điều trị để tập trung phục hồi. Đây là bước ngoặt giúp da ổn định.</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white border border-line rounded-2xl overflow-hidden">
+          <div class="flex h-[200px]">
+            <div class="w-1/2 relative overflow-hidden border-r-2 border-white"><img src="https://picsum.photos/seed/caseBb/500/400" alt="Da nám mảng trước điều trị" class="w-full h-full object-cover"><span class="absolute top-2.5 left-2.5 bg-black/60 text-white text-[11px] font-semibold rounded px-2 py-1">Trước</span></div>
+            <div class="w-1/2 relative overflow-hidden"><img src="https://picsum.photos/seed/caseBa/500/400" alt="Da sau 16 tuần điều trị nám mảng" class="w-full h-full object-cover"><span class="absolute top-2.5 left-2.5 bg-teal-mid text-white text-[11px] font-semibold rounded px-2 py-1">Sau 16 tuần</span></div>
+          </div>
+          <div class="p-5.5">
+            <h4 class="font-semibold text-teal-deep text-lg mb-2.5">Nám mảng, 16 tuần</h4>
+            <div class="bg-paper-alt border-l-[3px] border-teal-mid rounded-r-lg px-3.5 py-3">
+              <div class="font-semibold text-[11px] tracking-wide text-teal-label uppercase mb-1">Quyết định bước ngoặt</div>
+              <p class="text-[13.5px] text-ink-soft leading-relaxed">Buổi thứ 6, bác sĩ điều chỉnh riêng nồng độ hoạt chất điều hòa sắc tố cho vùng đáp ứng chậm, thay vì tăng liều toàn mặt.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LIÊN HỆ TƯ VẤN ===== -->
+  <section id="contact" class="py-20 px-6 md:px-10 bg-teal-deep text-white">
+    <div class="max-w-[1100px] mx-auto flex flex-wrap gap-12 items-center">
+      <div class="flex-1 min-w-[320px]">
+        <div class="flex items-center gap-3.5 mb-5">
+          <img src="https://picsum.photos/seed/drhue2/160/160" alt="Bác sĩ Nguyễn Huệ" class="w-16 h-16 rounded-full object-cover border-2 border-sky/50">
+          <div class="leading-snug"><div class="text-white font-bold text-[15px]">Bác sĩ Nguyễn Huệ</div><div class="text-sky text-[12.5px]">trực tiếp đọc hồ sơ da của bạn</div></div>
+        </div>
+        <span class="font-semibold text-xs tracking-[.24em] text-sky uppercase">Liên hệ tư vấn</span>
+        <h2 class="font-serif font-semibold text-[30px] md:text-[34px] leading-tight mt-3 mb-3.5">Đừng chỉ gửi tin nhắn, hãy khởi tạo hồ sơ da số hóa của bạn</h2>
+        <p class="text-[#c9e6ef] leading-relaxed max-w-md mb-6">Khi bạn gửi ảnh qua Zalo, bác sĩ sẽ không bán sản phẩm ngay. Chúng tôi phân tích chỉ số ưu tiên, lập ma trận dữ liệu và thiết kế lộ trình 1:1 cho riêng bạn.</p>
+        <div class="flex flex-col gap-3.5">
+          <a href="#contact" class="inline-flex items-center gap-3 bg-zalo text-white rounded-xl px-5.5 py-3.5 font-semibold text-[15px] w-fit">
+            <span class="w-6.5 h-6.5 rounded-md bg-white text-zalo flex items-center justify-center font-extrabold text-xs">Za</span> Tư vấn qua Zalo
+          </a>
+          <div class="flex items-center gap-3 text-[#eafcff] text-[15px]"><i class="fa-solid fa-phone text-sky"></i> Hotline: 0900 000 000</div>
+          <div class="flex items-center gap-3 text-[#eafcff] text-[15px]"><i class="fa-solid fa-location-dot text-sky"></i> Cơ sở: [Địa chỉ phòng khám Dr.Reju]</div>
+        </div>
+      </div>
+      <div class="flex-none w-full md:w-[380px] bg-white text-ink rounded-2xl p-7">
+        <h3 class="font-semibold text-teal-deep text-[19px] mb-4">Để lại thông tin, Dr.Reju gọi lại</h3>
+        <form class="flex flex-col gap-3.5" @submit.prevent>
+          <div>
+            <label for="cf-name" class="block text-[12px] font-semibold text-ink-soft mb-1">Họ và tên</label>
+            <input id="cf-name" type="text" placeholder="Nguyễn Thị A" class="w-full border-[1.5px] border-line rounded-lg px-3.5 py-3 text-[15px] outline-none focus:border-teal-mid transition-colors">
+          </div>
+          <div>
+            <label for="cf-phone" class="block text-[12px] font-semibold text-ink-soft mb-1">Số điện thoại / Zalo</label>
+            <input id="cf-phone" type="tel" placeholder="09xx xxx xxx" class="w-full border-[1.5px] border-line rounded-lg px-3.5 py-3 text-[15px] outline-none focus:border-teal-mid transition-colors">
+          </div>
+          <div>
+            <label for="cf-note" class="block text-[12px] font-semibold text-ink-soft mb-1">Mô tả tình trạng da của bạn</label>
+            <textarea id="cf-note" rows="3" placeholder="Ví dụ: da dầu, hay nổi mụn ở cằm..." class="w-full border-[1.5px] border-line rounded-lg px-3.5 py-3 text-[15px] outline-none focus:border-teal-mid transition-colors resize-y"></textarea>
+          </div>
+          <button type="submit" class="bg-teal-deep text-white rounded-lg py-3.5 font-semibold text-[15px] hover:opacity-90 transition">Gửi yêu cầu tư vấn</button>
+          <p class="text-xs text-ink-faint leading-relaxed"><strong>Thông tin của bạn được bảo mật</strong>, chỉ dùng cho mục đích tư vấn. Chúng tôi tư vấn đúng, đủ và minh bạch về mọi rủi ro, đó là cái tâm của người làm y khoa dựa trên bằng chứng.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-paper-alt border-t border-line">
+    <div class="max-w-[1360px] mx-auto px-6 md:px-10 py-14 grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-8">
+      <div class="flex flex-col gap-3.5">
+        <div class="flex items-center gap-2.5">
+          <div class="w-[38px] h-[38px] border-2 border-teal-deep rounded-[10px] flex items-center justify-center text-teal-deep font-serif font-bold text-lg">✿</div>
+          <span class="font-serif font-bold text-[22px] text-teal-deep">Dr.Reju</span>
+        </div>
+        <p class="max-w-[340px] text-[13.5px] text-ink-soft leading-relaxed">© 2026 Dr.Reju Medical Dermatology. Nội dung mang tính giáo dục, không thay thế tư vấn y khoa trực tiếp.</p>
+      </div>
+      <div class="flex flex-col gap-2.5">
+        <h4 class="font-semibold text-xs tracking-[.08em] text-teal-deep uppercase mb-1">Khám phá</h4>
+        <a href="#concerns" class="text-sm text-ink-soft hover:text-teal-deep transition-colors">Vấn đề da</a>
+        <a href="#products" class="text-sm text-ink-soft hover:text-teal-deep transition-colors">Sản phẩm</a>
+        <a href="#services" class="text-sm text-ink-soft hover:text-teal-deep transition-colors">Dịch vụ</a>
+        <a href="#blog" class="text-sm text-ink-soft hover:text-teal-deep transition-colors">Blog kiến thức</a>
+      </div>
+      <div class="flex flex-col gap-2.5">
+        <h4 class="font-semibold text-xs tracking-[.08em] text-teal-deep uppercase mb-1">Về Dr.Reju</h4>
+        <a href="#why" class="text-sm text-ink-soft hover:text-teal-deep transition-colors">Vì sao chọn</a>
+        <a href="#brands" class="text-sm text-ink-soft hover:text-teal-deep transition-colors">Thương hiệu hợp tác</a>
+        <a href="#contact" class="text-sm text-ink-soft hover:text-teal-deep transition-colors">Liên hệ tư vấn</a>
+      </div>
+      <div class="flex flex-col gap-2.5">
+        <h4 class="font-semibold text-xs tracking-[.08em] text-teal-deep uppercase mb-1">Kết nối</h4>
+        <a href="#contact" class="text-sm text-ink-soft hover:text-teal-deep transition-colors flex items-center gap-2"><i class="fa-solid fa-comment-dots"></i> Zalo</a>
+        <a href="#contact" class="text-sm text-ink-soft hover:text-teal-deep transition-colors flex items-center gap-2"><i class="fa-solid fa-phone"></i> Hotline</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== ZALO FLOAT ===== -->
+  <a href="#contact" class="zfloat fixed right-5 bottom-5 z-[60] flex items-center gap-2.5 bg-zalo text-white rounded-full pl-3 pr-4.5 py-3 shadow-xl font-bold text-sm">
+    <span class="w-8.5 h-8.5 rounded-[9px] bg-white text-zalo flex items-center justify-center font-extrabold text-[13px]">Za</span>
+    Tư vấn Zalo
+  </a>
+
+</div>
+
+<script>
+const { createApp } = Vue
+
+createApp({
+  data() {
+    return {
+      pf: 'concern',
+      step: -1,
+      tags: [],
+      products: [
+        { name:'Sữa rửa mặt dịu nhẹ pH 5.5', brand:'La Roche-Posay', price:'380.000đ', concern:'sensitive', type:'clean', tier:'low', img:'https://picsum.photos/seed/pr1/400/400' },
+        { name:'Gel trị mụn BHA 2%', brand:"Paula's Choice", price:'620.000đ', concern:'acne', type:'treat', tier:'mid', img:'https://picsum.photos/seed/pr2/400/400' },
+        { name:'Serum Niacinamide 10%', brand:'The Ordinary', price:'320.000đ', concern:'acne', type:'treat', tier:'low', img:'https://picsum.photos/seed/pr3/400/400' },
+        { name:'Serum Tranexamic Acid', brand:'SkinCeuticals', price:'750.000đ', concern:'pigment', type:'treat', tier:'mid', img:'https://picsum.photos/seed/pr4/400/400' },
+        { name:'Serum Vitamin C 15%', brand:'SkinCeuticals', price:'1.850.000đ', concern:'pigment', type:'treat', tier:'high', img:'https://picsum.photos/seed/pr5/400/400' },
+        { name:'Kem chống nắng phổ rộng SPF50', brand:'EltaMD', price:'690.000đ', concern:'sensitive', type:'sun', tier:'mid', img:'https://picsum.photos/seed/pr6/400/400' },
+        { name:'Kem dưỡng phục hồi Ceramide', brand:'Martiderm', price:'520.000đ', concern:'sensitive', type:'moist', tier:'mid', img:'https://picsum.photos/seed/pr7/400/400' },
+        { name:'Retinol 0.3% chống lão hóa', brand:'PCA Skin', price:'980.000đ', concern:'pigment', type:'treat', tier:'high', img:'https://picsum.photos/seed/pr8/400/400' },
+        { name:'Xịt khoáng làm dịu', brand:'Vichy', price:'210.000đ', concern:'sensitive', type:'moist', tier:'low', img:'https://picsum.photos/seed/pr9/400/400' },
+        { name:'Kem chấm mụn Benzoyl 2.5%', brand:'Obagi', price:'250.000đ', concern:'acne', type:'treat', tier:'low', img:'https://picsum.photos/seed/pr10/400/400' },
+      ],
+      quiz: [
+        { q:'Loại da của bạn hiện tại?', opts:[['Da dầu','oily'],['Da khô','dry'],['Da hỗn hợp','combo'],['Da nhạy cảm','sensitive']] },
+        { q:'Vấn đề khiến bạn lo lắng nhất?', opts:[['Mụn & bít tắc','acne'],['Nám, sạm, không đều màu','pigment'],['Lão hóa, chảy xệ','aging'],['Đỏ, kích ứng','sensitive']] },
+        { q:'Da bạn có dễ kích ứng với sản phẩm mới?', opts:[['Thường xuyên','sensitive'],['Thỉnh thoảng','combo'],['Hầu như không','resist']] },
+        { q:'Mục tiêu ưu tiên của bạn?', opts:[['Kiểm soát mụn','acne'],['Làm sáng, đều màu','pigment'],['Săn chắc, trẻ hóa','aging'],['Phục hồi hàng rào da','sensitive']] },
+      ],
+      resultsMap: {
+        acne: { title:'Da dầu mụn', desc:'Da bạn có xu hướng bít tắc và nổi mụn. Ưu tiên làm sạch dịu nhẹ, kiểm soát dầu và hoạt chất tan mụn, tránh lạm dụng.', routine:[
+          { n:1, title:'Làm sạch dịu nhẹ', product:'Sữa rửa mặt dịu nhẹ pH 5.5' },
+          { n:2, title:'Kiểm soát viêm và bít tắc', product:'Gel trị mụn BHA 2%' },
+          { n:3, title:'Làm dịu và cân bằng', product:'Serum Niacinamide 10%' },
+          { n:4, title:'Bảo vệ ban ngày', product:'Kem chống nắng phổ rộng SPF50' },
+        ]},
+        pigment: { title:'Nám & sắc tố', desc:'Da bạn cần ức chế sắc tố và bảo vệ khỏi UV. Kết hợp hoạt chất làm sáng với chống nắng nghiêm ngặt.', routine:[
+          { n:1, title:'Làm sạch dịu nhẹ', product:'Sữa rửa mặt dịu nhẹ pH 5.5' },
+          { n:2, title:'Ức chế sắc tố', product:'Serum Tranexamic Acid' },
+          { n:3, title:'Chống oxy hóa và làm sáng', product:'Serum Vitamin C 15%' },
+          { n:4, title:'Bảo vệ tối đa', product:'Kem chống nắng phổ rộng SPF50' },
+        ]},
+        aging: { title:'Da lão hóa', desc:'Da bắt đầu mất đàn hồi. Tập trung tái tạo và nuôi dưỡng, kết hợp chống nắng để ngăn lão hóa quang học.', routine:[
+          { n:1, title:'Làm sạch dịu nhẹ', product:'Sữa rửa mặt dịu nhẹ pH 5.5' },
+          { n:2, title:'Tái tạo ban đêm', product:'Retinol 0.3% chống lão hóa' },
+          { n:3, title:'Nuôi dưỡng và phục hồi', product:'Kem dưỡng phục hồi Ceramide' },
+          { n:4, title:'Bảo vệ ban ngày', product:'Kem chống nắng phổ rộng SPF50' },
+        ]},
+        sensitive: { title:'Da nhạy cảm', desc:'Hàng rào da yếu, dễ đỏ và kích ứng. Ưu tiên phục hồi và làm dịu, tối giản hoạt chất mạnh.', routine:[
+          { n:1, title:'Làm sạch cực dịu nhẹ', product:'Sữa rửa mặt dịu nhẹ pH 5.5' },
+          { n:2, title:'Làm dịu tức thì', product:'Xịt khoáng làm dịu' },
+          { n:3, title:'Phục hồi hàng rào da', product:'Kem dưỡng phục hồi Ceramide' },
+          { n:4, title:'Bảo vệ dịu nhẹ', product:'Kem chống nắng phổ rộng SPF50' },
+        ]},
+      },
+    }
+  },
+  computed: {
+    inQuestion() { return this.step >= 0 && this.step < this.quiz.length },
+    currentQ() { return this.inQuestion ? this.quiz[this.step] : { q:'', opts:[] } },
+    progressPct() { return Math.round((this.step / this.quiz.length) * 100) },
+    result() {
+      const score = {}
+      this.tags.forEach(t => { score[t] = (score[t] || 0) + 1 })
+      let best = 'sensitive', max = -1
+      Object.keys(this.resultsMap).forEach(k => { if ((score[k] || 0) > max) { max = score[k] || 0; best = k } })
+      return this.resultsMap[best]
+    },
+    groups() {
+      const P = this.products.map(p => ({ ...p }))
+      if (this.pf === 'line') {
+        const defs = [['clean','Làm sạch'],['treat','Đặc trị'],['moist','Dưỡng ẩm'],['sun','Chống nắng']]
+        return defs.map(([k,l]) => ({ label:l, items:P.filter(p => p.type === k) })).filter(g => g.items.length)
+      }
+      if (this.pf === 'price') {
+        const defs = [['low','Phổ thông, dưới 500K'],['mid','Trung cấp, 500K đến 1 triệu'],['high','Cao cấp, trên 1 triệu']]
+        return defs.map(([k,l]) => ({ label:l, items:P.filter(p => p.tier === k) })).filter(g => g.items.length)
+      }
+      const defs = [['acne','Mụn & bít tắc'],['pigment','Nám & sắc tố'],['sensitive','Da nhạy cảm & phục hồi']]
+      return defs.map(([k,l]) => ({ label:l, items:P.filter(p => p.concern === k) })).filter(g => g.items.length)
+    },
+  },
+  methods: {
+    tagFor(p) {
+      const map = {
+        acne: ['Mụn', 'text-teal-mid', 'bg-sky-soft'],
+        pigment: ['Sắc tố', 'text-amber-800', 'bg-amber-50'],
+        sensitive: ['Nhạy cảm', 'text-teal-label', 'bg-[#e0f2f5]'],
+      }
+      return map[p.concern] || ['Chung', 'text-ink-soft', 'bg-gray-100']
+    },
+    pick(tag) {
+      const t = this.tags.slice(0, this.step)
+      t[this.step] = tag
+      this.tags = t
+      this.step++
+    },
+    startQuiz() { this.step = 0; this.tags = [] },
+    backQuiz() { this.step = Math.max(-1, this.step - 1) },
+    restartQuiz() { this.step = -1; this.tags = [] },
+  }
+}).mount('#app')
+</script>
+</body>
+</html>
