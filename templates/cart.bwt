@@ -190,6 +190,9 @@
 <script src="{{ 'sweetalert-min.js' | asset_url }}"></script>
 {% endif %}
 
+{% comment %} ── Ajax cart: Handlebars templates (CartTemplate, CartMobileTemplate, SideCartTemplate, CartPopupTemplate, CartHeaderTemplate) + JS engine ── {% endcomment %}
+{% include 'ajaxcart' %}
+
 {% comment %} Datepicker chỉ nạp khi thật sự bật ngày/giờ giao — trước đây nạp vô điều kiện {% endcomment %}
 {% if settings.use_cart_delivery %}
 {{ 'bootstrap-datepicker.js' | asset_url | script_tag }}

@@ -1,3 +1,57 @@
+# === Node & dependencies ===
 node_modules/
+package-lock.json
+
+# === Logs ===
 *.log
+
+# === OS files ===
 .DS_Store
+Thumbs.db
+
+# === IDE / editor ===
+.vscode/
+.idea/
+
+# === Claude skills (auto-generated, not project code) ===
+.claude/
+*.swp
+*.swo
+*~
+
+# === Environment variables ===
+.env
+.env.local
+.env.*.local
+
+# === Local development & tooling ===
+dev-server.js
+preview-mock.js
+_tools/
+
+# === Drafts (work-in-progress) ===
+_drafts/
+
+# === Build / cache ===
+.cache/
+tmp/
+temp/
+
+# === Original source files (keep only .bwt compiled versions) ===
+assets/*.scss
+assets/*.js
+assets/*.css
+
+# === Vendor / third-party libraries ===
+assets/bootstrap-4-3-min.css
+assets/bootstrap-datepicker.js
+assets/jquery-ui-min.js
+assets/jquery.fancybox.scss
+assets/jquery.js
+assets/pluginviews.css
+assets/sweetalert-min.js
+assets/swiper.js
+assets/tabletop.js
+
+# === Demo / sample data ===
+data/settings-demo.js
