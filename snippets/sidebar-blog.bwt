@@ -1,0 +1,36 @@
+<div class="blog-aside aside-item blog-aside-article">
+	<div class="aside-content-article aside-content">
+		<div class="aside-title">
+			<h2 class="title-head margin-top-0 margin-bottom-10"><a href="{{settings.sidebar_blog}}" title="{{settings.blog_aside_title}}">{{settings.blog_aside_title}}</a></h2>
+		</div>
+		<div class="blog-list blog-image-list">
+			{% for article in blogs[settings.sidebar_blog].articles  limit : settings.bogs_aside_recent_limit %}
+			<div class="loop-blog">
+				<div class="blog-img blog_thumb_vertical">
+					<a class="thumb" href="{{ article.url }}">
+						{% if article.image != null %}
+						<picture>
+							<source media="(max-width: 480px)" srcset="{{ article.image.src | img_url:'large' }}">
+							<source media="(min-width: 481px) and (max-width: 767px)" srcset="{{ article.image.src | img_url:'large' }}">
+							<source media="(min-width: 768px) and (max-width: 1023px)" srcset="{{ article.image.src | img_url:'medium' }}">
+							<source media="(min-width: 1024px) and (max-width: 1199px)" srcset="{{ article.image.src | img_url:'medium' }}">
+							<source media="(min-width: 1200px)" srcset="{{ article.image.src | img_url:'medium' }}">
+							<img src="{{ article.image.src}}" style="max-width:100%;" class="img-responsive" alt="{{ article.title }}">
+						</picture>
+						{% else %}
+						<picture>
+							<img src="{{ '800x600.png' | asset_url | img_url:'large'}}" alt="Không có ảnh"/>  
+						</picture>
+						{% endif %}
+					</a>
+				</div>
+				<div class="content_right">
+					<h3 class="h3">
+						<a href="{{ article.url }}" title="{{ article.title }}">{{ article.title }}</a>
+					</h3>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,27 @@
+{% comment %} DR.REJU — TPCN bổ trợ (theo collection, giống mục Sản phẩm). Cấu hình: Tùy chỉnh → Trang chủ - TPCN.
+   Sapo: dùng collections[handle].products inline, chỉ assign HANDLE. {% endcomment %}
+{% assign tpcn_handle = settings.tpcn_col | default: 'all' %}
+{% assign tpcn_limit = settings.tpcn_limit | default: 4 %}
+<section id="tpcn" class="dr-section dr-bg-alt">
+  <div class="dr-container">
+    <div class="dr-flex-between dr-wrap dr-gap-24 dr-mb-48">
+      <div style="max-width:700px">
+        <span class="dr-eyebrow">{{ settings.tpcn_eyebrow | default: 'Thực phẩm bổ trợ' }}</span>
+        <h2 class="dr-h2 dr-up dr-mt-8">{{ settings.tpcn_title | default: 'Chỉ kê khi thực sự cần' }}</h2>
+        <p class="dr-lead dr-mt-8">{{ settings.tpcn_desc | default: 'Chúng tôi ưu tiên phục hồi hàng rào bảo vệ da trước khi làm sáng từ bên trong, thực phẩm chức năng chỉ là bổ trợ.' }}</p>
+      </div>
+      <a href="{{ collections[tpcn_handle].url | default: '/collections/all' }}" class="dr-btn dr-btn--outline">{{ settings.tpcn_btn_label | default: 'Xem tất cả' }}</a>
+    </div>
+
+    {% if collections[tpcn_handle].products_count > 0 %}
+    <div class="dr-pcard-grid">
+      {% for p in collections[tpcn_handle].products limit: tpcn_limit %}
+      {% include 'dr_product_card' %}
+      {% endfor %}
+    </div>
+    {% include 'dr_pcard_init' %}
+    {% else %}
+    <p class="dr-lead">Chưa có sản phẩm — chọn collection ở <b>Tùy chỉnh → Trang chủ - TPCN</b> (setting <code>tpcn_col</code>).</p>
+    {% endif %}
+  </div>
+</section>

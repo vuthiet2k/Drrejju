@@ -1,0 +1,64 @@
+{% comment %} DR.REJU — Khối gợi ý tìm kiếm. Dùng ở templates/search.bwt cho 2 trạng thái:
+   chưa gõ gì, và không có kết quả. Cùng nguồn dữ liệu với panel tìm kiếm ở header
+   (header_search_suggest_list + menu danh mục) để gợi ý không lệch nhau giữa 2 chỗ. {% endcomment %}
+
+{%- assign sg_kw = settings.header_search_suggest_list | default: 'Retinol,Chống lão hoá,Trị mụn,Kem chống nắng,Serum,Cấp ẩm' | split: ',' -%}
+{%- assign sg_cat = linklists[settings.footer_cat_menu] -%}
+{%- unless sg_cat.links.size > 0 -%}{%- assign sg_cat = linklists['footer-categories'] -%}{%- endunless -%}
+
+<div class="dr-sgg">
+
+  {% if sg_kw.size > 0 %}
+  <div class="dr-sgg-blk">
+    <h2 class="dr-sgg-h">Từ khoá phổ biến</h2>
+    <div class="dr-sgg-tags">
+      {% for kw in sg_kw %}
+        {%- assign kwc = kw | strip -%}
+        {% if kwc != blank %}<a class="dr-sgg-tag" href="/search?type=product&query={{ kwc | url_encode }}">{{ kwc }}</a>{% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if sg_cat.links.size > 0 %}
+  <div class="dr-sgg-blk">
+    <h2 class="dr-sgg-h">Duyệt theo danh mục</h2>
+    <div class="dr-sgg-cats">
+      {% for g in sg_cat.links %}
+      <div class="dr-sgg-cat">
+        <a class="dr-sgg-cat__h" href="{{ g.url }}">{{ g.title }}</a>
+        {% if g.links.size > 0 %}
+        <ul>
+          {% for c in g.links limit: 5 %}<li><a href="{{ c.url }}">{{ c.title }}</a></li>{% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+</div>
+
+<style>
+.dr-sgg-blk + .dr-sgg-blk{ margin-top: var(--sp-48); }
+.dr-sgg-h{ margin: 0 0 var(--sp-16); font-family: var(--font-primary); font-size: var(--fs-xs);
+  font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--text-soft); }
+
+.dr-sgg-tags{ display: flex; flex-wrap: wrap; gap: 9px; }
+.dr-sgg-tag{ padding: 10px 18px; border-radius: var(--radius-pill); border: 1px solid var(--line);
+  font-family: var(--font-primary); font-size: var(--fs-sm); font-weight: 600; color: var(--text-soft);
+  transition: border-color .2s ease, color .2s ease, background .2s ease; }
+.dr-sgg-tag:hover{ border-color: var(--emerald); background: var(--emerald); color: #fff; }
+
+.dr-sgg-cats{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px 34px; }
+.dr-sgg-cat__h{ display: block; margin-bottom: 12px; font-family: var(--font-primary); font-size: var(--fs-sm);
+  font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.dr-sgg-cat ul{ list-style: none; padding: 0; margin: 0; }
+.dr-sgg-cat li{ margin-bottom: 8px; }
+.dr-sgg-cat li a{ font-size: var(--fs-sm); color: var(--text-soft); transition: color .2s ease; }
+.dr-sgg-cat li a:hover{ color: var(--accent); }
+
+@media (max-width: 991px){ .dr-sgg-cats{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px){ .dr-sgg-cats{ grid-template-columns: 1fr; gap: 24px; } }
+</style>

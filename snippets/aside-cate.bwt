@@ -1,0 +1,105 @@
+<div class="aside-content aside-content-menu">
+	{%- assign col_menu = settings.aside_category_menu -%}
+	{%- for link in linklists[settings.aside_category_menu].links -%}
+	{%- if link.object -%}
+	{%- if link.active -%}
+	{%- assign col_menu_title = link.title -%}
+	{%- assign col_menu = link.alias -%}
+	{%-endif-%}
+	{%- for childlink in linklists[link.alias].links -%}
+	{%- if childlink.active -%}
+	{%- assign check_active_menu = true -%}
+	{%- endif -%}
+	{%- for childlink2 in linklists[childlink.alias].links -%}
+	{%- if childlink2.active -%}
+	{%- assign check_active_menu = true -%}
+	{%- endif -%}
+	{%- endfor -%}
+	{%- endfor -%}
+	{%- if link.active or check_active_menu -%}
+	{%- if linklists[link.alias] != null -%}
+	{%- for childlink in linklists[link.alias].links -%}
+	{%- if childlink.active -%}
+	{%- assign col_menu_title = link.title -%}
+	{%- assign col_menu = link.alias -%}
+	{%-endif-%}
+	{%- for childlink2 in linklists[childlink.alias].links -%}
+	{%- if childlink2.active -%}
+	{%- assign col_menu_title = childlink.title -%}
+	{%- assign col_menu = childlink.alias -%}
+	{%-endif-%}
+	{%- endfor -%}
+	{%- endfor -%}
+	{%- endif -%}
+	{%- endif -%}
+	{%- endif -%}
+	{%- assign check_active_menu = false -%}
+	{%- endfor -%}
+	{%- assign check_active_menu2 = false -%}
+	{%- if linklists[col_menu].links.size > 0 -%}
+	{%- assign check_active_menu2 = true -%}
+	{%- endif -%}
+	{%- if check_active_menu2 == false -%}
+	{%- assign col_menu = settings.aside_category_menu -%}
+	{%- assign col_menu_title = settings.aside_col_title -%}
+	{%-endif-%}
+	<div class="title-head-col">
+		{{ settings.aside_category_title }}
+	</div>
+	<nav class="nav-category">
+		<ul class="nav navbar-pills">
+			{%- for link in linklists[col_menu].links -%}
+			{%- if linklists[link.alias] -%}
+			<li class="nav-item {% if link.active %}active{% endif %} relative">
+				<a title="{{ link.title }}" href="{{ link.url }}" class="nav-link pr-5">{{ link.title }}</a>
+				<i class="open_mnu down_icon"></i>
+				<ul class="menu_down" style="display:none;">
+					{%- for childlink in linklists[link.alias].links -%}
+					{%- if linklists[childlink.alias] -%}
+					<li class="dropdown-submenu nav-item {% if childlink.active %}active{% endif %} relative">
+						<a title="{{ childlink.title }}" class="nav-link pr-5" href="{{ childlink.url }}">{{ childlink.title }}</a>
+						<i class="open_mnu down_icon"></i>
+						<ul class="menu_down" style="display:none;">
+							{%- for childlink2 in linklists[childlink.alias].links -%}
+							{%- if linklists[childlink2.alias] -%}
+							<li class="dropdown-submenu nav-item {% if childlink2.active %}active{% endif %} relative">
+								<a title="{{ childlink2.title }}" class="nav-link pr-5" href="{{ childlink2.url }}">{{ childlink2.title }}</a>
+								<i class="open_mnu down_icon"></i>
+								<ul class="menu_down" style="display:none;">
+									{%- for childlink3 in linklists[childlink2.alias].links -%}
+									<li class="dropdown-submenu nav-item {% if childlink3.active %}active{% endif %}">
+										<a title="{{ childlink3.title }}" class="nav-link pl-5" href="{{ childlink3.url }}">{{ childlink3.title }}</a>
+									</li>
+									{%- endfor -%}
+								</ul>
+							</li>
+							{%- else -%}
+							<li class="nav-item">
+								<a title="{{ childlink2.title }}" class="nav-link pl-4" href="{{ childlink2.url }}">{{ childlink2.title }} </a>
+							</li>
+							{%- endif -%}
+							{%- endfor -%}
+						</ul>                      
+					</li>
+					{%- else -%}
+					<li class="nav-item">
+						<a  title="{{ childlink.title }}" class="nav-link" href="{{ childlink.url }}">{{ childlink.title }}</a>
+					</li>
+					{%- endif -%}
+					{%- endfor -%}
+				</ul>
+			</li>
+			{%- else -%}
+			<li class="nav-item {% if link.active %}active{% endif %} relative">
+				<a title="{{ link.title }}" class="nav-link" href="{{ link.url }}">{{ link.title }}</a>
+			</li>
+			{%- endif -%}
+			{%- endfor -%}
+		</ul>
+	</nav>
+</div>
+<script>
+	$(".open_mnu").click(function(){
+		$(this).toggleClass('cls_mn').next().slideToggle();
+	});
+</script>

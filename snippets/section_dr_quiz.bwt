@@ -1,0 +1,320 @@
+{% comment %} DR.REJU — Quiz hồ sơ da (phương án A "Trợ lý hội thoại"). Cấu hình: Tùy chỉnh → Trang chủ - Quiz
+  Hội thoại render sẵn trong HTML → không JS vẫn đọc được đủ; JS chỉ thêm lớp animate.
+  Bản ghi chọn phương án: _drafts/direction-approved.md {% endcomment %}
+
+{%- assign q_url   = settings.quiz_btn_url | default: '/dat-lich' -%}
+{%- assign q_chips = settings.quiz_chips | default: 'Mụn,Nám & sắc tố,Thâm sau mụn,Da nhạy cảm,Lão hóa,Chưa rõ' | split: ',' -%}
+{%- assign q_trust = settings.quiz_trust | default: 'Miễn phí,Bảo mật thông tin,Bác sĩ đọc trực tiếp' | split: ',' -%}
+
+<section id="quiz" class="dr-section dr-bg dr-quiz">
+  <div class="dr-container">
+    <div class="dr-quiz-card">
+      <div class="dr-quiz-grid">
+
+        {% comment %} ── Cột trái: nội dung + CTA ── {% endcomment %}
+        <div class="dr-quiz-intro">
+          <span class="dr-eyebrow">{{ settings.quiz_eyebrow | default: 'Hồ sơ da DR.REJU' }}</span>
+
+          <h2 class="dr-h2 dr-mt-8 dr-quiz-title">
+            {{ settings.quiz_title | default: 'Kể cho chúng tôi' }}
+            {%- assign q_hl = settings.quiz_title_hl | default: 'về da của bạn' -%}
+            {% if q_hl != blank %}<br><b>{{ q_hl }}</b>{% endif %}
+          </h2>
+
+          <p class="dr-lead dr-mt-16 dr-quiz-lead">{{ settings.quiz_desc | default: 'Trả lời vài câu hỏi ngắn. Bác sĩ da liễu đọc hồ sơ của bạn và phản hồi qua Zalo — không có kết luận tự động nào.' }}</p>
+
+          {% comment %} settings_data chưa có key quiz_* → phải assign kèm default (schema default
+             chỉ ghi vào settings_data sau khi lưu trong editor Sapo), giống pattern các section khác {% endcomment %}
+          {%- assign st_nums = '17,~4,24h' | split: ',' -%}
+          {%- assign st_lbs = 'câu hỏi có phân nhánh,phút hoàn thành,bác sĩ phản hồi' | split: ',' -%}
+          <div class="dr-quiz-stats">
+            {% for i in (1..3) %}
+              {%- assign idx = i | minus: 1 -%}
+              {%- capture k_num %}quiz_stat_{{ i }}_num{% endcapture -%}
+              {%- capture k_lb %}quiz_stat_{{ i }}_label{% endcapture -%}
+              {%- assign v_num = settings[k_num] | default: st_nums[idx] -%}
+              {%- assign v_lb = settings[k_lb] | default: st_lbs[idx] -%}
+              {% if v_num != blank %}
+                <div class="dr-quiz-stat">
+                  <span class="dr-quiz-stat__num">{{ v_num }}</span>
+                  <span class="dr-quiz-stat__lb">{{ v_lb }}</span>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          <a href="{{ q_url }}" class="dr-btn dr-btn--primary dr-mt-32">{{ settings.quiz_btn_label | default: 'Bắt đầu đánh giá da' }} <i class="fa-solid fa-arrow-right"></i></a>
+
+          {% if q_trust.size > 0 %}
+          {% comment %} dấu chấm nằm TRONG item để khi wrap không bị lửng ở cuối dòng {% endcomment %}
+          <p class="dr-quiz-trust">
+            {% for t in q_trust %}{%- assign t_lb = t | strip -%}{% if t_lb != blank %}<span class="dr-quiz-trust__item">{% unless forloop.first %}<i class="dr-quiz-trust__dot"></i>{% endunless %}{{ t_lb }}</span>{% endif %}{% endfor %}
+          </p>
+          {% endif %}
+        </div>
+
+        {% comment %} ── Cột phải: khung hội thoại ── {% endcomment %}
+        <div class="dr-quiz-side">
+          <div class="dr-quiz-chat" data-quiz-chat>
+
+            <div class="dr-quiz-chat__head">
+              <span class="dr-quiz-orb" aria-hidden="true"></span>
+              <span class="dr-quiz-who">
+                <b>{{ settings.quiz_bot_name | default: 'Trợ lý hồ sơ da' }}</b>
+                <span>{{ settings.quiz_bot_status | default: 'Đang trực tuyến' }}</span>
+              </span>
+            </div>
+
+            <div class="dr-quiz-chat__body">
+              <div class="dr-quiz-msg dr-quiz-msg--bot" data-role="bot">{{ settings.quiz_msg_1 | default: 'Chào bạn 👋 Mình giúp bạn dựng hồ sơ da để bác sĩ xem trước.' }}</div>
+              <div class="dr-quiz-msg dr-quiz-msg--bot" data-role="bot">{{ settings.quiz_msg_2 | default: 'Điều gì trên da đang làm bạn khó chịu nhất?' }}</div>
+
+              <div class="dr-quiz-msg dr-quiz-msg--chips" data-role="chips">
+                {% for c in q_chips %}
+                  {%- assign c_lb = c | strip -%}
+                  {% if c_lb != blank %}<a class="dr-quiz-chip" href="{{ q_url }}?c={{ forloop.index }}">{{ c_lb }}</a>{% endif %}
+                {% endfor %}
+              </div>
+
+              <div class="dr-quiz-msg dr-quiz-msg--me" data-role="me">{{ settings.quiz_msg_reply | default: 'Mụn — và cứ tái đi tái lại' }}</div>
+              <div class="dr-quiz-msg dr-quiz-msg--bot" data-role="bot">{{ settings.quiz_msg_3 | default: 'Mình hiểu. Còn vài câu nữa thôi, bác sĩ sẽ đọc toàn bộ.' }}</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ── Layout / Box ── */
+.dr-quiz .dr-quiz-card{ position: relative; overflow: hidden; border-radius: 32px; background: linear-gradient(155deg, var(--emerald), var(--emerald-dk)); box-shadow: 0 32px 70px rgba(6,32,26,.26); }
+.dr-quiz-grid{ position: relative; z-index: 2; display: grid; grid-template-columns: 1.05fr .95fr; }
+.dr-quiz-intro{ padding: 64px 20px 64px 56px; }
+.dr-quiz-side{ padding: 44px 56px 44px 20px; display: flex; align-items: center; }
+.dr-quiz-chat{ width: 100%; padding: 20px; border: 1px solid rgba(223,186,115,.2); border-radius: 22px; background: rgba(255,255,255,.055); }
+.dr-quiz-chat__head{ display: flex; align-items: center; gap: 12px; padding-bottom: var(--sp-16); border-bottom: 1px solid rgba(223,186,115,.16); }
+.dr-quiz-chat__body{ display: flex; flex-direction: column; gap: 11px; padding-top: var(--sp-16); min-height: 236px; }
+.dr-quiz-stats{ display: flex; flex-wrap: wrap; gap: var(--sp-24); margin-top: 30px; }
+
+/* ── Typography ── */
+.dr-quiz .dr-eyebrow{ color: var(--gold); }
+.dr-quiz-title{ color: #fff; }
+.dr-quiz-title b{ color: var(--gold); font-weight: 600; }
+.dr-quiz-lead{ color: rgba(255,255,255,.82); max-width: 460px; }
+.dr-quiz-stat__num{ display: block; font-family: var(--font-primary); font-size: var(--fs-xl); font-weight: 700; color: var(--gold); }
+.dr-quiz-stat__lb{ display: block; font-size: var(--fs-sm); color: rgba(255,255,255,.62); }
+.dr-quiz-who b{ display: block; font-size: var(--fs-sm); font-weight: 600; color: #fff; }
+.dr-quiz-who > span{ display: inline-flex; align-items: center; gap: 6px; font-size: var(--fs-xs); color: var(--quiz-online); letter-spacing: .04em; }
+.dr-quiz-who > span::before{ content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--quiz-online); }
+.dr-quiz-trust{ display: flex; align-items: center; flex-wrap: wrap; gap: var(--sp-8); margin-top: 20px; font-size: var(--fs-sm); color: rgba(255,255,255,.5); }
+.dr-quiz-trust__item{ display: inline-flex; align-items: center; gap: var(--sp-8); }
+
+/* ── Visual ── */
+.dr-quiz{ --quiz-online: #8FD9BD; }
+.dr-quiz .dr-quiz-card::after{ content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(760px 380px at 22% 0%, rgba(223,186,115,.13), transparent 70%); }
+.dr-quiz-trust__dot{ flex: none; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); opacity: .6; }
+
+.dr-quiz-orb{ position: relative; flex: none; width: 38px; height: 38px; border-radius: 50%; background: conic-gradient(from 0deg, var(--gold), var(--quiz-online), var(--gold)); display: flex; align-items: center; justify-content: center; }
+.dr-quiz-orb::before{ content: ''; position: absolute; inset: 3px; border-radius: 50%; background: var(--emerald-dk); }
+.dr-quiz-orb::after{ content: ''; position: relative; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 12px var(--gold); }
+
+.dr-quiz-msg{ max-width: 88%; padding: 12px 16px; border-radius: 16px; font-size: var(--fs-base); line-height: 1.5; }
+.dr-quiz-msg--bot{ background: rgba(255,255,255,.1); color: rgba(255,255,255,.94); border-bottom-left-radius: 5px; }
+.dr-quiz-msg--me{ align-self: flex-end; background: var(--gold); color: var(--emerald); font-weight: 600; border-bottom-right-radius: 5px; }
+.dr-quiz-msg--chips{ max-width: 100%; padding: 0; background: none; display: flex; flex-wrap: wrap; gap: var(--sp-8); }
+
+.dr-quiz-chip{ display: inline-block; padding: 9px 15px; border: 1px solid rgba(223,186,115,.38); border-radius: var(--radius-pill); font-family: var(--font-primary); font-size: var(--fs-sm); font-weight: 600; color: rgba(255,255,255,.9); transition: all .2s ease; }
+.dr-quiz-chip:hover{ background: var(--gold); border-color: var(--gold); color: var(--emerald); }
+
+.dr-quiz-typing{ display: inline-flex; gap: 5px; width: -moz-fit-content; width: fit-content; padding: 14px 18px; border-radius: 16px; border-bottom-left-radius: 5px; background: rgba(255,255,255,.1); }
+.dr-quiz-typing i{ width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.75); }
+.dr-quiz-caret{ display: inline-block; width: 2px; height: 1em; margin-left: 2px; vertical-align: -2px; background: var(--gold); }
+
+/* ── Animation (chỉ bật khi JS gắn .is-anim) ── */
+.dr-quiz-chat.is-anim .dr-quiz-msg{ opacity: 0; transform: translateY(10px); }
+.dr-quiz-chat.is-anim .dr-quiz-msg.is-in{ animation: drQuizRise .5s cubic-bezier(.2,.8,.2,1) forwards; }
+.dr-quiz-chat.is-anim .dr-quiz-msg--chips.is-in{ animation: none; opacity: 1; transform: none; }
+.dr-quiz-chat.is-anim .dr-quiz-msg--chips .dr-quiz-chip{ opacity: 0; transform: translateY(8px) scale(.96); }
+.dr-quiz-chat.is-anim .dr-quiz-msg--chips.is-in .dr-quiz-chip{ animation: drQuizPop .42s cubic-bezier(.2,.9,.3,1.2) forwards; }
+.dr-quiz.is-anim .dr-quiz-card::after{ animation: drQuizBreathe 7s ease-in-out infinite; }
+.dr-quiz-typing i{ animation: drQuizBlink 1.4s infinite; }
+.dr-quiz-typing i:nth-child(2){ animation-delay: .2s; }
+.dr-quiz-typing i:nth-child(3){ animation-delay: .4s; }
+.dr-quiz-caret{ animation: drQuizCaret .9s step-end infinite; }
+.dr-quiz-orb{ animation: drQuizSpin 6s linear infinite; }
+.dr-quiz-orb::after{ animation: drQuizPulse 2s ease-in-out infinite; }
+
+@keyframes drQuizRise{ to{ opacity: 1; transform: none; } }
+@keyframes drQuizPop{ to{ opacity: 1; transform: none; } }
+@keyframes drQuizBreathe{ 0%,100%{ opacity: .55; } 50%{ opacity: 1; } }
+@keyframes drQuizBlink{ 0%,60%,100%{ opacity: .25; transform: translateY(0); } 30%{ opacity: 1; transform: translateY(-4px); } }
+@keyframes drQuizCaret{ 50%{ opacity: 0; } }
+@keyframes drQuizSpin{ to{ transform: rotate(360deg); } }
+@keyframes drQuizPulse{ 0%,100%{ transform: scale(1); opacity: 1; } 50%{ transform: scale(1.5); opacity: .55; } }
+
+/* ── Media queries ── */
+@media (max-width: 991px){
+  .dr-quiz-grid{ grid-template-columns: 1fr; }
+  .dr-quiz-intro{ padding: 48px 32px 8px; }
+  .dr-quiz-side{ padding: 8px 32px 44px; }
+}
+/* ── Mobile: thẻ gọn hơn, 3 số liệu trên 1 hàng, hội thoại nhỏ lại ─────────
+   Bản cũ: padding 40/22 + 3 stat wrap thành 2–3 dòng + bong bóng chat 16px →
+   thẻ cao gần 2 màn hình. Ở đây stat chia đều 1 hàng, chat về 14px. */
+@media (max-width: 767px){
+  .dr-quiz .dr-quiz-card{ border-radius: 18px; }
+  .dr-quiz-intro{ padding: 28px 18px 4px; }
+  .dr-quiz-side{ padding: 4px 18px 26px; }
+  .dr-quiz .dr-quiz-lead{ margin-top: 10px; }
+
+  /* 3 stat chia đều 1 hàng thay vì wrap — nhãn xuống dòng trong ô của nó */
+  .dr-quiz-stats{ gap: 10px; margin-top: 18px; }
+  .dr-quiz-stat{ flex: 1 1 0; min-width: 0; }
+  .dr-quiz-stat__num{ font-size: var(--fs-lg); }
+  .dr-quiz-stat__lb{ font-size: 11px; line-height: 1.35; }
+
+  /* CTA chính của cả trang → cho tràn ngang, dễ chạm bằng ngón cái */
+  .dr-quiz-intro .dr-btn{ width: 100%; justify-content: center; margin-top: 20px; }
+  .dr-quiz-trust{ margin-top: 14px; gap: 6px; font-size: 12px; }
+
+  .dr-quiz-chat{ padding: 14px; border-radius: 16px; }
+  .dr-quiz-chat__head{ gap: 10px; padding-bottom: 12px; }
+  .dr-quiz-orb{ width: 32px; height: 32px; }
+  .dr-quiz-who b{ font-size: 13px; }
+  .dr-quiz-chat__body{ min-height: 0; gap: 8px; padding-top: 12px; }
+  .dr-quiz-msg{ max-width: 92%; padding: 10px 13px; border-radius: 14px; font-size: .875rem; }
+  .dr-quiz-msg--chips{ padding: 0; gap: 6px; }
+  .dr-quiz-chip{ padding: 7px 12px; font-size: 12px; }
+}
+@media (max-width: 480px){
+  .dr-quiz-intro{ padding: 24px 16px 4px; }
+  .dr-quiz-side{ padding: 4px 16px 24px; }
+  .dr-quiz-chat{ padding: 12px; }
+  .dr-quiz-msg{ max-width: 96%; }
+}
+
+/* ── Tôn trọng cài đặt giảm chuyển động ── */
+@media (prefers-reduced-motion: reduce){
+  .dr-quiz-orb, .dr-quiz-orb::after, .dr-quiz-caret, .dr-quiz-typing i, .dr-quiz .dr-quiz-card::after{ animation: none; }
+  .dr-quiz-chat.is-anim .dr-quiz-msg, .dr-quiz-chat.is-anim .dr-quiz-msg--chips .dr-quiz-chip{ opacity: 1; transform: none; animation: none; }
+}
+</style>
+
+<script>
+(function(){
+  var TYPE_MS = 22, THINK_MS = 680, GAP_MS = 420, LOOP_MS = 3600;
+
+  function initQuizChat(){
+    var chats = document.querySelectorAll('[data-quiz-chat]');
+    for (var i = 0; i < chats.length; i++){ (function(chat){
+      var body = chat.querySelector('.dr-quiz-chat__body');
+      if (!body) return;
+
+      var msgs = body.querySelectorAll('.dr-quiz-msg');
+      if (msgs.length === 0) return;
+
+      // Không animate: đã tắt chuyển động, hoặc trình duyệt thiếu IntersectionObserver
+      // → để nguyên hội thoại tĩnh (đã render đủ trong HTML).
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce || !window.IntersectionObserver) return;
+
+      // Cất text gốc của bong bóng bot để gõ lại mỗi vòng
+      var texts = [];
+      for (var m = 0; m < msgs.length; m++){
+        texts.push(msgs[m].getAttribute('data-role') === 'bot' ? msgs[m].textContent : null);
+      }
+
+      var chips = body.querySelectorAll('.dr-quiz-msg--chips .dr-quiz-chip');
+      for (var c = 0; c < chips.length; c++){ chips[c].style.animationDelay = (c * 0.07) + 's'; }
+
+      chat.className += ' is-anim';
+      var section = chat.closest ? chat.closest('.dr-quiz') : null;
+      if (section) section.className += ' is-anim';
+
+      var timers = [];
+      function later(fn, ms){ timers.push(setTimeout(fn, ms)); }
+      function clearAll(){ for (var t = 0; t < timers.length; t++){ clearTimeout(timers[t]); } timers = []; }
+
+      function typeInto(el, text, done){
+        var n = 0;
+        var caret = document.createElement('span');
+        caret.className = 'dr-quiz-caret';
+        el.appendChild(caret);
+        var id = setInterval(function(){
+          if (!caret.parentNode){ clearInterval(id); return; }
+          el.insertBefore(document.createTextNode(text.charAt(n)), caret);
+          n++;
+          if (n >= text.length){
+            clearInterval(id);
+            if (caret.parentNode) el.removeChild(caret);
+            done();
+          }
+        }, TYPE_MS);
+        timers.push(id);
+      }
+
+      function showTyping(done){
+        var t = document.createElement('div');
+        t.className = 'dr-quiz-typing';
+        t.innerHTML = '<i></i><i></i><i></i>';
+        body.appendChild(t);
+        later(function(){
+          if (t.parentNode) body.removeChild(t);
+          done();
+        }, THINK_MS);
+      }
+
+      function reset(){
+        for (var r = 0; r < msgs.length; r++){
+          msgs[r].className = msgs[r].className.replace(/\s*is-in/g, '');
+          if (texts[r] !== null) msgs[r].textContent = texts[r];
+        }
+      }
+
+      function step(k){
+        if (k >= msgs.length){
+          later(function(){ reset(); step(0); }, LOOP_MS);
+          return;
+        }
+        var el = msgs[k], role = el.getAttribute('data-role');
+
+        if (role === 'bot'){
+          showTyping(function(){
+            el.className += ' is-in';
+            el.textContent = '';
+            typeInto(el, texts[k], function(){ later(function(){ step(k + 1); }, GAP_MS); });
+          });
+        } else if (role === 'chips'){
+          el.className += ' is-in';
+          later(function(){ step(k + 1); }, 1500);
+        } else {
+          later(function(){
+            el.className += ' is-in';
+            later(function(){ step(k + 1); }, 560);
+          }, 560);
+        }
+      }
+
+      // Bắt đầu khi khối lọt vào khung nhìn; chỉ chạy một lần
+      var io = new IntersectionObserver(function(entries){
+        if (!entries[0].isIntersecting) return;
+        io.disconnect();
+        reset();
+        step(0);
+      }, { threshold: 0.3 });
+      io.observe(chat);
+
+      // Dừng vòng lặp khi rời tab để không đốt pin
+      document.addEventListener('visibilitychange', function(){
+        if (document.hidden) clearAll();
+      });
+    })(chats[i]); }
+  }
+
+  if (document.readyState !== 'loading') initQuizChat();
+  else document.addEventListener('DOMContentLoaded', initQuizChat);
+})();
+</script>

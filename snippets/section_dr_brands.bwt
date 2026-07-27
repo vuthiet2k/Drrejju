@@ -1,0 +1,171 @@
+{% comment %} DR.REJU — Thương hiệu hợp tác (phương án M3 "editorial"): dải chạy chậm,
+   ô không viền chỉ có đường kẻ dọc, logo lớn grayscale → hiện màu khi hover, tên chữ nhỏ dưới.
+   Chưa upload logo → ô hiện TÊN dạng wordmark (giữ đúng hành vi bản cũ, không bị trống).
+   Class dr-partner-* để tránh đụng .dr-brand-logo của header/footer.
+   Cấu hình: Tùy chỉnh → Trang chủ - Thương hiệu.
+   Bản ghi chọn phương án: _drafts/direction-approved.md {% endcomment %}
+
+{%- assign brands = 'SkinCeuticals,La Roche-Posay,EltaMD,Obagi,PCA Skin,Paulas Choice,Revision,Alastin,Martiderm,Bioderma,Vichy,Some By Mi' | split: ',' -%}
+{%- assign bspeed = settings.brands_speed | default: 46 -%}
+
+<section id="brands" class="dr-section dr-bg-alt dr-partners">
+  <div class="dr-container dr-center">
+    <div class="dr-partner-head">
+      <span class="dr-eyebrow">{{ settings.brands_eyebrow | default: 'Thương hiệu hợp tác' }}</span>
+      <h2 class="dr-h2 dr-up dr-mt-8">{{ settings.brands_title | default: 'Khắt khe khi chọn hoạt chất' }}</h2>
+      <p class="dr-lead dr-mt-8">{{ settings.brands_desc | default: 'Chúng tôi không nhập mọi sản phẩm của một thương hiệu, chỉ chọn mã hàng tương thích cao nhất với phác đồ 1:1, dựa trên dữ liệu lâm sàng.' }}</p>
+    </div>
+  </div>
+
+  {% comment %} Dải chạy đặt NGOÀI dr-container để tràn hết chiều ngang màn hình {% endcomment %}
+  <div class="dr-partner-mq" data-partner-mq data-speed="{{ bspeed }}">
+    <div class="dr-partner-track">
+      {% for i in (0..11) %}
+        {%- assign n = i | plus: 1 -%}
+        {%- capture bkey %}dr_brand_{{ n }}{% endcapture -%}
+        {%- capture bimgkey %}dr_brand_{{ n }}_img{% endcapture -%}
+        {%- assign bname = settings[bkey] | default: brands[i] -%}
+        {% if bname != blank %}
+        <div class="dr-partner-cell">
+          {% if settings[bimgkey] != blank %}
+            <span class="dr-partner-logo"><img src="{{ settings[bimgkey] | img_url: 'medium' }}" alt="{{ bname | escape }}" loading="lazy"></span>
+            <b class="dr-partner-name">{{ bname }}</b>
+          {% else %}
+            {% comment %} Chưa có logo → tên làm wordmark, KHÔNG hiện thêm dòng tên nhỏ để tránh lặp {% endcomment %}
+            <span class="dr-partner-logo dr-partner-logo--word">{{ bname }}</span>
+          {% endif %}
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="dr-container dr-center">
+    {%- assign brands_badge = settings.brands_badge | default: 'Nguồn gốc rõ ràng, được cộng đồng y khoa tin dùng' -%}
+    {% if brands_badge != blank %}<span class="dr-badge dr-partner-badge"><i class="fa-solid fa-shield-heart"></i> {{ brands_badge }}</span>{% endif %}
+  </div>
+</section>
+
+<style>
+/* ── Layout: cùng nhịp "danh mục nhanh" với khối Vấn đề da — section thấp, chữ gọn ── */
+.dr-partners.dr-section{ padding-top: var(--sp-48); padding-bottom: var(--sp-48); }
+.dr-partner-head{ max-width: 640px; margin: 0 auto var(--sp-24); }
+.dr-partner-head .dr-h2{ font-size: var(--fs-xl); }
+.dr-partner-head .dr-lead{ font-size: var(--fs-base); }
+.dr-partner-badge{ margin-top: var(--sp-24); background: var(--bg-card); color: var(--accent-dk); border: 1px solid var(--line); }
+
+/* ── Khung dải chạy: tán mờ 2 đầu để ô không bị cắt cụt ── */
+.dr-partner-mq{ position: relative; overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
+.dr-partner-track{ display: flex; width: -moz-max-content; width: max-content; }
+/* Chỉ chạy khi JS đã nhân bản đủ (tránh giật khi chưa đủ ô phủ khung) */
+.dr-partner-mq.is-ready .dr-partner-track{ animation: drPartnerRun linear infinite; }
+.dr-partner-mq.is-ready:hover .dr-partner-track{ animation-play-state: paused; }
+@keyframes drPartnerRun{ to{ transform: translateX(-50%); } }
+
+/* ── Ô thương hiệu ── */
+.dr-partner-cell{ flex: 0 0 auto; width: 158px; padding: 0 18px; text-align: center;
+  border-right: 1px solid var(--line); }
+/* min-height chứ KHÔNG phải height: tên dài như "La Roche-Posay" xuống 2 dòng,
+   hộp cố định sẽ làm chữ tràn ra ngoài. Các ô trong flex row tự cao bằng nhau. */
+.dr-partner-logo{ display: flex; align-items: center; justify-content: center; min-height: 44px;
+  filter: grayscale(1); opacity: .55; transition: filter .4s ease, opacity .4s ease, color .4s ease; }
+.dr-partner-logo img{ max-width: 100%; max-height: 44px; width: auto; height: auto; object-fit: contain; display: block; }
+.dr-partner-cell:hover .dr-partner-logo{ filter: none; opacity: 1; }
+
+/* Wordmark khi chưa có ảnh logo */
+.dr-partner-logo--word{ font-family: var(--font-primary); font-weight: 600; font-size: var(--fs-base);
+  line-height: 1.2; color: var(--text-soft); }
+.dr-partner-cell:hover .dr-partner-logo--word{ color: var(--emerald); }
+
+.dr-partner-name{ display: block; margin-top: 8px; font-family: var(--font-primary); font-weight: 600;
+  font-size: var(--fs-xs); letter-spacing: .14em; text-transform: uppercase; color: var(--text-soft);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dr-partner-cell:hover .dr-partner-name{ color: var(--emerald); }
+
+/* ── Media queries ── */
+@media (max-width: 767px){
+  .dr-partners.dr-section{ padding-top: var(--sp-32); padding-bottom: var(--sp-32); }
+  .dr-partner-head{ margin-bottom: var(--sp-16); }
+  /* Đoạn prose 4 dòng ở đây chỉ diễn giải lại tiêu đề, mà thông điệp tin cậy đã
+     nằm ở badge cuối section → mobile bỏ, giữ 1 tiêu đề + dải logo + badge. */
+  .dr-partner-head .dr-lead{ display: none; }
+  .dr-partner-cell{ width: 112px; padding: 0 12px; }
+  .dr-partner-logo{ min-height: 34px; }
+  .dr-partner-logo img{ max-height: 34px; }
+  .dr-partner-logo--word{ font-size: var(--fs-sm); }
+  .dr-partner-name{ font-size: 10px; letter-spacing: .1em; margin-top: 6px; }
+  /* Badge dài 2 dòng: bỏ in hoa + bo 12px cho ra dáng dòng ghi chú, không phải pill méo */
+  .dr-partner-badge{ margin-top: var(--sp-16); padding: 8px 13px; border-radius: 12px;
+    font-size: 11px; letter-spacing: 0; text-transform: none; line-height: 1.45; text-align: left; }
+}
+
+/* ── Giảm chuyển động: tắt chạy, cho cuộn ngang bằng tay ── */
+@media (prefers-reduced-motion: reduce){
+  .dr-partner-mq.is-ready .dr-partner-track{ animation: none; }
+  .dr-partner-mq{ overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .dr-partner-mq::-webkit-scrollbar{ display: none; }
+}
+</style>
+
+<script>
+(function(){
+  function initPartnerMq(){
+    var boxes = document.querySelectorAll('[data-partner-mq]');
+    for (var b = 0; b < boxes.length; b++){ (function(box){
+      var track = box.querySelector('.dr-partner-track');
+      if (!track) return;
+
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var unit = track.innerHTML;
+      if (!unit.replace(/\s/g, '')) return;
+
+      // Track = [unit][unit] rồi translateX(-50%) → vòng lặp khớp liền mạch.
+      // unit PHẢI rộng hơn khung, nếu không lúc chạy tới -50% sẽ lộ khoảng trống
+      // (số thương hiệu bật/tắt được nên chiều rộng không cố định → phải đo, không hardcode).
+      var frame = box.clientWidth;
+      var guard = 0;
+      while (track.scrollWidth < frame + 80 && guard < 8){
+        track.innerHTML += unit;
+        guard++;
+      }
+      var unitWidth = track.scrollWidth;
+      track.innerHTML += track.innerHTML;
+
+      if (reduce) return;   // để cuộn tay, không gắn is-ready
+
+      // Tốc độ không đổi theo số lượng ô: thời lượng = quãng đường / (px mỗi giây)
+      var pps = parseInt(box.getAttribute('data-speed'), 10) || 46;
+      track.style.animationDuration = (unitWidth / pps) + 's';
+      box.className += ' is-ready';
+
+      // Đổi kích thước màn hình → dựng lại cho khớp khung mới
+      var t = null;
+      window.addEventListener('resize', function(){
+        if (t) clearTimeout(t);
+        t = setTimeout(function(){
+          box.className = box.className.replace(/\s*is-ready/g, '');
+          track.style.animationDuration = '';
+          track.innerHTML = unit;
+          initOne(box, track, unit);
+        }, 220);
+      });
+    })(boxes[b]); }
+  }
+
+  // Dựng lại một dải (dùng cho resize)
+  function initOne(box, track, unit){
+    var frame = box.clientWidth, guard = 0;
+    while (track.scrollWidth < frame + 80 && guard < 8){ track.innerHTML += unit; guard++; }
+    var unitWidth = track.scrollWidth;
+    track.innerHTML += track.innerHTML;
+    var pps = parseInt(box.getAttribute('data-speed'), 10) || 46;
+    track.style.animationDuration = (unitWidth / pps) + 's';
+    box.className += ' is-ready';
+  }
+
+  if (document.readyState !== 'loading') initPartnerMq();
+  else document.addEventListener('DOMContentLoaded', initPartnerMq);
+})();
+</script>

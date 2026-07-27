@@ -1,0 +1,71 @@
+{% comment %} DR.REJU — Kết quả thực tế (before/after + quyết định bước ngoặt). Cấu hình: Tùy chỉnh → Trang chủ - Kết quả {% endcomment %}
+<section id="results" class="dr-section dr-bg">
+  <div class="dr-container">
+    <div class="dr-center dr-mb-48" style="max-width:720px;margin-left:auto;margin-right:auto">
+      <span class="dr-eyebrow">{{ settings.results_eyebrow | default: 'Kết quả thực tế' }}</span>
+      <h2 class="dr-h2 dr-up dr-mt-8">{{ settings.results_title | default: 'Kết quả đến từ những quyết định khó' }}</h2>
+      <p class="dr-lead dr-mt-8">{{ settings.results_desc | default: 'Mỗi ca là một hành trình. Chúng tôi kể lại quyết định bước ngoặt thay vì chỉ khoe ảnh. Mỗi vấn đề da sẽ có thư viện 8–12 ảnh thực tế kèm chú thích.' }}</p>
+    </div>
+    <div class="dr-grid-2 dr-gap-24">
+      {% assign cap = 'Mụn viêm nặng · 12 tuần,Nám mảng · 16 tuần' | split: ',' %}
+      {% assign note = 'Tuần 4, khi hàng rào da quá tải, bác sĩ tạm dừng hoạt chất điều trị để tập trung phục hồi — bước ngoặt giúp da ổn định.,Buổi thứ 6, bác sĩ điều chỉnh riêng nồng độ hoạt chất điều hòa sắc tố cho vùng đáp ứng chậm, thay vì tăng liều toàn mặt.' | split: ',' %}
+      {% assign aft = 'Sau 12 tuần,Sau 16 tuần' | split: ',' %}
+      {% for i in (0..1) %}
+      {% assign n = i | plus: 1 %}
+      {% capture capkey %}results_{{ n }}_cap{% endcapture %}
+      {% capture notekey %}results_{{ n }}_note{% endcapture %}
+      {% capture aftkey %}results_{{ n }}_after{% endcapture %}
+      {% capture bimgkey %}results_{{ n }}_before_img{% endcapture %}
+      {% capture aimgkey %}results_{{ n }}_after_img{% endcapture %}
+      {% assign rcap = settings[capkey] | default: cap[i] %}
+      {% if rcap != blank %}
+      <div class="dr-card--surface dr-res-card" style="padding:0;overflow:hidden">
+        {% comment %} Chiều cao dải ảnh chuyển từ style inline sang class: inline style
+           không thể bị media query đè, mà mobile cần dải ảnh thấp hơn {% endcomment %}
+        <div class="dr-flex dr-res-media">
+          <div class="dr-media dr-rel" style="width:50%;border-radius:0">
+            {% if settings[bimgkey] != blank %}<img src="{{ settings[bimgkey] | img_url: 'grande' }}" alt="Trước" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">{% else %}<div class="dr-ph" style="position:absolute;inset:0"><i class="fa-solid fa-image"></i></div>{% endif %}
+            <span class="dr-badge dr-z2" style="position:absolute;top:10px;left:10px;background:rgba(0,0,0,.6);color:#fff">Trước</span>
+          </div>
+          <div class="dr-media dr-rel" style="width:50%;border-radius:0;border-left:2px solid var(--surface)">
+            {% if settings[aimgkey] != blank %}<img src="{{ settings[aimgkey] | img_url: 'grande' }}" alt="Sau" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">{% else %}<div class="dr-ph" style="position:absolute;inset:0"><i class="fa-solid fa-image"></i></div>{% endif %}
+            <span class="dr-badge dr-z2" style="position:absolute;top:10px;left:10px;background:var(--accent);color:var(--accent-ink)">{{ settings[aftkey] | default: aft[i] }}</span>
+          </div>
+        </div>
+        <div class="dr-p-24 dr-res-body">
+          <h3 class="dr-h4">{{ rcap }}</h3>
+          <div class="dr-mt-16 dr-res-note">
+            <div class="dr-eyebrow">Quyết định bước ngoặt</div>
+            <p class="dr-body dr-c-soft dr-mt-8">{{ settings[notekey] | default: note[i] }}</p>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+/* Desktop: giữ y nguyên giá trị vốn viết inline (chỉ dời vào class để mobile đè được) */
+.dr-res-media{ height: 220px; }
+.dr-res-note{ border-left: 3px solid var(--accent); background: var(--bg-soft);
+  padding: 12px 14px; border-radius: 0 8px 8px 0; }
+
+/* ── Mobile: dải ảnh thấp hơn, thẻ ra dáng thẻ (viền mảnh + shadow nhẹ) ─────
+   Mỗi ca ở bản cũ ~420px cao × 2 ca. Ảnh 220→168px và padding 24→16px đưa về
+   ~300px/ca, phần chữ "quyết định bước ngoặt" vẫn giữ đủ vì đó là nội dung chính. */
+@media (max-width: 767px){
+  #results .dr-center .dr-lead{ display: none; }   /* prose 3 câu, tiêu đề đã đủ dẫn */
+  .dr-res-media{ height: 168px; }
+  .dr-res-card{ border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+  #results .dr-p-24.dr-res-body{ padding: 14px 14px 16px; }
+  .dr-res-note{ padding: 10px 12px; }
+  .dr-res-note .dr-body{ font-size: .875rem; line-height: 1.55; }
+  .dr-res-note .dr-eyebrow{ font-size: 10px; }
+}
+@media (max-width: 480px){
+  .dr-res-media{ height: 148px; }
+}
+</style>

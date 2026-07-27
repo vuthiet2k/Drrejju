@@ -1,0 +1,23 @@
+<h1 class="d-none">{{store.name}} - {{store.description}}</h1>
+
+{%for i in (1..12)%}
+{%capture enable%}home_section_{{i}}{%endcapture%}
+{% if settings[enable] != 'none' %}
+{% include settings[enable] %}
+{% endif %}
+{%endfor%}
+{%comment%}
+
+{%include 'section_slider'%}
+{%include 'section_about'%}
+{%include 'section_3_banner'%}
+{%include 'section_why'%}
+{%include 'section_quy_trinh'%}
+{%include 'section_noibat'%}
+{%include 'section_tab_product'%}
+{%include 'section_1_banner'%}
+{%include 'section_duan_dalam'%}
+{%include 'section_blog'%}
+{%include 'section_danhgia'%}
+{%include 'section_brand'%}
+{%endcomment%}

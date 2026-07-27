@@ -1,0 +1,36 @@
+<section class="section_quy_trinh">
+	<div class="container">
+		<div class="title">
+			{{settings.title_quytrinh}}
+		</div>
+	</div>
+	<div class="quytrinh">
+		
+		<img alt="{{settings.title_quytrinh}}" width="1918" height="215" class="lazyload" src="{{ 'lazy.png' | asset_url}}"  data-src="{{'h3_bg1.png' | asset_url}}"> 
+		<div class="container">
+			<ul>
+				{%- for i in (1..4) -%}
+				{%-capture image-%}quytrinh{{i}}.jpg{%-endcapture-%}
+				{%-capture title-%}quytrinh_title_{{i}}{%-endcapture-%}
+				{%-capture content-%}quytrinh_content_{{i}}{%-endcapture-%}
+				<li>
+					<div class="thumb">
+						<div class="icon">
+							<img alt="{{ settings[title]}}" width="64" height="64" class="lazyload" src="{{ 'lazy.png' | asset_url}}"  data-src="{{image | asset_url}}">
+						</div>
+						<h3 class="title-item">
+							{{ settings[title]}}
+							<span class="content-item">
+								{{ settings[content]}}
+							</span>
+
+						</h3>
+					</div>
+				</li>
+				{%-endfor-%}
+				
+				
+			</ul>
+		</div>
+	</div>
+</section>

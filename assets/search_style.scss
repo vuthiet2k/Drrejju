@@ -1,0 +1,84 @@
+$main-color: #156b54;
+$hover: ;
+.margin-bottom-20{
+	margin-bottom: 20px;
+}
+.title_search {
+	font-size: 24px !important;
+	margin: 15px 0;
+}
+/*SEARCH PAGE*/
+.search-main {
+	.item-border {
+		.item_product_main {
+			border: 0;
+		}
+	}
+}
+.serachpc_searchpage {
+	form{
+		width: 260px;
+		margin:6px 0 0 0;
+		padding:0;
+		position:relative;
+		input {
+			min-width: 260px;
+			height: 40px !important;
+			min-height: unset;
+			line-height: 40px;
+			border: solid 1px #ebebeb;
+			border-radius: 3px !important;
+			padding: 0 40px 0 15px;
+			background: #fff;
+			color: #959595;
+			font-size: 13px;
+		}
+		button {
+			width: 40px;
+			height: 100%;
+			box-shadow: none;
+			border: none;
+			background: transparent;
+			border-radius: 50%;
+			position: absolute;
+			top: 0;
+			right: 0;
+			    outline: none;
+			svg{
+				width: 17px;
+				height: 17px;
+			}
+		}
+	}
+}
+.category-products{
+	margin-bottom: 50px;
+	&.category-products-art{
+		
+    background: transparent !important;
+		padding: 0;
+	}
+}
+.category-products .row {
+	padding-bottom: 1px;
+}
+.search-main .products-view-grid{
+	float: initial;
+}
+@media (min-width: 1200px){
+	.col-xl-20 {
+		-ms-flex: 0 0 20%;
+		flex: 0 0 20%;
+		max-width: 20%;
+	}
+}
+.title-page-search{
+	span{
+		font-size: 20px;
+		font-weight: 700;
+		margin-bottom: 20px;
+		position: relative;
+		display: inline-block;
+		
+	}
+}

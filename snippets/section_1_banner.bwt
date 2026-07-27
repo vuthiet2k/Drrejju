@@ -1,0 +1,20 @@
+<section class="section_1_banner">
+	<div class="container">
+		<div class="image-effect-banner">
+			<img width="1920" height="500" class="lazyload" src="{{ 'lazy.png' | asset_url}}"  data-src="{{'banner.jpg' | asset_url}}" alt="{{settings.banner_index_title}}">
+			<div class="thumb-text">
+				<div class="section_1_banner_title">
+					{{settings.banner_index_title}}
+				</div>
+				<div class="section_1_banner_content">
+					{{settings.banner_index_content}}
+				</div>
+				<div >
+					<a class="see-more" href="{{settings.banner_index_url}}" title="{{settings.banner_index_url_title}}">{{settings.banner_index_url_title}}</a>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</section>

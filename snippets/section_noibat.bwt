@@ -1,0 +1,51 @@
+<section class="section_noibat">
+	<div class="container">
+		<span class="title">
+			{{settings.title_congdung}}
+		</span>
+		<span class="content">
+			{{settings.content_congdung}}
+		</span>
+		<div class="row">
+
+			<div class="col-lg-4 congdung">
+				{%- for i in (1..2) -%}
+
+				{%-capture title-%}congdung_title_{{i}}{%-endcapture-%}
+				{%-capture content-%}congdung_content_{{i}}{%-endcapture-%}
+				<div class="item">
+					<div class="item-title">
+						{{ settings[title]}}
+					</div>
+					<div class="item-content">
+						{{ settings[content]}}
+					</div>
+				</div>
+				{%-endfor-%}
+
+
+			</div>
+			<div class="col-lg-4"> 
+				<div class="thumb-image">
+					<img width="646" height="646" class="lazyload" src="{{ 'lazy.png' | asset_url}}"  data-src="{{'congdung.png' | asset_url}}" alt="{{settings.title_congdung}}">
+				</div>
+			</div>
+			<div class="col-lg-4 congdung">
+				{%- for i in (3..4) -%}
+				
+				{%-capture title-%}congdung_title_{{i}}{%-endcapture-%}
+				{%-capture content-%}congdung_content_{{i}}{%-endcapture-%}
+				<div class="item">
+					<div class="item-title">
+						{{ settings[title]}}
+					</div>
+					<div class="item-content">
+						{{ settings[content]}}
+					</div>
+				</div>
+				{%-endfor-%}
+			</div>
+		</div>
+	</div>
+
+</section>

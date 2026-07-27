@@ -1,0 +1,14 @@
+{
+  "name": "drreju-preview",
+  "version": "1.0.0",
+  "description": "DR.REJU — Dev preview server for Sapo .bwt theme",
+  "scripts": {
+    "preview": "node dev-server.js"
+  },
+  "dependencies": {
+    "chokidar": "^3.6.0",
+    "liquidjs": "^10.17.0",
+    "sass": "^1.77.0",
+    "ws": "^8.18.0"
+  }
+}

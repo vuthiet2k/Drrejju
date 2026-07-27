@@ -1,0 +1,48 @@
+{% include 'breadcrumb' %}
+<div class="blog_wrapper layout-blog" itemscope itemtype="https://schema.org/Blog">
+	<meta itemprop="name" content="{{ blog.name }}">
+	<meta itemprop="description" content="{{ blog.description | default: store.description }}">
+	<div class="container">
+		<h1 class="title-page d-none">
+			<img width="72" height="43" src="{{'icon-title.png' | asset_url}}" alt="{%if collection.name == 'Tất cả sản phẩm'%}Tất cả sản phẩm{%else%}{{ collection.name }}{%endif%}">
+			<span>{{ blog.name }}</span>
+		</h1>
+		<div class="row">
+			
+			
+			<div class="right-content col-lg-8 col-xl-8 col-12">
+ 
+
+
+				{% paginate blog.articles by settings.blogs_number_perpage %}
+				<div class="list-blogs">
+					{% if blog.articles_count > 0 %}
+					<div class="row row-fix">
+						{% for article in blog.articles %}	
+						<div class="col-12 col-fix">
+							{%include 'blog_item'%}
+						</div>
+
+						{% endfor %}
+					</div>
+					<div class="text-center">
+						{% if paginate.pages > 1 %}
+						{% include 'paginate-pages' %}
+						{% endif %}
+					</div>
+					{%else%}
+					<div class="alert alert-warning alert-warning2 alert-dismissible margin-top-15 section" role="alert">
+						Danh mục này đang cập nhật bài viết
+					</div>
+					{%endif%}
+				</div>
+				{% endpaginate %}
+			</div>
+			<div class="blog_left_base col-lg-4 col-xl-4">
+				{% include 'aside-blog' %}
+			</div>
+		</div>
+
+	</div>
+</div> 
+<div class="ab-module-article-mostview"></div>

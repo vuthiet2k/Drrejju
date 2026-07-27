@@ -1,0 +1,208 @@
+{% comment %} DR.REJU — Giỏ hàng (dựng lại theo hệ thiết kế dr-*).
+
+   Bản cũ có 4 vấn đề, đã sửa hết:
+   1. Tiêu đề bị tắt bằng class d-none → trang không có tiêu đề nào.
+   2. KHÔNG có trạng thái giỏ rỗng. .CartPageContainer là div trống do JS
+      (snippets/ajaxcartfunction.bwt) fill từ /cart.js — giỏ rỗng thì khách thấy trang trắng.
+      Giờ có nhánh Liquid cart.item_count == 0 render sẵn phía server.
+   3. Ngày/giờ giao hàng bật cứng, lại không có nhãn (settings.delivery_heading rỗng) →
+      hiện ra một ô "Chọn ngày" trơ trọi. Giờ nằm sau setting use_cart_delivery, MẶC ĐỊNH TẮT.
+   4. Bootstrap grid + style inline, không có class dr-* nào.
+
+   GIỮ NGUYÊN: .CartPageContainer / .CartMobileContainer và các id/class mà
+   ajaxcartfunction.bwt bám vào — KHÔNG đổi tên, đổi là hỏng giỏ hàng.
+   Form xuất hoá đơn giữ nguyên tên trường attributes[...] và vẫn do settings.use_cart_vat quyết định. {% endcomment %}
+
+{% include 'breadcrumb' %}
+
+<section class="dr-section dr-bg dr-cartpg main-cart-page">
+  <div class="dr-container">
+
+    <div class="dr-cartpg-head">
+      <span class="dr-eyebrow">Giỏ hàng</span>
+      <h1 class="dr-h2 dr-mt-8 title_cart">Giỏ hàng của bạn</h1>
+      {% if cart.item_count > 0 %}
+      <p class="dr-lead dr-mt-8">{{ cart.item_count }} sản phẩm đang chờ bạn hoàn tất.</p>
+      {% endif %}
+    </div>
+
+    {% if cart.item_count == 0 %}
+      {% comment %} ── Giỏ rỗng: render phía server, không phụ thuộc JS ── {% endcomment %}
+      <div class="dr-cartpg-empty">
+        <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+        <h2>Giỏ hàng đang trống</h2>
+        <p>Bạn chưa thêm sản phẩm nào. Chưa biết chọn gì thì để bác sĩ gợi ý theo tình trạng da của bạn.</p>
+        <div class="dr-cartpg-empty__act">
+          <a href="/collections/all" class="dr-btn dr-btn--primary">Xem sản phẩm <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <a href="{{ settings.quiz_btn_url | default: '/dat-lich' }}" class="dr-btn dr-btn--outline">Nhờ bác sĩ tư vấn</a>
+        </div>
+      </div>
+
+    {% else %}
+      <div class="dr-cartpg-grid">
+
+        <div class="dr-cartpg-main col-cart-left">
+          {% comment %} Hai container này do ajaxcartfunction.bwt fill — giữ nguyên tên {% endcomment %}
+          <div class="cart-page dr-hide-mobile">
+            <div class="drawer__inner">
+              <div class="CartPageContainer"></div>
+            </div>
+          </div>
+          <div class="cart-mobile-page dr-only-mobile">
+            <div class="CartMobileContainer"></div>
+          </div>
+        </div>
+
+        <aside class="dr-cartpg-side col-cart-right">
+
+          {%- assign use_deli = settings.use_cart_delivery -%}
+          {% if use_deli %}
+          <form method="post" novalidate class="dr-cartpg-box formDeli">
+            <h3 class="dr-cartpg-box__h">{{ settings.delivery_heading | default: 'Thời gian nhận hàng' }}</h3>
+            <div class="timedeli-modal">
+              <div class="dr-fld">
+                <label for="date">Ngày nhận</label>
+                <input type="text" placeholder="Chọn ngày" readonly id="date" name="attributes[shipdate]" class="date_picker">
+              </div>
+              <div class="dr-fld">
+                <label for="cart-time">Khung giờ</label>
+                <select id="cart-time" name="time" class="timeer timedeli-cta">
+                  <option selected>{{ settings.delivery_time_default | default: 'Chọn khung giờ' }}</option>
+                  {%- assign options = settings.delivery_time | split: ';' -%}
+                  {% for opt in options %}<option value="{{ opt }}">{{ opt }}</option>{% endfor %}
+                </select>
+              </div>
+            </div>
+          </form>
+          {% endif %}
+
+          {% if settings.use_cart_vat %}
+          <form method="post" novalidate class="dr-cartpg-box formVAT">
+            <h3 class="dr-cartpg-box__h">Hoá đơn công ty</h3>
+            <div class="r-bill">
+              <label class="dr-cartpg-check">
+                <input type="hidden" name="attributes[invoice]" id="re-checkbox-bill" value="không">
+                <input type="checkbox" id="checkbox-bill" name="attributes[invoice]" value="có" class="regular-checkbox"{% if cart.attributes["invoice"] == "có" %} checked{% endif %}>
+                <span>Tôi cần xuất hoá đơn công ty</span>
+              </label>
+
+              <div class="bill-field">
+                <div class="dr-fld">
+                  <label for="cart-cname">Tên công ty</label>
+                  <input id="cart-cname" type="text" class="form-control val-f" name="attributes[company_name]"
+                         value="{{ cart.attributes["company_name"] }}" placeholder="Tên công ty">
+                </div>
+                <div class="dr-fld">
+                  <label for="cart-tax">Mã số thuế</label>
+                  <input id="cart-tax" type="text" pattern=".{10,}" inputmode="numeric"
+                         class="form-control val-f val-n" name="attributes[tax_code]"
+                         value="{{ cart.attributes["tax_code"] }}" placeholder="Mã số thuế">
+                </div>
+                <div class="dr-fld">
+                  <label for="cart-caddr">Địa chỉ công ty</label>
+                  <textarea id="cart-caddr" class="form-control val-f" name="attributes[company_address]" rows="3"
+                            placeholder="Địa chỉ công ty (kèm Phường/Xã, Quận/Huyện, Tỉnh/Thành phố)">{{ cart.attributes["company_address"] }}</textarea>
+                </div>
+                <div class="dr-fld">
+                  <label for="cart-cmail">Email nhận hoá đơn</label>
+                  <input id="cart-cmail" type="email" class="form-control val-f val-email" name="attributes[invoice_email]"
+                         value="{{ cart.attributes["invoice_email"] }}" placeholder="Email nhận hoá đơn">
+                </div>
+              </div>
+            </div>
+          </form>
+          {% endif %}
+
+          <div class="dr-cartpg-box dr-cartpg-help">
+            <h3 class="dr-cartpg-box__h">Cần tư vấn?</h3>
+            <a class="dr-cartpg-help__row" href="{{ settings.social_zalo_link | default: '#' }}">
+              <i class="fa-solid fa-comment-dots" aria-hidden="true"></i><span>Tư vấn qua Zalo</span>
+            </a>
+            {%- assign c_phone = settings.phone | default: store.phone_number -%}
+            {% if c_phone != blank %}
+            <a class="dr-cartpg-help__row" href="tel:{{ c_phone | replace: ' ', '' | replace: '.', '' }}">
+              <i class="fa-solid fa-phone" aria-hidden="true"></i><span>{{ c_phone }}</span>
+            </a>
+            {% endif %}
+          </div>
+
+        </aside>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+.dr-cartpg-head{ max-width: 640px; margin-bottom: var(--sp-32); }
+.dr-cartpg-grid{ display: grid; grid-template-columns: 1fr 340px; gap: var(--sp-32); align-items: start; }
+.dr-cartpg-main{ min-width: 0; }
+.dr-cartpg-side{ display: flex; flex-direction: column; gap: var(--sp-16); }
+
+.dr-cartpg-box{ margin: 0; padding: 22px 20px; background: var(--bg-alt); border: 1px solid var(--line);
+  border-radius: var(--radius); }
+.dr-cartpg-box__h{ margin: 0 0 var(--sp-16); font-family: var(--font-primary); font-size: var(--fs-base);
+  font-weight: 600; color: var(--text); }
+
+/* Trường nhập — dùng chung tên class .dr-fld với section liên hệ */
+.dr-cartpg-side .dr-fld{ margin-bottom: 14px; }
+.dr-cartpg-side .dr-fld:last-child{ margin-bottom: 0; }
+.dr-cartpg-side .dr-fld label{ display: block; font-family: var(--font-primary); font-size: var(--fs-sm);
+  font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.dr-cartpg-side input[type="text"], .dr-cartpg-side input[type="email"],
+.dr-cartpg-side textarea, .dr-cartpg-side select{
+  width: 100%; padding: 11px 13px; border: 1.5px solid var(--line); border-radius: var(--radius-sm);
+  font-family: var(--font-secondary); font-size: var(--fs-sm); color: var(--text); background: var(--surface); }
+.dr-cartpg-side textarea{ resize: vertical; }
+.dr-cartpg-side input:focus, .dr-cartpg-side textarea:focus, .dr-cartpg-side select:focus{
+  outline: 0; border-color: var(--emerald); box-shadow: 0 0 0 3px rgba(10,46,36,.09); }
+
+.dr-cartpg-check{ display: flex; align-items: flex-start; gap: 10px; margin-bottom: var(--sp-16);
+  font-size: var(--fs-sm); line-height: 1.5; color: var(--text); cursor: pointer; }
+.dr-cartpg-check input[type="checkbox"]{ margin-top: 2px; width: 16px; height: 16px; flex: none; accent-color: var(--gold); }
+
+.dr-cartpg-help__row{ display: flex; align-items: center; gap: 11px; padding: 9px 0; font-size: var(--fs-sm);
+  color: var(--text-soft); transition: color .2s ease; }
+.dr-cartpg-help__row:hover{ color: var(--accent); }
+.dr-cartpg-help__row i{ width: 30px; height: 30px; flex: none; border-radius: 50%; background: var(--bg-soft);
+  color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 12px; }
+
+/* Giỏ rỗng */
+.dr-cartpg-empty{ padding: var(--sp-80) 24px; text-align: center; background: var(--bg-alt);
+  border: 1px solid var(--line); border-radius: var(--radius); }
+.dr-cartpg-empty > i{ font-size: 34px; color: var(--gold); }
+.dr-cartpg-empty h2{ margin: var(--sp-24) 0 var(--sp-8); font-family: var(--font-primary);
+  font-size: var(--fs-xl); font-weight: 600; }
+.dr-cartpg-empty p{ max-width: 460px; margin: 0 auto; font-size: var(--fs-base); line-height: 1.65; color: var(--text-soft); }
+.dr-cartpg-empty__act{ display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: var(--sp-32); }
+
+.dr-only-mobile{ display: none; }
+
+@media (max-width: 1200px){ .dr-cartpg-grid{ grid-template-columns: 1fr 300px; } }
+@media (max-width: 991px){
+  .dr-cartpg-grid{ grid-template-columns: 1fr; }
+  .dr-only-mobile{ display: block; }
+  .dr-cartpg-empty{ padding: var(--sp-56) 20px; }
+}
+</style>
+
+{% if settings.use_cart_vat %}
+<script src="{{ 'sweetalert-min.js' | asset_url }}"></script>
+{% endif %}
+
+{% comment %} Datepicker chỉ nạp khi thật sự bật ngày/giờ giao — trước đây nạp vô điều kiện {% endcomment %}
+{% if settings.use_cart_delivery %}
+{{ 'bootstrap-datepicker.js' | asset_url | script_tag }}
+<script>
+  if (window.jQuery) {
+    jQuery(function ($) {
+      var d = new Date(); d.setDate(d.getDate());
+      $('.dr-cartpg-side #date').datepicker({
+        format: 'dd/mm/yyyy', orientation: 'top right', todayHighlight: true, startDate: d
+      });
+    });
+  }
+</script>
+{% endif %}
+
+{% include 'vat-cart' %}

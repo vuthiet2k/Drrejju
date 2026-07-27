@@ -1,0 +1,10 @@
+{% include 'breadcrumb' %} 
+<section class="page layout-404">
+	<div class="container">
+		<div class="margin-bottom-40 a-center">
+			<h1 class="title-section-page">404</h1>
+			<p>Trang này đang bị lỗi bạn vui lòng quay trở lại trang chủ</p>
+			<a href="/" class="btn-home">Về trang chủ</a>
+		</div>
+	</div>
+</section>

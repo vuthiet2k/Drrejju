@@ -1,0 +1,23 @@
+{% comment %} DR.REJU — Khởi tạo swiper ảnh cho từng card. Idempotent: include nhiều lần vẫn an toàn, chỉ init card chưa init. {% endcomment %}
+<script>
+(function(){
+  function initPcards(){
+    if (typeof Swiper === 'undefined') return;
+    var nodes = document.querySelectorAll('.dr-pcard-swiper');
+    for (var i = 0; i < nodes.length; i++){
+      var el = nodes[i];
+      if (el.classList.contains('swiper-initialized')) continue;
+      new Swiper(el, {
+        loop: true,
+        lazy: true,
+        speed: 350,
+        pagination: { el: el.querySelector('.dr-pcard-dots'), clickable: true },
+        navigation: { nextEl: el.querySelector('.dr-pcard-next'), prevEl: el.querySelector('.dr-pcard-prev') }
+      });
+    }
+  }
+  window.drInitPcards = initPcards;
+  if (document.readyState !== 'loading') initPcards();
+  else document.addEventListener('DOMContentLoaded', initPcards);
+})();
+</script>

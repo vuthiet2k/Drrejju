@@ -1,0 +1,139 @@
+{% comment %}
+  DR.REJU — Section Flash Sale (đếm ngược + grid sản phẩm).
+  Tự chứa (self-contained): style + JS đếm ngược vanilla, không phụ thuộc jQuery.
+  Object Sapo: collection theo settings.sec_flash_sale_col; card dùng snippet dr_product_card (biến `p`).
+  Settings dùng:
+    sec_flash_sale_eyebrow  (text)        — dòng nhỏ phía trên
+    sec_flash_sale_title    (text, HTML)  — tiêu đề lớn
+    sec_flash_sale_time     (text)        — hạn kết thúc "YYYY-MM-DD HH:MM:SS"
+    sec_flash_sale_col      (collection)  — handle danh mục sản phẩm
+    sec_flash_sale_limit    (select)      — số sản phẩm hiển thị
+    sec_flash_sale_cta      (text)        — chữ nút "Xem tất cả"
+{% endcomment %}
+{% comment %} Sapo: dùng collections[handle].products inline, chỉ assign HANDLE (assign cả object sẽ mất products lazy) {% endcomment %}
+{% assign fs_handle = settings.sec_flash_sale_col | default: 'all' %}
+{% assign fs_limit = settings.sec_flash_sale_limit | default: 6 %}
+{% assign fs_title = settings.sec_flash_sale_title | default: 'Flash Sale' %}
+
+{% comment %} Nền KEM (dr-bg-alt) chứ không phải trắng: trang chủ xen kẽ trắng ↔ kem,
+   trên là Dịch vụ (trắng), dưới là Quiz (trắng) → dùng trắng sẽ có 3 section trắng liền nhau {% endcomment %}
+<section id="flashsale" class="dr-section dr-bg-alt dr-flashsale">
+  <div class="dr-container">
+
+    <div class="dr-flashsale-head">
+      <div class="dr-flashsale-heading">
+        <span class="dr-eyebrow"><i class="fa-solid fa-bolt" aria-hidden="true"></i> {{ settings.sec_flash_sale_eyebrow | default: 'Ưu đãi có hạn' }}</span>
+        <h2 class="dr-h2 dr-mt-8">{{ fs_title }}</h2>
+      </div>
+
+      {% if settings.sec_flash_sale_time != blank %}
+      <div class="dr-flashsale-timer" data-deadline="{{ settings.sec_flash_sale_time }}" role="timer" aria-label="Đếm ngược kết thúc khuyến mãi">
+        <span class="dr-flashsale-timer-label">Kết thúc sau</span>
+        <div class="dr-flashsale-clock">
+          <span class="dr-flashsale-unit"><b data-d>00</b><i>Ngày</i></span>
+          <span class="dr-flashsale-sep">:</span>
+          <span class="dr-flashsale-unit"><b data-h>00</b><i>Giờ</i></span>
+          <span class="dr-flashsale-sep">:</span>
+          <span class="dr-flashsale-unit"><b data-m>00</b><i>Phút</i></span>
+          <span class="dr-flashsale-sep">:</span>
+          <span class="dr-flashsale-unit"><b data-s>00</b><i>Giây</i></span>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    {% if collections[fs_handle].products_count > 0 %}
+    <div class="dr-pcard-grid dr-flashsale-grid">
+      {% for p in collections[fs_handle].products limit: fs_limit %}
+      {% include 'dr_product_card' %}
+      {% endfor %}
+    </div>
+    {% include 'dr_pcard_init' %}
+
+    <div class="dr-flashsale-cta">
+      <a href="{{ collections[fs_handle].url | default: '/collections/all' }}" class="dr-btn dr-btn--primary">{{ settings.sec_flash_sale_cta | default: 'Xem tất cả ưu đãi' }} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+    {% else %}
+    <p class="dr-lead">Chưa có sản phẩm cho Flash Sale — chọn danh mục ở phần <b>Tùy chỉnh → Trang chủ - Flash Sale → Danh mục sản phẩm</b> (setting <code>sec_flash_sale_col</code>).</p>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+  .dr-flashsale-head{ display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap: var(--sp-24); margin-bottom: var(--sp-48); }
+  /* Nền sáng: eyebrow phải là emerald như các section sáng khác — vàng trên kem gần như không đọc được */
+  .dr-flashsale-heading .dr-eyebrow{ color: var(--accent); }
+  .dr-flashsale-heading .dr-eyebrow i{ margin-right:6px; }
+
+  /* Đồng hồ đếm ngược */
+  .dr-flashsale-timer{ display:flex; align-items:center; gap: var(--sp-16); }
+  .dr-flashsale-timer-label{ font-family: var(--font-primary); font-weight:600; font-size: var(--fs-sm); letter-spacing:.14em; text-transform:uppercase; color: var(--text-soft); }
+  .dr-flashsale-clock{ display:flex; align-items:center; gap:6px; }
+  /* Ô số: emerald đặc để nổi trên nền kem (gold trên kem thì chìm) */
+  .dr-flashsale-unit{ display:flex; flex-direction:column; align-items:center; min-width:56px; padding:8px 6px; background: var(--emerald); color: var(--gold); }
+  .dr-flashsale-unit b{ font-family: var(--font-primary); font-weight:700; font-size: var(--fs-xl); line-height:1; }
+  .dr-flashsale-unit i{ font-style:normal; font-size:10px; letter-spacing:.08em; text-transform:uppercase; margin-top:4px; color: rgba(255,255,255,.7); }
+  .dr-flashsale-sep{ font-weight:700; font-size: var(--fs-lg); color: var(--line); }
+
+  /* Card: KHÔNG override gì — dùng đúng style phẳng, không viền, không bo góc
+     giống section Sản phẩm và TPCN ở dưới */
+  .dr-flashsale-grid{ margin-top: var(--sp-8); }
+  .dr-flashsale .dr-pcard-badge{ background: #C0182A; }
+
+  .dr-flashsale-cta{ text-align:center; margin-top: var(--sp-48); }
+  .dr-flashsale-cta i{ margin-left:8px; }
+
+  /* ── Mobile: head + đồng hồ gọn, đủ chỗ cho dải sản phẩm cuộn ngang ────── */
+  @media (max-width: 767px){
+    .dr-flashsale-head{ align-items:flex-start; gap: 14px; margin-bottom: var(--sp-24); }
+    .dr-flashsale-timer{ gap: 10px; }
+    .dr-flashsale-timer-label{ font-size: 11px; letter-spacing: .1em; }
+    .dr-flashsale-clock{ gap: 4px; }
+    .dr-flashsale-unit{ min-width:44px; padding: 6px 4px; }
+    .dr-flashsale-unit b{ font-size: var(--fs-md); }
+    .dr-flashsale-unit i{ font-size: 9px; margin-top: 3px; }
+    .dr-flashsale-sep{ font-size: var(--fs-base); }
+    .dr-flashsale-cta{ margin-top: var(--sp-24); }
+  }
+  @media (max-width: 480px){
+    /* 4 ô + nhãn không đủ 1 hàng ở 360px → nhãn xuống dòng riêng, ô co lại */
+    .dr-flashsale-timer{ flex-wrap: wrap; gap: 6px 10px; }
+    .dr-flashsale-unit{ min-width:40px; }
+  }
+</style>
+
+<script>
+(function(){
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function initFlashTimers(){
+    var timers = document.querySelectorAll('.dr-flashsale-timer[data-deadline]');
+    for (var i = 0; i < timers.length; i++){ (function(el){
+      var raw = el.getAttribute('data-deadline');
+      // Chấp nhận "YYYY-MM-DD HH:MM:SS" (đổi space -> T để parse ổn định)
+      var target = new Date(raw.replace(' ', 'T')).getTime();
+      if (isNaN(target)) return;
+      var $d = el.querySelector('[data-d]'), $h = el.querySelector('[data-h]'),
+          $m = el.querySelector('[data-m]'), $s = el.querySelector('[data-s]');
+      function tick(){
+        var diff = target - Date.now();
+        if (diff <= 0){
+          $d.textContent = $h.textContent = $m.textContent = $s.textContent = '00';
+          el.classList.add('is-ended');
+          clearInterval(t);
+          return;
+        }
+        var s = Math.floor(diff / 1000);
+        $d.textContent = pad(Math.floor(s / 86400));
+        $h.textContent = pad(Math.floor(s % 86400 / 3600));
+        $m.textContent = pad(Math.floor(s % 3600 / 60));
+        $s.textContent = pad(s % 60);
+      }
+      tick();
+      var t = setInterval(tick, 1000);
+    })(timers[i]); }
+  }
+  if (document.readyState !== 'loading') initFlashTimers();
+  else document.addEventListener('DOMContentLoaded', initFlashTimers);
+})();
+</script>

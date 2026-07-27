@@ -1,0 +1,193 @@
+{% comment %} DR.REJU — Footer (clone bố cục L'Oréal: cột liên kết + social + thanh legal) {% endcomment %}
+{% assign fmenu = linklists[settings.url_menu_3] %}
+{% unless fmenu.links.size > 0 %}{% assign menu_alias = settings.main_menu | default: 'main-menu' %}{% assign fmenu = linklists[menu_alias] %}{% endunless %}
+{% assign lmenu = linklists[settings.url_menu_4] %}
+
+{%- assign _catmenu = linklists[settings.footer_cat_menu] -%}
+{%- unless _catmenu.links.size > 0 -%}{%- assign _catmenu = linklists['footer-categories'] -%}{%- endunless -%}
+
+<footer class="dr-footer{% if _catmenu.links.size > 0 %} dr-footer--hascat{% endif %}">
+
+  {% comment %} ══ Khối danh mục (phương án F2) ══
+     Menu footer-categories (8 nhóm, ~51 link) trước đây KHÔNG được dùng dòng nào.
+     Desktop: lưới 4 cột mở sẵn. Mobile: gập lại — 51 link mở hết là một bức tường.
+     <details> KHÔNG gập được bằng CSS (trình duyệt ẩn con qua slot nội bộ, không phải display),
+     nên phải có JS đồng bộ thuộc tính open theo bề rộng màn hình.
+     _catmenu được assign ở đầu file vì class .dr-footer--hascat cần biết trước. {% endcomment %}
+  {% if _catmenu.links.size > 0 %}
+  <div class="dr-footcat-band">
+  <div class="dr-container">
+    {%- assign cat_title = settings.footer_cat_title | default: 'Danh mục' -%}
+    {% if cat_title != blank %}<h3 class="dr-footcat-title">{{ cat_title }}</h3>{% endif %}
+    <div class="dr-footcat" data-footcat>
+      {% for grp in _catmenu.links %}
+      <details class="dr-footcat-grp">
+        <summary>
+          <span class="dr-footcat-h">{{ grp.title }}</span>
+          <i class="fa-solid fa-chevron-down dr-footcat-cue" aria-hidden="true"></i>
+        </summary>
+        {% if grp.links.size > 0 %}
+        <ul>
+          {% for c in grp.links %}<li><a href="{{ c.url }}" title="{{ c.title }}">{{ c.title }}</a></li>{% endfor %}
+        </ul>
+        {% endif %}
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+  </div>
+  {% endif %}
+
+  <div class="dr-container">
+    <div class="dr-footer-grid">
+
+      <div class="dr-foot-brand">
+        <a href="/" class="dr-brand" aria-label="Dr.REJU">
+          <img src="{{ 'logo.png' | asset_url }}" alt="Dr.REJU" class="dr-brand-logo" width="150" height="46">
+        </a>
+        <p style="opacity:.85;line-height:1.7;max-width:320px">{{ settings.title_col_1 | default: 'Da liễu dựa trên bằng chứng — phác đồ 1:1 cá nhân hoá. Nội dung mang tính giáo dục, không thay thế tư vấn y khoa trực tiếp.' }}</p>
+        <div class="dr-foot-social">
+          <a href="{{ settings.social_facebook_link | default: '#' }}" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="{{ settings.social_zalo_link | default: '#' }}" aria-label="Zalo"><i class="fa-solid fa-comment-dots"></i></a>
+          <a href="{{ settings.social_instagram_link | default: '#' }}" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="{{ settings.social_youtube_link | default: '#' }}" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="{{ settings.social_tiktok_link | default: '#' }}" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+        <div class="dr-foot-apps">
+          <a href="{{ settings.appstore_link | default: '#' }}" title="App Store"><i class="fa-brands fa-app-store dr-appicon"></i></a>
+          <a href="{{ settings.playstore_link | default: '#' }}" title="Google Play"><i class="fa-brands fa-google-play dr-appicon"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h4>{{ settings.title_col_3 | default: 'Khám phá' }}</h4>
+        <ul>
+          {% for link in fmenu.links %}
+          <li><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div>
+        <h4>Hỗ trợ</h4>
+        <ul>
+          <li><a href="/dat-lich">Đặt lịch tư vấn</a></li>
+          <li><a href="{{ settings.social_zalo_link | default: '#' }}">Tư vấn qua Zalo</a></li>
+          <li><a href="/faq">Câu hỏi thường gặp</a></li>
+          <li><a href="/tuyen-dung">Tuyển dụng</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>{{ settings.title_col_4 | default: 'Pháp lý' }}</h4>
+        <ul>
+          {% if lmenu.links.size > 0 %}
+            {% for link in lmenu.links %}
+            <li><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
+            {% endfor %}
+          {% else %}
+            <li><a href="/chinh-sach-bao-mat-thong-tin">Chính sách bảo mật</a></li>
+            <li><a href="/dieu-khoan">Điều khoản sử dụng</a></li>
+            <li><a href="/chinh-xach-doi-tra">Chính sách đổi trả</a></li>
+            <li><a href="/chinh-sach-van-chuyen">Chính sách vận chuyển</a></li>
+          {% endif %}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="dr-foot-bottom">
+    <div class="dr-container dr-foot-bottom-inner">
+      <div class="dr-foot-legal">
+        <span><i class="fa-solid fa-location-dot"></i> {{ settings.diachi | default: store.address }}</span>
+        <span><i class="fa-solid fa-phone"></i> {{ settings.phone | default: store.phone_number }}</span>
+        <span><i class="fa-solid fa-envelope"></i> {{ settings.email | default: store.email }}</span>
+      </div>
+      <div>{% if settings.copy_right != blank %}{{ settings.copy_right }}{% else %}© 2026 Dr.Reju Medical Dermatology.{% endif %}</div>
+    </div>
+  </div>
+</footer>
+
+<style>
+/* ══ Khối danh mục footer (F2) — DẢI NỀN SÁNG riêng ══
+   .dr-footer có background emerald + padding-top 64px. Khối này cần nền sáng tràn ngang,
+   nên bọc trong .dr-footcat-band có nền riêng, và triệt padding-top của footer
+   (.dr-footer--hascat) để không còn viền emerald hở phía trên dải sáng.
+   Cùng ngôn ngữ với panel mega ở header: bề mặt điều hướng = nền trắng. */
+.dr-footcat-band{ background: var(--bg); color: var(--text); padding: 52px 0 48px; }
+.dr-footer--hascat{ padding-top: 0; }
+.dr-footer--hascat .dr-footer-grid{ padding-top: 56px; }
+
+.dr-footcat-title{ font-family: var(--font-primary); font-weight: 600; font-size: var(--fs-sm);
+  letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin: 0 0 22px; }
+.dr-footcat{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px 34px; }
+.dr-footcat-grp > summary{ list-style: none; cursor: default; }
+.dr-footcat-grp > summary::-webkit-details-marker{ display: none; }
+.dr-footcat-h{ font-family: var(--font-primary); font-weight: 600; font-size: var(--fs-sm);
+  letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.dr-footcat-cue{ display: none; }
+.dr-footcat-grp ul{ list-style: none; padding: 0; margin: 14px 0 0; }
+.dr-footcat-grp li{ margin-bottom: 9px; }
+.dr-footcat-grp a{ font-size: var(--fs-sm); color: var(--text-soft); transition: color .2s ease; }
+.dr-footcat-grp a:hover{ color: var(--accent); }
+
+@media (max-width: 991px){
+  .dr-footcat{ grid-template-columns: repeat(2, 1fr); }
+}
+/* Mobile: mỗi nhóm là một hàng gập */
+@media (max-width: 767px){
+  .dr-footcat-band{ padding: 32px 0 28px; }
+  .dr-footer--hascat .dr-footer-grid{ padding-top: 40px; }
+  .dr-footcat{ grid-template-columns: 1fr; gap: 0; }
+  .dr-footcat-grp{ border-bottom: 1px solid var(--line); }
+  .dr-footcat-grp:last-child{ border-bottom: 0; }
+  .dr-footcat-grp > summary{ display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; padding: 14px 0; cursor: pointer; }
+  .dr-footcat-cue{ display: block; font-size: 11px; color: var(--accent); opacity: .6;
+    transition: transform .25s ease; }
+  .dr-footcat-grp[open] .dr-footcat-cue{ transform: rotate(180deg); }
+  .dr-footcat-grp ul{ margin: 0 0 14px; }
+}
+@media (prefers-reduced-motion: reduce){ .dr-footcat-cue{ transition: none; } }
+</style>
+
+<script>
+(function(){
+  /* <details> không gập được bằng CSS → JS đồng bộ thuộc tính open theo bề rộng.
+     Desktop mở hết (đọc được ngay, tốt cho SEO nội bộ); ≤767px gập lại, khách tự bấm mở. */
+  var MOBILE = 767;
+  function syncFootCat(){
+    var boxes = document.querySelectorAll('[data-footcat]');
+    var isMobile = window.innerWidth <= MOBILE;
+    for (var b = 0; b < boxes.length; b++){
+      if (isMobile && boxes[b].getAttribute('data-user') === '1') continue; // khách đã tự bấm → tôn trọng
+      var grps = boxes[b].querySelectorAll('.dr-footcat-grp');
+      for (var g = 0; g < grps.length; g++){
+        if (isMobile) grps[g].removeAttribute('open');
+        else grps[g].setAttribute('open', '');
+      }
+    }
+  }
+  function markUser(e){
+    var box = e.target.closest ? e.target.closest('[data-footcat]') : null;
+    if (box && window.innerWidth <= MOBILE) box.setAttribute('data-user', '1');
+  }
+  function init(){
+    syncFootCat();
+    var boxes = document.querySelectorAll('[data-footcat]');
+    for (var b = 0; b < boxes.length; b++){ boxes[b].addEventListener('click', markUser); }
+    var t = null;
+    window.addEventListener('resize', function(){
+      if (t) clearTimeout(t);
+      t = setTimeout(function(){
+        var boxes2 = document.querySelectorAll('[data-footcat]');
+        for (var i = 0; i < boxes2.length; i++){ boxes2[i].removeAttribute('data-user'); }
+        syncFootCat();
+      }, 200);
+    });
+  }
+  if (document.readyState !== 'loading') init();
+  else document.addEventListener('DOMContentLoaded', init);
+})();
+</script>

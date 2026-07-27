@@ -1,0 +1,139 @@
+{% include 'breadcrumb' %} 
+<section class="page page-faq">
+	<div class="container">
+		<div class="page-title category-title d-none">
+			<h1 class="title-head"><a href="#">{{ page_title }}</a></h1>
+		</div>
+		<div class="pg_page padding-top-15">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="content-page rte">
+						{% assign combine_pretexts = false %}
+						{% assign description_parts = page.content | split: "<h3>" %}
+						{% assign tab_evo_header = '' %}
+						{% assign tab_evo_texts = '' %}
+						{% assign pretexts = '' %}
+						{% for part in description_parts %}
+
+						{% if part contains "</h3>" %}
+						{% assign chunk = part | split: "</h3>" %}
+						{% assign tab_evo_header = tab_evo_header | append: ",," | append: chunk.first %}
+						{% assign tab_evo_texts = tab_evo_texts | append: ",," %}
+						{% if pretexts != blank  and combine_pretexts %}
+						{% assign tab_evo_texts = tab_evo_texts | append: pretexts | append: "<br>" %}
+						{% assign pretexts = '' %}
+						{% endif %}
+						{% assign tab_evo_texts = tab_evo_texts | append: chunk.last  %}
+						{% elsif forloop.first %}
+						{% assign pretexts =  c %}
+						{% endif %}
+
+						{% endfor %}
+
+						{% assign tab_evo_header = tab_evo_header | remove_first: ",," | split: ",," %}
+						{% assign tab_evo_texts = tab_evo_texts | remove_first: ",," | split: ",," %}
+						{% assign index =  1  %}
+
+						{% for text in tab_evo_texts %}
+						{% for head in tab_evo_header offset: forloop.index0 limit: 1%}
+						<h3 {% if forloop.first == true %}style="margin-top: 0"{%endif%} class="faq-title">{{ head }}</h3>
+						{% endfor %}
+
+						{% assign combine_pretext = false %}
+						{% assign description = text %}
+						{% if description contains "<h4>" %}
+						{% assign tab_heads = '' %}
+						{% assign tab_texts = '' %}
+						{% assign pretext = '' %}
+						{% assign chunks = description | strip | split: "<h4>" %}
+						{% for c in chunks %}
+						{% if c contains "</h4>" %}
+						{% assign chunk = c | split: "</h4>" %}
+						{% assign tab_heads = tab_heads | append: ",," | append: chunk.first %}
+						{% assign tab_texts = tab_texts | append: ",," %}
+						{% if pretext != blank  and combine_pretext %}
+						{% assign tab_texts = tab_texts | append: pretext | append: "<br>" %}
+						{% assign pretext = '' %}
+						{% endif %}
+						{% assign tab_texts = tab_texts | append: chunk.last  %}
+						{% elsif forloop.first %}
+						{% assign pretext =  c %}
+						{% endif %}
+						{% endfor %}
+						{% assign tab_heads = tab_heads | remove_first: ",," | split: ",," %}
+						{% assign tab_texts = tab_texts | remove_first: ",," | split: ",," %}
+						{% assign indexs =  1  %}
+						<div class="product-fpt-with-stick-tab" {% if forloop.first == true %}style="margin-top: 0px"{%endif%}>
+							{% assign indexs =  1  %}
+							<div class="panel-group" id="accordion{{-index-}}" role="tablist" aria-multiselectable="true">
+								{% for text in tab_texts %}
+								<div class="faq {% if forloop.first == true %} active{%endif%}">
+									{% for head in tab_heads offset: forloop.index0 limit: 1%}
+
+									<h4>											
+										{{ head }}
+									</h4>
+
+									{% endfor %}
+									<div {% if forloop.first == true %} style="display:block"{%else%}style="display:none"{% endif %}  class="content">
+
+										{% assign mycontent = text | split:'<h6>' %}
+										{{ mycontent[0] }}
+
+									</div>
+								</div>
+								{% assign indexs =  indexs | plus: 1  %}
+								{% endfor %}
+							</div>
+						</div>
+						{% else %}
+						{{ description }}
+						{% endif %}
+
+						{% assign index =  index | plus: 1  %}
+						{% endfor %}
+					</div>
+				</div>
+				<div class="col-lg-4 ">
+					<div class="contact">
+
+
+						<h4>
+							Giải đáp thắc mắc
+						</h4>
+						<span class="content-form">
+							Nếu bạn có thắc mắc gì, có thể gửi yêu cầu cho chúng tôi, và chúng tôi sẽ liên lạc lại với bạn sớm nhất có thể .
+						</span>
+						<div id="pagelogin">
+							{% form 'contact' %}
+							{% if form.errors.size > 0 %}
+							{% for field in form.errors %}
+							<p style="color:red;">{{ form.errors.messages[field] }}<p/>
+							{% endfor %}
+							{% endif %}
+							{% if form.posted_successfully %}
+							<p style="    background: #83c54e;    color: #fff;    padding: 5px 10px;    border-radius: 6px;">Bạn đã gửi tin nhắn thành công</p>
+							{% endif %}
+							<div class="group_contact">
+								<input placeholder="Họ và tên" type="text" class="form-control  form-control-lg" required value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.first_name }} {{ customer.last_name }}{% endif %}" name="contact[Name]">
+								<input placeholder="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required id="email1" class="form-control form-control-lg" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" name="contact[email]">
+								<input type="number" placeholder="Điện thoại*" name="contact[phone]"  class="form-control form-control-lg" required>
+								<textarea placeholder="Nội dung" name="contact[body]" id="comment" class="form-control content-area form-control-lg" rows="5" Required></textarea>
+								<button type="submit" class="btn-lienhe">Gửi thông tin</button>
+							</div>
+							{% endform %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+	$('.faq h4').on('click', function(e){
+		e.preventDefault();var $this = $(this);
+		$this.parents('.faq').find('.content').slideToggle();
+		$this.parents('.faq').toggleClass('active');
+		return false;
+	});
+</script>

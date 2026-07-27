@@ -1,0 +1,142 @@
+{% include 'breadcrumb' %} 
+{% include 'datepicker' %} 
+<section class="page page-datlich">
+	<div class="container">
+		<div class="pg_page padding-top-15">
+			<div class="row">
+				<div class="col-12">
+					<div class="page-title category-title">
+						<h1 class="title-head d-none"><a href="#">{{ page_title }}</a></h1>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<section class="dat-lich">
+		<div class="container">
+			<div class="row item" style="margin-bottom: 30px;">
+				<div class="col-12 noi-dung">
+					<div class="thumb a-center">
+						<h2 class="title">
+							{{settings.datlich_title}}
+						</h2>
+						<div class="content">
+							{{settings.datlich_content}}
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="row item">
+
+				<div class="col-lg-6 image">
+					<div class=" image-thumb">
+						<img src="{{ 'datlich.png' | asset_url}}" alt="">
+					</div>
+				</div>
+				<div class="col-lg-6 noi-dung">
+					<div id="pagelogin">
+
+						{% form 'contact' %}
+						{% if form.errors.size > 0 %}
+						{% for field in form.errors %}
+						<p class="alert" style="color:red;">{{ form.errors.messages[field] }}<p/>
+						
+						{% endfor %}
+						{% endif %}
+						{% if form.posted_successfully %}
+						<p class="alert" style="    background: #83c54e;    color: #fff;    padding: 5px 10px;    border-radius: 6px;">Bạn đã đặt lịch thành thành công, chúng tôi sẽ liên hệ lại trong thời gian sớm nhất</p>
+						{% endif %}
+						<p id="errorFills" style="margin-bottom:10px; color: red;"></p>
+						<div class="form-signup clearfix">
+							<div class="group_contact row">
+								<fieldset class="form-group">
+									<label>Họ và tên:</label>
+									<input placeholder="Họ và tên..." type="text" class="form-control form-control-lg" required value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.first_name }} {{ customer.last_name }}{% endif %}" name="contact[Name]">
+								</fieldset>
+								<fieldset class="form-group">
+									<label>Email:</label>
+									<input placeholder="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required id="email1" class="form-control form-control-lg" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" name="contact[email]">
+								</fieldset>
+								<fieldset class="form-group">
+									<label>Số điện thoại:</label>
+									<input placeholder="Số điện thoại..." type="number" class="form-control form-control-lg" required value="" name="contact[Số điện thoại]">
+								</fieldset>
+								<fieldset class="form-group">
+									<label>Chọn ngày:</label>
+									<input  class=" tourmaster-datepicker" id="datesss" name="contact[Ngày]" type="text"  placeholder="Chọn Ngày" data-date-format="dd MM yyyy"  required/>
+								</fieldset>
+								<fieldset class="form-group form-group-textarea">
+									<label>Ghi chú:</label>
+									<textarea placeholder="Ghi chú" name="contact[body]" id="comment" class="form-control content-area form-control-lg" rows="5" Required>Nhập ghi chú</textarea>
+								</fieldset>
+
+								
+
+								<p class="des">Hỗ trợ thêm liên hệ ngay số điện thoại <a href="tel:{{settings.phone | default: store.phone_number | remove: ' '}}">{{settings.phone | default: store.phone_number}}</a></p>
+								<div class="submit">
+									<button type="submit" class="btn-primary button_45 btn">Đặt lịch ngay</button>
+								</div>
+
+							</div>
+						</div>
+						{%endform%}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</section>
+<script>
+	$(document).ready(function () {
+
+
+		var dates = $("#date-di").text();
+		var n = dates.search("Chủ nhật");
+		var cn = dates.substring(n, 8);
+		var numb = dates.match(/\d/g);
+		if(n > -1 ){
+			if(numb && numb.length){
+				numb.push('1');
+			}else{
+				numb = ['1'];
+			}
+		}
+		var dateToday = new Date();
+		function DisableMonday(date) {
+			var day = date.getDay();
+			var i;
+			if(numb && numb.length){
+				for (i = 0; i < numb.length; i++){
+					var m = numb[i] - 1;
+					var m1 = numb[i+1] - 1;
+					var m2 = numb[i+2] - 1;
+					var m3 = numb[i+3] - 1;
+					var m4 = numb[i+4] - 1;
+					var m5 = numb[i+5] - 1;
+					var m6 = numb[i+6] - 1;
+					if (day == m || day == m1 || day == m2 || day == m3 || day == m4 || day == m5 || day == m6) {
+						return [true] ; 
+					} else { 
+						return [false] ;
+					}
+				}
+			}else{
+				return [true];
+			}
+		}
+		$(".tourmaster-datepicker").datepicker({
+			defaultDate: "",
+			changeMonth: true,
+			changeYear: true,
+			numberOfMonths: 1,
+			minDate: dateToday,
+			beforeShowDay: DisableMonday
+		});
+	});
+
+</script>

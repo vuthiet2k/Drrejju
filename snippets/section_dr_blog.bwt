@@ -1,0 +1,68 @@
+{% comment %} DR.REJU — Blog kiến thức (editorial 3 cột). Cấu hình: Tùy chỉnh → Trang chủ - Blog {% endcomment %}
+{% comment %} Sapo: dùng blogs[handle].articles inline, chỉ assign HANDLE {% endcomment %}
+{% assign blog_handle = settings.dr_blog | default: 'tin-tuc' %}
+{% assign blimit = settings.dr_blog_limit | default: 3 %}
+<section id="blog" class="dr-section dr-bg dr-blog">
+  <div class="dr-container">
+    <div class="dr-flex-between dr-wrap dr-gap-16 dr-mb-48" style="border-bottom:1px solid var(--line);padding-bottom:18px">
+      <h2 class="dr-h2">{{ settings.dr_blog_title | default: 'Giải mã làn da: câu chuyện từ case lâm sàng' }}</h2>
+      <a href="{{ blogs[blog_handle].url | default: '/tin-tuc' }}" class="dr-eyebrow">{{ settings.dr_blog_link_label | default: 'Xem tất cả bài viết' }} <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    {% if blogs[blog_handle].articles.size > 0 %}
+    <div class="dr-grid-3 dr-gap-32">
+      {% for a in blogs[blog_handle].articles limit: blimit %}
+      <a href="{{ a.url }}" class="dr-blog-card">
+        <div class="dr-blog-card__media">
+          <img loading="lazy" src="{{ a.image.src | img_url: 'grande' }}" alt="{{ a.title | escape }}" onerror="this.parentElement.classList.add('dr-ph')">
+        </div>
+        {% comment %} Không đặt font-size inline: .dr-eyebrow vốn đã là --fs-xs, mà style inline
+           thì media query mobile không đè được (inline luôn thắng stylesheet) {% endcomment %}
+        <span class="dr-eyebrow">{{ a.published_on | date: 'dd/MM/yyyy' }}</span>
+        <h3 class="dr-blog-card__title">{{ a.title }}</h3>
+        <p class="dr-blog-card__sum">{{ a.summary | strip_html }}</p>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="dr-lead">Chưa có bài viết — cấu hình blog ở <b>Tùy chỉnh → Trang chủ - Blog</b> (setting <code>dr_blog</code>).</p>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+.dr-blog-card{ display: flex; flex-direction: column; gap: 12px; color: var(--text); }
+.dr-blog-card__media{ aspect-ratio: 16 / 10; overflow: hidden; border-radius: 14px; margin-bottom: 4px; background: var(--bg-soft); }
+.dr-blog-card__media img{ width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s ease; }
+.dr-blog-card:hover .dr-blog-card__media img{ transform: scale(1.06); }
+.dr-blog-card__title{ font-family: var(--font-primary); font-weight: 600; font-size: var(--fs-lg); line-height: 1.3; color: var(--text); margin: 0; transition: color .25s ease; }
+.dr-blog-card:hover .dr-blog-card__title{ color: var(--accent); }
+.dr-blog-card__sum{ font-size: var(--fs-sm); line-height: 1.7; color: var(--text-soft); margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* ── Mobile: 3 thẻ dọc → danh sách hàng ngang kiểu mục tin ──────────────────
+   Thẻ dọc trên mobile = ảnh 16:10 full width + tiêu đề + tóm tắt, mỗi thẻ ~330px
+   → 3 bài chiếm ~1000px. Đổi sang hàng "thumbnail 84px + ngày + tiêu đề" còn
+   ~100px/bài, đọc quét được cả 3 bài trong một tầm mắt.
+   Xếp bằng grid có chỉ định ô cụ thể (không cần thêm thẻ bọc trong HTML —
+   markup dùng chung với desktop). */
+@media (max-width: 767px){
+  #blog .dr-grid-3{ display: block; }
+  .dr-blog-card{
+    display: grid; grid-template-columns: 84px 1fr; grid-template-rows: auto auto;
+    column-gap: 12px; row-gap: 3px; align-items: start; align-content: center;
+    padding: 13px 0; border-bottom: 1px solid var(--line);
+  }
+  #blog .dr-grid-3 > .dr-blog-card:last-child{ border-bottom: 0; padding-bottom: 0; }
+  .dr-blog-card__media{
+    grid-column: 1; grid-row: 1 / span 2; align-self: center;
+    width: 84px; height: 84px; aspect-ratio: auto; margin-bottom: 0; border-radius: 10px;
+  }
+  .dr-blog-card .dr-eyebrow{ grid-column: 2; grid-row: 1; font-size: 10px; letter-spacing: .1em; }
+  .dr-blog-card__title{
+    grid-column: 2; grid-row: 2; font-size: .9375rem; line-height: 1.35;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  /* Tóm tắt bỏ hẳn: ở dạng danh sách, tiêu đề bài là thứ người dùng quét */
+  .dr-blog-card__sum{ display: none; }
+  .dr-blog-card:hover .dr-blog-card__media img{ transform: none; }
+}
+</style>

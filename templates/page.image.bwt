@@ -1,0 +1,58 @@
+<link rel="preload" as="script" href="{{ 'picbox.js' | asset_url }}" />
+<link rel="preload" as='style'  type="text/css" href="{{ 'picbox.scss.css' | asset_url }}">
+{{ 'picbox.scss.css' | asset_url | stylesheet_tag }}
+{{ 'picbox.js' | asset_url | script_tag }}
+{% include 'breadcrumb' %} 
+<section class="page page-image">
+	<div class="container">
+		<div class="pg_page padding-top-15">
+		<div class="row">
+			<div class="col-12">
+				<div class="page-title category-title">
+					<h1 class="title-head d-none"><a href="#">{{ page_title }}</a></h1>
+				</div>
+				<div class="content-page rte" >
+					<div class="grid" >
+						<div class="grid-sizer"></div>
+						<div id="lightgallery">
+							
+						
+							{% if page.content contains "<img" %} 
+							{% assign content-src = page.content | split: 'src="' %}
+							{% assign content-size = content-src.size | minus:1 %}
+							{% for i in (1..content-size) %}
+							{% assign src = content-src[i] | split: '"' | first | replace: '//cdn', 'http://cdn';;;; | replace: 'http:http://';;;;, 'http://';;;; | remove: 'https:' %}
+
+							<a class="grid-item" href="{{ src }}">
+
+								<img class="lazyload" src="{{ 'lazy.png' | asset_url}}"  data-src="{{ src }}" alt="{{ page_title }}" />
+							</a>
+							{% endfor %}
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+</section>
+{{ 'masonry.js' | asset_url | script_tag }}
+<script>
+	setTimeout(function(){
+
+
+		$(document).ready(function ($) {
+			$('.grid').masonry({
+				itemSelector: '.grid-item',
+				columnWidth: '.grid-sizer',
+				percentPosition: true
+			});
+		});
+		$(document).ready(function() {
+			$("#lightgallery").lightGallery({
+				thumbnail: true,
+			}); 
+		});
+	},1000);
+</script>

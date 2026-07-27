@@ -1,0 +1,152 @@
+{% comment %} DR.REJU — Vấn đề da: lưới 4 cột × 2 hàng, có gap và tiêu đề.
+   Cấu hình: Tùy chỉnh → Trang chủ - Vấn đề da.
+   Mỗi tile: nhãn (concern_N_label) + ảnh (concern_N_img) + link (concern_N_url).
+   Chưa set ảnh → asset concern-N.png → nếu asset cũng thiếu thì tile về nền đặc + nhãn
+   (KHÔNG gọi ảnh ngẫu nhiên từ dịch vụ ngoài — xem ghi chú trong phần fallback).
+   Bản ghi chọn phương án: _drafts/direction-approved.md {% endcomment %}
+
+{%- assign labels = 'Mụn & bít tắc,Nám & sắc tố,Da nhạy cảm & đỏ,Lão hóa,Da khô & thiếu ẩm,Lỗ chân lông to,Da khi mang thai,Chưa rõ vấn đề?' | split: ',' -%}
+{%- assign imgassets = 'concern-1.png,concern-2.png,concern-3.png,concern-4.png,concern-5.png,concern-6.png,concern-7.png,concern-8.png' | split: ',' -%}
+
+<section id="concerns" class="dr-section dr-bg dr-concerns">
+  <div class="dr-container">
+
+    {%- assign cc_title = settings.concern_title | default: 'Chọn vấn đề của bạn' -%}
+    {% if cc_title != blank %}
+    <div class="dr-concern-head">
+      <span class="dr-eyebrow">{{ settings.concern_eyebrow | default: 'Bạn đang gặp vấn đề gì?' }}</span>
+      <h2 class="dr-h2 dr-mt-8">{{ cc_title }}</h2>
+      {% comment %} Mô tả để TRỐNG theo mặc định: khối này là thanh danh mục nhanh, thêm đoạn
+         mô tả sẽ đẩy chiều cao lên. Muốn có thì điền concern_desc trong Tùy chỉnh. {% endcomment %}
+      {% if settings.concern_desc != blank %}<p class="dr-lead dr-mt-8">{{ settings.concern_desc }}</p>{% endif %}
+    </div>
+    {% endif %}
+
+    <div class="dr-concern-grid">
+      {% for i in (0..7) %}
+        {%- assign n = i | plus: 1 -%}
+        {%- capture lblkey %}concern_{{ n }}_label{% endcapture -%}
+        {%- capture imgkey %}concern_{{ n }}_img{% endcapture -%}
+        {%- capture urlkey %}concern_{{ n }}_url{% endcapture -%}
+        {%- assign clabel = settings[lblkey] | default: labels[i] -%}
+        {%- assign curl = settings[urlkey] | default: settings.concern_url | default: '/dat-lich' -%}
+        {% if clabel != blank %}
+        <a href="{{ curl }}" class="dr-concern-tile" aria-label="{{ clabel | escape }}">
+          {% if settings[imgkey] != blank %}
+            <img src="{{ settings[imgkey] | img_url: 'grande' }}" alt="{{ clabel | escape }}" loading="lazy">
+          {% else %}
+            {% comment %} Asset thiếu → ẩn ảnh, tile còn nền đặc + nhãn.
+               KHÔNG fallback sang picsum.photos như bản cũ: trên store thật mà thiếu asset
+               thì trang sẽ nạp ảnh stock NGẪU NHIÊN từ web — không chấp nhận được với
+               thương hiệu y khoa (ảnh không kiểm soát, lại phụ thuộc dịch vụ ngoài). {% endcomment %}
+            <img src="{{ imgassets[i] | asset_url }}" alt="{{ clabel | escape }}" loading="lazy"
+                 onerror="this.onerror=null;this.style.display='none';this.parentNode.className+=' is-noimg';">
+          {% endif %}
+          <span class="dr-concern-tile__label">{{ clabel }}</span>
+        </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* ── Layout: thanh danh mục nhanh — ô nhỏ, gap sát, section thấp ── */
+.dr-concerns.dr-section{ padding-top: var(--sp-32); padding-bottom: var(--sp-48); }
+.dr-concern-head{ max-width: 620px; margin-bottom: var(--sp-16); }
+.dr-concern-head .dr-h2{ font-size: var(--fs-xl); }
+.dr-concern-grid{ display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; }
+
+/* ── Tile ── */
+.dr-concern-tile{ position: relative; display: block; overflow: hidden; aspect-ratio: 1 / 1;
+  background: var(--bg-soft); border-radius: 6px; }
+.dr-concern-tile img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  display: block; transition: transform .6s ease; }
+.dr-concern-tile:hover img{ transform: scale(1.06); }
+/* Không có ảnh: nền emerald đặc để nhãn vẫn đọc được */
+.dr-concern-tile.is-noimg{ background: linear-gradient(160deg, var(--emerald), var(--emerald-dk)); }
+
+/* Gradient CHỈ ở 55% dưới — bản cũ phủ cả ô nên phần trên ảnh bị nhuộm xanh hết */
+.dr-concern-tile::after{ content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 55%; z-index: 1;
+  background: linear-gradient(to top, rgba(6,32,26,.92) 0%, rgba(6,32,26,.5) 45%, rgba(6,32,26,0) 100%); }
+.dr-concern-tile.is-noimg::after{ display: none; }
+
+.dr-concern-tile__label{ position: absolute; left: 9px; right: 9px; bottom: 8px; z-index: 2; color: #fff;
+  font-family: var(--font-primary); font-weight: 600; font-size: var(--fs-xs); line-height: 1.25; }
+
+/* ── Media queries (breakpoint theme: 991 / 767 / 480) ──────────────────────
+   Tablet: vẫn là lưới ảnh nhưng 4 cột để nhãn không bị bó thành 3 dòng.
+   Mobile (≤767): ĐỔI HÌNH THÁI, không co nhỏ desktop —
+     • bỏ eyebrow + mô tả, chỉ còn 1 tiêu đề (cắt ~1/3 màn hình bị text chiếm)
+     • ô vuông ảnh-phủ-kín → chip dẹt (thumb 36px + nhãn), cao ~50px = touch target
+     • 2 hàng trượt ngang edge-to-edge: cả khối chỉ ~110px chiều cao thay vì ~3 hàng ô
+     • nền trắng + viền 1px + shadow mảnh, radius 10px → bỏ cảm giác "mảng đen/nhựa"
+   Dùng lại đúng pattern full-bleed của .dr-pcard-grid trong utilities (bù -22px). */
+@media (max-width: 991px){
+  .dr-concern-grid{ grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 991px) and (min-width: 768px){
+  .dr-concerns .dr-concern-head .dr-lead{ display: none; }
+}
+@media (max-width: 767px){
+  .dr-concerns.dr-section{ padding-top: var(--sp-24); padding-bottom: var(--sp-32); }
+
+  /* 1 tiêu đề duy nhất */
+  .dr-concerns .dr-concern-head{ margin-bottom: 12px; }
+  .dr-concerns .dr-concern-head .dr-eyebrow,
+  .dr-concerns .dr-concern-head .dr-lead{ display: none; }
+  .dr-concerns .dr-concern-head .dr-h2{ font-size: var(--fs-lg); margin-top: 0; }
+
+  /* Ray chip: 2 hàng, trượt ngang, tràn lề container */
+  .dr-concern-grid{
+    grid-template-columns: none;
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
+    grid-auto-columns: 47%;                     /* hé cột thứ 3 → thấy ngay là cuộn được */
+    gap: 8px;
+    margin-left: -22px; margin-right: -22px;    /* bù padding .dr-container ở ≤767 */
+    padding: 2px 22px 8px;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity; scroll-padding-left: 22px;
+    scrollbar-width: none; -ms-overflow-style: none;
+  }
+  .dr-concern-grid::-webkit-scrollbar{ display: none; }
+
+  .dr-concern-tile{
+    display: flex; align-items: center; gap: 10px;
+    aspect-ratio: auto; min-height: 50px; padding: 7px 12px;
+    background: var(--bg-card); border: 1px solid var(--line); border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.04);
+    scroll-snap-align: start;
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  .dr-concern-tile:active{ transform: scale(.985); border-color: var(--emerald); }
+  .dr-concern-tile::after{ display: none; }     /* hết gradient tối, nhãn nằm trên nền sáng */
+
+  .dr-concern-tile img{
+    position: static; inset: auto; flex: 0 0 auto;
+    width: 36px; height: 36px; border-radius: 8px; transition: none;
+  }
+  .dr-concern-tile:hover img{ transform: none; }
+
+  /* Thiếu ảnh: giữ nền chip sáng, chèn ô emerald 36px cho thẳng hàng với các chip khác */
+  .dr-concern-tile.is-noimg{ background: var(--bg-card); }
+  .dr-concern-tile.is-noimg::before{
+    content: ""; flex: 0 0 auto; width: 36px; height: 36px; border-radius: 8px;
+    background: linear-gradient(160deg, var(--emerald), var(--emerald-dk));
+  }
+
+  .dr-concern-tile__label{
+    position: static; left: auto; right: auto; bottom: auto;
+    color: var(--text); font-size: .8125rem; font-weight: 600; line-height: 1.25;
+  }
+}
+@media (max-width: 480px){
+  .dr-concern-grid{ grid-auto-columns: 62%; }   /* màn hẹp: chip rộng hơn để nhãn dài không xuống 3 dòng */
+}
+@media (prefers-reduced-motion: reduce){
+  .dr-concern-tile img{ transition: none; }
+  .dr-concern-tile:hover img{ transform: none; }
+}
+</style>

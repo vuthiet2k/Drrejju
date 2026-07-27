@@ -1,0 +1,59 @@
+<section class="section_blog">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6">
+			
+				<div class="block-blog block-blog1">
+					<h3 class="title">
+						<a class="title-name" href="{{settings.section_blog_url1}}" title="{{settings.section_blog_title1}}">{{settings.section_blog_title1}}
+						</a>
+					</h3>
+					{%- if blogs[settings.section_blog_url1].articles_count > 0 -%}
+
+
+					{%- for article in blogs[settings.section_blog_url1].articles limit: settings.section_blog_limit1 -%}
+					
+						{%include 'blog_item'%}
+				
+					{%- endfor -%}
+					
+						<div class="text-center no-padding">
+					<a class="see-more" title="Xem tất cả" href="{{settings.section_blog_url1}}">Xem tất cả</a>
+				</div>
+					{%- else -%}
+					<div style="margin-top: 20px" class="alert alert-warning alert-warning2 alert-dismissible margin-top-15 section" role="alert">
+						<strong>{{ settings.section_blog_title1 }}!</strong> đang được cập nhật.
+					</div>
+					{%- endif -%}
+
+				</div>
+			</div>
+			<div class="col-lg-6">
+			
+				<div class="block-blog">
+						<h3 class="title">
+					<a class="title-name" href="{{settings.section_blog_url2}}" title="{{settings.section_blog_title2}}">{{settings.section_blog_title2}}
+					</a>
+				</h3>
+					{%- if blogs[settings.section_blog_url2].articles_count > 0 -%}
+
+
+					{%- for article in blogs[settings.section_blog_url2].articles limit: settings.section_blog_limit2 -%}
+					
+						{%include 'blog_item'%}
+				
+					{%- endfor -%}
+					<div class="text-center no-padding">
+						<a class="see-more" title="Xem tất cả" href="{{settings.section_blog_url2}}">Xem tất cả</a>
+					</div>
+					{%- else -%}
+					<div style="margin-top: 20px" class="alert alert-warning alert-warning2 alert-dismissible margin-top-15 section" role="alert">
+						<strong>{{ settings.section_blog_title2 }}!</strong> đang được cập nhật.
+					</div>
+					{%- endif -%}
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

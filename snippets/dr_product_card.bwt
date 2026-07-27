@@ -1,0 +1,47 @@
+{% comment %} DR.REJU — Card sản phẩm thống nhất (kiểu Gucci): vuông, không viền/bo góc,
+   badge góc trên phải, icon giỏ góc dưới trái, hover ảnh → swiper. Dùng biến `p`. {% endcomment %}
+{% assign pv = p.selected_or_first_available_variant %}
+{% assign imgcount = p.images | size %}
+<div class="dr-pcard">
+  <div class="dr-pcard-media">
+    {% if imgcount > 1 %}
+    <div class="swiper-container dr-pcard-swiper">
+      <div class="swiper-wrapper">
+        {% for image in p.images limit: 6 %}
+        <div class="swiper-slide"><a href="{{ p.url }}" title="{{ p.name | escape }}"><img loading="lazy" src="{{ image.src | img_url: 'large' }}" alt="{{ p.name | escape }}"></a></div>
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination dr-pcard-dots"></div>
+      <span class="dr-pcard-nav dr-pcard-prev" aria-label="Ảnh trước"><i class="fa-solid fa-chevron-left"></i></span>
+      <span class="dr-pcard-nav dr-pcard-next" aria-label="Ảnh sau"><i class="fa-solid fa-chevron-right"></i></span>
+    </div>
+    {% else %}
+    <a href="{{ p.url }}" class="dr-pcard-single" title="{{ p.name | escape }}"><img loading="lazy" src="{{ p.featured_image.src | img_url: 'large' }}" alt="{{ p.name | escape }}"></a>
+    {% endif %}
+
+    {% comment %} Badge / tag góc trên phải.
+       `times: 100.0` (KHÔNG phải 100): Ruby Liquid của Sapo chia nguyên khi cả 2 toán hạng là int
+       → 40000*100/320000 = 12 thay vì 12.5, lệch so với LiquidJS ở preview. Nhân 100.0 buộc
+       chia thực rồi mới `round` → ra số nguyên GIỐNG NHAU ở cả hai môi trường. {% endcomment %}
+    {% if pv.compare_at_price > pv.price %}
+      {% assign pct = pv.compare_at_price | minus: pv.price | times: 100.0 | divided_by: pv.compare_at_price | round %}
+      <span class="dr-pcard-badge">-{{ pct }}%</span>
+    {% elsif p.tags.size > 0 %}
+      <span class="dr-pcard-badge dr-pcard-badge--soft">{{ p.tags.first | replace: '-', ' ' | truncate: 16, '…' }}</span>
+    {% endif %}
+
+    {% comment %} Icon giỏ góc dưới trái (thêm nhanh vào giỏ) {% endcomment %}
+    {% if pv.id and pv.price > 0 %}
+    <form action="/cart/add" method="post" class="dr-pcard-add">
+      <input type="hidden" name="variantId" value="{{ pv.id }}">
+      <input type="hidden" name="quantity" value="1">
+      <button type="submit" class="dr-pcard-addbtn" aria-label="Thêm vào giỏ" title="Thêm vào giỏ"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i></button>
+    </form>
+    {% endif %}
+  </div>
+  <div class="dr-pcard-body">
+    {% if p.vendor != blank %}<span class="dr-pcard-vendor">{{ p.vendor }}</span>{% endif %}
+    <a href="{{ p.url }}" class="dr-pcard-name">{{ p.name }}</a>
+    <span class="dr-pcard-price">{% if pv.price > 0 %}{{ pv.price | money }}{% else %}Liên hệ{% endif %}</span>
+  </div>
+</div>

@@ -1,0 +1,234 @@
+{% comment %} DR.REJU — Liên hệ tư vấn (phương án C1 "hai cột cân bằng").
+   Cấu hình: Tùy chỉnh → Trang chủ - Liên hệ
+
+   ĐÃ SỬA 3 lỗi của bản cũ:
+   1. Dùng thẻ form 'contact' chuẩn Sapo thay cho <form action="/contact"> thô
+      → có form.errors + form.posted_successfully, và Sapo tự chèn token.
+   2. Thêm contact[email] — templates/page.contact.bwt đặt trường này là required,
+      thiếu nó Sapo trả lỗi validate mà khách không thấy gì.
+   3. Bỏ hết style="" inline (3 khối lặp) → class dr-contact-*.
+
+   Tên trường giữ ĐÚNG như page.contact.bwt: contact[Name] / contact[email] /
+   contact[phone] / contact[body]. Thẻ form của Sapo tự sinh <form> nên style phải
+   nhắm vào wrapper .dr-contact-form, không nhắm trực tiếp <form>.
+   ⚠️ TUYỆT ĐỐI không viết cú pháp tag Liquid (dấu ngoặc-phần-trăm) trong khối chú thích này.
+   Ruby Liquid của Sapo vẫn tokenize bên trong chú thích, nên một tag block không đóng sẽ
+   làm lỗi cả file — trong khi LiquidJS ở preview bỏ qua, tức lỗi CHỈ hiện trên store thật.
+   Bản ghi chọn phương án: _drafts/direction-approved.md {% endcomment %}
+
+{%- assign c_doc = settings.contact_doc_name | default: 'Bác sĩ Nguyễn Huệ' -%}
+{%- assign c_phone = settings.phone | default: store.phone_number -%}
+{%- assign c_addr = settings.address | default: store.address -%}
+
+<section id="contact" class="dr-section dr-emerald dr-contact">
+  <div class="dr-container">
+    <div class="dr-contact-grid">
+
+      {% comment %} ── Cột trái: bác sĩ + nội dung + kênh liên hệ ── {% endcomment %}
+      <div class="dr-contact-info">
+
+        <div class="dr-contact-doc">
+          <div class="dr-contact-doc__ava">
+            {% if settings.contact_image != blank %}
+              <img src="{{ settings.contact_image | img_url: 'medium' }}" alt="{{ c_doc | escape }}" loading="lazy">
+            {% else %}
+              <img src="{{ 'bs_Hue-1.jpg' | asset_url }}" alt="{{ c_doc | escape }}" loading="lazy"
+                   onerror="this.onerror=null;this.style.display='none';">
+            {% endif %}
+          </div>
+          <div>
+            <b>{{ c_doc }}</b>
+            <span>{{ settings.contact_doc_sub | default: 'trực tiếp đọc hồ sơ da của bạn' }}</span>
+          </div>
+        </div>
+
+        <div>
+          <span class="dr-eyebrow">{{ settings.contact_eyebrow | default: 'Liên hệ tư vấn' }}</span>
+          <h2 class="dr-h2 dr-mt-8">{{ settings.dr_contact_title | default: 'Đừng chỉ gửi tin nhắn — hãy khởi tạo hồ sơ da của bạn' }}</h2>
+          <p class="dr-lead dr-mt-16">{{ settings.contact_desc | default: 'Khi bạn gửi ảnh qua Zalo, bác sĩ không bán sản phẩm ngay — chúng tôi phân tích chỉ số ưu tiên và thiết kế lộ trình 1:1 cho riêng bạn.' }}</p>
+        </div>
+
+        {%- assign c_zalo = settings.contact_zalo_label | default: 'Tư vấn qua Zalo' -%}
+        {% if c_zalo != blank %}
+        <a href="{{ settings.social_zalo_link | default: '#' }}" class="dr-btn dr-btn--primary dr-contact-zalo"><i class="fa-solid fa-comment-dots" aria-hidden="true"></i> {{ c_zalo }}</a>
+        {% endif %}
+
+        <div class="dr-contact-rows">
+          {% if c_phone != blank %}
+          <a class="dr-contact-row" href="tel:{{ c_phone | replace: ' ', '' | replace: '.', '' }}">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            <span>{{ settings.contact_phone_label | default: 'Hotline:' }} {{ c_phone }}</span>
+          </a>
+          {% endif %}
+          {% if c_addr != blank %}
+          <div class="dr-contact-row">
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            <span>{{ c_addr }}</span>
+          </div>
+          {% endif %}
+          {%- assign c_hours = settings.contact_hours | default: '8:30 – 19:00, Thứ 2 – Chủ nhật' -%}
+          {% if c_hours != blank %}
+          <div class="dr-contact-row">
+            <i class="fa-solid fa-clock" aria-hidden="true"></i>
+            <span>{{ c_hours }}</span>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+      {% comment %} ── Cột phải: thẻ form ── {% endcomment %}
+      <div class="dr-contact-card">
+        <h3 class="dr-h3">{{ settings.contact_form_title | default: 'Để lại thông tin, Dr.Reju gọi lại' }}</h3>
+        {%- assign c_sub = settings.contact_form_sub | default: 'Bác sĩ phản hồi trong 24h làm việc.' -%}
+        {% if c_sub != blank %}<p class="dr-contact-card__sub">{{ c_sub }}</p>{% endif %}
+
+        <div class="dr-contact-form">
+          {% form 'contact' %}
+            {% if form.errors.size > 0 %}
+            <div class="dr-contact-msg dr-contact-msg--err">
+              <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+              <div>{% for field in form.errors %}<p>{{ form.errors.messages[field] }}</p>{% endfor %}</div>
+            </div>
+            {% endif %}
+
+            {% if form.posted_successfully %}
+            <div class="dr-contact-msg dr-contact-msg--ok">
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              <div>{{ settings.contact_success | default: 'Đã gửi. Dr.Reju sẽ liên hệ bạn trong 24h làm việc.' }}</div>
+            </div>
+            {% endif %}
+
+            <input type="hidden" name="contact[Loại]" value="Tư vấn da">
+
+            <div class="dr-contact-f2">
+              <div class="dr-fld">
+                <label for="dr-ct-name">Họ và tên</label>
+                <input id="dr-ct-name" type="text" name="contact[Name]" placeholder="Nguyễn Thị A" required
+                       value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.first_name }} {{ customer.last_name }}{% endif %}">
+              </div>
+              <div class="dr-fld">
+                <label for="dr-ct-phone">Điện thoại / Zalo</label>
+                <input id="dr-ct-phone" type="tel" name="contact[phone]" placeholder="09xx xxx xxx" required>
+              </div>
+            </div>
+
+            <div class="dr-fld">
+              <label for="dr-ct-email">Email</label>
+              <input id="dr-ct-email" type="email" name="contact[email]" placeholder="ban@email.com" required
+                     value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+            </div>
+
+            <div class="dr-fld">
+              <label for="dr-ct-note">Mô tả tình trạng da</label>
+              <textarea id="dr-ct-note" name="contact[body]" rows="3" placeholder="Ví dụ: da dầu, hay nổi mụn ở cằm…"></textarea>
+            </div>
+
+            {% comment %} Ô đồng ý: "Mô tả tình trạng da" là dữ liệu sức khỏe — thuộc dữ liệu cá nhân
+               nhạy cảm theo NĐ 13/2023, cần sự đồng ý rõ ràng. Đặt tên contact[Đồng ý] để nội dung
+               này đi kèm email thông báo, thành bản ghi có thể tra lại. {% endcomment %}
+            <label class="dr-contact-consent">
+              <input type="checkbox" name="contact[Đồng ý]" value="Có" required>
+              <span>{{ settings.contact_consent | default: 'Tôi đồng ý để Dr.Reju liên hệ và sử dụng thông tin tôi cung cấp cho mục đích tư vấn da.' }}</span>
+            </label>
+
+            <button type="submit" class="dr-btn dr-btn--primary dr-contact-submit">{{ settings.contact_submit_label | default: 'Gửi yêu cầu tư vấn' }}</button>
+          {% endform %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+/* ── Layout ── */
+.dr-contact-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-56); align-items: start; }
+.dr-contact-info{ display: flex; flex-direction: column; gap: 22px; }
+.dr-contact-rows{ display: flex; flex-direction: column; gap: 13px; }
+.dr-contact-zalo{ width: -moz-fit-content; width: fit-content; }
+
+/* ── Thẻ bác sĩ ── */
+.dr-contact-doc{ display: flex; align-items: center; gap: 13px; }
+.dr-contact-doc__ava{ width: 58px; height: 58px; flex: none; border-radius: 50%; overflow: hidden;
+  background: var(--bg-soft); border: 2px solid rgba(223,186,115,.5); }
+.dr-contact-doc__ava img{ width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.dr-contact-doc b{ display: block; font-family: var(--font-primary); font-size: var(--fs-base); font-weight: 600; color: #fff; }
+.dr-contact-doc span{ display: block; font-size: var(--fs-sm); color: var(--dr-contact-mint); }
+
+/* ── Hàng kênh liên hệ ── */
+.dr-contact{ --dr-contact-mint: #8FD9BD; }
+.dr-contact-row{ display: flex; align-items: center; gap: 12px; font-size: var(--fs-base); color: rgba(255,255,255,.86); }
+.dr-contact-row i{ width: 30px; height: 30px; flex: none; border-radius: 50%; background: rgba(223,186,115,.14);
+  color: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 12px;
+  transition: background .25s ease, color .25s ease; }
+a.dr-contact-row:hover i{ background: var(--gold); color: var(--emerald); }
+
+/* ── Thẻ form (nền sáng trên section tối) ── */
+.dr-contact-card{ background: var(--bg-card); border-radius: var(--radius); padding: 30px 28px; }
+.dr-contact-card .dr-h3{ margin: 0 0 4px; color: var(--text-on-surface); }
+.dr-contact-card__sub{ margin: 0 0 20px; font-size: var(--fs-sm); color: var(--text-soft); }
+
+/* Thẻ form do Sapo tự sinh (Sapo và preview đặt class khác nhau) → style qua wrapper.
+   LƯU Ý: tuyệt đối không viết cú pháp tag Liquid trong comment CSS — Liquid vẫn parse
+   nó thành tag thật, gây lỗi "tag not closed". */
+.dr-contact-f2{ display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
+.dr-fld{ margin-bottom: 14px; }
+.dr-fld label{ display: block; font-family: var(--font-primary); font-size: var(--fs-sm); font-weight: 600;
+  color: var(--text-on-surface); margin-bottom: 6px; }
+.dr-contact-form input[type="text"],
+.dr-contact-form input[type="tel"],
+.dr-contact-form input[type="email"],
+.dr-contact-form textarea{
+  width: 100%; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: var(--radius-sm);
+  font-family: var(--font-secondary); font-size: var(--fs-base); color: var(--text);
+  background: var(--surface); transition: border-color .25s ease, box-shadow .25s ease; }
+.dr-contact-form textarea{ resize: vertical; min-height: 78px; }
+.dr-contact-form input:focus, .dr-contact-form textarea:focus{ outline: 0; border-color: var(--emerald);
+  box-shadow: 0 0 0 3px rgba(10,46,36,.09); }
+.dr-contact-submit{ width: 100%; justify-content: center; }
+
+/* ── Ô đồng ý ── */
+.dr-contact-consent{ display: flex; align-items: flex-start; gap: 10px; margin: 4px 0 16px;
+  font-size: var(--fs-sm); line-height: 1.5; color: var(--text-soft); cursor: pointer; }
+.dr-contact-consent input{ margin-top: 2px; width: 16px; height: 16px; flex: none; accent-color: var(--gold); }
+
+/* ── Thông báo gửi thành công / lỗi ── */
+.dr-contact-msg{ display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px;
+  border-radius: var(--radius-sm); font-size: var(--fs-sm); line-height: 1.5; margin-bottom: var(--sp-16); }
+.dr-contact-msg p{ margin: 0; }
+.dr-contact-msg--ok{ background: rgba(143,217,189,.16); border: 1px solid rgba(143,217,189,.55); color: #1C6B52; }
+.dr-contact-msg--err{ background: rgba(192,24,42,.08); border: 1px solid rgba(192,24,42,.32); color: #8E1220; }
+
+/* ── Media queries (breakpoint theme: 991 / 767 / 480) ── */
+@media (max-width: 991px){
+  .dr-contact-grid{ grid-template-columns: 1fr; gap: var(--sp-32); }
+}
+/* ── Mobile: cột thông tin gọn, form 1 cột, nút Zalo tràn ngang ─────────────
+   ⚠️ KHÔNG hạ font-size của input/textarea xuống dưới 16px: Safari iOS tự zoom
+   trang khi focus vào ô có chữ nhỏ hơn 16px, layout nhảy và người dùng phải
+   pinch lại. Chỉ thu padding, giữ cỡ chữ ô nhập = --fs-base. */
+@media (max-width: 767px){
+  .dr-contact-info{ gap: var(--sp-16); }
+  .dr-contact-doc{ gap: 11px; }
+  .dr-contact-doc__ava{ width: 48px; height: 48px; }
+  .dr-contact-doc span{ font-size: 13px; }
+  .dr-contact-info .dr-lead{ margin-top: 10px; }
+  .dr-contact-zalo{ width: 100%; justify-content: center; }
+  .dr-contact-rows{ gap: 10px; }
+  .dr-contact-row{ font-size: .9375rem; gap: 10px; }
+  .dr-contact-row i{ width: 28px; height: 28px; font-size: 11px; }
+
+  .dr-contact-card{ padding: 20px 16px; border-radius: 12px; }
+  .dr-contact-card__sub{ margin-bottom: var(--sp-16); }
+  /* 2 ô cạnh nhau ở bề ngang 360px chỉ còn ~150px mỗi ô → xuống 1 cột từ 767 */
+  .dr-contact-f2{ grid-template-columns: 1fr; }
+  .dr-fld{ margin-bottom: 12px; }
+  .dr-fld label{ font-size: 13px; margin-bottom: 5px; }
+  .dr-contact-form input[type="text"],
+  .dr-contact-form input[type="tel"],
+  .dr-contact-form input[type="email"],
+  .dr-contact-form textarea{ padding: 11px 12px; border-radius: 10px; }
+  .dr-contact-form textarea{ min-height: 66px; }
+  .dr-contact-consent{ font-size: 12px; gap: 9px; margin-bottom: 14px; }
+}
+</style>

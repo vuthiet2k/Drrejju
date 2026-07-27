@@ -1,0 +1,105 @@
+<div class="search-blog">
+	{% if blogs[settings.relate_blog].articles.size > 0 %}
+	{% assign blog_alias = settings.relate_blog %}
+	{% else %}
+	{% assign blog_alias = '#' %}
+	{% endif %}
+	<h2 class="title-head">
+		<span>Tìm kiếm tin tức</span>
+	</h2>
+	<div class="thump-searh">
+		<form action="/search" method="get" class="blog-search-form input-group search-bar" role="search">
+			<input type="text" name="query" required class="input-group-field form-control" placeholder="Nhập tên tin tức..." autocomplete="off">
+			<input type="hidden" name="type" value="article">
+			<button type="submit" class="btn icon-fallback-text" aria-label="Tìm kiếm" title="Tìm kiếm">
+				<svg width="20" height="20" viewBox="0 0 20 20" fill="#ffffff" xmlns="http://www.w3.org/2000/svg"> <path d="M14.1404 13.4673L19.852 19.1789C20.3008 19.6276 19.6276 20.3008 19.1789 19.852L13.4673 14.1404C12.0381 15.4114 10.1552 16.1835 8.09176 16.1835C3.6225 16.1835 0 12.5613 0 8.09176C0 3.6225 3.62219 0 8.09176 0C12.561 0 16.1835 3.62219 16.1835 8.09176C16.1835 10.1551 15.4115 12.038 14.1404 13.4673ZM0.951972 8.09176C0.951972 12.0356 4.14824 15.2316 8.09176 15.2316C12.0356 15.2316 15.2316 12.0353 15.2316 8.09176C15.2316 4.14797 12.0353 0.951972 8.09176 0.951972C4.14797 0.951972 0.951972 4.14824 0.951972 8.09176Z" fill="#222222"></path> </svg>
+			</button>
+		</form>
+	</div>
+</div>
+
+
+{%- include 'aside-cate-blog' -%}
+<div class="blog_noibat">
+	{% if blogs[settings.relate_blog].articles.size > 0 %}
+	{% assign blog_alias = settings.relate_blog %}
+	{% else %}
+	{% assign blog_alias = '#' %}
+	{% endif %}
+	<h2 class="h2_sidebar_blog">
+		<a href="/{{ blog_alias}}" title="{{ settings.news_relate }}">{{ settings.news_relate }}</a>
+	</h2>
+	<div class="blog_content">
+		{% for article in blogs[settings.relate_blog].articles | limit: settings.number_relate_blog %}
+		<div class="item-blog-small">
+			<div class="block-thumb">
+				{% if article.image != null %}
+				<a class="thumb" href="{{ article.url }}" title="{{ article.title }}">
+					<img class="lazyload" src="{{ 'lazy.png' | asset_url}}" 
+						 data-src="{{ article.image.src}}"  alt="{{ article.title }}">
+				</a>
+				{%else%}
+				<a class="thumb" href="{{ article.url }}">
+					<img class="lazyload" src="{{ 'lazy.png' | asset_url}}" 
+						 data-src="{{ 'no-image.jpg' | asset_url}}" alt="{{ article.title }}" title="{{ article.title }}"/>
+				</a>
+				{% endif %}
+
+
+
+			</div>
+			<div class="block-content">
+
+
+				<h3>
+					<a class="line-clamp line-clamp-2" href="{{ article.url }}" title="{{ article.title }}">{{ article.title }}</a>
+				</h3>
+
+
+			</div>
+
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{%if template contains 'article'%}
+<div class="blog_noibat">
+	{% assign url = blog.alias %}
+	{% assign title_blog = article.id %}
+	<h2 class="h2_sidebar_blog">
+		<a href="/{{url}}" title="{{settings.title_blog_relate}}">{{settings.title_blog_relate}}</a>
+	</h2>
+	<div class="blog_content">
+		{% for article in blogs[url].articles | limit: settings.limit_blog_relate %}
+		<div class="item-blog-small">
+			<div class="block-thumb">
+				{% if article.image != null %}
+				<a class="thumb" href="{{ article.url }}" title="{{ article.title }}">
+					<img class="lazyload" src="{{ 'lazy.png' | asset_url}}" 
+						 data-src="{{ article.image.src}}"  alt="{{ article.title }}">
+				</a>
+				{%else%}
+				<a class="thumb" href="{{ article.url }}">
+					<img class="lazyload" src="{{ 'lazy.png' | asset_url}}" 
+						 data-src="{{ 'no-image.jpg' | asset_url}}" alt="{{ article.title }}" title="{{ article.title }}"/>
+				</a>
+				{% endif %}
+
+
+
+			</div>
+			<div class="block-content">
+
+
+				<h3>
+					<a class="line-clamp line-clamp-2" href="{{ article.url }}" title="{{ article.title }}">{{ article.title }}</a>
+				</h3>
+
+
+			</div>
+
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{%endif%}

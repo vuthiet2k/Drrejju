@@ -1,0 +1,31 @@
+<div class="item-blog">
+	<div class="block-thumb">
+		{% if article.image != null %}
+		<a class="thumb" href="{{ article.url }}" title="{{ article.title }}">
+			<img class="lazyload" src="{{ 'lazy.png' | asset_url}}" 
+				 data-src="{{ article.image.src}}"  alt="{{ article.title }}">
+		</a>
+		{%else%}
+		<a class="thumb" href="{{ article.url }}">
+			<img class="lazyload" src="{{ 'lazy.png' | asset_url}}" 
+				 data-src="{{ 'no-image.jpg' | asset_url}}" alt="{{ article.title }}" title="{{ article.title }}"/>
+		</a>
+		{% endif %}
+		<div class="time-post">
+			{{ article.published_on | date:'dd' }}
+			<span>Tháng {{ article.published_on | date:'MM' }}</span>
+		</div>
+
+		<div class="block-content">
+			<h3>
+				<a class="line-clamp line-clamp-2" href="{{ article.url }}" title="{{ article.title }}">{{ article.title }}</a>
+			</h3>
+			
+			{%if article.content != null and article.content != ""%}
+			<a class="viewmore" href="{{ article.url }}" title="Xem ngay">Xem ngay</a>
+			{%endif%}
+		</div>
+
+	</div>
+
+</div>

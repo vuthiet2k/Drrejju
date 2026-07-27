@@ -1,0 +1,32 @@
+<section class="section_duan_dalam">
+	<div class="container">
+		<div class="block-blog">
+			<h3 class="title">
+				<a class="title-name" href="{{settings.url_duan_hoanthien}}" title="{{settings.title_duan_hoanthien}}">{{settings.title_duan_hoanthien}}
+				</a>
+			</h3>
+
+
+			{%- if blogs[settings.url_duan_hoanthien].articles_count > 0 -%}
+			<div class="duan-slider swiper-container">
+				<div class="swiper-wrapper">
+					{%- for article in blogs[settings.url_duan_hoanthien].articles limit: settings.limit_duan_hoanthien -%}
+					<div class="swiper-slide">
+						{%include 'blog_item_duan'%}
+					</div>
+					{%- endfor -%}
+				</div>
+			</div>
+			<div class="text-center no-padding"  style="margin-top: 15px">
+				<a class="see-more" title="Xem tất cả" href="{{settings.url_duan_hoanthien}}">Xem tất cả</a>
+			</div>
+			{%- else -%}
+			<div style="margin-top: 20px" class="alert alert-warning alert-warning2 alert-dismissible margin-top-15 section" role="alert">
+				<strong>{{ settings.title_duan_hoanthien }}!</strong> đang được cập nhật.
+			</div>
+			{%- endif -%}
+
+
+		</div>
+	</div>
+</section>

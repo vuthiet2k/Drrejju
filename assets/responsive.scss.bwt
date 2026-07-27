@@ -1,0 +1,110 @@
+/*============================================================================
+#Mixin
+==============================================================================*/
+@mixin clearfix() {
+	&:after {
+		content: "";
+		display: table;
+		clear: both; }
+	*zoom: 1;
+}
+
+/*============================================================================
+#Variable
+==============================================================================*/
+$gutter: 30px;
+$main-color: {{ settings.main-color }};
+$hover: {{ settings.main-color}};
+$font-base: 'Roboto', sans-serif;
+$text-color: {{ settings.color_body_text }};
+$price: $main-color;
+
+/*============================================================================
+#Function
+==============================================================================*/
+@function em($pixels, $context: $baseFontSize) {
+	@if (unitless($pixels)) {
+		$pixels: $pixels * 1px;
+	}
+	@if (unitless($context)) {
+		$context: $context * 1px;
+	}
+	@return $pixels / $context * 1em;
+}
+
+
+
+@media (min-width: 992px) and (max-width:1199px){
+	.content-blog-index .myblog .content_day_blog {
+		font-size: 12px !important;
+	}
+	.section_prd_sale .products-view-grid-bb {
+		border-bottom: 1px solid #ebebeb;
+	}
+}
+@media (max-width: 1024px){
+
+}
+@media (max-width: 1199px){
+	.section_feed_form .content_owl #block_01 {
+		padding-top: 0px;
+	}
+	.header_search {
+		height: auto   ;
+	}
+	.section_feed_form .content_owl .subcribe .footer_top_form_register {
+		width: 100%;
+	}
+}
+@media (min-width: 1200px){
+
+}
+
+
+
+
+
+/*Collections list*/
+@media(max-width: 767px){
+	.products-view-list .product-box .product-thumbnail{
+		width: 100%;
+	}
+	.products-view-list .product-box .product-info{
+		width: 100%;
+		margin: 0;
+	}
+}
+
+/*SEARCH*/
+.search_h {
+	@media (min-width: 1200px){
+		.search_h:nth-child(4n+1){
+			clear:left;
+		}
+	}
+	@media (min-width: 992px) and (max-width: 1199px){
+		.search_h:nth-child(4n+1){
+			clear:left;
+		}
+	}
+	@media (min-width: 768px) and (max-width: 991px){
+		.search_h:nth-child(3n+1){
+			clear:left;
+		}
+	}
+	@media (max-width: 767px){
+		.search_h:nth-child(2n+1){
+			clear:left;
+		}
+	}
+}
+
+/*SECTION BLOGS*/
+
+
+
+
+
+
+
+/*THANH SEARCH MOBILE*/

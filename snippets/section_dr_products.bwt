@@ -1,0 +1,27 @@
+{% comment %} DR.REJU — Sản phẩm khuyên dùng (object Sapo: collection theo settings). Cấu hình: Tùy chỉnh → Trang chủ - Sản phẩm {% endcomment %}
+{% comment %} Sapo: truy cập collection theo idiom collections[handle].products (inline, chỉ assign HANDLE — assign cả object sẽ mất quan hệ products lazy) {% endcomment %}
+{% assign col_handle = settings.dr_products_col | default: 'all' %}
+{% assign plimit = settings.dr_products_limit | default: 8 %}
+<section id="products" class="dr-section dr-bg-alt">
+  <div class="dr-container">
+    <div class="dr-flex-between dr-wrap dr-gap-24 dr-mb-48">
+      <div style="max-width:640px">
+        <span class="dr-eyebrow">{{ settings.dr_products_eyebrow | default: 'Sản phẩm khuyên dùng' }}</span>
+        <h2 class="dr-h2 dr-up dr-mt-8">{{ settings.dr_products_title | default: 'Chỉ những gì đã kiểm chứng lâm sàng' }}</h2>
+        <p class="dr-lead dr-mt-8">{{ settings.dr_products_desc | default: 'Bác sĩ chỉ chọn mã hàng tương thích cao nhất với phác đồ 1:1 của bạn — không theo trend hay quảng cáo.' }}</p>
+      </div>
+      <a href="{{ collections[col_handle].url | default: '/collections/all' }}" class="dr-btn dr-btn--outline">{{ settings.dr_products_btn_label | default: 'Xem tất cả' }}</a>
+    </div>
+
+    {% if collections[col_handle].products_count > 0 %}
+    <div class="dr-pcard-grid">
+      {% for p in collections[col_handle].products limit: plimit %}
+      {% include 'dr_product_card' %}
+      {% endfor %}
+    </div>
+    {% include 'dr_pcard_init' %}
+    {% else %}
+    <p class="dr-lead">Chưa có sản phẩm — cấu hình collection ở <b>Tùy chỉnh → Trang chủ - Sản phẩm</b> (setting <code>dr_products_col</code>).</p>
+    {% endif %}
+  </div>
+</section>

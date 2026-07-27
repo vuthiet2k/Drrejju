@@ -1,0 +1,5171 @@
+[
+  {
+    "name": "Thiết lập chung",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Thiết lập màu sắc"
+      },
+      {
+        "type": "color",
+        "id": "main_color",
+        "label": "Màu sắc chính"
+      },
+      {
+        "type": "color",
+        "id": "hover_color",
+        "label": "Màu sắc phụ"
+      },
+      {
+        "type": "checkbox",
+        "id": "favicon_enable",
+        "label": "Dùng favicon"
+      },
+      {
+        "type": "image",
+        "id": "favicon.png",
+        "label": "Favicon",
+        "info": "Kích thước khuyên dùng 100x100 pixel"
+      },
+      {
+        "type": "checkbox",
+        "id": "backtotop_enable",
+        "label": "Dùng nút quay lên đầu trang"
+      },
+      {
+        "type": "header",
+        "content": "Thông tin liên hệ chung"
+      },
+      {
+        "type": "paragraph",
+        "content": "Nêu bạn để trống sẽ tự động lấy thông tin lúc đăng ký site"
+      },
+      {
+        "type": "textarea",
+        "id": "diachi",
+        "label": "Địa chỉ"
+      },
+      {
+        "type": "textarea",
+        "id": "time",
+        "label": "Thời gian làm việc"
+      },
+      {
+        "type": "text",
+        "id": "email",
+        "label": "Email"
+      },
+      {
+        "type": "text",
+        "id": "phone",
+        "label": "Điện thoại"
+      },
+      {
+        "type": "header",
+        "content": "Thiết lập Ô tiềm kiếm"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_search_auto",
+        "label": "Sử dụng nội dung chạy tự động trên ô tìm kiếm"
+      },
+      {
+        "type": "textarea",
+        "id": "search_keywords",
+        "label": "Nội dung chạy tự động trên ô tìm kiếm",
+        "default": "'Bạn muốn tìm gì?','Sức khỏe - Làm đẹp', 'Trang điểm', 'Chăm sóc da mặt', 'Chăm sóc cơ thể'"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_smart_search",
+        "label": "Sử dụng tìm kiếm thông minh"
+      },
+      {
+        "type": "header",
+        "content": "Sale Popup"
+      },
+      {
+        "type": "checkbox",
+        "id": "sale_pop",
+        "label": "Hiển thị Sale Pop",
+        "info": "Tính năng này cho phép tăng độ tin cậy của site bán hàng.",
+        "default": true
+      },
+      {
+        "type": "collection",
+        "id": "salespopcollection",
+        "label": "Chọn danh mục sản phẩm sử dụng sales popup."
+      },
+      {
+        "type": "header",
+        "content": "Meta keywords cho trang chủ(SEO)"
+      },
+      {
+        "type": "textarea",
+        "id": "home_page_keywords",
+        "label": "Keywords cho trang chủ"
+      }
+    ]
+  },
+  {
+    "name": "Thiết lập popup thông báo và cờ ngôn ngữ",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Popup thông báo"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_thongbao",
+        "label": "Sử dụng",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "title_thongbao",
+        "label": "Tiêu đề",
+        "default": "Tích hợp sẵn các ứng dụng"
+      },
+      {
+        "type": "text",
+        "id": "content_thongbao",
+        "label": "Ghi chú phía dưới",
+        "default": "Lưu ý với các ứng dụng trả phí bạn cần cài đặt và mua ứng dụng này trên App store Sapo để sử dụng ngay"
+      },
+      {
+        "type": "paragraph",
+        "content": "Nội dung 1"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_thongbao1",
+        "label": "Sử dụng",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "title_thongbao1",
+        "label": "Nội dung",
+        "default": "Đánh giá sản phẩm"
+      },
+      {
+        "type": "text",
+        "id": "link_thongbao1",
+        "label": "Link",
+        "default": "https://apps.sapo.vn/danh-gia-san-pham-v2"
+      },
+      {
+        "type": "paragraph",
+        "content": "Nội dung 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_thongbao2",
+        "label": "Sử dụng",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "title_thongbao2",
+        "label": "Nội dung",
+        "default": "Mua X tặng Y"
+      },
+      {
+        "type": "text",
+        "id": "link_thongbao2",
+        "label": "Link",
+        "default": "https://apps.sapo.vn/mua-x-tang-y-v2"
+      },
+      {
+        "type": "paragraph",
+        "content": "Nội dung 3"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_thongbao3",
+        "label": "Sử dụng",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "title_thongbao3",
+        "label": "Nội dung",
+        "default": "Ứng dụng Affiliate"
+      },
+      {
+        "type": "text",
+        "id": "link_thongbao3",
+        "label": "Link",
+        "default": "https://apps.sapo.vn/quan-ly-affiliate-v2"
+      },
+      {
+        "type": "paragraph",
+        "content": "Nội dung 4"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_thongbao4",
+        "label": "Sử dụng",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "title_thongbao4",
+        "label": "Nội dung",
+        "default": "Đa ngôn ngữ"
+      },
+      {
+        "type": "text",
+        "id": "link_thongbao4",
+        "label": "Link",
+        "default": "https://apps.sapo.vn/ae-da-ngon-ngu"
+      },
+      {
+        "type": "header",
+        "content": "Ngôn ngữ"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_ngonngu",
+        "label": "Sử dụng",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "link_vi",
+        "label": "Link icon tiếng Việt",
+        "default": "#"
+      },
+      {
+        "type": "text",
+        "id": "link_en",
+        "label": "Link icon tiếng Anh",
+        "default": "#"
+      }
+    ]
+  },
+  {
+    "name": "Thiết lập chatlive",
+    "settings": [
+      {
+        "type": "select",
+        "id": "livechat_enable",
+        "label": "Thiết lập",
+        "options": [
+          {
+            "value": "none",
+            "label": "Không dùng"
+          },
+          {
+            "value": "link",
+            "label": "Chuyển sang Messenger"
+          },
+          {
+            "value": "live",
+            "label": "Chat trực tiếp trên Website"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Chuyển sang Messenger"
+      },
+      {
+        "type": "text",
+        "id": "livechat_mes",
+        "label": "Nhập đường dẫn",
+        "info": "Nhập theo cú pháp: https://m.me/id_fanpage",
+        "default": "https://m.me/sapo.vn"
+      },
+      {
+        "type": "header",
+        "content": "Chat trực tiếp trên Website"
+      },
+      {
+        "type": "textarea",
+        "id": "livechat_web",
+        "label": "Nhập đường dẫn",
+        "info": "Nhập đoạn mã được facebook cung cấp trong 'Thiết lập Plugin chat'"
+      }
+    ]
+  },
+  {
+    "name": "Đầu trang",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Logo"
+      },
+      {
+        "type": "image",
+        "id": "logo.png",
+        "label": "Logo",
+        "info": "Đề nghị 332x100px"
+      },
+      {
+        "type": "link_list",
+        "id": "main_menu",
+        "label": "Chọn menu chính"
+      },
+      {
+        "type": "header",
+        "content": "Mega menu — thẻ quảng bá trong panel"
+      },
+      {
+        "type": "paragraph",
+        "content": "Mục menu chính CÓ link con sẽ mở panel nền sáng tràn ngang. Thẻ quảng bá nằm bên phải panel (ẩn dưới 992px vì mobile dùng drawer)."
+      },
+      {
+        "type": "text",
+        "id": "mega_promo_eyebrow",
+        "label": "Thẻ quảng bá - dòng nhỏ",
+        "default": "Không biết bắt đầu từ đâu?"
+      },
+      {
+        "type": "text",
+        "id": "mega_promo_title",
+        "label": "Thẻ quảng bá - tiêu đề",
+        "info": "Để trống để ẩn cả thẻ quảng bá",
+        "default": "Chưa rõ vấn đề? Làm hồ sơ da, bác sĩ đọc trực tiếp"
+      },
+      {
+        "type": "text",
+        "id": "mega_promo_cta",
+        "label": "Thẻ quảng bá - chữ nút",
+        "default": "Bắt đầu"
+      },
+      {
+        "type": "text",
+        "id": "mega_promo_url",
+        "label": "Thẻ quảng bá - link",
+        "default": "/dat-lich"
+      },
+      {
+        "type": "header",
+        "content": "Tìm kiếm trên header"
+      },
+      {
+        "type": "paragraph",
+        "content": "Bấm kính lúp trên desktop mở panel tìm kiếm ngay tại header, kết quả hiện tức thì trong lúc gõ (nguồn: /search?view=smartjson). Trên mobile là overlay toàn màn hình. Danh mục gợi ý lấy từ menu ở \"Chân trang → Khối danh mục\"."
+      },
+      {
+        "type": "text",
+        "id": "header_search_placeholder",
+        "label": "Chữ mờ trong ô tìm kiếm",
+        "default": "Tìm sản phẩm, hoạt chất, vấn đề da…"
+      },
+      {
+        "type": "textarea",
+        "id": "header_search_suggest_list",
+        "label": "Từ khoá phổ biến",
+        "info": "Cách nhau bằng dấu phẩy. Dùng chung cho panel header, overlay mobile và trang tìm kiếm.",
+        "default": "Retinol,Chống lão hoá,Trị mụn,Kem chống nắng,Serum,Cấp ẩm"
+      },
+      {
+        "type": "textarea",
+        "id": "text_topbar",
+        "label": "Text đầu trang",
+        "default": "Dola Solar xin chào!;Hãy sử dụng năng lượng sạch!;Cùng nhau chung tay vì môi trường!",
+        "info": "Các text cách nhau bằng dấu ;"
+      },
+      {
+        "type": "header",
+        "content": "Megamenu"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_megamenu",
+        "label": "Hiển thị megamenu",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "megamenu_items",
+        "label": "Thành phần trong megamenu",
+        "info": "Nếu bạn có nhiều megamenu, bạn có thể \",\" để phân chia thành phần megamenu (không có khoảng cách sau dấu \",\").Ví dụ: Clothing,Suits,Blog",
+        "default": "sản phẩm"
+      }
+    ]
+  },
+  {
+    "name": "Liên hệ nhanh",
+    "settings": [
+      {
+        "type": "text",
+        "id": "support_phone",
+        "label": "Số hotline"
+      },
+      {
+        "type": "text",
+        "id": "support_zalo",
+        "label": "Số zalo"
+      },
+      {
+        "type": "text",
+        "id": "support_lienhe",
+        "label": "Link liên hệ"
+      }
+    ]
+  },
+  {
+    "name": "Chân trang",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Cột 1"
+      },
+      {
+        "type": "image",
+        "id": "logo-ft.png",
+        "label": "Logo",
+        "info": "Đề nghị 332x100px"
+      },
+      {
+        "type": "textarea",
+        "id": "title_col_1",
+        "label": "Giới thiệu"
+      },
+      {
+        "type": "header",
+        "content": "Cột 2"
+      },
+      {
+        "type": "text",
+        "id": "title_col_2",
+        "label": "Tiêu đề",
+        "default": "Hướng dẫn"
+      },
+      {
+        "type": "paragraph",
+        "content": "Thông tin được lấy từ thiết lập chung"
+      },
+      {
+        "type": "header",
+        "content": "Cột 3"
+      },
+      {
+        "type": "text",
+        "id": "title_col_3",
+        "label": "Tiêu đề",
+        "default": "Chính sách"
+      },
+      {
+        "type": "link_list",
+        "id": "url_menu_3",
+        "label": "Chọn menu"
+      },
+      {
+        "type": "header",
+        "content": "Cột 4"
+      },
+      {
+        "type": "text",
+        "id": "title_col_4",
+        "label": "Tiêu đề",
+        "default": "Chính sách"
+      },
+      {
+        "type": "link_list",
+        "id": "url_menu_4",
+        "label": "Chọn menu"
+      },
+      {
+        "type": "header",
+        "content": "Khối danh mục (lưới trên cùng footer)"
+      },
+      {
+        "type": "paragraph",
+        "content": "Lưới danh mục nhiều nhóm ở đầu footer. Menu được chọn nên có cấp con: mỗi link cấp 1 thành một cột, link cấp 2 là các mục trong cột. Desktop mở sẵn, mobile gập lại. Không chọn menu nào thì tự dùng menu có mã 'footer-categories'; menu rỗng thì cả khối ẩn."
+      },
+      {
+        "type": "text",
+        "id": "footer_cat_title",
+        "label": "Tiêu đề khối",
+        "info": "Để trống để ẩn tiêu đề",
+        "default": "Danh mục"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_cat_menu",
+        "label": "Chọn menu danh mục"
+      },
+      {
+        "type": "header",
+        "content": "Thanh toán"
+      },
+      {
+        "type": "text",
+        "id": "title_col_5",
+        "label": "Tiêu đề thanh toán",
+        "default": "Hình thức thanh toán"
+      },
+      {
+        "type": "image",
+        "id": "payment_1.png",
+        "label": "Hình thức 1",
+        "info": "Đề nghị 108×66px"
+      },
+      {
+        "type": "image",
+        "id": "payment_2.png",
+        "label": "Hình thức 2",
+        "info": "Đề nghị 108×66px"
+      },
+      {
+        "type": "image",
+        "id": "payment_3.png",
+        "label": "Hình thức 3",
+        "info": "Đề nghị 108×66px"
+      },
+      {
+        "type": "header",
+        "content": "Mạng xã hội"
+      },
+      {
+        "type": "textarea",
+        "id": "title_col_6",
+        "label": "Tiêu đề",
+        "default": "Liên hệ"
+      },
+      {
+        "type": "text",
+        "id": "appstore_link",
+        "label": "Link app store"
+      },
+      {
+        "type": "text",
+        "id": "playstore_link",
+        "label": "Link goolge play"
+      },
+      {
+        "type": "text",
+        "id": "social_zalo_link",
+        "label": "Zalo",
+        "info": "https://zalo.me/",
+        "default": "#"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook",
+        "info": "https://www.facebook.com/bizweb",
+        "default": "#"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "YouTube",
+        "info": "https://www.youtube.com/",
+        "default": "#"
+      },
+      {
+        "type": "text",
+        "id": "social_google_link",
+        "label": "Google plus",
+        "info": "https://www.google.com",
+        "default": "#"
+      },
+      {
+        "type": "header",
+        "content": "Copy right"
+      },
+      {
+        "type": "text",
+        "id": "copy_right",
+        "label": "Copy right"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Chọn các module"
+      },
+      {
+        "type": "paragraph",
+        "content": "Chúng tôi cung cấp các module ở trang chủ, bạn có thể lựa chọn và sắp xếp vị trí của chúng"
+      },
+      {
+        "type": "select",
+        "id": "home_section_1",
+        "label": "Module 1",
+        "options": [
+          {
+            "value": "none",
+            "label": "Không dùng"
+          },
+          {
+            "value": "section_dr_hero",
+            "label": "Hero — banner đầu trang"
+          },
+          {
+            "value": "section_dr_concerns",
+            "label": "Vấn đề da (grid tile)"
+          },
+          {
+            "value": "section_flashsale",
+            "label": "⚡ Flash Sale (đếm ngược + sản phẩm)"
+          },
+          {
+            "value": "section_dr_why",
+            "label": "Vì sao chọn DR.REJU"
+          },
+          {
+            "value": "section_dr_quiz",
+            "label": "Quiz hồ sơ da"
+          },
+          {
+            "value": "section_dr_products",
+            "label": "Sản phẩm khuyên dùng"
+          },
+          {
+            "value": "section_dr_services",
+            "label": "Dịch vụ điều trị"
+          },
+          {
+            "value": "section_dr_tpcn",
+            "label": "TPCN bổ trợ"
+          },
+          {
+            "value": "section_dr_blog",
+            "label": "Blog kiến thức"
+          },
+          {
+            "value": "section_dr_brands",
+            "label": "Thương hiệu hợp tác"
+          },
+          {
+            "value": "section_dr_results",
+            "label": "Kết quả thực tế (before/after)"
+          },
+          {
+            "value": "section_dr_contact",
+            "label": "Liên hệ / Zalo"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "home_section_2",
+        "label": "Module 2",
+        "options": [
+          {
+            "value": "none",
+            "label": "Không dùng"
+          },
+          {
+            "value": "section_dr_hero",
+            "label": "Hero — banner đầu trang"
+          },
+          {
+            "value": "section_dr_concerns",
+            "label": "Vấn đề da (grid tile)"
+          },
+          {
+            "value": "section_flashsale",
+            "label": "⚡ Flash Sale (đếm ngược + sản phẩm)"
+          },
+          {
+            "value": "section_dr_why",
+            "label": "Vì sao chọn DR.REJU"
+          },
+          {
+            "value": "section_dr_quiz",
+            "label": "Quiz hồ sơ da"
+          },
+          {
+            "value": "section_dr_products",
+            "label": "Sản phẩm khuyên dùng"
+          },
+          {
+            "value": "section_dr_services",
+            "label": "Dịch vụ điều trị"
+          },
+          {
+            "value": "section_dr_tpcn",
+            "label": "TPCN bổ trợ"
+          },
+          {
+            "value": "section_dr_blog",
+            "label": "Blog kiến thức"
+          },
+          {
+            "value": "section_dr_brands",
+            "label": "Thương hiệu hợp tác"
+          },
+          {
+            "value": "section_dr_results",
+            "label": "Kết quả thực tế (before/after)"
+          },
+          {
+            "value": "section_dr_contact",
+            "label": "Liên hệ / Zalo"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "home_section_3",
+        "label": "Module 3",
+        "options": [
+          {
+            "value": "none",
+            "label": "Không dùng"
+          },
+          {
+            "value": "section_dr_hero",
+            "label": "Hero — banner đầu trang"
+          },
+          {
+            "value": "section_dr_concerns",
+            "label": "Vấn đề da (grid tile)"
+          },
+          {
+            "value": "section_flashsale",
+            "label": "⚡ Flash Sale (đếm ngược + sản phẩm)"
+          },
+          {
+            "value": "section_dr_why",
+            "label": "Vì sao chọn DR.REJU"
+          },
+          {
+            "value": "section_dr_quiz",
+            "label": "Quiz hồ sơ da"
+          },
+          {
+            "value": "section_dr_products",
+            "label": "Sản phẩm khuyên dùng"
+          },
+          {
+            "value": "section_dr_services",
+            "label": "Dịch vụ điều trị"
+          },
+          {
+            "value": "section_dr_tpcn",
+            "label": "TPCN bổ trợ"
+          },
+          {
+            "value": "section_dr_blog",
+            "label": "Blog kiến thức"
+          },
+          {
+            "value": "section_dr_brands",
+            "label": "Thương hiệu hợp tác"
+          },
+          {
+            "value": "section_dr_results",
+            "label": "Kết quả thực tế (before/after)"
+          },
+          {
+            "value": "section_dr_contact",
+            "label": "Liên hệ / Zalo"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "home_section_4",
+        "label": "Module 4",
+        "options": [
+          {
+            "value": "none",
+            "label": "Không dùng"
+          },
+          {
+            "value": "section_dr_hero",
+            "label": "Hero — banner đầu trang"
+          },
+          {
+            "value": "section_dr_concerns",
+            "label": "Vấn đề da (grid tile)"
+          },
+          {
+            "value": "section_flashsale",
+            "label": "⚡ Flash Sale (đếm ngược + sản phẩm)"
+          },
+          {
+            "value": "section_dr_why",
+            "label": "Vì sao chọn DR.REJU"
+          },
+          {
+            "value": "section_dr_quiz",
+            "label": "Quiz hồ sơ da"
+          },
+          {
+            "value": "section_dr_products",
+            "label": "Sản phẩm khuyên dùng"
+          },
+          {
+            "value": "section_dr_services",
+            "label": "Dịch vụ điều trị"
+          },
+          {
+            "value": "section_dr_tpcn",
+            "label": "TPCN bổ trợ"
+          },
+          {
+            "value": "section_dr_blog",
+            "label": "Blog kiến thức"
+          },
+          {
+            "value": "section_dr_brands",
+            "label": "Thương hiệu hợp tác"
+          },
+          {
+            "value": "section_dr_results",
+            "label": "Kết quả thực tế (before/after)"
+          },
+          {
+            "value": "section_dr_contact",
+            "label": "Liên hệ / Zalo"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "home_section_5",
+        "label": "Module 5",
+        "options": [
+          {
+            "value": "none",
+            "label": "Không dùng"
+          },
+          {
+            "value": "section_dr_hero",
+            "label": "Hero — banner đầu trang"
+          },
+          {
+            "value": "section_dr_concerns",
+            "label": "Vấn đề da (grid tile)"
+          },
+          {
+            "value": "section_flashsale",
+            "label": "⚡ Flash Sale (đếm ngược + sản phẩm)"
+          },
+          {
+            "value": "section_dr_why",
+            "label": "Vì sao chọn DR.REJU"
+          },
+          {
+            "value": "section_dr_quiz",
+            "label": "Quiz hồ sơ da"
+          },
+          {
+            "value": "section_dr_products",
+            "label": "Sản phẩm khuyên dùng"
+          },
+          {
+            "value": "section_dr_services",
+            "label": "Dịch vụ điều trị"
+          },
+          {
+            "value": "section_dr_tpcn",
+            "label": "TPCN bổ trợ"
+          },
+          {
+            "value": "section_dr_blog",
+            "label": "Blog kiến thức"
+          },
+          {
+            "value": "section_dr_brands",
+            "label": "Thương hiệu hợp tác"
+          },
+          {
+            "value": "section_dr_results",
+            "label": "Kết quả thực tế (before/after)"
+          },
+          {
+            "value": "section_dr_contact",
+            "label": "Liên hệ / Zalo"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "home_section_6",
+        "label": "Module 6",
+        "options": [
+          {
+            "value": "none",
+            "label": "Không dùng"
+          },
+          {
+            "value": "section_dr_hero",
+            "label": "Hero — banner đầu trang"
+          },
+          {
+            "value": "section_dr_concerns",
+            "label": "Vấn đề da (grid tile)"
+          },
+          {
+            "value": "section_flashsale",
+            "label": "⚡ Flash Sale (đếm ngược + sản phẩm)"
+          },
+          {
+            "value": "section_dr_why",
+            "label": "Vì sao chọn DR.REJU"
+          },
+          {
+            "value": "section_dr_quiz",
+            "label": "Quiz hồ sơ da"
+          },
+          {
+            "value": "section_dr_products",
+            "label": "Sản phẩm khuyên dùng"
+          },
+          {
+            "value": "section_dr_services",
+            "label": "Dịch vụ điều trị"
+          },
+          {
+            "value": "section_dr_tpcn",
+            "label": "TPCN bổ trợ"
+          },
+          {
+            "value": "section_dr_blog",
+            "label": "Blog kiến thức"
+          },
+          {
+            "value": "section_dr_brands",
+            "label": "Thương hiệu hợp tác"
+          },
+          {
+            "value": "section_dr_results",
+            "label": "Kết quả thực tế (before/after)"
+          },
+          {
+            "value": "section_dr_contact",
+            "label": "Liên hệ / Zalo"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "home_section_7",
+        "label": "Module 7",
+        "options": [
+          {
+            "value": "none",
+            "label": "Không dùng"
+          },
+          {
+            "value": "section_dr_hero",
+            "label": "Hero — banner đầu trang"
+          },
+          {
+            "value": "section_dr_concerns",
+            "label": "Vấn đề da (grid tile)"
+          },
+          {
+            "value": "section_flashsale",
+            "label": "⚡ Flash Sale (đếm ngược + sản phẩm)"
+          },
+          {
+            "value": "section_dr_why",
+            "label": "Vì sao chọn DR.REJU"
+          },
+          {
+            "value": "section_dr_quiz",
+            "label": "Quiz hồ sơ da"
+          },
+          {
+            "value": "section_dr_products",
+            "label": "Sản phẩm khuyên dùng"
+          },
+          {
+            "value": "section_dr_services",
+            "label": "Dịch vụ điều trị"
+          },
+          {
+            "value": "section_dr_tpcn",
+            "label": "TPCN bổ trợ"
+          },
+          {
+            "value": "section_dr_blog",
+            "label": "Blog kiến thức"
+          },
+          {
+            "value": "section_dr_brands",
+            "label": "Thương hiệu hợp tác"
+          },
+          {
+            "value": "section_dr_results",
+            "label": "Kết quả thực tế (before/after)"
+          },
+          {
+            "value": "section_dr_contact",
+            "label": "Liên hệ / Zalo"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "home_section_8",
+        "label": "Module 8",
+        "options": [
+          {
+            "value": "none",
+            "label": "Không dùng"
+          },
+          {
+            "value": "section_dr_hero",
+            "label": "Hero — banner đầu trang"
+          },
+          {
+            "value": "section_dr_concerns",
+            "label": "Vấn đề da (grid tile)"
+          },
+          {
+            "value": "section_flashsale",
+            "label": "⚡ Flash Sale (đếm ngược + sản phẩm)"
+          },
+          {
+            "value": "section_dr_why",
+            "label": "Vì sao chọn DR.REJU"
+          },
+          {
+            "value": "section_dr_quiz",
+            "label": "Quiz hồ sơ da"
+          },
+          {
+            "value": "section_dr_products",
+            "label": "Sản phẩm khuyên dùng"
+          },
+          {
+            "value": "section_dr_services",
+            "label": "Dịch vụ điều trị"
+          },
+          {
+            "value": "section_dr_tpcn",
+            "label": "TPCN bổ trợ"
+          },
+          {
+            "value": "section_dr_blog",
+            "label": "Blog kiến thức"
+          },
+          {
+            "value": "section_dr_brands",
+            "label": "Thương hiệu hợp tác"
+          },
+          {
+            "value": "section_dr_results",
+            "label": "Kết quả thực tế (before/after)"
+          },
+          {
+            "value": "section_dr_contact",
+            "label": "Liên hệ / Zalo"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "home_section_9",
+        "label": "Module 9",
+        "options": [
+          {
+            "value": "none",
+            "label": "Không dùng"
+          },
+          {
+            "value": "section_dr_hero",
+            "label": "Hero — banner đầu trang"
+          },
+          {
+            "value": "section_dr_concerns",
+            "label": "Vấn đề da (grid tile)"
+          },
+          {
+            "value": "section_flashsale",
+            "label": "⚡ Flash Sale (đếm ngược + sản phẩm)"
+          },
+          {
+            "value": "section_dr_why",
+            "label": "Vì sao chọn DR.REJU"
+          },
+          {
+            "value": "section_dr_quiz",
+            "label": "Quiz hồ sơ da"
+          },
+          {
+            "value": "section_dr_products",
+            "label": "Sản phẩm khuyên dùng"
+          },
+          {
+            "value": "section_dr_services",
+            "label": "Dịch vụ điều trị"
+          },
+          {
+            "value": "section_dr_tpcn",
+            "label": "TPCN bổ trợ"
+          },
+          {
+            "value": "section_dr_blog",
+            "label": "Blog kiến thức"
+          },
+          {
+            "value": "section_dr_brands",
+            "label": "Thương hiệu hợp tác"
+          },
+          {
+            "value": "section_dr_results",
+            "label": "Kết quả thực tế (before/after)"
+          },
+          {
+            "value": "section_dr_contact",
+            "label": "Liên hệ / Zalo"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "home_section_10",
+        "label": "Module 10",
+        "options": [
+          {
+            "value": "none",
+            "label": "Không dùng"
+          },
+          {
+            "value": "section_dr_hero",
+            "label": "Hero — banner đầu trang"
+          },
+          {
+            "value": "section_dr_concerns",
+            "label": "Vấn đề da (grid tile)"
+          },
+          {
+            "value": "section_flashsale",
+            "label": "⚡ Flash Sale (đếm ngược + sản phẩm)"
+          },
+          {
+            "value": "section_dr_why",
+            "label": "Vì sao chọn DR.REJU"
+          },
+          {
+            "value": "section_dr_quiz",
+            "label": "Quiz hồ sơ da"
+          },
+          {
+            "value": "section_dr_products",
+            "label": "Sản phẩm khuyên dùng"
+          },
+          {
+            "value": "section_dr_services",
+            "label": "Dịch vụ điều trị"
+          },
+          {
+            "value": "section_dr_tpcn",
+            "label": "TPCN bổ trợ"
+          },
+          {
+            "value": "section_dr_blog",
+            "label": "Blog kiến thức"
+          },
+          {
+            "value": "section_dr_brands",
+            "label": "Thương hiệu hợp tác"
+          },
+          {
+            "value": "section_dr_results",
+            "label": "Kết quả thực tế (before/after)"
+          },
+          {
+            "value": "section_dr_contact",
+            "label": "Liên hệ / Zalo"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "home_section_11",
+        "label": "Module 11",
+        "options": [
+          {
+            "value": "none",
+            "label": "Không dùng"
+          },
+          {
+            "value": "section_dr_hero",
+            "label": "Hero — banner đầu trang"
+          },
+          {
+            "value": "section_dr_concerns",
+            "label": "Vấn đề da (grid tile)"
+          },
+          {
+            "value": "section_flashsale",
+            "label": "⚡ Flash Sale (đếm ngược + sản phẩm)"
+          },
+          {
+            "value": "section_dr_why",
+            "label": "Vì sao chọn DR.REJU"
+          },
+          {
+            "value": "section_dr_quiz",
+            "label": "Quiz hồ sơ da"
+          },
+          {
+            "value": "section_dr_products",
+            "label": "Sản phẩm khuyên dùng"
+          },
+          {
+            "value": "section_dr_services",
+            "label": "Dịch vụ điều trị"
+          },
+          {
+            "value": "section_dr_tpcn",
+            "label": "TPCN bổ trợ"
+          },
+          {
+            "value": "section_dr_blog",
+            "label": "Blog kiến thức"
+          },
+          {
+            "value": "section_dr_brands",
+            "label": "Thương hiệu hợp tác"
+          },
+          {
+            "value": "section_dr_results",
+            "label": "Kết quả thực tế (before/after)"
+          },
+          {
+            "value": "section_dr_contact",
+            "label": "Liên hệ / Zalo"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "home_section_12",
+        "label": "Module 12",
+        "options": [
+          {
+            "value": "none",
+            "label": "Không dùng"
+          },
+          {
+            "value": "section_dr_hero",
+            "label": "Hero — banner đầu trang"
+          },
+          {
+            "value": "section_dr_concerns",
+            "label": "Vấn đề da (grid tile)"
+          },
+          {
+            "value": "section_flashsale",
+            "label": "⚡ Flash Sale (đếm ngược + sản phẩm)"
+          },
+          {
+            "value": "section_dr_why",
+            "label": "Vì sao chọn DR.REJU"
+          },
+          {
+            "value": "section_dr_quiz",
+            "label": "Quiz hồ sơ da"
+          },
+          {
+            "value": "section_dr_products",
+            "label": "Sản phẩm khuyên dùng"
+          },
+          {
+            "value": "section_dr_services",
+            "label": "Dịch vụ điều trị"
+          },
+          {
+            "value": "section_dr_tpcn",
+            "label": "TPCN bổ trợ"
+          },
+          {
+            "value": "section_dr_blog",
+            "label": "Blog kiến thức"
+          },
+          {
+            "value": "section_dr_brands",
+            "label": "Thương hiệu hợp tác"
+          },
+          {
+            "value": "section_dr_results",
+            "label": "Kết quả thực tế (before/after)"
+          },
+          {
+            "value": "section_dr_contact",
+            "label": "Liên hệ / Zalo"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Flash Sale",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Flash Sale"
+      },
+      {
+        "type": "paragraph",
+        "content": "Section đếm ngược + lưới sản phẩm khuyến mãi. Bật bằng cách chọn \"⚡ Flash Sale\" ở một Module trong tab Trang chủ."
+      },
+      {
+        "type": "text",
+        "id": "sec_flash_sale_eyebrow",
+        "label": "Dòng nhỏ phía trên",
+        "default": "Ưu đãi có hạn"
+      },
+      {
+        "type": "text",
+        "id": "sec_flash_sale_title",
+        "label": "Tiêu đề",
+        "info": "Cho phép HTML, ví dụ <b>Flash Sale cuối tuần</b>",
+        "default": "Flash Sale cuối tuần"
+      },
+      {
+        "type": "text",
+        "id": "sec_flash_sale_time",
+        "label": "Thời điểm kết thúc",
+        "info": "Định dạng: YYYY-MM-DD HH:MM:SS (vd 2026-12-31 23:59:59). Để trống = ẩn đồng hồ.",
+        "default": "2026-12-31 23:59:59"
+      },
+      {
+        "type": "collection",
+        "id": "sec_flash_sale_col",
+        "label": "Danh mục sản phẩm Flash Sale"
+      },
+      {
+        "type": "select",
+        "id": "sec_flash_sale_limit",
+        "label": "Số sản phẩm hiển thị",
+        "default": "6",
+        "options": [
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "8",
+            "label": "8"
+          },
+          {
+            "value": "10",
+            "label": "10"
+          },
+          {
+            "value": "12",
+            "label": "12"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "sec_flash_sale_cta",
+        "label": "Chữ nút \"Xem tất cả\"",
+        "default": "Xem tất cả ưu đãi"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Hero",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Ảnh & chữ"
+      },
+      {
+        "type": "image",
+        "id": "hero_image",
+        "label": "Ảnh nền hero",
+        "info": "Khuyên dùng 2000x1000px. Chưa chọn → dùng ảnh bs_Hue-1 trong theme."
+      },
+      {
+        "type": "text",
+        "id": "hero_image_alt",
+        "label": "Thẻ alt của ảnh",
+        "default": "Bác sĩ Nguyễn Huệ — Dr.Reju"
+      },
+      {
+        "type": "text",
+        "id": "hero_eyebrow",
+        "label": "Dòng nhỏ (eyebrow)",
+        "default": "Da liễu dựa trên bằng chứng · Phác đồ 1:1"
+      },
+      {
+        "type": "text",
+        "id": "hero_title",
+        "label": "Tiêu đề lớn",
+        "info": "Cho phép HTML (<br>, <em>...)",
+        "default": "Chấm dứt điều trị da<br>theo <em class=\"dr-hero-accent\">cảm tính</em>"
+      },
+      {
+        "type": "textarea",
+        "id": "hero_desc",
+        "label": "Mô tả",
+        "default": "Mỗi làn da một hồ sơ. Bác sĩ đọc dữ liệu thật trên da bạn rồi mới quyết định phác đồ, không đoán mò, không chạy theo trend."
+      },
+      {
+        "type": "header",
+        "content": "Nút bấm"
+      },
+      {
+        "type": "text",
+        "id": "hero_btn1_label",
+        "label": "Nút 1 - chữ",
+        "default": "Khởi tạo hồ sơ da"
+      },
+      {
+        "type": "text",
+        "id": "hero_btn1_url",
+        "label": "Nút 1 - link",
+        "default": "/dat-lich"
+      },
+      {
+        "type": "text",
+        "id": "hero_btn2_label",
+        "label": "Nút 2 - chữ (để trống = ẩn)",
+        "default": "Xem vấn đề da"
+      },
+      {
+        "type": "text",
+        "id": "hero_btn2_url",
+        "label": "Nút 2 - link",
+        "default": "#concerns"
+      },
+      {
+        "type": "header",
+        "content": "Badge nổi (kính mờ)"
+      },
+      {
+        "type": "paragraph",
+        "content": "Để trống \"Tiêu đề badge\" nếu muốn ẩn badge."
+      },
+      {
+        "type": "text",
+        "id": "hero_badge_icon",
+        "label": "Icon (Font Awesome)",
+        "info": "Tên icon FA6, vd fa-user-doctor",
+        "default": "fa-user-doctor"
+      },
+      {
+        "type": "text",
+        "id": "hero_badge_title",
+        "label": "Tiêu đề badge",
+        "default": "Phác đồ 1:1 cá nhân hoá"
+      },
+      {
+        "type": "text",
+        "id": "hero_badge_desc",
+        "label": "Mô tả badge",
+        "default": "Bác sĩ trực tiếp xây, theo sát mỗi 2 tuần"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Vấn đề da",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Chung"
+      },
+      {
+        "type": "text",
+        "id": "concern_eyebrow",
+        "label": "Dòng nhỏ",
+        "default": "Bạn đang gặp vấn đề gì?"
+      },
+      {
+        "type": "text",
+        "id": "concern_title",
+        "label": "Tiêu đề",
+        "info": "Để trống để ẩn cả khối tiêu đề",
+        "default": "Chọn vấn đề của bạn"
+      },
+      {
+        "type": "textarea",
+        "id": "concern_desc",
+        "label": "Mô tả",
+        "default": "Mỗi vấn đề có phác đồ riêng — chọn để xem hướng xử lý."
+      },
+      {
+        "type": "text",
+        "id": "concern_url",
+        "label": "Link đích chung (khi tile không có link riêng)",
+        "default": "/dat-lich"
+      },
+      {
+        "type": "header",
+        "content": "Vấn đề 1"
+      },
+      {
+        "type": "text",
+        "id": "concern_1_label",
+        "label": "Nhãn",
+        "default": "Mụn & bít tắc"
+      },
+      {
+        "type": "image",
+        "id": "concern_1_img",
+        "label": "Ảnh",
+        "info": "Vuông ~600x600px. Chưa chọn → placeholder."
+      },
+      {
+        "type": "text",
+        "id": "concern_1_url",
+        "label": "Link riêng (tuỳ chọn)"
+      },
+      {
+        "type": "header",
+        "content": "Vấn đề 2"
+      },
+      {
+        "type": "text",
+        "id": "concern_2_label",
+        "label": "Nhãn",
+        "default": "Nám & sắc tố"
+      },
+      {
+        "type": "image",
+        "id": "concern_2_img",
+        "label": "Ảnh",
+        "info": "Vuông ~600x600px. Chưa chọn → placeholder."
+      },
+      {
+        "type": "text",
+        "id": "concern_2_url",
+        "label": "Link riêng (tuỳ chọn)"
+      },
+      {
+        "type": "header",
+        "content": "Vấn đề 3"
+      },
+      {
+        "type": "text",
+        "id": "concern_3_label",
+        "label": "Nhãn",
+        "default": "Da nhạy cảm & đỏ"
+      },
+      {
+        "type": "image",
+        "id": "concern_3_img",
+        "label": "Ảnh",
+        "info": "Vuông ~600x600px. Chưa chọn → placeholder."
+      },
+      {
+        "type": "text",
+        "id": "concern_3_url",
+        "label": "Link riêng (tuỳ chọn)"
+      },
+      {
+        "type": "header",
+        "content": "Vấn đề 4"
+      },
+      {
+        "type": "text",
+        "id": "concern_4_label",
+        "label": "Nhãn",
+        "default": "Lão hóa"
+      },
+      {
+        "type": "image",
+        "id": "concern_4_img",
+        "label": "Ảnh",
+        "info": "Vuông ~600x600px. Chưa chọn → placeholder."
+      },
+      {
+        "type": "text",
+        "id": "concern_4_url",
+        "label": "Link riêng (tuỳ chọn)"
+      },
+      {
+        "type": "header",
+        "content": "Vấn đề 5"
+      },
+      {
+        "type": "text",
+        "id": "concern_5_label",
+        "label": "Nhãn",
+        "default": "Da khô & thiếu ẩm"
+      },
+      {
+        "type": "image",
+        "id": "concern_5_img",
+        "label": "Ảnh",
+        "info": "Vuông ~600x600px. Chưa chọn → placeholder."
+      },
+      {
+        "type": "text",
+        "id": "concern_5_url",
+        "label": "Link riêng (tuỳ chọn)"
+      },
+      {
+        "type": "header",
+        "content": "Vấn đề 6"
+      },
+      {
+        "type": "text",
+        "id": "concern_6_label",
+        "label": "Nhãn",
+        "default": "Lỗ chân lông to"
+      },
+      {
+        "type": "image",
+        "id": "concern_6_img",
+        "label": "Ảnh",
+        "info": "Vuông ~600x600px. Chưa chọn → placeholder."
+      },
+      {
+        "type": "text",
+        "id": "concern_6_url",
+        "label": "Link riêng (tuỳ chọn)"
+      },
+      {
+        "type": "header",
+        "content": "Vấn đề 7"
+      },
+      {
+        "type": "text",
+        "id": "concern_7_label",
+        "label": "Nhãn",
+        "default": "Da khi mang thai"
+      },
+      {
+        "type": "image",
+        "id": "concern_7_img",
+        "label": "Ảnh",
+        "info": "Vuông ~600x600px. Chưa chọn → placeholder."
+      },
+      {
+        "type": "text",
+        "id": "concern_7_url",
+        "label": "Link riêng (tuỳ chọn)"
+      },
+      {
+        "type": "header",
+        "content": "Vấn đề 8"
+      },
+      {
+        "type": "text",
+        "id": "concern_8_label",
+        "label": "Nhãn",
+        "default": "Chưa rõ vấn đề?"
+      },
+      {
+        "type": "image",
+        "id": "concern_8_img",
+        "label": "Ảnh",
+        "info": "Vuông ~600x600px. Chưa chọn → placeholder."
+      },
+      {
+        "type": "text",
+        "id": "concern_8_url",
+        "label": "Link riêng (tuỳ chọn)"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Vì sao chọn",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Tiêu đề"
+      },
+      {
+        "type": "text",
+        "id": "why_eyebrow",
+        "label": "Dòng nhỏ",
+        "default": "Vì sao chọn Dr.Reju"
+      },
+      {
+        "type": "text",
+        "id": "why_headline",
+        "label": "Tiêu đề (HTML, <span> để nhấn màu)",
+        "default": "Chúng tôi từ chối trị mụn cấp tốc. <span>Da khỏe thật thì không thể vội vã.</span>"
+      },
+      {
+        "type": "text",
+        "id": "why_cta_label",
+        "label": "Nút - chữ (để trống = ẩn)",
+        "default": "Tìm hiểu Phác đồ 1:1"
+      },
+      {
+        "type": "text",
+        "id": "why_cta_url",
+        "label": "Nút - link",
+        "default": "/dat-lich"
+      },
+      {
+        "type": "header",
+        "content": "Dải ảnh bác sĩ (tự chạy)"
+      },
+      {
+        "type": "select",
+        "id": "why_slide_speed",
+        "label": "Tốc độ tự chạy (giây)",
+        "default": "4",
+        "options": [
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "8",
+            "label": "8"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "why_doc_name",
+        "label": "Tên bác sĩ",
+        "default": "Bác sĩ Nguyễn Huệ"
+      },
+      {
+        "type": "text",
+        "id": "why_doc_role",
+        "label": "Chức danh",
+        "default": "Chuyên gia Da liễu Lâm sàng · Người sáng lập"
+      },
+      {
+        "type": "textarea",
+        "id": "why_doc_quote",
+        "label": "Trích dẫn",
+        "default": "“Tôi sẽ không hứa kết quả sau 7 ngày. Tôi hứa đồng hành để da bạn khỏe thật, từ gốc.”"
+      },
+      {
+        "type": "image",
+        "id": "why_doc_1_img",
+        "label": "Ảnh 1 (chưa có → dùng bs_Hue-1 trong theme)"
+      },
+      {
+        "type": "image",
+        "id": "why_doc_2_img",
+        "label": "Ảnh 2 (chưa có → bs_Hue-2)"
+      },
+      {
+        "type": "image",
+        "id": "why_doc_3_img",
+        "label": "Ảnh 3 (chưa có → bs_Hue-3)"
+      },
+      {
+        "type": "header",
+        "content": "Nhãn góc ảnh + 3 tag dưới ảnh"
+      },
+      {
+        "type": "text",
+        "id": "why_badge",
+        "label": "Nhãn góc trên ảnh",
+        "info": "Để trống để ẩn",
+        "default": "Người sáng lập"
+      },
+      {
+        "type": "text",
+        "id": "why_tag_1",
+        "label": "Tag 1",
+        "info": "⚠️ Nếu ghi con số (số năm, số ca) thì phải là số liệu THẬT đã xác minh — đây là thông tin trình độ của người thật, có quy định về quảng cáo dịch vụ y tế.",
+        "default": "Chuyên khoa Da liễu"
+      },
+      {
+        "type": "text",
+        "id": "why_tag_1_icon",
+        "label": "Tag 1 - icon (Font Awesome)",
+        "default": "fa-user-doctor"
+      },
+      {
+        "type": "text",
+        "id": "why_tag_2",
+        "label": "Tag 2",
+        "default": "Phác đồ 1:1"
+      },
+      {
+        "type": "text",
+        "id": "why_tag_2_icon",
+        "label": "Tag 2 - icon",
+        "default": "fa-file-medical"
+      },
+      {
+        "type": "text",
+        "id": "why_tag_3",
+        "label": "Tag 3",
+        "default": "Theo sát qua Zalo"
+      },
+      {
+        "type": "text",
+        "id": "why_tag_3_icon",
+        "label": "Tag 3 - icon",
+        "default": "fa-comment-medical"
+      },
+      {
+        "type": "header",
+        "content": "6 tiêu chí (3 trụ trái + 3 trụ phải)"
+      },
+      {
+        "type": "header",
+        "content": "Tiêu chí 1"
+      },
+      {
+        "type": "text",
+        "id": "why_1_icon",
+        "label": "Icon (Font Awesome)",
+        "default": "fa-user-doctor"
+      },
+      {
+        "type": "text",
+        "id": "why_1_title",
+        "label": "Tiêu đề",
+        "default": "Bác sĩ trực tiếp xây phác đồ"
+      },
+      {
+        "type": "textarea",
+        "id": "why_1_desc",
+        "label": "Mô tả"
+      },
+      {
+        "type": "header",
+        "content": "Tiêu chí 2"
+      },
+      {
+        "type": "text",
+        "id": "why_2_icon",
+        "label": "Icon (Font Awesome)",
+        "default": "fa-microscope"
+      },
+      {
+        "type": "text",
+        "id": "why_2_title",
+        "label": "Tiêu đề",
+        "default": "Chỉ thứ đã kiểm chứng lâm sàng"
+      },
+      {
+        "type": "textarea",
+        "id": "why_2_desc",
+        "label": "Mô tả"
+      },
+      {
+        "type": "header",
+        "content": "Tiêu chí 3"
+      },
+      {
+        "type": "text",
+        "id": "why_3_icon",
+        "label": "Icon (Font Awesome)",
+        "default": "fa-shield-heart"
+      },
+      {
+        "type": "text",
+        "id": "why_3_title",
+        "label": "Tiêu đề",
+        "default": "Không lạm dụng thuốc"
+      },
+      {
+        "type": "textarea",
+        "id": "why_3_desc",
+        "label": "Mô tả"
+      },
+      {
+        "type": "header",
+        "content": "Tiêu chí 4"
+      },
+      {
+        "type": "text",
+        "id": "why_4_icon",
+        "label": "Icon (Font Awesome)",
+        "default": "fa-layer-group"
+      },
+      {
+        "type": "text",
+        "id": "why_4_title",
+        "label": "Tiêu đề",
+        "default": "Phân loại theo mức độ"
+      },
+      {
+        "type": "textarea",
+        "id": "why_4_desc",
+        "label": "Mô tả"
+      },
+      {
+        "type": "header",
+        "content": "Tiêu chí 5"
+      },
+      {
+        "type": "text",
+        "id": "why_5_icon",
+        "label": "Icon (Font Awesome)",
+        "default": "fa-comment-medical"
+      },
+      {
+        "type": "text",
+        "id": "why_5_title",
+        "label": "Tiêu đề",
+        "default": "Theo sát 1:1 qua Zalo"
+      },
+      {
+        "type": "textarea",
+        "id": "why_5_desc",
+        "label": "Mô tả"
+      },
+      {
+        "type": "header",
+        "content": "Tiêu chí 6"
+      },
+      {
+        "type": "text",
+        "id": "why_6_icon",
+        "label": "Icon (Font Awesome)",
+        "default": "fa-hand-holding-heart"
+      },
+      {
+        "type": "text",
+        "id": "why_6_title",
+        "label": "Tiêu đề",
+        "default": "Đạo đức và cái tâm làm nghề"
+      },
+      {
+        "type": "textarea",
+        "id": "why_6_desc",
+        "label": "Mô tả"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Quiz",
+    "settings": [
+      {
+        "type": "text",
+        "id": "quiz_eyebrow",
+        "label": "Dòng nhỏ",
+        "default": "Hồ sơ da DR.REJU"
+      },
+      {
+        "type": "text",
+        "id": "quiz_title",
+        "label": "Tiêu đề - dòng 1 (chữ trắng)",
+        "default": "Kể cho chúng tôi"
+      },
+      {
+        "type": "text",
+        "id": "quiz_title_hl",
+        "label": "Tiêu đề - dòng 2 (chữ vàng)",
+        "info": "Để trống nếu chỉ muốn tiêu đề 1 dòng",
+        "default": "về da của bạn"
+      },
+      {
+        "type": "textarea",
+        "id": "quiz_desc",
+        "label": "Mô tả",
+        "default": "Trả lời vài câu hỏi ngắn. Bác sĩ da liễu đọc hồ sơ của bạn và phản hồi qua Zalo — không có kết luận tự động nào."
+      },
+      {
+        "type": "header",
+        "content": "3 số liệu"
+      },
+      {
+        "type": "text",
+        "id": "quiz_stat_1_num",
+        "label": "Số 1",
+        "info": "Để trống để ẩn cả cụm",
+        "default": "17"
+      },
+      {
+        "type": "text",
+        "id": "quiz_stat_1_label",
+        "label": "Nhãn 1",
+        "default": "câu hỏi có phân nhánh"
+      },
+      {
+        "type": "text",
+        "id": "quiz_stat_2_num",
+        "label": "Số 2",
+        "default": "~4"
+      },
+      {
+        "type": "text",
+        "id": "quiz_stat_2_label",
+        "label": "Nhãn 2",
+        "default": "phút hoàn thành"
+      },
+      {
+        "type": "text",
+        "id": "quiz_stat_3_num",
+        "label": "Số 3",
+        "default": "24h"
+      },
+      {
+        "type": "text",
+        "id": "quiz_stat_3_label",
+        "label": "Nhãn 3",
+        "default": "bác sĩ phản hồi"
+      },
+      {
+        "type": "header",
+        "content": "Khung hội thoại"
+      },
+      {
+        "type": "text",
+        "id": "quiz_bot_name",
+        "label": "Tên trợ lý",
+        "default": "Trợ lý hồ sơ da"
+      },
+      {
+        "type": "text",
+        "id": "quiz_bot_status",
+        "label": "Trạng thái",
+        "default": "Đang trực tuyến"
+      },
+      {
+        "type": "textarea",
+        "id": "quiz_msg_1",
+        "label": "Tin nhắn 1 (trợ lý)",
+        "default": "Chào bạn 👋 Mình giúp bạn dựng hồ sơ da để bác sĩ xem trước."
+      },
+      {
+        "type": "textarea",
+        "id": "quiz_msg_2",
+        "label": "Tin nhắn 2 (câu hỏi)",
+        "default": "Điều gì trên da đang làm bạn khó chịu nhất?"
+      },
+      {
+        "type": "textarea",
+        "id": "quiz_chips",
+        "label": "Các lựa chọn nhanh",
+        "info": "Cách nhau bằng dấu phẩy. Mỗi lựa chọn là 1 link vào bài đánh giá kèm ?c=<số thứ tự>",
+        "default": "Mụn,Nám & sắc tố,Thâm sau mụn,Da nhạy cảm,Lão hóa,Chưa rõ"
+      },
+      {
+        "type": "text",
+        "id": "quiz_msg_reply",
+        "label": "Tin nhắn 3 (khách trả lời mẫu)",
+        "default": "Mụn — và cứ tái đi tái lại"
+      },
+      {
+        "type": "textarea",
+        "id": "quiz_msg_3",
+        "label": "Tin nhắn 4 (trợ lý đáp)",
+        "default": "Mình hiểu. Còn vài câu nữa thôi, bác sĩ sẽ đọc toàn bộ."
+      },
+      {
+        "type": "header",
+        "content": "Nút"
+      },
+      {
+        "type": "text",
+        "id": "quiz_btn_label",
+        "label": "Nút - chữ",
+        "default": "Bắt đầu đánh giá da"
+      },
+      {
+        "type": "text",
+        "id": "quiz_btn_url",
+        "label": "Nút - link",
+        "info": "Đang trỏ tạm sang /dat-lich vì trang đánh giá da chưa có. Đổi khi trang thật xong.",
+        "default": "/dat-lich"
+      },
+      {
+        "type": "text",
+        "id": "quiz_trust",
+        "label": "Dòng tin cậy",
+        "info": "Cách nhau bằng dấu phẩy",
+        "default": "Miễn phí,Bảo mật thông tin,Bác sĩ đọc trực tiếp"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Sản phẩm",
+    "settings": [
+      {
+        "type": "text",
+        "id": "dr_products_eyebrow",
+        "label": "Dòng nhỏ",
+        "default": "Sản phẩm khuyên dùng"
+      },
+      {
+        "type": "text",
+        "id": "dr_products_title",
+        "label": "Tiêu đề",
+        "default": "Chỉ những gì đã kiểm chứng lâm sàng"
+      },
+      {
+        "type": "textarea",
+        "id": "dr_products_desc",
+        "label": "Mô tả",
+        "default": "Bác sĩ chỉ chọn mã hàng tương thích cao nhất với phác đồ 1:1 của bạn — không theo trend hay quảng cáo."
+      },
+      {
+        "type": "collection",
+        "id": "dr_products_col",
+        "label": "Danh mục sản phẩm"
+      },
+      {
+        "type": "select",
+        "id": "dr_products_limit",
+        "label": "Số sản phẩm",
+        "default": "8",
+        "options": [
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "8",
+            "label": "8"
+          },
+          {
+            "value": "10",
+            "label": "10"
+          },
+          {
+            "value": "12",
+            "label": "12"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "dr_products_btn_label",
+        "label": "Nút - chữ",
+        "default": "Xem tất cả"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Dịch vụ",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Tiêu đề (có thể để trống)"
+      },
+      {
+        "type": "text",
+        "id": "svc_eyebrow",
+        "label": "Dòng nhỏ",
+        "default": "Dịch vụ điều trị"
+      },
+      {
+        "type": "text",
+        "id": "svc_title",
+        "label": "Tiêu đề",
+        "default": "Ứng dụng công nghệ y khoa"
+      },
+      {
+        "type": "select",
+        "id": "svc_slide_speed",
+        "label": "Tốc độ tự chạy (giây)",
+        "default": "4",
+        "options": [
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "8",
+            "label": "8"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "KHỐI TRÁI — ảnh tự chạy (tối đa 5, để trống ảnh = bỏ qua)"
+      },
+      {
+        "type": "header",
+        "content": "Ảnh 1"
+      },
+      {
+        "type": "image",
+        "id": "svc_slide_1_img",
+        "label": "Ảnh"
+      },
+      {
+        "type": "text",
+        "id": "svc_slide_1_title",
+        "label": "Chữ hover (tiêu đề)"
+      },
+      {
+        "type": "text",
+        "id": "svc_slide_1_sub",
+        "label": "Chữ phụ hover (tuỳ chọn)"
+      },
+      {
+        "type": "text",
+        "id": "svc_slide_1_url",
+        "label": "Link",
+        "default": "#"
+      },
+      {
+        "type": "header",
+        "content": "Ảnh 2"
+      },
+      {
+        "type": "image",
+        "id": "svc_slide_2_img",
+        "label": "Ảnh"
+      },
+      {
+        "type": "text",
+        "id": "svc_slide_2_title",
+        "label": "Chữ hover (tiêu đề)"
+      },
+      {
+        "type": "text",
+        "id": "svc_slide_2_sub",
+        "label": "Chữ phụ hover (tuỳ chọn)"
+      },
+      {
+        "type": "text",
+        "id": "svc_slide_2_url",
+        "label": "Link",
+        "default": "#"
+      },
+      {
+        "type": "header",
+        "content": "Ảnh 3"
+      },
+      {
+        "type": "image",
+        "id": "svc_slide_3_img",
+        "label": "Ảnh"
+      },
+      {
+        "type": "text",
+        "id": "svc_slide_3_title",
+        "label": "Chữ hover (tiêu đề)"
+      },
+      {
+        "type": "text",
+        "id": "svc_slide_3_sub",
+        "label": "Chữ phụ hover (tuỳ chọn)"
+      },
+      {
+        "type": "text",
+        "id": "svc_slide_3_url",
+        "label": "Link",
+        "default": "#"
+      },
+      {
+        "type": "header",
+        "content": "Ảnh 4"
+      },
+      {
+        "type": "image",
+        "id": "svc_slide_4_img",
+        "label": "Ảnh"
+      },
+      {
+        "type": "text",
+        "id": "svc_slide_4_title",
+        "label": "Chữ hover (tiêu đề)"
+      },
+      {
+        "type": "text",
+        "id": "svc_slide_4_sub",
+        "label": "Chữ phụ hover (tuỳ chọn)"
+      },
+      {
+        "type": "text",
+        "id": "svc_slide_4_url",
+        "label": "Link",
+        "default": "#"
+      },
+      {
+        "type": "header",
+        "content": "Ảnh 5"
+      },
+      {
+        "type": "image",
+        "id": "svc_slide_5_img",
+        "label": "Ảnh"
+      },
+      {
+        "type": "text",
+        "id": "svc_slide_5_title",
+        "label": "Chữ hover (tiêu đề)"
+      },
+      {
+        "type": "text",
+        "id": "svc_slide_5_sub",
+        "label": "Chữ phụ hover (tuỳ chọn)"
+      },
+      {
+        "type": "text",
+        "id": "svc_slide_5_url",
+        "label": "Link",
+        "default": "#"
+      },
+      {
+        "type": "header",
+        "content": "CỘT PHẢI — 2 ảnh"
+      },
+      {
+        "type": "header",
+        "content": "Ảnh phải 1"
+      },
+      {
+        "type": "image",
+        "id": "svc_side_1_img",
+        "label": "Ảnh"
+      },
+      {
+        "type": "text",
+        "id": "svc_side_1_title",
+        "label": "Chữ hover (tiêu đề)"
+      },
+      {
+        "type": "text",
+        "id": "svc_side_1_sub",
+        "label": "Chữ phụ hover (tuỳ chọn)"
+      },
+      {
+        "type": "text",
+        "id": "svc_side_1_url",
+        "label": "Link",
+        "default": "#"
+      },
+      {
+        "type": "header",
+        "content": "Ảnh phải 2"
+      },
+      {
+        "type": "image",
+        "id": "svc_side_2_img",
+        "label": "Ảnh"
+      },
+      {
+        "type": "text",
+        "id": "svc_side_2_title",
+        "label": "Chữ hover (tiêu đề)"
+      },
+      {
+        "type": "text",
+        "id": "svc_side_2_sub",
+        "label": "Chữ phụ hover (tuỳ chọn)"
+      },
+      {
+        "type": "text",
+        "id": "svc_side_2_url",
+        "label": "Link",
+        "default": "#"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - TPCN",
+    "settings": [
+      {
+        "type": "text",
+        "id": "tpcn_eyebrow",
+        "label": "Dòng nhỏ",
+        "default": "Thực phẩm bổ trợ"
+      },
+      {
+        "type": "text",
+        "id": "tpcn_title",
+        "label": "Tiêu đề",
+        "default": "Chỉ kê khi thực sự cần"
+      },
+      {
+        "type": "textarea",
+        "id": "tpcn_desc",
+        "label": "Mô tả",
+        "default": "Chúng tôi ưu tiên phục hồi hàng rào bảo vệ da trước khi làm sáng từ bên trong, thực phẩm chức năng chỉ là bổ trợ."
+      },
+      {
+        "type": "collection",
+        "id": "tpcn_col",
+        "label": "Danh mục sản phẩm TPCN"
+      },
+      {
+        "type": "select",
+        "id": "tpcn_limit",
+        "label": "Số sản phẩm",
+        "default": "4",
+        "options": [
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "8",
+            "label": "8"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "tpcn_btn_label",
+        "label": "Nút - chữ",
+        "default": "Xem tất cả"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Blog",
+    "settings": [
+      {
+        "type": "text",
+        "id": "dr_blog_title",
+        "label": "Tiêu đề",
+        "default": "Giải mã làn da: câu chuyện từ case lâm sàng"
+      },
+      {
+        "type": "blog",
+        "id": "dr_blog",
+        "label": "Danh mục tin tức"
+      },
+      {
+        "type": "select",
+        "id": "dr_blog_limit",
+        "label": "Số bài",
+        "default": "3",
+        "options": [
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "9",
+            "label": "9"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "dr_blog_link_label",
+        "label": "Chữ link \"xem tất cả\"",
+        "default": "Xem tất cả bài viết"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Thương hiệu",
+    "settings": [
+      {
+        "type": "text",
+        "id": "brands_eyebrow",
+        "label": "Dòng nhỏ",
+        "default": "Thương hiệu hợp tác"
+      },
+      {
+        "type": "text",
+        "id": "brands_title",
+        "label": "Tiêu đề",
+        "default": "Khắt khe khi chọn hoạt chất"
+      },
+      {
+        "type": "textarea",
+        "id": "brands_desc",
+        "label": "Mô tả",
+        "default": "Chúng tôi không nhập mọi sản phẩm của một thương hiệu, chỉ chọn mã hàng tương thích cao nhất với phác đồ 1:1, dựa trên dữ liệu lâm sàng."
+      },
+      {
+        "type": "text",
+        "id": "brands_badge",
+        "label": "Badge dưới (để trống = ẩn)",
+        "default": "Nguồn gốc rõ ràng, được cộng đồng y khoa tin dùng"
+      },
+      {
+        "type": "select",
+        "id": "brands_speed",
+        "label": "Tốc độ dải chạy",
+        "info": "Số pixel mỗi giây. Nhỏ = chạy chậm, sang hơn.",
+        "default": "46",
+        "options": [
+          { "value": "30", "label": "Rất chậm" },
+          { "value": "46", "label": "Chậm (mặc định)" },
+          { "value": "70", "label": "Vừa" },
+          { "value": "100", "label": "Nhanh" }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "12 thương hiệu (tên để trống = ẩn ô đó)"
+      },
+      {
+        "type": "paragraph",
+        "content": "Chưa upload logo thì ô hiện TÊN thương hiệu. Nên dùng PNG nền trong suốt hoặc SVG — dải này làm logo xám rồi hiện màu khi hover, logo nền trắng sẽ thành ô trắng lệch tông. Chỉ dùng logo bạn được phép sử dụng (thường nhà phân phối cấp media kit)."
+      },
+      {
+        "type": "text",
+        "id": "dr_brand_1",
+        "label": "Thương hiệu 1",
+        "default": "SkinCeuticals"
+      },
+      {
+        "type": "image",
+        "id": "dr_brand_1_img",
+        "label": "Logo 1"
+      },
+      {
+        "type": "text",
+        "id": "dr_brand_2",
+        "label": "Thương hiệu 2",
+        "default": "La Roche-Posay"
+      },
+      {
+        "type": "image",
+        "id": "dr_brand_2_img",
+        "label": "Logo 2"
+      },
+      {
+        "type": "text",
+        "id": "dr_brand_3",
+        "label": "Thương hiệu 3",
+        "default": "EltaMD"
+      },
+      {
+        "type": "image",
+        "id": "dr_brand_3_img",
+        "label": "Logo 3"
+      },
+      {
+        "type": "text",
+        "id": "dr_brand_4",
+        "label": "Thương hiệu 4",
+        "default": "Obagi"
+      },
+      {
+        "type": "image",
+        "id": "dr_brand_4_img",
+        "label": "Logo 4"
+      },
+      {
+        "type": "text",
+        "id": "dr_brand_5",
+        "label": "Thương hiệu 5",
+        "default": "PCA Skin"
+      },
+      {
+        "type": "image",
+        "id": "dr_brand_5_img",
+        "label": "Logo 5"
+      },
+      {
+        "type": "text",
+        "id": "dr_brand_6",
+        "label": "Thương hiệu 6",
+        "default": "Paulas Choice"
+      },
+      {
+        "type": "image",
+        "id": "dr_brand_6_img",
+        "label": "Logo 6"
+      },
+      {
+        "type": "text",
+        "id": "dr_brand_7",
+        "label": "Thương hiệu 7",
+        "default": "Revision"
+      },
+      {
+        "type": "image",
+        "id": "dr_brand_7_img",
+        "label": "Logo 7"
+      },
+      {
+        "type": "text",
+        "id": "dr_brand_8",
+        "label": "Thương hiệu 8",
+        "default": "Alastin"
+      },
+      {
+        "type": "image",
+        "id": "dr_brand_8_img",
+        "label": "Logo 8"
+      },
+      {
+        "type": "text",
+        "id": "dr_brand_9",
+        "label": "Thương hiệu 9",
+        "default": "Martiderm"
+      },
+      {
+        "type": "image",
+        "id": "dr_brand_9_img",
+        "label": "Logo 9"
+      },
+      {
+        "type": "text",
+        "id": "dr_brand_10",
+        "label": "Thương hiệu 10",
+        "default": "Bioderma"
+      },
+      {
+        "type": "image",
+        "id": "dr_brand_10_img",
+        "label": "Logo 10"
+      },
+      {
+        "type": "text",
+        "id": "dr_brand_11",
+        "label": "Thương hiệu 11",
+        "default": "Vichy"
+      },
+      {
+        "type": "image",
+        "id": "dr_brand_11_img",
+        "label": "Logo 11"
+      },
+      {
+        "type": "text",
+        "id": "dr_brand_12",
+        "label": "Thương hiệu 12",
+        "default": "Some By Mi"
+      },
+      {
+        "type": "image",
+        "id": "dr_brand_12_img",
+        "label": "Logo 12"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Kết quả",
+    "settings": [
+      {
+        "type": "text",
+        "id": "results_eyebrow",
+        "label": "Dòng nhỏ",
+        "default": "Kết quả thực tế"
+      },
+      {
+        "type": "text",
+        "id": "results_title",
+        "label": "Tiêu đề",
+        "default": "Kết quả đến từ những quyết định khó"
+      },
+      {
+        "type": "textarea",
+        "id": "results_desc",
+        "label": "Mô tả",
+        "default": "Mỗi ca là một hành trình. Chúng tôi kể lại quyết định bước ngoặt thay vì chỉ khoe ảnh. Mỗi vấn đề da sẽ có thư viện 8–12 ảnh thực tế kèm chú thích."
+      },
+      {
+        "type": "header",
+        "content": "Ca 1"
+      },
+      {
+        "type": "text",
+        "id": "results_1_cap",
+        "label": "Tiêu đề ca",
+        "default": "Mụn viêm nặng · 12 tuần"
+      },
+      {
+        "type": "text",
+        "id": "results_1_after",
+        "label": "Nhãn \"sau\"",
+        "default": "Sau 12 tuần"
+      },
+      {
+        "type": "textarea",
+        "id": "results_1_note",
+        "label": "Quyết định bước ngoặt",
+        "default": "Tuần 4, khi hàng rào da quá tải, bác sĩ tạm dừng hoạt chất điều trị để tập trung phục hồi — bước ngoặt giúp da ổn định."
+      },
+      {
+        "type": "image",
+        "id": "results_1_before_img",
+        "label": "Ảnh TRƯỚC"
+      },
+      {
+        "type": "image",
+        "id": "results_1_after_img",
+        "label": "Ảnh SAU"
+      },
+      {
+        "type": "header",
+        "content": "Ca 2"
+      },
+      {
+        "type": "text",
+        "id": "results_2_cap",
+        "label": "Tiêu đề ca",
+        "default": "Nám mảng · 16 tuần"
+      },
+      {
+        "type": "text",
+        "id": "results_2_after",
+        "label": "Nhãn \"sau\"",
+        "default": "Sau 16 tuần"
+      },
+      {
+        "type": "textarea",
+        "id": "results_2_note",
+        "label": "Quyết định bước ngoặt",
+        "default": "Buổi thứ 6, bác sĩ điều chỉnh riêng nồng độ hoạt chất điều hòa sắc tố cho vùng đáp ứng chậm, thay vì tăng liều toàn mặt."
+      },
+      {
+        "type": "image",
+        "id": "results_2_before_img",
+        "label": "Ảnh TRƯỚC"
+      },
+      {
+        "type": "image",
+        "id": "results_2_after_img",
+        "label": "Ảnh SAU"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Liên hệ",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Zalo lấy từ \"Chân trang → Zalo\" (social_zalo_link); Điện thoại lấy từ \"Thiết lập chung → Điện thoại\"; Địa chỉ lấy từ thông tin store."
+      },
+      {
+        "type": "header",
+        "content": "Thẻ bác sĩ"
+      },
+      {
+        "type": "image",
+        "id": "contact_image",
+        "label": "Ảnh bác sĩ",
+        "info": "Vuông. Chưa chọn → bs_Hue-1 trong theme."
+      },
+      {
+        "type": "text",
+        "id": "contact_doc_name",
+        "label": "Tên",
+        "default": "Bác sĩ Nguyễn Huệ"
+      },
+      {
+        "type": "text",
+        "id": "contact_doc_sub",
+        "label": "Chú thích",
+        "default": "trực tiếp đọc hồ sơ da của bạn"
+      },
+      {
+        "type": "header",
+        "content": "Nội dung"
+      },
+      {
+        "type": "text",
+        "id": "contact_eyebrow",
+        "label": "Dòng nhỏ",
+        "default": "Liên hệ tư vấn"
+      },
+      {
+        "type": "text",
+        "id": "dr_contact_title",
+        "label": "Tiêu đề",
+        "default": "Đừng chỉ gửi tin nhắn — hãy khởi tạo hồ sơ da của bạn"
+      },
+      {
+        "type": "textarea",
+        "id": "contact_desc",
+        "label": "Mô tả",
+        "default": "Khi bạn gửi ảnh qua Zalo, bác sĩ không bán sản phẩm ngay — chúng tôi phân tích chỉ số ưu tiên và thiết kế lộ trình 1:1 cho riêng bạn."
+      },
+      {
+        "type": "text",
+        "id": "contact_zalo_label",
+        "label": "Nút Zalo - chữ",
+        "default": "Tư vấn qua Zalo"
+      },
+      {
+        "type": "text",
+        "id": "contact_phone_label",
+        "label": "Nhãn hotline",
+        "default": "Hotline:"
+      },
+      {
+        "type": "text",
+        "id": "contact_hours",
+        "label": "Giờ làm việc",
+        "info": "Để trống để ẩn dòng này",
+        "default": "8:30 – 19:00, Thứ 2 – Chủ nhật"
+      },
+      {
+        "type": "header",
+        "content": "Form"
+      },
+      {
+        "type": "text",
+        "id": "contact_form_title",
+        "label": "Tiêu đề form",
+        "default": "Để lại thông tin, Dr.Reju gọi lại"
+      },
+      {
+        "type": "text",
+        "id": "contact_form_sub",
+        "label": "Dòng phụ dưới tiêu đề form",
+        "info": "Đừng hứa thời gian phản hồi mà bộ phận tư vấn chưa trực được",
+        "default": "Bác sĩ phản hồi trong 24h làm việc."
+      },
+      {
+        "type": "textarea",
+        "id": "contact_consent",
+        "label": "Nội dung ô đồng ý",
+        "info": "Ô này BẮT BUỘC tick. Trường \"Mô tả tình trạng da\" là dữ liệu sức khỏe — thuộc dữ liệu cá nhân nhạy cảm theo NĐ 13/2023, cần sự đồng ý rõ ràng. Đừng bỏ ô này.",
+        "default": "Tôi đồng ý để Dr.Reju liên hệ và sử dụng thông tin tôi cung cấp cho mục đích tư vấn da."
+      },
+      {
+        "type": "text",
+        "id": "contact_success",
+        "label": "Thông báo sau khi gửi thành công",
+        "default": "Đã gửi. Dr.Reju sẽ liên hệ bạn trong 24h làm việc."
+      },
+      {
+        "type": "text",
+        "id": "contact_submit_label",
+        "label": "Nút gửi",
+        "default": "Gửi yêu cầu tư vấn"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Module Slider",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Slideshow 1"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_slideshow_1",
+        "label": "Hiển thị Slideshow 1",
+        "default": true
+      },
+      {
+        "type": "image",
+        "id": "slider_1.jpg",
+        "label": "Ảnh Slideshow 1",
+        "info": "Khuyên dùng ảnh có kích thước 2000x880 px"
+      },
+      {
+        "type": "text",
+        "id": "slide_1_alt",
+        "label": "Thẻ alt của ảnh"
+      },
+      {
+        "type": "text",
+        "id": "slideshow_1_link",
+        "label": "Link slideshow 1",
+        "default": "#"
+      },
+      {
+        "type": "header",
+        "content": "Slideshow 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_slideshow_2",
+        "label": "Hiển thị Slideshow 2",
+        "default": true
+      },
+      {
+        "type": "image",
+        "id": "slider_2.jpg",
+        "label": "Ảnh Slideshow 2",
+        "info": "Khuyên dùng ảnh có kích thước 2000x880 px"
+      },
+      {
+        "type": "text",
+        "id": "slide_2_alt",
+        "label": "Thẻ alt của ảnh"
+      },
+      {
+        "type": "text",
+        "id": "slideshow_2_link",
+        "label": "Link slideshow 2",
+        "default": "#"
+      },
+      {
+        "type": "header",
+        "content": "Slideshow 3"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_slideshow_3",
+        "label": "Hiển thị Slideshow 3",
+        "default": true
+      },
+      {
+        "type": "image",
+        "id": "slider_3.jpg",
+        "label": "Ảnh Slideshow 3",
+        "info": "Khuyên dùng ảnh có kích thước 2000x880 px"
+      },
+      {
+        "type": "text",
+        "id": "slide_3_alt",
+        "label": "Thẻ alt của ảnh"
+      },
+      {
+        "type": "text",
+        "id": "slideshow_3_link",
+        "label": "Link slideshow 3",
+        "default": "#"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Module giới thiệu",
+    "settings": [
+      {
+        "type": "image",
+        "id": "about.png",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 708 x 700px"
+      },
+      {
+        "type": "text",
+        "id": "title_about1",
+        "label": "Tiêu đề 1"
+      },
+      {
+        "type": "text",
+        "id": "title_about2",
+        "label": "Tiêu đề 2"
+      },
+      {
+        "type": "textarea",
+        "id": "content_about",
+        "label": "Nội dung"
+      },
+      {
+        "type": "header",
+        "content": "Faq 1"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_faq_about1",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "text",
+        "id": "title_faq_about1",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "textarea",
+        "id": "content_faq_about1",
+        "label": "Nội dung"
+      },
+      {
+        "type": "header",
+        "content": "Faq 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_faq_about2",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "text",
+        "id": "title_faq_about2",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "textarea",
+        "id": "content_faq_about2",
+        "label": "Nội dung"
+      },
+      {
+        "type": "header",
+        "content": "Faq 3"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_faq_about3",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "text",
+        "id": "title_faq_about3",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "textarea",
+        "id": "content_faq_about3",
+        "label": "Nội dung"
+      },
+      {
+        "type": "header",
+        "content": "Faq 4"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_faq_about4",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "text",
+        "id": "title_faq_about4",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "textarea",
+        "id": "content_faq_about4",
+        "label": "Nội dung"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Module 3 banner",
+    "settings": [
+      {
+        "type": "header",
+        "content": "banner 1"
+      },
+      {
+        "type": "image",
+        "id": "banner_three_1.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 450x300"
+      },
+      {
+        "type": "text",
+        "id": "banner_three_1_alt",
+        "label": "Alt ảnh"
+      },
+      {
+        "type": "text",
+        "id": "banner_three_1_url",
+        "label": "Link ảnh"
+      },
+      {
+        "type": "header",
+        "content": "banner 2"
+      },
+      {
+        "type": "image",
+        "id": "banner_three_2.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 450x300"
+      },
+      {
+        "type": "text",
+        "id": "banner_three_2_alt",
+        "label": "Alt ảnh"
+      },
+      {
+        "type": "text",
+        "id": "banner_three_2_url",
+        "label": "Link ảnh"
+      },
+      {
+        "type": "header",
+        "content": "banner 3"
+      },
+      {
+        "type": "image",
+        "id": "banner_three_3.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 450x300"
+      },
+      {
+        "type": "text",
+        "id": "banner_three_3_alt",
+        "label": "Alt ảnh"
+      },
+      {
+        "type": "text",
+        "id": "banner_three_3_url",
+        "label": "Link ảnh"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ -Tại sao chọn chúng tôi",
+    "settings": [
+      {
+        "type": "image",
+        "id": "taisao.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 1920 x 390px"
+      },
+      {
+        "type": "text",
+        "id": "title_why",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "text",
+        "id": "content_why",
+        "label": "Nội dung"
+      },
+      {
+        "type": "header",
+        "content": "Lý do 1"
+      },
+      {
+        "type": "image",
+        "id": "lydo1.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 64 x 64px"
+      },
+      {
+        "type": "text",
+        "id": "lydo_title_1",
+        "label": "Alt ảnh"
+      },
+      {
+        "type": "textarea",
+        "id": "lydo_content_1",
+        "label": "Nội dung"
+      },
+      {
+        "type": "header",
+        "content": "Lý do 2"
+      },
+      {
+        "type": "image",
+        "id": "lydo2.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 64 x 64px"
+      },
+      {
+        "type": "text",
+        "id": "lydo_title_2",
+        "label": "Alt ảnh"
+      },
+      {
+        "type": "textarea",
+        "id": "lydo_content_2",
+        "label": "Nội dung"
+      },
+      {
+        "type": "header",
+        "content": "Lý do 3"
+      },
+      {
+        "type": "image",
+        "id": "lydo3.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 64 x 64px"
+      },
+      {
+        "type": "text",
+        "id": "lydo_title_3",
+        "label": "Alt ảnh"
+      },
+      {
+        "type": "textarea",
+        "id": "lydo_content_3",
+        "label": "Nội dung"
+      },
+      {
+        "type": "header",
+        "content": "Lý do 4"
+      },
+      {
+        "type": "image",
+        "id": "lydo4.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 64 x 64px"
+      },
+      {
+        "type": "text",
+        "id": "lydo_title_4",
+        "label": "Alt ảnh"
+      },
+      {
+        "type": "textarea",
+        "id": "lydo_content_4",
+        "label": "Nội dung"
+      },
+      {
+        "type": "header",
+        "content": "Lý do 5"
+      },
+      {
+        "type": "image",
+        "id": "lydo5.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 64 x 64px"
+      },
+      {
+        "type": "text",
+        "id": "lydo_title_5",
+        "label": "Alt ảnh"
+      },
+      {
+        "type": "textarea",
+        "id": "lydo_content_5",
+        "label": "Nội dung"
+      },
+      {
+        "type": "header",
+        "content": "Lý do 6"
+      },
+      {
+        "type": "image",
+        "id": "lydo6.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 64 x 64px"
+      },
+      {
+        "type": "text",
+        "id": "lydo_title_6",
+        "label": "Alt ảnh"
+      },
+      {
+        "type": "textarea",
+        "id": "lydo_content_6",
+        "label": "Nội dung"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Quy trình",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title_quytrinh",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "header",
+        "content": "Quy trình 1"
+      },
+      {
+        "type": "image",
+        "id": "quytrinh1.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 64 x 64px"
+      },
+      {
+        "type": "text",
+        "id": "quytrinh_title_1",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "textarea",
+        "id": "quytrinh_content_1",
+        "label": "Nội dung"
+      },
+      {
+        "type": "header",
+        "content": "Quy trình 2"
+      },
+      {
+        "type": "image",
+        "id": "quytrinh2.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 64 x 64px"
+      },
+      {
+        "type": "text",
+        "id": "quytrinh_title_2",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "textarea",
+        "id": "quytrinh_content_2",
+        "label": "Nội dung"
+      },
+      {
+        "type": "header",
+        "content": "Quy trình 3"
+      },
+      {
+        "type": "image",
+        "id": "quytrinh3.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 64 x 64px"
+      },
+      {
+        "type": "text",
+        "id": "quytrinh_title_3",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "textarea",
+        "id": "quytrinh_content_3",
+        "label": "Nội dung"
+      },
+      {
+        "type": "header",
+        "content": "Quy trình 4"
+      },
+      {
+        "type": "image",
+        "id": "quytrinh4.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 64 x 64px"
+      },
+      {
+        "type": "text",
+        "id": "quytrinh_title_4",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "textarea",
+        "id": "quytrinh_content_4",
+        "label": "Nội dung"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Công dụng nổi bât",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title_congdung",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "textarea",
+        "id": "content_congdung",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "image",
+        "id": "congdung.png",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 646 x 646px"
+      },
+      {
+        "type": "header",
+        "content": "Công dụng 1"
+      },
+      {
+        "type": "text",
+        "id": "congdung_title_1",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "textarea",
+        "id": "congdung_content_1",
+        "label": "Nội dung"
+      },
+      {
+        "type": "header",
+        "content": "Công dụng 2"
+      },
+      {
+        "type": "text",
+        "id": "congdung_title_2",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "textarea",
+        "id": "congdung_content_2",
+        "label": "Nội dung"
+      },
+      {
+        "type": "header",
+        "content": "Công dụng 3"
+      },
+      {
+        "type": "text",
+        "id": "congdung_title_3",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "textarea",
+        "id": "congdung_content_3",
+        "label": "Nội dung"
+      },
+      {
+        "type": "header",
+        "content": "Công dụng 4"
+      },
+      {
+        "type": "text",
+        "id": "congdung_title_4",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "textarea",
+        "id": "congdung_content_4",
+        "label": "Nội dung"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Module Sản phẩm tab",
+    "settings": [
+      {
+        "type": "text",
+        "id": "tab_title_1",
+        "label": "Tiêu đề",
+        "default": "Chăm sóc da mặt"
+      },
+      {
+        "type": "text",
+        "id": "tab_link_1",
+        "label": "Link tiêu đề",
+        "default": "/collections/all"
+      },
+      {
+        "type": "paragraph",
+        "content": "Tab 1"
+      },
+      {
+        "type": "checkbox",
+        "id": "check_1_allpro1",
+        "label": "Sử dụng",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "title_1_allpro1",
+        "label": "Tiêu đề",
+        "default": "Khai vị"
+      },
+      {
+        "type": "collection",
+        "id": "url_1_allpro1",
+        "label": "Chọn danh mục"
+      },
+      {
+        "type": "paragraph",
+        "content": "Tab 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "check_2_allpro1",
+        "label": "Sử dụng",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "title_2_allpro1",
+        "label": "Tiêu đề",
+        "default": "Món chính"
+      },
+      {
+        "type": "collection",
+        "id": "url_2_allpro1",
+        "label": "Chọn danh mục"
+      },
+      {
+        "type": "paragraph",
+        "content": "Tab 3"
+      },
+      {
+        "type": "checkbox",
+        "id": "check_3_allpro1",
+        "label": "Sử dụng",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "title_3_allpro1",
+        "label": "Tiêu đề",
+        "default": "Canh - Tiềm - Sup"
+      },
+      {
+        "type": "collection",
+        "id": "url_3_allpro1",
+        "label": "Chọn danh mục"
+      },
+      {
+        "type": "paragraph",
+        "content": "Tab 4"
+      },
+      {
+        "type": "checkbox",
+        "id": "check_4_allpro1",
+        "label": "Sử dụng",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "title_4_allpro1",
+        "label": "Tiêu đề",
+        "default": "Cơm - mì -cháo"
+      },
+      {
+        "type": "collection",
+        "id": "url_4_allpro1",
+        "label": "Chọn danh mục"
+      },
+      {
+        "type": "paragraph",
+        "content": "Tab 5"
+      },
+      {
+        "type": "checkbox",
+        "id": "check_5_allpro1",
+        "label": "Sử dụng",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "title_5_allpro1",
+        "label": "Tiêu đề",
+        "default": "Bánh tráng miệng"
+      },
+      {
+        "type": "collection",
+        "id": "url_5_allpro1",
+        "label": "Chọn danh mục"
+      },
+      {
+        "type": "paragraph",
+        "content": "Tab 6"
+      },
+      {
+        "type": "checkbox",
+        "id": "check_6_allpro1",
+        "label": "Sử dụng",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "title_6_allpro1",
+        "label": "Tiêu đề",
+        "default": "Đồ uống"
+      },
+      {
+        "type": "collection",
+        "id": "url_6_allpro1",
+        "label": "Chọn danh mục"
+      },
+      {
+        "type": "paragraph",
+        "content": "Tab 7"
+      },
+      {
+        "type": "checkbox",
+        "id": "check_7_allpro1",
+        "label": "Sử dụng",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "title_7_allpro1",
+        "label": "Tiêu đề",
+        "default": "Đồ uống"
+      },
+      {
+        "type": "collection",
+        "id": "url_7_allpro1",
+        "label": "Chọn danh mục"
+      },
+      {
+        "type": "paragraph",
+        "content": "Tab 8"
+      },
+      {
+        "type": "checkbox",
+        "id": "check_8_allpro1",
+        "label": "Sử dụng",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "title_8_allpro1",
+        "label": "Tiêu đề",
+        "default": "Đồ uống"
+      },
+      {
+        "type": "collection",
+        "id": "url_8_allpro1",
+        "label": "Chọn danh mục"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Module 1 banner",
+    "settings": [
+      {
+        "type": "image",
+        "id": "banner.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 1920 x 500px"
+      },
+      {
+        "type": "text",
+        "id": "banner_index_title",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "textarea",
+        "id": "banner_index_content",
+        "label": "Nội dung"
+      },
+      {
+        "type": "text",
+        "id": "banner_index_url_title",
+        "label": "Tên button"
+      },
+      {
+        "type": "text",
+        "id": "banner_index_url",
+        "label": "Link button"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Dự án đã hoàn thiện",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title_duan_hoanthien",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "blog",
+        "id": "url_duan_hoanthien",
+        "label": "Chọn danh mục tin"
+      },
+      {
+        "type": "text",
+        "id": "limit_duan_hoanthien",
+        "label": "Giới hạn"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Module Tin tức",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Tin tức cột 1"
+      },
+      {
+        "type": "text",
+        "id": "section_blog_title1",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "blog",
+        "id": "section_blog_url1",
+        "label": "Danh mục tin tức"
+      },
+      {
+        "type": "text",
+        "id": "section_blog_limit1",
+        "label": "Giới hạn"
+      },
+      {
+        "type": "header",
+        "content": "Tin tức cột 2"
+      },
+      {
+        "type": "text",
+        "id": "section_blog_title2",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "blog",
+        "id": "section_blog_url2",
+        "label": "Danh mục tin tức"
+      },
+      {
+        "type": "text",
+        "id": "section_blog_limit2",
+        "label": "Giới hạn"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Module đánh giá khách hang",
+    "settings": [
+      {
+        "type": "image",
+        "id": "background_danhgia.jpg",
+        "label": "Ảnh nền module",
+        "info": "Khuyên dùng ảnh có kích thước 1500 x 1000px"
+      },
+      {
+        "type": "header",
+        "content": "Đánh giá 1"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_danhgia_1",
+        "label": "Sử dụng",
+        "default": true
+      },
+      {
+        "type": "image",
+        "id": "danhgia_1.jpg",
+        "label": "Ảnh đại diện",
+        "info": "Khuyên dùng ảnh có kích thước 200 x 200px"
+      },
+      {
+        "type": "text",
+        "id": "danhgia_1_name",
+        "label": "Tên",
+        "default": "Naidan Smith"
+      },
+      {
+        "type": "text",
+        "id": "danhgia_1_job",
+        "label": "nghề nghiệp",
+        "default": "Đầu bếp"
+      },
+      {
+        "type": "text",
+        "id": "danhgia_1_content",
+        "label": "Nội dung đánh giá",
+        "default": "Món ăn ở đây hầu hết đều rất ngon, khẩu vị phù hợp với tôi, tôi sẽ luôn ủng hộ nhà hàng Dola Restaurant"
+      },
+      {
+        "type": "header",
+        "content": "Đánh giá 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_danhgia_2",
+        "label": "Sử dụng",
+        "default": true
+      },
+      {
+        "type": "image",
+        "id": "danhgia_2.jpg",
+        "label": "Ảnh đại diện",
+        "info": "Khuyên dùng ảnh có kích thước 200 x 200px"
+      },
+      {
+        "type": "text",
+        "id": "danhgia_2_name",
+        "label": "Tên",
+        "default": "Naidan Smith"
+      },
+      {
+        "type": "text",
+        "id": "danhgia_2_job",
+        "label": "nghề nghiệp",
+        "default": "Đầu bếp"
+      },
+      {
+        "type": "text",
+        "id": "danhgia_2_content",
+        "label": "Nội dung đánh giá",
+        "default": "Món ăn ở đây hầu hết đều rất ngon, khẩu vị phù hợp với tôi, tôi sẽ luôn ủng hộ nhà hàng Dola Restaurant"
+      },
+      {
+        "type": "header",
+        "content": "Đánh giá 3"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_danhgia_3",
+        "label": "Sử dụng",
+        "default": true
+      },
+      {
+        "type": "image",
+        "id": "danhgia_3.jpg",
+        "label": "Ảnh đại diện",
+        "info": "Khuyên dùng ảnh có kích thước 200 x 200px"
+      },
+      {
+        "type": "text",
+        "id": "danhgia_3_name",
+        "label": "Tên",
+        "default": "Naidan Smith"
+      },
+      {
+        "type": "text",
+        "id": "danhgia_3_job",
+        "label": "nghề nghiệp",
+        "default": "Đầu bếp"
+      },
+      {
+        "type": "text",
+        "id": "danhgia_3_content",
+        "label": "Nội dung đánh giá",
+        "default": "Món ăn ở đây hầu hết đều rất ngon, khẩu vị phù hợp với tôi, tôi sẽ luôn ủng hộ nhà hàng Dola Restaurant"
+      },
+      {
+        "type": "header",
+        "content": "Đánh giá 4"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_danhgia_4",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "danhgia_4.jpg",
+        "label": "Ảnh đại diện",
+        "info": "Khuyên dùng ảnh có kích thước 200 x 200px"
+      },
+      {
+        "type": "text",
+        "id": "danhgia_4_name",
+        "label": "Tên",
+        "default": "Naidan Smith"
+      },
+      {
+        "type": "text",
+        "id": "danhgia_4_job",
+        "label": "nghề nghiệp"
+      },
+      {
+        "type": "text",
+        "id": "danhgia_4_content",
+        "label": "Nội dung đánh giá"
+      },
+      {
+        "type": "header",
+        "content": "Đánh giá 5"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_danhgia_5",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "danhgia_5.jpg",
+        "label": "Ảnh đại diện",
+        "info": "Khuyên dùng ảnh có kích thước 200 x 200px"
+      },
+      {
+        "type": "text",
+        "id": "danhgia_5_name",
+        "label": "Tên",
+        "default": "Naidan Smith"
+      },
+      {
+        "type": "text",
+        "id": "danhgia_5_job",
+        "label": "nghề nghiệp"
+      },
+      {
+        "type": "text",
+        "id": "danhgia_5_content",
+        "label": "Nội dung đánh giá"
+      }
+    ]
+  },
+  {
+    "name": "Trang chủ - Module thương hiệu",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_thuonghieu_title",
+        "label": "Tiêu đề module"
+      },
+      {
+        "type": "text",
+        "id": "section_thuonghieu_content",
+        "label": "Nội dung"
+      },
+      {
+        "type": "header",
+        "content": "Thương hiệu 1"
+      },
+      {
+        "type": "checkbox",
+        "id": "thuonghieu_1_check",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "thuonghieu_1.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 280x130 px"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_1_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_1_title",
+        "label": "Alt ảnh",
+        "default": "Thương hiệu"
+      },
+      {
+        "type": "header",
+        "content": "Thương hiệu 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "thuonghieu_2_check",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "thuonghieu_2.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 280x130 px"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_2_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_2_title",
+        "label": "Alt ảnh",
+        "default": "Thương hiệu"
+      },
+      {
+        "type": "header",
+        "content": "Thương hiệu 3"
+      },
+      {
+        "type": "checkbox",
+        "id": "thuonghieu_3_check",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "thuonghieu_3.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 280x130 px"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_3_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_3_title",
+        "label": "Alt ảnh",
+        "default": "Thương hiệu"
+      },
+      {
+        "type": "header",
+        "content": "Thương hiệu 4"
+      },
+      {
+        "type": "checkbox",
+        "id": "thuonghieu_4_check",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "thuonghieu_4.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 280x130 px"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_4_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_4_title",
+        "label": "Alt ảnh",
+        "default": "Thương hiệu"
+      },
+      {
+        "type": "header",
+        "content": "Thương hiệu 5"
+      },
+      {
+        "type": "checkbox",
+        "id": "thuonghieu_5_check",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "thuonghieu_5.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 280x130 px"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_5_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_5_title",
+        "label": "Alt ảnh",
+        "default": "Thương hiệu"
+      },
+      {
+        "type": "header",
+        "content": "Thương hiệu 6"
+      },
+      {
+        "type": "checkbox",
+        "id": "thuonghieu_6_check",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "thuonghieu_6.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 280x130 px"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_6_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_6_title",
+        "label": "Alt ảnh",
+        "default": "Thương hiệu"
+      },
+      {
+        "type": "header",
+        "content": "Thương hiệu 7"
+      },
+      {
+        "type": "checkbox",
+        "id": "thuonghieu_7_check",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "thuonghieu_7.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 280x130 px"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_7_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_7_title",
+        "label": "Alt ảnh",
+        "default": "Thương hiệu"
+      },
+      {
+        "type": "header",
+        "content": "Thương hiệu 8"
+      },
+      {
+        "type": "checkbox",
+        "id": "thuonghieu_8_check",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "thuonghieu_8.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 280x130 px"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_8_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_8_title",
+        "label": "Alt ảnh",
+        "default": "Thương hiệu"
+      },
+      {
+        "type": "header",
+        "content": "Thương hiệu 9"
+      },
+      {
+        "type": "checkbox",
+        "id": "thuonghieu_9_check",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "thuonghieu_9.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 280x130 px"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_9_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_9_title",
+        "label": "Alt ảnh",
+        "default": "Thương hiệu"
+      },
+      {
+        "type": "header",
+        "content": "Thương hiệu 10"
+      },
+      {
+        "type": "checkbox",
+        "id": "thuonghieu_10_check",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "thuonghieu_10.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 280x130 px"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_10_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_10_title",
+        "label": "Alt ảnh",
+        "default": "Thương hiệu"
+      },
+      {
+        "type": "header",
+        "content": "Thương hiệu 11"
+      },
+      {
+        "type": "checkbox",
+        "id": "thuonghieu_11_check",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "thuonghieu_11.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 280x130 px"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_11_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_11_title",
+        "label": "Alt ảnh",
+        "default": "Thương hiệu"
+      },
+      {
+        "type": "header",
+        "content": "Thương hiệu 12"
+      },
+      {
+        "type": "checkbox",
+        "id": "thuonghieu_12_check",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "thuonghieu_12.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 280x130 px"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_12_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_12_title",
+        "label": "Alt ảnh",
+        "default": "Thương hiệu"
+      },
+      {
+        "type": "header",
+        "content": "Thương hiệu 13"
+      },
+      {
+        "type": "checkbox",
+        "id": "thuonghieu_13_check",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "thuonghieu_13.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 280x130 px"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_13_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_13_title",
+        "label": "Alt ảnh",
+        "default": "Thương hiệu"
+      },
+      {
+        "type": "header",
+        "content": "Thương hiệu 14"
+      },
+      {
+        "type": "checkbox",
+        "id": "thuonghieu_14_check",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "thuonghieu_14.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 280x130 px"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_14_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_14_title",
+        "label": "Alt ảnh",
+        "default": "Thương hiệu"
+      },
+      {
+        "type": "header",
+        "content": "Thương hiệu 15"
+      },
+      {
+        "type": "checkbox",
+        "id": "thuonghieu_15_check",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "thuonghieu_15.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 280x130 px"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_15_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_15_title",
+        "label": "Alt ảnh",
+        "default": "Thương hiệu"
+      },
+      {
+        "type": "header",
+        "content": "Thương hiệu 16"
+      },
+      {
+        "type": "checkbox",
+        "id": "thuonghieu_16_check",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "thuonghieu_16.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 280x130 px"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_16_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_16_title",
+        "label": "Alt ảnh",
+        "default": "Thương hiệu"
+      },
+      {
+        "type": "header",
+        "content": "Thương hiệu 17"
+      },
+      {
+        "type": "checkbox",
+        "id": "thuonghieu_17_check",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "thuonghieu_17.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 280x130 px"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_17_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_17_title",
+        "label": "Alt ảnh",
+        "default": "Thương hiệu"
+      },
+      {
+        "type": "header",
+        "content": "Thương hiệu 18"
+      },
+      {
+        "type": "checkbox",
+        "id": "thuonghieu_18_check",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "thuonghieu_18.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 280x130 px"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_18_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_18_title",
+        "label": "Alt ảnh",
+        "default": "Thương hiệu"
+      },
+      {
+        "type": "header",
+        "content": "Thương hiệu 19"
+      },
+      {
+        "type": "checkbox",
+        "id": "thuonghieu_19_check",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "thuonghieu_19.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 280x130 px"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_19_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_19_title",
+        "label": "Alt ảnh",
+        "default": "Thương hiệu"
+      },
+      {
+        "type": "header",
+        "content": "Thương hiệu 20"
+      },
+      {
+        "type": "checkbox",
+        "id": "thuonghieu_20_check",
+        "label": "Sử dụng"
+      },
+      {
+        "type": "image",
+        "id": "thuonghieu_20.jpg",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 280x130 px"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_20_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "thuonghieu_20_title",
+        "label": "Alt ảnh",
+        "default": "Thương hiệu"
+      }
+    ]
+  },
+  {
+    "name": "Trang danh sách sản phẩm",
+    "settings": [
+      {
+        "type": "header",
+        "content": "banner"
+      },
+      {
+        "type": "paragraph",
+        "content": "Banner 1"
+      },
+      {
+        "type": "checkbox",
+        "id": "banner_col_1_use",
+        "label": "Sử dung",
+        "default": true
+      },
+      {
+        "type": "image",
+        "id": "banner_col_1.png",
+        "label": "Tiêu đề",
+        "info": "Khuyên dùng ảnh có kích thước 450x300 px"
+      },
+      {
+        "type": "text",
+        "id": "banner_col_1_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "banner_col_1_alt",
+        "label": "Alt ảnh",
+        "default": "Dola Cosmatic"
+      },
+      {
+        "type": "paragraph",
+        "content": "Banner 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "banner_col_2_use",
+        "label": "Sử dung",
+        "default": true
+      },
+      {
+        "type": "image",
+        "id": "banner_col_2.png",
+        "label": "Tiêu đề",
+        "info": "Khuyên dùng ảnh có kích thước 450x300 px"
+      },
+      {
+        "type": "text",
+        "id": "banner_col_2_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "banner_col_2_alt",
+        "label": "Alt ảnh",
+        "default": "Dola Cosmatic"
+      },
+      {
+        "type": "paragraph",
+        "content": "Banner 3"
+      },
+      {
+        "type": "checkbox",
+        "id": "banner_col_3_use",
+        "label": "Sử dung",
+        "default": true
+      },
+      {
+        "type": "image",
+        "id": "banner_col_3.png",
+        "label": "Tiêu đề",
+        "info": "Khuyên dùng ảnh có kích thước 450x300 px"
+      },
+      {
+        "type": "text",
+        "id": "banner_col_3_link",
+        "label": "Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "banner_col_3_alt",
+        "label": "Alt ảnh",
+        "default": "Dola Cosmatic"
+      },
+      {
+        "type": "header",
+        "content": "Bố cục"
+      },
+      {
+        "type": "text",
+        "id": "collection_number_product",
+        "label": "Số sản phẩm trên trang"
+      },
+      {
+        "type": "header",
+        "content": "Hiển thị danh mục"
+      },
+      {
+        "type": "text",
+        "id": "aside_category_title",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "link_list",
+        "id": "aside_category_menu",
+        "label": "Chọn menu"
+      }
+    ]
+  },
+  {
+    "name": "Bộ lọc sản phẩm",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Thương hiệu"
+      },
+      {
+        "type": "checkbox",
+        "id": "filter_vendor",
+        "label": "Hiển thị bộ lọc hãng"
+      },
+      {
+        "type": "text",
+        "id": "filter_vendor_title",
+        "label": "Tiêu đề",
+        "default": "Thương hiệu"
+      },
+      {
+        "type": "header",
+        "content": "Loại sản phẩm"
+      },
+      {
+        "type": "checkbox",
+        "id": "filter_type",
+        "label": "Hiển thị bộ lọc loại sản phẩm"
+      },
+      {
+        "type": "text",
+        "id": "filter_type_title",
+        "label": "Tiêu đề",
+        "default": "Loại sản phẩm"
+      },
+      {
+        "type": "header",
+        "content": "Lọc theo giá"
+      },
+      {
+        "type": "checkbox",
+        "id": "filter_price",
+        "label": "Hiển thị bộ lọc Khoảng giá"
+      },
+      {
+        "type": "text",
+        "id": "filter_price_title",
+        "label": "Tiêu đề",
+        "default": "Chọn mức giá"
+      },
+      {
+        "type": "textarea",
+        "id": "filter_price_node",
+        "label": "Các mốc khoảng giá",
+        "info": "Các điểm mốc giá cách nhau bởi dấu ';' ,Mốc giá được tính từ hàng triệu trở lên VD: 1.000.000đ; 2.000.000đ; 3.000.000đ; 5.000.000đ"
+      },
+      {
+        "type": "header",
+        "content": "Lọc theo tag 1 - Cho trang tất cả sản phẩm"
+      },
+      {
+        "type": "checkbox",
+        "id": "filter_tag1",
+        "label": "Hiển thị bộ lọc tag sản phẩm"
+      },
+      {
+        "type": "text",
+        "id": "filter_tag1_title",
+        "label": "Tiêu đề",
+        "default": "Màu phổ biến"
+      },
+      {
+        "type": "textarea",
+        "id": "filter_tag1_list",
+        "label": "Nhập các tên tag cần lọc",
+        "info": "Mỗi tên cách nhau dấu ';'"
+      },
+      {
+        "type": "header",
+        "content": "Lọc theo tag 2 - Cho trang tất cả sản phẩm"
+      },
+      {
+        "type": "checkbox",
+        "id": "filter_tag2",
+        "label": "Hiển thị bộ lọc tag sản phẩm"
+      },
+      {
+        "type": "text",
+        "id": "filter_tag2_title",
+        "label": "Tiêu đề",
+        "default": "Kiểu vải"
+      },
+      {
+        "type": "textarea",
+        "id": "filter_tag2_list",
+        "label": "Nhập các tên tag cần lọc",
+        "info": "Mỗi tên cách nhau dấu ';'"
+      },
+      {
+        "type": "header",
+        "content": "Lọc theo tag 3 - Cho trang tất cả sản phẩm"
+      },
+      {
+        "type": "checkbox",
+        "id": "filter_tag3",
+        "label": "Hiển thị bộ lọc tag sản phẩm"
+      },
+      {
+        "type": "text",
+        "id": "filter_tag3_title",
+        "label": "Tiêu đề",
+        "default": "Kích thước"
+      },
+      {
+        "type": "textarea",
+        "id": "filter_tag3_list",
+        "label": "Nhập các tên tag cần lọc",
+        "info": "Mỗi tên cách nhau dấu ';'"
+      },
+      {
+        "type": "header",
+        "content": "Lọc theo tag 4 - Cho trang tất cả sản phẩm"
+      },
+      {
+        "type": "checkbox",
+        "id": "filter_tag4",
+        "label": "Hiển thị bộ lọc tag sản phẩm"
+      },
+      {
+        "type": "text",
+        "id": "filter_tag4_title",
+        "label": "Tiêu đề",
+        "default": "Kích thước"
+      },
+      {
+        "type": "textarea",
+        "id": "filter_tag4_list",
+        "label": "Nhập các tên tag cần lọc",
+        "info": "Mỗi tên cách nhau dấu ';'"
+      },
+      {
+        "type": "header",
+        "content": "Lọc theo tag 5 - Cho trang tất cả sản phẩm"
+      },
+      {
+        "type": "checkbox",
+        "id": "filter_tag5",
+        "label": "Hiển thị bộ lọc tag sản phẩm"
+      },
+      {
+        "type": "text",
+        "id": "filter_tag5_title",
+        "label": "Tiêu đề",
+        "default": "Kích thước"
+      },
+      {
+        "type": "textarea",
+        "id": "filter_tag5_list",
+        "label": "Nhập các tên tag cần lọc",
+        "info": "Mỗi tên cách nhau dấu ';'"
+      }
+    ]
+  },
+  {
+    "name": "Trang sản phẩm",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Layout trang sản phẩm"
+      },
+      {
+        "type": "text",
+        "id": "chat_pro",
+        "label": "Link chat với chúng tôi"
+      },
+      {
+        "type": "header",
+        "content": "Tabs"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_tab_enable",
+        "label": "Hiển thị tabs"
+      },
+      {
+        "type": "paragraph",
+        "content": "Chúng tôi cung cấp cho bạn 3 tabs khác nhau, bạn có thể cài đặt cho từng tab"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_tab1_enable",
+        "label": "Hiển thị tab 1",
+        "info": "Đây là tab hiển thị mô tả sản phẩm"
+      },
+      {
+        "type": "text",
+        "id": "product_tab1_title",
+        "label": "Tiêu đề tab 1"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_tab2_enable",
+        "label": "Hiển thị tab 2",
+        "info": "Đây là tab hiển thị nội dung tùy chỉnh"
+      },
+      {
+        "type": "text",
+        "id": "product_tab2_title",
+        "label": "Tiêu đề tab 2"
+      },
+      {
+        "type": "textarea",
+        "id": "product_tab2_content",
+        "label": "Nội dung tùy chỉnh"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_tab3_enable",
+        "label": "Hiển thị tab 3",
+        "info": "Đây là tab Đánh giá sản phẩm, vui lòng cài app đánh giá sản phẩm"
+      },
+      {
+        "type": "text",
+        "id": "product_tab3_title",
+        "label": "Tiêu đề tab 3"
+      },
+      {
+        "type": "header",
+        "content": "Tin tức mới nhất"
+      },
+      {
+        "type": "text",
+        "id": "section_blog_pro_title",
+        "label": "Tiêu đề",
+        "default": "Tin nổi bật"
+      },
+      {
+        "type": "blog",
+        "id": "section_blog_pro_url",
+        "label": "Chọn danh mục sản phẩm"
+      },
+      {
+        "type": "text",
+        "id": "section_blog_pro_limit",
+        "label": "Giới hạn",
+        "default": "5"
+      },
+      {
+        "type": "header",
+        "content": "Sản phẩm liên quan"
+      },
+      {
+        "type": "text",
+        "id": "sanphamlienquan_title",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "text",
+        "id": "limit_sanphamlienquan",
+        "label": "Giới hạn sản phẩm"
+      }
+    ]
+  },
+  {
+    "name": "Trang blog",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Bố cục"
+      },
+      {
+        "type": "text",
+        "id": "blogs_number_perpage",
+        "label": "Số bài viết trên trang"
+      },
+      {
+        "type": "header",
+        "content": "Sidebar"
+      },
+      {
+        "type": "header",
+        "content": "Hiển thị danh mục"
+      },
+      {
+        "type": "text",
+        "id": "aside_category_blog_title",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "link_list",
+        "id": "aside_category_blog_menu",
+        "label": "Chọn menu"
+      },
+      {
+        "type": "header",
+        "content": "Tin tức nổi bật"
+      },
+      {
+        "type": "text",
+        "id": "news_relate",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "blog",
+        "id": "relate_blog",
+        "label": "Chọn danh mục bài viết"
+      },
+      {
+        "type": "text",
+        "id": "number_relate_blog",
+        "label": "Giới hạn bài viết",
+        "default": "4"
+      },
+      {
+        "type": "header",
+        "content": "Chi tiết bài viết"
+      },
+      {
+        "type": "header",
+        "content": "Bài viết liên quan"
+      },
+      {
+        "type": "text",
+        "id": "title_blog_relate",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "text",
+        "id": "limit_blog_relate",
+        "label": "Giới hạn bài viết"
+      }
+    ]
+  },
+  {
+    "name": "Trang liên hệ",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Thông tin địa chỉ, số điện thoại email được lấy từ phần thiết lập chung"
+      },
+      {
+        "type": "text",
+        "id": "title_contact_1",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "text",
+        "id": "title_contact_2",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "header",
+        "content": "Thiết lập map"
+      },
+      {
+        "type": "textarea",
+        "id": "contactr_contact_maps",
+        "label": "Iframe maps"
+      },
+      {
+        "type": "paragraph",
+        "content": "Vui lòng nhập mã iframe từ google maps vào ô nhập Iframe maps"
+      }
+    ]
+  },
+  {
+    "name": "Trang giỏ hàng",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Hẹn giờ giao hàng"
+      },
+      {
+        "type": "checkbox",
+        "id": "delivery_show",
+        "label": "Hiển thị"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_cart_delivery",
+        "label": "Bật chọn ngày / khung giờ nhận hàng ở trang giỏ",
+        "info": "MẶC ĐỊNH TẮT. Trước đây khối này bật cứng nhưng không có tiêu đề nên hiện ra một ô \"Chọn ngày\" trơ trọi giữa trang giỏ. Chỉ bật nếu bộ phận giao hàng thật sự dùng thông tin này. Bật lên thì mới nạp bootstrap-datepicker.js.",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "delivery_heading",
+        "label": "Tiêu đề",
+        "default": "Thời gian nhận hàng"
+      },
+      {
+        "type": "text",
+        "id": "delivery_date_title",
+        "label": "Tiêu đề ngày nhận"
+      },
+      {
+        "type": "text",
+        "id": "delivery_time_title",
+        "label": "Tiêu đề thời gian nhận"
+      },
+      {
+        "type": "text",
+        "id": "delivery_time_default",
+        "label": "Tiêu đề danh sách thả xuống"
+      },
+      {
+        "type": "textarea",
+        "id": "delivery_time",
+        "label": "Thời gian giao hàng",
+        "info": "Các khung giờ cách nhau bởi dấu ';'"
+      },
+      {
+        "type": "header",
+        "content": "Xuất thông tin VAT"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_cart_vat",
+        "label": "Hiển thị"
+      }
+    ]
+  },
+  {
+    "name": "Trang giới thiệu",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Khối 1"
+      },
+      {
+        "type": "text",
+        "id": "about_title_1",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "textarea",
+        "id": "about_content_1",
+        "label": "Nội dung"
+      },
+      {
+        "type": "header",
+        "content": "Khối 2"
+      },
+      {
+        "type": "text",
+        "id": "about_title_2",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "textarea",
+        "id": "about_content_2",
+        "label": "Nội dung"
+      },
+      {
+        "type": "image",
+        "id": "tamnhin.png",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 700x467 px"
+      },
+      {
+        "type": "header",
+        "content": "Khối 3"
+      },
+      {
+        "type": "text",
+        "id": "about_title_3",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "textarea",
+        "id": "about_content_3",
+        "label": "Nội dung"
+      },
+      {
+        "type": "image",
+        "id": "sumenh.png",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 700x467 px"
+      },
+      {
+        "type": "header",
+        "content": "Khối 4"
+      },
+      {
+        "type": "text",
+        "id": "about_title_4",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "textarea",
+        "id": "about_content_4",
+        "label": "Nội dung"
+      },
+      {
+        "type": "image",
+        "id": "giatri.png",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 700x467 px"
+      },
+      {
+        "type": "header",
+        "content": "Khối 5"
+      },
+      {
+        "type": "text",
+        "id": "about_title_5",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "textarea",
+        "id": "about_content_5",
+        "label": "Nội dung"
+      },
+      {
+        "type": "image",
+        "id": "trietly.png",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 700x467 px"
+      }
+    ]
+  },
+  {
+    "name": "Trang đặt lịch khảo sát",
+    "settings": [
+      {
+        "type": "text",
+        "id": "datlich_title",
+        "label": "Tiêu đề"
+      },
+      {
+        "type": "textarea",
+        "id": "datlich_content",
+        "label": "Nội dung"
+      },
+      {
+        "type": "image",
+        "id": "datlich.png",
+        "label": "Chọn ảnh",
+        "info": "Khuyên dùng ảnh có kích thước 700x467 px"
+      }
+    ]
+  },
+  {
+    "name": "Trang sản phẩm chi tiết",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Sản phẩm gợi ý"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_lienquan_enable",
+        "label": "Hiển thị 'Sản phẩm gợi ý'",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Trang danh mục (Collection)",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Banner đầu trang danh mục"
+      },
+      {
+        "type": "paragraph",
+        "content": "Carousel tối đa 3 banner hiện phía trên danh sách sản phẩm (trang /collections/...). Bỏ trống tất cả = ẩn hoàn toàn, không tạo khoảng trắng."
+      },
+      {
+        "type": "header",
+        "content": "Banner 1"
+      },
+      {
+        "type": "image",
+        "id": "col_banner_1_img",
+        "label": "Ảnh",
+        "info": "Khuyên ~800x300px"
+      },
+      {
+        "type": "text",
+        "id": "col_banner_1_link",
+        "label": "Link",
+        "default": "#"
+      },
+      {
+        "type": "text",
+        "id": "col_banner_1_alt",
+        "label": "Alt / tiêu đề ảnh"
+      },
+      {
+        "type": "header",
+        "content": "Banner 2"
+      },
+      {
+        "type": "image",
+        "id": "col_banner_2_img",
+        "label": "Ảnh",
+        "info": "Khuyên ~800x300px"
+      },
+      {
+        "type": "text",
+        "id": "col_banner_2_link",
+        "label": "Link",
+        "default": "#"
+      },
+      {
+        "type": "text",
+        "id": "col_banner_2_alt",
+        "label": "Alt / tiêu đề ảnh"
+      },
+      {
+        "type": "header",
+        "content": "Banner 3"
+      },
+      {
+        "type": "image",
+        "id": "col_banner_3_img",
+        "label": "Ảnh",
+        "info": "Khuyên ~800x300px"
+      },
+      {
+        "type": "text",
+        "id": "col_banner_3_link",
+        "label": "Link",
+        "default": "#"
+      },
+      {
+        "type": "text",
+        "id": "col_banner_3_alt",
+        "label": "Alt / tiêu đề ảnh"
+      }
+    ]
+  }
+]

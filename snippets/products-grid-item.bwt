@@ -1,0 +1,16 @@
+<div class="products-view products-view-grid list_hover_pro">
+	<div class="row row-fix">
+		{% for product in collection.products %}
+		<div class="col-6 col-md-4 col-xl-3 col-fix">
+			<div class="item_product_main">
+				{%include 'product_grid_office'%}	
+			</div>
+		</div>			
+		{% endfor %}
+	</div>
+</div>
+{% if paginate.pages > 1 %}
+<div class="pagenav">
+	{% include 'collection-paginate-pages' %}
+</div>
+{% endif %}

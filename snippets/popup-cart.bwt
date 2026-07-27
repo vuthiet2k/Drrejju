@@ -1,0 +1,41 @@
+<div id="popup-cart" class="popcart">
+	<div id="popup-cart-desktop" class="clearfix">
+		<div class="title-popup-cart">
+			<span class="your_product"><i class="fas fa-check"></i>Bạn đã thêm <span class="cart-popup-name"></span> vào giỏ hàng </span>
+		</div>
+		<a title="Đóng" class="quickview-close close-pop"><i class="fas fa-times"></i></a>
+		<div class="wrap_popup">
+			<div class="title-quantity-popup" >
+				<i class="fa fa-shopping-cart"></i><span class="cart_status" onclick="window.location.href='/cart';">Giỏ hàng của bạn có <span class="cart-popup-count"></span> sản phẩm </span>
+			</div>
+			<div class="content-popup-cart">
+				<div class="thead-popup">
+					<div style="width: 50%;" class="text-left">Sản phẩm</div>
+					<div style="width: 20%;" class="text-center">Đơn giá</div>
+					<div style="width: 15%;" class="text-center">Số lượng</div>
+					<div style="width: 15%;" class="text-center">Thành tiền</div>
+				</div>
+				<div class="tbody-popup scrollbar-dynamic">
+				</div>
+				<div class="tfoot-popup section">
+					<div class="section footer-popup">
+						<div class="inline-block f-left">
+							<span class="block">
+								Giao hàng trên toàn quốc
+							</span>
+							<a class="f-left button buy_ btn-proceed-checkout close-pop" title="tiếp tục mua hàng" ><span><i class="fa fa-caret-left"></i>Tiếp tục mua hàng</span></a>
+						</div>
+						<div class="tfoot-popup-1 f-right inline-block clearfix">
+							<span class="total-p popup-total">Thành tiền: <span class="total-price"></span></span>
+						</div>
+					</div>
+					<div class="tfoot-popup-2 clearfix section">
+						<a class="button checkout_ btn-proceed-checkout" title="Tiến hành đặt hàng" href="/checkout"><span>Tiến hành đặt hàng<i class="fa fa-arrow-right" aria-hidden="true"></i></span></a>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

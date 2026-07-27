@@ -1,0 +1,43 @@
+<div class="layout-collection">
+	{% include 'breadcrumb' %}  
+	<div class="container">
+		{%include 'banner-collection'%}
+		<div class="row">
+				
+			<aside class="dqdt-sidebar sidebar col-lg-3 col-12">
+				{%- include 'aside-cate' -%}
+				{%- include 'aside-filter' -%}
+			</aside>
+			<div class="block-collection col-lg-9 col-12">
+				<h1 class="title-page d-none"><span>{%if collection.name == 'Tất cả sản phẩm'%}Tất cả sản phẩm{%else%}{{ collection.name }}{%endif%}</span></h1>
+				<div class="category-products">
+					{% if collection.products.size > 0 %}
+					{%include 'collection-sortby'%}
+					{%endif%}
+					{% paginate collection.products by settings.collection_number_product %}
+					{% if collection.products.size > 0 %}
+					{%include 'products-grid-item'%}
+					{% else %}
+					<div style="margin-top: 20px" class="alert alert-warning alert-warning2 alert-dismissible margin-top-15 section" role="alert">
+						Sản phẩm đang được cập nhật.
+					</div>
+					{% endif %}
+					{% endpaginate %}
+				</div>
+			</div>
+		</div>
+		<div id="open-filters" class="open-filters d-lg-none d-xl-none">
+		</div>
+	</div>
+</div>
+<div class="opacity_sidebar"></div>
+<script>
+	var colName = "{%if page_title == 'All'%}Tất cả sản phẩm{%else%}{{ page_title }}{%endif%}";
+	{% if collection.id > 0 %}
+	var colId = {{collection.id}};
+	{%else%}
+	var colId = 0;
+	{%endif%}
+	var selectedViewData = "{% if template contains '.list' %}data_list{% else %}data{% endif %}";
+</script>
+{{ 'col.js'  | asset_url | script_tag }}

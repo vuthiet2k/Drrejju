@@ -1,0 +1,288 @@
+{{ 'search_filter.js'  | asset_url | script_tag }}
+<div class="filter-content">
+	<div class="title-head-col">
+		Bộ lọc sản phẩm
+	</div>
+	<div class="filter-container">
+		<div class="col_title">
+			<div class="filter-container__selected-filter" style="display: none;">
+				<div class="filter-container__selected-filter-header clearfix">
+					<span class="filter-container__selected-filter-header-title">
+						Bạn chọn
+					</span>
+				</div>
+				<div class="filter-container__selected-filter-list">
+					<a href="javascript:void(0)" onclick="clearAllFiltered()" class="filter-container__clear-all">Bỏ hết <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="10" height="10" x="0" y="0" viewBox="0 0 365.696 365.696" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path xmlns="http://www.w3.org/2000/svg" d="m243.1875 182.859375 113.132812-113.132813c12.5-12.5 12.5-32.765624 0-45.246093l-15.082031-15.082031c-12.503906-12.503907-32.769531-12.503907-45.25 0l-113.128906 113.128906-113.132813-113.152344c-12.5-12.5-32.765624-12.5-45.246093 0l-15.105469 15.082031c-12.5 12.503907-12.5 32.769531 0 45.25l113.152344 113.152344-113.128906 113.128906c-12.503907 12.503907-12.503907 32.769531 0 45.25l15.082031 15.082031c12.5 12.5 32.765625 12.5 45.246093 0l113.132813-113.132812 113.128906 113.132812c12.503907 12.5 32.769531 12.5 45.25 0l15.082031-15.082031c12.5-12.503906 12.5-32.769531 0-45.25zm0 0" fill="#ffffff" data-original="#fff" style="" class=""></path></g></svg></a>
+					<ul></ul>
+				</div>
+			</div>
+		</div>
+		<!-- Lọc giá -->
+		{% if settings.filter_price %}
+		<aside class="aside-item filter-price">
+
+			<div class="title-head">
+				{{ settings.filter_price_title }}
+				
+			</div>
+			<div class="aside-content filter-group content_price">
+				<ul>
+					{% assign tags = settings.filter_price_node | split: ';' %} 
+					{% for t in tags %}
+					{% assign tag = t | strip %}
+					{% assign tag_value = tag | handleize %}
+					{%if forloop.index == 1%}
+					<li class="filter-item filter-item--check-box filter-item--green">
+						<span>
+							<label data-filter="{{tag | handleize }}" for="filter-duoi-{{tag | handleize }}">
+								<input type="checkbox" id="filter-duoi-{{tag | handleize }}"  data-group="Khoảng giá" data-field="price_min" data-text="Dưới {{tag}}" value="(<{{ tag | replace: '.' | replace: 'đ' }})" data-operator="OR">
+								<i class="fa"></i>
+								Dưới {{tag | replace: '.000.000đ',' triệu'}}
+							</label>
+						</span>
+					</li>
+
+					{%elsif forloop.index == forloop.length%}
+					<li class="filter-item filter-item--check-box filter-item--green">
+						<span>
+							<label data-filter="{{tag | handleize }}" for="filter-{{ tagold | handleize }}-{{ tag | handleize }}">
+								<input type="checkbox" id="filter-{{ tagold | handleize }}-{{ tag | handleize }}" data-group="Khoảng giá" data-field="price_min" data-text="{{tagold}} - {{tag}}" value="(>={{ tagold | replace: '.' | replace: 'đ' }} AND <={{ tag | replace: '.' | replace: 'đ' }})" data-operator="OR">
+								<i class="fa"></i>
+								Từ {{tagold | replace: '.000.000đ',' triệu'}} - {{tag | replace: '.000.000đ',' triệu'}}							
+							</label>
+						</span>
+					</li>	
+					<li class="filter-item filter-item--check-box filter-item--green">
+						<span>
+							<label data-filter="{{tag | handleize }}" for="filter-tren{{ tag | handleize }}">
+								<input type="checkbox" id="filter-tren{{ tag | handleize }}" data-group="Khoảng giá" data-field="price_min" data-text="Trên {{tag}}" value="(>{{ tag | replace: '.' | replace: 'đ' }})" data-operator="OR">
+								<i class="fa"></i>
+								Trên {{tag | replace: '.000.000đ',' triệu'}}
+							</label>
+						</span>
+					</li>
+					{%else%}
+					<li class="filter-item filter-item--check-box filter-item--green">
+						<span>
+							<label data-filter="{{tag | handleize }}" for="filter-{{ tagold | handleize }}-{{ tag | handleize }}">
+								<input type="checkbox" id="filter-{{ tagold | handleize }}-{{ tag | handleize }}"  data-group="Khoảng giá" data-field="price_min" data-text="{{tagold}} - {{tag}}" value="(>={{ tagold | replace: '.' | replace: 'đ' }} AND <={{ tag | replace: '.' | replace: 'đ' }})" data-operator="OR">
+								<i class="fa"></i> 
+								Từ {{tagold | replace: '.000.000đ',' triệu'}} - {{tag | replace: '.000.000đ',' triệu'}}							
+							</label>
+						</span>
+					</li>	
+					{%endif%}											
+					{% assign tagold = tag %}
+					{%endfor%}								
+				</ul>
+			</div>
+		</aside>
+		{%endif%}
+		<!-- End Lọc giá -->
+		<!-- Lọc Loại -->
+		{%- if settings.filter_type -%}
+		{%-assign typers = collection.all_types.size-%}
+		{%-if typers > 1 -%}
+		<aside class="aside-item aside-itemxx filter-type">
+			<div class="aside-title">
+				<h2 class="title-filter title-head margin-top-0"><span>{{settings.filter_type_title}}</span></h2>
+			</div>
+			<div class="aside-content filter-group">
+				<ul>
+					{%- for type in collection.all_types -%}
+					{%-if type != ''-%}
+					<li class="filter-item filter-item--check-box filter-item--green">
+						<span>
+							<label for="filter-{{ type | handleize }}">
+								<input type="checkbox" id="filter-{{ type | handleize }}"  data-group="PRODUCT_TYPE" data-field="product_type.filter_key" data-text="{{ product_type.filter_key }}" value="(&#34;{{ type }}&#34;)" data-operator="OR">
+								<i class="fa"></i>
+								{{ type }}
+							</label>
+						</span>
+					</li>
+					{%-endif-%}
+					{%- endfor -%}
+				</ul>
+			</div>
+		</aside>
+		{%-endif-%}
+		{%-endif-%}
+		<!-- End Lọc Loại -->
+
+		<!-- Lọc Thương hiệu -->
+		{% if settings.filter_vendor %}
+		{%assign vendor_size = collection.all_vendors.size%}
+		{%if vendor_size > 1%}
+		<aside class="aside-item filter-vendor f-left">
+			<div class="aside-title">
+				<h2 class="title-filter title-head margin-top-0"><span>{{settings.filter_vendor_title}}</span></h2>
+			</div>
+			<div class="aside-content margin-top-0 filter-group">
+				<ul>
+					{% for vendor in collection.all_vendors  %}
+					{%if vendor != ''%}
+					<li class="filter-item filter-item--check-box filter-item--green ">
+						<span>
+							<label for="filter-{{ vendor | handleize }}">
+								<input type="checkbox" id="filter-{{ vendor | handleize }}" data-group="Hãng" data-field="vendor" data-text="{{ vendor }}" value="({{ vendor }})" data-operator="OR">
+								<i class="fa"></i>
+								{{ vendor }}
+							</label>
+						</span>
+					</li>
+					{%endif%}
+					{% endfor %}
+				</ul>
+			</div>
+		</aside>
+		{%endif%}
+		{%endif%}
+		<!-- End Lọc Thương hiệu -->
+		{% if settings.filter_tag1 %}
+		<aside class="aside-item filter-tag">
+
+			<div class="title-head">
+				{{ settings.filter_tag1_title }}
+			
+			</div>
+			<div class="aside-content filter-group">	
+				<ul>
+					{% assign tags = settings.filter_tag1_list | split: ';' %} 
+					{% for t in tags %}
+					{% assign tag = t | strip %}
+					{% assign tag_value = tag | handleize %}
+					<li class="filter-item filter-item--check-box filter-item--green">
+						<span>
+							<label for="filter-{{ tag | handleize }}">
+								<input type="checkbox" id="filter-{{ tag | handleize }}" data-group="tag2" data-field="tags" data-text="{{ tag }}" value="({{ tag }})" data-operator="OR">
+								<i class="fa"></i>
+								{{ tag }}
+							</label>
+						</span>
+					</li>	
+					{% endfor %}
+				</ul>
+			</div>
+		</aside>
+		{% endif %}
+		<!-- Lọc theo chất liệu -->
+		{% if settings.filter_tag2 %}
+		<aside class="aside-item filter-tag">
+
+			<div class="title-head">
+				{{ settings.filter_tag2_title }}
+				
+			</div>
+			<div class="aside-content filter-group">	
+				<ul>
+					{% assign tags = settings.filter_tag2_list | split: ';' %} 
+					{% for t in tags %}
+					{% assign tag = t | strip %}
+					{% assign tag_value = tag | handleize %}
+					<li class="filter-item filter-item--check-box filter-item--green">
+						<span>
+							<label for="filter-{{ tag | handleize }}">
+								<input type="checkbox" id="filter-{{ tag | handleize }}" data-group="tag2" data-field="tags" data-text="{{ tag }}" value="({{ tag }})" data-operator="OR">
+								<i class="fa"></i>
+								{{ tag }}
+							</label>
+						</span>
+					</li>	
+					{% endfor %}
+				</ul>
+			</div>
+		</aside>
+		{% endif %}
+		<!-- End lọc theo chất liệu -->
+		<!-- Lọc kích thước màn hình -->
+		{% if settings.filter_tag3 %}
+		<aside class="aside-item filter-tag">
+
+			<div class="title-head">
+				{{ settings.filter_tag3_title }}
+				
+			</div>
+			<div class="aside-content filter-group">	
+				<ul>
+					{% assign tags = settings.filter_tag3_list | split: ';' %} 
+					{% for t in tags %}
+					{% assign tag = t | strip %}
+					{% assign tag_value = tag | handleize %}
+					<li class="filter-item filter-item--check-box filter-item--green">
+						<span>
+							<label for="filter-{{ tag | handleize }}">
+								<input type="checkbox" id="filter-{{ tag | handleize }}" data-group="tag3" data-field="tags" data-text="{{ tag }}" value="({{ tag }})" data-operator="OR">
+								<i class="fa"></i>
+								{{ tag }}
+							</label>
+						</span>
+					</li>	
+					{% endfor %}
+				</ul>
+			</div>
+		</aside>
+		{% endif %}
+		<!-- End lọc theo kích thước màn hình -->
+		<div class="border_filter">
+
+		</div>
+		<!-- Lọc tính năng camera -->
+		{% if settings.filter_tag4 %}
+		<aside class="aside-item filter-tag">
+
+			<div class="title-head">
+				{{ settings.filter_tag4_title }}
+				
+			</div>
+			<div class="aside-content filter-group">	
+				<ul>
+					{% assign tags = settings.filter_tag4_list | split: ';' %} 
+					{% for t in tags %}
+					{% assign tag = t | strip %}
+					{% assign tag_value = tag | handleize %}
+					<li class="filter-item filter-item--check-box filter-item--green">
+						<span>
+							<label for="filter-{{ tag | handleize }}">
+								<input type="checkbox" id="filter-{{ tag | handleize }}" data-group="tag4" data-field="tags" data-text="{{ tag }}" value="({{ tag }})" data-operator="OR">
+								<i class="fa"></i>
+								{{ tag }}
+							</label>
+						</span>
+					</li>	
+					{% endfor %}
+				</ul>
+			</div>
+		</aside>
+		{% endif %}
+		<!-- End lọc theo tính nắng camera -->
+		<!-- Lọc theo tính năng đặc biệt -->
+		{% if settings.filter_tag5 %}
+		<aside class="aside-item filter-tag">
+
+			<div class="title-head">
+				{{ settings.filter_tag5_title }}
+				
+			</div>
+			<div class="aside-content filter-group">	
+				<ul>
+					{% assign tags = settings.filter_tag5_list | split: ';' %} 
+					{% for t in tags %}
+					{% assign tag = t | strip %}
+					{% assign tag_value = tag | handleize %}
+					<li class="filter-item filter-item--check-box filter-item--green">
+						<span>
+							<label for="filter-{{ tag | handleize }}">
+								<input type="checkbox" id="filter-{{ tag | handleize }}" data-group="tag5" data-field="tags" data-text="{{ tag }}" value="({{ tag }})" data-operator="OR">
+								<i class="fa"></i>
+								{{ tag }}
+							</label>
+						</span>
+					</li>	
+					{% endfor %}
+				</ul>
+			</div>
+		</aside>
+		{% endif %}
+		<!-- End lọc theo tính năng đặc biệt -->
+	</div>
+</div>

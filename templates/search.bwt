@@ -1,0 +1,136 @@
+{% comment %} DR.REJU — Trang tìm kiếm (dựng lại theo hệ thiết kế dr-*).
+   Bản cũ chỉ có 1 tiêu đề + 1 ô input (đo được 89px nội dung), markup theme gốc, không gợi ý gì.
+   Bản này: ô tìm lớn + 3 trạng thái rõ ràng (chưa gõ / có kết quả / không kết quả),
+   dùng chung dữ liệu gợi ý với panel tìm kiếm ở header (header_search_suggest_list + menu danh mục).
+   Sản phẩm render bằng snippet dr_product_card (biến `p`) như các section trang chủ. {% endcomment %}
+
+{% include 'breadcrumb' %}
+
+{%- assign q = search.terms -%}
+{%- assign stype = 'product' -%}
+{% if search.types contains 'article' %}{%- assign stype = 'article' -%}{% endif %}
+
+<section class="dr-section dr-bg dr-srchpg">
+  <div class="dr-container">
+
+    <div class="dr-srchpg-head">
+      <span class="dr-eyebrow">Tìm kiếm</span>
+      <h1 class="dr-h2 dr-mt-8">
+        {% if search.performed and q != blank %}Kết quả cho “{{ q }}”{% else %}Bạn đang tìm gì?{% endif %}
+      </h1>
+
+      <form action="/search" method="get" role="search" class="dr-srchpg-form">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="text" name="query" value="{{ q | escape }}" required autocomplete="off" spellcheck="false"
+               placeholder="{{ settings.header_search_placeholder | default: 'Tìm sản phẩm, hoạt chất, vấn đề da…' }}">
+        <input type="hidden" name="type" value="{{ stype }}">
+        <button type="submit">Tìm kiếm</button>
+      </form>
+    </div>
+
+    {% if search.performed and q != blank %}
+      {% paginate search.results by 24 %}
+
+        {% if search.results_count == 0 %}
+          {% comment %} ── Trạng thái: không có kết quả ── {% endcomment %}
+          <div class="dr-srchpg-none">
+            <i class="fa-regular fa-face-frown" aria-hidden="true"></i>
+            <h2>Không tìm thấy kết quả nào cho “{{ q }}”</h2>
+            <p>Thử từ khoá ngắn hơn, bỏ dấu, hoặc chọn một gợi ý bên dưới.</p>
+          </div>
+          {% include 'dr_search_suggest' %}
+
+        {% else %}
+          <p class="dr-srchpg-count">{{ search.results_count }} kết quả</p>
+
+          {%- assign has_prod = false -%}
+          {% for result in search.results %}{% if result.object_type == 'product' %}{%- assign has_prod = true -%}{% endif %}{% endfor %}
+
+          {% if has_prod %}
+          <div class="dr-pcard-grid dr-srchpg-grid">
+            {% for result in search.results %}
+              {% if result.object_type == 'product' %}
+                {%- assign p = result -%}
+                {% include 'dr_product_card' %}
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% include 'dr_pcard_init' %}
+          {% endif %}
+
+          {% comment %} Bài viết / trang: render dạng hàng, không nhồi vào lưới sản phẩm {% endcomment %}
+          {%- assign has_doc = false -%}
+          {% for result in search.results %}{% unless result.object_type == 'product' %}{%- assign has_doc = true -%}{% endunless %}{% endfor %}
+          {% if has_doc %}
+          <div class="dr-srchpg-docs">
+            {% for result in search.results %}
+              {% unless result.object_type == 'product' %}
+              <a class="dr-srchpg-doc" href="{{ result.url }}">
+                <span class="dr-srchpg-doc__kind">{% if result.object_type == 'article' %}Bài viết{% else %}Trang{% endif %}</span>
+                <span class="dr-srchpg-doc__title">{{ result.title | default: result.name }}</span>
+                {% if result.content != blank %}<span class="dr-srchpg-doc__ex">{{ result.content | strip_html | truncate: 160 }}</span>{% endif %}
+              </a>
+              {% endunless %}
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          {% if paginate.pages > 1 %}
+          <div class="dr-srchpg-pager">{% include 'paginate-pages' %}</div>
+          {% endif %}
+        {% endif %}
+
+      {% endpaginate %}
+    {% else %}
+      {% comment %} ── Trạng thái: chưa gõ gì ── {% endcomment %}
+      {% include 'dr_search_suggest' %}
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+.dr-srchpg-head{ max-width: 720px; margin-bottom: var(--sp-48); }
+.dr-srchpg-form{ display: flex; align-items: center; gap: 12px; margin: var(--sp-24) 0 0;
+  height: 54px; padding: 0 6px 0 20px; background: var(--bg-soft); border-radius: var(--radius-pill); }
+.dr-srchpg-form > i{ flex: none; color: var(--text-soft); font-size: 14px; }
+.dr-srchpg-form input[type="text"]{ flex: 1; min-width: 0; height: 100%; border: 0; background: none; outline: none;
+  font-family: var(--font-primary); font-size: var(--fs-md); color: var(--text); }
+.dr-srchpg-form input::placeholder{ color: var(--text-soft); }
+.dr-srchpg-form button{ flex: none; height: 42px; padding: 0 24px; border: 0; border-radius: var(--radius-pill);
+  background: var(--emerald); color: #fff; font-family: var(--font-primary); font-size: var(--fs-sm);
+  font-weight: 700; letter-spacing: .06em; text-transform: uppercase; cursor: pointer;
+  transition: background .2s ease; }
+.dr-srchpg-form button:hover{ background: var(--emerald-dk); }
+
+.dr-srchpg-count{ margin: 0 0 var(--sp-24); font-size: var(--fs-sm); color: var(--text-soft); }
+.dr-srchpg-grid{ margin-bottom: var(--sp-48); }
+
+/* Không có kết quả */
+.dr-srchpg-none{ padding: var(--sp-48) 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  text-align: center; margin-bottom: var(--sp-48); }
+.dr-srchpg-none i{ font-size: 30px; color: var(--gold); }
+.dr-srchpg-none h2{ margin: var(--sp-16) 0 var(--sp-8); font-family: var(--font-primary);
+  font-size: var(--fs-xl); font-weight: 600; }
+.dr-srchpg-none p{ margin: 0; font-size: var(--fs-base); color: var(--text-soft); }
+
+/* Bài viết / trang */
+.dr-srchpg-docs{ display: grid; gap: 2px; margin-bottom: var(--sp-48); }
+.dr-srchpg-doc{ display: block; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.dr-srchpg-doc__kind{ display: inline-block; font-size: var(--fs-xs); font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--gold); }
+.dr-srchpg-doc__title{ display: block; margin-top: 6px; font-family: var(--font-primary);
+  font-size: var(--fs-md); font-weight: 600; color: var(--text); transition: color .2s ease; }
+.dr-srchpg-doc:hover .dr-srchpg-doc__title{ color: var(--accent); }
+.dr-srchpg-doc__ex{ display: block; margin-top: 6px; font-size: var(--fs-sm); line-height: 1.6; color: var(--text-soft); }
+
+.dr-srchpg-pager{ padding-top: var(--sp-16); }
+
+@media (max-width: 767px){
+  .dr-srchpg-head{ margin-bottom: var(--sp-32); }
+  .dr-srchpg-form{ height: auto; flex-wrap: wrap; padding: 12px 14px; border-radius: var(--radius); }
+  .dr-srchpg-form input[type="text"]{ height: 34px; flex: 1 1 100%; order: 1; }
+  .dr-srchpg-form > i{ display: none; }
+  .dr-srchpg-form button{ order: 2; width: 100%; }
+}
+</style>

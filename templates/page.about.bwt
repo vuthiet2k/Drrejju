@@ -1,0 +1,71 @@
+{% comment %} DR.REJU — Về chúng tôi (page.about) — dựng theo hệ dr-*, nội dung Dr.Reju {% endcomment %}
+
+{% comment %} ===== HERO ABOUT ===== {% endcomment %}
+<section class="dr-banner" style="min-height:420px">
+  <div class="dr-ph" style="position:absolute;inset:0"><i class="fa-solid fa-user-doctor"></i></div>
+  <div class="dr-overlay dr-overlay--left"></div>
+  <div class="dr-container dr-z2">
+    <div style="max-width:640px">
+      <span class="dr-eyebrow">Về Dr.Reju</span>
+      <h1 class="dr-h1 dr-mt-8">Da liễu dựa trên bằng chứng,<br>đặt sự tử tế lên trước</h1>
+      <p class="dr-lead dr-mt-16">Chúng tôi từ chối những yêu cầu "trị mụn cấp tốc" — vì da khỏe thật thì không thể cấp tốc.</p>
+    </div>
+  </div>
+</section>
+
+{% comment %} ===== NGUYÊN TẮC (6 card) ===== {% endcomment %}
+<section class="dr-section dr-bg">
+  <div class="dr-container">
+    <div class="dr-mb-48" style="max-width:680px">
+      <span class="dr-eyebrow">Nguyên tắc làm nghề</span>
+      <h2 class="dr-h2 dr-up dr-mt-8">Vì sao chúng tôi chọn con đường khó hơn</h2>
+    </div>
+    <div class="dr-grid-3 dr-gap-24">
+      {% assign ic = 'fa-user-doctor,fa-award,fa-prescription-bottle-medical,fa-layer-group,fa-comment-dots,fa-heart' | split: ',' %}
+      {% assign ti = 'Bác sĩ trực tiếp xây phác đồ,Chỉ thứ đã kiểm chứng lâm sàng,Không lạm dụng thuốc,Phân loại theo mức độ,Theo sát 1:1 qua Zalo,Đạo đức & cái tâm làm nghề' | split: ',' %}
+      {% assign de = 'Linh hoạt đổi hoạt chất theo diễn biến thật của da bạn — điều bộ sản phẩm bán sẵn không làm được.,Chỉ mã hàng đã theo dõi trên nhiều case thực tế — không theo trend hay quảng cáo sai.,Ưu tiên phục hồi hàng rào bảo vệ tự nhiên thay vì kháng sinh liều cao cho kết quả ảo.,Sản phẩm & dịch vụ xếp theo cấp thiết hoặc bổ trợ — ưu tiên đúng thứ cần trước.,Đồng hành suốt quá trình, điều chỉnh phác đồ mỗi 2 tuần.,Tư vấn đúng, đủ, minh bạch về mọi rủi ro.' | split: ',' %}
+      {% for i in (0..5) %}
+      <div class="dr-card dr-flex-col dr-gap-16">
+        <span class="dr-flex-center" style="width:52px;height:52px;border-radius:12px;background:var(--accent);color:var(--accent-ink)">
+          <i class="fa-solid {{ ic[i] }}" style="font-size:20px"></i>
+        </span>
+        <h3 class="dr-h4">{{ ti[i] }}</h3>
+        <p class="dr-body dr-c-soft">{{ de[i] }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% comment %} ===== BÁC SĨ + ĐỘI NGŨ ===== {% endcomment %}
+<section class="dr-bg-soft">
+  <div class="dr-grid-2">
+    <div class="dr-media" style="border-radius:0;min-height:520px">
+      <img src="{{ 'bs_Hue-3.jpg' | asset_url }}" alt="Bác sĩ Nguyễn Huệ" onerror="this.style.display='none'">
+    </div>
+    <div class="dr-flex-col" style="justify-content:center;padding:var(--sp-80) 8%">
+      <span class="dr-eyebrow">Người sáng lập</span>
+      <h2 class="dr-h2 dr-mt-8">Bác sĩ Nguyễn Huệ</h2>
+      <p class="dr-small dr-c-soft dr-mt-8">Chuyên gia Da liễu Lâm sàng</p>
+      <p class="dr-lead dr-italic dr-mt-24" style="border-left:2px solid var(--accent);padding-left:16px">"Tôi biết bạn đang lo về những vết nám. Tôi sẽ không hứa kết quả sau 7 ngày — tôi hứa đồng hành để da bạn khỏe thật, từ gốc."</p>
+      <div class="dr-flex dr-wrap dr-gap-16 dr-mt-32">
+        {% assign team = 'DS. Trần Mai Linh · Dược sĩ lâm sàng,KTV. Lê Quốc Anh · Kỹ thuật viên trị liệu,CVCS. Phạm Thu Hà · Chăm sóc da' | split: ',' %}
+        {% for t in team %}
+        <span class="dr-badge" style="background:transparent;color:var(--text);border:1px solid var(--line)">{{ t }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% comment %} ===== CTA ===== {% endcomment %}
+<section class="dr-section dr-bg dr-center">
+  <div class="dr-container">
+    <h2 class="dr-h2">Bắt đầu hành trình làn da khỏe thật</h2>
+    <p class="dr-lead dr-mt-8" style="max-width:520px;margin-left:auto;margin-right:auto">Gửi ảnh da qua Zalo — bác sĩ đọc dữ liệu và thiết kế phác đồ 1:1 cho riêng bạn.</p>
+    <div class="dr-flex dr-flex-center dr-wrap dr-gap-16 dr-mt-24">
+      <a href="/dat-lich" class="dr-btn dr-btn--primary">Khởi tạo hồ sơ da</a>
+      <a href="{{ settings.social_zalo_link | default: '#' }}" class="dr-btn dr-btn--outline">Tư vấn Zalo</a>
+    </div>
+  </div>
+</section>

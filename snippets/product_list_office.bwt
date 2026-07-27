@@ -1,0 +1,132 @@
+{%- assign sold_out = true -%}
+{%- if product.available  -%}
+{%- assign sold_out = false -%}
+{%- assign awe-price = product.selected_or_first_available_variant.price -%}
+{%- assign awe-variant = product.selected_or_first_available_variant.title -%}
+{%- assign awe-compare-price = product.selected_or_first_available_variant.compare_at_price -%}
+{%- else -%}
+{%- assign awe-price = product.variants[0].price -%}
+{%- assign awe-variant = product.variants[0].title -%}
+{%- assign awe-compare-price = product.variants[0].compare_at_price -%}
+{%- endif -%} 
+{%- assign contact = false-%}
+{%- if awe-price == 0 -%}
+{%- assign contact = true-%}
+{%- endif-%}
+{%- assign on_sale = false -%}
+{%- if awe-compare-price > awe-price -%}
+{%- assign on_sale = true -%}
+{%- endif -%}
+{%- assign variantCount = product.variants | size -%}
+{%- assign on_var = false -%}
+{%- if variantCount > 1 -%}
+{%- assign on_var = true -%}
+{%- endif -%}
+{%- if awe-compare-price > awe-price -%}
+{%- capture discount -%} 
+{{awe-compare-price | minus:awe-price | times:100 | divided_by:awe-compare-price | round }}% 
+{%- endcapture -%}
+{%- assign pt = awe-compare-price | minus:awe-price | times:100 | divided_by:awe-compare-price-%}
+{%- if pt > 99 -%}
+{%- capture discount -%}
+99%
+{%- endcapture -%}
+{%- endif-%}
+{%- if pt < 1 -%}
+{%- capture discount -%}
+1%
+{%- endcapture -%}
+{%- endif-%}
+{%- assign on_sale = true -%}
+{%- endif -%}
+{%- assign variantCount = product.variants | size -%}
+{%- assign on_var = false -%}
+{%- if variantCount > 1 -%}
+{%- assign on_var = true -%}
+{%- endif -%}
+{%- if awe-compare-price > awe-price -%}
+{%- capture discount -%} 
+{{awe-compare-price | minus:awe-price | times:100 | divided_by:awe-compare-price | round }}% 
+{%- endcapture -%}
+{%- assign pt = awe-compare-price | minus:awe-price | times:100 | divided_by:awe-compare-price -%}
+{%- if pt > 99 -%}
+{%- capture discount -%}
+99%
+{%- endcapture -%}
+{%- endif-%}
+{%- if pt < 1 -%}
+{%- capture discount -%}
+1%
+{%- endcapture -%}
+{%- endif-%}
+{%- assign on_sale = true -%}
+{%- endif -%}
+{%- assign variantCount = product.variants | size -%}
+{%- assign on_var = false -%}
+{%- if variantCount > 1 -%}
+{%- assign on_var = true -%}
+{%- endif -%}
+{%- assign featured_image_alt = product.featured_image.alt | default: product.name -%}
+
+
+
+<form action="/cart/add" method="post" class="variants product-action-list" data-cart-form data-id="product-actions-{{ product.id }}" enctype="multipart/form-data">
+	<div class="product-thumbnail">
+		<a class="image_thumb scale_hover" href="{{ product.url }}" title="{{ product.name }}">
+			<img  width="400" height="400" class="lazyload image1" src="{{ 'lazy.png' | asset_url}}"  data-src="{{ product.featured_image.src | img_url:'large' }}" alt="{{ product.name }}">
+		</a>
+		
+	</div>
+	{%- if on_sale -%}
+		<span class="smart">Giảm {{discount}}</span>
+		{%- endif -%}
+	<div class="product-info">
+		<h3 class="product-name"><a class="line-clamp line-clamp-2" href="{{ product.url }}" title="{{ product.name }}">{{ product.name }}</a></h3>
+		<div class="price-box">
+			{%- if contact -%}
+			<span class="price">Liên hệ </span>
+			{%- else -%}
+			{%- if on_sale -%}
+			<span class="price">{{  awe-price | money }}</span>
+			{%- if awe-compare-price > awe-price -%}
+			<span class="compare-price">{{ awe-compare-price | money }}</span>
+
+			{%- endif -%}			
+			{%- else -%}
+			<span class="price">{{- awe-price | money -}}</span>
+			{%- endif -%}
+			{%- endif -%}
+		</div>
+		<div class="action">
+			{%- if variantCount > 1 -%}
+			<input class="hidden" type="hidden" name="variantId" value="{{ product.variants[0].id }}" />
+			<button class="btn-cart btn-views" title="Xem chi tiết" type="button" onclick="window.location.href='{{product.url}}'" >
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+					<path fill="#fff" d="M120 256c0 30.9-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56zm160 0c0 30.9-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56zm104 56c-30.9 0-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56s-25.1 56-56 56z"/>
+				</svg>
+			</button>
+			{%- elsif contact -%}
+			{%- elsif sold_out -%}
+			{%- else -%}
+			<input class="hidden" type="hidden" name="variantId" value="{{ product.variants[0].id }}" />
+			<button class="btn-cart btn-views add_to_cart {%if contact and variantCount == 1%} hidden{%endif%}" title="Thêm vào giỏ">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+					<path fill="#fff" d="M253.3 35.1c6.1-11.8 1.5-26.3-10.2-32.4s-26.3-1.5-32.4 10.2L117.6 192H32c-17.7 0-32 14.3-32 32s14.3 32 32 32L83.9 463.5C91 492 116.6 512 146 512H430c29.4 0 55-20 62.1-48.5L544 256c17.7 0 32-14.3 32-32s-14.3-32-32-32H458.4L365.3 12.9C359.2 1.2 344.7-3.4 332.9 2.7s-16.3 20.6-10.2 32.4L404.3 192H171.7L253.3 35.1zM192 304v96c0 8.8-7.2 16-16 16s-16-7.2-16-16V304c0-8.8 7.2-16 16-16s16 7.2 16 16zm96-16c8.8 0 16 7.2 16 16v96c0 8.8-7.2 16-16 16s-16-7.2-16-16V304c0-8.8 7.2-16 16-16zm128 16v96c0 8.8-7.2 16-16 16s-16-7.2-16-16V304c0-8.8 7.2-16 16-16s16 7.2 16 16z"/>
+				</svg>
+			</button>
+			{%- endif -%}
+			{%- if settings.quickview_enable -%}
+			<a title="Xem nhanh" href="{{ product.url }}" data-handle="{{ product.alias }}" class="quick-view btn-views">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+					<path  fill="#fff" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
+				</svg>
+			</a>
+			{%- endif-%}
+			{%if settings.use_wishlist%}
+			<a href="javascript:void(0)" class="setWishlist btn-wishlist btn-views" data-wish="{{product.alias}}" tabindex="0" title="Thêm vào yêu thích">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#ffffff" d="M0 190.9V185.1C0 115.2 50.52 55.58 119.4 44.1C164.1 36.51 211.4 51.37 244 84.02L256 96L267.1 84.02C300.6 51.37 347 36.51 392.6 44.1C461.5 55.58 512 115.2 512 185.1V190.9C512 232.4 494.8 272.1 464.4 300.4L283.7 469.1C276.2 476.1 266.3 480 256 480C245.7 480 235.8 476.1 228.3 469.1L47.59 300.4C17.23 272.1 .0003 232.4 .0003 190.9L0 190.9z"></path></svg>
+			</a>
+			{%endif%}
+		</div>
+	</div>
+</form>

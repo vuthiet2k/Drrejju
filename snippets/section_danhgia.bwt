@@ -1,0 +1,39 @@
+<section class="section_danhgia">
+	<div class="container">
+		<div class="title">
+			Đánh giá từ khách hàng
+		</div>
+		<div class="danhgia-slider swiper-container">
+			<div class="swiper-wrapper">
+				{%- for i in (1..5) -%}
+				{%-capture enable_danhgia-%}display_danhgia_{{i}}{%-endcapture-%}
+				{%-capture naviimage-%}danhgia_{{i}}.jpg{%-endcapture-%}
+				{%-capture name-%}danhgia_{{i}}_name{%-endcapture-%}
+				{%-capture job-%}danhgia_{{i}}_job{%-endcapture-%}
+				{%-capture content-%}danhgia_{{i}}_content{%-endcapture-%}
+				{%-if settings[enable_danhgia]-%}
+				<div class="swiper-slide">
+					<div class="item">
+						<div class="avatar">
+							<img width="200" height="200"  alt="{{settings[name]}}" class="lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"  data-src="{{ naviimage | asset_url }}">
+
+						</div>
+
+						<div class="content">
+							<h5>
+								{{settings[name]}}
+							</h5>
+							<span>{{settings[job]}}</span>
+							<p>
+								{{settings[content]}}
+							</p>
+						</div>
+					</div>
+				</div>
+				{%-endif-%}
+				{%-endfor-%}
+			</div>
+
+		</div>
+	</div>
+</section>

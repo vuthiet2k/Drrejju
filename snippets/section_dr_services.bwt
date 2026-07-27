@@ -1,0 +1,130 @@
+{% comment %} DR.REJU — Dịch vụ điều trị (image-first, phong cách Gucci): khối trái ảnh TỰ CHẠY +
+   cột phải 2 ảnh. Chỉ ảnh; hover hiện text mảnh. Cấu hình: Tùy chỉnh → Trang chủ - Dịch vụ {% endcomment %}
+{% assign svc_speed = settings.svc_slide_speed | default: 4 | times: 1000 %}
+<section id="services" class="dr-section dr-bg dr-svc2">
+  <div class="dr-container">
+    {% assign svc_title = settings.svc_title | default: 'Ứng dụng công nghệ y khoa' %}
+    {% if settings.svc_eyebrow != blank or svc_title != blank %}
+    <div class="dr-mb-32" style="max-width:640px">
+      {% if settings.svc_eyebrow != blank %}<span class="dr-eyebrow">{{ settings.svc_eyebrow | default: 'Dịch vụ điều trị' }}</span>{% endif %}
+      {% if svc_title != blank %}<h2 class="dr-h2 dr-mt-8">{{ svc_title }}</h2>{% endif %}
+    </div>
+    {% endif %}
+
+    <div class="dr-svc2-grid">
+      {% comment %} KHỐI TRÁI — ảnh tự chạy {% endcomment %}
+      <div class="dr-svc2-main" data-svc-slider data-speed="{{ svc_speed }}">
+        {% assign has_slide = false %}
+        {% for i in (1..5) %}
+        {% capture imgk %}svc_slide_{{ i }}_img{% endcapture %}
+        {% if settings[imgk] != blank %}
+        {% assign has_slide = true %}
+        {% capture titk %}svc_slide_{{ i }}_title{% endcapture %}
+        {% capture subk %}svc_slide_{{ i }}_sub{% endcapture %}
+        {% capture urlk %}svc_slide_{{ i }}_url{% endcapture %}
+        <a class="dr-svc2-slide{% if forloop.first %} is-active{% endif %}" href="{{ settings[urlk] | default: '#' }}">
+          <img src="{{ settings[imgk] | img_url: '1024x1024' }}" alt="{{ settings[titk] }}" loading="lazy">
+          <span class="dr-svc2-cap">
+            {% if settings[subk] != blank %}<em>{{ settings[subk] }}</em>{% endif %}
+            {% if settings[titk] != blank %}<strong>{{ settings[titk] }}</strong>{% endif %}
+            <span class="dr-svc2-more">Xem chi tiết</span>
+          </span>
+        </a>
+        {% endif %}
+        {% endfor %}
+        {% unless has_slide %}
+        <div class="dr-svc2-slide is-active"><div class="dr-ph" style="position:absolute;inset:0"><i class="fa-solid fa-image"></i></div><span class="dr-svc2-cap"><strong>Tải ảnh khối lớn ở Tùy chỉnh → Dịch vụ</strong></span></div>
+        {% endunless %}
+      </div>
+
+      {% comment %} CỘT PHẢI — 2 ảnh {% endcomment %}
+      {% for i in (1..2) %}
+      {% capture imgk %}svc_side_{{ i }}_img{% endcapture %}
+      {% capture titk %}svc_side_{{ i }}_title{% endcapture %}
+      {% capture subk %}svc_side_{{ i }}_sub{% endcapture %}
+      {% capture urlk %}svc_side_{{ i }}_url{% endcapture %}
+      <a class="dr-svc2-side" href="{{ settings[urlk] | default: '#' }}">
+        {% if settings[imgk] != blank %}
+        <img src="{{ settings[imgk] | img_url: '1024x1024' }}" alt="{{ settings[titk] }}" loading="lazy">
+        {% else %}
+        <div class="dr-ph" style="position:absolute;inset:0"><i class="fa-solid fa-image"></i></div>
+        {% endif %}
+        <span class="dr-svc2-cap">
+          {% if settings[subk] != blank %}<em>{{ settings[subk] }}</em>{% endif %}
+          {% if settings[titk] != blank %}<strong>{{ settings[titk] }}</strong>{% endif %}
+          <span class="dr-svc2-more">Xem chi tiết</span>
+        </span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+/* Gucci-style: góc sắc (radius 0), gap nhỏ, phẳng (không shadow), hover chậm & tối giản */
+.dr-svc2-grid{ display: grid; grid-template-columns: 1.55fr 1fr; grid-template-rows: 1fr 1fr; gap: 8px; }
+.dr-svc2-main{ grid-column: 1; grid-row: 1 / span 2; min-height: 480px; }
+.dr-svc2-side{ grid-column: 2; min-height: 236px; }
+.dr-svc2-main, .dr-svc2-side{ position: relative; overflow: hidden; border-radius: 0; display: block; background: var(--bg-soft); }
+.dr-svc2-slide{ position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease; pointer-events: none; display: block; }
+.dr-svc2-slide.is-active{ opacity: 1; pointer-events: auto; }
+.dr-svc2-main img, .dr-svc2-side img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.4s cubic-bezier(.19,1,.22,1); }
+.dr-svc2-main:hover img, .dr-svc2-side:hover img{ transform: scale(1.045); }
+
+/* Caption: ẩn, hover mới hiện — fade chậm, chữ mảnh */
+.dr-svc2-cap{ position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; display: flex; flex-direction: column; gap: 7px; padding: 26px 24px; color: #fff; background: linear-gradient(to top, rgba(6,32,26,.82) 0%, rgba(6,32,26,.15) 65%, rgba(6,32,26,0) 100%); opacity: 0; transition: opacity .7s ease; }
+.dr-svc2-main:hover .dr-svc2-slide.is-active .dr-svc2-cap, .dr-svc2-side:hover .dr-svc2-cap{ opacity: 1; }
+.dr-svc2-cap em{ font-style: normal; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+.dr-svc2-cap strong{ font-family: var(--font-primary); font-weight: 500; font-size: var(--fs-lg); line-height: 1.25; letter-spacing: .01em; }
+.dr-svc2-more{ align-self: flex-start; margin-top: 6px; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: #fff; padding-bottom: 3px; border-bottom: 1px solid rgba(255,255,255,.55); transform: translateY(8px); opacity: 0; transition: opacity .6s ease .08s, transform .6s ease .08s; }
+.dr-svc2-main:hover .dr-svc2-slide.is-active .dr-svc2-more, .dr-svc2-side:hover .dr-svc2-more{ opacity: 1; transform: none; }
+
+/* ── Mobile: mosaic 2 cột thay vì 3 khối xếp dọc ────────────────────────────
+   Xếp dọc 320+240+240 = ~810px cuộn cho 3 tấm ảnh. Giữ nguyên tinh thần
+   editorial nhưng cho 2 ảnh phụ nằm cạnh nhau → còn ~450px, và người dùng thấy
+   được cả 3 dịch vụ trong một tầm mắt. aspect-ratio thay min-height để tỉ lệ
+   ảnh không đổi theo bề ngang máy. */
+@media (max-width: 767px){
+  .dr-svc2-grid{ grid-template-columns: 1fr 1fr; grid-template-rows: none; gap: 6px; }
+  .dr-svc2-main{ grid-column: 1 / -1; grid-row: auto; min-height: 0; aspect-ratio: 16 / 11; }
+  .dr-svc2-side{ grid-column: auto; min-height: 0; aspect-ratio: 3 / 4; }
+  /* Mobile không hover → hiện caption sẵn */
+  .dr-svc2-slide.is-active .dr-svc2-cap, .dr-svc2-side .dr-svc2-cap{ opacity: 1; }
+  .dr-svc2-slide.is-active .dr-svc2-more, .dr-svc2-side .dr-svc2-more{ opacity: 1; transform: none; }
+  /* Caption trong ô hẹp: chữ nhỏ hơn, padding sát, bỏ letter-spacing quá rộng */
+  .dr-svc2-cap{ padding: 14px 13px; gap: 5px; }
+  .dr-svc2-cap em{ font-size: 10px; letter-spacing: .16em; }
+  .dr-svc2-cap strong{ font-size: var(--fs-base); }
+  .dr-svc2-more{ font-size: 9px; letter-spacing: .18em; margin-top: 3px; }
+  .dr-svc2-main .dr-svc2-cap{ padding: 18px 16px; }
+  .dr-svc2-main .dr-svc2-cap strong{ font-size: var(--fs-md); }
+}
+@media (max-width: 480px){
+  /* Ô phụ chỉ còn ~160px ngang → 3:4 quá cao, về 4:5 cho gọn */
+  .dr-svc2-side{ aspect-ratio: 4 / 5; }
+  .dr-svc2-cap{ padding: 12px 11px; }
+  .dr-svc2-side .dr-svc2-cap strong{ font-size: .875rem; }
+}
+</style>
+
+<script>
+(function(){
+  function initSvc(){
+    var boxes = document.querySelectorAll('[data-svc-slider]');
+    for (var b = 0; b < boxes.length; b++){ (function(box){
+      var slides = box.querySelectorAll('.dr-svc2-slide');
+      if (slides.length < 2) return;
+      var speed = parseInt(box.getAttribute('data-speed'), 10) || 4000;
+      var idx = 0, timer = null;
+      function go(n){ slides[idx].classList.remove('is-active'); idx = (n + slides.length) % slides.length; slides[idx].classList.add('is-active'); }
+      function start(){ stop(); timer = setInterval(function(){ go(idx + 1); }, speed); }
+      function stop(){ if (timer) { clearInterval(timer); timer = null; } }
+      box.addEventListener('mouseenter', stop);
+      box.addEventListener('mouseleave', start);
+      start();
+    })(boxes[b]); }
+  }
+  if (document.readyState !== 'loading') initSvc();
+  else document.addEventListener('DOMContentLoaded', initSvc);
+})();
+</script>

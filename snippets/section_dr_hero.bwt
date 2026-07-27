@@ -1,0 +1,66 @@
+{% comment %} DR.REJU — Hero (full-bleed + nhấn italic gold + glass badge). Cấu hình: Tùy chỉnh → Trang chủ - Hero {% endcomment %}
+<section class="dr-hero">
+  {% if settings.hero_image != blank %}
+  <img src="{{ settings.hero_image | img_url: '2048x2048' }}" alt="{{ settings.hero_image_alt | default: 'Bác sĩ Nguyễn Huệ — Dr.Reju' }}" loading="eager" onerror="this.style.display='none'">
+  {% else %}
+  <img src="{{ 'bs_Hue-1.jpg' | asset_url }}" alt="{{ settings.hero_image_alt | default: 'Bác sĩ Nguyễn Huệ — Dr.Reju' }}" loading="eager" onerror="this.style.display='none'">
+  {% endif %}
+  <div class="dr-overlay dr-overlay--left"></div>
+  <div class="dr-container dr-z2">
+    <div class="dr-hero__in">
+      <span class="dr-eyebrow">{{ settings.hero_eyebrow | default: 'Da liễu dựa trên bằng chứng · Phác đồ 1:1' }}</span>
+      <h1 class="dr-h1 dr-mt-16">{{ settings.hero_title | default: 'Chấm dứt điều trị da<br>theo <em class="dr-hero-accent">cảm tính</em>' }}</h1>
+      <p class="dr-lead dr-mt-16">{{ settings.hero_desc | default: 'Mỗi làn da một hồ sơ. Bác sĩ đọc dữ liệu thật trên da bạn rồi mới quyết định phác đồ, không đoán mò, không chạy theo trend.' }}</p>
+      <div class="dr-flex dr-wrap dr-gap-16 dr-mt-24">
+        <a href="{{ settings.hero_btn1_url | default: '/dat-lich' }}" class="dr-btn dr-btn--primary">{{ settings.hero_btn1_label | default: 'Khởi tạo hồ sơ da' }} <i class="fa-solid fa-arrow-right"></i></a>
+        {% assign hero_btn2 = settings.hero_btn2_label | default: 'Xem vấn đề da' %}
+        {% if hero_btn2 != blank %}<a href="{{ settings.hero_btn2_url | default: '#concerns' }}" class="dr-btn dr-btn--outline">{{ hero_btn2 }}</a>{% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% assign hero_badge = settings.hero_badge_title | default: 'Phác đồ 1:1 cá nhân hoá' %}
+  {% if hero_badge != blank %}
+  <div class="dr-hero-badge">
+    <span class="dr-hero-badge__icon"><i class="fa-solid {{ settings.hero_badge_icon | default: 'fa-user-doctor' }}" aria-hidden="true"></i></span>
+    <div>
+      <strong>{{ hero_badge }}</strong>
+      <span>{{ settings.hero_badge_desc | default: 'Bác sĩ trực tiếp xây, theo sát mỗi 2 tuần' }}</span>
+    </div>
+  </div>
+  {% endif %}
+</section>
+
+<style>
+/* Căn lề trái + mép trái thẳng hàng dọc với logo header.
+   .dr-hero là flex → ép .dr-container fill full-width (thay vì co theo nội dung) để giống container header. */
+.dr-hero .dr-container{ width: 100%; }
+.dr-hero .dr-hero__in{ max-width: 640px; text-align: left; align-items: flex-start; }
+.dr-hero .dr-hero__in .dr-flex{ justify-content: flex-start; }
+.dr-hero-accent{ color: var(--gold); font-style: italic; }
+.dr-hero-badge{ position: absolute; right: 6%; bottom: 12%; z-index: 3; display: flex; align-items: center; gap: 14px; max-width: 320px; padding: 18px 20px; border-radius: 16px; background: rgba(255,255,255,.12); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.25); box-shadow: 0 24px 54px rgba(6,32,26,.35); }
+.dr-hero-badge__icon{ width: 46px; height: 46px; flex: none; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gold); color: var(--emerald); font-size: 20px; }
+.dr-hero-badge strong{ display: block; font-family: var(--font-primary); font-weight: 600; font-size: var(--fs-sm); color: #fff; }
+.dr-hero-badge span{ font-size: var(--fs-xs); color: rgba(255,255,255,.82); line-height: 1.45; }
+@media (max-width: 991px){ .dr-hero-badge{ display: none; } }
+
+/* ── Mobile: hero cao vừa đủ, CTA 1 nút chính + 1 link ─────────────────────── */
+@media (max-width: 767px){
+  /* 100vh trên mobile = chiều cao khi thanh địa chỉ CHƯA thu → hero luôn cao hơn
+     khung nhìn thật, người dùng không thấy dấu hiệu nào là còn nội dung bên dưới.
+     svh đo đúng khung nhìn nhỏ; dòng vh phía trên là fallback cho máy cũ. */
+  .dr-hero{ min-height: 88vh; min-height: 84svh; }
+  .dr-hero .dr-hero__in{ max-width: 100%; margin-bottom: var(--sp-32); }
+  .dr-hero .dr-h1, .dr-hero .dr-lead{ margin-top: 10px; }
+
+  /* Hai pill cạnh nhau ở bề ngang 360px sẽ bị bó còn ~150px/nút → chữ vỡ 2 dòng.
+     Xếp dọc: nút chính giữ dạng pill, nút phụ hạ thành link gạch chân. */
+  .dr-hero .dr-hero__in .dr-flex{ flex-direction: column; align-items: flex-start; gap: 12px; margin-top: 18px; }
+  .dr-hero .dr-hero__in .dr-btn--outline{
+    padding: 5px 0; min-height: 34px; border: 0; border-radius: 0;
+    border-bottom: 1px solid rgba(255,255,255,.5);
+    font-size: 11px; letter-spacing: .12em; color: #fff;
+  }
+  .dr-hero .dr-hero__in .dr-btn--outline:hover{ background: none; color: var(--gold); border-bottom-color: var(--gold); }
+}
+</style>

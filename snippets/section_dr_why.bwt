@@ -1,0 +1,313 @@
+{% comment %} DR.REJU — Vì sao chọn (phương án D2 "Infographic 6 trụ"):
+   Nền emerald tối, ảnh bác sĩ DỌC ở giữa (ảnh gốc 2:3 — khung dọc giữ trọn khung hình,
+   khác bản cũ nhồi ảnh dọc vào banner ngang làm mất 2/3 ảnh), 3 trụ trái + 3 trụ phải
+   nối bằng hairline vàng về phía ảnh, tag thông tin ngay dưới ảnh.
+   Cấu hình: Tùy chỉnh → Trang chủ - Vì sao chọn
+   Bản ghi chọn phương án: _drafts/direction-approved.md {% endcomment %}
+
+{%- assign why_speed = settings.why_slide_speed | default: 4 | times: 1000 -%}
+{%- assign docAsset = 'bs_Hue-1.jpg,bs_Hue-2.jpg,bs_Hue-3.jpg' | split: ',' -%}
+{%- assign cIcon = 'fa-user-doctor|fa-microscope|fa-shield-heart|fa-layer-group|fa-comment-medical|fa-hand-holding-heart' | split: '|' -%}
+{%- assign cTi = 'Bác sĩ trực tiếp xây phác đồ|Chỉ thứ đã kiểm chứng lâm sàng|Không lạm dụng thuốc|Phân loại theo mức độ|Theo sát 1:1 qua Zalo|Đạo đức và cái tâm làm nghề' | split: '|' -%}
+{%- assign cDe = 'Linh hoạt đổi hoạt chất theo diễn biến thật của da bạn.|Chỉ mã hàng đã theo dõi trên nhiều case thực tế, không theo trend.|Ưu tiên phục hồi hàng rào bảo vệ tự nhiên thay vì kháng sinh liều cao.|Xếp theo mức cấp thiết hoặc bổ trợ, ưu tiên đúng thứ cần trước.|Điều chỉnh phác đồ mỗi 2 tuần theo phản hồi thật của da.|Tư vấn đúng, đủ, minh bạch cho làn da và sức khỏe tinh thần.' | split: '|' -%}
+{% comment %} Tag mặc định KHÔNG chứa con số (số năm/số ca) — số liệu về trình độ người thật
+   phải do chủ cửa hàng điền sau khi xác minh. Cũng không lặp lại "Người sáng lập"
+   vì đã có ở badge góc ảnh và dòng vai trò. {% endcomment %}
+{%- assign tagIcon = 'fa-user-doctor,fa-file-medical,fa-comment-medical' | split: ',' -%}
+{%- assign tagLb = 'Chuyên khoa Da liễu,Phác đồ 1:1,Theo sát qua Zalo' | split: ',' -%}
+
+<section id="why" class="dr-section dr-why3">
+  <div class="dr-container dr-why3-in">
+
+    <div class="dr-why3-head">
+      <span class="dr-eyebrow">{{ settings.why_eyebrow | default: 'Vì sao chọn Dr.Reju' }}</span>
+      <h2 class="dr-h2 dr-mt-8 dr-why3-h">{{ settings.why_headline | default: 'Chúng tôi từ chối trị mụn cấp tốc. <span>Da khỏe thật thì không thể vội vã.</span>' }}</h2>
+      {%- assign why_cta = settings.why_cta_label | default: 'Tìm hiểu Phác đồ 1:1' -%}
+      {% if why_cta != blank %}<a href="{{ settings.why_cta_url | default: '/dat-lich' }}" class="dr-btn dr-btn--primary dr-mt-24">{{ why_cta }} <i class="fa-solid fa-arrow-right"></i></a>{% endif %}
+    </div>
+
+    <div class="dr-why3-grid">
+
+      {% comment %} ── 3 trụ bên trái ── {% endcomment %}
+      <div class="dr-why3-col dr-why3-col--l">
+        {% for i in (1..3) %}
+          {%- assign idx = i | minus: 1 -%}
+          {%- capture tk %}why_{{ i }}_title{% endcapture -%}
+          {%- capture dk %}why_{{ i }}_desc{% endcapture -%}
+          {%- capture ik %}why_{{ i }}_icon{% endcapture -%}
+          {%- assign ctitle = settings[tk] | default: cTi[idx] -%}
+          {% if ctitle != blank %}
+          <article class="dr-why3-pil">
+            <div class="dr-why3-pil-t">
+              <span class="dr-why3-pil-no">{{ i }}</span>
+              <h3>{{ ctitle }}</h3>
+            </div>
+            <p>{{ settings[dk] | default: cDe[idx] }}</p>
+          </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      {% comment %} ── Ảnh bác sĩ ở giữa (dải 3 ảnh tự chạy) ── {% endcomment %}
+      <div class="dr-why3-doc">
+        <span class="dr-why3-halo" aria-hidden="true"></span>
+        <span class="dr-why3-halo dr-why3-halo--2" aria-hidden="true"></span>
+
+        <div class="dr-why3-frame" data-why-slider data-speed="{{ why_speed }}">
+          {%- assign why_badge = settings.why_badge | default: 'Người sáng lập' -%}
+          {% if why_badge != blank %}<span class="dr-why3-badge"><i class="fa-solid fa-certificate" aria-hidden="true"></i> {{ why_badge }}</span>{% endif %}
+
+          {%- assign has_doc = false -%}
+          {% for i in (1..3) %}
+            {%- capture dimgk %}why_doc_{{ i }}_img{% endcapture -%}
+            {% if settings[dimgk] != blank %}
+              {%- assign has_doc = true -%}
+              <div class="dr-why3-slide{% if forloop.first %} is-active{% endif %}"><img src="{{ settings[dimgk] | img_url: '1024x1024' }}" alt="{{ settings.why_doc_name | default: 'Bác sĩ Nguyễn Huệ' }}" loading="lazy"></div>
+            {% endif %}
+          {% endfor %}
+
+          {% unless has_doc %}
+            {% for i in (0..2) %}
+            <div class="dr-why3-slide{% if forloop.first %} is-active{% endif %}"><img src="{{ docAsset[i] | asset_url }}" alt="{{ settings.why_doc_name | default: 'Bác sĩ Nguyễn Huệ' }}" loading="lazy" onerror="this.style.display='none'"></div>
+            {% endfor %}
+          {% endunless %}
+        </div>
+
+        {% comment %} ── TAG NGAY DƯỚI ẢNH ── {% endcomment %}
+        <div class="dr-why3-tags">
+          {% for i in (1..3) %}
+            {%- assign idx = i | minus: 1 -%}
+            {%- capture gk %}why_tag_{{ i }}{% endcapture -%}
+            {%- capture gik %}why_tag_{{ i }}_icon{% endcapture -%}
+            {%- assign glb = settings[gk] | default: tagLb[idx] -%}
+            {% if glb != blank %}<span class="dr-why3-tag"><i class="fa-solid {{ settings[gik] | default: tagIcon[idx] }}" aria-hidden="true"></i> {{ glb }}</span>{% endif %}
+          {% endfor %}
+        </div>
+
+        <div class="dr-why3-name">
+          <strong>{{ settings.why_doc_name | default: 'Bác sĩ Nguyễn Huệ' }}</strong>
+          <em>{{ settings.why_doc_role | default: 'Chuyên gia Da liễu Lâm sàng · Người sáng lập' }}</em>
+          {%- assign why_q = settings.why_doc_quote | default: '“Tôi sẽ không hứa kết quả sau 7 ngày. Tôi hứa đồng hành để da bạn khỏe thật, từ gốc.”' -%}
+          {% if why_q != blank %}<p>{{ why_q }}</p>{% endif %}
+        </div>
+      </div>
+
+      {% comment %} ── 3 trụ bên phải ── {% endcomment %}
+      <div class="dr-why3-col dr-why3-col--r">
+        {% for i in (4..6) %}
+          {%- assign idx = i | minus: 1 -%}
+          {%- capture tk %}why_{{ i }}_title{% endcapture -%}
+          {%- capture dk %}why_{{ i }}_desc{% endcapture -%}
+          {%- capture ik %}why_{{ i }}_icon{% endcapture -%}
+          {%- assign ctitle = settings[tk] | default: cTi[idx] -%}
+          {% if ctitle != blank %}
+          <article class="dr-why3-pil">
+            <div class="dr-why3-pil-t">
+              <span class="dr-why3-pil-no">{{ i }}</span>
+              <h3>{{ ctitle }}</h3>
+            </div>
+            <p>{{ settings[dk] | default: cDe[idx] }}</p>
+          </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+/* ── Layout / Box ── */
+.dr-why3{ position: relative; overflow: hidden; background: var(--emerald-dk); color: #fff; }
+.dr-why3-in{ position: relative; z-index: 2; }
+.dr-why3-head{ text-align: center; margin-bottom: 52px; }
+.dr-why3-grid{ display: grid; grid-template-columns: 1fr 392px 1fr; gap: 34px; align-items: center; }
+.dr-why3-col{ display: flex; flex-direction: column; gap: var(--sp-16); }
+.dr-why3-doc{ position: relative; }
+/* flex + wrap thay vì grid 1fr: text tag do người dùng sửa, dài thì xuống dòng
+   chứ không tràn ra ngoài chiều ngang ảnh */
+.dr-why3-tags{ display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; margin-top: 14px; }
+.dr-why3-name{ text-align: center; margin-top: 20px; }
+
+/* ── Typography ── */
+.dr-why3 .dr-eyebrow{ color: var(--gold); }
+.dr-why3-h{ color: #fff; max-width: 720px; margin-left: auto; margin-right: auto; }
+/* nền tối → phần nhấn trong headline phải là VÀNG (var(--accent) là emerald, sẽ mất chữ) */
+.dr-why3-h span{ color: var(--gold); }
+.dr-why3-pil h3{ margin: 0; font-family: var(--font-primary); font-size: var(--fs-base); font-weight: 600; line-height: 1.3; color: #fff; }
+.dr-why3-pil p{ margin: 9px 0 0; font-size: var(--fs-sm); line-height: 1.6; color: rgba(255,255,255,.68); }
+.dr-why3-name strong{ display: block; font-family: var(--font-primary); font-size: var(--fs-2xl); font-weight: 600; line-height: 1.2; color: #fff; }
+.dr-why3-name em{ display: block; margin-top: 6px; font-style: normal; font-size: var(--fs-xs); letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+.dr-why3-name p{ max-width: 360px; margin: var(--sp-16) auto 0; font-size: var(--fs-sm); font-style: italic; line-height: 1.65; color: rgba(255,255,255,.78); }
+
+/* ── Visual: nền lưới + quầng sáng ── */
+.dr-why3::before{ content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(223,186,115,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(223,186,115,.045) 1px, transparent 1px);
+  background-size: 56px 56px; }
+.dr-why3::after{ content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(720px 460px at 50% 34%, rgba(223,186,115,.13), transparent 70%); }
+
+/* ── Trụ tiêu chí + đường nối về phía ảnh ── */
+.dr-why3-pil{ position: relative; padding: 18px 20px; border-radius: 12px;
+  background: rgba(255,255,255,.055); border: 1px solid rgba(223,186,115,.2); }
+.dr-why3-pil-t{ display: flex; align-items: center; gap: 11px; }
+.dr-why3-pil-no{ flex: none; width: 30px; height: 30px; border-radius: 8px; background: var(--gold); color: var(--emerald);
+  display: flex; align-items: center; justify-content: center; font-family: var(--font-primary); font-size: var(--fs-sm); font-weight: 700; }
+.dr-why3-pil::after{ content: ''; position: absolute; top: 50%; width: 34px; height: 1px; }
+.dr-why3-pil::before{ content: ''; position: absolute; top: 50%; width: 6px; height: 6px; margin-top: -3px; border-radius: 50%;
+  background: var(--gold); box-shadow: 0 0 10px rgba(223,186,115,.7); }
+.dr-why3-col--l .dr-why3-pil::after{ right: -34px; background: linear-gradient(90deg, rgba(223,186,115,.55), rgba(223,186,115,0)); }
+.dr-why3-col--r .dr-why3-pil::after{ left: -34px; background: linear-gradient(270deg, rgba(223,186,115,.55), rgba(223,186,115,0)); }
+.dr-why3-col--l .dr-why3-pil::before{ right: -3px; }
+.dr-why3-col--r .dr-why3-pil::before{ left: -3px; }
+.dr-why3-col--r{ text-align: right; }
+.dr-why3-col--r .dr-why3-pil-t{ flex-direction: row-reverse; }
+
+/* ── Khung ảnh dọc 3:4 (padding-top thay aspect-ratio để chắc tương thích) ── */
+.dr-why3-frame{ position: relative; height: 0; padding-top: 133.333%; border-radius: var(--radius);
+  overflow: hidden; background: var(--bg-soft); box-shadow: 0 30px 68px rgba(0,0,0,.42); }
+.dr-why3-frame::after{ content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 3;
+  border: 1px solid rgba(223,186,115,.55); border-radius: var(--radius); }
+.dr-why3-slide{ position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease; }
+.dr-why3-slide.is-active{ opacity: 1; }
+.dr-why3-slide img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.dr-why3-badge{ position: absolute; top: 18px; left: 18px; z-index: 4; display: inline-flex; align-items: center; gap: 7px;
+  padding: 7px 13px; border-radius: var(--radius-pill); background: rgba(6,32,26,.85); border: 1px solid rgba(223,186,115,.5);
+  color: var(--gold); font-family: var(--font-primary); font-size: var(--fs-xs); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+
+.dr-why3-halo{ position: absolute; left: 50%; top: 46%; width: 118%; height: 0; padding-top: 118%;
+  transform: translate(-50%,-50%); border-radius: 50%; border: 1px solid rgba(223,186,115,.22); pointer-events: none; }
+
+/* ── Tag dưới ảnh ── */
+.dr-why3-tag{ display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 8px;
+  border-radius: var(--radius-pill); background: rgba(223,186,115,.1); border: 1px solid rgba(223,186,115,.4);
+  font-family: var(--font-primary); font-size: var(--fs-xs); font-weight: 600; color: var(--gold);
+  text-align: center; max-width: 100%; }
+.dr-why3-tag i{ font-size: 11px; opacity: .85; }
+
+/* ── Animation (chỉ bật khi JS gắn .is-anim) ── */
+.dr-why3.is-anim .dr-why3-pil, .dr-why3.is-anim .dr-why3-tag{ opacity: 0; }
+.dr-why3.is-anim .dr-why3-pil{ transform: translateY(12px); }
+.dr-why3.is-anim .dr-why3-tag{ transform: translateY(8px) scale(.96); }
+.dr-why3.is-anim .dr-why3-pil.is-in{ animation: drWhyRise .55s cubic-bezier(.2,.8,.2,1) forwards; }
+.dr-why3.is-anim .dr-why3-tag.is-in{ animation: drWhyPop .45s cubic-bezier(.2,.9,.3,1.2) forwards; }
+.dr-why3-halo{ animation: drWhyHalo 4.6s ease-out infinite; }
+.dr-why3-halo--2{ animation-delay: 2.3s; }
+
+@keyframes drWhyRise{ to{ opacity: 1; transform: none; } }
+@keyframes drWhyPop{ to{ opacity: 1; transform: none; } }
+@keyframes drWhyHalo{ 0%{ transform: translate(-50%,-50%) scale(.86); opacity: .75; } 100%{ transform: translate(-50%,-50%) scale(1.12); opacity: 0; } }
+
+/* ── Media queries ── */
+@media (max-width: 1200px){
+  .dr-why3-grid{ grid-template-columns: 1fr 330px 1fr; gap: 26px; }
+  .dr-why3-pil::after{ width: 26px; }
+  .dr-why3-col--l .dr-why3-pil::after{ right: -26px; }
+  .dr-why3-col--r .dr-why3-pil::after{ left: -26px; }
+}
+@media (max-width: 991px){
+  /* gap grid = gap trong cột (12px) để chỗ nối trụ 3 → trụ 4 không hở rộng hơn các trụ khác;
+     khoảng thở sau khối bác sĩ bù bằng margin-top của cột trái */
+  .dr-why3-grid{ grid-template-columns: 1fr; gap: 12px; }
+  .dr-why3-doc{ order: -1; max-width: 400px; margin: 0 auto; }
+  .dr-why3-col--l{ margin-top: 20px; }
+  .dr-why3-col{ gap: 12px; }
+  .dr-why3-col--r{ text-align: left; }
+  .dr-why3-col--r .dr-why3-pil-t{ flex-direction: row; }
+  .dr-why3-pil::after, .dr-why3-pil::before{ display: none; }
+  .dr-why3-head{ margin-bottom: 40px; }
+}
+/* ── Mobile: 6 trụ dạng thẻ tiêu đề 2 cột, ảnh bác sĩ nhỏ lại ────────────────
+   Bản cũ trên mobile: ảnh 3:4 rộng 400px (≈533px cao) + 6 trụ xếp dọc mỗi trụ
+   tiêu đề + 2–3 dòng mô tả → hơn 1400px cuộn cho MỘT section. Ở đây bỏ mô tả
+   (tiêu đề trụ đã tự nói đủ), xếp 2 cột, ảnh về 260px → còn khoảng 1/3. */
+@media (max-width: 767px){
+  .dr-why3-head{ margin-bottom: var(--sp-24); }
+  .dr-why3-head .dr-btn{ margin-top: var(--sp-16); }
+
+  .dr-why3-grid{ gap: var(--sp-16); }
+  .dr-why3-doc{ max-width: 260px; }
+  .dr-why3-col--l{ margin-top: 0; }
+
+  /* 2 cột; nhóm nào có số trụ lẻ thì trụ cuối chiếm cả hàng → không hở ô trống.
+     Dùng :last-child:nth-child(odd) thay vì nth-child(3) vì mỗi trụ có thể bị
+     tắt bằng cách để trống tiêu đề, số trụ thực tế không cố định. */
+  .dr-why3-col{ display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .dr-why3-col .dr-why3-pil:last-child:nth-child(odd){ grid-column: 1 / -1; }
+
+  .dr-why3-pil{ padding: 11px 12px; border-radius: 10px; }
+  .dr-why3-pil p{ display: none; }
+  .dr-why3-pil h3{ font-size: .8125rem; line-height: 1.3; }
+  .dr-why3-pil-t{ gap: 9px; }
+  .dr-why3-pil-no{ width: 24px; height: 24px; border-radius: 7px; font-size: 11px; }
+
+  .dr-why3-badge{ top: 12px; left: 12px; padding: 5px 10px; font-size: 10px; }
+  .dr-why3-tags{ gap: 6px; margin-top: 12px; }
+  .dr-why3-tag{ padding: 7px 11px; font-size: 11px; }
+  .dr-why3-name{ margin-top: var(--sp-16); }
+  .dr-why3-name strong{ font-size: var(--fs-lg); }
+  .dr-why3-name em{ font-size: 10px; letter-spacing: .12em; }
+  .dr-why3-name p{ margin-top: 10px; font-size: .875rem; line-height: 1.6; }
+}
+@media (max-width: 480px){
+  .dr-why3-doc{ max-width: 228px; }
+  .dr-why3-tag{ padding: 6px 10px; font-size: 10px; }
+}
+
+/* ── Tôn trọng cài đặt giảm chuyển động ── */
+@media (prefers-reduced-motion: reduce){
+  .dr-why3-halo{ display: none; }
+  .dr-why3.is-anim .dr-why3-pil, .dr-why3.is-anim .dr-why3-tag{ opacity: 1; transform: none; animation: none; }
+  .dr-why3-slide{ transition: none; }
+}
+</style>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Dải ảnh bác sĩ tự chạy */
+  function initWhySlider(){
+    var boxes = document.querySelectorAll('[data-why-slider]');
+    for (var b = 0; b < boxes.length; b++){ (function(box){
+      var slides = box.querySelectorAll('.dr-why3-slide');
+      if (slides.length < 2 || reduce) return;
+      var speed = parseInt(box.getAttribute('data-speed'), 10) || 4000;
+      var idx = 0, timer = null;
+      function go(n){ slides[idx].classList.remove('is-active'); idx = (n + slides.length) % slides.length; slides[idx].classList.add('is-active'); }
+      function start(){ stop(); timer = setInterval(function(){ go(idx + 1); }, speed); }
+      function stop(){ if (timer) { clearInterval(timer); timer = null; } }
+      box.addEventListener('mouseenter', stop);
+      box.addEventListener('mouseleave', start);
+      document.addEventListener('visibilitychange', function(){ if (document.hidden) stop(); else start(); });
+      start();
+    })(boxes[b]); }
+  }
+
+  /* Trụ + tag hiện dần khi cuộn tới */
+  function initWhyReveal(){
+    var secs = document.querySelectorAll('.dr-why3');
+    for (var s = 0; s < secs.length; s++){ (function(sec){
+      var items = sec.querySelectorAll('.dr-why3-pil, .dr-why3-tag');
+      if (!items.length) return;
+      // Thiếu IntersectionObserver hoặc đã tắt chuyển động → để hiện sẵn, không gắn .is-anim
+      if (reduce || !window.IntersectionObserver) return;
+
+      sec.className += ' is-anim';
+      var io = new IntersectionObserver(function(entries){
+        if (!entries[0].isIntersecting) return;
+        io.disconnect();
+        for (var i = 0; i < items.length; i++){
+          items[i].style.animationDelay = (i * 0.08) + 's';
+          items[i].className += ' is-in';
+        }
+      }, { threshold: 0.12 });
+      io.observe(sec.querySelector('.dr-why3-grid') || sec);
+    })(secs[s]); }
+  }
+
+  function init(){ initWhySlider(); initWhyReveal(); }
+  if (document.readyState !== 'loading') init();
+  else document.addEventListener('DOMContentLoaded', init);
+})();
+</script>

@@ -1,0 +1,24 @@
+{%- include 'ajaxcart' -%}
+{%- if settings.quickview_enable -%}	
+
+
+{%- endif -%}
+<link rel="preload" as="script" href="{{ 'main.js' | asset_url }}" />
+{%- if template contains 'index' -%}
+<link rel="preload" as="script" href="{{ 'index.js' | asset_url }}" />
+{%- endif -%}
+{%if settings.use_search_auto%}
+<link rel="preload" as="script" href="{{ 'placeholdertypewriter.js' | asset_url }}" />
+{{ 'placeholdertypewriter.js' | asset_url | script_tag }}
+{%endif%}
+{{ 'main.js' | asset_url | script_tag }}
+{%- if template contains 'index' -%}
+{{ 'index.js' | asset_url | script_tag }}
+{%- endif -%}
+
+{%- if template contains 'product' -%}
+<link rel="preload" as="script" href="{{ 'picbox.js' | asset_url }}" />
+<link rel="preload" as='style'  type="text/css" href="{{ 'picbox.scss.css' | asset_url }}">
+{{ 'picbox.scss.css' | asset_url | stylesheet_tag }}
+{{ 'picbox.js' | asset_url | script_tag }}
+{%- endif -%}

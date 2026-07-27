@@ -1,0 +1,90 @@
+<section class="section_tab_product ">
+
+	<div class="container">
+		<div class="block-product">
+
+
+			<h2 class="title">
+				<a href="{{settings.tab_link_1}}" title="{{settings.tab_title_1}}">{{settings.tab_title_1}}</a>
+			</h2>
+			<div class="row">
+
+
+				<div class="col-12 e-tabs not-dqtab ajax-tab-1" data-section="ajax-tab-1" data-view="grid_4">
+					<ul class="tabs tabs-title tab-desktop ajax clearfix">
+						{% for x in (1..8) %}
+						{%capture checkallpro%}check_{{x}}_allpro1{%endcapture%}
+						{%capture titleallpro%}title_{{x}}_allpro1{%endcapture%}
+						{%capture titleallproimage%}title_image_{{x}}_allpro1.png{%endcapture%}
+						{%capture urlallpro%}url_{{x}}_allpro1{%endcapture%}
+						{%if settings[checkallpro]%}
+						{% if forloop.first %}
+						{% assign urlcusone = settings[urlallpro] %}
+						{% assign urlallpros = settings[urlallpro] %}
+						{%else%}
+						{% assign urlcustow = settings[urlallpro] %}
+						{% assign urlallpros = settings[urlallpro] %}
+
+						{%endif%}
+						{%if settings[titleallpro] != '' and settings[titleallpro] != null%}
+						<li class="tab-link {%if forloop.first%}has-content{%endif%}" data-tab="tab-{{forloop.index}}" data-url="{{urlallpros}}" >
+							<span title="{{settings[titleallpro]}}">
+								{{settings[titleallpro]}}							
+							</span>
+						</li>
+						{%endif%}
+						{%endif%}
+						{% endfor %}
+					</ul>
+					{% for g in (1..8) %}
+					{%capture checkallpro%}check_{{g}}_allpro1{%endcapture%}
+					{%capture titleallpro%}title_{{g}}_allpro1{%endcapture%}
+					{%capture urlallpro%}url_{{g}}_allpro1{%endcapture%}
+					{%if settings[checkallpro]%}
+					{% if forloop.first %}
+					{% assign urlcusone = settings[urlallpro] %}
+					{% assign urlallpros = settings[urlallpro] %}
+					{%else%}
+					{% assign urlcustow = settings[urlallpro] %}
+					{%if collections[urlcustow]products_count > 0%}
+					{% assign urlallpros = settings[urlallpro] %}
+					{%else%}
+					{% assign urlallpros = '/collections/all' %}
+					{%endif%}
+					{%endif%}
+					{% assign module_1_product_count = collections[urlallpros]products_count %}
+					{%if settings[titleallpro] != '' and settings[titleallpro] != null%}
+					<div class="tab-{{forloop.index}} tab-content">
+						{% if forloop.first %}
+						{% if module_1_product_count > 0 %}
+						<div class="row row-fix">
+
+							{% for product in collections[urlallpros]products limit: 5 %}
+							<div class="col-xl-20 col-lg-3 col-sm-4 col-6 col-fix">			
+								{% include 'product_grid_office' %}
+							</div>
+							{% endfor %}
+						</div>
+
+						{%else%}
+						<div style="margin-top: 20px" class="alert alert-warning alert-warning2 alert-dismissible margin-top-15 section" role="alert">
+							Sản phẩm đang được cập nhật.
+						</div>
+						{%endif%}
+
+						{%endif%}
+						{% if module_1_product_count > 0 %}
+						<div class="text-center no-padding">
+							<a class="see-more" title="Xem tất cả" href="/{{urlallpros}}">Xem tất cả</a>
+						</div>
+						{%endif%}
+					</div>
+					{%endif%}
+					{%endif%}
+					{%endfor%}
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>

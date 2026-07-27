@@ -1,0 +1,35 @@
+<section class="section_brand">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-4">
+				<span class="title">
+					{{settings.section_thuonghieu_title}}
+				</span>
+				<span class="content">
+					{{settings.section_thuonghieu_content}}
+				</span>
+			</div>
+			<div class="col-lg-8">
+				<ul>
+					{%- for i in (1..20) -%}
+					{%-capture naviimage-%}thuonghieu_{{i}}.jpg{%-endcapture-%}				
+					{%-capture url-%}thuonghieu_{{i}}_link{%-endcapture-%}
+					{%-capture title-%}thuonghieu_{{i}}_title{%-endcapture-%}
+					{%-capture check-%}thuonghieu_{{i}}_check{%-endcapture-%}
+					{%-if settings[check]-%}
+					<li>
+						<a href="{{settings[url]}}" title="{{settings[title]}}">
+							<img width="390" height="129" class="lazyload" src="{{ 'lazy.png' | asset_url}}" data-src="{{naviimage | asset_url}}" alt="{{settings[title]}}">
+						</a>
+					</li>
+					{%-endif-%}
+					{%-endfor-%}
+					
+
+					
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>

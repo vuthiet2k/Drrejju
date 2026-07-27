@@ -1,0 +1,90 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="preload" as='style' type="text/css" href="{{ 'main.scss.css' | asset_url }}">
+<link rel="preload" as='style'  type="text/css" href="{{ 'index.scss.css' | asset_url }}">
+<link rel="preload" as='style'  type="text/css" href="{{ 'bootstrap-4-3-min.css' | asset_url }}">
+<link rel="preload" as='style'  type="text/css" href="{{ 'swiper.scss.css' | asset_url }}">
+<link rel="stylesheet" href="{{'bootstrap-4-3-min.css' | asset_url}}">
+{{ 'main.scss.css' | asset_url | stylesheet_tag }}
+{{ 'utilities.scss.css' | asset_url | stylesheet_tag }}
+{%if template contains 'index'%}
+{{ 'index.scss.css' | asset_url | stylesheet_tag }}
+{%endif%}
+{{ 'swiper.scss.css' | asset_url | stylesheet_tag }}	
+
+
+
+
+{%if template != 'index'%}
+{{ 'breadcrumb_style.scss.css' | asset_url | stylesheet_tag }}
+{%unless template contains 'product'%}
+{{ 'paginate.scss.css' | asset_url | stylesheet_tag }}
+{%endunless%}
+{%endif%}
+
+
+{%if template contains '404'%}{{ '404page.scss.css' | asset_url | stylesheet_tag }}{%endif%}
+{%if template contains 'page'%}{{ 'style_page.scss.css' | asset_url | stylesheet_tag }}{%endif%}
+{%if template contains 'cart'%}{{ 'cartpage.scss.css' | asset_url | stylesheet_tag }}	{%endif%}
+{%if template contains 'blog' or template contains 'article' or template contains 'search'%}{{ 'blog_article_style.scss.css' | asset_url | stylesheet_tag }}{%endif%}
+{%if template contains 'collection' or template contains 'blog'  or template contains 'article' or template contains 'page.favorite'%}{{ 'sidebar_style.scss.css' | asset_url | stylesheet_tag }}	{%endif%}
+{%if template contains 'product'%}{{ 'product_style.scss.css' | asset_url | stylesheet_tag }}{%endif%}
+{%if template contains 'contact'%}{{ 'contact_style.scss.css' | asset_url | stylesheet_tag }}{%endif%}
+{%if template contains 'customers'%}{{ 'account_oder_style.scss.css' | asset_url | stylesheet_tag }}{%endif%}
+{%if template contains 'collection' or template contains 'search' or template contains 'page.favorite'%}{{ 'collection_style.scss.css' | asset_url | stylesheet_tag }}{%endif%}
+{%if template contains 'search' %}{{ 'search_style.scss.css' | asset_url | stylesheet_tag }}{%endif%}
+{%if template contains 'page.hethong'%}{{ 'hethong.scss.css' | asset_url | stylesheet_tag }}{%endif%}
+		<style>
+	@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+	/* ============================================================
+	   DR.REJU — DESIGN TOKENS (nguồn sự thật cho toàn bộ class dùng chung)
+	   Đổi giá trị Ở ĐÂY là đổi cả theme. Utility/component đọc qua var().
+	   ============================================================ */
+	:root{
+	  /* ============ ROYAL CLINICAL — Deep Emerald + Sand Gold ============ */
+	  --emerald:    #0A2E24;   /* xanh ngọc lục bảo sâu — nền tối / brand */
+	  --emerald-dk: #06201a;
+	  --gold:       #DFBA73;   /* vàng gold cát — nhấn / nút / icon */
+	  --gold-lt:    #E3C17E;
+
+	  /* — BODY (nền sáng) — */
+	  --bg:        #ffffff;   /* trắng — nền chính */
+	  --bg-alt:    #FAF6EF;   /* kem ấm — section xen kẽ (sandwich), KHÔNG phải xám */
+	  --bg-soft:   #F1ECE3;   /* section sáng xen kẽ */
+	  --bg-card:   #ffffff;   /* nền thẻ */
+	  --surface:   #ffffff;
+	  --text:      #17140F;   /* chữ chính trên nền sáng (ink ấm) */
+	  --text-soft: #6E675C;   /* chữ phụ */
+	  --text-on-surface: #17140F;
+	  --line:      #E7E0D6;
+	  --accent:    #0A2E24;   /* nhấn trên nền SÁNG = emerald (eyebrow/heading) */
+	  --accent-dk: #06201a;
+	  --accent-ink:#ffffff;   /* chữ trên nền accent (emerald) */
+
+	  /* — Nút chính: nền GOLD, chữ EMERALD — */
+	  --btn-bg:   #DFBA73;
+	  --btn-text: #0A2E24;
+
+	  /* — HEADER/FOOTER + section nền tối: emerald/gold, lấy từ config — */
+	  --brand-bg:    {{ settings.color_header_bg | default: '#0A2E24' }};
+	  --brand-bg-dk: {{ settings.hover | default: '#06201a' }};
+	  --brand-text:  {{ settings.txt_header | default: '#DFBA73' }};
+
+	  /* — Font (đang cấu hình Quicksand — đổi 1 dòng nếu chốt font khác) — */
+	  --font-primary:   'Quicksand', sans-serif;   /* heading / nav / nút */
+	  --font-secondary: 'Quicksand', sans-serif;   /* body / mô tả */
+
+	  /* — Thang cỡ chữ — */
+	  --fs-xs: .75rem;  --fs-sm: .875rem; --fs-base: 1rem; --fs-md: 1.125rem;
+	  --fs-lg: 1.25rem; --fs-xl: 1.5rem;  --fs-2xl: 2rem;  --fs-3xl: 2.75rem;
+
+	  /* — Spacing 8pt — */
+	  --sp-4:4px; --sp-8:8px; --sp-16:16px; --sp-24:24px; --sp-32:32px;
+	  --sp-48:48px; --sp-56:56px; --sp-80:80px; --sp-110:110px;
+
+	  /* — Khác — */
+	  --container: 1320px;
+	  --radius: 14px; --radius-sm: 8px; --radius-pill: 999px;
+	  --shadow: 0 10px 40px rgba(0,0,0,.18);
+	}
+</style>

@@ -1,0 +1,84 @@
+<nav class="header-nav">
+	<ul class="item_big">
+		<li>
+			<a class="logo-sitenav d-lg-none d-block" href="/" title="Logo">	
+				<img width="172" height="50" src="{{ 'logo.png' | asset_url }}" alt="{{ store.name }}">
+			</a>
+		</li>
+		
+		<li class="d-block d-lg-none title-danhmuc"><span>Menu chính</span></li>
+		{% assign i = 0 %}
+		{%- for link in linklists[settings.main_menu].links -%}
+		{% if settings.display_megamenu %}{% assign items_list = settings.megamenu_items | split:"," %}{% endif %}{% assign mega-title = link.title | downcase %}
+		{%- if linklists[link.alias] != blank -%}
+		{% if settings.display_megamenu and items_list contains mega-title %}
+		{% assign i = i | plus: 1 %}
+		{%capture image1%}mega-{{i}}-image.jpg{%endcapture%}
+		{%capture link1%}mega-{{i}}-link{%endcapture%}
+		{%endif%}
+		<li class="nav-item {% if forloop.index == 1 %}nav-item-first{%endif%} {% if link.active %}active{% endif %} {% if settings.display_megamenu and items_list contains mega-title %} has-mega{%endif%}" >
+			<a class="a-img {% if linklists[link.alias].links %}caret-down{%endif%}" href="{{ link.url }}" title="{{ link.title }}">
+				{{ link.title }}
+			</a>
+			<i class="fa fa-caret-down"></i>
+			{% if settings.display_megamenu and items_list contains mega-title %}
+
+			{% include 'mega-menu' %}
+			<ul class="item_small d-lg-none d-block">
+				{%- for link_child in linklists[link.alias].links -%}
+				<li>
+					<a class="{% if linklists[link_child.alias].links != blank%}caret-down{%endif%}" href="{{ link_child.url }}" title="{{ link_child.title }}">
+						{{ link_child.title }} 
+					</a>
+					{%- if linklists[link_child.alias].links != blank -%}
+					<i class="fa fa-caret-down"></i>
+					{%- endif -%}
+					{%- if linklists[link_child.alias].links -%}
+					<ul>
+						{%- for link_child2 in linklists[link_child.alias].links -%}
+						<li>
+							<a href="{{ link_child2.url }}" title="{{ link_child2.title }}" class="a3">{{ link_child2.title }}</a>
+						</li>
+						{%- endfor -%}
+					</ul>
+					{%- endif -%}
+				</li>
+				{%- endfor -%}
+			</ul>
+			{% else %}
+
+			<ul class="item_small">
+				{%- for link_child in linklists[link.alias].links -%}
+				<li>
+					<a class="{% if linklists[link_child.alias].links != blank%}caret-down{%endif%}" href="{{ link_child.url }}" title="{{ link_child.title }}">
+						{{ link_child.title }} 
+					</a>
+					{%- if linklists[link_child.alias].links != blank -%}
+					<i class="fa fa-caret-down"></i>
+					{%- endif -%}
+					{%- if linklists[link_child.alias].links -%}
+					<ul>
+						{%- for link_child2 in linklists[link_child.alias].links -%}
+						<li>
+							<a href="{{ link_child2.url }}" title="{{ link_child2.title }}" class="a3">{{ link_child2.title }}</a>
+						</li>
+						{%- endfor -%}
+					</ul>
+					{%- endif -%}
+				</li>
+				{%- endfor -%}
+			</ul>
+			{% endif %}
+		</li>
+		{%- else -%}
+		<li class="nav-item {% if forloop.index == 1 %}nav-item-first{%endif%} {% if link.active %}active {% endif %}">				
+			<a class="a-img" href="{{ link.url }}" title="{{ link.title }}">
+				{{ link.title }}
+			</a>
+		</li>
+		{%- endif -%}
+		{%- endfor -%}
+		
+
+	</ul>
+</nav>
