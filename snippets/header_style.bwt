@@ -41,34 +41,36 @@
 	   Đổi giá trị Ở ĐÂY là đổi cả theme. Utility/component đọc qua var().
 	   ============================================================ */
 	:root{
-	  /* ============ ROYAL CLINICAL — Deep Emerald + Sand Gold ============ */
-	  --emerald:    #0A2E24;   /* xanh ngọc lục bảo sâu — nền tối / brand */
-	  --emerald-dk: #06201a;
-	  --gold:       #DFBA73;   /* vàng gold cát — nhấn / nút / icon */
-	  --gold-lt:    #E3C17E;
+	  /* ============ ROYAL CLINICAL — Deep Emerald + Sand Gold ============
+	     4 màu brand đọc từ admin (Thiết lập chung → Bảng màu thương hiệu).
+	     Đổi ở đây chỉ là fallback cho preview/khi settings trống. */
+	  --emerald:    {{ settings.main_color   | default: '#0A2E24' }};   /* xanh ngọc lục bảo sâu — nền tối / brand */
+	  --emerald-dk: {{ settings.hover_color  | default: '#06201a' }};
+	  --gold:       {{ settings.color_gold   | default: '#DFBA73' }};   /* vàng gold cát — nhấn / nút / icon */
+	  --gold-lt:    {{ settings.color_gold_lt | default: '#E3C17E' }};
 
 	  /* — BODY (nền sáng) — */
 	  --bg:        #ffffff;   /* trắng — nền chính */
-	  --bg-alt:    #FAF6EF;   /* kem ấm — section xen kẽ (sandwich), KHÔNG phải xám */
-	  --bg-soft:   #F1ECE3;   /* section sáng xen kẽ */
+	  --bg-alt:    {{ settings.color_bg_alt  | default: '#FAF6EF' }};   /* kem ấm — section xen kẽ (sandwich), KHÔNG phải xám */
+	  --bg-soft:   {{ settings.color_bg_soft | default: '#F1ECE3' }};   /* section sáng xen kẽ */
 	  --bg-card:   #ffffff;   /* nền thẻ */
 	  --surface:   #ffffff;
 	  --text:      #17140F;   /* chữ chính trên nền sáng (ink ấm) */
 	  --text-soft: #6E675C;   /* chữ phụ */
 	  --text-on-surface: #17140F;
 	  --line:      #E7E0D6;
-	  --accent:    #0A2E24;   /* nhấn trên nền SÁNG = emerald (eyebrow/heading) */
-	  --accent-dk: #06201a;
+	  --accent:    {{ settings.main_color  | default: '#0A2E24' }};    /* nhấn trên nền SÁNG = emerald */
+	  --accent-dk: {{ settings.hover_color | default: '#06201a' }};
 	  --accent-ink:#ffffff;   /* chữ trên nền accent (emerald) */
 
 	  /* — Nút chính: nền GOLD, chữ EMERALD — */
-	  --btn-bg:   #DFBA73;
-	  --btn-text: #0A2E24;
+	  --btn-bg:   {{ settings.color_gold | default: '#DFBA73' }};
+	  --btn-text: {{ settings.main_color | default: '#0A2E24' }};
 
-	  /* — HEADER/FOOTER + section nền tối: emerald/gold, lấy từ config — */
-	  --brand-bg:    {{ settings.color_header_bg | default: '#0A2E24' }};
-	  --brand-bg-dk: {{ settings.hover | default: '#06201a' }};
-	  --brand-text:  {{ settings.txt_header | default: '#DFBA73' }};
+	  /* — HEADER/FOOTER + section nền tối: bám cùng cặp emerald/gold — */
+	  --brand-bg:    {{ settings.main_color  | default: '#0A2E24' }};
+	  --brand-bg-dk: {{ settings.hover_color | default: '#06201a' }};
+	  --brand-text:  {{ settings.color_gold  | default: '#DFBA73' }};
 
 	  /* — Font (đang cấu hình Quicksand — đổi 1 dòng nếu chốt font khác) — */
 	  --font-primary:   'Quicksand', sans-serif;   /* heading / nav / nút */

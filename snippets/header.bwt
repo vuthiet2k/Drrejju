@@ -32,8 +32,10 @@
   {% comment %} Tầng 2: main nav — thấp xuống khi scroll {% endcomment %}
   <div class="dr-container dr-nav">
     <button class="dr-burger" id="drBurger" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    {%- assign dr_logo_src = settings.logo_image -%}
+    {%- if dr_logo_src == blank -%}{%- assign dr_logo_src = 'logo.png' | asset_url -%}{%- endif -%}
     <a href="/" class="dr-brand" title="{{ store.name }}" aria-label="{{ store.name | default: 'Dr.REJU' }}">
-      <img src="{{ 'logo.png' | asset_url }}" alt="{{ store.name | default: 'Dr.REJU' }}" class="dr-brand-logo" width="150" height="46">
+      <img src="{{ dr_logo_src }}" alt="{{ store.name | default: 'Dr.REJU' }}" class="dr-brand-logo" width="150" height="46">
     </a>
     {% comment %} Mega menu (phương án H3): nhánh có link con → panel NỀN SÁNG tràn ngang,
        link chia cột + thẻ quảng bá bên phải. Nhánh không có con → link thường.

@@ -12,7 +12,7 @@ module.exports = {
     url:              'https://drreju.mysapo.net',
     email:            'nguyenhueydp@gmail.com',
     address:          'TDP Hùng Thắng, Xã Tiền Hải, Tỉnh Hưng Yên, Việt Nam',
-    phone_number:     '0962081295',
+    phone_number:     '0326242286',
 
     currency:                    'VND',
     currency_symbol:             '₫',

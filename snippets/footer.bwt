@@ -41,9 +41,11 @@
   <div class="dr-container">
     <div class="dr-footer-grid">
 
+      {%- assign dr_logo_src = settings.logo_image -%}
+      {%- if dr_logo_src == blank -%}{%- assign dr_logo_src = 'logo.png' | asset_url -%}{%- endif -%}
       <div class="dr-foot-brand">
         <a href="/" class="dr-brand" aria-label="Dr.REJU">
-          <img src="{{ 'logo.png' | asset_url }}" alt="Dr.REJU" class="dr-brand-logo" width="150" height="46">
+          <img src="{{ dr_logo_src }}" alt="Dr.REJU" class="dr-brand-logo" width="150" height="46">
         </a>
         <p style="opacity:.85;line-height:1.7;max-width:320px">{{ settings.title_col_1 | default: 'Da liễu dựa trên bằng chứng — phác đồ 1:1 cá nhân hoá. Nội dung mang tính giáo dục, không thay thế tư vấn y khoa trực tiếp.' }}</p>
         <div class="dr-foot-social">

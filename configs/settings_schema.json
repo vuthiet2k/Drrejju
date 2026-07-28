@@ -4,17 +4,47 @@
     "settings": [
       {
         "type": "header",
-        "content": "Thiết lập màu sắc"
+        "content": "Bảng màu thương hiệu (Design Tokens)"
+      },
+      {
+        "type": "paragraph",
+        "content": "Đây là nguồn sự thật cho toàn bộ theme. Đổi ở đây là đổi cả trang. Header/Footer nền tối dùng cặp emerald; nút/nhấn dùng gold."
       },
       {
         "type": "color",
         "id": "main_color",
-        "label": "Màu sắc chính"
+        "label": "Màu chính — Emerald (nền tối, brand)",
+        "info": "Mặc định #0A2E24 — xanh ngọc lục bảo sâu"
       },
       {
         "type": "color",
         "id": "hover_color",
-        "label": "Màu sắc phụ"
+        "label": "Màu chính đậm — Emerald Dark (hover / gradient)",
+        "info": "Mặc định #06201a"
+      },
+      {
+        "type": "color",
+        "id": "color_gold",
+        "label": "Màu nhấn — Gold (nút / icon / eyebrow)",
+        "info": "Mặc định #DFBA73 — vàng gold cát"
+      },
+      {
+        "type": "color",
+        "id": "color_gold_lt",
+        "label": "Màu nhấn sáng — Gold Light (hover nút gold)",
+        "info": "Mặc định #E3C17E"
+      },
+      {
+        "type": "color",
+        "id": "color_bg_alt",
+        "label": "Nền xen kẽ — Cream ấm (section sandwich)",
+        "info": "Mặc định #FAF6EF — KHÔNG phải xám"
+      },
+      {
+        "type": "color",
+        "id": "color_bg_soft",
+        "label": "Nền phụ — Soft (input, chip nhỏ)",
+        "info": "Mặc định #F1ECE3"
       },
       {
         "type": "checkbox",
@@ -298,9 +328,15 @@
       },
       {
         "type": "image",
+        "id": "logo_image",
+        "label": "Logo (khuyến dùng)",
+        "info": "Upload ảnh — dùng cho cả header và footer. Đề nghị 332x100px, nền trong suốt (.png/.svg). Nếu để trống sẽ dùng logo.png trong theme (mục bên dưới)."
+      },
+      {
+        "type": "image",
         "id": "logo.png",
-        "label": "Logo",
-        "info": "Đề nghị 332x100px"
+        "label": "Logo (dự phòng — ghi đè asset logo.png)",
+        "info": "Chỉ dùng khi bạn không upload ở mục 'Logo (khuyến dùng)' phía trên."
       },
       {
         "type": "link_list",
@@ -1778,7 +1814,7 @@
         "id": "why_tag_1",
         "label": "Tag 1",
         "info": "⚠️ Nếu ghi con số (số năm, số ca) thì phải là số liệu THẬT đã xác minh — đây là thông tin trình độ của người thật, có quy định về quảng cáo dịch vụ y tế.",
-        "default": "Chuyên khoa Da liễu"
+        "default": "Chuyên gia da liễu"
       },
       {
         "type": "text",
