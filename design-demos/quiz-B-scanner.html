@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DR.REJU · Quiz B — Máy soi da (page.quiz)</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* DR.REJU clinical palette ? calm surfaces for reading, emerald for action, gold for brand accents. */
+  --bg:#f6f7f2; --surface:#ffffff; --surface-alt:#edf3ed;
+  --ink:#173a31; --ink-soft:#5d7068; --emerald:#156b54; --emerald-deep:#0b4939;
+  --gold:#c69b3c; --gold-soft:#f4e8c9; --line:#d8e2d8;
+  --text:var(--ink); --text-soft:var(--ink-soft); --text-on-surface:var(--ink);
+  --bg-soft:var(--surface-alt); --bg-card:var(--surface); --accent:var(--emerald);
+  --brand-bg:var(--emerald); --brand-text:#fffdf5; --mint:#72a991;
+  --radius:8px; --radius-pill:999px; --container:1200px;
+  --font-primary:'Jost',system-ui,sans-serif; --font-secondary:'Inter',system-ui,sans-serif;
+  --fs-xs:.75rem; --fs-sm:.875rem; --fs-base:1rem; --fs-lg:1.125rem; --fs-xl:1.5rem; --fs-2xl:clamp(2.25rem,4vw,3.85rem);
+  --sp-4:4px; --sp-6:6px; --sp-8:8px; --sp-9:9px; --sp-12:12px; --sp-13:13px; --sp-14:14px; --sp-16:16px; --sp-18:18px; --sp-20:20px; --sp-22:22px; --sp-24:24px; --sp-30:30px; --sp-32:32px; --sp-34:34px; --sp-40:40px; --sp-44:44px; --sp-48:48px; --sp-54:54px; --sp-56:56px; --sp-58:58px; --sp-64:64px; --sp-80:80px; --sp-110:110px;
+
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font-secondary);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.dr-container{max-width:var(--container);margin:0 auto;padding:0 40px}
+.dr-section{padding:var(--sp-110) 0}
+@media(max-width:980px){.dr-section{padding:var(--sp-48) 0}.dr-container{padding:0 22px}}
+.dr-eyebrow{font-size:var(--fs-xs);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.dr-h2{font-family:var(--font-primary);font-weight:600;font-size:var(--fs-2xl);line-height:1.2;margin:0}
+.dr-lead{font-size:var(--fs-lg);line-height:1.65;color:var(--text-soft);max-width:42ch}
+
+.q-card{position:relative;overflow:hidden;border-radius:var(--radius);padding:0;color:var(--text);
+  background:var(--bg-soft);box-shadow:0 32px 70px rgba(0,0,0,.3)}
+.q-grid{position:relative;z-index:3;display:grid;grid-template-columns:1fr 1fr;align-items:center}
+@media(max-width:980px){.q-grid{grid-template-columns:1fr}}
+
+.q-left{padding:var(--sp-58) var(--sp-24) var(--sp-54) var(--sp-58)}
+@media(max-width:980px){.q-left{padding:var(--sp-48) var(--sp-30) var(--sp-6)}}
+.q-title{margin-top:var(--sp-14)}.q-title b{color:var(--emerald);font-weight:600}
+.q-lead{margin:var(--sp-18) 0 0}
+
+.spec{margin-top:var(--sp-32);border-top:1px solid var(--line)}
+.spec-row{display:flex;justify-content:space-between;align-items:baseline;gap:var(--sp-16);
+  padding:var(--sp-13) 0;border-bottom:1px solid var(--line);font-size:var(--fs-sm)}
+.spec-row span{color:var(--text-soft)}
+.spec-row b{color:var(--emerald);font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+
+.q-cta{display:inline-flex;align-items:center;gap:var(--sp-12);margin-top:var(--sp-32);padding:var(--sp-16) var(--sp-30);
+  background:var(--emerald);color:#fffdf5;border-radius:var(--radius-pill);text-decoration:none;
+  font-size:var(--fs-sm);font-weight:700;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+.q-cta:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(21,107,84,.22)}
+.q-cta .arw{transition:transform .25s}.q-cta:hover .arw{transform:translateX(4px)}
+.q-note{margin-top:var(--sp-18);font-size:var(--fs-xs);line-height:1.55;color:var(--text-soft);max-width:38ch}
+
+.q-right{padding:var(--sp-44) var(--sp-58) var(--sp-44) var(--sp-24)}
+@media(max-width:980px){.q-right{padding:var(--sp-14) var(--sp-30) var(--sp-44)}}
+.scope{position:relative;aspect-ratio:1/1;max-width:440px;margin-inline:auto}
+
+.corner{position:absolute;width:26px;height:26px;border:2px solid var(--gold);opacity:.75}
+.corner.tl{top:0;left:0;border-right:0;border-bottom:0}
+.corner.tr{top:0;right:0;border-left:0;border-bottom:0}
+.corner.bl{bottom:0;left:0;border-right:0;border-top:0}
+.corner.br{bottom:0;right:0;border-left:0;border-top:0}
+
+.ring{position:absolute;inset:26px;border-radius:50%;border:1px dashed var(--line);
+  animation:spin 30s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.face{position:absolute;inset:0;width:100%;height:100%}
+.face path,.face circle,.face ellipse{fill:none;stroke:var(--mint);stroke-width:1.4;
+  stroke-linecap:round;stroke-dasharray:1400;stroke-dashoffset:1400;
+  animation:draw 2.4s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+.beam{position:absolute;left:26px;right:26px;height:88px;pointer-events:none;z-index:1;
+  background:linear-gradient(180deg,transparent 0%,rgba(253,249,78,.10) 55%,rgba(253,249,78,.30) 92%,transparent 100%);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent);
+         mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent);
+  filter:blur(2px);animation:sweep 3.6s cubic-bezier(.5,0,.5,1) infinite}
+.beam::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(253,249,78,.85),transparent)}
+@keyframes sweep{0%{top:-6%;opacity:0}14%{opacity:1}86%{opacity:1}100%{top:94%;opacity:0}}
+
+.hit{position:absolute;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border-radius:50%;
+  border:1.5px solid var(--gold);opacity:0;animation:lock .5s forwards}
+.hit::after{content:'';position:absolute;inset:-9px;border-radius:50%;border:1px solid var(--line);
+  animation:ripple 2.2s ease-out infinite}
+@keyframes lock{to{opacity:1}}
+@keyframes ripple{0%{transform:scale(.5);opacity:.9}100%{transform:scale(2.1);opacity:0}}
+
+.tag{position:absolute;z-index:4;white-space:nowrap;padding:5px 11px;border-radius:6px;
+  background:rgba(10,46,36,.9);border:1px solid var(--line);
+  font-size:var(--fs-xs);font-weight:700;color:var(--gold);letter-spacing:.04em;
+  opacity:0;transform:translateY(4px);animation:tagin .45s forwards}
+@keyframes tagin{to{opacity:1;transform:none}}
+
+.readout{margin-top:var(--sp-22);display:flex;justify-content:center;gap:var(--sp-12);flex-wrap:wrap}
+.rd{padding:9px 16px;border:1px solid var(--line);border-radius:10px;text-align:center;min-width:96px}
+.rd b{display:block;font-size:1.125rem;font-weight:700;color:var(--mint);font-variant-numeric:tabular-nums}
+.rd span{font-size:var(--fs-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--text-soft)}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important}
+  .face path,.face circle,.face ellipse{stroke-dashoffset:0}
+  .hit,.tag{opacity:1;transform:translateY(0)}
+  .beam{display:none}
+}
+</style>
+</head>
+<body>
+
+<section class="dr-section">
+  <div class="dr-container">
+    <div class="q-card">
+      <div class="q-grid">
+
+        <div class="q-left">
+          <span class="dr-eyebrow">Đánh giá da DR.REJU</span>
+          <h2 class="dr-h2 q-title">Bản đồ da của bạn,<br><b>trước khi gặp bác sĩ</b></h2>
+          <p class="dr-lead">Bộ câu hỏi có phân nhánh dựng nên hồ sơ da đầy đủ — vùng tổn thương, diễn tiến, lịch sử điều trị, cảnh báo an toàn.</p>
+
+          <div class="spec">
+            <div class="spec-row"><span>Câu hỏi</span><b>17 + phân nhánh</b></div>
+            <div class="spec-row"><span>Thời gian</span><b>~4 phút</b></div>
+            <div class="spec-row"><span>Ảnh da</span><b>Tùy chọn</b></div>
+            <div class="spec-row"><span>Người đọc hồ sơ</span><b>Bác sĩ da liễu</b></div>
+          </div>
+
+          <a href="/quiz" class="q-cta">Bắt đầu đánh giá <span class="arw">→</span></a>
+          <p class="q-note">Bộ câu hỏi thu thập và phân loại thông tin. Kết luận do bác sĩ đưa ra — website không tự chẩn đoán.</p>
+        </div>
+
+        <div class="q-right">
+          <div class="scope">
+            <span class="corner tl"></span><span class="corner tr"></span>
+            <span class="corner bl"></span><span class="corner br"></span>
+
+            <svg class="face" viewBox="0 0 400 400" aria-hidden="true">
+              <path d="M200 96c-42 0-72 30-72 76 0 34 6 58 18 78 12 20 32 38 54 38s42-18 54-38c12-20 18-44 18-78 0-46-30-76-72-76z" style="animation-delay:.1s"/>
+              <ellipse cx="172" cy="176" rx="13" ry="7" style="animation-delay:.7s"/>
+              <ellipse cx="228" cy="176" rx="13" ry="7" style="animation-delay:.8s"/>
+              <path d="M200 186v34l-9 9" style="animation-delay:.95s"/>
+              <path d="M182 250c9 7 27 7 36 0" style="animation-delay:1.05s"/>
+              <path d="M154 138h92" style="stroke:rgba(253,249,78,.3);animation-delay:1.3s"/>
+              <path d="M138 208h124" style="stroke:rgba(253,249,78,.3);animation-delay:1.45s"/>
+              <path d="M160 272h80" style="stroke:rgba(253,249,78,.3);animation-delay:1.6s"/>
+            </svg>
+
+            <span class="hit" style="left:50%;top:31%;animation-delay:1.9s"></span>
+            <span class="tag" style="left:56%;top:26.5%;animation-delay:2.0s">TRÁN</span>
+
+            <span class="hit" style="left:33%;top:50%;animation-delay:2.4s"></span>
+            <span class="tag" style="left:6%;top:45.5%;animation-delay:2.5s">MÁ TRÁI</span>
+
+            <span class="hit" style="left:67%;top:50%;animation-delay:2.9s"></span>
+            <span class="tag" style="left:71%;top:45.5%;animation-delay:3.0s">MÁ PHẢI</span>
+
+            <span class="hit" style="left:50%;top:70%;animation-delay:3.4s"></span>
+            <span class="tag" style="left:55%;top:74%;animation-delay:3.5s">CẰM · QUAI HÀM</span>
+
+            <div class="beam"></div>
+          </div>
+
+          <div class="readout">
+            <div class="rd"><b data-to="17">0</b><span>Câu hỏi</span></div>
+            <div class="rd"><b data-to="9">0</b><span>Vùng da</span></div>
+            <div class="rd"><b data-to="12">0</b><span>Nhóm vấn đề</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function count(el){
+  const to = +el.dataset.to;
+  if(reduce){ el.textContent = to; return; }
+  const dur = 1100, t0 = performance.now();
+  (function tick(now){
+    const p = Math.min((now - t0) / dur, 1);
+    el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+    if(p < 1) requestAnimationFrame(tick);
+  })(t0);
+}
+new IntersectionObserver((entries, obs) => {
+  if(!entries[0].isIntersecting) return;
+  document.querySelectorAll('.rd b').forEach((el, i) => setTimeout(() => count(el), 1900 + i * 220));
+  obs.disconnect();
+}, {threshold:.35}).observe(document.querySelector('.q-card'));
+</script>
+</body>
+</html>

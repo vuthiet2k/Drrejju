@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DR.REJU · Quiz — Trợ lý hội thoại (page.quiz)</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* DR.REJU clinical palette ? calm surfaces for reading, emerald for action, gold for brand accents. */
+  --bg:#f6f7f2; --surface:#ffffff; --surface-alt:#edf3ed;
+  --ink:#173a31; --ink-soft:#5d7068; --emerald:#156b54; --emerald-deep:#0b4939;
+  --gold:#c69b3c; --gold-soft:#f4e8c9; --line:#d8e2d8;
+  --text:var(--ink); --text-soft:var(--ink-soft); --text-on-surface:var(--ink);
+  --bg-soft:var(--surface-alt); --bg-card:var(--surface); --accent:var(--emerald);
+  --brand-bg:var(--emerald); --brand-text:#fffdf5; --mint:#72a991;
+  --radius:8px; --radius-pill:999px; --container:1200px;
+  --font-primary:'Jost',system-ui,sans-serif; --font-secondary:'Inter',system-ui,sans-serif;
+  --fs-xs:.75rem; --fs-sm:.875rem; --fs-base:1rem; --fs-lg:1.125rem; --fs-xl:1.5rem; --fs-2xl:clamp(2.25rem,4vw,3.85rem);
+  --sp-4:4px; --sp-6:6px; --sp-8:8px; --sp-9:9px; --sp-12:12px; --sp-13:13px; --sp-14:14px; --sp-16:16px; --sp-18:18px; --sp-20:20px; --sp-22:22px; --sp-24:24px; --sp-30:30px; --sp-32:32px; --sp-34:34px; --sp-40:40px; --sp-44:44px; --sp-48:48px; --sp-54:54px; --sp-56:56px; --sp-58:58px; --sp-64:64px; --sp-80:80px; --sp-110:110px;
+
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font-secondary);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.dr-container{max-width:var(--container);margin:0 auto;padding:0 40px}
+.dr-section{padding:var(--sp-110) 0}
+@media(max-width:980px){.dr-section{padding:var(--sp-48) 0}.dr-container{padding:0 22px}}
+.dr-eyebrow{font-size:var(--fs-xs);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.dr-h2{font-family:var(--font-primary);font-weight:600;font-size:var(--fs-2xl);line-height:1.2;margin:0}
+.dr-lead{font-size:var(--fs-lg);line-height:1.65;color:var(--text-soft);max-width:44ch}
+
+.q-card{position:relative;overflow:hidden;background:var(--bg-soft);border-radius:var(--radius);padding:0;color:var(--text);
+  box-shadow:0 32px 70px rgba(0,0,0,.26)}
+.q-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;position:relative;z-index:2}
+@media(max-width:980px){.q-grid{grid-template-columns:1fr}}
+
+.q-left{padding:var(--sp-64) var(--sp-20) var(--sp-64) var(--sp-56)}
+@media(max-width:980px){.q-left{padding:var(--sp-48) var(--sp-32) var(--sp-8)}}
+.q-title{margin-top:14px}
+.q-title b{color:var(--emerald);font-weight:600}
+.q-lead{margin:18px 0 0}
+
+.q-meta{display:flex;flex-wrap:wrap;gap:22px;margin-top:30px}
+.q-meta i{display:block;font-size:1.5rem;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums;font-style:normal}
+.q-meta span{font-size:var(--fs-sm);color:var(--text-soft);letter-spacing:.02em}
+
+.q-cta{display:inline-flex;align-items:center;gap:12px;margin-top:34px;padding:16px 30px;
+  background:var(--emerald);color:#fffdf5;border:none;border-radius:var(--radius-pill);
+  font-family:var(--font-primary);font-size:var(--fs-sm);font-weight:700;letter-spacing:.02em;cursor:pointer;
+  transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s;text-decoration:none}
+.q-cta:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(21,107,84,.22)}
+.q-cta .arw{transition:transform .25s}.q-cta:hover .arw{transform:translateX(4px)}
+
+.q-trust{display:flex;align-items:center;gap:9px;margin-top:20px;font-size:var(--fs-sm);color:var(--text-soft)}
+.q-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.6}
+
+.q-right{padding:44px 56px 44px 20px;display:flex;align-items:center}
+@media(max-width:980px){.q-right{padding:8px 32px 44px}}
+.chat{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.chat-head{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.chat-who b{display:block;font-size:var(--fs-sm);font-weight:600;color:var(--gold)}
+.chat-who span{font-size:var(--fs-xs);color:var(--text-soft);letter-spacing:.04em}
+.chat-body{min-height:242px;padding-top:16px;display:flex;flex-direction:column;gap:11px}
+
+.bub{max-width:88%;padding:12px 16px;border-radius:var(--radius);font-size:var(--fs-sm);line-height:1.5}
+.bub--bot{background:var(--bg-soft);border-bottom-left-radius:0}
+.bub--me{background:var(--emerald);color:#fffdf5;font-weight:600;align-self:flex-end;border-bottom-right-radius:0}
+.typing{display:inline-flex;gap:5px;padding:14px 18px;background:var(--bg-soft);
+  border-radius:var(--radius);border-bottom-left-radius:0;width:fit-content}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--text-soft);animation:blink 1.4s infinite}
+.typing i:nth-child(2){animation-delay:.2s}
+.typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,60%,100%{opacity:.25}30%{opacity:1}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.chip{padding:9px 15px;border-radius:var(--radius-pill);border:1px solid var(--line);
+  background:transparent;color:var(--text);font-size:var(--fs-xs);font-weight:600;cursor:pointer;
+  transition:background .2s,color .2s,border-color .2s}
+.chip:hover{background:var(--emerald);color:#fffdf5;border-color:var(--emerald)}
+
+@media (prefers-reduced-motion:reduce){.bub,.chip,.typing{opacity:1}}
+</style>
+</head>
+<body>
+
+<header class="dr-header" style="background:var(--brand-bg);padding:16px 0;border-bottom:1px solid rgba(255,255,255,.18)">
+  <div class="dr-container">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <img src="../assets/logo.png" alt="DR.REJU" style="height:40px;max-width:180px;object-fit:contain">
+      <nav style="display:flex;gap:24px">
+        <a href="/" style="color:var(--brand-text);font-family:var(--font-primary);font-weight:600;font-size:var(--fs-sm);text-decoration:none">Trang chủ</a>
+        <a href="/quiz" style="color:var(--brand-text);font-family:var(--font-primary);font-weight:600;font-size:var(--fs-sm);text-decoration:none">Quiz</a>
+        <a href="/dat-lich" style="color:var(--brand-text);font-family:var(--font-primary);font-weight:600;font-size:var(--fs-sm);text-decoration:none">Đặt lịch</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="dr-section">
+  <div class="dr-container">
+    <div class="q-card">
+      <div class="q-grid">
+
+        <div class="q-left">
+          <span class="dr-eyebrow">Hồ sơ da DR.REJU</span>
+          <h2 class="dr-h2 q-title">Kể cho chúng tôi<br><b>về da của bạn</b></h2>
+          <p class="dr-lead q-lead">Trả lời vài câu hỏi ngắn. Bác sĩ da liễu đọc hồ sơ của bạn và phản hồi qua Zalo — không có kết luận tự động nào.</p>
+
+          <div class="q-meta">
+            <div><i>4</i><span>câu hỏi</span></div>
+            <div><i>~2</i><span>phút</span></div>
+            <div><i>24h</i><span>bác sĩ phản hồi</span></div>
+          </div>
+
+          <a href="/quiz" class="q-cta">Bắt đầu đánh giá da <span class="arw">→</span></a>
+
+          <div class="q-trust">
+            <span>Miễn phí</span><span class="q-dot"></span>
+            <span>Bảo mật NĐ 13/2023</span><span class="q-dot"></span>
+            <span>Bác sĩ đọc trực tiếp</span>
+          </div>
+        </div>
+
+        <div class="q-right">
+          <div class="chat">
+            <div class="chat-head">
+              <div class="chat-who">
+                <b>Trợ lý hồ sơ da</b>
+                <span>● Đang trực tuyến</span>
+              </div>
+            </div>
+            <div class="chat-body" id="body"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+const body = document.getElementById('body');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Bộ câu hỏi quiz — 4 câu → 4 kết quả
+const script = [
+  {t:'bot',  x:'Chào bạn 👋 Mình giúp bạn dựng hồ sơ da để bác sĩ xem trước.'},
+  {t:'bot',  x:'Loại da của bạn là gì?'},
+  {t:'chips',x:['Da dầu','Da hỗn hợp','Da khô','Da nhạy cảm']},
+  {t:'me',   x:'Da dầu'},
+  {t:'bot',  x:'Vấn đề da bạn đang gặp là gì nhiều nhất?'},
+  {t:'chips',x:['Mụn & bít tắc','Nám & sắc tố','Lão hóa','Da nhạy cảm']},
+  {t:'me',   x:'Mụn & bít tắc'},
+  {t:'bot',  x:'Da bạn có dễ kích ứng với thành phần mới không?'},
+  {t:'chips',x:['Rất dễ','Tạm được','Ít khi','Không bao giờ']},
+  {t:'me',   x:'Rất dễ'},
+  {t:'bot',  x:'Bạn muốn đạt được gì sau khi điều trị?'},
+  {t:'chips',x:['Da sạch mụn','Da sáng đều màu','Da mịn màng','Da không nhạy cảm']},
+  {t:'me',   x:'Da sạch mụn'},
+  {t:'bot',  x:'Cảm ơn! Dựa trên câu trả lời, hệ thống đưa ra kết quả:\n\n🔹 **Kết quả: Da dầu mụn**\n\nRoutine đề xuất:\n1. Gel BHA 2% (Paula\'s Choice)\n2. Serum Niacinamide 10% (The Ordinary)\n3. Kem Ceramide phục hồi (Martiderm)\n4. Chấm mụn Benzoyl 2.5% (Obagi)\n\nBác sĩ sẽ xem xét lại và gửi kế hoạch chi tiết qua Zalo trong 24h.'},
+];
+
+function bubble(cls, text, typeIt){
+  const el = document.createElement('div');
+  el.className = 'bub bub--' + cls;
+  body.appendChild(el);
+  if(!typeIt || reduce){ el.textContent = text; return Promise.resolve(); }
+  const caret = document.createElement('span');
+  caret.style.cssText = 'display:inline-block;width:2px;height:1em;background:var(--gold);vertical-align:-2px;margin-left:2px;animation:caret .9s step-end infinite';
+  el.appendChild(caret);
+  let i = 0;
+  return new Promise(res => {
+    const id = setInterval(() => {
+      caret.insertAdjacentText('beforebegin', text[i++]);
+      if(i >= text.length){ clearInterval(id); caret.remove(); res(); }
+    }, 22);
+  });
+}
+
+function typing(ms){
+  const el = document.createElement('div');
+  el.className = 'typing';
+  el.innerHTML = '<i></i><i></i><i></i>';
+  body.appendChild(el);
+  return new Promise(r => setTimeout(() => { el.remove(); r(); }, reduce ? 0 : ms));
+}
+
+function chips(list){
+  const wrap = document.createElement('div');
+  wrap.className = 'chips';
+  list.forEach((c, i) => {
+    const b = document.createElement('button');
+    b.className = 'chip';
+    b.textContent = c;
+    b.style.animationDelay = (i * .07) + 's';
+    wrap.appendChild(b);
+  });
+  body.appendChild(wrap);
+}
+
+const wait = ms => new Promise(r => setTimeout(r, reduce ? 0 : ms));
+
+async function play(){
+  body.innerHTML = '';
+  for(const step of script){
+    if(step.t === 'chips'){ chips(step.x); await wait(1500); continue; }
+    if(step.t === 'bot'){ await typing(680); await bubble('bot', step.x, true); await wait(420); continue; }
+    await wait(560); await bubble('me', step.x, false); await wait(560);
+  }
+  await wait(3600);
+  play();
+}
+
+new IntersectionObserver((e, o) => {
+  if(e[0].isIntersecting){ play(); o.disconnect(); }
+}, {threshold:.3}).observe(document.querySelector('.q-card'));
+</script>
+</body>
+</html>

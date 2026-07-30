@@ -1,142 +1,77 @@
-{% include 'breadcrumb' %} 
-{% include 'datepicker' %} 
-<section class="page page-datlich">
-	<div class="container">
-		<div class="pg_page padding-top-15">
-			<div class="row">
-				<div class="col-12">
-					<div class="page-title category-title">
-						<h1 class="title-head d-none"><a href="#">{{ page_title }}</a></h1>
-					</div>
+{% include 'breadcrumb' %}
+{% include 'datepicker' %}
+{% assign booking_phone = settings.phone | default: store.phone_number | default: settings.support_phone %}
+{% assign booking_zalo_url = settings.livechat_mes | default: '/lien-he' %}
 
-				</div>
-			</div>
-		</div>
-	</div>
+<main class="dr-booking-page" data-booking-page>
+  <section class="dr-booking-hero">
+    <div class="dr-container dr-booking-hero__grid">
+      <div>
+        <span class="dr-eyebrow">Tư vấn cùng DR.REJU</span>
+        <h1 class="dr-h1">Dành thời gian cho <em>làn da của bạn.</em></h1>
+        <p class="dr-lead">Gửi yêu cầu đặt lịch để đội ngũ DR.REJU liên hệ xác nhận hình thức tư vấn và thời gian phù hợp.</p>
+      </div>
+      <div class="dr-booking-hero__note"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i><div><strong>Yêu cầu của bạn sẽ được xác nhận lại</strong><span>Chọn ngày và khung giờ mong muốn — đội ngũ sẽ liên hệ trước khi lịch hẹn được chốt.</span></div></div>
+    </div>
+  </section>
 
-	<section class="dat-lich">
-		<div class="container">
-			<div class="row item" style="margin-bottom: 30px;">
-				<div class="col-12 noi-dung">
-					<div class="thumb a-center">
-						<h2 class="title">
-							{{settings.datlich_title}}
-						</h2>
-						<div class="content">
-							{{settings.datlich_content}}
-						</div>
-					</div>
-				</div>
+  <section class="dr-booking-steps" aria-label="Quy trình đặt lịch">
+    <div class="dr-container">
+      <ol><li><span>01</span><p>Chọn nhu cầu và thời gian mong muốn.</p></li><li><span>02</span><p>DR.REJU liên hệ xác nhận thông tin.</p></li><li><span>03</span><p>Bắt đầu buổi trao đổi phù hợp với bạn.</p></li></ol>
+    </div>
+  </section>
 
-			</div>
+  <section id="dat-lich" class="dr-section dr-booking-main">
+    <div class="dr-container dr-booking-main__grid">
+      <aside class="dr-booking-aside">
+        <span class="dr-eyebrow">Trước buổi hẹn</span>
+        <h2 class="dr-h2">Chuẩn bị ít thôi, trao đổi đúng điều cần.</h2>
+        <p class="dr-lead">Bạn không cần tự xác định chính xác tình trạng da. Chỉ cần cho chúng tôi biết điều bạn đang quan tâm nhất.</p>
+        <div class="dr-booking-aside__list">
+          <div><i class="fa-solid fa-notes-medical" aria-hidden="true"></i><p><b>Ghi nhớ điều bạn muốn hỏi</b><span>Ví dụ: mụn, thâm, da dễ kích ứng hay routine hiện tại.</span></p></div>
+          <div><i class="fa-solid fa-camera" aria-hidden="true"></i><p><b>Chuẩn bị ảnh da nếu tiện</b><span>Ảnh trong ánh sáng tự nhiên có thể hỗ trợ cuộc trao đổi rõ hơn.</span></p></div>
+          <div><i class="fa-solid fa-list-check" aria-hidden="true"></i><p><b>Chia sẻ sản phẩm đang dùng</b><span>Đặc biệt nếu da có phản ứng hoặc bạn đang dùng hoạt chất.</span></p></div>
+        </div>
+        <a class="dr-booking-aside__quiz" href="/quiz"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Chưa rõ nên bắt đầu từ đâu? Tạo Hồ sơ da.</a>
+      </aside>
 
-			<div class="row item">
+      <div class="dr-booking-form-card">
+        <div class="dr-booking-form-card__head"><span class="dr-eyebrow">Gửi yêu cầu</span><h2 class="dr-h2">Đặt lịch tư vấn</h2><p>Thông tin cần thiết để DR.REJU liên hệ lại với bạn.</p></div>
+        {% form 'contact' %}
+        {% if form.errors.size > 0 %}
+        <div class="dr-booking-alert dr-booking-alert--error" role="alert">{% for field in form.errors %}<p>{{ form.errors.messages[field] }}</p>{% endfor %}</div>
+        {% endif %}
+        {% if form.posted_successfully %}
+        <div class="dr-booking-alert dr-booking-alert--success" role="status"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><p>DR.REJU đã nhận yêu cầu của bạn. Đội ngũ sẽ liên hệ để xác nhận lịch hẹn.</p></div>
+        {% else %}
+        <div class="dr-booking-form-grid">
+          <fieldset><label for="booking-name">Họ và tên <em>*</em></label><input id="booking-name" placeholder="Nhập họ và tên" type="text" required value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.first_name }} {{ customer.last_name }}{% endif %}" name="contact[Name]"></fieldset>
+          <fieldset><label for="booking-phone">Số điện thoại <em>*</em></label><input id="booking-phone" placeholder="Số điện thoại để liên hệ" type="tel" inputmode="tel" required name="contact[Số điện thoại]"></fieldset>
+          <fieldset><label for="booking-email">Email</label><input id="booking-email" placeholder="name@email.com" type="email" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" name="contact[email]"></fieldset>
+          <fieldset><label for="booking-service">Bạn muốn trao đổi về <em>*</em></label><select id="booking-service" name="contact[Nhu cầu tư vấn]" required><option value="" selected disabled>Chọn một nội dung</option><option>Tình trạng mụn & bít tắc</option><option>Nám, thâm & sắc tố</option><option>Da nhạy cảm & phục hồi</option><option>Lão hóa & routine chăm sóc</option><option>Tôi chưa chắc, cần được định hướng</option></select></fieldset>
+          <fieldset><label for="booking-date">Ngày mong muốn <em>*</em></label><input id="booking-date" class="tourmaster-datepicker" name="contact[Ngày mong muốn]" type="text" placeholder="Chọn ngày" required autocomplete="off"></fieldset>
+          <fieldset><label for="booking-time">Khung giờ mong muốn</label><select id="booking-time" name="contact[Khung giờ mong muốn]"><option value="">Chọn nếu thuận tiện</option><option>Buổi sáng</option><option>Buổi chiều</option><option>Buổi tối</option><option>Tôi linh hoạt thời gian</option></select></fieldset>
+          <fieldset class="dr-booking-form-grid__full"><label for="booking-note">Điều bạn muốn DR.REJU biết thêm</label><textarea id="booking-note" name="contact[body]" placeholder="Mô tả ngắn tình trạng, sản phẩm đang dùng hoặc câu hỏi bạn muốn trao đổi." rows="5"></textarea></fieldset>
+        </div>
+        <label class="dr-booking-consent"><input type="checkbox" required><span>Tôi đồng ý để DR.REJU sử dụng thông tin này nhằm liên hệ và xác nhận yêu cầu tư vấn của tôi.</span></label>
+        <p class="dr-booking-form-error" data-booking-error role="alert" aria-live="polite"></p>
+        <button type="submit" class="dr-btn dr-btn--primary dr-booking-submit">Gửi yêu cầu đặt lịch <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+        {% endif %}
+        {% endform %}
+      </div>
+    </div>
+  </section>
 
-				<div class="col-lg-6 image">
-					<div class=" image-thumb">
-						<img src="{{ 'datlich.png' | asset_url}}" alt="">
-					</div>
-				</div>
-				<div class="col-lg-6 noi-dung">
-					<div id="pagelogin">
+  <section class="dr-section dr-booking-options">
+    <div class="dr-container">
+      <div class="dr-booking-options__head"><div><span class="dr-eyebrow">Nếu bạn cần hỗ trợ ngay</span><h2 class="dr-h2">Chọn cách liên hệ phù hợp.</h2></div><p class="dr-lead">Bạn có thể gửi yêu cầu qua form hoặc liên hệ trực tiếp nếu muốn được hướng dẫn trước.</p></div>
+      <div class="dr-booking-options__grid">
+        {% if booking_phone != blank %}<a href="tel:{{ booking_phone | remove: ' ' }}"><i class="fa-solid fa-phone" aria-hidden="true"></i><span><b>Gọi cho DR.REJU</b><small>{{ booking_phone }}</small></span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>{% endif %}
+        <a href="{% if settings.livechat_mes != blank %}https://{{ booking_zalo_url }}{% else %}{{ booking_zalo_url }}{% endif %}"><i class="fa-brands fa-rocketchat" aria-hidden="true"></i><span><b>Nhắn tin để được hỗ trợ</b><small>Gửi câu hỏi trước khi đặt lịch.</small></span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <a href="/quiz"><i class="fa-solid fa-clipboard-question" aria-hidden="true"></i><span><b>Tạo Hồ sơ da</b><small>Đi từ tình trạng hiện tại của bạn.</small></span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </section>
 
-						{% form 'contact' %}
-						{% if form.errors.size > 0 %}
-						{% for field in form.errors %}
-						<p class="alert" style="color:red;">{{ form.errors.messages[field] }}<p/>
-						
-						{% endfor %}
-						{% endif %}
-						{% if form.posted_successfully %}
-						<p class="alert" style="    background: #83c54e;    color: #fff;    padding: 5px 10px;    border-radius: 6px;">Bạn đã đặt lịch thành thành công, chúng tôi sẽ liên hệ lại trong thời gian sớm nhất</p>
-						{% endif %}
-						<p id="errorFills" style="margin-bottom:10px; color: red;"></p>
-						<div class="form-signup clearfix">
-							<div class="group_contact row">
-								<fieldset class="form-group">
-									<label>Họ và tên:</label>
-									<input placeholder="Họ và tên..." type="text" class="form-control form-control-lg" required value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.first_name }} {{ customer.last_name }}{% endif %}" name="contact[Name]">
-								</fieldset>
-								<fieldset class="form-group">
-									<label>Email:</label>
-									<input placeholder="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required id="email1" class="form-control form-control-lg" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" name="contact[email]">
-								</fieldset>
-								<fieldset class="form-group">
-									<label>Số điện thoại:</label>
-									<input placeholder="Số điện thoại..." type="number" class="form-control form-control-lg" required value="" name="contact[Số điện thoại]">
-								</fieldset>
-								<fieldset class="form-group">
-									<label>Chọn ngày:</label>
-									<input  class=" tourmaster-datepicker" id="datesss" name="contact[Ngày]" type="text"  placeholder="Chọn Ngày" data-date-format="dd MM yyyy"  required/>
-								</fieldset>
-								<fieldset class="form-group form-group-textarea">
-									<label>Ghi chú:</label>
-									<textarea placeholder="Ghi chú" name="contact[body]" id="comment" class="form-control content-area form-control-lg" rows="5" Required>Nhập ghi chú</textarea>
-								</fieldset>
-
-								
-
-								<p class="des">Hỗ trợ thêm liên hệ ngay số điện thoại <a href="tel:{{settings.phone | default: store.phone_number | remove: ' '}}">{{settings.phone | default: store.phone_number}}</a></p>
-								<div class="submit">
-									<button type="submit" class="btn-primary button_45 btn">Đặt lịch ngay</button>
-								</div>
-
-							</div>
-						</div>
-						{%endform%}
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-</section>
-<script>
-	$(document).ready(function () {
-
-
-		var dates = $("#date-di").text();
-		var n = dates.search("Chủ nhật");
-		var cn = dates.substring(n, 8);
-		var numb = dates.match(/\d/g);
-		if(n > -1 ){
-			if(numb && numb.length){
-				numb.push('1');
-			}else{
-				numb = ['1'];
-			}
-		}
-		var dateToday = new Date();
-		function DisableMonday(date) {
-			var day = date.getDay();
-			var i;
-			if(numb && numb.length){
-				for (i = 0; i < numb.length; i++){
-					var m = numb[i] - 1;
-					var m1 = numb[i+1] - 1;
-					var m2 = numb[i+2] - 1;
-					var m3 = numb[i+3] - 1;
-					var m4 = numb[i+4] - 1;
-					var m5 = numb[i+5] - 1;
-					var m6 = numb[i+6] - 1;
-					if (day == m || day == m1 || day == m2 || day == m3 || day == m4 || day == m5 || day == m6) {
-						return [true] ; 
-					} else { 
-						return [false] ;
-					}
-				}
-			}else{
-				return [true];
-			}
-		}
-		$(".tourmaster-datepicker").datepicker({
-			defaultDate: "",
-			changeMonth: true,
-			changeYear: true,
-			numberOfMonths: 1,
-			minDate: dateToday,
-			beforeShowDay: DisableMonday
-		});
-	});
-
-</script>
+  <section class="dr-booking-closing"><div class="dr-container"><span>DR.REJU · Chăm sóc da có định hướng</span><p>Chọn một bước nhỏ phù hợp với bạn hôm nay.</p></div></section>
+</main>

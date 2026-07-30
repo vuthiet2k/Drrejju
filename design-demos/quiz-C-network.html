@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DR.REJU · Quiz C — Hồ sơ hình thành (page.quiz)</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* DR.REJU clinical palette ? calm surfaces for reading, emerald for action, gold for brand accents. */
+  --bg:#f6f7f2; --surface:#ffffff; --surface-alt:#edf3ed;
+  --ink:#173a31; --ink-soft:#5d7068; --emerald:#156b54; --emerald-deep:#0b4939;
+  --gold:#c69b3c; --gold-soft:#f4e8c9; --line:#d8e2d8;
+  --text:var(--ink); --text-soft:var(--ink-soft); --text-on-surface:var(--ink);
+  --bg-soft:var(--surface-alt); --bg-card:var(--surface); --accent:var(--emerald);
+  --brand-bg:var(--emerald); --brand-text:#fffdf5; --mint:#72a991;
+  --radius:8px; --radius-pill:999px; --container:1200px;
+  --font-primary:'Jost',system-ui,sans-serif; --font-secondary:'Inter',system-ui,sans-serif;
+  --fs-xs:.75rem; --fs-sm:.875rem; --fs-base:1rem; --fs-lg:1.125rem; --fs-xl:1.5rem; --fs-2xl:clamp(2.25rem,4vw,3.85rem);
+  --sp-4:4px; --sp-6:6px; --sp-8:8px; --sp-9:9px; --sp-12:12px; --sp-13:13px; --sp-14:14px; --sp-16:16px; --sp-18:18px; --sp-20:20px; --sp-22:22px; --sp-24:24px; --sp-30:30px; --sp-32:32px; --sp-34:34px; --sp-40:40px; --sp-44:44px; --sp-48:48px; --sp-54:54px; --sp-56:56px; --sp-58:58px; --sp-64:64px; --sp-80:80px; --sp-110:110px;
+
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font-secondary);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.dr-container{max-width:var(--container);margin:0 auto;padding:0 40px}
+.dr-section{padding:var(--sp-110) 0;background:var(--bg)}
+@media(max-width:980px){.dr-section{padding:var(--sp-48) 0}.dr-container{padding:0 22px}}
+.dr-eyebrow{font-size:var(--fs-xs);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.dr-h2{font-family:var(--font-primary);font-weight:600;font-size:var(--fs-2xl);line-height:1.2;margin:0}
+.dr-lead{font-size:var(--fs-lg);line-height:1.65;color:var(--text-soft);max-width:52ch}
+
+.q-wrap{text-align:center;max-width:660px;margin:0 auto}
+.q-title{margin-top:var(--sp-14)}.q-title b{color:var(--emerald);font-weight:600}
+.q-lead{margin:var(--sp-16) auto 0}
+
+.stage{position:relative;height:430px;margin:10px auto 0;max-width:940px}
+.svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.link{fill:none;stroke:var(--line);stroke-width:1.5;
+  stroke-dasharray:var(--len);stroke-dashoffset:var(--len);
+  animation:draw .85s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+.pulse{fill:var(--gold);r:3.2;opacity:0;animation:flow 2.6s linear infinite}
+@keyframes flow{0%{opacity:0}8%{opacity:1}92%{opacity:1}100%{opacity:0}}
+
+.node{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;
+  padding:8px 14px;border-radius:var(--radius-pill);background:var(--bg);
+  border:1px solid var(--line);box-shadow:0 3px 14px rgba(0,0,0,.07);
+  font-size:var(--fs-sm);font-weight:600;color:var(--text-soft);
+  opacity:0;animation:nodeIn .5s cubic-bezier(.2,.9,.3,1.25) forwards,float 6s ease-in-out infinite}
+@keyframes nodeIn{from{opacity:0;transform:translate(-50%,-50%) scale(.8)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@keyframes float{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.02)}}
+.node.on{border-color:var(--gold);color:var(--bg);background:var(--gold);box-shadow:0 6px 22px rgba(21,107,84,.20)}
+
+.core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:196px;height:196px;border-radius:50%;display:grid;place-items:center;text-align:center;
+  background:radial-gradient(circle at 34% 28%,var(--emerald),var(--emerald-deep) 62%,#073328);
+  box-shadow:0 22px 54px rgba(10,46,36,.34);color:#fffdf5;
+  opacity:0;animation:coreIn .8s cubic-bezier(.2,.9,.3,1.15) forwards}
+@keyframes coreIn{from{opacity:0;transform:translate(-50%,-50%) scale(.72)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+.core::before,.core::after{content:'';position:absolute;inset:0;border-radius:50%;
+  border:1px solid rgba(253,249,78,.5);animation:halo 3.4s ease-out infinite}
+.core::after{animation-delay:1.7s}
+@keyframes halo{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.42);opacity:0}}
+.core i{font-style:normal;display:block;font-size:.625rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.core b{display:block;font-size:1.375rem;font-weight:600;line-height:1.2}
+.core em{font-style:normal;display:block;margin-top:7px;font-size:.6875rem;
+  color:rgba(255,255,255,.55);font-variant-numeric:tabular-nums}
+
+.crumbs{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+.crumbs-lb{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--text-soft);opacity:.62;margin-right:4px}
+.crumb{padding:6px 13px;border-radius:6px;background:var(--bg-soft);color:var(--gold);
+  font-size:var(--fs-xs);font-weight:700;letter-spacing:.08em;
+  opacity:0;transform:translateY(9px);animation:crumbIn .5s cubic-bezier(.2,.9,.3,1.2) forwards}
+@keyframes crumbIn{to{opacity:1;transform:none}}
+
+.q-cta{display:inline-flex;align-items:center;gap:var(--sp-12);margin-top:var(--sp-34);padding:var(--sp-16) var(--sp-32);
+  background:var(--bg-soft);color:var(--gold);border-radius:var(--radius-pill);text-decoration:none;
+  font-size:var(--fs-sm);font-weight:700;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+.q-cta:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(10,46,36,.26)}
+.q-cta .arw{transition:transform .25s}.q-cta:hover .arw{transform:translateX(4px)}
+.q-trust{margin-top:var(--sp-16);font-size:var(--fs-sm);color:var(--text-soft);opacity:.8}
+
+@media (max-width:980px){
+  .stage{height:330px}
+  .node{font-size:.6875rem;padding:6px 11px}
+  .core{width:158px;height:158px}
+  .dr-container{padding:0 22px}
+}
+@media (max-width:640px){
+  .node:nth-child(n+7){display:none}
+  .crumbs{flex-wrap:wrap;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important}
+  .link{stroke-dashoffset:0}
+  .node,.core,.crumb{opacity:1;transform:translate(-50%,-50%)}
+  .core{transform:translate(-50%,-50%)}.crumb{transform:none}
+}
+</style>
+</head>
+<body>
+
+<section class="dr-section">
+  <div class="dr-container">
+    <div class="q-wrap">
+      <span class="dr-eyebrow">Hồ sơ da DR.REJU</span>
+      <h2 class="dr-h2 q-title">Mỗi câu trả lời là<br>một mảnh <b>hồ sơ da của bạn</b></h2>
+      <p class="dr-lead">Chúng tôi không đoán. Thông tin bạn cung cấp được sắp xếp thành hồ sơ có cấu trúc để bác sĩ da liễu đọc và quyết định.</p>
+    </div>
+
+    <div class="stage" id="stage">
+      <svg class="svg" id="svg" aria-hidden="true"></svg>
+
+      <div class="core">
+        <div>
+          <i>Hồ sơ da</i>
+          <b>#000123</b>
+          <em id="cnt">0 / 17 dữ kiện</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="crumbs" id="crumbs"></div>
+
+    <div class="q-wrap">
+      <a href="/quiz" class="q-cta">Tạo hồ sơ da của tôi <span class="arw">→</span></a>
+      <p class="q-trust">~4 phút · Miễn phí · Bác sĩ phản hồi Zalo trong 24h</p>
+    </div>
+  </div>
+</section>
+
+<script>
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const stage  = document.getElementById('stage');
+const svg    = document.getElementById('svg');
+
+const NODES = [
+  {label:'Mụn',              a:198, r:.94},
+  {label:'Nám & sắc tố',     a:232, r:.86},
+  {label:'Thâm sau mụn',     a:270, r:.80},
+  {label:'Sẹo',              a:308, r:.86},
+  {label:'Da dầu',           a:342, r:.94},
+  {label:'Lỗ chân lông',     a: 18, r:.94},
+  {label:'Da khô',           a: 52, r:.86},
+  {label:'Nhạy cảm',         a: 90, r:.80},
+  {label:'Lão hóa',          a:128, r:.86},
+  {label:'Chưa rõ',          a:162, r:.94},
+];
+const TAGS = ['ACNE','OILY','REACTIVE','RECURRENT'];
+
+function build(){
+  const W = stage.clientWidth, H = stage.clientHeight;
+  const cx = W / 2, cy = H / 2;
+  const rx = Math.min(W / 2 - 96, 420), ry = H / 2 - 44;
+  const MIN_D = 98 + 18 + 40;
+
+  svg.innerHTML = '';
+  stage.querySelectorAll('.node').forEach(n => n.remove());
+  document.getElementById('crumbs').innerHTML = '';
+
+  NODES.forEach((n, i) => {
+    const rad = n.a * Math.PI / 180;
+    let dx = Math.cos(rad) * rx * n.r;
+    let dy = Math.sin(rad) * ry * n.r;
+    const dist = Math.hypot(dx, dy);
+    if(dist < MIN_D){ const k = MIN_D / dist; dx *= k; dy *= k; }
+    const x = cx + dx, y = cy + dy;
+    const delay = .25 + i * .1;
+
+    const mx = (x + cx) / 2 + (cy - y) * .12;
+    const my = (y + cy) / 2 + (x - cx) * .12;
+    const d  = `M${x} ${y} Q${mx} ${my} ${cx} ${cy}`;
+    const p  = document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d', d); p.setAttribute('class','link');
+    svg.appendChild(p);
+    const len = p.getTotalLength();
+    p.style.setProperty('--len', len);
+    p.style.animationDelay = (delay + .12) + 's';
+
+    if(!reduce){
+      const dot = document.createElementNS('http://www.w3.org/2000/svg','circle');
+      dot.setAttribute('class','pulse');
+      const mo = document.createElementNS('http://www.w3.org/2000/svg','animateMotion');
+      mo.setAttribute('dur', (2.2 + i * .16) + 's');
+      mo.setAttribute('repeatCount','indefinite');
+      mo.setAttribute('path', d);
+      mo.setAttribute('begin', (delay + 1.1) + 's');
+      dot.appendChild(mo);
+      dot.style.animationDelay = (delay + 1.1) + 's';
+      svg.appendChild(dot);
+    }
+
+    const el = document.createElement('div');
+    el.className = 'node' + (i < 3 ? ' on' : '');
+    el.textContent = n.label;
+    el.style.left = x + 'px';
+    el.style.top  = y + 'px';
+    el.style.animationDelay = delay + 's, ' + (delay + 1) + 's';
+    stage.appendChild(el);
+  });
+
+  const cr = document.getElementById('crumbs');
+  const lb = document.createElement('span');
+  lb.className = 'crumbs-lb'; lb.textContent = 'Hệ thống gắn nhãn';
+  cr.appendChild(lb);
+  TAGS.forEach((t, i) => {
+    const s = document.createElement('span');
+    s.className = 'crumb'; s.textContent = t;
+    s.style.animationDelay = (1.5 + i * .16) + 's';
+    cr.appendChild(s);
+  });
+
+  const cnt = document.getElementById('cnt');
+  if(reduce){ cnt.textContent = '17 / 17 dữ kiện'; return; }
+  let n = 0;
+  const id = setInterval(() => {
+    cnt.textContent = (++n) + ' / 17 dữ kiện';
+    if(n >= 17) clearInterval(id);
+  }, 105);
+}
+
+let started = false;
+new IntersectionObserver((e, o) => {
+  if(e[0].isIntersecting && !started){ started = true; build(); o.disconnect(); }
+}, {threshold:.3}).observe(stage);
+
+let t; addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => started && build(), 220); });
+</script>
+</body>
+</html>

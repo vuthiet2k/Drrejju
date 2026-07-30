@@ -1,0 +1,200 @@
+﻿{% include 'breadcrumb' %}
+{% assign quiz_booking_url = '/dat-lich' %}
+{% assign quiz_zalo_url = settings.livechat_mes | default: '/lien-he' %}
+{% assign quiz_phone = settings.phone | default: store.phone_number %}
+
+<main class="dr-quiz-page" data-quiz-page>
+  <section class="dr-quiz-hero">
+    <div class="dr-container dr-quiz-hero__grid">
+      <div class="dr-quiz-hero__copy">
+        <span class="dr-eyebrow">Hồ sơ da cùng DR.REJU</span>
+        <h1 class="dr-h1">Bắt đầu từ <em>làn da của bạn.</em></h1>
+        <p class="dr-lead">Một vài câu hỏi ngắn giúp bạn sắp xếp điều đang quan tâm, trước khi chọn sản phẩm hoặc trao đổi cùng bác sĩ.</p>
+        <div class="dr-quiz-hero__actions">
+          <a class="dr-btn dr-btn--primary" href="#ho-so-da">Bắt đầu hồ sơ da <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
+          <a class="dr-btn dr-btn--outline" href="{{ quiz_booking_url }}">Đặt lịch tư vấn</a>
+        </div>
+        <p class="dr-quiz-hero__note"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i> Quiz dùng để định hướng trao đổi, không thay thế chẩn đoán y khoa.</p>
+      </div>
+      <div class="dr-quiz-hero__visual" aria-label="Hành trình hồ sơ da">
+        <div class="dr-quiz-hero__stamp"><span>DR.REJU</span><strong>Hồ sơ<br>da</strong></div>
+        <div class="dr-quiz-hero__route" aria-hidden="true"><span></span><span></span><span></span></div>
+        <ol class="dr-quiz-hero__steps">
+          <li><b>01</b><span>Chia sẻ điều bạn quan tâm</span></li>
+          <li><b>02</b><span>Nhận định hướng ban đầu</span></li>
+          <li><b>03</b><span>Trao đổi cùng bác sĩ</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="dr-section dr-quiz-intro">
+    <div class="dr-container">
+      <div class="dr-quiz-section-head">
+        <div>
+          <span class="dr-eyebrow">Trước khi bạn bắt đầu</span>
+          <h2 class="dr-h2">Một hồ sơ gọn gàng để bắt đầu đúng cuộc trò chuyện.</h2>
+        </div>
+        <p class="dr-lead">Không có kết luận tự động. Câu trả lời chỉ giúp DR.REJU gợi ý nội dung phù hợp hơn và giúp buổi tư vấn của bạn đi thẳng vào vấn đề.</p>
+      </div>
+      <div class="dr-quiz-benefits">
+        <article class="dr-quiz-benefit">
+          <span class="dr-quiz-benefit__number">01</span>
+          <h3 class="dr-h3">Gọi đúng điều bạn đang gặp</h3>
+          <p>Nhìn lại loại da, tình trạng nổi bật và mục tiêu ưu tiên của riêng bạn.</p>
+        </article>
+        <article class="dr-quiz-benefit">
+          <span class="dr-quiz-benefit__number">02</span>
+          <h3 class="dr-h3">Đọc định hướng dễ hiểu</h3>
+          <p>Nhận nhóm nội dung nên tìm hiểu tiếp, không phải chẩn đoán hoặc phác đồ.</p>
+        </article>
+        <article class="dr-quiz-benefit">
+          <span class="dr-quiz-benefit__number">03</span>
+          <h3 class="dr-h3">Chọn bước tiếp theo</h3>
+          <p>Lưu ý điều cần trao đổi khi đặt lịch hoặc nhắn tin cùng đội ngũ DR.REJU.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="dr-quiz-process" aria-labelledby="quiz-process-title">
+    <div class="dr-container">
+      <div class="dr-quiz-process__head">
+        <span class="dr-eyebrow">Cách hoạt động</span>
+        <h2 id="quiz-process-title" class="dr-h2">Chỉ ba bước, trong khoảng hai phút.</h2>
+      </div>
+      <div class="dr-quiz-process__list">
+        <div><span>1</span><p>Chọn câu trả lời gần với tình trạng hiện tại của bạn.</p></div>
+        <div><span>2</span><p>Xem nhóm nội dung và lưu ý chăm sóc ban đầu.</p></div>
+        <div><span>3</span><p>Chủ động đặt lịch khi bạn cần trao đổi sâu hơn.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ho-so-da" class="dr-section dr-quiz-workspace" data-quiz-workspace>
+    <div class="dr-container">
+      <div class="dr-quiz-workspace__head">
+        <div>
+          <span class="dr-eyebrow">Khảo sát nhanh</span>
+          <h2 class="dr-h2">Tạo hồ sơ da của bạn</h2>
+        </div>
+        <p class="dr-quiz-workspace__time"><i class="fa-regular fa-clock" aria-hidden="true"></i> Khoảng 2 phút · 5 câu hỏi</p>
+      </div>
+
+      <noscript><p class="dr-quiz-noscript">Bạn cần bật JavaScript để thực hiện khảo sát. Bạn vẫn có thể <a href="{{ quiz_booking_url }}">đặt lịch tư vấn trực tiếp</a>.</p></noscript>
+      <div class="dr-quiz-shell" data-quiz-shell>
+        <div class="dr-quiz-progress" aria-label="Tiến độ khảo sát"><span data-quiz-progress></span></div>
+        <div class="dr-quiz-progress__meta"><span data-quiz-count>Câu 1 / 5</span><span>Hồ sơ của bạn</span></div>
+
+        <form class="dr-quiz-form" data-quiz-form novalidate>
+          <fieldset class="dr-quiz-question is-active" data-question="0">
+            <legend>Loại da của bạn thường gần với mô tả nào nhất?</legend>
+            <p>Không cần chính xác tuyệt đối — chọn mô tả bạn thấy thường xuyên nhất.</p>
+            <div class="dr-quiz-options">
+              <label><input type="radio" name="skin_type" value="oily"><span><b>Da dầu / hỗn hợp thiên dầu</b><small>Dễ bóng, lỗ chân lông rõ hoặc có bít tắc.</small></span></label>
+              <label><input type="radio" name="skin_type" value="dry"><span><b>Da khô / thiếu ẩm</b><small>Căng rát, xỉn hoặc dễ bong tróc theo thời tiết.</small></span></label>
+              <label><input type="radio" name="skin_type" value="normal"><span><b>Da tương đối cân bằng</b><small>Không quá dầu hay quá khô trong phần lớn thời gian.</small></span></label>
+              <label><input type="radio" name="skin_type" value="unsure"><span><b>Tôi chưa chắc</b><small>Tôi muốn bắt đầu từ vấn đề đang thấy rõ nhất.</small></span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="dr-quiz-question" data-question="1" hidden>
+            <legend>Điều gì khiến bạn quan tâm nhất lúc này?</legend>
+            <p>Chọn một vấn đề bạn muốn ưu tiên trao đổi trước.</p>
+            <div class="dr-quiz-options">
+              <label><input type="radio" name="concern" value="acne"><span><b>Mụn & bít tắc</b><small>Mụn viêm, mụn ẩn, dầu thừa hoặc lỗ chân lông.</small></span></label>
+              <label><input type="radio" name="concern" value="pigment"><span><b>Nám & sắc tố</b><small>Đốm nâu, thâm sau mụn hoặc da không đều màu.</small></span></label>
+              <label><input type="radio" name="concern" value="sensitive"><span><b>Nhạy cảm & đỏ</b><small>Dễ rát, châm chích hoặc kích ứng khi thử sản phẩm mới.</small></span></label>
+              <label><input type="radio" name="concern" value="aging"><span><b>Lão hóa & khô</b><small>Nếp nhăn, kém săn chắc hoặc da thiếu sức sống.</small></span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="dr-quiz-question" data-question="2" hidden>
+            <legend>Da bạn phản ứng với sản phẩm mới như thế nào?</legend>
+            <p>Thông tin này giúp nhắc bạn ưu tiên một nhịp chăm sóc phù hợp hơn.</p>
+            <div class="dr-quiz-options dr-quiz-options--compact">
+              <label><input type="radio" name="sensitivity" value="high"><span><b>Rất dễ kích ứng</b></span></label>
+              <label><input type="radio" name="sensitivity" value="sometimes"><span><b>Thỉnh thoảng nhạy cảm</b></span></label>
+              <label><input type="radio" name="sensitivity" value="rare"><span><b>Ít khi gặp</b></span></label>
+              <label><input type="radio" name="sensitivity" value="unsure"><span><b>Tôi chưa rõ</b></span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="dr-quiz-question" data-question="3" hidden>
+            <legend>Mục tiêu bạn muốn ưu tiên trong giai đoạn này?</legend>
+            <p>Chọn điều quan trọng nhất, bạn vẫn có thể trao đổi thêm khi tư vấn.</p>
+            <div class="dr-quiz-options dr-quiz-options--compact">
+              <label><input type="radio" name="goal" value="clear"><span><b>Da sạch và ổn định hơn</b></span></label>
+              <label><input type="radio" name="goal" value="even"><span><b>Da đều màu, sáng khỏe hơn</b></span></label>
+              <label><input type="radio" name="goal" value="calm"><span><b>Da dịu và ít phản ứng hơn</b></span></label>
+              <label><input type="radio" name="goal" value="firm"><span><b>Da ẩm, mịn và săn chắc hơn</b></span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="dr-quiz-question" data-question="4" hidden>
+            <legend>Bạn đang ở đâu trong routine hiện tại?</legend>
+            <p>Không có đáp án đúng; đây là một điểm bắt đầu để bạn chọn bước tiếp theo.</p>
+            <div class="dr-quiz-options dr-quiz-options--compact">
+              <label><input type="radio" name="routine" value="new"><span><b>Tôi mới bắt đầu chăm sóc da</b></span></label>
+              <label><input type="radio" name="routine" value="basic"><span><b>Tôi có routine cơ bản</b></span></label>
+              <label><input type="radio" name="routine" value="active"><span><b>Tôi đã dùng hoạt chất nhưng chưa ổn</b></span></label>
+              <label><input type="radio" name="routine" value="treatment"><span><b>Tôi đang/đã điều trị và cần tư vấn thêm</b></span></label>
+            </div>
+          </fieldset>
+
+          <p class="dr-quiz-error" role="alert" aria-live="polite" data-quiz-error></p>
+          <div class="dr-quiz-controls">
+            <button class="dr-btn dr-btn--outline" type="button" data-quiz-back hidden><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Quay lại</button>
+            <button class="dr-btn dr-btn--primary" type="button" data-quiz-next>Tiếp tục <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+          </div>
+        </form>
+
+        <section class="dr-quiz-result" data-quiz-result hidden aria-live="polite">
+          <span class="dr-eyebrow">Định hướng ban đầu</span>
+          <h3 class="dr-h2" data-result-title></h3>
+          <p class="dr-lead" data-result-copy></p>
+          <div class="dr-quiz-result__grid">
+            <div><h4>Điều bạn có thể tìm hiểu thêm</h4><ul data-result-list></ul></div>
+            <aside><i class="fa-solid fa-user-doctor" aria-hidden="true"></i><p>Để có nhận định phù hợp với tình trạng thực tế, hãy trao đổi trực tiếp với bác sĩ hoặc chuyên viên của DR.REJU.</p></aside>
+          </div>
+          <div class="dr-quiz-result__actions">
+            <a class="dr-btn dr-btn--primary" href="{{ quiz_booking_url }}">Đặt lịch cùng bác sĩ <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            <a class="dr-btn dr-btn--outline" href="{% if settings.livechat_mes != blank %}https://{{ settings.livechat_mes }}{% else %}{{ quiz_zalo_url }}{% endif %}">Nhắn Zalo</a>
+            <button class="dr-btn dr-btn--ghost" type="button" data-quiz-restart>Làm lại hồ sơ</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="dr-section dr-quiz-related">
+    <div class="dr-container">
+      <div class="dr-quiz-section-head">
+        <div><span class="dr-eyebrow">Đọc trước khi quyết định</span><h2 class="dr-h2">Nội dung liên quan</h2></div>
+        <a class="dr-btn dr-btn--ghost" href="/blogs/{{ settings.url_blog_section | default: 'tin-tuc' }}">Xem tất cả bài viết <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+      {% assign quiz_blog_handle = settings.url_blog_section | default: 'tin-tuc' %}
+      {% if blogs[quiz_blog_handle].articles.size > 0 %}
+      <div class="dr-quiz-articles">
+        {% for article in blogs[quiz_blog_handle].articles limit: 3 %}
+        <article class="dr-quiz-article">
+          <a class="dr-quiz-article__media" href="{{ article.url }}" aria-label="Đọc {{ article.title }}">
+            {% if article.image != blank %}<img src="{{ article.image.src }}" alt="{{ article.image.alt | default: article.title }}">{% else %}<span>DR.REJU</span>{% endif %}
+          </a>
+          <div class="dr-quiz-article__body"><span>{{ article.published_on | default: article.published_at | date: 'dd/MM/yyyy' }}</span><h3 class="dr-h3"><a href="{{ article.url }}">{{ article.title }}</a></h3><p>{{ article.excerpt | default: article.content | strip_html | truncatewords: 22 }}</p><a href="{{ article.url }}">Đọc bài viết <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
+        </article>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="dr-quiz-empty">Các nội dung chuyên môn đang được DR.REJU cập nhật. Bạn có thể <a href="{{ quiz_booking_url }}">đặt lịch tư vấn trực tiếp</a> để trao đổi tình trạng của mình.</p>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="dr-quiz-closing">
+    <div class="dr-container dr-quiz-closing__in">
+      <div><span class="dr-eyebrow">Cần trao đổi trực tiếp?</span><h2 class="dr-h2">Một cuộc hẹn có thể là bước tiếp theo phù hợp.</h2></div>
+      <div><p>Liên hệ DR.REJU để được hướng dẫn hình thức tư vấn phù hợp với bạn.</p><a class="dr-btn dr-btn--primary" href="{{ quiz_booking_url }}">Đặt lịch tư vấn</a>{% if quiz_phone != blank %}<a class="dr-quiz-closing__phone" href="tel:{{ quiz_phone | remove: ' ' }}"><i class="fa-solid fa-phone" aria-hidden="true"></i> {{ quiz_phone }}</a>{% endif %}</div>
+    </div>
+  </section>
+</main>

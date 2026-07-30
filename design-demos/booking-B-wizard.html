@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DR.REJU · Đặt lịch B — Wizard 3 bước (page.dat-lich)</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  /* DR.REJU clinical palette ? calm surfaces for reading, emerald for action, gold for brand accents. */
+  --bg:#f6f7f2; --surface:#ffffff; --surface-alt:#edf3ed;
+  --ink:#173a31; --ink-soft:#5d7068; --emerald:#156b54; --emerald-deep:#0b4939;
+  --gold:#c69b3c; --gold-soft:#f4e8c9; --line:#d8e2d8;
+  --text:var(--ink); --text-soft:var(--ink-soft); --text-on-surface:var(--ink);
+  --bg-soft:var(--surface-alt); --bg-card:var(--surface); --accent:var(--emerald);
+  --brand-bg:var(--emerald); --brand-text:#fffdf5; --mint:#72a991;
+  --radius:8px; --radius-pill:999px; --container:1200px;
+  --font-primary:'Jost',system-ui,sans-serif; --font-secondary:'Inter',system-ui,sans-serif;
+  --fs-xs:.75rem; --fs-sm:.875rem; --fs-base:1rem; --fs-lg:1.125rem; --fs-xl:1.5rem; --fs-2xl:clamp(2.25rem,4vw,3.85rem);
+  --sp-4:4px; --sp-6:6px; --sp-8:8px; --sp-9:9px; --sp-12:12px; --sp-13:13px; --sp-14:14px; --sp-16:16px; --sp-18:18px; --sp-20:20px; --sp-22:22px; --sp-24:24px; --sp-30:30px; --sp-32:32px; --sp-34:34px; --sp-40:40px; --sp-44:44px; --sp-48:48px; --sp-54:54px; --sp-56:56px; --sp-58:58px; --sp-64:64px; --sp-80:80px; --sp-110:110px;
+
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font-secondary);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.dr-container{max-width:var(--container);margin:0 auto;padding:0 40px}
+.dr-section{padding:var(--sp-110) 0}
+@media(max-width:980px){.dr-section{padding:var(--sp-48) 0}.dr-container{padding:0 22px}}
+.dr-eyebrow{font-size:var(--fs-xs);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.dr-h2{font-family:var(--font-primary);font-weight:600;font-size:var(--fs-2xl);line-height:1.2;margin:0}
+.dr-lead{font-size:var(--fs-lg);line-height:1.65;color:var(--text-soft);max-width:44ch}
+
+.wizard-card{background:var(--surface);color:var(--text-on-surface);border-radius:var(--radius);
+  box-shadow:0 32px 70px rgba(0,0,0,.26);overflow:hidden}
+.w-top{padding:var(--sp-48) var(--sp-56)}
+@media(max-width:980px){.w-top{padding:var(--sp-32) var(--sp-30)}}
+.w-title{margin-top:var(--sp-14)}
+.w-title b{color:var(--bg);font-weight:600}
+.w-lead{margin:var(--sp-18) 0 0}
+
+.progress-bar{display:flex;gap:var(--sp-8);margin-top:var(--sp-32);max-width:480px}
+.progress-step{flex:1;height:6px;border-radius:3px;background:var(--line);overflow:hidden;transition:all .3s}
+.progress-step.active{background:var(--emerald)}
+.progress-label{display:flex;justify-content:space-between;font-size:var(--fs-xs);color:var(--ink-soft);margin-top:var(--sp-8)}
+.progress-label span.active{color:var(--emerald);font-weight:600}
+
+.w-form{padding:var(--sp-40) var(--sp-56) var(--sp-64)}
+@media(max-width:980px){.w-form{padding:var(--sp-32) var(--sp-30)}}
+.w-form h3{font-family:var(--font-primary);font-size:var(--fs-xl);font-weight:600;margin:0 0 var(--sp-24);color:var(--gold)}
+
+.form-group{margin-bottom:var(--sp-20)}
+.form-group label{display:block;font-size:var(--fs-xs);font-weight:600;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:var(--sp-8)}
+.form-input{width:100%;padding:var(--sp-12) var(--sp-16);border:1px solid var(--line);
+  border-radius:var(--radius);background:var(--surface);color:var(--text-on-surface);
+  font-family:var(--font-secondary);font-size:var(--fs-sm);transition:border-color .2s}
+.form-input:focus{outline:none;border-color:var(--emerald);box-shadow:0 0 0 2px rgba(21,107,84,.12)}
+.form-select{width:100%;padding:var(--sp-12) var(--sp-16);border:1px solid var(--line);
+  border-radius:var(--radius);background:var(--surface);color:var(--text-on-surface);
+  font-family:var(--font-secondary);font-size:var(--fs-sm);cursor:pointer}
+.form-select:focus{outline:none;border-color:var(--emerald)}
+
+.w-actions{display:flex;gap:var(--sp-16);margin-top:var(--sp-32)}
+.w-prev{flex:1;padding:var(--sp-14);background:transparent;color:var(--text-soft);
+  border:1px solid var(--line);border-radius:var(--radius);font-family:var(--font-primary);
+  font-size:var(--fs-sm);font-weight:600;cursor:pointer;transition:background .2s}
+.w-prev:hover{background:var(--bg-soft);color:var(--text)}
+.w-next{flex:1;padding:var(--sp-14);background:var(--emerald);color:#fffdf5;
+  border:none;border-radius:var(--radius-pill);font-family:var(--font-primary);
+  font-size:var(--fs-sm);font-weight:700;letter-spacing:.02em;cursor:pointer;
+  transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-12)}
+.w-next:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(21,107,84,.22)}
+.w-next i{transition:transform .25s}.w-next:hover i{transform:translateX(4px)}
+
+.w-trust{display:flex;align-items:center;gap:var(--sp-9);margin-top:var(--sp-20);font-size:var(--fs-xs);color:var(--text-soft)}
+.w-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.6}
+
+@media (prefers-reduced-motion:reduce){.w-next{transform:none!important}}
+</style>
+</head>
+<body>
+
+<section class="dr-section">
+  <div class="dr-container">
+    <div class="wizard-card">
+
+      <div class="w-top">
+        <span class="dr-eyebrow">Đặt lịch tư vấn DR.REJU</span>
+        <h2 class="dr-h2 w-title">Đặt lịch trong 3 bước đơn giản<br><b>chỉ trong 2 phút</b></h2>
+        <p class="dr-lead w-lead">Chọn dịch vụ → nhập thông tin → xác nhận. Bác sĩ sẽ gọi lại qua Zalo trong 24h.</p>
+
+        <div class="progress-bar">
+          <div class="progress-step active"></div>
+          <div class="progress-step"></div>
+          <div class="progress-step"></div>
+        </div>
+        <div class="progress-label">
+          <span class="active">1. Dịch vụ</span>
+          <span>2. Thông tin</span>
+          <span>3. Xác nhận</span>
+        </div>
+      </div>
+
+      <div class="w-form">
+        <h3>Bước 1: Chọn dịch vụ tư vấn</h3>
+
+        <div class="form-group">
+          <label for="service">Dịch vụ bạn quan tâm</label>
+          <select id="service" class="form-select">
+            <option value="">Chọn dịch vụ</option>
+            <option value="laser">Laser PicoSure Pro — Điều trị sắc tố / nám</option>
+            <option value="ai">Soi da AI — Phân tích da bằng trí tuệ nhân tạo</option>
+            <option value="meso">Mesotherapy — Phục hồi & nuôi dưỡng sâu</option>
+            <option value="quiz">Chưa biết — mình muốn làm quiz trước</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="concern">Vấn đề da của bạn</label>
+          <select id="concern" class="form-select">
+            <option value="">Chọn vấn đề</option>
+            <option value="acne">Mụn & bít tắc</option>
+            <option value="pigment">Nám & sắc tố</option>
+            <option value="sensitive">Da nhạy cảm & đỏ</option>
+            <option value="aging">Lão hóa</option>
+            <option value="dry">Da khô</option>
+            <option value="other">Chưa rõ</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="urgency">Bạn cần gặp bác sĩ khi nào?</label>
+          <select id="urgency" class="form-select">
+            <option value="normal">Trong 24–48h</option>
+            <option value="urgent">Trong 24h</option>
+            <option value="flexible">Tuỳ thời gian</option>
+          </select>
+        </div>
+
+        <div class="w-actions">
+          <div></div>
+          <a href="#" class="w-next" id="nextStep">
+            Tiếp tục <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="w-trust">
+          <span class="w-dot"></span>
+          <span>Bảo mật theo NĐ 13/2023 — không bán thông tin</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+document.getElementById('nextStep').addEventListener('click', function(e){
+  e.preventDefault();
+  const service = document.getElementById('service').value;
+  const concern = document.getElementById('concern').value;
+
+  if(!service){
+    alert('Vui lòng chọn dịch vụ.');
+    return;
+  }
+
+  alert('Bước 2: Nhập thông tin liên hệ\n(Bước 2 và 3 sẽ hiện ra sau khi bạn chọn dịch vụ)');
+  // Trong thực tế: chuyển sang step 2
+});
+</script>
+</body>
+</html>

@@ -146,8 +146,8 @@
 .dr-siteheader--overlay:not(.is-stuck) .dr-util-left a,
 .dr-siteheader--overlay:not(.is-stuck) .lang-btn{ color: #fff; }
 .dr-siteheader--overlay:not(.is-stuck) .dr-navmenu a::after{ background: #fff; }
-.dr-siteheader--overlay.is-stuck{ background: var(--brand-bg-dk); }
-.dr-siteheader--overlay.is-stuck .dr-utilbar{ background: var(--brand-bg-dk); }
+.dr-siteheader--overlay.is-stuck{ background: var(--brand-bg); }
+.dr-siteheader--overlay.is-stuck .dr-utilbar{ background: var(--brand-bg); }
 
 /* Utility bar (tầng trên — co lại khi scroll) */
 .dr-utilbar{ background: var(--brand-bg-dk); border-bottom: 1px solid rgba(223,186,115,.16); max-height: 46px; opacity: 1; transition: max-height .35s ease, opacity .3s ease; }

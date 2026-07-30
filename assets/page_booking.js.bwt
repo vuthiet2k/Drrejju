@@ -1,0 +1,15 @@
+(function () {
+  'use strict';
+  var page = document.querySelector('[data-booking-page]');
+  if (!page) return;
+  var form = page.querySelector('form');
+  var error = page.querySelector('[data-booking-error]');
+  if (!form || !error) return;
+  form.addEventListener('submit', function (event) {
+    var consent = form.querySelector('.dr-booking-consent input');
+    if (!consent || consent.checked) return;
+    event.preventDefault();
+    error.textContent = 'Vui lòng đồng ý để DR.REJU liên hệ xác nhận yêu cầu của bạn.';
+    consent.focus();
+  });
+}());

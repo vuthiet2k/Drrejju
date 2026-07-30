@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DR.REJU · Đặt lịch — Form đơn giản (page.dat-lich)</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* DR.REJU clinical palette ? calm surfaces for reading, emerald for action, gold for brand accents. */
+  --bg:#f6f7f2; --surface:#ffffff; --surface-alt:#edf3ed;
+  --ink:#173a31; --ink-soft:#5d7068; --emerald:#156b54; --emerald-deep:#0b4939;
+  --gold:#c69b3c; --gold-soft:#f4e8c9; --line:#d8e2d8;
+  --text:var(--ink); --text-soft:var(--ink-soft); --text-on-surface:var(--ink);
+  --bg-soft:var(--surface-alt); --bg-card:var(--surface); --accent:var(--emerald);
+  --brand-bg:var(--emerald); --brand-text:#fffdf5; --mint:#72a991;
+  --radius:8px; --radius-pill:999px; --container:1200px;
+  --font-primary:'Jost',system-ui,sans-serif; --font-secondary:'Inter',system-ui,sans-serif;
+  --fs-xs:.75rem; --fs-sm:.875rem; --fs-base:1rem; --fs-lg:1.125rem; --fs-xl:1.5rem; --fs-2xl:clamp(2.25rem,4vw,3.85rem);
+  --sp-4:4px; --sp-6:6px; --sp-8:8px; --sp-9:9px; --sp-12:12px; --sp-13:13px; --sp-14:14px; --sp-16:16px; --sp-18:18px; --sp-20:20px; --sp-22:22px; --sp-24:24px; --sp-30:30px; --sp-32:32px; --sp-34:34px; --sp-40:40px; --sp-44:44px; --sp-48:48px; --sp-54:54px; --sp-56:56px; --sp-58:58px; --sp-64:64px; --sp-80:80px; --sp-110:110px;
+
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font-secondary);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.dr-container{max-width:var(--container);margin:0 auto;padding:0 40px}
+.dr-section{padding:var(--sp-110) 0}
+@media(max-width:980px){.dr-section{padding:var(--sp-48) 0}.dr-container{padding:0 22px}}
+.dr-eyebrow{font-size:var(--fs-xs);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.dr-h2{font-family:var(--font-primary);font-weight:600;font-size:var(--fs-2xl);line-height:1.2;margin:0}
+.dr-lead{font-size:var(--fs-lg);line-height:1.65;color:var(--text-soft);max-width:44ch}
+
+.booking-card{background:transparent;color:var(--text);border-radius:var(--radius);
+  box-shadow:0 32px 70px rgba(0,0,0,.26);overflow:hidden}
+.b-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+@media(max-width:980px){.b-grid{grid-template-columns:1fr}}
+
+.b-left{padding:var(--sp-64) var(--sp-56)}
+@media(max-width:980px){.b-left{padding:var(--sp-48) var(--sp-30)}}
+.b-title{margin-top:14px}
+.b-title b{color:var(--emerald);font-weight:600}
+.b-lead{margin:18px 0 0}
+
+.b-info{margin-top:var(--sp-32);display:flex;flex-direction:column;gap:var(--sp-16)}
+.b-info-item{display:flex;align-items:center;gap:var(--sp-12)}
+.b-info-item i{font-size:1.25rem;color:var(--gold)}
+.b-info-item div{font-size:var(--fs-sm);line-height:1.5}
+.b-info-item b{font-family:var(--font-primary);font-weight:600;color:var(--gold)}
+
+.b-map{margin-top:var(--sp-32);border-radius:var(--radius);overflow:hidden;
+  box-shadow:0 8px 24px rgba(0,0,0,.15);height:280px;background:rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;font-size:var(--fs-sm);color:var(--text)}
+
+.b-right{padding:var(--sp-64) var(--sp-44)}
+@media(max-width:980px){.b-right{padding:var(--sp-48) var(--sp-30)}}
+.b-form-wrapper{background:#fff;border-radius:var(--radius);padding:var(--sp-40);
+  box-shadow:0 16px 40px rgba(0,0,0,.15)}
+.b-form h3{font-family:var(--font-primary);font-weight:600;margin:0 0 var(--sp-24);color:var(--bg)}
+
+.form-group{margin-bottom:var(--sp-20)}
+.form-group label{display:block;font-size:var(--fs-xs);font-weight:600;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:var(--sp-8)}
+.form-input{width:100%;padding:var(--sp-12) var(--sp-16);border:1px solid #e0e0e0;
+  border-radius:var(--radius);background:#fff;color:var(--text-on-surface);
+  font-family:var(--font-secondary);font-size:var(--fs-sm);transition:border-color .2s}
+.form-input:focus{outline:none;border-color:var(--emerald);box-shadow:0 0 0 2px rgba(21,107,84,.12)}
+.form-select{width:100%;padding:var(--sp-12) var(--sp-16);border:1px solid #e0e0e0;
+  border-radius:var(--radius);background:#fff;color:var(--text-on-surface);
+  font-family:var(--font-secondary);font-size:var(--fs-sm);cursor:pointer}
+.form-select:focus{outline:none;border-color:var(--emerald)}
+
+.b-submit{width:100%;padding:var(--sp-16);background:var(--emerald);color:#fffdf5;
+  border:none;border-radius:var(--radius-pill);font-family:var(--font-primary);
+  font-size:var(--fs-sm);font-weight:700;letter-spacing:.02em;cursor:pointer;
+  transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-12)}
+.b-submit:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(21,107,84,.22)}
+.b-submit i{transition:transform .25s}.b-submit:hover i{transform:translateX(4px)}
+
+.b-trust{display:flex;align-items:center;gap:var(--sp-9);margin-top:var(--sp-20);font-size:var(--fs-xs);color:var(--text-soft)}
+.b-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.6}
+
+@media (prefers-reduced-motion:reduce){.b-submit{transform:none!important}}
+</style>
+</head>
+<body>
+
+<header class="dr-header" style="background:var(--brand-bg);padding:16px 0;border-bottom:1px solid rgba(255,255,255,.18)">
+  <div class="dr-container">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <img src="../assets/logo.png" alt="DR.REJU" style="height:40px;max-width:180px;object-fit:contain">
+      <nav style="display:flex;gap:24px">
+        <a href="/" style="color:var(--brand-text);font-family:var(--font-primary);font-weight:600;font-size:var(--fs-sm);text-decoration:none">Trang chủ</a>
+        <a href="/quiz" style="color:var(--brand-text);font-family:var(--font-primary);font-weight:600;font-size:var(--fs-sm);text-decoration:none">Quiz</a>
+        <a href="/dat-lich" style="color:var(--brand-text);font-family:var(--font-primary);font-weight:600;font-size:var(--fs-sm);text-decoration:none">Đặt lịch</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="dr-section">
+  <div class="dr-container">
+    <div class="booking-card">
+      <div class="b-grid">
+
+        <div class="b-left">
+          <span class="dr-eyebrow">Đặt lịch tư vấn DR.REJU</span>
+          <h2 class="dr-h2 b-title">Gặp bác sĩ trước khi quyết định<br><b>điều trị</b></h2>
+          <p class="dr-lead b-lead">Điền thông tin, chọn dịch vụ. Bác sĩ sẽ gọi lại qua Zalo trong vòng 24h để xác nhận lịch.</p>
+
+          <div class="b-info">
+            <div class="b-info-item">
+              <i class="fas fa-clock"></i>
+              <div><b>Giờ làm việc</b> 8:00 – 20:00, T2–CN</div>
+            </div>
+            <div class="b-info-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div><b>Địa chỉ</b> 28 Nguyễn Huệ, Quận 1, TP.HCM</div>
+            </div>
+            <div class="b-info-item">
+              <i class="fas fa-phone-alt"></i>
+              <div><b>Hotline</b> 0900 000 000 (Zalo 24/7)</div>
+            </div>
+          </div>
+
+          <div class="b-map">
+            🗺️ Bản đồ cơ sở DR.REJU — 28 Nguyễn Huệ, Quận 1, TP.HCM
+          </div>
+        </div>
+
+        <div class="b-right">
+          <div class="b-form-wrapper">
+            <form class="b-form" id="bookingForm">
+              <h3>Thông tin đặt lịch</h3>
+
+              <div class="form-group">
+                <label for="name">Họ và tên *</label>
+                <input type="text" id="name" class="form-input" placeholder="Nguyễn Văn A" required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Số Zalo / Điện thoại *</label>
+                <input type="tel" id="phone" class="form-input" placeholder="0909 123 456" required>
+              </div>
+
+              <div class="form-group">
+                <label for="service">Chọn dịch vụ</label>
+                <select id="service" class="form-select">
+                  <option value="">Chọn dịch vụ tư vấn</option>
+                  <option value="laser">Laser PicoSure Pro (sắc tố / năm)</option>
+                  <option value="ai">Soi da AI — Skin Analysis</option>
+                  <option value="meso">Mesotherapy (phục hồi & nuôi dưỡng)</option>
+                  <option value="quiz">Chưa biết — mình muốn làm quiz trước</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="concern">Vấn đề da *</label>
+                <select id="concern" class="form-select" required>
+                  <option value="">Chọn vấn đề da</option>
+                  <option value="acne">Mụn & bít tắc</option>
+                  <option value="pigment">Năm & sắc tố</option>
+                  <option value="sensitive">Da nhạy cảm & đỏ</option>
+                  <option value="aging">Lão hóa</option>
+                  <option value="dry">Da khô</option>
+                  <option value="other">Chưa rõ</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="note">Ghi chú thêm</label>
+                <textarea id="note" class="form-input" rows="3" placeholder="Mô tả ngắn gọn về vấn đề da của bạn..."></textarea>
+              </div>
+
+              <a href="#" class="b-submit" id="submitBtn">
+                Gửi đặt lịch <i class="fas fa-arrow-right"></i>
+              </a>
+
+              <div class="b-trust">
+                <span class="b-dot"></span>
+                <span>Bảo mật theo NĐ 13/2023 — không bán thông tin</span>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.getElementById('submitBtn').addEventListener('click', function(e){
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const concern = document.getElementById('concern').value;
+
+  if(!name || !phone || !concern){
+    alert('Vui lòng điền đầy đủ thông tin bắt buộc.');
+    return;
+  }
+
+  // Form đơn giản — gửi về Zalo/gmail qua URL
+  alert('Thông tin đã gửi! Bác sĩ sẽ liên hệ qua Zalo trong 24h.');
+  document.getElementById('bookingForm').reset();
+});
+</script>
+</body>
+</html>

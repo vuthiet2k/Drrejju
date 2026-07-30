@@ -12,6 +12,12 @@
 {{ 'placeholdertypewriter.js' | asset_url | script_tag }}
 {%endif%}
 {{ 'main.js' | asset_url | script_tag }}
+{%- if template contains 'page.quiz' -%}
+{{ 'page_quiz.js' | asset_url | script_tag }}
+{%- endif -%}
+{%- if template contains 'page.dat-lich' -%}
+{{ 'page_booking.js' | asset_url | script_tag }}
+{%- endif -%}
 {%- if template contains 'index' -%}
 {{ 'index.js' | asset_url | script_tag }}
 {%- endif -%}

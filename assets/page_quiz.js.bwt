@@ -1,0 +1,72 @@
+﻿(function () {
+  'use strict';
+
+  var root = document.querySelector('[data-quiz-page]');
+  if (!root) return;
+
+  var form = root.querySelector('[data-quiz-form]');
+  var shell = root.querySelector('[data-quiz-shell]');
+  var questions = Array.prototype.slice.call(root.querySelectorAll('[data-question]'));
+  var next = root.querySelector('[data-quiz-next]');
+  var back = root.querySelector('[data-quiz-back]');
+  var restart = root.querySelector('[data-quiz-restart]');
+  var result = root.querySelector('[data-quiz-result]');
+  var error = root.querySelector('[data-quiz-error]');
+  var count = root.querySelector('[data-quiz-count]');
+  var progress = root.querySelector('[data-quiz-progress]');
+  var index = 0;
+
+  var results = {
+    acne: { title: 'Ưu tiên: mụn & bít tắc', copy: 'Từ câu trả lời của bạn, mụn và bít tắc là điều nên được ưu tiên trong cuộc trò chuyện tiếp theo. Hãy bắt đầu bằng routine dịu nhẹ, nhất quán và quan sát phản ứng của da.', list: ['Tìm hiểu cách làm sạch và dưỡng ẩm phù hợp với da dầu hoặc hỗn hợp.', 'Không tự tăng quá nhiều hoạt chất cùng lúc khi da đang khó chịu.', 'Trao đổi với bác sĩ nếu mụn viêm, tái phát hoặc để lại thâm sẹo.'] },
+    pigment: { title: 'Ưu tiên: sắc tố & da không đều màu', copy: 'Câu trả lời gợi ý bạn đang quan tâm nhiều đến sắc tố hoặc tình trạng da không đều màu. Chống nắng đều đặn và đánh giá nguyên nhân là bước nền tảng trước khi chọn giải pháp chuyên sâu.', list: ['Duy trì chống nắng hằng ngày và theo dõi các yếu tố làm sạm da.', 'Tìm hiểu các hoạt chất làm sáng theo hướng dẫn phù hợp.', 'Trao đổi trực tiếp nếu nám hoặc đốm nâu thay đổi nhanh, kéo dài.'] },
+    sensitive: { title: 'Ưu tiên: hàng rào da & sự nhạy cảm', copy: 'Da của bạn có dấu hiệu cần được ưu tiên cảm giác dễ chịu và ổn định trước. Khi da dễ phản ứng, một routine ít bước nhưng nhất quán thường có ý nghĩa hơn việc thử nhiều sản phẩm mới.', list: ['Tối giản routine và thử từng sản phẩm mới một cách thận trọng.', 'Ưu tiên làm sạch dịu nhẹ, dưỡng ẩm và chống nắng phù hợp.', 'Trao đổi với bác sĩ khi đỏ, rát hoặc ngứa kéo dài.'] },
+    aging: { title: 'Ưu tiên: độ ẩm & dấu hiệu lão hóa', copy: 'Bạn đang muốn cải thiện độ ẩm, bề mặt da hoặc dấu hiệu lão hóa. Đây là hành trình cần thời gian; hãy xác định mục tiêu thực tế và duy trì các bước nền tảng trước.', list: ['Ưu tiên chống nắng và dưỡng ẩm đủ trong routine hằng ngày.', 'Tìm hiểu các hoạt chất hỗ trợ theo nhịp da có thể dung nạp.', 'Đặt lịch nếu bạn muốn thảo luận về mục tiêu chăm sóc chuyên sâu.'] }
+  };
+
+  function selected(name) { return form.querySelector('input[name="' + name + '"]:checked'); }
+  function showQuestion(nextIndex) {
+    index = nextIndex;
+    questions.forEach(function (question, questionIndex) {
+      var active = questionIndex === index;
+      question.hidden = !active;
+      question.classList.toggle('is-active', active);
+    });
+    error.textContent = '';
+    count.textContent = 'Câu ' + (index + 1) + ' / ' + questions.length;
+    progress.style.width = (((index + 1) / questions.length) * 100) + '%';
+    back.hidden = index === 0;
+    next.innerHTML = index === questions.length - 1 ? 'Xem định hướng <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>' : 'Tiếp tục <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>';
+  }
+  function revealResult() {
+    var concern = selected('concern');
+    var item = results[concern ? concern.value : 'sensitive'];
+    root.querySelector('[data-result-title]').textContent = item.title;
+    root.querySelector('[data-result-copy]').textContent = item.copy;
+    var list = root.querySelector('[data-result-list]');
+    list.innerHTML = item.list.map(function (entry) { return '<li>' + entry + '</li>'; }).join('');
+    form.hidden = true;
+    result.hidden = false;
+    root.querySelector('.dr-quiz-progress__meta').hidden = true;
+    root.querySelector('.dr-quiz-progress').hidden = true;
+    result.focus({ preventScroll: true });
+  }
+
+  next.addEventListener('click', function () {
+    var name = questions[index].querySelector('input').name;
+    if (!selected(name)) {
+      error.textContent = 'Hãy chọn một phương án trước khi tiếp tục.';
+      questions[index].querySelector('input').focus();
+      return;
+    }
+    if (index === questions.length - 1) revealResult();
+    else showQuestion(index + 1);
+  });
+  back.addEventListener('click', function () { if (index > 0) showQuestion(index - 1); });
+  if (restart) restart.addEventListener('click', function () {
+    form.reset(); result.hidden = true; form.hidden = false;
+    root.querySelector('.dr-quiz-progress__meta').hidden = false;
+    root.querySelector('.dr-quiz-progress').hidden = false;
+    showQuestion(0); shell.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  showQuestion(0);
+}());

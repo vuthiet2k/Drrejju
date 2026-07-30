@@ -24,6 +24,8 @@
 
 {%if template contains '404'%}{{ '404page.scss.css' | asset_url | stylesheet_tag }}{%endif%}
 {%if template contains 'page'%}{{ 'style_page.scss.css' | asset_url | stylesheet_tag }}{%endif%}
+{%if template contains 'page.quiz'%}{{ 'page_quiz.scss.css' | asset_url | stylesheet_tag }}{%endif%}
+{%if template contains 'page.dat-lich'%}{{ 'page_booking.scss.css' | asset_url | stylesheet_tag }}{%endif%}
 {%if template contains 'cart'%}{{ 'cartpage.scss.css' | asset_url | stylesheet_tag }}	{%endif%}
 {%if template contains 'blog' or template contains 'article' or template contains 'search'%}{{ 'blog_article_style.scss.css' | asset_url | stylesheet_tag }}{%endif%}
 {%if template contains 'collection' or template contains 'blog'  or template contains 'article' or template contains 'page.favorite'%}{{ 'sidebar_style.scss.css' | asset_url | stylesheet_tag }}	{%endif%}
