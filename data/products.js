@@ -1,21 +1,9 @@
 /**
- * data/products.js — Danh sách sản phẩm demo (giả lập Sapo `product` object)
- *
- * Cấu trúc mỗi product khớp chính xác với các trường được dùng trong:
- *   - product_grid_office.bwt
- *   - product_grid_office_sale.bwt
- *   - product.bwt (trang chi tiết)
- *
- * Ảnh placeholder: placehold.co — thay bằng img_url thực khi có asset.
+ * data/products.js — Danh sách sản phẩm thực tế Dr.REJU từ Sapo Export
+ * Đồng bộ với: DrREJU_Products_Services_Sapo_Export_Full.xlsx & Figma Node 41:12
  */
 
-// ── Helpers ────────────────────────────────────────────────────────────────
-
-function img(color, label, size = '400x400') {
-  return `https://placehold.co/${size}/${color}?text=${encodeURIComponent(label)}`;
-}
-
-function variant(id, title, price, comparePrice, sku, available = true, qty = 20) {
+function variant(id, title, price, comparePrice, sku, available = true, qty = 25) {
   return {
     id,
     title,
@@ -29,277 +17,234 @@ function variant(id, title, price, comparePrice, sku, available = true, qty = 20
 }
 
 function makeProduct({
-  id, name, alias, type, tags, price, comparePrice,
-  variants, images, available, metafields, description, votes,
+  id, name, alias, vendor, type, tags, price, comparePrice, sku, image, description, votes
 }) {
-  const firstAvailable = variants.find(v => v.available) || variants[0];
-  const isAvailable    = available !== false && variants.some(v => v.available);
+  const v = variant(id * 10 + 1, 'Tiêu chuẩn', price, comparePrice, sku, true, 30);
   return {
     id,
     name,
     alias,
-    url:         `/${alias}`,
-    description: description || `<p>Sản phẩm <strong>${name}</strong> — chất lượng dược mỹ phẩm chuẩn quốc tế.</p>`,
-    vendor:      'DR.REJU',
-    type:        type || 'Dược mỹ phẩm',
-    available:   isAvailable,
-    price:       firstAvailable.price,
-    compare_at_price: firstAvailable.compare_at_price,
-    inventory_quantity: firstAvailable.inventory_quantity,
+    url: `/${alias}`,
+    description: description || `<p>Sản phẩm <strong>${name}</strong> — chuẩn Y khoa chính hãng tại Dr.REJU.</p>`,
+    vendor: vendor || 'Dr.REJU Clinical',
+    type: type || 'Dược mỹ phẩm',
+    available: true,
+    price: price,
+    compare_at_price: comparePrice || 0,
+    inventory_quantity: 30,
     inventory_policy: 'deny',
-    featured_image: { src: images[0], alt: name },
-    images: images.map((src, i) => ({ src, alt: `${name} — ảnh ${i + 1}` })),
-    tags:    tags || [],
+    featured_image: { src: image, alt: name },
+    images: [{ src: image, alt: name }],
+    tags: tags || [],
     collections: [],
-    variants,
-    selected_or_first_available_variant: firstAvailable,
+    variants: [v],
+    selected_or_first_available_variant: v,
     metafields: {
-      custom: { Video: '', Quycach: '', ...((metafields || {}).custom || {}) },
-      bpr:    { votes: votes ?? 50 },
-    },
+      custom: { Quycach: 'Chai/Hộp' },
+      bpr: { votes: votes || 88 }
+    }
   };
 }
 
-// ── Danh sách 15 sản phẩm ────────────────────────────────────────────────
-
 const products = [
-
-  // 1 ─ Retinol 0.3% + Peptide (chống lão hoá)
   makeProduct({
-    id: 1001, name: 'Kem Dưỡng Retinol 0.3% + Peptide Chống Lão Hoá', alias: 'kem-duong-retinol-0-3-peptide',
-    type: 'Kem dưỡng', votes: 170,
-    description: 'Chống lão hoá chuyên sâu — da căng mướt, đầy sức sống.',
-    tags: ['ban-chay', 'chong-lao-hoa', 'retinol', 'san-pham-noi-bat', 'khuyen-mai'],
-    variants: [
-      variant(10011, '30ml', 850000, 1200000, 'PC-RET-30', true,  25),
-      variant(10012, '50ml', 1250000, 1650000, 'PC-RET-50', true,  12),
-    ],
-    images: [
-      img('d4a373/ffffff', 'Retinol 0.3%'),
-      img('c68642/ffffff', 'Retinol – Mặt sau'),
-    ],
+    id: 89260001,
+    alias: 'theramid-azid-15-azelaic-30ml',
+    name: 'THERAMID AZID 15% Azelaic 30ml',
+    vendor: 'Theramid',
+    type: 'Đặc Trị Mụn, Nám & Treatment Nồng Độ Cao',
+    sku: 'SP241',
+    price: 1250000,
+    comparePrice: 1500000,
+    image: 'https://drreju.ezs.vn/Upload/image/2026/07/21/upload_z8066325222229_a07935957c4b1d155b75a7392ca70726_210726-040350.jpg',
+    tags: ["Azelaic Acid", "Trị mụn viêm", "Trị thâm mụn", "Kiềm dầu", "ban-chay", "san-pham-noi-bat"],
+    description: 'THERAMID AZID 15% Azelaic 30ml là dòng dược mỹ phẩm cao cấp thuộc thương hiệu danh tiếng Theramid, được các Bác sĩ Da liễu đầu ngành tại Dr.REJU tin dùng và đưa vào phác đồ điều trị chuyên sâu.',
   }),
-
-  // 2 ─ Serum Vitamin C 15%
   makeProduct({
-    id: 1002, name: 'Serum Vitamin C 15% Làm Sáng & Đều Màu Da', alias: 'serum-vitamin-c-15',
-    type: 'Serum', votes: 199,
-    description: 'Làm sáng đều màu, xoá thâm & rạng rỡ rõ từ tuần đầu.',
-    tags: ['lam-sang', 'vitamin-c', 'duong-trang', 'serum', 'san-pham-noi-bat', 'quycach_30ml'],
-    variants: [
-      variant(10021, '30ml', 650000, 0, 'PC-VTC-30', true, 30),
-    ],
-    images: [
-      img('f4a261/ffffff', 'Vitamin C 15%'),
-      img('e76f51/ffffff', 'Vitamin C – Mặt sau'),
-    ],
-    metafields: { custom: { Quycach: '30ml' } },
+    id: 89260002,
+    alias: 'verso-balancing-day-cream-50ml',
+    name: 'VERSO Balancing Day Cream (50ml)',
+    vendor: 'Verso Skincare',
+    type: 'Kem Dưỡng Ẩm & Tái Tạo Màng Lipid',
+    sku: 'SP240',
+    price: 1250000,
+    comparePrice: 1500000,
+    image: 'https://drreju.ezs.vn/Upload/image/2026/07/21/upload_z8066271487176_d3441257256ab18075deac024f2cab71_210726-034918.jpg',
+    tags: ["Kem Dưỡng Ẩm", "Tái Tạo Màng Lipid", "Phục hồi da", "Verso Skincare", "ban-chay"],
+    description: 'VERSO Balancing Day Cream (50ml) là dòng dược mỹ phẩm cao cấp thuộc thương hiệu danh tiếng Verso Skincare, được các Bác sĩ Da liễu đầu ngành tại Dr.REJU tin dùng.',
   }),
-
-  // 3 ─ Kem chống nắng SPF50+ PA++++
   makeProduct({
-    id: 1003, name: 'Kem Chống Nắng Mineral SPF50+ PA++++ Không Nhờn', alias: 'kem-chong-nang-mineral-spf50',
-    type: 'Kem chống nắng', votes: 49,
-    description: 'Bảo vệ da toàn diện — nhẹ thoáng, không bết dính suốt ngày.',
-    tags: ['ban-chay', 'chong-nang', 'spf50', 'khuyen-mai', 'san-pham-noi-bat'],
-    variants: [
-      variant(10031, '50ml', 480000, 560000, 'PC-SPF-50', true, 40),
-    ],
-    images: [
-      img('90e0ef/333333', 'SPF50+ PA++++'),
-      img('48cae4/333333', 'Chống nắng – Mặt sau'),
-    ],
+    id: 89260003,
+    alias: 'carenel-tuap-met-na-daong-mui-10g',
+    name: 'CARE:NEL tuýp mặt nạ dưỡng môi 10g',
+    vendor: 'Care:nel',
+    type: 'Mặt Nạ Sinh Học & Miếng Tẩy Tế Bào Chết',
+    sku: 'SP238',
+    price: 320000,
+    comparePrice: 390000,
+    image: 'https://drreju.ezs.vn/Upload/image/2026/06/02/upload_z7893065845717_7fb6063492847aa032cd87d160c95965_020626-044605.jpg',
+    tags: ["Mặt nạ môi", "Care:nel", "Dưỡng ẩm môi"],
+    description: 'CARE:NEL tuýp mặt nạ dưỡng môi 10g là dòng dược mỹ phẩm chăm sóc môi cao cấp chuẩn y khoa.',
   }),
-
-  // 4 ─ Sữa rửa mặt amino acid (2 sizes)
   makeProduct({
-    id: 1004, name: 'Sữa Rửa Mặt Tạo Bọt Amino Acid Dịu Nhẹ', alias: 'sua-rua-mat-amino-acid',
-    type: 'Làm sạch', votes: 187,
-    description: 'Làm sạch dịu nhẹ, giữ ẩm tự nhiên cho da nhạy cảm.',
-    tags: ['ban-chay', 'lam-sach-da', 'khuyen-mai'],
-    variants: [
-      variant(10041, '100ml', 280000, 320000, 'PC-SRM-100', true, 50),
-      variant(10042, '200ml', 480000, 540000, 'PC-SRM-200', true, 35),
-    ],
-    images: [
-      img('95d5b2/333333', 'Sữa rửa mặt'),
-      img('74c69d/333333', 'SRM – Mặt sau'),
-    ],
+    id: 89260004,
+    alias: 'ceradan-hydra-moisturiser-80g',
+    name: 'CERADAN Hydra Moisturiser 80g',
+    vendor: 'Ceradan',
+    type: 'Kem Dưỡng Ẩm & Tái Tạo Màng Lipid',
+    sku: 'SP237',
+    price: 320000,
+    comparePrice: 390000,
+    image: 'https://drreju.ezs.vn/Upload/image/2026/05/15/0_image_260515-174152wVS.png',
+    tags: ["Ceramide", "Cấp ẩm sâu", "Củng cố hàng rào da", "Kem Dưỡng Ẩm", "ban-chay", "san-pham-noi-bat"],
+    description: 'CERADAN Hydra Moisturiser 80g chứa tỉ lệ Ceramide sinh lý vàng giúp củng cố hàng rào bảo vệ da tối ưu.',
   }),
-
-  // 5 ─ Toner Niacinamide 5% + Zinc
   makeProduct({
-    id: 1005, name: 'Toner Niacinamide 5% + Zinc Kiểm Soát Dầu & Thu Nhỏ Lỗ Chân Lông', alias: 'toner-niacinamide-5-zinc',
-    type: 'Toner', votes: 83,
-    description: 'Thu nhỏ lỗ chân lông, kiểm soát dầu hiệu quả suốt 8 giờ.',
-    tags: ['kiem-soat-dau', 'niacinamide', 'tri-mun', 'ban-chay'],
-    variants: [
-      variant(10051, '200ml', 320000, 0, 'PC-TON-200', true, 28),
-    ],
-    images: [
-      img('c77dff/ffffff', 'Niacinamide 5%'),
-      img('9d4edd/ffffff', 'Toner – Mặt sau'),
-    ],
+    id: 89260005,
+    alias: 'ceradan-advanced-moisturising-cream-30g',
+    name: 'CERADAN Advanced Moisturising Cream 30g',
+    vendor: 'Ceradan',
+    type: 'Kem Dưỡng Ẩm & Tái Tạo Màng Lipid',
+    sku: 'SP236',
+    price: 320000,
+    comparePrice: 390000,
+    image: 'https://drreju.ezs.vn/Upload/image/2026/05/15/0_image_260515-174017wTY.png',
+    tags: ["Ceramide", "Phục hồi da corticoid", "Ceradan", "phuc-hoi-sau-xam-lan"],
+    description: 'CERADAN Advanced Moisturising Cream 30g là dòng kem phục hồi màng lipid chuyên sâu cho da nhạy cảm.',
   }),
-
-  // 6 ─ Kem dưỡng ẩm Hyaluronic Acid
   makeProduct({
-    id: 1006, name: 'Kem Dưỡng Ẩm Hyaluronic Acid 3 Tầng Căng Mướt Suốt Ngày', alias: 'kem-duong-am-hyaluronic-acid',
-    type: 'Kem dưỡng', votes: 165,
-    description: 'Cấp ẩm 3 tầng, da căng mướt và mềm mịn cả ngày dài.',
-    tags: ['duong-am', 'hyaluronic', 'ban-chay', 'san-pham-noi-bat', 'khuyen-mai'],
-    variants: [
-      variant(10061, '50ml', 580000, 720000, 'PC-HAC-50', true, 22),
-    ],
-    images: [
-      img('48cae4/ffffff', 'Hyaluronic Acid'),
-      img('0096c7/ffffff', 'HA – Mặt sau'),
-    ],
+    id: 89260006,
+    alias: 'gamarde-gel-purifiant-100-nature-100ml',
+    name: 'GAMARDE Gel Purifiant 100% Nature 100ml',
+    vendor: 'Gamarde',
+    type: 'Dược Mỹ Phẩm Đặc Trị & Phục Hồi Da',
+    sku: 'SP235',
+    price: 480000,
+    comparePrice: 580000,
+    image: 'https://drreju.ezs.vn/Upload/image/2026/03/31/upload_z7663379768310_de34351dce607f22786b517eff0f86f8_310326-091221.jpg',
+    tags: ["Gamarde", "Hữu cơ Pháp", "Làm sạch kháng viêm", "da-mun-dau"],
+    description: 'GAMARDE Gel Purifiant 100% Nature 100ml chiết xuất hữu cơ chuẩn y khoa Pháp làm sạch và làm dịu da.',
   }),
-
-  // 7 ─ Serum AHA 10% / BHA 2%
   makeProduct({
-    id: 1007, name: 'Serum Tái Tạo Da AHA 10% / BHA 2% Mịn Màng & Sáng Đều', alias: 'serum-aha-10-bha-2',
-    type: 'Serum', votes: 107,
-    description: 'Tái tạo da chuyên sâu, mịn màng sáng đều sau 4 tuần.',
-    tags: ['tay-da-chet', 'aha-bha', 'ban-chay', 'serum', 'khuyen-mai', 'san-pham-noi-bat'],
-    variants: [
-      variant(10071, '30ml', 720000, 890000, 'PC-AHA-30', true, 18),
-    ],
-    images: [
-      img('f08080/ffffff', 'AHA 10% BHA 2%'),
-      img('e05252/ffffff', 'AHA/BHA – Mặt sau'),
-    ],
+    id: 89260007,
+    alias: 'zo-calming-toner-ph-balancer-50ml',
+    name: 'ZO Calming Toner pH Balancer 50ml',
+    vendor: 'ZO® Skin Health',
+    type: 'Toner Cân Bằng pH & Xịt Khoáng Sinh Học',
+    sku: 'SP234',
+    price: 1650000,
+    comparePrice: 1950000,
+    image: 'https://drreju.ezs.vn/Upload/image/2026/03/07/upload_z7273689615884_c0ae33446fbc0ba620c8efd932b42fa9_070326-080258.jpg',
+    tags: ["ZO Skin Health", "Toner", "Cân bằng pH", "Treatment", "san-pham-noi-bat"],
+    description: 'ZO Calming Toner pH Balancer 50ml giúp cân bằng độ pH lý tưởng, làm dịu da nhạy cảm và chuẩn bị nền da hấp thu dưỡng chất.',
   }),
-
-  // 8 ─ Mặt nạ Centella (sold out)
   makeProduct({
-    id: 1008, name: 'Mặt Nạ Dưỡng Phục Hồi Centella Asiatica (Hộp 5 Miếng)', alias: 'mat-na-centella-asiatica',
-    type: 'Mặt nạ', votes: 30, available: false,
-    description: 'Phục hồi da kích ứng — dịu mát, tái tạo hàng rào bảo vệ da.',
-    tags: ['phuc-hoi', 'centella', 'duong-am'],
-    variants: [
-      variant(10081, 'Hộp 5 miếng', 180000, 0, 'PC-CTL-5', false, 0),
-    ],
-    images: [
-      img('52b788/ffffff', 'Centella Mask'),
-      img('40916c/ffffff', 'Centella – Mặt sau'),
-    ],
+    id: 89260008,
+    alias: 'drdifferent-vitaacnal-tx-capsule-serum',
+    name: 'Dr.Different VITAACNAL TX Capsule Serum',
+    vendor: 'Dr.Different',
+    type: 'Serum & Tinh Chất Phục Hồi Chuyên Sâu',
+    sku: 'SP229',
+    price: 480000,
+    comparePrice: 580000,
+    image: 'https://drreju.ezs.vn/Upload/image/2026/03/01/upload_snapins-ai_296958641_3292482567697046_4511374797621444295_n_1080_010326-114714.jpg',
+    tags: ["Dr.Different", "Serum", "Trị mụn", "Mờ thâm", "top-san-pham-serum-ban-chay"],
+    description: 'Dr.Different VITAACNAL TX Capsule Serum ứng dụng công nghệ viên nang dẫn truyền hoạt chất phục hồi đa tầng.',
   }),
-
-  // 9 ─ Kem trị nám Cyspera (cao cấp)
   makeProduct({
-    id: 1009, name: 'Kem Trị Nám Cyspera Intensive Pigment Corrector', alias: 'kem-tri-nam-cyspera-intensive',
-    type: 'Kem đặc trị', votes: 135,
-    description: 'Giảm nám, thâm nám chuyên sâu theo phác đồ chuyên gia da liễu.',
-    tags: ['tri-nam', 'cyspera', 'chuyen-nghiep', 'lam-sang', 'quycach_25ml'],
-    variants: [
-      variant(10091, '25ml', 1850000, 0, 'PC-CYS-25', true, 8),
-    ],
-    images: [
-      img('fff3e0/6d4c41', 'Cyspera Intensive'),
-      img('ffe0b2/5d4037', 'Cyspera – Mặt sau'),
-    ],
-    metafields: { custom: { Quycach: '25ml' } },
+    id: 89260025,
+    alias: 'goodndoc-hydra-b5-serum-cap-am-phuc-hoi-50ml',
+    name: 'GOODNDOC Hydra B5 Serum cấp ẩm phục hồi 50ml',
+    vendor: 'GoodnDoc',
+    type: 'Serum & Tinh Chất Phục Hồi Chuyên Sâu',
+    sku: 'SP38',
+    price: 580000,
+    comparePrice: 680000,
+    image: 'https://drreju.ezs.vn/Upload/image/2025/08/19/upload_sp38_190825-104013.jpg',
+    tags: ["Vitamin B5", "Panthenol", "Serum phục hồi B5", "Ceramide", "Cấp ẩm sâu", "ban-chay", "san-pham-noi-bat"],
+    description: 'GOODNDOC Hydra B5 Serum cấp ẩm phục hồi 50ml chứa Pro-Vitamin B5 nồng độ cao giúp làm dịu và phục hồi màng lipid cấp tốc.',
   }),
-
-  // 10 ─ Serum Collagen + Tế bào gốc
   makeProduct({
-    id: 1010, name: 'Serum Collagen 5000mg + Tế Bào Gốc Phục Hồi & Trẻ Hoá', alias: 'serum-collagen-te-bao-goc',
-    type: 'Serum', votes: 118,
-    description: 'Collagen kép 5000mg tái tạo da từ bên trong, trẻ hoá rõ rệt.',
-    tags: ['collagen', 'te-bao-goc', 'chong-lao-hoa', 'ban-chay', 'serum', 'khuyen-mai', 'san-pham-noi-bat'],
-    variants: [
-      variant(10101, '30ml', 980000, 1350000, 'PC-COL-30', true, 15),
-    ],
-    images: [
-      img('ffd60a/333333', 'Collagen 5000mg'),
-      img('ffbe0b/333333', 'Collagen – Mặt sau'),
-    ],
+    id: 89260034,
+    alias: 'bioderma-kem-phuc-hoi-da-mong-yeu-40ml',
+    name: 'BIODERMA kem phục hồi da mỏng yếu 40ml',
+    vendor: 'Bioderma',
+    type: 'Dược Mỹ Phẩm Đặc Trị & Phục Hồi Da',
+    sku: 'SP20',
+    price: 580000,
+    comparePrice: 680000,
+    image: 'https://drreju.ezs.vn/Upload/image/2025/08/19/upload_z6923049887696_cf73cfe22dd200d400780957bd23cae2_190825-053320.jpg',
+    tags: ["Bioderma", "Phục hồi da", "Da mỏng yếu", "Cicabio", "phuc-hoi-sau-xam-lan"],
+    description: 'BIODERMA kem phục hồi da mỏng yếu 40ml tái tạo lớp biểu bì bị tổn thương sau thủ thuật hoặc corticoid.',
   }),
-
-  // 11 ─ Retinol Advanced 0.5% Night Serum (2 sizes)
   makeProduct({
-    id: 1011, name: 'Retinol Advanced 0.5% Night Serum Chống Lão Hoá Chuyên Sâu', alias: 'retinol-advanced-0-5-night-serum',
-    type: 'Serum', votes: 146,
-    description: 'Tái tạo da ban đêm — xoá nhăn, mờ đốm sắc tố qua từng đêm ngủ.',
-    tags: ['retinol', 'chong-lao-hoa', 'ban-dem', 'serum', 'chuyen-nghiep'],
-    variants: [
-      variant(10111, '15ml', 980000,  0, 'PC-RAS-15', true, 10),
-      variant(10112, '30ml', 1200000, 0, 'PC-RAS-30', true, 6),
-    ],
-    images: [
-      img('c9a0b1/ffffff', 'Retinol 0.5%'),
-      img('b5838d/ffffff', 'Retinol Advanced – Mặt sau'),
-    ],
+    id: 89260072,
+    alias: 'fusion-retinol-10-serum-30ml',
+    name: 'FUSION Retinol 1.0 serum 30ml',
+    vendor: 'Fusion Meso',
+    type: 'Serum & Tinh Chất Phục Hồi Chuyên Sâu',
+    sku: 'SP164',
+    price: 480000,
+    comparePrice: 580000,
+    image: 'https://drreju.ezs.vn/Upload/image/2025/09/22/upload_z7038042628772_5270f2e932104db5c1cf21caa25e438c_220925-030758.jpg',
+    tags: ["Retinol", "Tretinoin", "Chống lão hóa da", "Tái tạo da", "Fusion Meso", "top-san-pham-serum-ban-chay"],
+    description: 'FUSION Retinol 1.0 serum 30ml mang lại hiệu quả tái sinh bề mặt da, trẻ hóa tế bào và tăng sinh collagen.',
   }),
-
-  // 12 ─ Kem mắt Peptide 3D
   makeProduct({
-    id: 1012, name: 'Kem Mắt Peptide 3D Chống Quầng Thâm & Nhăn Vùng Mắt', alias: 'kem-mat-peptide-3d',
-    type: 'Kem mắt', votes: 153,
-    description: 'Chống quầng thâm, xoá nhăn vùng mắt với Peptide 3D.',
-    tags: ['kem-mat', 'peptide', 'chong-lao-hoa', 'khuyen-mai', 'san-pham-noi-bat'],
-    variants: [
-      variant(10121, '15ml', 680000, 850000, 'PC-EYE-15', true, 14),
-    ],
-    images: [
-      img('cdb4db/333333', 'Kem Mắt Peptide'),
-      img('b89cba/333333', 'Kem mắt – Mặt sau'),
-    ],
+    id: 89260013,
+    alias: 'drdifferent-barrier-balance-sunblock-40ml',
+    name: 'Dr.Different Barrier Balance Sunblock 40ml',
+    vendor: 'Dr.Different',
+    type: 'Kem Chống Nắng Phổ Rộng Chuẩn Y Khoa',
+    sku: 'SP227',
+    price: 480000,
+    comparePrice: 580000,
+    image: 'https://drreju.ezs.vn/Upload/image/2026/03/01/upload_snapins-ai_280175448_180816260952685_8343011359859649547_n_1080_010326-114412.jpg',
+    tags: ["Kem chống nắng phổ rộng", "Chống tia UVA UVB HEV", "Dr.Different", "top-kem-chong-nang-noi-bat"],
+    description: 'Dr.Different Barrier Balance Sunblock 40ml bảo vệ màng tế bào da toàn diện dưới ánh nắng và ánh sáng xanh.',
   }),
-
-  // 13 ─ Gel trị mụn Benzoyl Peroxide 5%
   makeProduct({
-    id: 1013, name: 'Gel Trị Mụn Benzoyl Peroxide 5% Diệt Khuẩn & Ngăn Tái Phát', alias: 'gel-tri-mun-benzoyl-peroxide-5',
-    type: 'Gel đặc trị', votes: 99,
-    description: 'Diệt khuẩn mụn tức thì, ngăn tái phát — hiệu quả từ đêm đầu.',
-    tags: ['tri-mun', 'benzoyl-peroxide', 'ban-chay', 'khuyen-mai', 'quycach_20g'],
-    variants: [
-      variant(10131, '20g', 195000, 240000, 'PC-GEL-20', true, 60),
-    ],
-    images: [
-      img('b7e4c7/333333', 'Benzoyl Peroxide 5%'),
-      img('95d5b2/333333', 'Gel mụn – Mặt sau'),
-    ],
-    metafields: { custom: { Quycach: '20g' } },
+    id: 89260038,
+    alias: 'elasten-collagen-hop-28-ong',
+    name: 'ELASTEN Collagen Hộp 28 ống',
+    vendor: 'Elasten',
+    type: 'Thực Phẩm Chức Năng & Bổ Sung Sắc Đẹp',
+    sku: 'SP104',
+    price: 2200000,
+    comparePrice: 2600000,
+    image: 'https://drreju.ezs.vn/Upload/image/2025/08/19/upload_z6923301435315_f6dd8380c31500e61cb3550e3f13dbac_190825-051818.jpg',
+    tags: ["Collagen", "Elasten", "Trẻ hóa từ bên trong", "san-pham-noi-bat"],
+    description: 'ELASTEN Collagen Hộp 28 ống bổ sung collagen peptide sinh học cao cấp giúp da đàn hồi, săn chắc từ bên trong.',
   }),
-
-  // 14 ─ Kem phục hồi Ceramide + Niacinamide
   makeProduct({
-    id: 1014, name: 'Kem Phục Hồi Hàng Rào Da Ceramide + Niacinamide Chuyên Sâu', alias: 'kem-phuc-hoi-ceramide-niacinamide',
-    type: 'Kem dưỡng', votes: 124,
-    description: 'Củng cố hàng rào da, nuôi dưỡng chuyên sâu cho da khô & nhạy cảm.',
-    tags: ['phuc-hoi', 'ceramide', 'duong-am', 'chuyen-nghiep', 'san-pham-noi-bat'],
-    variants: [
-      variant(10141, '50ml', 760000, 0, 'PC-CRM-50', true, 17),
-    ],
-    images: [
-      img('dee2ff/333333', 'Ceramide Repair'),
-      img('c5b8e8/333333', 'Ceramide – Mặt sau'),
-    ],
+    id: 89260020,
+    alias: 'seizen-sua-rua-met-cho-da-thaong-ien-khu-250ml',
+    name: 'SEIZEN Sữa rửa mặt cho da thường đến khô 250ml',
+    vendor: 'Seizen',
+    type: 'Sữa Rửa Mặt & Làm Sạch Dịu Nhẹ',
+    sku: 'SP140',
+    price: 480000,
+    comparePrice: 580000,
+    image: 'https://drreju.ezs.vn/Upload/image/2025/09/12/upload_z7004659709000_e2aee73365c315148682dcbdbf780b1f_120925-053421.jpg',
+    tags: ["Seizen", "Sữa rửa mặt", "Dịu nhẹ pH 5.5", "top-san-pham-sua-rua-mat-noi-bat"],
+    description: 'SEIZEN Sữa rửa mặt cho da thường đến khô 250ml giúp làm sạch dịu nhẹ mà không gây khô căng biểu bì.',
   }),
-
-  // 15 ─ Serum Tranexamic Acid 3%
   makeProduct({
-    id: 1015, name: 'Serum Mờ Thâm Tranexamic Acid 3% & Niacinamide Đều Màu Da', alias: 'serum-tranexamic-acid-3',
-    type: 'Serum', votes: 136,
-    description: 'Mờ thâm nám, đều màu da — hiệu quả kép rõ từ tuần thứ 2.',
-    tags: ['mo-tham', 'tranexamic', 'lam-sang', 'serum', 'khuyen-mai', 'ban-chay'],
-    variants: [
-      variant(10151, '30ml', 850000, 1000000, 'PC-TXA-30', true, 20),
-    ],
-    images: [
-      img('fec89a/333333', 'Tranexamic Acid 3%'),
-      img('fca55a/333333', 'TXA – Mặt sau'),
-    ],
+    id: 89260024,
+    alias: 'chacott-naoc-tay-trang-da-thaong-ien-khu-400ml',
+    name: 'CHACOTT Nước tẩy trang da thường đến khô 400ml',
+    vendor: 'Chacott',
+    type: 'Nước & Dầu Tẩy Trang Chuyên Sâu',
+    sku: 'SP122',
+    price: 480000,
+    comparePrice: 580000,
+    image: 'https://drreju.ezs.vn/Upload/image/2025/09/18/upload_z7023807957368_60286f0c624e0f95ae43dcb6e38d2964_180925-102512.jpg',
+    tags: ["Chacott", "Nước tẩy trang", "Nhật Bản", "top-san-pham-tay-trang-noi-bat"],
+    description: 'CHACOTT Nước tẩy trang da thường đến khô 400ml nhẹ nhàng hòa tan bụi mịn và lớp trang điểm chống nước.',
   }),
-
 ];
 
-// ── Tra nhanh theo id hoặc alias ────────────────────────────────────────────
-
-const byId    = Object.fromEntries(products.map(p => [p.id, p]));
+const byId = Object.fromEntries(products.map(p => [p.id, p]));
 const byAlias = Object.fromEntries(products.map(p => [p.alias, p]));
 
 module.exports = { products, byId, byAlias };
