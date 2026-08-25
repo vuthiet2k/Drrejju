@@ -1,48 +1,204 @@
+{% comment %}
+  DR.REJU — Clinical Blog & Knowledge Hub Template (Production-Ready)
+  Design System Parity: Figma Node 41:12 (41:13 Desktop 1440px, 41:629 Tablet 834px, 41:566 Mobile 390px)
+  Sapo Object: blog (articles, articles_count, title, description, url, all_tags)
+{% endcomment %}
+
 {% include 'breadcrumb' %}
-<div class="blog_wrapper layout-blog" itemscope itemtype="https://schema.org/Blog">
-	<meta itemprop="name" content="{{ blog.name }}">
-	<meta itemprop="description" content="{{ blog.description | default: store.description }}">
-	<div class="container">
-		<h1 class="title-page d-none">
-			<img width="72" height="43" src="{{'icon-title.png' | asset_url}}" alt="{%if collection.name == 'Tất cả sản phẩm'%}Tất cả sản phẩm{%else%}{{ collection.name }}{%endif%}">
-			<span>{{ blog.name }}</span>
-		</h1>
-		<div class="row">
-			
-			
-			<div class="right-content col-lg-8 col-xl-8 col-12">
- 
 
+<div class="dr-blog-page layout-blog" itemscope itemtype="https://schema.org/Blog">
+  <meta itemprop="name" content="{{ blog.title | default: blog.name }}">
+  <meta itemprop="description" content="{{ blog.description | default: store.description }}">
 
-				{% paginate blog.articles by settings.blogs_number_perpage %}
-				<div class="list-blogs">
-					{% if blog.articles_count > 0 %}
-					<div class="row row-fix">
-						{% for article in blog.articles %}	
-						<div class="col-12 col-fix">
-							{%include 'blog_item'%}
-						</div>
+  {% comment %} 1. Hero Category Banner & Filter Pills {% endcomment %}
+  <section class="dr-blog-hero-banner">
+    <div class="container">
+      <div class="dr-blog-hero-banner__inner">
+        <span class="dr-badge-clinical">🌿 TIÊU CHUẨN Y KHOA DR.REJU</span>
+        <h1 class="dr-blog-hero-banner__title">{{ blog.title | default: blog.name | default: 'Kiến Thức Da Liễu & Dược Mỹ Phẩm Chuẩn Y Khoa' }}</h1>
+        <p class="dr-blog-hero-banner__subtitle">
+          Tổng hợp các bài phân tích hoạt chất, phác đồ phục hồi da tổn thương và ca lâm sàng thực tế đồng hành cùng Bs. Nguyễn Huệ.
+        </p>
 
-						{% endfor %}
-					</div>
-					<div class="text-center">
-						{% if paginate.pages > 1 %}
-						{% include 'paginate-pages' %}
-						{% endif %}
-					</div>
-					{%else%}
-					<div class="alert alert-warning alert-warning2 alert-dismissible margin-top-15 section" role="alert">
-						Danh mục này đang cập nhật bài viết
-					</div>
-					{%endif%}
-				</div>
-				{% endpaginate %}
-			</div>
-			<div class="blog_left_base col-lg-4 col-xl-4">
-				{% include 'aside-blog' %}
-			</div>
-		</div>
+        {% comment %} Danh mục filter pills {% endcomment %}
+        <div class="dr-blog-pills-swiper">
+          <ul class="dr-blog-pills-list">
+            <li class="dr-blog-pill{% unless current_tags %} is-active{% endunless %}">
+              <a href="{{ blog.url }}">Tất cả bài viết ({% if blog.articles_count %}{{ blog.articles_count }}{% else %}{{ blog.articles.size }}{% endif %})</a>
+            </li>
+            {% if blog.all_tags.size > 0 %}
+              {% for tag in blog.all_tags limit: 6 %}
+                <li class="dr-blog-pill{% if current_tags contains tag %} is-active{% endif %}">
+                  <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
+                </li>
+              {% endfor %}
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	</div>
-</div> 
-<div class="ab-module-article-mostview"></div>
+  {% comment %} 2. Main Content Layout Container (Laptop, Tablet, Mobile) {% endcomment %}
+  <div class="container dr-blog-main-container">
+    <div class="row">
+      
+      {% comment %} Main Content Column (Desktop: 8 cols, Tablet/Mobile: 12 cols) {% endcomment %}
+      <main class="col-lg-8 col-xl-8 col-12 dr-blog-main-col">
+        
+        {% paginate blog.articles by settings.blogs_number_perpage | default: 6 %}
+          {% if blog.articles_count > 0 %}
+            
+            {% comment %} 2.1 Hero Featured Spotlight Article Card (Figma Node 41:284) {% endcomment %}
+            {% unless current_tags %}
+              {% if paginate.current_page == 1 %}
+                {% assign featured_art = blog.articles.first %}
+                {% if featured_art %}
+                  <div class="dr-featured-spotlight-card" itemscope itemtype="https://schema.org/BlogPosting">
+                    <div class="dr-featured-spotlight-card__thumb">
+                      <a href="{{ featured_art.url }}" title="{{ featured_art.title | escape }}">
+                        {% if featured_art.image != null and featured_art.image.src != blank %}
+                          <img class="lazyload" 
+                               src="{{ 'lazy.png' | asset_url }}" 
+                               data-src="{{ featured_art.image.src }}" 
+                               alt="{{ featured_art.title | escape }}" 
+                               loading="lazy" 
+                               width="752" 
+                               height="380">
+                        {% else %}
+                          <div class="dr-featured-spotlight-card__ph">Dr.REJU Clinical Spotlight</div>
+                        {% endif %}
+                      </a>
+                      <div class="dr-featured-spotlight-card__badges">
+                        <span class="dr-badge-alert">🚨 CẤP CỨU LÂM SÀNG</span>
+                        {% if featured_art.tags.size > 0 %}
+                          <span class="dr-badge-emerald">{{ featured_art.tags.first }}</span>
+                        {% endif %}
+                      </div>
+                    </div>
+                    
+                    <div class="dr-featured-spotlight-card__body">
+                      <div class="dr-featured-spotlight-card__meta">
+                        <span class="dr-meta-author">🩺 {{ featured_art.author | default: 'Bs. Nguyễn Huệ' }}</span>
+                        <span class="dr-meta-dot">•</span>
+                        <time datetime="{{ featured_art.published_on | date: '%Y-%m-%d' }}">
+                          {{ featured_art.published_on | date: 'dd/MM/yyyy' }}
+                        </time>
+                      </div>
+                      <h2 class="dr-featured-spotlight-card__title" itemprop="headline">
+                        <a href="{{ featured_art.url }}" title="{{ featured_art.title | escape }}">
+                          {{ featured_art.title }}
+                        </a>
+                      </h2>
+                      <p class="dr-featured-spotlight-card__excerpt" itemprop="description">
+                        {% if featured_art.summary != blank %}
+                          {{ featured_art.summary | strip_html | truncatewords: 32 }}
+                        {% else %}
+                          {{ featured_art.content | strip_html | truncatewords: 32 }}
+                        {% endif %}
+                      </p>
+                      <div class="dr-featured-spotlight-card__action">
+                        <a href="{{ featured_art.url }}" class="dr-btn dr-btn--emerald">
+                          <span>Đọc Toàn Bộ Phác Đồ ➔</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+            {% endunless %}
+
+            {% comment %} 2.2 Section Heading {% endcomment %}
+            <div class="dr-section-heading-bar">
+              <h2 class="dr-section-heading-bar__title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                <span>Bài Viết Mới Nhất Từ Chuyên Gia Da Liễu</span>
+              </h2>
+            </div>
+
+            {% comment %} 2.3 Latest Clinical Articles Grid (3-Col / 2-Col / 1-Col) {% endcomment %}
+            <div class="row dr-articles-grid-row">
+              {% for article in blog.articles %}
+                {% comment %} Tránh lặp lại bài spotlight trên trang đầu tiên {% endcomment %}
+                {% if paginate.current_page == 1 and forloop.first and current_tags == blank %}
+                  {% continue %}
+                {% endif %}
+                <div class="col-lg-6 col-md-6 col-12 dr-articles-grid-col">
+                  {% include 'blog_item' %}
+                </div>
+              {% endfor %}
+            </div>
+
+            {% comment %} 2.4 Pagination Bar Chuẩn Sapo {% endcomment %}
+            <div class="dr-blog-pagination">
+              {% if paginate.pages > 1 %}
+                {% include 'paginate-pages' %}
+              {% endif %}
+            </div>
+
+          {% else %}
+            <div class="dr-empty-alert" role="alert">
+              <p>Chuyên mục này hiện đang được Bs. Nguyễn Huệ và đội ngũ chuyên môn cập nhật bài viết mới.</p>
+              <a href="{{ blog.url }}" class="dr-btn dr-btn--outline">Quay lại tất cả bài viết</a>
+            </div>
+          {% endif %}
+        {% endpaginate %}
+
+        {% comment %} 2.5 Clinical Media & Video Hub (Figma Node 41:326) {% endcomment %}
+        <section class="dr-media-hub-section">
+          <div class="dr-media-hub-section__head">
+            <h3>Góc Chia Sẻ Video & Audio Chuyên Sâu Từ Bác Sĩ</h3>
+            <span class="dr-badge-pill">🎬 Case Study Video</span>
+          </div>
+          <div class="row dr-media-hub-grid">
+            <div class="col-md-6 col-12">
+              <div class="dr-media-card">
+                <div class="dr-media-card__thumb">
+                  <div class="dr-media-card__play-btn">▶</div>
+                  <span class="dr-media-card__duration">12:40</span>
+                </div>
+                <div class="dr-media-card__info">
+                  <span class="dr-media-card__tag">VIDEO LÂM SÀNG</span>
+                  <h4 class="dr-media-card__title">Cận cảnh soi da và phân tích màng lipid tổn thương do kem trộn</h4>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-12">
+              <div class="dr-media-card">
+                <div class="dr-media-card__thumb">
+                  <div class="dr-media-card__play-btn">▶</div>
+                  <span class="dr-media-card__duration">08:15</span>
+                </div>
+                <div class="dr-media-card__info">
+                  <span class="dr-media-card__tag">AUDIO PODCAST</span>
+                  <h4 class="dr-media-card__title">Tập 04: Giải mã nồng độ B5 Panthenol và nguyên tắc phối hợp phục hồi</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {% comment %} 2.6 Consultation CTA Banner (Figma Node 41:341) {% endcomment %}
+        <section class="dr-consultation-banner">
+          <div class="dr-consultation-banner__content">
+            <h3 class="dr-consultation-banner__title">Bạn Đang Gặp Vấn Đề Da Cần Bác Sĩ Tư Vấn?</h3>
+            <p class="dr-consultation-banner__desc">Đăng ký để nhận phác đồ điều trị 1:1 cá nhân hóa và theo dõi tiến trình phục hồi trực tiếp cùng Bs. Nguyễn Huệ.</p>
+          </div>
+          <div class="dr-consultation-banner__form">
+            <a href="/pages/dat-lich" class="dr-btn dr-btn--white-emerald">
+              <span>Đăng Ký Khám Da 1:1</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </section>
+
+      </main>
+
+      {% comment %} Right Sidebar Column (Desktop: 4 cols) {% endcomment %}
+      <div class="col-lg-4 col-xl-4 col-12 dr-blog-sidebar-col">
+        {% include 'aside-blog' %}
+      </div>
+
+    </div>
+  </div>
+</div>
