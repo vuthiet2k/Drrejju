@@ -6,7 +6,8 @@
 {% comment %} Active tab cho bottom nav {% endcomment %}
 {% assign mbnav = '' %}
 {% if template contains 'index' %}{% assign mbnav = 'home' %}
-{% elsif template contains 'collection' or template contains 'product' or template contains 'search' %}{% assign mbnav = 'products' %}
+{% elsif template contains 'collection' or template contains 'product' %}{% assign mbnav = 'products' %}
+{% elsif template contains 'blog' or template contains 'article' %}{% assign mbnav = 'blog' %}
 {% elsif template contains 'cart' %}{% assign mbnav = 'cart' %}
 {% elsif template contains 'customer' or template contains 'account' or template contains 'login' or template contains 'register' or template contains 'order' or template contains 'address' %}{% assign mbnav = 'account' %}
 {% endif %}
@@ -18,8 +19,7 @@
     <img src="{{ 'logo.png' | asset_url }}" alt="{{ store.name | default: 'Dr.REJU' }}">
     <button class="dr-drawer__close" id="drDrawerClose" type="button" aria-label="Đóng"><i class="fa-solid fa-xmark"></i></button>
   </div>
-  {% comment %} Nhánh có link con → <details> gập lại (bản cũ render phẳng, bỏ mất cấp con).
-     Dùng <details> để không cần JS: mở/gập là hành vi gốc của trình duyệt. {% endcomment %}
+  {% comment %} Nhánh có link con → <details> gập lại. {% endcomment %}
   <nav class="dr-drawer__nav">
     {% for link in navm.links %}
       {% if link.links.size > 0 %}
@@ -39,80 +39,12 @@
     {% endfor %}
   </nav>
 
-<script>
-(function(){
-  /* Kết quả tức thì trong overlay mobile. Tái dùng window.drSearchFetch/drSearchRowHtml
-     của header.bwt — nếu vì lý do gì header chưa nạp thì thoát êm, overlay vẫn submit form. */
-  var MIN_CHARS = 2, DEBOUNCE = 300;
-  function init(){
-    var input = document.getElementById('drSearchInput'),
-        wrap  = document.getElementById('drSearchResWrap'),
-        res   = document.getElementById('drSearchRes'),
-        lb    = document.getElementById('drSearchResLb'),
-        all   = document.getElementById('drSearchAll'),
-        recent = document.getElementById('drSearchRecent');
-    if (!input || !wrap || !window.drSearchFetch) return;
-    var timer = null;
-
-    function hide(){ wrap.hidden = true; res.innerHTML = ''; if (recent) recent.style.display = ''; }
-
-    input.addEventListener('input', function(){
-      var q = input.value.replace(/^\s+|\s+$/g, '');
-      if (timer) clearTimeout(timer);
-      if (q.length < MIN_CHARS){ hide(); return; }
-      lb.textContent = 'Đang tìm…';
-      wrap.hidden = false;
-      if (recent) recent.style.display = 'none';   /* nhường chỗ cho kết quả */
-      timer = setTimeout(function(){
-        window.drSearchFetch(q, function(items, total){
-          if (!items.length){
-            lb.textContent = 'Không có sản phẩm khớp';
-            res.innerHTML = '';
-          } else {
-            lb.textContent = 'Sản phẩm · ' + total + ' kết quả';
-            var h = '', i;
-            for (i = 0; i < items.length; i++){ h += window.drSearchRowHtml(items[i]); }
-            res.innerHTML = h;
-          }
-          all.href = '/search?type=product&query=' + encodeURIComponent(q);
-        }, function(){
-          lb.textContent = 'Nhấn tìm để xem kết quả';
-          res.innerHTML = '';
-          all.href = '/search?type=product&query=' + encodeURIComponent(q);
-        });
-      }, DEBOUNCE);
-    });
-  }
-  if (document.readyState !== 'loading') init();
-  else document.addEventListener('DOMContentLoaded', init);
-})();
-</script>
-
-<style>
-/* Kết quả tức thì trong overlay: dùng lại .dr-srch-* của header cho khỏi trùng CSS */
-.dr-searchov__all{ display: flex; align-items: center; justify-content: center; gap: 8px;
-  margin-top: 10px; padding: 13px; border-top: 1px solid var(--line);
-  font-family: var(--font-primary); font-size: var(--fs-sm); font-weight: 700;
-  letter-spacing: .06em; text-transform: uppercase; color: var(--emerald); }
-
-/* Nhóm gập trong drawer mobile */
-.dr-drawer__grp{ border-bottom: 1px solid rgba(223,186,115,.16); }
-.dr-drawer__grp > summary{ display: flex; align-items: center; justify-content: space-between;
-  gap: 12px; padding: 12px 0; cursor: pointer; list-style: none; }
-.dr-drawer__grp > summary::-webkit-details-marker{ display: none; }
-.dr-drawer__grp > summary i{ font-size: 11px; color: var(--gold); transition: transform .25s ease; }
-.dr-drawer__grp[open] > summary i{ transform: rotate(180deg); }
-.dr-drawer__subs{ display: block; padding: 2px 0 12px 14px; border-left: 1px solid rgba(223,186,115,.2); margin-left: 2px; }
-.dr-drawer__subs a{ display: block; padding: 8px 0; font-size: var(--fs-sm); opacity: .88; }
-.dr-drawer__all{ font-weight: 600; color: var(--gold); }
-@media (prefers-reduced-motion: reduce){ .dr-drawer__grp > summary i{ transition: none; } }
-</style>
   <div class="dr-drawer__section">
     <div class="dr-drawer__util">
       <a href="/account"><i class="fa-regular fa-user"></i> Tài khoản</a>
       <a href="tel:{{ settings.phone | default: store.phone_number | remove: ' ' }}"><i class="fa-solid fa-phone"></i> {{ settings.phone | default: store.phone_number }}</a>
       <a href="/dat-lich"><i class="fa-regular fa-calendar-check"></i> Đặt lịch</a>
-      <a href="{{ settings.social_zalo_link | default: '#' }}"><i class="fa-solid fa-comment-dots"></i> Tư vấn Zalo</a>
+      <a href="{{ settings.social_zalo_link | default: 'https://zalo.me/' }}"><i class="fa-solid fa-comment-dots"></i> Tư vấn Zalo</a>
     </div>
   </div>
   <div class="dr-drawer__section">
@@ -138,8 +70,6 @@
     <button type="submit" form="drSearchForm" class="dr-searchov__submit" aria-label="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></button>
   </div>
   <div class="dr-searchov__body">
-    {% comment %} Kết quả tức thì — dùng chung window.drSearchFetch / drSearchRowHtml
-       khai báo trong header.bwt, để logic gọi /search?view=smartjson chỉ có MỘT chỗ. {% endcomment %}
     <div class="dr-searchov__section" id="drSearchResWrap" hidden>
       <p class="dr-searchov__label" id="drSearchResLb">Sản phẩm</p>
       <div id="drSearchRes"></div>
@@ -159,12 +89,12 @@
   </div>
 </div>
 
-{% comment %} ============ BOTTOM NAV ============ {% endcomment %}
+{% comment %} ============ BOTTOM NAV (P0-02 Standard) ============ {% endcomment %}
 <nav class="dr-bottomnav" aria-label="Điều hướng nhanh">
   <ul class="dr-bottomnav__list">
     <li class="dr-bottomnav__item{% if mbnav == 'home' %} is-active{% endif %}"><a href="/"><i class="fa-solid fa-house"></i>Trang chủ</a></li>
     <li class="dr-bottomnav__item{% if mbnav == 'products' %} is-active{% endif %}"><a href="/collections/all"><i class="fa-solid fa-spa"></i>Sản phẩm</a></li>
-    <li class="dr-bottomnav__item"><button type="button" data-dr-search-open><i class="fa-solid fa-magnifying-glass"></i>Tìm kiếm</button></li>
+    <li class="dr-bottomnav__item{% if mbnav == 'blog' %} is-active{% endif %}"><a href="/blogs/all"><i class="fa-solid fa-newspaper"></i>Tin y khoa</a></li>
     <li class="dr-bottomnav__item{% if mbnav == 'cart' %} is-active{% endif %}"><a href="/cart"><i class="fa-solid fa-bag-shopping"></i>Giỏ hàng{% if cart.item_count > 0 %}<span class="dr-bottomnav__badge count_item_pr">{{ cart.item_count }}</span>{% endif %}</a></li>
     <li class="dr-bottomnav__item{% if mbnav == 'account' %} is-active{% endif %}"><a href="/account"><i class="fa-regular fa-user"></i>Tài khoản</a></li>
   </ul>
@@ -184,7 +114,6 @@
   if(closeBtn) closeBtn.addEventListener('click', closeDrawer);
   if(backdrop) backdrop.addEventListener('click', closeDrawer);
 
-  /* Ngôn ngữ trong drawer → bấm lại item ẩn ở util bar để tái dùng logic Google Translate */
   if(drawer){
     drawer.querySelectorAll('[data-drlang]').forEach(function(b){
       b.addEventListener('click', function(){
@@ -223,7 +152,7 @@
 
   document.querySelectorAll('[data-dr-search-open]').forEach(function(o){
     o.addEventListener('click', function(e){
-      if(window.innerWidth > 991) return;   /* desktop: để link /search chạy bình thường */
+      if(window.innerWidth > 991) return;
       e.preventDefault(); closeDrawer(); openOv();
     });
   });
@@ -237,7 +166,6 @@
 
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ closeDrawer(); closeOv(); } });
 
-  /* Deep-link: mở sẵn drawer / search overlay khi có hash tương ứng */
   if(location.hash === '#dr-drawer') openDrawer();
   if(location.hash === '#dr-search') openOv();
 })();
