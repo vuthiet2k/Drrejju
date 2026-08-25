@@ -1,37 +1,74 @@
-<div class="item-blog">
-	<div class="block-thumb">
-		{% if article.image != null %}
-		<a class="thumb" href="{{ article.url }}" title="{{ article.title }}">
-			<img class="lazyload" src="{{ 'lazy.png' | asset_url}}" 
-				 data-src="{{ article.image.src}}"  alt="{{ article.title }}">
-		</a>
-		{%else%}
-		<a class="thumb" href="{{ article.url }}">
-			<img class="lazyload" src="{{ 'lazy.png' | asset_url}}" 
-				 data-src="{{ 'no-image.jpg' | asset_url}}" alt="{{ article.title }}" title="{{ article.title }}"/>
-		</a>
-		{% endif %}
-	
-		
+{% comment %}
+  DR.REJU — Clinical Blog Item Card (Production-Ready)
+  Design System Parity: Figma Node 41:12 (41:299, 41:588, 41:648)
+  Sapo Object: article (title, image.src, summary, content, author, published_on, tags, url)
+{% endcomment %}
 
-	</div>
-	<div class="block-content">
-		
+<article class="dr-blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="dr-blog-card__thumb-wrap">
+    <a class="dr-blog-card__thumb-link" href="{{ article.url }}" title="{{ article.title | escape }}">
+      {% if article.image != null and article.image.src != blank %}
+        <img class="dr-blog-card__img lazyload" 
+             src="{{ 'lazy.png' | asset_url }}" 
+             data-src="{{ article.image.src }}" 
+             alt="{{ article.title | escape }}" 
+             loading="lazy"
+             width="388" 
+             height="218">
+      {% else %}
+        <div class="dr-blog-card__img-placeholder">
+          <img class="lazyload" src="{{ 'logo_icon.png' | asset_url }}" alt="Dr.REJU Clinical" width="48" height="48">
+        </div>
+      {% endif %}
+    </a>
+    
+    {% if article.tags.size > 0 %}
+      <div class="dr-blog-card__tags">
+        {% for tag in article.tags limit: 2 %}
+          <span class="dr-blog-card__badge">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
 
-		<h3>
-			<a class="line-clamp line-clamp-2" href="{{ article.url }}" title="{{ article.title }}">{{ article.title }}</a>
-		</h3>
-		
-		<div class="time-post">
-			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
-				<path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
-				<path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-			</svg>
-			{{ article.published_on | date:'dd/MM/yyyy' }}
-		</div>
-		<p class="justify line-clamp line-clamp-3">{{ article.content | strip_html | truncatewords: 50 }}
-		</p>
-		
-	</div>
+  <div class="dr-blog-card__content">
+    <div class="dr-blog-card__meta">
+      <span class="dr-blog-card__author">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span itemprop="author">{{ article.author | default: 'Bs. Nguyễn Huệ' }}</span>
+      </span>
+      <span class="dr-blog-card__dot">•</span>
+      <time class="dr-blog-card__date" datetime="{{ article.published_on | date: '%Y-%m-%d' }}" itemprop="datePublished">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        {{ article.published_on | date: 'dd/MM/yyyy' }}
+      </time>
+    </div>
 
-</div>
+    <h3 class="dr-blog-card__title" itemprop="headline">
+      <a href="{{ article.url }}" title="{{ article.title | escape }}">
+        {{ article.title }}
+      </a>
+    </h3>
+
+    <p class="dr-blog-card__summary" itemprop="description">
+      {% if article.summary != blank %}
+        {{ article.summary | strip_html | truncatewords: 24 }}
+      {% else %}
+        {{ article.content | strip_html | truncatewords: 24 }}
+      {% endif %}
+    </p>
+
+    <div class="dr-blog-card__footer">
+      <a class="dr-blog-card__readmore" href="{{ article.url }}" title="{{ article.title | escape }}">
+        <span>Đọc phác đồ lâm sàng</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      {% if article.comments_count > 0 %}
+        <span class="dr-blog-card__comments-count">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          {{ article.comments_count }}
+        </span>
+      {% endif %}
+    </div>
+  </div>
+</article>
