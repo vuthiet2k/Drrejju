@@ -1,0 +1,221 @@
+{% comment %}
+  DR.REJU — Template Trang Về Chúng Tôi / Giới Thiệu (page.about-us.bwt)
+  Bao gồm:
+  1. Câu chuyện thương hiệu & Tôn chỉ Dược mỹ phẩm chuẩn Y khoa
+  2. Đội ngũ Bác sĩ chuyên môn (Bs. Nguyễn Huệ)
+  3. Hệ sinh thái Sản phẩm & Hoạt chất Châu Âu
+  4. Không gian Cửa hàng Showroom & Phòng khám VISIA 3D
+  5. Tải Ứng dụng Di động DR.REJU App (iOS & Android)
+{% endcomment %}
+
+<div class="page-about-us-master" style="background-color: var(--bg-alt, #FAF6EF); color: var(--text, #17140F); font-family: var(--font-primary, 'Quicksand', sans-serif);">
+
+  <!-- HERO SECTION -->
+  <section style="padding: 70px 20px; max-width: 1280px; margin: 0 auto;">
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px;">
+      
+      <div style="flex: 1 1 600px; max-width: 680px;">
+        <div style="display: inline-block; padding: 6px 14px; border-radius: 999px; background: rgba(10, 46, 36, 0.08); border: 1px solid rgba(10, 46, 36, 0.2); color: var(--emerald, #0A2E24); font-size: 11px; font-weight: 700; text-transform: uppercase; margin-bottom: 16px;">
+          ✦ HÀNH TRÌNH TÁI SINH LÀN DA KHỎE TỪ GỐC
+        </div>
+
+        <h1 style="font-size: 42px; font-weight: 800; color: var(--emerald, #0A2E24); margin: 0 0 16px 0; line-height: 1.2;">
+          Về Chúng Tôi — DR.REJU
+        </h1>
+
+        <div style="background: var(--emerald, #0A2E24); color: #fff; padding: 22px; border-radius: 16px; border: 1px solid rgba(223, 186, 115, 0.4); margin-bottom: 22px; box-shadow: 0 10px 25px rgba(10, 46, 36, 0.15);">
+          <div style="font-size: 18px; font-weight: 800; color: var(--gold, #DFBA73); margin-bottom: 6px;">
+            TIÊN PHONG DƯỢC MỸ PHẨM CHUẨN Y KHOA CHÂU ÂU
+          </div>
+          <div style="font-size: 12.5px; color: #f1f5f9; font-weight: 500;">
+            Sự kết hợp giữa hoạt chất thực chứng và phác đồ điều trị da liễu lâm sàng 1:1
+          </div>
+        </div>
+
+        <p style="font-size: 14px; line-height: 1.75; color: var(--text-soft, #6E675C); margin-bottom: 28px;">
+          DR.REJU được sáng lập với sứ mệnh chấm dứt thói quen điều trị da theo cảm tính. Chúng tôi đồng hành cùng hơn 200+ bác sĩ da liễu và dược sĩ hàng đầu để đưa ra các phác đồ an toàn, giải quyết tận gốc các vấn đề da nhiễm Corticoid, mụn viêm và nám sắc tố.
+        </p>
+
+        <!-- Stats -->
+        <div style="display: flex; gap: 32px; border-top: 1px solid var(--line, #E7E0D6); padding-top: 20px;">
+          <div>
+            <div style="font-size: 26px; font-weight: 800; color: var(--emerald, #0A2E24);">10+ Năm</div>
+            <div style="font-size: 11px; color: var(--text-soft, #6E675C);">Tiên phong y khoa</div>
+          </div>
+          <div>
+            <div style="font-size: 26px; font-weight: 800; color: var(--emerald, #0A2E24);">200+</div>
+            <div style="font-size: 11px; color: var(--text-soft, #6E675C);">Bác sĩ & Dược sĩ</div>
+          </div>
+          <div>
+            <div style="font-size: 26px; font-weight: 800; color: var(--gold, #DFBA73);">15.000+</div>
+            <div style="font-size: 11px; color: var(--text-soft, #6E675C);">Ca phục hồi thành công</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Image Frame -->
+      <div style="flex: 1 1 420px; max-width: 500px;">
+        <div style="background: #fff; padding: 14px; border-radius: 24px; border: 1px solid rgba(223, 186, 115, 0.5); box-shadow: 0 20px 40px rgba(0,0,0,0.06);">
+          <div style="aspect-ratio: 1/1; border-radius: 16px; background: var(--emerald, #0A2E24); overflow: hidden; display: flex; align-items: center; justify-content: center; color: var(--gold, #DFBA73); font-weight: 700; font-size: 14px;">
+            🏛️ [FLAGSHIP SHOWROOM & CLINIC DR.REJU]
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ĐỘI NGŨ BÁC SĨ -->
+  <section style="background: var(--emerald, #0A2E24); color: #fff; padding: 70px 20px;">
+    <div style="max-width: 1280px; margin: 0 auto; text-align: center;">
+      <h2 style="font-size: 28px; font-weight: 800; color: var(--gold, #DFBA73); margin-bottom: 40px;">
+        HỘI ĐỒNG Y KHOA & BÁC SĨ CHUYÊN MÔN
+      </h2>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; text-align: left;">
+        
+        <div style="background: var(--emerald-dk, #06201a); padding: 24px; border-radius: 18px; border: 1px solid rgba(223, 186, 115, 0.3);">
+          <div style="aspect-ratio: 4/3; border-radius: 12px; background: rgba(255,255,255,0.05); margin-bottom: 16px; display: flex; align-items: center; justify-content: center; color: var(--gold, #DFBA73); font-weight: 700; font-size: 13px;">
+            👩‍⚕️ [Chân dung Bs. Nguyễn Huệ]
+          </div>
+          <h3 style="font-size: 17px; font-weight: 800; color: #fff; margin-bottom: 4px;">Bác Sĩ NGUYỄN HUỆ</h3>
+          <p style="font-size: 12px; color: var(--gold, #DFBA73); font-weight: 700; margin-bottom: 8px;">Cố Vấn Chuyên Môn Cấp Cao</p>
+          <p style="font-size: 12px; color: #cbd5e1; line-height: 1.6;">❝ Đồng hành để da bạn khỏe thật từ gốc — Chấm dứt điều trị da theo cảm tính ❞</p>
+        </div>
+
+        <div style="background: var(--emerald-dk, #06201a); padding: 24px; border-radius: 18px; border: 1px solid rgba(223, 186, 115, 0.3);">
+          <div style="aspect-ratio: 4/3; border-radius: 12px; background: rgba(255,255,255,0.05); margin-bottom: 16px; display: flex; align-items: center; justify-content: center; color: var(--gold, #DFBA73); font-weight: 700; font-size: 13px;">
+            👨‍⚕️ [Chân dung ThS. BS. Minh Tâm]
+          </div>
+          <h3 style="font-size: 17px; font-weight: 800; color: #fff; margin-bottom: 4px;">ThS. BS. TRẦN MINH TÂM</h3>
+          <p style="font-size: 12px; color: var(--gold, #DFBA73); font-weight: 700; margin-bottom: 8px;">Chuyên Gia Laser & Thẩm Mỹ Da</p>
+          <p style="font-size: 12px; color: #cbd5e1; line-height: 1.6;">❝ Trị liệu chuẩn xác theo tầng sinh học da, phục hồi hàng rào màng Ceramide ❞</p>
+        </div>
+
+        <div style="background: var(--emerald-dk, #06201a); padding: 24px; border-radius: 18px; border: 1px solid rgba(223, 186, 115, 0.3);">
+          <div style="aspect-ratio: 4/3; border-radius: 12px; background: rgba(255,255,255,0.05); margin-bottom: 16px; display: flex; align-items: center; justify-content: center; color: var(--gold, #DFBA73); font-weight: 700; font-size: 13px;">
+            👩‍🔬 [Chân dung Dược sĩ Thu Hà]
+          </div>
+          <h3 style="font-size: 17px; font-weight: 800; color: #fff; margin-bottom: 4px;">Dược Sĩ LÊ THỊ THU HÀ</h3>
+          <p style="font-size: 12px; color: var(--gold, #DFBA73); font-weight: 700; margin-bottom: 8px;">Trưởng Ban Nghiên Cứu Dược Mỹ Phẩm</p>
+          <p style="font-size: 12px; color: #cbd5e1; line-height: 1.6;">❝ Chuẩn hóa nồng độ hoạt chất thực chứng chuẩn y khoa Châu Âu ❞</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HỆ THỐNG SẢN PHẨM & CÔNG NGHỆ -->
+  <section style="padding: 70px 20px; max-width: 1280px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <h2 style="font-size: 28px; font-weight: 800; color: var(--emerald, #0A2E24); margin-bottom: 8px;">
+        HỆ THỐNG DƯỢC MỸ PHẨM HOẠT CHẤT CHÂU ÂU
+      </h2>
+      <p style="font-size: 13px; color: var(--text-soft, #6E675C);">100% nhập khẩu chính ngạch, cam kết bồi hoàn 200% nếu phát hiện hàng giả</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+      <div style="background: #fff; padding: 20px; border-radius: 16px; border: 1px solid var(--line, #E7E0D6); box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+        <div style="font-size: 24px; margin-bottom: 8px;">🛡️</div>
+        <h3 style="font-size: 15px; font-weight: 800; color: var(--emerald, #0A2E24); margin-bottom: 4px;">Phục Hồi Corticoid</h3>
+        <p style="font-size: 11px; font-weight: 700; color: var(--gold-600, #B8860B); margin-bottom: 6px;">Ceramides 3% + B5 + Rau má</p>
+        <p style="font-size: 12px; color: var(--text-soft, #6E675C); line-height: 1.5;">Tái sinh hàng rào bảo vệ màng lipid cho nền da teo mỏng, giãn mao mạch.</p>
+      </div>
+
+      <div style="background: #fff; padding: 20px; border-radius: 16px; border: 1px solid var(--line, #E7E0D6); box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+        <div style="font-size: 24px; margin-bottom: 8px;">✨</div>
+        <h3 style="font-size: 15px; font-weight: 800; color: var(--emerald, #0A2E24); margin-bottom: 4px;">Trị Mụn & Kiềm Dầu</h3>
+        <p style="font-size: 11px; font-weight: 700; color: var(--gold-600, #B8860B); margin-bottom: 6px;">Azelaic Acid 15% + Salicylic</p>
+        <p style="font-size: 12px; color: var(--text-soft, #6E675C); line-height: 1.5;">Kháng viêm sâu, gom cồi mụn nhanh và ngăn ngừa hình thành sẹo thâm.</p>
+      </div>
+
+      <div style="background: #fff; padding: 20px; border-radius: 16px; border: 1px solid var(--line, #E7E0D6); box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+        <div style="font-size: 24px; margin-bottom: 8px;">💎</div>
+        <h3 style="font-size: 15px; font-weight: 800; color: var(--emerald, #0A2E24); margin-bottom: 4px;">Mờ Nám & Sắc Tố PIH</h3>
+        <p style="font-size: 11px; font-weight: 700; color: var(--gold-600, #B8860B); margin-bottom: 6px;">Tranexamic + Niacinamide</p>
+        <p style="font-size: 12px; color: var(--text-soft, #6E675C); line-height: 1.5;">Ức chế enzyme Tyrosinase đa tầng, làm mờ nám mảng chân sâu an toàn.</p>
+      </div>
+
+      <div style="background: #fff; padding: 20px; border-radius: 16px; border: 1px solid var(--line, #E7E0D6); box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+        <div style="font-size: 24px; margin-bottom: 8px;">🌿</div>
+        <h3 style="font-size: 15px; font-weight: 800; color: var(--emerald, #0A2E24); margin-bottom: 4px;">Trẻ Hóa & Nâng Cơ</h3>
+        <p style="font-size: 11px; font-weight: 700; color: var(--gold-600, #B8860B); margin-bottom: 6px;">Retinoid thế hệ mới + Peptides</p>
+        <p style="font-size: 12px; color: var(--text-soft, #6E675C); line-height: 1.5;">Kích thích tăng sinh Collagen tự thân, làm mờ rãnh nhăn li ti săn chắc.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KHÔNG GIAN SHOWROOM & CLINIC -->
+  <section style="background: var(--bg-soft, #F1ECE3); padding: 70px 20px;">
+    <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px;">
+      
+      <div style="flex: 1 1 500px; max-width: 600px;">
+        <div style="aspect-ratio: 16/10; border-radius: 20px; background: var(--emerald, #0A2E24); overflow: hidden; display: flex; align-items: center; justify-content: center; color: var(--gold, #DFBA73); font-weight: 700; font-size: 14px; box-shadow: 0 15px 30px rgba(0,0,0,0.08);">
+          🏬 [KHÔNG GIAN PHÒNG SOI DA VISIA 3D & SHOWROOM]
+        </div>
+      </div>
+
+      <div style="flex: 1 1 500px; max-width: 580px;">
+        <h2 style="font-size: 26px; font-weight: 800; color: var(--emerald, #0A2E24); margin-bottom: 16px;">
+          KHÔNG GIAN TRẢI NGHIỆM CHUẨN CLINIC
+        </h2>
+        <p style="font-size: 13.5px; line-height: 1.7; color: var(--text-soft, #6E675C); margin-bottom: 20px;">
+          Mỗi chi nhánh của DR.REJU được thiết kế theo phong cách Royal Clinical sang trọng với tone màu Deep Emerald & Sand Gold. Khách hàng được trải nghiệm thăm khám riêng tư với hệ thống máy soi da đa tầng và bục thử nghiệm sản phẩm vô trùng.
+        </p>
+
+        <div style="space-y: 10px;">
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: var(--text, #17140F); margin-bottom: 10px;">
+            <span style="color: var(--emerald, #0A2E24); font-weight: 800;">✓</span>
+            <span>Phòng khám da liễu riêng tư chuẩn tiêu chuẩn y khoa</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: var(--text, #17140F); margin-bottom: 10px;">
+            <span style="color: var(--emerald, #0A2E24); font-weight: 800;">✓</span>
+            <span>Máy phân tích da VISIA 3D đo đạc chính xác tầng sắc tố</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: var(--text, #17140F); margin-bottom: 10px;">
+            <span style="color: var(--emerald, #0A2E24); font-weight: 800;">✓</span>
+            <span>Khu vực trải nghiệm sản phẩm trực tiếp với dược sĩ</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TẢI APP DI ĐỘNG -->
+  <section style="background: var(--emerald, #0A2E24); color: #fff; padding: 70px 20px;">
+    <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px;">
+      
+      <div style="flex: 1 1 550px; max-width: 640px;">
+        <div style="display: inline-block; padding: 5px 12px; border-radius: 999px; background: rgba(223, 186, 115, 0.15); border: 1px solid rgba(223, 186, 115, 0.4); color: var(--gold, #DFBA73); font-size: 11px; font-weight: 700; margin-bottom: 14px;">
+          📱 TIỆN ÍCH CHĂM SÓC DA THÔNG MINH
+        </div>
+
+        <h2 style="font-size: 32px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.25;">
+          Tải Ứng Dụng Di Động DR.REJU
+        </h2>
+
+        <p style="font-size: 13.5px; line-height: 1.7; color: #cbd5e1; margin-bottom: 24px;">
+          Theo dõi hành trình tái tạo da 28 ngày, nhận thông báo nhắc lịch thoa kem hàng ngày, soi da bằng AI và chat trực tiếp với Bác sĩ Nguyễn Huệ chỉ với 1 chạm.
+        </p>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 14px;">
+          <a href="#" style="padding: 12px 24px; border-radius: 999px; background: var(--gold, #DFBA73); color: var(--emerald, #0A2E24); font-weight: 800; font-size: 13px; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+            <span>🍏 Tải trên App Store</span>
+          </a>
+          <a href="#" style="padding: 12px 24px; border-radius: 999px; background: #fff; color: var(--emerald, #0A2E24); font-weight: 800; font-size: 13px; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+            <span>▶ Tải trên Google Play</span>
+          </a>
+        </div>
+      </div>
+
+      <div style="flex: 1 1 400px; max-width: 460px;">
+        <div style="aspect-ratio: 1/1; border-radius: 24px; background: var(--emerald-dk, #06201a); border: 1.5px solid rgba(223, 186, 115, 0.4); display: flex; align-items: center; justify-content: center; color: var(--gold, #DFBA73); font-weight: 700; font-size: 14px;">
+          📱 [MOCKUP IPHONE HIỂN THỊ APP DR.REJU]
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
