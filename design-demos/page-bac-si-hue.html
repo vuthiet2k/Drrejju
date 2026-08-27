@@ -53,6 +53,10 @@
       color: #17140F;
       font-family: 'Quicksand', sans-serif;
     }
+    .bronze-pattern {
+      background-image: radial-gradient(rgba(223, 186, 115, 0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
   </style>
 </head>
 <body class="antialiased selection:bg-gold-500 selection:text-emerald-950">
@@ -84,6 +88,7 @@
         <a href="#triet-ly" class="hover:text-emerald-800 transition">Triết Lý Điều Trị</a>
         <a href="#chuyen-mon" class="hover:text-emerald-800 transition">Lĩnh Vực Chuyên Môn</a>
         <a href="#quy-trinh" class="hover:text-emerald-800 transition">Quy Trình 4 Bước</a>
+        <a href="#ca-dieu-tri" class="hover:text-emerald-800 transition">Ca Lâm Sàng</a>
       </nav>
 
       <div class="flex items-center space-x-3">
@@ -94,8 +99,8 @@
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="relative pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden bg-gradient-to-b from-cream-alt via-white to-cream-alt">
+  <!-- SECTION 1: HERO SECTION -->
+  <section class="relative pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden bg-gradient-to-b from-cream-alt via-white to-cream-alt bronze-pattern">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
@@ -115,6 +120,7 @@
 
           <!-- Master Slogan Highlight Banner -->
           <div class="p-6 rounded-2xl bg-gradient-to-r from-emerald-950 to-emerald-900 border border-gold-500/40 text-white shadow-xl relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-gold-500/10 rounded-full blur-2xl pointer-events-none"></div>
             <p class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-gold-400 uppercase tracking-wide leading-snug font-display">
               "ĐỒNG HÀNH ĐỂ DA BẠN KHỎE THẬT, TỪ GỐC"
             </p>
@@ -157,11 +163,25 @@
           </div>
         </div>
 
-        <!-- Right: Doctor Portrait Frame (Col 5) -->
+        <!-- Right: Doctor Portrait Card (Col 5) -->
         <div class="lg:col-span-5 relative">
-          <div class="relative mx-auto max-w-md lg:max-w-none bg-white p-4 rounded-3xl border border-gold-500/50 shadow-2xl overflow-hidden">
-            <div class="aspect-[3/4] rounded-2xl bg-cream-soft overflow-hidden relative flex items-center justify-center">
-              <img src="/assets/bs_nguyen_hue_portrait.jpg" alt="Bác sĩ Nguyễn Huệ" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80'" />
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            <div class="absolute inset-0 bg-gradient-to-tr from-emerald-900 to-gold-500 rounded-3xl transform rotate-3 scale-105 opacity-20"></div>
+            
+            <div class="relative bg-white p-4 sm:p-5 rounded-3xl border border-gold-500/50 shadow-2xl overflow-hidden">
+              <div class="aspect-[3/4] rounded-2xl bg-cream-soft overflow-hidden relative flex items-center justify-center">
+                <img src="/assets/bs_nguyen_hue_portrait.jpg" alt="Bác sĩ Nguyễn Huệ" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80'" />
+                
+                <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur p-3.5 rounded-xl border border-cream-soft shadow-lg flex items-center space-x-3">
+                  <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-900 text-lg font-bold flex-shrink-0">
+                    ✓
+                  </div>
+                  <div class="min-w-0">
+                    <p class="text-xs font-bold text-emerald-950 truncate">Bác sĩ Chuyên Khoa Da Liễu</p>
+                    <p class="text-[10px] text-ink-soft font-medium truncate">Cố vấn chuyên môn cấp cao DR.REJU</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -170,10 +190,138 @@
     </div>
   </section>
 
-  <!-- FORM ĐẶT LỊCH TƯ VẤN (INTAKE BOOKING FORM) -->
+  <!-- SECTION 2: TRIẾT LÝ ĐIỀU TRỊ Y ĐỨC -->
+  <section id="triet-ly" class="py-20 bg-emerald-950 text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <span class="px-3.5 py-1.5 rounded-full bg-emerald-900 border border-gold-500/40 text-gold-400 text-xs font-bold uppercase tracking-wider">
+          Tôn Chỉ Y Đức
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-display">
+          Vì Sao Phải "Chấm Dứt Điều Trị Da Theo Cảm Tính"?
+        </h2>
+        <p class="text-sm text-slate-300 leading-relaxed font-medium">
+          Hàng ngàn người tiêu dùng đang tàn phá làn da bởi các trào lưu treatment nồng độ cao thiếu kiểm soát, kem trộn trá hình hoặc tự ý mua hoạt chất theo review mạng xã hội.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="p-8 rounded-2xl bg-emerald-900/60 border border-gold-500/20 hover:border-gold-500 transition space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-gold-500 text-emerald-950 font-black text-xl flex items-center justify-center font-display">
+            01
+          </div>
+          <h3 class="text-xl font-bold text-gold-400 font-display">Chẩn Đoán Đúng Tầng Tổn Thương</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Không điều trị triệu chứng bề mặt. Bác sĩ xác định chính xác tổn thương tại tầng Biểu bì (Epidermis), Trung bì (Dermis) hay suy yếu màng bảo vệ Ceramide để thiết lập mục tiêu điều trị rõ ràng.
+          </p>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-emerald-900/60 border border-gold-500/20 hover:border-gold-500 transition space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-gold-500 text-emerald-950 font-black text-xl flex items-center justify-center font-display">
+            02
+          </div>
+          <h3 class="text-xl font-bold text-gold-400 font-display">Phục Hồi Trước — Treatment Sau</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Tuyệt đối không tấn công hoạt chất mạnh trên nền da đang tổn thương, viêm đỏ. Khôi phục hàng rào sinh học khỏe mạnh là chìa khóa để da dung nạp hoạt chất tối đa.
+          </p>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-emerald-900/60 border border-gold-500/20 hover:border-gold-500 transition space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-gold-500 text-emerald-950 font-black text-xl flex items-center justify-center font-display">
+            03
+          </div>
+          <h3 class="text-xl font-bold text-gold-400 font-display">Đồng Hành Sát Sao 1:1 Theo Chu Kỳ</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Làn da thay đổi sinh học liên tục sau mỗi 14 - 28 ngày. Phác đồ của bạn sẽ được Bác sĩ Nguyễn Huệ theo dõi phản ứng và tinh chỉnh liều lượng liên tục qua từng giai đoạn.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: 4 LĨNH VỰC CHUYÊN MÔN CỐT LÕI -->
+  <section id="chuyen-mon" class="py-20 bg-cream-alt">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+        <span class="px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold uppercase tracking-wider">
+          Phác Đồ Chuyên Sâu
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-emerald-950 font-display">
+          Lĩnh Vực Chuyên Môn Của Bác Sĩ
+        </h2>
+        <p class="text-xs sm:text-sm text-ink-soft">
+          Ứng dụng các hoạt chất dược mỹ phẩm nhập khẩu chính ngạch chuẩn y khoa Châu Âu
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="p-6 rounded-2xl bg-white border border-cream-soft hover:border-emerald-800 shadow-sm hover:shadow-xl transition space-y-3 group">
+          <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center text-2xl group-hover:bg-emerald-900 group-hover:text-gold-400 transition">
+            🛡️
+          </div>
+          <h3 class="font-bold text-base text-emerald-950 font-display">Phục Hồi Da Corticoid & Kích Ứng</h3>
+          <p class="text-xs text-ink-soft leading-relaxed font-medium">
+            Tái tạo màng lipid, làm dịu da giãn mao mạch, ngứa rát, cai nghiện kem trộn an toàn từng bước.
+          </p>
+          <div class="pt-2 text-xs font-bold text-emerald-800">
+            Ceramides • B5 • Rau má Centella
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white border border-cream-soft hover:border-emerald-800 shadow-sm hover:shadow-xl transition space-y-3 group">
+          <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center text-2xl group-hover:bg-emerald-900 group-hover:text-gold-400 transition">
+            ✨
+          </div>
+          <h3 class="font-bold text-base text-emerald-950 font-display">Trị Mụn Viêm & Cân Bằng Dầu</h3>
+          <p class="text-xs text-ink-soft leading-relaxed font-medium">
+            Kiểm soát tuyến bã nhờn, gom cồi mụn viêm, kháng khuẩn sâu và ngăn ngừa sẹo thâm sau mụn.
+          </p>
+          <div class="pt-2 text-xs font-bold text-emerald-800">
+            Azelaic Acid 15% • Salicylic Acid
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white border border-cream-soft hover:border-emerald-800 shadow-sm hover:shadow-xl transition space-y-3 group">
+          <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center text-2xl group-hover:bg-emerald-900 group-hover:text-gold-400 transition">
+            💎
+          </div>
+          <h3 class="font-bold text-base text-emerald-950 font-display">Xóa Nám & Tăng Sắc Tố (PIH)</h3>
+          <p class="text-xs text-ink-soft leading-relaxed font-medium">
+            Ức chế enzyme Tyrosinase đa tầng, làm mờ nám mảng, tàn nhang và phục hồi đều màu da sáng khỏe.
+          </p>
+          <div class="pt-2 text-xs font-bold text-emerald-800">
+            Tranexamic • Niacinamide • Vitamin C
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white border border-cream-soft hover:border-emerald-800 shadow-sm hover:shadow-xl transition space-y-3 group">
+          <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center text-2xl group-hover:bg-emerald-900 group-hover:text-gold-400 transition">
+            🌿
+          </div>
+          <h3 class="font-bold text-base text-emerald-950 font-display">Chống Lão Hóa & Trẻ Hóa Da</h3>
+          <p class="text-xs text-ink-soft leading-relaxed font-medium">
+            Kích thích tăng sinh Collagen tự thân, xóa mờ nếp nhăn li ti và nâng cơ da săn chắc mịn màng.
+          </p>
+          <div class="pt-2 text-xs font-bold text-emerald-800">
+            Retinoid thế hệ mới • Peptides
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM ĐẶT HẸN TƯ VẤN 1:1 -->
   <section id="dat-lich" class="py-20 bg-cream-alt relative">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
       <div class="bg-white rounded-3xl p-8 sm:p-12 border border-gold-500/40 shadow-2xl space-y-8">
+        
         <div class="text-center space-y-3 border-b border-cream-soft pb-6">
           <span class="px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold uppercase tracking-wider">
             Đặt Lịch Khám & Tư Vấn 1:1
@@ -186,30 +334,73 @@
           </p>
         </div>
 
-        <form class="space-y-6 text-sm">
+        <form action="/contact" method="post" class="space-y-6 text-sm">
+          
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <label class="block font-bold text-emerald-950 mb-2">Họ và Tên của bạn *</label>
-              <input type="text" required placeholder="Ví dụ: Nguyễn Thị Thuỳ Linh" class="w-full bg-cream-alt border border-cream-soft rounded-xl px-4 py-3 text-ink" />
+              <input type="text" required placeholder="Ví dụ: Nguyễn Thị Thuỳ Linh" class="w-full bg-cream-alt border border-cream-soft rounded-xl px-4 py-3 text-ink placeholder-slate-400 focus:outline-none focus:border-emerald-800 focus:bg-white transition" />
             </div>
+
             <div>
               <label class="block font-bold text-emerald-950 mb-2">Số Điện Thoại (Zalo nhận phác đồ) *</label>
-              <input type="tel" required placeholder="Ví dụ: 0967 194 063" class="w-full bg-cream-alt border border-cream-soft rounded-xl px-4 py-3 text-ink font-mono" />
+              <input type="tel" required placeholder="Ví dụ: 0967 194 063" class="w-full bg-cream-alt border border-cream-soft rounded-xl px-4 py-3 text-ink placeholder-slate-400 focus:outline-none focus:border-emerald-800 focus:bg-white transition font-mono" />
             </div>
           </div>
 
           <div>
-            <label class="block font-bold text-emerald-950 mb-2">Tình trạng da bạn đang gặp phải *</label>
-            <textarea rows="3" placeholder="Mô tả tình trạng: Da nhiễm Corticoid, Mụn viêm, Nám mảng, da mỏng đỏ..." class="w-full bg-cream-alt border border-cream-soft rounded-xl px-4 py-3 text-ink"></textarea>
+            <label class="block font-bold text-emerald-950 mb-2">Vấn đề da chính bạn đang gặp phải *</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-bold">
+              <label class="p-3 rounded-xl border border-cream-soft bg-cream-alt hover:bg-emerald-50 hover:border-emerald-800 cursor-pointer flex items-center space-x-2 transition">
+                <input type="radio" name="skin_concern" value="corticoid" class="text-emerald-800" checked />
+                <span>Da nhiễm Corticoid</span>
+              </label>
+              <label class="p-3 rounded-xl border border-cream-soft bg-cream-alt hover:bg-emerald-50 hover:border-emerald-800 cursor-pointer flex items-center space-x-2 transition">
+                <input type="radio" name="skin_concern" value="acne" class="text-emerald-800" />
+                <span>Mụn viêm / Ẩn</span>
+              </label>
+              <label class="p-3 rounded-xl border border-cream-soft bg-cream-alt hover:bg-emerald-50 hover:border-emerald-800 cursor-pointer flex items-center space-x-2 transition">
+                <input type="radio" name="skin_concern" value="melasma" class="text-emerald-800" />
+                <span>Nám / Tàn nhang</span>
+              </label>
+              <label class="p-3 rounded-xl border border-cream-soft bg-cream-alt hover:bg-emerald-50 hover:border-emerald-800 cursor-pointer flex items-center space-x-2 transition">
+                <input type="radio" name="skin_concern" value="aging" class="text-emerald-800" />
+                <span>Lão hóa / Nhăn</span>
+              </label>
+            </div>
           </div>
 
-          <button type="submit" class="w-full py-4 rounded-full bg-gold-500 hover:bg-gold-400 text-emerald-950 font-black text-base shadow-xl transition">
+          <div>
+            <label class="block font-bold text-emerald-950 mb-2">Mô tả thêm về các sản phẩm bạn đã từng dùng</label>
+            <textarea rows="3" placeholder="Ví dụ: Đã từng peel da tại spa, hiện tại da bị đỏ rát khi dùng serum..." class="w-full bg-cream-alt border border-cream-soft rounded-xl px-4 py-3 text-ink placeholder-slate-400 focus:outline-none focus:border-emerald-800 focus:bg-white transition"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-4 rounded-full bg-gold-500 hover:bg-gold-400 text-emerald-950 font-black text-base shadow-xl transition transform hover:-translate-y-0.5">
             GỬI YÊU CẦU TƯ VẤN CHO BÁC SĨ NGUYỄN HUỆ →
           </button>
+
+          <p class="text-center text-xs text-ink-soft">
+            🔒 Mọi thông tin cá nhân và hình ảnh hồ sơ da của bạn được bảo mật tuyệt đối theo chuẩn y đức.
+          </p>
         </form>
+
       </div>
     </div>
   </section>
 
-</body>
-</html>
+  <!-- FOOTER -->
+  <footer class="bg-emerald-950 text-slate-300 py-12 border-t border-emerald-900 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 rounded-lg bg-emerald-900 border border-gold-500 flex items-center justify-center text-gold-400 font-bold text-sm font-serif">
+          DR
+        </div>
+        <span class="font-bold text-white tracking-wide">DR.REJU CLINICAL DERMATOLOGY</span>
+      </div>
+      <p class="text-slate-400">
+        © 2026 DR.REJU · Cố vấn chuyên môn: Bác sĩ Nguyễn Huệ · Bản quyền thuộc về Hoàng Vũ Thiết
+      </p>
+    </div>
+  </footer>
+
+</div>
