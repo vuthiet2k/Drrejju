@@ -80,7 +80,7 @@
 
   <!-- 3 NGUYÊN TẮC ĐIỀU TRỊ -->
   <section style="background: var(--emerald, #0A2E24); color: #fff; padding: 70px 20px;">
-    <div style="max-w: 1280px; margin: 0 auto; text-align: center;">
+    <div style="max-width: 1280px; margin: 0 auto; text-align: center;">
       <h2 style="font-size: 28px; font-weight: 800; color: var(--gold, #DFBA73); margin-bottom: 40px;">
         VÌ SAO CẦN "CHẤM DỨT ĐIỀU TRỊ DA THEO CẢM TÍNH"?
       </h2>
