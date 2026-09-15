@@ -1,105 +1,108 @@
-<div class="search-blog">
-	{% if blogs[settings.relate_blog].articles.size > 0 %}
-	{% assign blog_alias = settings.relate_blog %}
-	{% else %}
-	{% assign blog_alias = '#' %}
-	{% endif %}
-	<h2 class="title-head">
-		<span>Tìm kiếm tin tức</span>
-	</h2>
-	<div class="thump-searh">
-		<form action="/search" method="get" class="blog-search-form input-group search-bar" role="search">
-			<input type="text" name="query" required class="input-group-field form-control" placeholder="Nhập tên tin tức..." autocomplete="off">
-			<input type="hidden" name="type" value="article">
-			<button type="submit" class="btn icon-fallback-text" aria-label="Tìm kiếm" title="Tìm kiếm">
-				<svg width="20" height="20" viewBox="0 0 20 20" fill="#ffffff" xmlns="http://www.w3.org/2000/svg"> <path d="M14.1404 13.4673L19.852 19.1789C20.3008 19.6276 19.6276 20.3008 19.1789 19.852L13.4673 14.1404C12.0381 15.4114 10.1552 16.1835 8.09176 16.1835C3.6225 16.1835 0 12.5613 0 8.09176C0 3.6225 3.62219 0 8.09176 0C12.561 0 16.1835 3.62219 16.1835 8.09176C16.1835 10.1551 15.4115 12.038 14.1404 13.4673ZM0.951972 8.09176C0.951972 12.0356 4.14824 15.2316 8.09176 15.2316C12.0356 15.2316 15.2316 12.0353 15.2316 8.09176C15.2316 4.14797 12.0353 0.951972 8.09176 0.951972C4.14797 0.951972 0.951972 4.14824 0.951972 8.09176Z" fill="#222222"></path> </svg>
-			</button>
-		</form>
-	</div>
-</div>
+{% comment %}
+  DR.REJU — Clinical Blog Sidebar Widget (Production-Ready)
+  Design System Parity: Figma Node 41:12 (41:512, 41:663, Widget Stack)
+  Sapo Objects: blogs, article, settings, blog.all_tags
+{% endcomment %}
 
+<aside class="dr-blog-sidebar" aria-label="Thanh bên tin tức & tư vấn">
+  
+  {% comment %} 1. Widget Tìm Kiếm Bài Viết Chuẩn Sapo {% endcomment %}
+  <div class="dr-sidebar-widget dr-sidebar-widget--search">
+    <h3 class="dr-sidebar-widget__title">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span>Tìm Kiếm Bài Viết</span>
+    </h3>
+    <form action="/search" method="get" class="dr-sidebar-search-form" role="search">
+      <input type="hidden" name="type" value="article">
+      <div class="dr-sidebar-search-form__wrap">
+        <input type="text" 
+               name="query" 
+               required 
+               class="dr-sidebar-search-form__input" 
+               placeholder="Tìm hoạt chất, bệnh lý da..." 
+               autocomplete="off" 
+               spellcheck="false">
+        <button type="submit" class="dr-sidebar-search-form__submit" aria-label="Tìm kiếm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </div>
+    </form>
+  </div>
 
-{%- include 'aside-cate-blog' -%}
-<div class="blog_noibat">
-	{% if blogs[settings.relate_blog].articles.size > 0 %}
-	{% assign blog_alias = settings.relate_blog %}
-	{% else %}
-	{% assign blog_alias = '#' %}
-	{% endif %}
-	<h2 class="h2_sidebar_blog">
-		<a href="/{{ blog_alias}}" title="{{ settings.news_relate }}">{{ settings.news_relate }}</a>
-	</h2>
-	<div class="blog_content">
-		{% for article in blogs[settings.relate_blog].articles | limit: settings.number_relate_blog %}
-		<div class="item-blog-small">
-			<div class="block-thumb">
-				{% if article.image != null %}
-				<a class="thumb" href="{{ article.url }}" title="{{ article.title }}">
-					<img class="lazyload" src="{{ 'lazy.png' | asset_url}}" 
-						 data-src="{{ article.image.src}}"  alt="{{ article.title }}">
-				</a>
-				{%else%}
-				<a class="thumb" href="{{ article.url }}">
-					<img class="lazyload" src="{{ 'lazy.png' | asset_url}}" 
-						 data-src="{{ 'no-image.jpg' | asset_url}}" alt="{{ article.title }}" title="{{ article.title }}"/>
-				</a>
-				{% endif %}
+  {% comment %} 2. Widget Bác Sĩ Tư Vấn 1:1 Khẩn Cấp {% endcomment %}
+  <div class="dr-sidebar-widget dr-sidebar-widget--doctor-cta">
+    <div class="dr-doctor-cta-card">
+      <div class="dr-doctor-cta-card__badge">
+        <span class="dr-dot-pulse"></span>
+        <span>Tư Vấn 1:1 Miễn Phí</span>
+      </div>
+      <h4 class="dr-doctor-cta-card__title">Chẩn Đoán Hồ Sơ Da Cùng Bs. Nguyễn Huệ</h4>
+      <p class="dr-doctor-cta-card__desc">
+        Chụp 3 góc da gửi Bác sĩ để nhận phác đồ dược mỹ phẩm chính ngạch và đơn hướng dẫn trong vòng 24h.
+      </p>
+      <a href="{{ settings.social_zalo_link | default: 'https://zalo.me/' }}" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="dr-btn dr-btn--white-emerald dr-doctor-cta-card__btn">
+        <span>Gửi Tình Trạng Da Qua Zalo</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <div class="dr-doctor-cta-card__meta">
+        <small>⚡ Phản hồi trực tiếp từ Bác sĩ Chuyên khoa</small>
+      </div>
+    </div>
+  </div>
 
+  {% comment %} 3. Widget Danh Mục Chuyên Khoa Da Liễu {% endcomment %}
+  {% include 'aside-cate-blog' %}
 
+  {% comment %} 4. Widget Bài Viết Nổi Bật / Xem Nhiều {% endcomment %}
+  {% assign rel_blog_handle = settings.relate_blog | default: blog.alias | default: 'all' %}
+  {% if blogs[rel_blog_handle].articles.size > 0 %}
+    <div class="dr-sidebar-widget dr-sidebar-widget--trending">
+      <h3 class="dr-sidebar-widget__title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>{{ settings.news_relate | default: 'Phác Đồ Đọc Nhiều Nhất' }}</span>
+      </h3>
+      <div class="dr-sidebar-articles-list">
+        {% for art in blogs[rel_blog_handle].articles limit: 5 %}
+          <div class="dr-sidebar-article-item">
+            <a class="dr-sidebar-article-item__thumb" href="{{ art.url }}" title="{{ art.title | escape }}">
+              {% if art.image != null and art.image.src != blank %}
+                <img class="lazyload" src="{{ 'lazy.png' | asset_url }}" data-src="{{ art.image.src }}" alt="{{ art.title | escape }}" loading="lazy" width="80" height="60">
+              {% else %}
+                <div class="dr-sidebar-article-item__thumb-ph">Dr.REJU</div>
+              {% endif %}
+            </a>
+            <div class="dr-sidebar-article-item__info">
+              <span class="dr-sidebar-article-item__date">{{ art.published_on | date: 'dd/MM/yyyy' }}</span>
+              <h4 class="dr-sidebar-article-item__title">
+                <a href="{{ art.url }}" title="{{ art.title | escape }}" class="line-clamp line-clamp-2">
+                  {{ art.title }}
+                </a>
+              </h4>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
 
-			</div>
-			<div class="block-content">
+  {% comment %} 5. Widget Tag Cloud / Hoạt Chất Phân Loại {% endcomment %}
+  {% if blog.all_tags.size > 0 %}
+    <div class="dr-sidebar-widget dr-sidebar-widget--tags">
+      <h3 class="dr-sidebar-widget__title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        <span>Hoạt Chất & Bệnh Lý</span>
+      </h3>
+      <div class="dr-tag-cloud">
+        {% for tag in blog.all_tags %}
+          <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="dr-tag-pill{% if current_tags contains tag %} is-active{% endif %}">
+            #{{ tag }}
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
 
-
-				<h3>
-					<a class="line-clamp line-clamp-2" href="{{ article.url }}" title="{{ article.title }}">{{ article.title }}</a>
-				</h3>
-
-
-			</div>
-
-		</div>
-		{% endfor %}
-	</div>
-</div>
-{%if template contains 'article'%}
-<div class="blog_noibat">
-	{% assign url = blog.alias %}
-	{% assign title_blog = article.id %}
-	<h2 class="h2_sidebar_blog">
-		<a href="/{{url}}" title="{{settings.title_blog_relate}}">{{settings.title_blog_relate}}</a>
-	</h2>
-	<div class="blog_content">
-		{% for article in blogs[url].articles | limit: settings.limit_blog_relate %}
-		<div class="item-blog-small">
-			<div class="block-thumb">
-				{% if article.image != null %}
-				<a class="thumb" href="{{ article.url }}" title="{{ article.title }}">
-					<img class="lazyload" src="{{ 'lazy.png' | asset_url}}" 
-						 data-src="{{ article.image.src}}"  alt="{{ article.title }}">
-				</a>
-				{%else%}
-				<a class="thumb" href="{{ article.url }}">
-					<img class="lazyload" src="{{ 'lazy.png' | asset_url}}" 
-						 data-src="{{ 'no-image.jpg' | asset_url}}" alt="{{ article.title }}" title="{{ article.title }}"/>
-				</a>
-				{% endif %}
-
-
-
-			</div>
-			<div class="block-content">
-
-
-				<h3>
-					<a class="line-clamp line-clamp-2" href="{{ article.url }}" title="{{ article.title }}">{{ article.title }}</a>
-				</h3>
-
-
-			</div>
-
-		</div>
-		{% endfor %}
-	</div>
-</div>
-{%endif%}
+</aside>

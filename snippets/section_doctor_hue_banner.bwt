@@ -1,0 +1,99 @@
+{% comment %}
+  DR.REJU — Modular Doctor Hero Banner Component (Tái sử dụng đa trang)
+  Gồm 4 khối cấu trúc tách rời:
+  1. Khung chân dung Bác sĩ Nguyễn Huệ + Nền Trống Đồng Đông Sơn
+  2. Khối Slogan chính (Đỏ Ruby #A81E1E + Gold #DFBA73)
+  3. Dải Tagline phụ (Nền Kem Ấm #FAF6EF) "Chấm dứt điều trị da theo cảm tính"
+  4. Cụm CTA đặt lịch tư vấn 1:1 & Khảo sát da
+{% endcomment %}
+
+<div class="dr-hue-banner-modular" style="width: 100%; max-width: 1280px; margin: 0 auto; padding: 24px 16px; font-family: var(--font-primary, 'Quicksand', sans-serif);">
+
+  <!-- KHUNG BANNER TỔNG HỢP (HERO COMPOSITE) -->
+  <div style="position: relative; background: linear-gradient(135deg, #FBF6EE 0%, #FAF2E2 100%); border: 1.5px solid rgba(223, 186, 115, 0.6); border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(10, 46, 36, 0.08);">
+    
+    <!-- LỚP NỀN HOA VĂN TRỐNG ĐỒNG CHÌM (BACKGROUND TEXTURE) -->
+    <div style="position: absolute; inset: 0; opacity: 0.12; background-image: radial-gradient(#DFBA73 1.5px, transparent 1.5px); background-size: 20px 20px; pointer-events: none;"></div>
+
+    <div style="display: flex; flex-wrap: wrap; align-items: stretch; justify-content: space-between; position: relative; z-index: 2;">
+      
+      <!-- KHỐI 1 & 2: THÔNG TIN BÁC SĨ & CHÂN DUNG (BÊN TRÁI) -->
+      <div style="flex: 1 1 520px; padding: 40px 32px; display: flex; flex-direction: column; justify-content: space-between;">
+        
+        <div>
+          <!-- Eyebrow Title -->
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+            <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--emerald, #0A2E24);"></span>
+            <span style="font-size: 13px; font-weight: 700; color: var(--gold-600, #B8860B); text-transform: uppercase; letter-spacing: 1px;">
+              Bác Sĩ Chuyên Khoa Da Liễu
+            </span>
+          </div>
+
+          <h2 style="font-size: 38px; font-weight: 800; color: var(--emerald, #0A2E24); margin: 0 0 16px 0; line-height: 1.15; font-family: var(--font-secondary, 'Be Vietnam Pro', sans-serif);">
+            Bác sĩ NGUYỄN HUỆ
+          </h2>
+
+          <p style="font-size: 13.5px; line-height: 1.7; color: var(--text-soft, #6E675C); margin: 0 0 24px 0; max-width: 480px;">
+            Cố vấn chuyên môn cấp cao DR.REJU. Hơn 10 năm kinh nghiệm điều trị phục hồi chuyên sâu cho hàng ngàn ca da tổn thương, nhiễm Corticoid và nám mảng.
+          </p>
+        </div>
+
+        <!-- KHỐI 3: DẢI TAGLINE PHỤ (RIBBON STRIP - NỀN KEM NỔI) -->
+        <div style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(8px); border: 1px solid rgba(223, 186, 115, 0.5); padding: 14px 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 16px;">✦</span>
+            <span style="font-size: 14px; font-weight: 800; color: var(--emerald, #0A2E24); letter-spacing: 0.2px;">
+              Chấm dứt điều trị da theo cảm tính
+            </span>
+          </div>
+        </div>
+
+        <!-- CỤM NÚT HÀNH ĐỘNG (CTA) -->
+        <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+          <a href="#dat-lich" style="padding: 12px 24px; border-radius: 999px; background: var(--gold, #DFBA73); color: var(--emerald, #0A2E24); font-size: 12.5px; font-weight: 800; text-decoration: none; box-shadow: 0 4px 12px rgba(223, 186, 115, 0.35); transition: all 0.2s;">
+            Đặt Lịch Khám 1:1 Với Bác Sĩ →
+          </a>
+          <a href="/page.quiz" style="padding: 12px 20px; border-radius: 999px; background: #fff; border: 1.5px solid var(--emerald, #0A2E24); color: var(--emerald, #0A2E24); font-size: 12.5px; font-weight: 700; text-decoration: none;">
+            Khảo Sát Hồ Sơ Da
+          </a>
+        </div>
+
+      </div>
+
+      <!-- KHỐI 4: SLOGAN BANNER ĐỎ RUBY HOÀNG GIA & CHÂN DUNG (BÊN PHẢI) -->
+      <div style="flex: 1 1 480px; min-height: 380px; background: linear-gradient(145deg, #A81E1E 0%, #7A0C0C 100%); border-left: 2px solid var(--gold, #DFBA73); padding: 36px 28px; display: flex; flex-direction: column; justify-content: space-between; position: relative; color: #FFFFFF;">
+        
+        <!-- Họa tiết trống đồng màu vàng kim chìm -->
+        <div style="position: absolute; right: -40px; top: -40px; width: 220px; height: 220px; border-radius: 50%; border: 30px solid rgba(223, 186, 115, 0.15); pointer-events: none;"></div>
+
+        <div>
+          <div style="font-size: 11px; font-weight: 800; color: var(--gold, #DFBA73); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;">
+            TÔN CHỈ Y ĐỨC LÂM SÀNG
+          </div>
+
+          <h3 style="font-size: 26px; font-weight: 900; color: #FFFFFF; line-height: 1.25; margin: 0 0 12px 0; font-family: var(--font-secondary, 'Be Vietnam Pro', sans-serif); text-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+            ĐỒNG HÀNH ĐỂ DA BẠN KHỎE THẬT, TỪ GỐC
+          </h3>
+
+          <div style="font-size: 12px; color: #F8E6C8; font-weight: 600; font-style: italic;">
+            — BÁC SĨ NGUYỄN HUỆ
+          </div>
+        </div>
+
+        <!-- Khung ảnh chân dung bác sĩ (Có thể thay thế URL ảnh thật) -->
+        <div style="margin-top: 24px; background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(223, 186, 115, 0.4); border-radius: 16px; padding: 12px; display: flex; align-items: center; gap: 14px;">
+          <div style="width: 56px; height: 56px; border-radius: 12px; background: #fff; overflow: hidden; flex-shrink: 0; border: 1.5px solid var(--gold, #DFBA73);">
+            <img src="{{ 'bs_nguyen_hue_portrait.jpg' | asset_url }}" alt="Bs Nguyễn Huệ" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80'" />
+          </div>
+          <div>
+            <p style="margin: 0; font-size: 12px; font-weight: 700; color: #FFFFFF;">Phác đồ cá nhân hóa 1:1</p>
+            <p style="margin: 2px 0 0 0; font-size: 10.5px; color: #F1ECE3;">Dựa trên bằng chứng khoa học & hoạt chất Châu Âu</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
