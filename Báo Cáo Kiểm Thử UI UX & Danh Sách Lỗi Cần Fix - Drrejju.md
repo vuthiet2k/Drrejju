@@ -6,6 +6,10 @@
 
 **Ngày lập báo cáo:** 15/09/2026
 
+**Trạng thái cập nhật:** 15/09/2026 — 9/10 defects đã được sửa (commit eda6704)
+- ✅ 9 Defects Fixed (DEF-01, 02, 03, 04, 05, 06, 08, 09, 10)
+- ⏸️ 1 Deferred (DEF-07 — requires settings review)
+
 ## ---
 
 **I. TỔNG QUAN ĐÁNH GIÁ (EXECUTIVE SUMMARY)**
@@ -232,15 +236,15 @@ Sau khi lập trình viên cập nhật mã nguồn trong repository [vuthiet2k/
 
 | Mục Kiểm Tra | Tiêu Chuẩn Đạt (Pass Criteria) | Trạng Thái&nbsp;&nbsp; |
 | :---- | :---- | :---- |
-| Flash Sale & Sản phẩm (DEF-01) | Hoàn toàn không xuất hiện chữ sec\_flash\_sale\_col hay text hướng dẫn admin. | Chờ Fix |
-| Mega Menu Hover (DEF-02) | Hover mượt mà giữa các menu, nền trắng đặc 100%, không bị đè chữ hai lớp. | Chờ Fix |
-| Ảnh Bác sĩ Huệ (DEF-03) | Ảnh hiển thị đầy đủ khuôn mặt, trán và đỉnh đầu không bị cắt cụt. | Chờ Fix |
-| Nút Liên hệ & reCAPTCHA (DEF-04) | Nút Floating cách đáy 85px, không bị huy hiệu reCAPTCHA che khuất; click mở chat Zalo chuẩn. | Chờ Fix |
-| Màu sắc Nút Submit (DEF-05) | Độ tương phản chữ/nền nút bấm đạt ≥ 4.5:1 (chuẩn WCAG AA). | Chờ Fix |
-| Tiêu đề Cột Footer (DEF-06) | Cột 2 là "DANH MỤC" hoặc "ĐIỀU HƯỚNG", Cột 4 là "CHÍNH SÁCH"; có địa chỉ email đi kèm icon. | Chờ Fix |
-| Phân loại danh mục (DEF-07) | Section "Thực phẩm bổ trợ" hiển thị đúng viên uống/collagen, không hiển thị dịch vụ sẹo/laser. | Chờ Fix |
-| Lưới 8 Chips (DEF-08) | Bố cục 4x2 cân đối, có hiệu ứng hover nhấc thẻ 4px, không tràn ngang màn hình. | Chờ Fix |
-| Hệ thống Spacing 8pt (DEF-09) | 100% margin, padding, gap tuân thủ bội số 4px/8px; vùng bấm icon ≥ 44x44px. | Chờ Fix |
-| DevTools Console & CLS (DEF-10) | Console đạt chuẩn 0 Uncaught Errors; thẻ ảnh có width/height chống giật khung. | Chờ Fix |
+| Flash Sale & Sản phẩm (DEF-01) | Hoàn toàn không xuất hiện chữ sec\_flash\_sale\_col hay text hướng dẫn admin. | ✅ Fixed |
+| Mega Menu Hover (DEF-02) | Hover mượt mà giữa các menu, nền trắng đặc 100%, không bị đè chữ hai lớp. | ✅ Fixed |
+| Ảnh Bác sĩ Huệ (DEF-03) | Ảnh hiển thị đầy đủ khuôn mặt, trán và đỉnh đầu không bị cắt cụt. | ✅ Fixed |
+| Nút Liên hệ & reCAPTCHA (DEF-04) | Nút Floating cách đáy 85px, không bị huy hiệu reCAPTCHA che khuất; click mở chat Zalo chuẩn. | ✅ Fixed |
+| Màu sắc Nút Submit (DEF-05) | Độ tương phản chữ/nền nút bấm đạt ≥ 4.5:1 (chuẩn WCAG AA). | ✅ Fixed |
+| Tiêu đề Cột Footer (DEF-06) | Cột 2 là "DANH MỤC" hoặc "ĐIỀU HƯỚNG", Cột 4 là "CHÍNH SÁCH"; có địa chỉ email đi kèm icon. | ✅ Fixed |
+| Phân loại danh mục (DEF-07) | Section "Thực phẩm bổ trợ" hiển thị đúng viên uống/collagen, không hiển thị dịch vụ sẹo/laser. | ⏸️ Deferred |
+| Lưới 8 Chips (DEF-08) | Bố cục 4x2 cân đối, có hiệu ứng hover nhấc thẻ 4px, không tràn ngang màn hình. | ✅ Fixed |
+| Hệ thống Spacing 8pt (DEF-09) | 100% margin, padding, gap tuân thủ bội số 4px/8px; vùng bấm icon ≥ 44x44px. | ✅ Fixed |
+| DevTools Console & CLS (DEF-10) | Console đạt chuẩn 0 Uncaught Errors; thẻ ảnh có width/height chống giật khung. | ✅ Fixed |
 
 &nbsp;
