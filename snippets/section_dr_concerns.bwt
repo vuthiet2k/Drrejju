@@ -57,11 +57,13 @@
 .dr-concerns.dr-section{ padding-top: var(--sp-32); padding-bottom: var(--sp-48); }
 .dr-concern-head{ max-width: 620px; margin-bottom: var(--sp-16); }
 .dr-concern-head .dr-h2{ font-size: var(--fs-xl); }
-.dr-concern-grid{ display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; }
+.dr-concern-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 
 /* ── Tile ── */
-.dr-concern-tile{ position: relative; display: block; overflow: hidden; aspect-ratio: 1 / 1;
-  background: var(--bg-soft); border-radius: 6px; }
+.dr-concern-tile{ position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  overflow: hidden; aspect-ratio: 16 / 9; background: var(--bg-soft); border-radius: 12px;
+  padding: 20px 16px; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; border: 1px solid transparent; }
+.dr-concern-tile:hover{ transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 12px 20px -5px rgba(5, 37, 28, 0.08); }
 .dr-concern-tile img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
   display: block; transition: transform .6s ease; }
 .dr-concern-tile:hover img{ transform: scale(1.06); }

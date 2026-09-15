@@ -62,7 +62,7 @@
       </div>
 
       <div>
-        <h4>{{ settings.title_col_3 | default: 'Khám phá' }}</h4>
+        <h4>{{ settings.title_col_2 | default: 'Danh mục' }}</h4>
         <ul>
           {% for link in fmenu.links %}
           <li><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
@@ -71,7 +71,7 @@
       </div>
 
       <div>
-        <h4>Hỗ trợ</h4>
+        <h4>{{ settings.title_col_3 | default: 'Hỗ trợ' }}</h4>
         <ul>
           <li><a href="/dat-lich">Đặt lịch tư vấn</a></li>
 {% if settings.social_zalo_link != blank and settings.social_zalo_link != '#' %}<li><a href="{{ settings.social_zalo_link }}">Tư vấn qua Zalo</a></li>{% endif %}
@@ -81,7 +81,7 @@
       </div>
 
       <div>
-        <h4>{{ settings.title_col_4 | default: 'Pháp lý' }}</h4>
+        <h4>{{ settings.title_col_4 | default: 'Chính sách & Quy định' }}</h4>
         <ul>
           {% if lmenu.links.size > 0 %}
             {% for link in lmenu.links %}
@@ -104,7 +104,7 @@
       <div class="dr-foot-legal">
         <span><i class="fa-solid fa-location-dot"></i> {{ settings.diachi | default: store.address }}</span>
         <span><i class="fa-solid fa-phone"></i> {{ settings.phone | default: store.phone_number }}</span>
-        <span><i class="fa-solid fa-envelope"></i> {{ settings.email | default: store.email }}</span>
+        <span><i class="fa-solid fa-envelope"></i> <a href="mailto:{{ settings.email | default: 'contact@drreju.vn' }}">{{ settings.email | default: 'contact@drreju.vn' }}</a></span>
       </div>
       <div>{% if settings.copy_right != blank %}{{ settings.copy_right }}{% else %}© 2026 Dr.Reju Medical Dermatology.{% endif %}</div>
     </div>

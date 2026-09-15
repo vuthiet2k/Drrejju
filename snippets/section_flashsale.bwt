@@ -53,8 +53,6 @@
     <div class="dr-flashsale-cta">
       <a href="{{ collections[fs_handle].url | default: '/collections/all' }}" class="dr-btn dr-btn--primary">{{ settings.sec_flash_sale_cta | default: 'Xem tất cả ưu đãi' }} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
     </div>
-    {% else %}
-    <p class="dr-lead">Chưa có sản phẩm cho Flash Sale — chọn danh mục ở phần <b>Tùy chỉnh → Trang chủ - Flash Sale → Danh mục sản phẩm</b> (setting <code>sec_flash_sale_col</code>).</p>
     {% endif %}
 
   </div>

@@ -23,7 +23,7 @@
 						<source 
 								media="(max-width: 567px)"
 								srcset="{{ naviimage | asset_url | img_url:'large'}}">
-						<img  width="1519" height="580" src="{{ naviimage | asset_url | img_url:'grande' }}" alt="{{ settings[alt] | escape}}" class="img-responsive" />
+						<img width="1519" height="580" src="{{ naviimage | asset_url | img_url:'grande' }}" alt="{{ settings[alt] | escape}}" class="img-responsive" loading="lazy" />
 					</picture>
 				</a>
 				

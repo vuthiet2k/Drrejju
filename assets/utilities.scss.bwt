@@ -95,8 +95,8 @@
   padding: 14px 30px; border-radius: var(--radius-pill);
   cursor: pointer; transition: all .25s ease; border: 2px solid transparent; text-align: center;
 }
-.dr-btn--primary{ background: var(--btn-bg); color: var(--btn-text); border-color: var(--btn-bg); }
-.dr-btn--primary:hover{ background: var(--gold-lt); color: var(--btn-text); border-color: var(--gold-lt); transform: translateY(-2px); }
+.dr-btn--primary{ background: var(--btn-bg); color: var(--btn-text); border-color: var(--btn-bg); font-weight: 700; }
+.dr-btn--primary:hover{ background: var(--gold-lt); color: var(--btn-text); border-color: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(223, 181, 108, 0.4); }
 .dr-btn--outline{ background: transparent; color: var(--accent); border-color: var(--accent); }
 .dr-btn--outline:hover{ background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 
@@ -457,4 +457,41 @@ body.dr-noscroll{ overflow: hidden; }
 @media (max-width: 480px){
   .dr-section{ padding-top: var(--sp-32); padding-bottom: var(--sp-32); }
   .dr-h1{ font-size: 1.625rem; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   DEF-04: Floating Action Button + reCAPTCHA positioning fixes
+   ══════════════════════════════════════════════════════════════ */
+.addThis_listSharing{
+  bottom: 85px !important;
+  right: 20px !important;
+  z-index: 9990 !important;
+}
+.addThis_iconContact{
+  bottom: 20px !important;
+  right: 20px !important;
+  z-index: 9990 !important;
+}
+.grecaptcha-badge{
+  bottom: 16px !important;
+  right: 16px !important;
+  z-index: 9980 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   DEF-09: Header icon touch targets (44x44px minimum)
+   ══════════════════════════════════════════════════════════════ */
+.dr-navactions a{
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  padding: 8px !important;
+  margin-left: 8px !important;
+  border-radius: 50% !important;
+  transition: background-color 0.2s ease !important;
+}
+.dr-navactions a:hover{
+  background-color: rgba(5, 37, 28, 0.06) !important;
 }
