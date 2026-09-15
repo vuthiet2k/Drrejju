@@ -7,6 +7,7 @@
 
 {%- assign labels = 'Mụn & bít tắc,Nám & sắc tố,Da nhạy cảm & đỏ,Lão hóa,Da khô & thiếu ẩm,Lỗ chân lông to,Da khi mang thai,Chưa rõ vấn đề?' | split: ',' -%}
 {%- assign imgassets = 'concern-1.png,concern-2.png,concern-3.png,concern-4.png,concern-5.png,concern-6.png,concern-7.png,concern-8.png' | split: ',' -%}
+{%- assign concern_urls = '/tri-mun,/tri-nam,/sensilis,/chong-lao-hoa,/duong-am,/da-mun-dau,/dat-lich,/dat-lich' | split: ',' -%}
 
 <section id="concerns" class="dr-section dr-bg dr-concerns">
   <div class="dr-container">
@@ -29,7 +30,7 @@
         {%- capture imgkey %}concern_{{ n }}_img{% endcapture -%}
         {%- capture urlkey %}concern_{{ n }}_url{% endcapture -%}
         {%- assign clabel = settings[lblkey] | default: labels[i] -%}
-        {%- assign curl = settings[urlkey] | default: settings.concern_url | default: '/dat-lich' -%}
+        {%- assign curl = settings[urlkey] | default: concern_urls[i] -%}
         {% if clabel != blank %}
         <a href="{{ curl }}" class="dr-concern-tile" aria-label="{{ clabel | escape }}">
           {% if settings[imgkey] != blank %}

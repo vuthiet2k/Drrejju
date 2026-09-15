@@ -1,17 +1,24 @@
-{% comment %} DR.REJU — Giỏ hàng (dựng lại theo hệ thiết kế dr-*).
+{% comment %} DR.REJU — Giỏ hàng.
 
-   Bản cũ có 4 vấn đề, đã sửa hết:
-   1. Tiêu đề bị tắt bằng class d-none → trang không có tiêu đề nào.
-   2. KHÔNG có trạng thái giỏ rỗng. .CartPageContainer là div trống do JS
-      (snippets/ajaxcartfunction.bwt) fill từ /cart.js — giỏ rỗng thì khách thấy trang trắng.
-      Giờ có nhánh Liquid cart.item_count == 0 render sẵn phía server.
-   3. Ngày/giờ giao hàng bật cứng, lại không có nhãn (settings.delivery_heading rỗng) →
-      hiện ra một ô "Chọn ngày" trơ trọi. Giờ nằm sau setting use_cart_delivery, MẶC ĐỊNH TẮT.
-   4. Bootstrap grid + style inline, không có class dr-* nào.
+   Kiến trúc (theo _tools/cart_research/cart_architecture.md §12):
+   - MAIN LEFT (server-render khung + client-render items):
+     · Items table (Handlebars fill .CartPageContainer / .CartMobileContainer — KHÔNG đổi class).
+     · Trust strip.
+     · Complete routine (server, tag step:*).
+     · Related articles (server, tag concern:*).
+     · Related by brand (server, auto pick vendor chi phối).
+   - ASIDE RIGHT (server-render):
+     · Order summary + Checkout CTA (subtotal/discount/total lấy từ cart Liquid, live-sync qua MutationObserver).
+     · AI consult card (static).
+     · Delivery form (if settings.use_cart_delivery).
+     · VAT form (if settings.use_cart_vat).
+     · Support (Zalo + Phone).
+   - Mobile sticky bottom bar (Tổng + Thanh toán).
 
-   GIỮ NGUYÊN: .CartPageContainer / .CartMobileContainer và các id/class mà
-   ajaxcartfunction.bwt bám vào — KHÔNG đổi tên, đổi là hỏng giỏ hàng.
-   Form xuất hoá đơn giữ nguyên tên trường attributes[...] và vẫn do settings.use_cart_vat quyết định. {% endcomment %}
+   Empty state server-render (Liquid cart.item_count == 0).
+   GIỮ NGUYÊN: .CartPageContainer / .CartMobileContainer, id script Handlebars,
+   tên field cart.attributes[invoice/company_name/tax_code/company_address/invoice_email/shipdate].
+{% endcomment %}
 
 {% include 'breadcrumb' %}
 
@@ -20,9 +27,9 @@
 
     <div class="dr-cartpg-head">
       <span class="dr-eyebrow">Giỏ hàng</span>
-      <h1 class="dr-h2 dr-mt-8 title_cart">Giỏ hàng của bạn</h1>
+      <h1 class="dr-h2 dr-mt-16 title_cart">Giỏ hàng của bạn</h1>
       {% if cart.item_count > 0 %}
-      <p class="dr-lead dr-mt-8">{{ cart.item_count }} sản phẩm đang chờ bạn hoàn tất.</p>
+      <p class="dr-lead dr-mt-8">{{ cart.item_count }} sản phẩm đang chờ bạn hoàn tất. Kiểm tra lại phác đồ trước khi thanh toán.</p>
       {% endif %}
     </div>
 
@@ -41,31 +48,112 @@
     {% else %}
       <div class="dr-cartpg-grid">
 
+        {% comment %} ══════════ MAIN LEFT ══════════ {% endcomment %}
         <div class="dr-cartpg-main col-cart-left">
-          {% comment %} Hai container này do ajaxcartfunction.bwt fill — giữ nguyên tên {% endcomment %}
-          <div class="cart-page dr-hide-mobile">
-            <div class="drawer__inner">
-              <div class="CartPageContainer"></div>
+
+          {% comment %} Block 1: ITEMS TABLE — Handlebars fill (giữ .CartPageContainer / .CartMobileContainer) {% endcomment %}
+          <div class="dr-cart-mod dr-cart-items">
+            <div class="cart-page dr-hide-mobile">
+              <div class="drawer__inner">
+                <div class="CartPageContainer"></div>
+              </div>
+            </div>
+            <div class="cart-mobile-page dr-only-mobile">
+              <div class="CartMobileContainer"></div>
+            </div>
+
+            {% comment %} Trust strip dưới items {% endcomment %}
+            <div class="dr-trust-strip">
+              <div class="dr-trust-strip__item">
+                <i class="fa-solid fa-truck-fast"></i>
+                <div><strong>Giao hàng toàn quốc</strong>Trong 24 đến 48h tại HN &amp; HCM</div>
+              </div>
+              <div class="dr-trust-strip__item">
+                <i class="fa-solid fa-box-open"></i>
+                <div><strong>Đổi trả 7 ngày</strong>Với sản phẩm còn nguyên seal</div>
+              </div>
+              <div class="dr-trust-strip__item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <div><strong>Chính hãng 100%</strong>Có mã kiểm định trên vỏ hộp</div>
+              </div>
+              <div class="dr-trust-strip__item">
+                <i class="fa-solid fa-user-doctor"></i>
+                <div><strong>Bác sĩ tư vấn</strong>Miễn phí trong 1h</div>
+              </div>
             </div>
           </div>
-          <div class="cart-mobile-page dr-only-mobile">
-            <div class="CartMobileContainer"></div>
-          </div>
+
+          {% comment %} Block 2: Complete Your Routine {% endcomment %}
+          {% if settings.cart_show_complete_routine %}
+            {% include 'cart_complete_routine' %}
+          {% endif %}
+
+          {% comment %} Block 3: Related Articles by concern tag {% endcomment %}
+          {% if settings.cart_show_related_articles %}
+            {% include 'cart_related_articles' %}
+          {% endif %}
+
+          {% comment %} Block 4: Related by Brand {% endcomment %}
+          {% if settings.cart_show_related_by_brand %}
+            {% include 'cart_related_by_brand' %}
+          {% endif %}
+
         </div>
 
+        {% comment %} ══════════ ASIDE RIGHT ══════════ {% endcomment %}
         <aside class="dr-cartpg-side col-cart-right">
 
+          {% comment %} Order Summary — server-render, live-sync qua MutationObserver ở JS cuối trang {% endcomment %}
+          <div class="dr-cartpg-box dr-cart-summary">
+            <h3 class="dr-cartpg-box__h">Tóm tắt đơn hàng</h3>
+
+            <div class="dr-summary-row">
+              <span class="dr-summary-row__label">Tạm tính (<span class="js-cart-count">{{ cart.item_count }}</span> sản phẩm)</span>
+              <span class="dr-summary-row__val js-cart-subtotal">{{ cart.total_line_items_price | money }}</span>
+            </div>
+
+            {% if cart.total_discounts > 0 %}
+            <div class="dr-summary-row dr-summary-row--save">
+              <span class="dr-summary-row__label">Bạn tiết kiệm</span>
+              <span class="dr-summary-row__val js-cart-discount">-{{ cart.total_discounts | money }}</span>
+            </div>
+            {% else %}
+            <div class="dr-summary-row dr-summary-row--save" style="display:none;">
+              <span class="dr-summary-row__label">Bạn tiết kiệm</span>
+              <span class="dr-summary-row__val js-cart-discount">0đ</span>
+            </div>
+            {% endif %}
+
+            <div class="dr-summary-row dr-summary-row--total">
+              <span class="dr-summary-row__label">Tổng thanh toán</span>
+              <span class="dr-summary-row__val js-cart-total">{{ cart.total_price | money }}</span>
+            </div>
+
+            <button type="button" onclick="goToCheckout ? goToCheckout(event) : location.href='/checkout'" class="dr-btn dr-btn--primary dr-btn--block dr-summary-cta" id="btn-proceed-checkout-summary">
+              Thanh toán ngay <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+            <p class="dr-summary-hint">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>Có mã giảm giá? Nhập ở bước thanh toán. Giá đã bao gồm VAT.</span>
+            </p>
+          </div>
+
+          {% comment %} AI Consult Card {% endcomment %}
+          {% include 'cart_ai_consult_card' %}
+
+          {% comment %} Delivery form {% endcomment %}
           {%- assign use_deli = settings.use_cart_delivery -%}
           {% if use_deli %}
           <form method="post" novalidate class="dr-cartpg-box formDeli">
             <h3 class="dr-cartpg-box__h">{{ settings.delivery_heading | default: 'Thời gian nhận hàng' }}</h3>
-            <div class="timedeli-modal">
+            <div class="dr-fld--row">
               <div class="dr-fld">
-                <label for="date">Ngày nhận</label>
+                <label for="date">{{ settings.delivery_date_title | default: 'Ngày nhận' }}</label>
                 <input type="text" placeholder="Chọn ngày" readonly id="date" name="attributes[shipdate]" class="date_picker">
               </div>
               <div class="dr-fld">
-                <label for="cart-time">Khung giờ</label>
+                <label for="cart-time">{{ settings.delivery_time_title | default: 'Khung giờ' }}</label>
                 <select id="cart-time" name="time" class="timeer timedeli-cta">
                   <option selected>{{ settings.delivery_time_default | default: 'Chọn khung giờ' }}</option>
                   {%- assign options = settings.delivery_time | split: ';' -%}
@@ -76,113 +164,400 @@
           </form>
           {% endif %}
 
+          {% comment %} VAT invoice form {% endcomment %}
           {% if settings.use_cart_vat %}
           <form method="post" novalidate class="dr-cartpg-box formVAT">
             <h3 class="dr-cartpg-box__h">Hoá đơn công ty</h3>
-            <div class="r-bill">
-              <label class="dr-cartpg-check">
-                <input type="hidden" name="attributes[invoice]" id="re-checkbox-bill" value="không">
-                <input type="checkbox" id="checkbox-bill" name="attributes[invoice]" value="có" class="regular-checkbox"{% if cart.attributes["invoice"] == "có" %} checked{% endif %}>
-                <span>Tôi cần xuất hoá đơn công ty</span>
-              </label>
+            <label class="dr-check">
+              <input type="hidden" name="attributes[invoice]" id="re-checkbox-bill" value="không">
+              <input type="checkbox" id="checkbox-bill" name="attributes[invoice]" value="có" class="regular-checkbox"{% if cart.attributes["invoice"] == "có" %} checked{% endif %}>
+              <span>Tôi cần xuất hoá đơn công ty (VAT)</span>
+            </label>
 
-              <div class="bill-field">
-                <div class="dr-fld">
-                  <label for="cart-cname">Tên công ty</label>
-                  <input id="cart-cname" type="text" class="form-control val-f" name="attributes[company_name]"
-                         value="{{ cart.attributes["company_name"] }}" placeholder="Tên công ty">
-                </div>
-                <div class="dr-fld">
-                  <label for="cart-tax">Mã số thuế</label>
-                  <input id="cart-tax" type="text" pattern=".{10,}" inputmode="numeric"
-                         class="form-control val-f val-n" name="attributes[tax_code]"
-                         value="{{ cart.attributes["tax_code"] }}" placeholder="Mã số thuế">
-                </div>
-                <div class="dr-fld">
-                  <label for="cart-caddr">Địa chỉ công ty</label>
-                  <textarea id="cart-caddr" class="form-control val-f" name="attributes[company_address]" rows="3"
-                            placeholder="Địa chỉ công ty (kèm Phường/Xã, Quận/Huyện, Tỉnh/Thành phố)">{{ cart.attributes["company_address"] }}</textarea>
-                </div>
-                <div class="dr-fld">
-                  <label for="cart-cmail">Email nhận hoá đơn</label>
-                  <input id="cart-cmail" type="email" class="form-control val-f val-email" name="attributes[invoice_email]"
-                         value="{{ cart.attributes["invoice_email"] }}" placeholder="Email nhận hoá đơn">
-                </div>
+            <div class="dr-vat-fields bill-field{% if cart.attributes["invoice"] == "có" %} is-open{% endif %}">
+              <div class="dr-fld">
+                <label for="cart-cname">Tên công ty</label>
+                <input id="cart-cname" type="text" class="form-control val-f" name="attributes[company_name]"
+                       value="{{ cart.attributes["company_name"] }}" placeholder="Tên đầy đủ theo giấy phép ĐKKD">
+              </div>
+              <div class="dr-fld">
+                <label for="cart-tax">Mã số thuế</label>
+                <input id="cart-tax" type="text" pattern=".{10,}" inputmode="numeric"
+                       class="form-control val-f val-n" name="attributes[tax_code]"
+                       value="{{ cart.attributes["tax_code"] }}" placeholder="Ví dụ: 0100109106">
+              </div>
+              <div class="dr-fld">
+                <label for="cart-caddr">Địa chỉ công ty</label>
+                <textarea id="cart-caddr" class="form-control val-f" name="attributes[company_address]" rows="3"
+                          placeholder="Kèm Phường/Xã, Quận/Huyện, Tỉnh">{{ cart.attributes["company_address"] }}</textarea>
+              </div>
+              <div class="dr-fld">
+                <label for="cart-cmail">Email nhận hoá đơn</label>
+                <input id="cart-cmail" type="email" class="form-control val-f val-email" name="attributes[invoice_email]"
+                       value="{{ cart.attributes["invoice_email"] }}" placeholder="ke.toan@congty.vn">
               </div>
             </div>
           </form>
           {% endif %}
 
+          {% comment %} Support {% endcomment %}
           <div class="dr-cartpg-box dr-cartpg-help">
             <h3 class="dr-cartpg-box__h">Cần tư vấn?</h3>
-            <a class="dr-cartpg-help__row" href="{{ settings.social_zalo_link | default: '#' }}">
-              <i class="fa-solid fa-comment-dots" aria-hidden="true"></i><span>Tư vấn qua Zalo</span>
+            {% if settings.social_zalo_link != blank %}
+            <a class="dr-cart-help__row" href="{{ settings.social_zalo_link }}" target="_blank" rel="noopener">
+              <i class="fa-solid fa-comment-dots"></i>
+              <span><strong>Zalo Dr.Reju</strong><br>Bác sĩ trả lời trong giờ hành chính</span>
             </a>
+            {% endif %}
             {%- assign c_phone = settings.phone | default: store.phone_number -%}
             {% if c_phone != blank %}
-            <a class="dr-cartpg-help__row" href="tel:{{ c_phone | replace: ' ', '' | replace: '.', '' }}">
-              <i class="fa-solid fa-phone" aria-hidden="true"></i><span>{{ c_phone }}</span>
+            <a class="dr-cart-help__row" href="tel:{{ c_phone | replace: ' ', '' | replace: '.', '' }}">
+              <i class="fa-solid fa-phone"></i>
+              <span><strong>{{ c_phone }}</strong><br>{{ settings.support_hours | default: '8:00 đến 20:00 cả tuần' }}</span>
             </a>
             {% endif %}
           </div>
 
         </aside>
       </div>
+
+      {% comment %} Mobile sticky bottom bar {% endcomment %}
+      <div class="dr-mobile-cta">
+        <div class="dr-mobile-cta__total">
+          <small>Tổng thanh toán</small>
+          <strong class="js-cart-total-mobile">{{ cart.total_price | money }}</strong>
+        </div>
+        <button type="button" onclick="goToCheckout ? goToCheckout(event) : location.href='/checkout'" class="dr-btn dr-btn--primary">
+          Thanh toán
+        </button>
+      </div>
+
     {% endif %}
 
   </div>
 </section>
 
 <style>
-.dr-cartpg-head{ max-width: 640px; margin-bottom: var(--sp-32); }
-.dr-cartpg-grid{ display: grid; grid-template-columns: 1fr 340px; gap: var(--sp-32); align-items: start; }
-.dr-cartpg-main{ min-width: 0; }
-.dr-cartpg-side{ display: flex; flex-direction: column; gap: var(--sp-16); }
+/* ============================================================
+   DR.REJU — CART PAGE
+   Tokens (--emerald, --gold, --sp-*, --font-primary, --radius, --line, --bg-alt, --bg-soft, --text, --text-soft)
+   được khai ở snippets/header_style.bwt.
+   .dr-btn / .dr-btn--primary / .dr-btn--outline đã có sẵn ở assets/utilities.scss.bwt.
+   File này CHỈ thêm class riêng cho cart.
+   ============================================================ */
 
-.dr-cartpg-box{ margin: 0; padding: 22px 20px; background: var(--bg-alt); border: 1px solid var(--line);
-  border-radius: var(--radius); }
-.dr-cartpg-box__h{ margin: 0 0 var(--sp-16); font-family: var(--font-primary); font-size: var(--fs-base);
-  font-weight: 600; color: var(--text); }
+/* Bổ sung modifier .dr-btn--block chưa có trong utilities */
+.dr-btn--block { display: flex; width: 100%; justify-content: center; }
 
-/* Trường nhập — dùng chung tên class .dr-fld với section liên hệ */
-.dr-cartpg-side .dr-fld{ margin-bottom: 14px; }
-.dr-cartpg-side .dr-fld:last-child{ margin-bottom: 0; }
-.dr-cartpg-side .dr-fld label{ display: block; font-family: var(--font-primary); font-size: var(--fs-sm);
-  font-weight: 600; color: var(--text); margin-bottom: 6px; }
-.dr-cartpg-side input[type="text"], .dr-cartpg-side input[type="email"],
-.dr-cartpg-side textarea, .dr-cartpg-side select{
-  width: 100%; padding: 11px 13px; border: 1.5px solid var(--line); border-radius: var(--radius-sm);
-  font-family: var(--font-secondary); font-size: var(--fs-sm); color: var(--text); background: var(--surface); }
-.dr-cartpg-side textarea{ resize: vertical; }
-.dr-cartpg-side input:focus, .dr-cartpg-side textarea:focus, .dr-cartpg-side select:focus{
-  outline: 0; border-color: var(--emerald); box-shadow: 0 0 0 3px rgba(10,46,36,.09); }
+/* HEAD ------------------------------------------------------- */
+.dr-cartpg { padding: var(--sp-48) 0 var(--sp-80); background: var(--bg-alt); }
+.dr-cartpg-head { max-width: 720px; margin-bottom: var(--sp-32); }
+.dr-cartpg-head .dr-h2 { margin-top: 14px; }
+.dr-cartpg-head .dr-lead { margin-top: var(--sp-8); }
 
-.dr-cartpg-check{ display: flex; align-items: flex-start; gap: 10px; margin-bottom: var(--sp-16);
-  font-size: var(--fs-sm); line-height: 1.5; color: var(--text); cursor: pointer; }
-.dr-cartpg-check input[type="checkbox"]{ margin-top: 2px; width: 16px; height: 16px; flex: none; accent-color: var(--gold); }
+/* 2-COL GRID ------------------------------------------------- */
+.dr-cartpg-grid {
+  display: grid; grid-template-columns: 1fr 360px; gap: var(--sp-32); align-items: start;
+}
+.dr-cartpg-main { min-width: 0; display: flex; flex-direction: column; gap: var(--sp-24); }
+.dr-cartpg-side { display: flex; flex-direction: column; gap: var(--sp-16); position: sticky; top: 20px; }
 
-.dr-cartpg-help__row{ display: flex; align-items: center; gap: 11px; padding: 9px 0; font-size: var(--fs-sm);
-  color: var(--text-soft); transition: color .2s ease; }
-.dr-cartpg-help__row:hover{ color: var(--accent); }
-.dr-cartpg-help__row i{ width: 30px; height: 30px; flex: none; border-radius: 50%; background: var(--bg-soft);
-  color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 12px; }
+/* MODULE BOX chung ------------------------------------------- */
+.dr-cart-mod {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--sp-24);
+}
+.dr-cart-mod__head {
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 16px;
+  margin-bottom: var(--sp-16); padding-bottom: 14px; border-bottom: 1px solid var(--line);
+}
+.dr-cart-mod__title { margin: 0; font-family: var(--font-primary); font-size: var(--fs-lg); font-weight: 600; color: var(--text); }
+.dr-cart-mod__hint { margin: 4px 0 0; font-size: var(--fs-sm); color: var(--text-soft); }
+.dr-cart-mod__cta { font-family: var(--font-primary); font-size: var(--fs-sm); font-weight: 600; color: var(--emerald); white-space: nowrap; }
+.dr-cart-mod__cta:hover { color: var(--gold); }
+.dr-cart-mod__cta i { font-size: 11px; margin-left: 4px; }
 
-/* Giỏ rỗng */
-.dr-cartpg-empty{ padding: var(--sp-80) 24px; text-align: center; background: var(--bg-alt);
-  border: 1px solid var(--line); border-radius: var(--radius); }
-.dr-cartpg-empty > i{ font-size: 34px; color: var(--gold); }
-.dr-cartpg-empty h2{ margin: var(--sp-24) 0 var(--sp-8); font-family: var(--font-primary);
-  font-size: var(--fs-xl); font-weight: 600; }
-.dr-cartpg-empty p{ max-width: 460px; margin: 0 auto; font-size: var(--fs-base); line-height: 1.65; color: var(--text-soft); }
-.dr-cartpg-empty__act{ display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: var(--sp-32); }
+/* ITEMS TABLE (bọc Handlebars) ------------------------------ */
+.dr-cart-items { padding: 0; overflow: hidden; }
+.dr-cart-items .cart-page,
+.dr-cart-items .cart-mobile-page { padding: 0; }
 
-.dr-only-mobile{ display: none; }
+/* Vendor row trong CartTemplate (Handlebars fill) */
+.cart_vendor {
+  display: inline-block;
+  font-family: var(--font-primary); font-size: 10px; font-weight: 700;
+  color: var(--emerald); text-transform: uppercase; letter-spacing: .15em;
+  margin-bottom: 4px;
+}
 
-@media (max-width: 1200px){ .dr-cartpg-grid{ grid-template-columns: 1fr 300px; } }
-@media (max-width: 991px){
-  .dr-cartpg-grid{ grid-template-columns: 1fr; }
-  .dr-only-mobile{ display: block; }
-  .dr-cartpg-empty{ padding: var(--sp-56) 20px; }
+/* Trust strip ------------------------------------------------ */
+.dr-trust-strip {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  padding: 16px 22px;
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+}
+.dr-trust-strip__item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: var(--fs-xs); color: var(--text-soft); line-height: 1.4;
+}
+.dr-trust-strip__item i {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: rgba(10,46,36,.08); color: var(--emerald);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; flex: none;
+}
+.dr-trust-strip__item strong { display: block; color: var(--text); font-family: var(--font-primary); font-weight: 600; font-size: var(--fs-sm); }
+
+/* COMPLETE ROUTINE ------------------------------------------ */
+.dr-routine-steps { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: var(--sp-24); }
+.dr-step {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 12px 6px;
+  border: 1.5px dashed var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  text-align: center;
+  transition: all .2s ease;
+}
+.dr-step__icon {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--bg-soft);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-soft); font-size: 16px;
+  border: 1.5px solid var(--line);
+}
+.dr-step__label { font-size: 11px; font-weight: 500; color: var(--text-soft); line-height: 1.3; }
+.dr-step.is-done { border-style: solid; border-color: var(--emerald); background: rgba(10,46,36,.03); }
+.dr-step.is-done .dr-step__icon { background: var(--emerald); color: var(--gold); border-color: var(--emerald); }
+.dr-step.is-done .dr-step__label { color: var(--emerald); font-weight: 600; }
+
+.dr-routine-suggest {
+  padding: 14px 16px;
+  background: rgba(223,186,115,.1);
+  border: 1px solid rgba(223,186,115,.35);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; gap: 14px;
+  flex-wrap: wrap;
+}
+.dr-routine-suggest__icon {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--gold); color: var(--emerald);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; flex: none;
+}
+.dr-routine-suggest__body { flex: 1; min-width: 200px; }
+.dr-routine-suggest__title { font-family: var(--font-primary); font-weight: 600; font-size: var(--fs-sm); color: var(--text); margin: 0; }
+.dr-routine-suggest__hint { font-size: var(--fs-sm); color: var(--text-soft); margin: 2px 0 0; }
+.dr-btn--sm { padding: 10px 18px; min-height: 40px; font-size: var(--fs-xs); }
+
+/* ARTICLES GRID --------------------------------------------- */
+.dr-articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.dr-article {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  overflow: hidden; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  display: flex; flex-direction: column;
+}
+.dr-article:hover { transform: translateY(-2px); border-color: var(--gold); box-shadow: 0 8px 24px rgba(10,46,36,.08); }
+.dr-article__img { aspect-ratio: 16/10; background: var(--bg-soft); overflow: hidden; }
+.dr-article__img img { width: 100%; height: 100%; object-fit: cover; }
+.dr-article__img--empty { display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 24px; }
+.dr-article__body { padding: 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.dr-article__tag { font-size: 10px; font-weight: 700; color: var(--emerald); text-transform: uppercase; letter-spacing: .12em; }
+.dr-article__title {
+  font-family: var(--font-primary); font-size: var(--fs-sm); font-weight: 600; line-height: 1.4; color: var(--text); margin: 0;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.dr-article__meta { margin-top: auto; font-size: 11px; color: var(--text-soft); display: flex; align-items: center; gap: 6px; }
+.dr-article__meta i { font-size: 9px; }
+
+/* RELATED BY BRAND ------------------------------------------ */
+.dr-brand-lead {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; background: var(--bg-soft); border-radius: var(--radius-sm);
+  margin-bottom: var(--sp-16); font-size: var(--fs-sm); color: var(--text);
+}
+.dr-brand-lead strong { color: var(--emerald); font-family: var(--font-primary); font-weight: 700; letter-spacing: .1em; }
+.dr-brand-lead i { color: var(--gold); }
+
+.dr-products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.dr-pcard {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  overflow: hidden; display: flex; flex-direction: column;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.dr-pcard:hover { transform: translateY(-2px); border-color: var(--gold); box-shadow: 0 8px 24px rgba(10,46,36,.08); }
+.dr-pcard__img { aspect-ratio: 1; background: var(--bg-soft); overflow: hidden; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 22px; }
+.dr-pcard__img img { width: 100%; height: 100%; object-fit: cover; }
+.dr-pcard__body { padding: 12px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.dr-pcard__brand { font-size: 9px; font-weight: 700; color: var(--emerald); text-transform: uppercase; letter-spacing: .14em; }
+.dr-pcard__title {
+  font-family: var(--font-primary); font-size: var(--fs-sm); font-weight: 600; line-height: 1.35; color: var(--text); margin: 0;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.7em;
+}
+.dr-pcard__price { margin-top: auto; font-family: var(--font-primary); font-weight: 700; font-size: var(--fs-sm); color: var(--emerald); }
+
+/* ASIDE BOX + SUMMARY --------------------------------------- */
+.dr-cartpg-box {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 20px;
+}
+.dr-cartpg-box__h {
+  margin: 0 0 var(--sp-16);
+  font-family: var(--font-primary); font-size: var(--fs-md); font-weight: 600;
+  color: var(--text);
+  padding-bottom: 12px; border-bottom: 1px solid var(--line);
+}
+
+.dr-summary-row {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 8px 0; font-size: var(--fs-sm);
+}
+.dr-summary-row__label { color: var(--text-soft); }
+.dr-summary-row__val { font-family: var(--font-primary); font-weight: 600; color: var(--text); }
+.dr-summary-row--save .dr-summary-row__val { color: #b7791f; }
+.dr-summary-row--total { border-top: 1px solid var(--line); margin-top: 6px; padding-top: 14px; font-size: var(--fs-md); }
+.dr-summary-row--total .dr-summary-row__label { color: var(--text); font-weight: 600; font-family: var(--font-primary); }
+.dr-summary-row--total .dr-summary-row__val { font-size: var(--fs-lg); color: var(--emerald); font-weight: 700; }
+
+.dr-summary-cta { margin-top: var(--sp-16); }
+.dr-summary-hint {
+  display: flex; align-items: flex-start; gap: 8px;
+  margin: 12px 0 0; font-size: 11px; color: var(--text-soft); line-height: 1.5;
+}
+.dr-summary-hint i { color: var(--emerald); margin-top: 2px; flex: none; }
+
+/* AI CONSULT CARD (nền emerald, chữ gold) ------------------- */
+.dr-cart-ai {
+  background: var(--brand-bg); border: 0; color: #fff;
+  position: relative; overflow: hidden;
+}
+.dr-cart-ai::before {
+  content: ''; position: absolute; top: -30px; right: -30px;
+  width: 140px; height: 140px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(223,186,115,.22), transparent 70%);
+  pointer-events: none;
+}
+.dr-cart-ai__icon {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--gold); color: var(--emerald);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; margin-bottom: 14px;
+}
+.dr-cart-ai__title { font-family: var(--font-primary); font-size: var(--fs-md); font-weight: 600; margin: 0; color: #fff; }
+.dr-cart-ai__body { margin: 8px 0 var(--sp-16); font-size: var(--fs-sm); color: rgba(255,255,255,.82); line-height: 1.55; }
+.dr-cart-ai .dr-btn--outline { color: var(--gold); border-color: var(--gold); }
+.dr-cart-ai .dr-btn--outline:hover { background: var(--gold); color: var(--emerald); }
+
+/* FORM (delivery, VAT) ------------------------------------- */
+.dr-fld { margin-bottom: 12px; }
+.dr-fld:last-child { margin-bottom: 0; }
+.dr-fld label {
+  display: block; font-family: var(--font-primary); font-size: var(--fs-xs); font-weight: 600;
+  color: var(--text); margin-bottom: 6px; text-transform: uppercase; letter-spacing: .06em;
+}
+.dr-cartpg-side .dr-fld input[type="text"],
+.dr-cartpg-side .dr-fld input[type="email"],
+.dr-cartpg-side .dr-fld textarea,
+.dr-cartpg-side .dr-fld select {
+  width: 100%; padding: 11px 13px;
+  border: 1.5px solid var(--line); border-radius: var(--radius-sm);
+  font-family: var(--font-secondary); font-size: var(--fs-sm); color: var(--text);
+  background: var(--surface);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.dr-cartpg-side .dr-fld input:focus,
+.dr-cartpg-side .dr-fld textarea:focus,
+.dr-cartpg-side .dr-fld select:focus {
+  outline: 0; border-color: var(--emerald); box-shadow: 0 0 0 3px rgba(10,46,36,.1);
+}
+.dr-cartpg-side textarea { resize: vertical; min-height: 70px; }
+.dr-fld--row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.dr-check {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px; border-radius: var(--radius-sm);
+  background: var(--bg-soft);
+  cursor: pointer; user-select: none;
+  font-size: var(--fs-sm); color: var(--text); line-height: 1.5;
+  transition: background .15s ease;
+}
+.dr-check:hover { background: rgba(223,186,115,.15); }
+.dr-check input[type="checkbox"] { margin-top: 3px; width: 16px; height: 16px; accent-color: var(--gold); flex: none; }
+.dr-vat-fields { margin-top: 12px; display: none; }
+.dr-vat-fields.is-open { display: block; }
+
+/* SUPPORT ROW ---------------------------------------------- */
+.dr-cart-help__row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 0; font-size: var(--fs-sm); color: var(--text-soft);
+  border-bottom: 1px solid var(--line);
+  transition: color .15s ease;
+}
+.dr-cart-help__row:last-child { border-bottom: 0; }
+.dr-cart-help__row:hover { color: var(--emerald); }
+.dr-cart-help__row i {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--bg-soft); color: var(--emerald);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; flex: none;
+  transition: background .15s ease;
+}
+.dr-cart-help__row:hover i { background: var(--gold); }
+.dr-cart-help__row strong { color: var(--text); font-family: var(--font-primary); font-weight: 600; }
+
+/* EMPTY STATE (giữ) ---------------------------------------- */
+.dr-cartpg-empty {
+  padding: var(--sp-80) 24px; text-align: center;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.dr-cartpg-empty > i { font-size: 34px; color: var(--gold); }
+.dr-cartpg-empty h2 { margin: var(--sp-24) 0 var(--sp-8); font-family: var(--font-primary); font-size: var(--fs-xl); font-weight: 600; }
+.dr-cartpg-empty p { max-width: 460px; margin: 0 auto; font-size: var(--fs-base); line-height: 1.65; color: var(--text-soft); }
+.dr-cartpg-empty__act { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: var(--sp-32); }
+
+/* MOBILE STICKY BOTTOM ------------------------------------- */
+.dr-mobile-cta {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--surface); border-top: 1px solid var(--line);
+  padding: 12px 16px; gap: 14px; align-items: center;
+  z-index: 100; box-shadow: 0 -6px 20px rgba(0,0,0,.06);
+}
+.dr-mobile-cta__total { flex: 1; }
+.dr-mobile-cta__total small { display: block; font-size: 11px; color: var(--text-soft); }
+.dr-mobile-cta__total strong { font-family: var(--font-primary); font-size: var(--fs-lg); font-weight: 700; color: var(--emerald); }
+.dr-mobile-cta .dr-btn { min-height: 48px; padding: 0 22px; }
+
+/* Responsive ------------------------------------------------ */
+.dr-only-mobile { display: none; }
+
+@media (max-width: 1200px) {
+  .dr-cartpg-grid { grid-template-columns: 1fr 320px; }
+}
+@media (max-width: 991px) {
+  .dr-cartpg-grid { grid-template-columns: 1fr; gap: var(--sp-24); }
+  .dr-cartpg-side { position: static; }
+  .dr-only-mobile { display: block; }
+  .dr-hide-mobile { display: none; }
+  .dr-routine-steps { grid-template-columns: repeat(4, 1fr); }
+  .dr-articles-grid { grid-template-columns: repeat(2, 1fr); }
+  .dr-products-grid { grid-template-columns: repeat(3, 1fr); }
+  .dr-trust-strip { grid-template-columns: repeat(2, 1fr); }
+  .dr-mobile-cta { display: flex; }
+  body { padding-bottom: 88px; }
+  .dr-cartpg-empty { padding: var(--sp-56) 20px; }
+}
+@media (max-width: 640px) {
+  .dr-cartpg { padding-top: var(--sp-32); }
+  .dr-cart-mod { padding: 18px 14px; }
+  .dr-routine-steps { grid-template-columns: repeat(3, 1fr); }
+  .dr-articles-grid { grid-template-columns: 1fr; }
+  .dr-products-grid { grid-template-columns: repeat(2, 1fr); }
+  .dr-cart-mod__head { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .dr-trust-strip { grid-template-columns: 1fr 1fr; }
 }
 </style>
 
@@ -190,10 +565,10 @@
 <script src="{{ 'sweetalert-min.js' | asset_url }}"></script>
 {% endif %}
 
-{% comment %} ── Ajax cart: Handlebars templates (CartTemplate, CartMobileTemplate, SideCartTemplate, CartPopupTemplate, CartHeaderTemplate) + JS engine ── {% endcomment %}
+{% comment %} ── Ajax cart: Handlebars templates + JS engine ── {% endcomment %}
 {% include 'ajaxcart' %}
 
-{% comment %} Datepicker chỉ nạp khi thật sự bật ngày/giờ giao — trước đây nạp vô điều kiện {% endcomment %}
+{% comment %} Datepicker chỉ nạp khi thật sự bật ngày/giờ giao {% endcomment %}
 {% if settings.use_cart_delivery %}
 {{ 'bootstrap-datepicker.js' | asset_url | script_tag }}
 <script>
@@ -209,3 +584,73 @@
 {% endif %}
 
 {% include 'vat-cart' %}
+
+{% comment %} ── Sync Summary card + Mobile bar khi ajaxcart re-render ─────
+   Sapo không có Section Rendering API. Cách nhẹ nhất là quan sát DOM của .CartPageContainer;
+   mỗi lần Handlebars fill lại (sau ajax add/change/remove), đọc .total-price trong form ajaxcart
+   và fetch /cart.js để có item_count + total_line_items_price + total_discounts.
+{% endcomment %}
+<script>
+(function(){
+  var pageContainer = document.querySelector('.CartPageContainer');
+  var mobileContainer = document.querySelector('.CartMobileContainer');
+  if (!pageContainer && !mobileContainer) return;
+
+  function formatVND(n){ try { return Number(n).toLocaleString('vi-VN') + 'đ'; } catch(e){ return n + 'đ'; } }
+
+  function refreshSummary(){
+    fetch('/cart.js', { credentials: 'same-origin' })
+      .then(function(r){ return r.json(); })
+      .then(function(cart){
+        var sub = cart.total_line_items_price != null ? cart.total_line_items_price : (cart.original_total_price || cart.total_price);
+        var disc = cart.total_discounts || 0;
+        var total = cart.total_price;
+        var count = cart.item_count;
+
+        var $count = document.querySelector('.js-cart-count');
+        var $sub = document.querySelector('.js-cart-subtotal');
+        var $disc = document.querySelector('.js-cart-discount');
+        var $total = document.querySelector('.js-cart-total');
+        var $totalMobile = document.querySelector('.js-cart-total-mobile');
+
+        if ($count) $count.textContent = count;
+        if ($sub) $sub.textContent = formatVND(sub);
+        if ($disc) {
+          var row = $disc.closest('.dr-summary-row');
+          if (disc > 0) {
+            $disc.textContent = '-' + formatVND(disc);
+            if (row) row.style.display = '';
+          } else {
+            $disc.textContent = '0đ';
+            if (row) row.style.display = 'none';
+          }
+        }
+        if ($total) $total.textContent = formatVND(total);
+        if ($totalMobile) $totalMobile.textContent = formatVND(total);
+
+        // Nếu giỏ về 0 → reload để hiện empty state server-render
+        if (count === 0) { location.reload(); }
+      })
+      .catch(function(){ /* im lặng */ });
+  }
+
+  var pending = null;
+  function debouncedRefresh(){ if (pending) clearTimeout(pending); pending = setTimeout(refreshSummary, 250); }
+
+  var mo = new MutationObserver(debouncedRefresh);
+  if (pageContainer) mo.observe(pageContainer, { childList: true, subtree: true });
+  if (mobileContainer) mo.observe(mobileContainer, { childList: true, subtree: true });
+
+  // Trigger 1 lần đầu để đồng bộ sau khi Handlebars fill lần đầu
+  setTimeout(refreshSummary, 400);
+
+  // VAT toggle: expand fields khi tick
+  var vatBox = document.getElementById('checkbox-bill');
+  var vatFields = document.querySelector('.dr-vat-fields');
+  if (vatBox && vatFields) {
+    vatBox.addEventListener('change', function(){
+      vatFields.classList.toggle('is-open', vatBox.checked);
+    });
+  }
+})();
+</script>

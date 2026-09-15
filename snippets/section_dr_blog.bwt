@@ -2,6 +2,7 @@
 {% comment %} Sapo: dùng blogs[handle].articles inline, chỉ assign HANDLE {% endcomment %}
 {% assign blog_handle = settings.dr_blog | default: 'tin-tuc' %}
 {% assign blimit = settings.dr_blog_limit | default: 3 %}
+{% if blogs[blog_handle].articles.size > 0 %}
 <section id="blog" class="dr-section dr-bg dr-blog">
   <div class="dr-container">
     <div class="dr-flex-between dr-wrap dr-gap-16 dr-mb-48" style="border-bottom:1px solid var(--line);padding-bottom:18px">
@@ -23,11 +24,10 @@
       </a>
       {% endfor %}
     </div>
-    {% else %}
-    <p class="dr-lead">Chưa có bài viết — cấu hình blog ở <b>Tùy chỉnh → Trang chủ - Blog</b> (setting <code>dr_blog</code>).</p>
     {% endif %}
   </div>
 </section>
+{% endif %}
 
 <style>
 .dr-blog-card{ display: flex; flex-direction: column; gap: 12px; color: var(--text); }

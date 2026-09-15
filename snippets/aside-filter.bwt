@@ -143,57 +143,59 @@
 
 			<div class="title-head">
 				{{ settings.filter_tag1_title }}
-			
+
 			</div>
-			<div class="aside-content filter-group">	
+			<div class="aside-content filter-group">
 				<ul>
-					{% assign tags = settings.filter_tag1_list | split: ';' %} 
+					{% assign tags = settings.filter_tag1_list | split: ';' %}
 					{% for t in tags %}
-					{% assign tag = t | strip %}
-					{% assign tag_value = tag | handleize %}
+					{% assign pair = t | strip | split: '|' %}
+					{% assign tag_label = pair[0] | strip %}
+					{% if pair.size > 1 %}{% assign tag_match = pair[1] | strip %}{% else %}{% assign tag_match = tag_label %}{% endif %}
 					<li class="filter-item filter-item--check-box filter-item--green">
 						<span>
-							<label for="filter-{{ tag | handleize }}">
-								<input type="checkbox" id="filter-{{ tag | handleize }}" data-group="tag2" data-field="tags" data-text="{{ tag }}" value="({{ tag }})" data-operator="OR">
+							<label for="filter-{{ tag_match | handleize }}">
+								<input type="checkbox" id="filter-{{ tag_match | handleize }}" data-group="tag1" data-field="tags" data-text="{{ tag_label }}" value="({{ tag_match }})" data-operator="OR">
 								<i class="fa"></i>
-								{{ tag }}
+								{{ tag_label }}
 							</label>
 						</span>
-					</li>	
+					</li>
 					{% endfor %}
 				</ul>
 			</div>
 		</aside>
 		{% endif %}
-		<!-- Lọc theo chất liệu -->
+		<!-- Lọc theo thành phần hoạt tính -->
 		{% if settings.filter_tag2 %}
 		<aside class="aside-item filter-tag">
 
 			<div class="title-head">
 				{{ settings.filter_tag2_title }}
-				
+
 			</div>
-			<div class="aside-content filter-group">	
+			<div class="aside-content filter-group">
 				<ul>
-					{% assign tags = settings.filter_tag2_list | split: ';' %} 
+					{% assign tags = settings.filter_tag2_list | split: ';' %}
 					{% for t in tags %}
-					{% assign tag = t | strip %}
-					{% assign tag_value = tag | handleize %}
+					{% assign pair = t | strip | split: '|' %}
+					{% assign tag_label = pair[0] | strip %}
+					{% if pair.size > 1 %}{% assign tag_match = pair[1] | strip %}{% else %}{% assign tag_match = tag_label %}{% endif %}
 					<li class="filter-item filter-item--check-box filter-item--green">
 						<span>
-							<label for="filter-{{ tag | handleize }}">
-								<input type="checkbox" id="filter-{{ tag | handleize }}" data-group="tag2" data-field="tags" data-text="{{ tag }}" value="({{ tag }})" data-operator="OR">
+							<label for="filter-{{ tag_match | handleize }}">
+								<input type="checkbox" id="filter-{{ tag_match | handleize }}" data-group="tag2" data-field="tags" data-text="{{ tag_label }}" value="({{ tag_match }})" data-operator="OR">
 								<i class="fa"></i>
-								{{ tag }}
+								{{ tag_label }}
 							</label>
 						</span>
-					</li>	
+					</li>
 					{% endfor %}
 				</ul>
 			</div>
 		</aside>
 		{% endif %}
-		<!-- End lọc theo chất liệu -->
+		<!-- End lọc theo thành phần hoạt tính -->
 		<!-- Lọc kích thước màn hình -->
 		{% if settings.filter_tag3 %}
 		<aside class="aside-item filter-tag">

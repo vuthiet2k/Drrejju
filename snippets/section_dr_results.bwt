@@ -6,6 +6,20 @@
 
 {{ 'swiper.scss.css' | asset_url | stylesheet_tag }}
 
+{% comment %}
+  Mỗi "ca" = 1 cặp ảnh TRƯỚC/SAU + tiêu đề ca + "quyết định bước ngoặt" (note).
+  Field khớp đúng configs/settings_schema.json nhóm "Trang chủ - Kết quả":
+  results_N_cap, results_N_after, results_N_note, results_N_before_img, results_N_after_img
+  (N = 1..2 — hiện schema chỉ khai 2 ca). Xem docs/design-brief.md §3.4 "Kết quả thực tế".
+{% endcomment %}
+
+{% assign has_results = false %}
+{% for i in (1..2) %}
+{% capture beforekey %}results_{{ i }}_before_img{% endcapture %}
+{% capture afterimgkey %}results_{{ i }}_after_img{% endcapture %}
+{% if settings[beforekey] != blank or settings[afterimgkey] != blank %}{% assign has_results = true %}{% endif %}
+{% endfor %}
+{% if has_results %}
 <section id="results" class="dr-section dr-bg">
   <div class="dr-container">
     <div class="dr-center dr-mb-48" style="max-width:720px;margin-left:auto;margin-right:auto">
@@ -16,21 +30,34 @@
 
     <div class="dr-res-swiper swiper" id="resultsSwiper">
       <div class="swiper-wrapper">
-        {% assign total = 12 %}
-        {% for i in (1..total) %}
-        {% capture imgkey %}results_{{ i }}_img{% endcapture %}
+        {% for i in (1..2) %}
         {% capture capkey %}results_{{ i }}_cap{% endcapture %}
-        {% assign img = settings[imgkey] %}
+        {% capture afterkey %}results_{{ i }}_after{% endcapture %}
+        {% capture notekey %}results_{{ i }}_note{% endcapture %}
+        {% capture beforekey %}results_{{ i }}_before_img{% endcapture %}
+        {% capture afterimgkey %}results_{{ i }}_after_img{% endcapture %}
         {% assign cap = settings[capkey] %}
-        {% if img != blank %}
+        {% assign after_label = settings[afterkey] | default: 'Sau điều trị' %}
+        {% assign note = settings[notekey] %}
+        {% assign before_img = settings[beforekey] %}
+        {% assign after_img = settings[afterimgkey] %}
+        {% if before_img != blank or after_img != blank %}
         <div class="swiper-slide">
           <div class="dr-res-slide">
-            <div class="dr-res-imgwrap">
-              <img src="{{ img | img_url: 'master' }}" alt="{{ cap | escape }}" loading="lazy" class="dr-res-img">
+            {% if cap != blank %}<h3 class="dr-res-cap">{{ cap }}</h3>{% endif %}
+            <div class="dr-res-compare">
+              <div class="dr-res-imgwrap">
+                {% if before_img != blank %}<img src="{{ before_img | img_url: 'master' }}" alt="{{ cap | escape }} — trước" loading="lazy" class="dr-res-img">{% endif %}
+                <span class="dr-res-tag">Trước</span>
+              </div>
+              <div class="dr-res-imgwrap">
+                {% if after_img != blank %}<img src="{{ after_img | img_url: 'master' }}" alt="{{ cap | escape }} — {{ after_label | escape }}" loading="lazy" class="dr-res-img">{% endif %}
+                <span class="dr-res-tag">{{ after_label }}</span>
+              </div>
             </div>
-            {% if cap != blank %}
+            {% if note != blank %}
             <div class="dr-res-caption">
-              <p>{{ cap }}</p>
+              <p>{{ note }}</p>
             </div>
             {% endif %}
           </div>
@@ -44,13 +71,20 @@
     </div>
   </div>
 </section>
+{% endif %}
 
 <style>
-.dr-res-swiper{ max-width: 800px; margin: 0 auto; padding-bottom: 50px; position: relative; }
+.dr-res-swiper{ max-width: 900px; margin: 0 auto; padding-bottom: 50px; position: relative; }
 .dr-res-slide{ text-align: center; }
-.dr-res-imgwrap{ border-radius: var(--radius); overflow: hidden; background: var(--bg-alt);
-  box-shadow: 0 4px 20px rgba(0,0,0,.08); }
-.dr-res-img{ display: block; width: 100%; height: auto; max-height: 600px; object-fit: contain; }
+.dr-res-cap{ margin: 0 0 var(--sp-16); color: var(--text); font-family: var(--font-primary);
+  font-size: var(--fs-lg); font-weight: 600; }
+.dr-res-compare{ display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.dr-res-imgwrap{ position: relative; border-radius: var(--radius); overflow: hidden;
+  background: var(--bg-alt); box-shadow: 0 4px 20px rgba(0,0,0,.08); aspect-ratio: 4 / 5; }
+.dr-res-img{ display: block; width: 100%; height: 100%; object-fit: cover; }
+.dr-res-tag{ position: absolute; left: 10px; bottom: 10px; padding: 4px 12px; border-radius: 999px;
+  background: rgba(0,0,0,.55); color: #fff; font-size: var(--fs-xs); font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase; }
 
 .dr-res-caption{ max-width: 600px; margin: var(--sp-20) auto 0; }
 .dr-res-caption p{ font-family: var(--font-secondary); font-size: var(--fs-sm);
@@ -72,7 +106,7 @@
   background: var(--accent); }
 
 @media (max-width: 767px){
-  .dr-res-img{ max-height: 420px; }
+  .dr-res-compare{ grid-template-columns: 1fr 1fr; gap: 8px; }
   .dr-res-nav{ display: none; }
 }
 </style>

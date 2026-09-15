@@ -1,0 +1,16 @@
+{% comment %} DR.REJU — AI Consult CTA card (static).
+
+   Đơn giản: 1 card nền emerald + gold accent, link tới trang tư vấn (thường là trang GAS).
+   Chỉ hiện nếu bật setting và có URL đích. Không có logic dynamic.
+{% endcomment %}
+
+{%- if settings.cart_show_ai_consult and settings.cart_ai_consult_url != blank -%}
+  <div class="dr-cartpg-box dr-cart-ai">
+    <div class="dr-cart-ai__icon"><i class="fa-solid fa-user-doctor"></i></div>
+    <h3 class="dr-cart-ai__title">{{ settings.cart_ai_consult_title | default: 'Bác sĩ đánh giá phác đồ' }}</h3>
+    <p class="dr-cart-ai__body">{{ settings.cart_ai_consult_body | default: 'Chưa chắc phác đồ này hợp da bạn? Bác sĩ da liễu Dr.Reju review miễn phí trong 1h làm việc.' }}</p>
+    <a href="{{ settings.cart_ai_consult_url }}" class="dr-btn dr-btn--outline dr-btn--block">
+      {{ settings.cart_ai_consult_cta | default: 'Nhận tư vấn miễn phí' }} <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </div>
+{%- endif -%}

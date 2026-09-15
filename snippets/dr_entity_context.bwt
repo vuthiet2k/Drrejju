@@ -1,0 +1,55 @@
+{% comment %}
+  DR.REJU Entity Context — Liquid-only semantic links for Sapo.
+  Content convention: problem:*, ingredient:*, routine:*, service:*, faq:*, concern:*.
+  Link falls back to native Sapo search so this works before dedicated entity hubs exist.
+{% endcomment %}
+{% assign entity_count = 0 %}
+{% for entity_tag in entity_source.tags %}
+  {% if entity_tag contains 'problem:' or entity_tag contains 'concern:' or entity_tag contains 'ingredient:' or entity_tag contains 'routine:' or entity_tag contains 'service:' or entity_tag contains 'faq:' %}
+    {% assign entity_count = entity_count | plus: 1 %}
+  {% endif %}
+{% endfor %}
+{% if entity_count > 0 %}
+<section class="dr-entity-context" aria-labelledby="dr-entity-context-title">
+  <div class="dr-entity-context__head">
+    <span class="dr-entity-context__eyebrow">Bản đồ kiến thức</span>
+    <h2 id="dr-entity-context-title" class="dr-entity-context__title">Nội dung liên quan</h2>
+  </div>
+  <div class="dr-entity-context__groups">
+    {% assign entity_prefixes = 'problem:|concern:|ingredient:|routine:|service:|faq:' | split: '|' %}
+    {% assign entity_labels = 'Vấn đề da|Vấn đề da|Hoạt chất|Routine|Dịch vụ|Câu hỏi thường gặp' | split: '|' %}
+    {% for entity_prefix in entity_prefixes %}
+      {% assign has_group = false %}
+      {% for entity_tag in entity_source.tags %}{% if entity_tag contains entity_prefix %}{% assign has_group = true %}{% endif %}{% endfor %}
+      {% if has_group %}
+      <div class="dr-entity-context__group">
+        <h3>{{ entity_labels[forloop.index0] }}</h3>
+        <div class="dr-entity-context__chips">
+          {% for entity_tag in entity_source.tags %}
+            {% if entity_tag contains entity_prefix %}
+              {% assign entity_name = entity_tag | remove: entity_prefix | replace: '-', ' ' %}
+              <a href="/search?query={{ entity_name | url_encode }}" title="Tìm hiểu về {{ entity_name | escape }}">{{ entity_name }}</a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <p class="dr-entity-context__note">Thông tin nhằm hỗ trợ hiểu về chăm sóc da, không thay thế chẩn đoán hoặc chỉ định điều trị cá nhân.</p>
+</section>
+
+<style>
+.dr-entity-context{ margin:32px 0; padding:24px; border:1px solid var(--line); background:var(--bg-alt); }
+.dr-entity-context__head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:18px; }
+.dr-entity-context__eyebrow{ color:var(--accent); font-size:var(--fs-xs); font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+.dr-entity-context__title{ margin:0; color:var(--text); font-family:var(--font-primary); font-size:var(--fs-lg); font-weight:600; }
+.dr-entity-context__groups{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px 28px; }
+.dr-entity-context__group h3{ margin:0 0 9px; color:var(--text-soft); font-size:var(--fs-xs); font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+.dr-entity-context__chips{ display:flex; flex-wrap:wrap; gap:8px; }
+.dr-entity-context__chips a{ display:inline-flex; align-items:center; min-height:30px; padding:4px 11px; border:1px solid var(--line); border-radius:999px; background:var(--bg); color:var(--text); font-size:var(--fs-sm); text-transform:capitalize; }
+.dr-entity-context__chips a:hover{ border-color:var(--accent); color:var(--accent); }
+.dr-entity-context__note{ margin:18px 0 0; padding-top:14px; border-top:1px solid var(--line); color:var(--text-soft); font-size:var(--fs-xs); line-height:1.6; }
+@media(max-width:767px){.dr-entity-context{margin:24px 0;padding:20px 16px}.dr-entity-context__groups{grid-template-columns:1fr}.dr-entity-context__head{display:block}.dr-entity-context__title{margin-top:5px}}
+</style>
+{% endif %}

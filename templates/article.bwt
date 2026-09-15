@@ -9,13 +9,13 @@
 			<meta itemprop="description" content="{{ article.summary | strip_html }}">
 			<meta itemprop="author" content="{{ article.author }}">
 			<meta itemprop="headline" content="{{ article.title | truncate: 100}}">
-			<meta itemprop="image" content="https:{%if article.image.src == null %}{{ 'logo.png' | asset_url }}{%else%}{{ article.image.src }}{%endif%}">
+			<meta itemprop="image" content="{%if article.image.src == null %}{{ 'logo.png' | asset_url }}{%else%}{{ article.image.src }}{%endif%}">
 			<meta itemprop="datePublished" content="{{ article.published_on | date: 'dd-MM-yyyy' }}">
 			<meta itemprop="dateModified" content="{{ article.created_on | date: 'dd-MM-yyyy' }}">
 			<div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
 				<div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
 					<img class="d-none" src="{{'logo.png'|asset_url}}" alt="{{ store.name }}"/>
-					<meta itemprop="url" content="https:{{'logo.png'|asset_url}}">
+					<meta itemprop="url" content="{{ 'logo.png' | asset_url }}">
 					<meta itemprop="width" content="400">
 					<meta itemprop="height" content="60">
 				</div>
@@ -53,6 +53,7 @@
 									<span>{{article.author}}</span>
 								</div>
 							</div>
+							<p class="dr-article-review">Nội dung được biên tập bởi {{ article.author | default: store.name }} và chỉ có mục đích cung cấp thông tin. Nếu bạn có tổn thương da, triệu chứng kéo dài hoặc đang dùng thuốc điều trị, hãy trao đổi trực tiếp với bác sĩ da liễu.</p>
 							{%if mucluc == true%}
 							<div class="goto-wrapper ftoc-head">
 
@@ -72,6 +73,9 @@
 
 								{%endif%}
 							</div>
+							{% assign entity_source = article %}
+							{% include 'dr_entity_context' %}
+							{% include 'dr_entity_related_articles' %}
 
 							
 
@@ -220,6 +224,9 @@
 		}
 	});
 </script>
+<style>
+.dr-article-review{ margin:18px 0 0; padding:12px 14px; border-left:3px solid var(--gold); background:var(--bg-alt); color:var(--text-soft); font-size:var(--fs-sm); line-height:1.65; }
+</style>
 {%if mucluc == true%}
 <script>
 	var $heading2 = $('.article-content h2');

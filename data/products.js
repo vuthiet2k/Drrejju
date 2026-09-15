@@ -30,7 +30,7 @@ function variant(id, title, price, comparePrice, sku, available = true, qty = 20
 
 function makeProduct({
   id, name, alias, type, tags, price, comparePrice,
-  variants, images, available, metafields, description, votes,
+  variants, images, available, metafields, description, votes, vendor,
 }) {
   const firstAvailable = variants.find(v => v.available) || variants[0];
   const isAvailable    = available !== false && variants.some(v => v.available);
@@ -40,7 +40,7 @@ function makeProduct({
     alias,
     url:         `/${alias}`,
     description: description || `<p>Sản phẩm <strong>${name}</strong> — chất lượng dược mỹ phẩm chuẩn quốc tế.</p>`,
-    vendor:      'DR.REJU',
+    vendor:      vendor || 'DR.REJU',
     type:        type || 'Dược mỹ phẩm',
     available:   isAvailable,
     price:       firstAvailable.price,
@@ -67,9 +67,9 @@ const products = [
   // 1 ─ Retinol 0.3% + Peptide (chống lão hoá)
   makeProduct({
     id: 1001, name: 'Kem Dưỡng Retinol 0.3% + Peptide Chống Lão Hoá', alias: 'kem-duong-retinol-0-3-peptide',
-    type: 'Kem dưỡng', votes: 170,
+    type: 'Kem dưỡng', votes: 170, vendor: 'SkinCeuticals',
     description: 'Chống lão hoá chuyên sâu — da căng mướt, đầy sức sống.',
-    tags: ['ban-chay', 'chong-lao-hoa', 'retinol', 'san-pham-noi-bat', 'khuyen-mai'],
+    tags: ['ban-chay', 'chong-lao-hoa', 'retinol', 'san-pham-noi-bat', 'khuyen-mai', 'ingredient:retinol', 'problem:lao-hoa-da', 'routine:buoi-toi', 'step:kem-duong'],
     variants: [
       variant(10011, '30ml', 850000, 1200000, 'PC-RET-30', true,  25),
       variant(10012, '50ml', 1250000, 1650000, 'PC-RET-50', true,  12),
@@ -85,7 +85,7 @@ const products = [
     id: 1002, name: 'Serum Vitamin C 15% Làm Sáng & Đều Màu Da', alias: 'serum-vitamin-c-15',
     type: 'Serum', votes: 199,
     description: 'Làm sáng đều màu, xoá thâm & rạng rỡ rõ từ tuần đầu.',
-    tags: ['lam-sang', 'vitamin-c', 'duong-trang', 'serum', 'san-pham-noi-bat', 'quycach_30ml'],
+    tags: ['lam-sang', 'vitamin-c', 'duong-trang', 'serum', 'san-pham-noi-bat', 'quycach_30ml', 'ingredient:vitamin-c', 'problem:da-xin-mau', 'routine:buoi-sang'],
     variants: [
       variant(10021, '30ml', 650000, 0, 'PC-VTC-30', true, 30),
     ],
@@ -99,9 +99,9 @@ const products = [
   // 3 ─ Kem chống nắng SPF50+ PA++++
   makeProduct({
     id: 1003, name: 'Kem Chống Nắng Mineral SPF50+ PA++++ Không Nhờn', alias: 'kem-chong-nang-mineral-spf50',
-    type: 'Kem chống nắng', votes: 49,
+    type: 'Kem chống nắng', votes: 49, vendor: 'La Roche-Posay',
     description: 'Bảo vệ da toàn diện — nhẹ thoáng, không bết dính suốt ngày.',
-    tags: ['ban-chay', 'chong-nang', 'spf50', 'khuyen-mai', 'san-pham-noi-bat'],
+    tags: ['ban-chay', 'chong-nang', 'spf50', 'khuyen-mai', 'san-pham-noi-bat', 'step:chong-nang'],
     variants: [
       variant(10031, '50ml', 480000, 560000, 'PC-SPF-50', true, 40),
     ],

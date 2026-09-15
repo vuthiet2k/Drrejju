@@ -2,6 +2,8 @@
 	{% include 'breadcrumb' %}  
 	<div class="container">
 		{%include 'banner-collection'%}
+		{% assign entity_source = collection %}
+		{% include 'dr_entity_context' %}
 		<div class="row">
 				
 			<aside class="dqdt-sidebar sidebar col-lg-3 col-12">

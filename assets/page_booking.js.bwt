@@ -7,9 +7,25 @@
   if (!form || !error) return;
   form.addEventListener('submit', function (event) {
     var consent = form.querySelector('.dr-booking-consent input');
-    if (!consent || consent.checked) return;
-    event.preventDefault();
-    error.textContent = 'Vui lòng đồng ý để DR.REJU liên hệ xác nhận yêu cầu của bạn.';
-    consent.focus();
+    if (!consent || !consent.checked) {
+      event.preventDefault();
+      error.textContent = 'Vui lòng đồng ý để DR.REJU liên hệ xác nhận yêu cầu của bạn.';
+      consent.focus();
+      return;
+    }
+
+    var body = form.querySelector('[data-booking-body]');
+    if (!body) return;
+    var value = function (field) {
+      var input = form.querySelector('[data-booking-field="' + field + '"]');
+      return input && input.value ? input.value.trim() : '';
+    };
+    var lines = [
+      'Nhu cầu tư vấn: ' + value('service'),
+      'Ngày mong muốn: ' + value('date'),
+      'Khung giờ mong muốn: ' + (value('time') || 'Chưa chọn'),
+      'Ghi chú thêm: ' + (value('note') || 'Không có')
+    ];
+    body.value = lines.join('\n');
   });
 }());

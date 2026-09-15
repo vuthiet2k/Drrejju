@@ -115,7 +115,7 @@
 							<p style="    background: #83c54e;    color: #fff;    padding: 5px 10px;    border-radius: 6px;">Bạn đã gửi tin nhắn thành công</p>
 							{% endif %}
 							<div class="group_contact">
-								<input placeholder="Họ và tên" type="text" class="form-control  form-control-lg" required value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.first_name }} {{ customer.last_name }}{% endif %}" name="contact[Name]">
+								<input placeholder="Họ và tên" type="text" class="form-control  form-control-lg" required value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.first_name }} {{ customer.last_name }}{% endif %}" name="contact[name]">
 								<input placeholder="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required id="email1" class="form-control form-control-lg" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" name="contact[email]">
 								<input type="number" placeholder="Điện thoại*" name="contact[phone]"  class="form-control form-control-lg" required>
 								<textarea placeholder="Nội dung" name="contact[body]" id="comment" class="form-control content-area form-control-lg" rows="5" Required></textarea>

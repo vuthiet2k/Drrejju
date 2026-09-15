@@ -1,0 +1,98 @@
+{% comment %} DR.REJU — Sản phẩm cùng brand chi phối (server-render, chỉ ở page load).
+
+   Thuật toán:
+   1. Đếm số lần mỗi vendor xuất hiện trong cart.items → chọn vendor có count cao nhất (top_vendor).
+   2. Convention alias collection = vendor | downcase | replace ' ' → '-' | remove '.'.
+      VD: "LA ROCHE-POSAY" → "la-roche-posay". Merchant PHẢI tạo SmartCollection alias tương ứng (rule: vendor = <BRAND>).
+   3. Loop collections[alias].products, LỌC BỎ product đã có trong cart, giới hạn N.
+
+   Không hiện nếu cart.item_count == 0, hoặc không có product ngoài cart nào trong collection.
+{% endcomment %}
+
+{%- if cart.item_count > 0 -%}
+  {%- comment -%} Đếm vendor {%- endcomment -%}
+  {%- assign vendor_bag = '' -%}
+  {%- for line in cart.items -%}
+    {%- if line.vendor != blank -%}
+      {%- assign vendor_bag = vendor_bag | append: line.vendor | append: '###' -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- assign top_vendor = '' -%}
+  {%- assign top_count = 0 -%}
+  {%- assign seen_vendors = '' -%}
+  {%- for line in cart.items -%}
+    {%- assign v = line.vendor -%}
+    {%- if v != blank -%}
+      {%- assign seen_needle = '|' | append: v | append: '|' -%}
+      {%- unless seen_vendors contains seen_needle -%}
+        {%- assign seen_vendors = seen_vendors | append: seen_needle -%}
+        {%- assign count_needle = v | append: '###' -%}
+        {%- assign parts = vendor_bag | split: count_needle -%}
+        {%- assign c = parts.size | minus: 1 -%}
+        {%- if c > top_count -%}
+          {%- assign top_count = c -%}
+          {%- assign top_vendor = v -%}
+        {%- endif -%}
+      {%- endunless -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if top_vendor != blank -%}
+    {%- assign brand_alias = top_vendor | downcase | replace: ' ', '-' | replace: '.', '' | replace: "'", '' -%}
+    {%- assign brand_col = collections[brand_alias] -%}
+
+    {%- if brand_col.products_count > 0 -%}
+      {%- comment -%} Danh sách handle sản phẩm đang trong cart để loại trừ {%- endcomment -%}
+      {%- assign in_cart_bag = '' -%}
+      {%- for line in cart.items -%}
+        {%- assign in_cart_bag = in_cart_bag | append: '|' | append: line.product.alias | append: '|' -%}
+      {%- endfor -%}
+
+      {%- assign limit = settings.cart_related_brand_limit | default: 4 -%}
+      {%- assign shown = 0 -%}
+      {%- assign cards_html = '' -%}
+
+      {%- capture cards_html -%}
+        {%- for p in brand_col.products limit: 24 -%}
+          {%- if shown >= limit -%}{%- break -%}{%- endif -%}
+          {%- assign needle = '|' | append: p.alias | append: '|' -%}
+          {%- unless in_cart_bag contains needle -%}
+            {%- assign shown = shown | plus: 1 -%}
+            <a class="dr-pcard" href="{{ p.url }}" title="{{ p.name | escape }}">
+              <div class="dr-pcard__img">
+                {%- if p.featured_image != blank -%}
+                  <img src="{{ p.featured_image | img_url: 'medium' }}" alt="{{ p.name | escape }}" loading="lazy">
+                {%- else -%}
+                  <i class="fa-solid fa-vial"></i>
+                {%- endif -%}
+              </div>
+              <div class="dr-pcard__body">
+                <span class="dr-pcard__brand">{{ p.vendor }}</span>
+                <h4 class="dr-pcard__title">{{ p.name }}</h4>
+                <div class="dr-pcard__price">{{ p.price_min | money }}</div>
+              </div>
+            </a>
+          {%- endunless -%}
+        {%- endfor -%}
+      {%- endcapture -%}
+
+      {%- if shown > 0 -%}
+        <div class="dr-cart-mod dr-cart-brand-rec">
+          <div class="dr-cart-mod__head">
+            <div>
+              <h3 class="dr-cart-mod__title">Cùng thương hiệu bạn đang dùng</h3>
+              <p class="dr-cart-mod__hint">Brand có nhiều sản phẩm nhất trong giỏ.</p>
+            </div>
+            <a href="{{ brand_col.url }}" class="dr-cart-mod__cta">Xem toàn bộ {{ top_vendor }} <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="dr-brand-lead">
+            <i class="fa-solid fa-award"></i>
+            <span>Bạn đang có sản phẩm của <strong>{{ top_vendor }}</strong>. Đây là {{ shown }} sản phẩm cùng brand bác sĩ hay dùng chung phác đồ.</span>
+          </div>
+          <div class="dr-products-grid">{{ cards_html }}</div>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endif -%}

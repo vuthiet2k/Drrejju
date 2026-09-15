@@ -4640,13 +4640,13 @@
         "type": "text",
         "id": "filter_tag1_title",
         "label": "Tiêu đề",
-        "default": "Màu phổ biến"
+        "default": "Vấn đề về da"
       },
       {
         "type": "textarea",
         "id": "filter_tag1_list",
         "label": "Nhập các tên tag cần lọc",
-        "info": "Mỗi tên cách nhau dấu ';'"
+        "info": "Mỗi tên cách nhau dấu ';'. Nếu nhãn hiển thị khác tag thật trên sản phẩm, dùng 'Nhãn hiển thị|tag_thật', vd: Nám & tàn nhang|problem:nam-da"
       },
       {
         "type": "header",
@@ -4661,13 +4661,13 @@
         "type": "text",
         "id": "filter_tag2_title",
         "label": "Tiêu đề",
-        "default": "Kiểu vải"
+        "default": "Thành phần hoạt tính"
       },
       {
         "type": "textarea",
         "id": "filter_tag2_list",
         "label": "Nhập các tên tag cần lọc",
-        "info": "Mỗi tên cách nhau dấu ';'"
+        "info": "Mỗi tên cách nhau dấu ';'. Nếu nhãn hiển thị khác tag thật trên sản phẩm, dùng 'Nhãn hiển thị|tag_thật', vd: Retinol|ingredient:retinol"
       },
       {
         "type": "header",
@@ -4990,6 +4990,130 @@
         "type": "checkbox",
         "id": "use_cart_vat",
         "label": "Hiển thị"
+      },
+      {
+        "type": "header",
+        "content": "Modules trang giỏ hàng — Server-render theo tag"
+      },
+      {
+        "type": "paragraph",
+        "content": "4 module dưới đây render phía server dựa vào tag/vendor của sản phẩm trong giỏ. KHÔNG update sau khi ajax add/remove — cần reload trang để cập nhật. Convention tag bắt buộc: bước routine dùng step:*, vấn đề da dùng concern:*. Xem _tools/cart_research/cart_architecture.md §2.1."
+      },
+      {
+        "type": "header",
+        "content": "1. Hoàn thiện routine (checkpoint 7 bước)"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_show_complete_routine",
+        "label": "Bật module hoàn thiện routine",
+        "default": true
+      },
+      {
+        "type": "textarea",
+        "id": "cart_routine_steps",
+        "label": "Danh sách bước routine",
+        "info": "Mỗi bước 1 dòng theo format tag_id|Tên hiển thị|fa-icon, cách nhau bằng dấu phẩy. Mặc định 7 bước cơ bản.",
+        "default": "step:tay-trang|Tẩy trang|fa-soap,step:rua-mat|Rửa mặt|fa-hand-holding-droplet,step:tay-da-chet|Tẩy da chết|fa-flask-vial,step:toner|Toner|fa-bottle-droplet,step:serum|Serum|fa-vial,step:kem-duong|Kem dưỡng|fa-jar,step:chong-nang|Chống nắng|fa-sun"
+      },
+      {
+        "type": "text",
+        "id": "cart_routine_guide_url",
+        "label": "URL hướng dẫn 7 bước (tuỳ chọn)",
+        "info": "Link tới trang blog/article giải thích 7 bước. Để trống thì ẩn CTA."
+      },
+      {
+        "type": "text",
+        "id": "cart_routine_suggest_url",
+        "label": "URL gợi ý bước còn thiếu",
+        "info": "Link tới trang collection/quiz gợi ý sản phẩm. Để trống thì ẩn CTA gợi ý."
+      },
+      {
+        "type": "header",
+        "content": "2. Bài viết liên quan (theo tag concern:*)"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_show_related_articles",
+        "label": "Bật module bài viết liên quan",
+        "default": true
+      },
+      {
+        "type": "blog",
+        "id": "cart_related_blog",
+        "label": "Blog kiến thức nguồn",
+        "info": "Chọn blog chứa bài viết da liễu. Article phải có tag concern:* khớp với concern:* của product trong giỏ."
+      },
+      {
+        "type": "text",
+        "id": "cart_related_articles_limit",
+        "label": "Số bài tối đa",
+        "default": "3",
+        "info": "Nên là 3 hoặc 4."
+      },
+      {
+        "type": "header",
+        "content": "3. Sản phẩm cùng thương hiệu chi phối"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_show_related_by_brand",
+        "label": "Bật module related by brand",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "cart_related_brand_limit",
+        "label": "Số sản phẩm tối đa",
+        "default": "4"
+      },
+      {
+        "type": "paragraph",
+        "content": "Module tự động chọn vendor có nhiều sản phẩm nhất trong giỏ, rồi hiển thị các sản phẩm cùng brand. Cần tạo SmartCollection alias = vendor viết thường có gạch (VD 'LA ROCHE-POSAY' → 'la-roche-posay') với rule vendor = <BRAND>."
+      },
+      {
+        "type": "header",
+        "content": "4. Tư vấn AI (CTA card)"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_show_ai_consult",
+        "label": "Bật card tư vấn AI",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "cart_ai_consult_url",
+        "label": "URL trang tư vấn AI",
+        "info": "Thường là link tới trang GAS-powered (ngoài Sapo). Để trống thì card không hiện."
+      },
+      {
+        "type": "text",
+        "id": "cart_ai_consult_title",
+        "label": "Tiêu đề card",
+        "default": "Bác sĩ đánh giá phác đồ"
+      },
+      {
+        "type": "textarea",
+        "id": "cart_ai_consult_body",
+        "label": "Nội dung card",
+        "default": "Chưa chắc phác đồ này hợp da bạn? Bác sĩ da liễu Dr.Reju review miễn phí trong 1h làm việc."
+      },
+      {
+        "type": "text",
+        "id": "cart_ai_consult_cta",
+        "label": "Nhãn nút",
+        "default": "Nhận tư vấn miễn phí"
+      },
+      {
+        "type": "header",
+        "content": "Support (Zalo + Phone)"
+      },
+      {
+        "type": "text",
+        "id": "support_hours",
+        "label": "Giờ hỗ trợ (hiển thị dưới số điện thoại)",
+        "default": "8:00 đến 20:00 cả tuần"
       }
     ]
   },

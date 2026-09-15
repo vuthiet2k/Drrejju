@@ -1,0 +1,12 @@
+{
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/gioi-thieu", "destination": "/gioi-thieu/index.html" },
+    { "source": "/lien-he",    "destination": "/lien-he/index.html" },
+    { "source": "/dat-lich",   "destination": "/dat-lich/index.html" },
+    { "source": "/faq",        "destination": "/faq/index.html" },
+    { "source": "/huong-dan",  "destination": "/huong-dan/index.html" }
+  ]
+}

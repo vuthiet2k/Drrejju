@@ -14,8 +14,8 @@
 	<meta property="og:type" content="product">
 	<meta property="og:title" content="{{ product.name | strip_html}}">
 	{% for image in product.images limit:3 %}
-		<meta property="og:image" content="https:{{ image.src | img_url: 'grande' }}">
-		<meta property="og:image:secure_url" content="https:{{ image.src | img_url: 'grande' }}">
+<meta property="og:image" content="{{ image.src | img_url: 'grande' }}">
+<meta property="og:image:secure_url" content="{{ image.src | img_url: 'grande' }}">
 	{% endfor %}
 	<meta property="og:price:amount" content="{{ product.price | money_without_currency }}">
 	<meta property="og:price:currency" content="{{ store.currency }}">
@@ -24,23 +24,23 @@
 	<meta property="og:title" content="{{ article.title | strip_html | escape }}">
   	{% assign img_tag = '<' | append: 'img' %}
 	{% if article.image.src %}
-		<meta property="og:image" content="https:{{ article.image.src | img_url: 'grande' }}">
-		<meta property="og:image:secure_url" content="https:{{ article.image.src | img_url: 'grande' }}">
+<meta property="og:image" content="{{ article.image.src | img_url: 'grande' }}">
+<meta property="og:image:secure_url" content="{{ article.image.src | img_url: 'grande' }}">
 	{% else %}
 		{% if article.content contains img_tag %}
 			{% assign src = article.content | split: 'src="' %}
 			{% assign src = src[1] | split: '"' | first | remove: 'https:' | remove: 'http:' %}
 			{% if src %}
-				<meta property="og:image" content="https:{{ src }}">
-				<meta property="og:image:secure_url" content="https:{{ src }}">
+<meta property="og:image" content="{{ src }}">
+<meta property="og:image:secure_url" content="{{ src }}">
 			{% endif %}
 		{% endif %}
 	{% endif %}
 {% else %}
 	<meta property="og:type" content="website">
-	<meta property="og:title" content="{{ page_title }}">
-	<meta property="og:image" content="https:{{ 'logo.png' | asset_url }}">
-	<meta property="og:image:secure_url" content="https:{{ 'logo.png' | asset_url }}">
+	<meta property="og:title" content="{% if template contains 'index' %}{{ store.name }} | Da liễu dựa trên bằng chứng &amp; phác đồ cá nhân hóa 1:1{% else %}{{ page_title }}{% endif %}">
+	<meta property="og:image" content="{{ 'logo.png' | asset_url }}">
+	<meta property="og:image:secure_url" content="{{ 'logo.png' | asset_url }}">
 {% endif %}
 <meta property="og:description" content="{{ page_description }}">
 <meta property="og:url" content="{{ canonical_url }}">

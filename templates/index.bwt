@@ -1,5 +1,3 @@
-<h1 class="d-none">{{store.name}} - {{store.description}}</h1>
-
 {%for i in (1..12)%}
 {%capture enable%}home_section_{{i}}{%endcapture%}
 {% if settings[enable] != 'none' %}

@@ -1,0 +1,95 @@
+{% comment %} DR.REJU — Hoàn thiện routine (server-render, chỉ ở page load).
+
+   Đọc setting `cart_routine_steps` (danh sách 7 bước, mỗi bước format "step:alias|Nhãn hiển thị|fa-icon" cách nhau bởi ,).
+   So với product.tags của các line trong cart. Bước nào có ≥1 item → is-done.
+   Không update sau ajax add/remove — chấp nhận stale (Sapo không có Section Rendering API).
+
+   Không hiện nếu cart.item_count == 0. {% endcomment %}
+
+{%- if cart.item_count > 0 -%}
+  {%- comment -%} Gom tất cả tag step:* từ mọi product trong cart {%- endcomment -%}
+  {%- assign cart_step_bag = '' -%}
+  {%- for line in cart.items -%}
+    {%- for t in line.product.tags -%}
+      {%- if t contains 'step:' -%}
+        {%- assign cart_step_bag = cart_step_bag | append: '|' | append: t | append: '|' -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endfor -%}
+
+  {%- assign steps_raw = settings.cart_routine_steps | default: 'step:tay-trang|Tẩy trang|fa-soap,step:rua-mat|Rửa mặt|fa-hand-holding-droplet,step:tay-da-chet|Tẩy da chết|fa-flask-vial,step:toner|Toner|fa-bottle-droplet,step:serum|Serum|fa-vial,step:kem-duong|Kem dưỡng|fa-jar,step:chong-nang|Chống nắng|fa-sun' -%}
+  {%- assign steps = steps_raw | split: ',' -%}
+
+  {%- assign done_count = 0 -%}
+  {%- assign missing_names = '' -%}
+  {%- assign missing_first = true -%}
+  {%- for s in steps -%}
+    {%- assign parts = s | split: '|' -%}
+    {%- assign sid = parts[0] | strip -%}
+    {%- assign sname = parts[1] | strip -%}
+    {%- assign needle = '|' | append: sid | append: '|' -%}
+    {%- if cart_step_bag contains needle -%}
+      {%- assign done_count = done_count | plus: 1 -%}
+    {%- else -%}
+      {%- if missing_first -%}
+        {%- assign missing_names = sname -%}
+        {%- assign missing_first = false -%}
+      {%- else -%}
+        {%- assign missing_names = missing_names | append: ', ' | append: sname -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- assign total_steps = steps.size -%}
+  {%- assign missing_count = total_steps | minus: done_count -%}
+
+  <div class="dr-cart-mod dr-cart-routine">
+    <div class="dr-cart-mod__head">
+      <div>
+        <h3 class="dr-cart-mod__title">Hoàn thiện routine của bạn</h3>
+        <p class="dr-cart-mod__hint">
+          {%- if missing_count > 0 -%}
+            Đơn của bạn đang có <strong>{{ done_count }}/{{ total_steps }}</strong> bước cơ bản. Còn thiếu <strong>{{ missing_count }}</strong> bước.
+          {%- else -%}
+            Đơn của bạn đang có <strong>{{ total_steps }}/{{ total_steps }}</strong> bước cơ bản. Không thiếu bước nào.
+          {%- endif -%}
+        </p>
+      </div>
+      {%- if settings.cart_routine_guide_url != blank -%}
+        <a href="{{ settings.cart_routine_guide_url }}" class="dr-cart-mod__cta">Xem hướng dẫn 7 bước <i class="fa-solid fa-arrow-right"></i></a>
+      {%- endif -%}
+    </div>
+
+    <div class="dr-routine-steps">
+      {%- for s in steps -%}
+        {%- assign parts = s | split: '|' -%}
+        {%- assign sid = parts[0] | strip -%}
+        {%- assign sname = parts[1] | strip -%}
+        {%- assign sicon = parts[2] | strip | default: 'fa-circle' -%}
+        {%- assign needle = '|' | append: sid | append: '|' -%}
+        {%- assign is_done = false -%}
+        {%- if cart_step_bag contains needle -%}{%- assign is_done = true -%}{%- endif -%}
+        <div class="dr-step{% if is_done %} is-done{% endif %}">
+          <div class="dr-step__icon">
+            {%- if is_done -%}
+              <i class="fa-solid fa-check"></i>
+            {%- else -%}
+              <i class="fa-solid {{ sicon }}"></i>
+            {%- endif -%}
+          </div>
+          <div class="dr-step__label">{{ sname }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if missing_count > 0 and settings.cart_routine_suggest_url != blank -%}
+      <div class="dr-routine-suggest">
+        <div class="dr-routine-suggest__icon"><i class="fa-solid fa-lightbulb"></i></div>
+        <div class="dr-routine-suggest__body">
+          <p class="dr-routine-suggest__title">Bạn còn thiếu {{ missing_names }}</p>
+          <p class="dr-routine-suggest__hint">Xem gợi ý của bác sĩ theo tình trạng da bạn đang có.</p>
+        </div>
+        <a class="dr-btn dr-btn--primary dr-btn--sm" href="{{ settings.cart_routine_suggest_url }}">Xem gợi ý</a>
+      </div>
+    {%- endif -%}
+  </div>
+{%- endif -%}

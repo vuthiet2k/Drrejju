@@ -36,6 +36,7 @@ _drafts/
 .cache/
 tmp/
 temp/
+dist/
 
 # === Original source files (keep only .bwt compiled versions) ===
 assets/*.scss

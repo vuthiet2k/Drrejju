@@ -70,7 +70,7 @@
 
 					</h4>
 					<span class="content-form">
-						Nếu bạn có thắc mắc gì, có thể gửi yêu cầu cho chúng tôi, và chúng tôi sẽ liên lạc lại với bạn sớm nhất có thể .
+						Nếu bạn có thắc mắc, hãy gửi yêu cầu. Dr.Reju sẽ liên hệ lại trong giờ làm việc. Không gửi ảnh tổn thương da hoặc thông tin sức khỏe nhạy cảm qua biểu mẫu này.
 					</span>
 					<div id="pagelogin">
 						{% form 'contact' %}
@@ -83,10 +83,12 @@
 						<p style="    background: #83c54e;    color: #fff;    padding: 5px 10px;    border-radius: 6px;">Bạn đã gửi tin nhắn thành công</p>
 						{% endif %}
 						<div class="group_contact">
-							<input placeholder="Họ và tên" type="text" class="form-control  form-control-lg" required value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.first_name }} {{ customer.last_name }}{% endif %}" name="contact[Name]">
+							<input type="hidden" name="contact[Loại]" value="Liên hệ từ trang Liên hệ">
+							<input placeholder="Họ và tên" type="text" class="form-control  form-control-lg" required value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.first_name }} {{ customer.last_name }}{% endif %}" name="contact[name]">
 							<input placeholder="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required id="email1" class="form-control form-control-lg" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" name="contact[email]">
-							<input type="number" placeholder="Điện thoại*" name="contact[phone]"  class="form-control form-control-lg" required>
+							<input type="tel" inputmode="tel" placeholder="Điện thoại*" name="contact[phone]" class="form-control form-control-lg" required>
 							<textarea placeholder="Nội dung" name="contact[body]" id="comment" class="form-control content-area form-control-lg" rows="5" Required></textarea>
+							<label class="dr-contact-page-consent"><input type="checkbox" name="contact[Đồng ý]" value="Có" required> Tôi đồng ý để Dr.Reju dùng thông tin này nhằm phản hồi yêu cầu liên hệ của tôi.</label>
 							<button type="submit" class="btn-lienhe">Gửi thông tin</button>
 						</div>
 						{% endform %}
@@ -101,3 +103,7 @@
 		</div>
 	</div>
 </div>
+<style>
+.dr-contact-page-consent{ display:flex; gap:8px; align-items:flex-start; margin:14px 0; color:var(--text-soft); font-size:13px; line-height:1.55; }
+.dr-contact-page-consent input{ margin-top:3px; flex:none; }
+</style>

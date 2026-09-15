@@ -66,9 +66,10 @@
             {% for result in search.results %}
               {% unless result.object_type == 'product' %}
               <a class="dr-srchpg-doc" href="{{ result.url }}">
-                <span class="dr-srchpg-doc__kind">{% if result.object_type == 'article' %}Bài viết{% else %}Trang{% endif %}</span>
-                <span class="dr-srchpg-doc__title">{{ result.title | default: result.name }}</span>
-                {% if result.content != blank %}<span class="dr-srchpg-doc__ex">{{ result.content | strip_html | truncate: 160 }}</span>{% endif %}
+								<span class="dr-srchpg-doc__kind">{% if result.object_type == 'article' %}Bài viết{% else %}Trang{% endif %}</span>
+								<span class="dr-srchpg-doc__title">{{ result.title | default: result.name }}</span>
+								{% if result.content != blank %}<span class="dr-srchpg-doc__ex">{{ result.content | strip_html | truncate: 160 }}</span>{% endif %}
+								{% if result.tags.size > 0 %}<span class="dr-srchpg-doc__entities">{% for result_tag in result.tags %}{% if result_tag contains 'problem:' or result_tag contains 'concern:' or result_tag contains 'ingredient:' or result_tag contains 'routine:' %}<em>{{ result_tag | remove: 'problem:' | remove: 'concern:' | remove: 'ingredient:' | remove: 'routine:' | replace: '-', ' ' }}</em>{% endif %}{% endfor %}</span>{% endif %}
               </a>
               {% endunless %}
             {% endfor %}
@@ -123,6 +124,8 @@
   font-size: var(--fs-md); font-weight: 600; color: var(--text); transition: color .2s ease; }
 .dr-srchpg-doc:hover .dr-srchpg-doc__title{ color: var(--accent); }
 .dr-srchpg-doc__ex{ display: block; margin-top: 6px; font-size: var(--fs-sm); line-height: 1.6; color: var(--text-soft); }
+.dr-srchpg-doc__entities{ display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+.dr-srchpg-doc__entities em{ padding:3px 8px; border-radius:999px; background:var(--bg-soft); color:var(--accent); font-size:var(--fs-xs); font-style:normal; text-transform:capitalize; }
 
 .dr-srchpg-pager{ padding-top: var(--sp-16); }
 

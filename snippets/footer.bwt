@@ -49,16 +49,16 @@
         </a>
         <p style="opacity:.85;line-height:1.7;max-width:320px">{{ settings.title_col_1 | default: 'Da liễu dựa trên bằng chứng — phác đồ 1:1 cá nhân hoá. Nội dung mang tính giáo dục, không thay thế tư vấn y khoa trực tiếp.' }}</p>
         <div class="dr-foot-social">
-          <a href="{{ settings.social_facebook_link | default: '#' }}" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="{{ settings.social_zalo_link | default: '#' }}" aria-label="Zalo"><i class="fa-solid fa-comment-dots"></i></a>
-          <a href="{{ settings.social_instagram_link | default: '#' }}" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="{{ settings.social_youtube_link | default: '#' }}" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
-          <a href="{{ settings.social_tiktok_link | default: '#' }}" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          {% if settings.social_facebook_link != blank and settings.social_facebook_link != '#' %}<a href="{{ settings.social_facebook_link }}" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>{% endif %}
+          {% if settings.social_zalo_link != blank and settings.social_zalo_link != '#' %}<a href="{{ settings.social_zalo_link }}" aria-label="Zalo"><i class="fa-solid fa-comment-dots"></i></a>{% endif %}
+          {% if settings.social_instagram_link != blank and settings.social_instagram_link != '#' %}<a href="{{ settings.social_instagram_link }}" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>{% endif %}
+          {% if settings.social_youtube_link != blank and settings.social_youtube_link != '#' %}<a href="{{ settings.social_youtube_link }}" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>{% endif %}
+          {% if settings.social_tiktok_link != blank and settings.social_tiktok_link != '#' %}<a href="{{ settings.social_tiktok_link }}" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>{% endif %}
         </div>
-        <div class="dr-foot-apps">
-          <a href="{{ settings.appstore_link | default: '#' }}" title="App Store"><i class="fa-brands fa-app-store dr-appicon"></i></a>
-          <a href="{{ settings.playstore_link | default: '#' }}" title="Google Play"><i class="fa-brands fa-google-play dr-appicon"></i></a>
-        </div>
+        {% if settings.appstore_link != blank or settings.playstore_link != blank %}<div class="dr-foot-apps">
+          {% if settings.appstore_link != blank and settings.appstore_link != '#' %}<a href="{{ settings.appstore_link }}" title="App Store"><i class="fa-brands fa-app-store dr-appicon"></i></a>{% endif %}
+          {% if settings.playstore_link != blank and settings.playstore_link != '#' %}<a href="{{ settings.playstore_link }}" title="Google Play"><i class="fa-brands fa-google-play dr-appicon"></i></a>{% endif %}
+        </div>{% endif %}
       </div>
 
       <div>
@@ -74,7 +74,7 @@
         <h4>Hỗ trợ</h4>
         <ul>
           <li><a href="/dat-lich">Đặt lịch tư vấn</a></li>
-          <li><a href="{{ settings.social_zalo_link | default: '#' }}">Tư vấn qua Zalo</a></li>
+{% if settings.social_zalo_link != blank and settings.social_zalo_link != '#' %}<li><a href="{{ settings.social_zalo_link }}">Tư vấn qua Zalo</a></li>{% endif %}
           <li><a href="/faq">Câu hỏi thường gặp</a></li>
           <li><a href="/tuyen-dung">Tuyển dụng</a></li>
         </ul>

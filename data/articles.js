@@ -25,7 +25,7 @@ const articles = [
     author:        'DS. Nguyễn Minh Anh',
     published_at:  '2026-04-10T08:00:00',
     created_at:    '2026-04-08T14:30:00',
-    tags:          ['retinol', 'chong-lao-hoa', 'skincare-101'],
+    tags:          ['retinol', 'chong-lao-hoa', 'skincare-101', 'ingredient:retinol', 'problem:lao-hoa-da', 'routine:buoi-toi'],
     comments_count: 14,
     blog: { handle: 'tin-tuc', title: 'Tin tức & Kiến thức' },
   },
@@ -43,7 +43,7 @@ const articles = [
     author:        'BS.CKI Trần Thu Hương',
     published_at:  '2026-04-05T09:00:00',
     created_at:    '2026-04-03T11:00:00',
-    tags:          ['vitamin-c', 'lam-sang', 'skincare-101'],
+    tags:          ['vitamin-c', 'lam-sang', 'skincare-101', 'ingredient:vitamin-c', 'problem:da-xin-mau', 'routine:buoi-sang'],
     comments_count: 9,
     blog: { handle: 'tin-tuc', title: 'Tin tức & Kiến thức' },
   },
@@ -61,7 +61,7 @@ const articles = [
     author:        'DS. Nguyễn Minh Anh',
     published_at:  '2026-03-28T08:30:00',
     created_at:    '2026-03-26T10:00:00',
-    tags:          ['routine', 'skincare-101', 'ban-chay'],
+    tags:          ['routine', 'skincare-101', 'ban-chay', 'routine:buoi-sang', 'ingredient:vitamin-c', 'ingredient:kem-chong-nang'],
     comments_count: 22,
     blog: { handle: 'tin-tuc', title: 'Tin tức & Kiến thức' },
   },
@@ -79,7 +79,7 @@ const articles = [
     author:        'BS.CKII Lê Thị Lan',
     published_at:  '2026-03-15T09:00:00',
     created_at:    '2026-03-12T14:00:00',
-    tags:          ['tri-nam', 'chuyen-nghiep', 'bac-si-tu-van'],
+    tags:          ['tri-nam', 'chuyen-nghiep', 'bac-si-tu-van', 'problem:nam-da', 'ingredient:tranexamic-acid', 'service:tham-kham-da-lieu'],
     comments_count: 31,
     blog: { handle: 'tin-tuc', title: 'Tin tức & Kiến thức' },
   },
@@ -97,7 +97,7 @@ const articles = [
     author:        'DS. Nguyễn Minh Anh',
     published_at:  '2026-03-05T08:00:00',
     created_at:    '2026-03-03T10:30:00',
-    tags:          ['chong-nang', 'spf', 'skincare-101'],
+    tags:          ['chong-nang', 'spf', 'skincare-101', 'ingredient:kem-chong-nang', 'routine:buoi-sang', 'faq:chon-spf'],
     comments_count: 18,
     blog: { handle: 'tin-tuc', title: 'Tin tức & Kiến thức' },
   },
@@ -106,13 +106,28 @@ const articles = [
 
 // ── Blog objects ─────────────────────────────────────────────────────────────
 
+const tinTucArticles = articles.filter(a => a.blog.handle === 'tin-tuc');
+
 const blogs = {
   'tin-tuc': {
     id:      301,
     title:   'Tin tức & Kiến thức',
     handle:  'tin-tuc',
     url:     '/blogs/tin-tuc',
-    articles: articles.filter(a => a.blog.handle === 'tin-tuc'),
+    articles: tinTucArticles,
+    articles_count: tinTucArticles.length,
+  },
+  // Alias khớp settings_data.json thật: current.dr_blog = 'dich-vu-noi-bat'
+  // (section_dr_blog.bwt và dr_entity_related_articles.bwt đọc settings.dr_blog,
+  // không phải literal 'tin-tuc' — preview phải có blog ở ĐÚNG handle này mới
+  // test được, nếu không buildBlogsObj() sẽ tự tạo shell rỗng → module luôn ẩn).
+  'dich-vu-noi-bat': {
+    id:      303,
+    title:   'Tin tức & Kiến thức',
+    handle:  'dich-vu-noi-bat',
+    url:     '/blogs/dich-vu-noi-bat',
+    articles: tinTucArticles,
+    articles_count: tinTucArticles.length,
   },
   'truoc-va-sau': {
     id:      302,
@@ -120,6 +135,7 @@ const blogs = {
     handle:  'truoc-va-sau',
     url:     '/blogs/truoc-va-sau',
     articles: [],
+    articles_count: 0,
   },
 };
 

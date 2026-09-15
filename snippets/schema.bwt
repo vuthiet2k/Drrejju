@@ -1,4 +1,60 @@
-{%unless template contains 'index' or template contains '404'%}
+{% if template contains 'index' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{ store.url }}/#organization",
+      "name": "{{ store.name | escape }}",
+      "url": "{{ store.url }}",
+      "logo": "{{ 'logo.png' | asset_url }}",
+      "description": "{{ store.description | escape }}"{% if store.phone_number != blank %},
+      "telephone": "{{ store.phone_number | escape }}"{% endif %}{% if store.email != blank %},
+      "email": "{{ store.email | escape }}"{% endif %}
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ store.url }}/#website",
+      "name": "{{ store.name | escape }}",
+      "url": "{{ store.url }}",
+      "publisher": { "@id": "{{ store.url }}/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ store.url }}/search?query={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "{{ canonical_url }}#webpage",
+      "url": "{{ canonical_url }}",
+      "name": "{{ store.name | escape }} | Da liễu dựa trên bằng chứng & phác đồ cá nhân hóa 1:1",
+      "description": "{{ page_description | escape }}",
+      "isPartOf": { "@id": "{{ store.url }}/#website" },
+      "about": { "@id": "{{ store.url }}/#organization" }
+    }
+  ]
+}
+</script>
+{% else %}
+{% unless template contains '404' %}
+{% if template contains 'article' %}
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "mainEntityOfPage":{"@type":"WebPage","@id":"{{ canonical_url }}"},
+  "headline":"{{ article.title | escape }}",
+  "description":"{{ article.summary | strip_html | escape }}",
+  "datePublished":"{{ article.published_on | date: '%Y-%m-%d' }}",
+  "dateModified":"{{ article.created_on | date: '%Y-%m-%d' }}",
+  "author":{"@type":"Person","name":"{{ article.author | default: store.name | escape }}"},
+  "publisher":{"@id":"{{ store.url }}/#organization"}{% if article.image.src != blank %},
+  "image":"{{ article.image.src }}"{% endif %}
+}
+</script>
+{% endif %}
 <script type="application/ld+json">
         {
         "@context": "http://schema.org",
@@ -10,7 +66,7 @@
                 "position": 1,
                 "item": 
                 {
-                  "@id": "https:{{store.url}}",
+                  "@id": "{{ store.url }}",
                   "name": "Trang chủ"
                 }
             },
@@ -20,7 +76,7 @@
                 "position": 2,
                 "item": 
                 {
-                  "@id": "https:{{store.url}}/{{ product.alias }}",
+                  "@id": "{{ store.url }}{{ product.url }}",
                   "name": "{{ product.name }}"
                 }
             }
@@ -32,7 +88,7 @@
                 "position": 2,
                 "item": 
                 {
-                  "@id": "https:{{store.url}}/collections/all",
+                  "@id": "{{ store.url }}{{ collection.url }}",
                   "name": "{{ collection.name }}"
                 }
             }{% if current_tags %},{%endif%}
@@ -42,7 +98,7 @@
                 "position": 2,
                 "item": 
                 {
-                  "@id": "https:{{store.url}}/{{ collection.alias }}",
+                  "@id": "{{ store.url }}{{ collection.url }}",
                   "name": "{{ collection.name }}"
                 }
             }{% if current_tags %},{%endif%}
@@ -54,7 +110,7 @@
           "position": 3,
           "item": 
           {
-            "@id": "https:{{store.url}}/collections/all/{{ current_tags.first }}",
+            "@id": "{{ store.url }}{{ collection.url }}/{{ current_tags.first | url_encode }}",
             "name": "{{ current_tags.first }}"
           }
         }
@@ -64,7 +120,7 @@
           "position": 3,
           "item": 
           {
-            "@id": "https:{{store.url}}/{{ collection.alias }}/{{ current_tags.first }}",
+            "@id": "{{ store.url }}{{ collection.url }}/{{ current_tags.first | url_encode }}",
             "name": "{{ current_tags.first }}"
           }
         }
@@ -77,7 +133,7 @@
                 "position": 2,
                 "item": 
                 {
-                  "@id": "https:{{store.url}}{{ blog.url }}",
+                  "@id": "{{ store.url }}{{ blog.url }}",
                   "name": "{{ blog.name }}"
                 }
             },
@@ -86,7 +142,7 @@
                 "position": 3,
                 "item": 
                 {
-                  "@id": "https:{{store.url}}{{ article.url }}",
+                  "@id": "{{ store.url }}{{ article.url }}",
                   "name": "{{ article.title }}"
                 }
             }
@@ -98,7 +154,7 @@
                 "position": 2,
                 "item": 
                 {
-                  "@id": "https:{{store.url}}/blogs/all",
+                  "@id": "{{ store.url }}{{ blog.url }}",
                   "name": "{{ blog.name }}"
                 }
             }
@@ -108,7 +164,7 @@
                 "position": 2,
                 "item": 
                 {
-                  "@id": "https:{{store.url}}{{blog.url}}",
+                  "@id": "{{ store.url }}{{ blog.url }}",
                   "name": "{{ blog.name }}"
                 }
             }
@@ -119,7 +175,7 @@
                 "position": 3,
                 "item": 
                 {
-                  "@id": "https:{{store.url}}{{blog.url}}/{{ current_tags.first }}",
+                  "@id": "{{ store.url }}{{ blog.url }}/{{ current_tags.first | url_encode }}",
                   "name": "{{ current_tags.first }}"
                 }
             }
@@ -132,7 +188,7 @@
                 "position": 2,
                 "item": 
                 {
-                  "@id": "https:{{store.url}}/{{ page.alias }}",
+                  "@id": "{{ store.url }}{{ page.url }}",
                   "name": "{{ page.title }}"
                 }
             }
@@ -143,7 +199,7 @@
                 "position": 2,
                 "item": 
                 {
-                  "@id": "https:{{store.url}}/cart",
+                  "@id": "{{ store.url }}/cart",
                   "name": "Giỏ hàng"
                 }
             }
@@ -154,7 +210,7 @@
                 "position": 2,
                 "item": 
                 {
-                  "@id": "https:{{store.url}}/search",
+                  "@id": "{{ store.url }}/search",
                   "name": "Tìm kiếm"
                 }
             }
@@ -162,4 +218,5 @@
         ]
         }
 </script>
-{%endunless%}
+{% endunless %}
+{% endif %}

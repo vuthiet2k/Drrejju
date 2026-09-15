@@ -163,6 +163,15 @@ const collectionsData = {
       sort: 'manual' }
   ),
 
+  // ── Fixture QA: KHÔNG phải 1 trong 50 collection thật của store — chỉ để
+  // preview có product khớp brand_alias 'skinceuticals' (vendor demo gán ở
+  // data/products.js #1001) hầu kiểm thử snippets/cart_related_by_brand.bwt
+  // (convention vendor→SmartCollection). Xoá khi có collection brand thật.
+  'skinceuticals': makeCollection(
+    'SkinCeuticals (fixture QA)', 'skinceuticals', 0, '',
+    pick(1010, 1012, 1014, 1015, 1002)
+  ),
+
   // ── Shell collections — metadata thật, products rỗng ──────────────────
 
   'trifarotene':           makeShell(4312953, 'TRIFAROTENE', 'trifarotene', 1),

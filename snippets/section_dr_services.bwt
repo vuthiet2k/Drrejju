@@ -22,14 +22,16 @@
         {% capture titk %}svc_slide_{{ i }}_title{% endcapture %}
         {% capture subk %}svc_slide_{{ i }}_sub{% endcapture %}
         {% capture urlk %}svc_slide_{{ i }}_url{% endcapture %}
-        <a class="dr-svc2-slide{% if forloop.first %} is-active{% endif %}" href="{{ settings[urlk] | default: '#' }}">
+        {% assign has_url = false %}
+        {% if settings[urlk] != blank and settings[urlk] != '#' %}{% assign has_url = true %}{% endif %}
+        {% if has_url %}<a class="dr-svc2-slide{% if forloop.first %} is-active{% endif %}" href="{{ settings[urlk] }}">{% else %}<div class="dr-svc2-slide{% if forloop.first %} is-active{% endif %}">{% endif %}
           <img src="{{ settings[imgk] | img_url: '1024x1024' }}" alt="{{ settings[titk] }}" loading="lazy">
           <span class="dr-svc2-cap">
             {% if settings[subk] != blank %}<em>{{ settings[subk] }}</em>{% endif %}
             {% if settings[titk] != blank %}<strong>{{ settings[titk] }}</strong>{% endif %}
             <span class="dr-svc2-more">Xem chi tiết</span>
           </span>
-        </a>
+        {% if has_url %}</a>{% else %}</div>{% endif %}
         {% endif %}
         {% endfor %}
         {% unless has_slide %}
@@ -43,7 +45,9 @@
       {% capture titk %}svc_side_{{ i }}_title{% endcapture %}
       {% capture subk %}svc_side_{{ i }}_sub{% endcapture %}
       {% capture urlk %}svc_side_{{ i }}_url{% endcapture %}
-      <a class="dr-svc2-side" href="{{ settings[urlk] | default: '#' }}">
+      {% assign has_side_url = false %}
+      {% if settings[urlk] != blank and settings[urlk] != '#' %}{% assign has_side_url = true %}{% endif %}
+      {% if has_side_url %}<a class="dr-svc2-side" href="{{ settings[urlk] }}">{% else %}<div class="dr-svc2-side">{% endif %}
         {% if settings[imgk] != blank %}
         <img src="{{ settings[imgk] | img_url: '1024x1024' }}" alt="{{ settings[titk] }}" loading="lazy">
         {% else %}
@@ -54,7 +58,7 @@
           {% if settings[titk] != blank %}<strong>{{ settings[titk] }}</strong>{% endif %}
           <span class="dr-svc2-more">Xem chi tiết</span>
         </span>
-      </a>
+      {% if has_side_url %}</a>{% else %}</div>{% endif %}
       {% endfor %}
     </div>
   </div>

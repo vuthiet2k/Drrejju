@@ -38,6 +38,7 @@
       <div class="dr-booking-form-card">
         <div class="dr-booking-form-card__head"><span class="dr-eyebrow">Gửi yêu cầu</span><h2 class="dr-h2">Đặt lịch tư vấn</h2><p>Thông tin cần thiết để DR.REJU liên hệ lại với bạn.</p></div>
         {% form 'contact' %}
+        <input type="hidden" name="contact[Loại]" value="Yêu cầu đặt lịch tư vấn">
         {% if form.errors.size > 0 %}
         <div class="dr-booking-alert dr-booking-alert--error" role="alert">{% for field in form.errors %}<p>{{ form.errors.messages[field] }}</p>{% endfor %}</div>
         {% endif %}
@@ -45,15 +46,16 @@
         <div class="dr-booking-alert dr-booking-alert--success" role="status"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><p>DR.REJU đã nhận yêu cầu của bạn. Đội ngũ sẽ liên hệ để xác nhận lịch hẹn.</p></div>
         {% else %}
         <div class="dr-booking-form-grid">
-          <fieldset><label for="booking-name">Họ và tên <em>*</em></label><input id="booking-name" placeholder="Nhập họ và tên" type="text" required value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.first_name }} {{ customer.last_name }}{% endif %}" name="contact[Name]"></fieldset>
-          <fieldset><label for="booking-phone">Số điện thoại <em>*</em></label><input id="booking-phone" placeholder="Số điện thoại để liên hệ" type="tel" inputmode="tel" required name="contact[Số điện thoại]"></fieldset>
+          <fieldset><label for="booking-name">Họ và tên <em>*</em></label><input id="booking-name" placeholder="Nhập họ và tên" type="text" required value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.first_name }} {{ customer.last_name }}{% endif %}" name="contact[name]"></fieldset>
+          <fieldset><label for="booking-phone">Số điện thoại <em>*</em></label><input id="booking-phone" placeholder="Số điện thoại để liên hệ" type="tel" inputmode="tel" required name="contact[phone]"></fieldset>
           <fieldset><label for="booking-email">Email</label><input id="booking-email" placeholder="name@email.com" type="email" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" name="contact[email]"></fieldset>
-          <fieldset><label for="booking-service">Bạn muốn trao đổi về <em>*</em></label><select id="booking-service" name="contact[Nhu cầu tư vấn]" required><option value="" selected disabled>Chọn một nội dung</option><option>Tình trạng mụn & bít tắc</option><option>Nám, thâm & sắc tố</option><option>Da nhạy cảm & phục hồi</option><option>Lão hóa & routine chăm sóc</option><option>Tôi chưa chắc, cần được định hướng</option></select></fieldset>
-          <fieldset><label for="booking-date">Ngày mong muốn <em>*</em></label><input id="booking-date" class="tourmaster-datepicker" name="contact[Ngày mong muốn]" type="text" placeholder="Chọn ngày" required autocomplete="off"></fieldset>
-          <fieldset><label for="booking-time">Khung giờ mong muốn</label><select id="booking-time" name="contact[Khung giờ mong muốn]"><option value="">Chọn nếu thuận tiện</option><option>Buổi sáng</option><option>Buổi chiều</option><option>Buổi tối</option><option>Tôi linh hoạt thời gian</option></select></fieldset>
-          <fieldset class="dr-booking-form-grid__full"><label for="booking-note">Điều bạn muốn DR.REJU biết thêm</label><textarea id="booking-note" name="contact[body]" placeholder="Mô tả ngắn tình trạng, sản phẩm đang dùng hoặc câu hỏi bạn muốn trao đổi." rows="5"></textarea></fieldset>
+          <fieldset><label for="booking-service">Bạn muốn trao đổi về <em>*</em></label><select id="booking-service" name="contact[Dịch vụ]" data-booking-field="service" required><option value="" selected disabled>Chọn một nội dung</option><option>Tình trạng mụn & bít tắc</option><option>Nám, thâm & sắc tố</option><option>Da nhạy cảm & phục hồi</option><option>Lão hóa & routine chăm sóc</option><option>Tôi chưa chắc, cần được định hướng</option></select></fieldset>
+          <fieldset><label for="booking-date">Ngày mong muốn <em>*</em></label><input id="booking-date" class="tourmaster-datepicker" name="contact[Ngày mong muốn]" data-booking-field="date" type="text" placeholder="Chọn ngày" required autocomplete="off"></fieldset>
+          <fieldset><label for="booking-time">Khung giờ mong muốn</label><select id="booking-time" name="contact[Khung giờ]" data-booking-field="time"><option value="">Chọn nếu thuận tiện</option><option>Buổi sáng</option><option>Buổi chiều</option><option>Buổi tối</option><option>Tôi linh hoạt thời gian</option></select></fieldset>
+          <fieldset class="dr-booking-form-grid__full"><label for="booking-note">Điều bạn muốn DR.REJU biết thêm</label><textarea id="booking-note" name="contact[Ghi chú]" data-booking-field="note" placeholder="Mô tả ngắn tình trạng, sản phẩm đang dùng hoặc câu hỏi bạn muốn trao đổi." rows="5"></textarea></fieldset>
         </div>
-        <label class="dr-booking-consent"><input type="checkbox" required><span>Tôi đồng ý để DR.REJU sử dụng thông tin này nhằm liên hệ và xác nhận yêu cầu tư vấn của tôi.</span></label>
+        <input type="hidden" name="contact[body]" data-booking-body>
+        <label class="dr-booking-consent"><input type="checkbox" name="contact[Đồng ý]" value="Có" required><span>Tôi đồng ý để DR.REJU sử dụng thông tin này nhằm liên hệ và xác nhận yêu cầu tư vấn của tôi.</span></label>
         <p class="dr-booking-form-error" data-booking-error role="alert" aria-live="polite"></p>
         <button type="submit" class="dr-btn dr-btn--primary dr-booking-submit">Gửi yêu cầu đặt lịch <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
         {% endif %}

@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "DR.REJU — Dev preview server for Sapo .bwt theme",
   "scripts": {
-    "preview": "node dev-server.js"
+    "preview": "node dev-server.js",
+    "build": "node scripts/build-vercel.js"
   },
   "dependencies": {
     "chokidar": "^3.6.0",

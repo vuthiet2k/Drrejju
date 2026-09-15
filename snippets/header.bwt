@@ -10,7 +10,7 @@
       <div class="dr-util-left">
         <a href="tel:{{ settings.phone | default: store.phone_number | remove: ' ' }}"><i class="fa-solid fa-phone"></i> {{ settings.phone | default: store.phone_number }}</a>
         <a href="/dat-lich"><i class="fa-regular fa-calendar-check"></i> Đặt lịch</a>
-        <a href="{{ settings.social_zalo_link | default: '#' }}"><i class="fa-solid fa-comment-dots"></i> Tư vấn Zalo</a>
+{% if settings.social_zalo_link != blank and settings.social_zalo_link != '#' %}<a href="{{ settings.social_zalo_link }}"><i class="fa-solid fa-comment-dots"></i> Tư vấn Zalo</a>{% endif %}
       </div>
       <div class="lang-switcher notranslate" id="langSwitcher" translate="no">
         <button class="lang-btn" id="langBtn" type="button">

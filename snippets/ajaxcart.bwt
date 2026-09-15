@@ -28,6 +28,7 @@
 				<a href="{{url}}" class="ajaxcart__product-image cart_image" title="{{name}}"><img width="80" height="80" src="{{img}}" alt="{{name}}"></a>
 				<div class="grid__item cart_info">
 					<div class="ajaxcart__product-name-wrapper cart_name">
+						{{#if vendor}}<span class="cart_vendor">{{vendor}}</span>{{/if}}
 						<a href="{{url}}" class="ajaxcart__product-name h4" title="{{name}}">{{name}}</a>
 						{{#if variation}}
 						<span class="ajaxcart__product-meta variant-title">{{variation}}</span>
@@ -120,12 +121,13 @@
 				<a href="{{url}}" class="ajaxcart__product-image cart_image" title="{{name}}"><img src="{{img}}" alt="{{name}}"></a>
 				<div class="grid__item cart_info">
 					<div class="ajaxcart__product-name-wrapper cart_name">
+						{{#if vendor}}<span class="cart_vendor">{{vendor}}</span>{{/if}}
 						<a href="{{url}}" class="ajaxcart__product-name h4" title="{{name}}">{{name}}</a>
 						{{#if variation}}
 						<span class="ajaxcart__product-meta variant-title">{{variation}}</span>
 						{{/if}}
 						<a class="cart__btn-remove remove-item-cart ajaxifyCart--remove" href="javascript:;" data-line="{{line}}">Xóa</a>
-						
+
 					</div>
 					<div class="grid">
 						<div class="grid__item one-half text-right cart_prices">
@@ -207,6 +209,7 @@
 				<a href="{{url}}" class="ajaxcart__product-image cart_image" title="{{name}}"><img width="80" height="80" src="{{img}}" alt="{{name}}"></a>
 				<div class="grid__item cart_info">
 					<div class="ajaxcart__product-name-wrapper cart_name">
+						{{#if vendor}}<span class="cart_vendor">{{vendor}}</span>{{/if}}
 						<a href="{{url}}" class="ajaxcart__product-name h4" title="{{name}}">{{name}}</a>
 						{{#if variation}}
 						<span class="ajaxcart__product-meta variant-title">{{variation}}</span>
@@ -265,6 +268,7 @@
 				<a href="{{url}}" class="ajaxcart__product-image cart_image" title="{{name}}"><img width="80" height="80" src="{{img}}" alt="{{name}}"></a>
 				<div class="grid__item cart_info">
 					<div class="ajaxcart__product-name-wrapper cart_name">
+						{{#if vendor}}<span class="cart_vendor">{{vendor}}</span>{{/if}}
 						<a href="{{url}}" class="ajaxcart__product-name h4" title="{{name}}">{{name}}</a>
 						{{#if variation}}
 						<span class="ajaxcart__product-meta variant-title">{{variation}}</span>
@@ -332,6 +336,7 @@
 				<a href="{{url}}" class="ajaxcart__product-image cart_image" title="{{name}}"><img width="80" height="80" src="{{img}}" alt="{{name}}"></a>
 				<div class="grid__item cart_info">
 					<div class="ajaxcart__product-name-wrapper cart_name">
+						{{#if vendor}}<span class="cart_vendor">{{vendor}}</span>{{/if}}
 						<a href="{{url}}" class="ajaxcart__product-name h4" title="{{name}}">{{name}}</a>
 						{{#if variation}}
 						<span class="ajaxcart__product-meta variant-title">{{variation}}</span>

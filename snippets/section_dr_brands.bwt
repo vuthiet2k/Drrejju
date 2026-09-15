@@ -11,7 +11,7 @@
 <section id="brands" class="dr-section dr-bg-alt dr-partners">
   <div class="dr-container dr-center">
     <div class="dr-partner-head">
-      <span class="dr-eyebrow">{{ settings.brands_eyebrow | default: 'Thương hiệu hợp tác' }}</span>
+      <span class="dr-eyebrow">{{ settings.brands_eyebrow | default: 'Thương hiệu được Dr.Reju lựa chọn' }}</span>
       <h2 class="dr-h2 dr-up dr-mt-8">{{ settings.brands_title | default: 'Khắt khe khi chọn hoạt chất' }}</h2>
       <p class="dr-lead dr-mt-8">{{ settings.brands_desc | default: 'Chúng tôi không nhập mọi sản phẩm của một thương hiệu, chỉ chọn mã hàng tương thích cao nhất với phác đồ 1:1, dựa trên dữ liệu lâm sàng.' }}</p>
     </div>
@@ -41,7 +41,7 @@
   </div>
 
   <div class="dr-container dr-center">
-    {%- assign brands_badge = settings.brands_badge | default: 'Nguồn gốc rõ ràng, được cộng đồng y khoa tin dùng' -%}
+    {%- assign brands_badge = settings.brands_badge | default: 'Lựa chọn theo chỉ định và độ phù hợp với phác đồ' -%}
     {% if brands_badge != blank %}<span class="dr-badge dr-partner-badge"><i class="fa-solid fa-shield-heart"></i> {{ brands_badge }}</span>{% endif %}
   </div>
 </section>

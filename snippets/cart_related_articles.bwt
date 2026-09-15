@@ -1,0 +1,95 @@
+{% comment %} DR.REJU — Bài viết liên quan (server-render, chỉ ở page load).
+
+   Thuật toán:
+   1. Gom mọi tag concern:*/problem:* của product trong cart → concern_bag (2 prefix coi
+      tương đương — problem: là canonical hiện dùng, concern: là tên cũ tương thích ngược,
+      xem docs/entity-tag-convention.md).
+   2. Duyệt blogs[settings.cart_related_blog].articles, so article.tags với concern_bag → nếu khớp thì render card.
+   3. Giới hạn tối đa settings.cart_related_articles_limit article (default 3).
+
+   Không hiện nếu cart.item_count == 0, hoặc blog trống, hoặc không có article nào match.
+{% endcomment %}
+
+{%- if cart.item_count > 0 and settings.cart_related_blog != blank -%}
+  {%- assign target_blog = blogs[settings.cart_related_blog] -%}
+  {%- if target_blog.articles_count > 0 -%}
+
+    {%- comment -%} Gom concern:*/problem:* tags từ mọi product trong cart {%- endcomment -%}
+    {%- assign concern_bag = '' -%}
+    {%- assign concern_labels = '' -%}
+    {%- assign label_first = true -%}
+    {%- for line in cart.items -%}
+      {%- for t in line.product.tags -%}
+        {%- if t contains 'concern:' or t contains 'problem:' -%}
+          {%- assign needle = '|' | append: t | append: '|' -%}
+          {%- unless concern_bag contains needle -%}
+            {%- assign concern_bag = concern_bag | append: needle -%}
+            {%- assign label = t | remove_first: 'concern:' | remove_first: 'problem:' | replace: '-', ' ' | capitalize -%}
+            {%- if label_first -%}
+              {%- assign concern_labels = label -%}
+              {%- assign label_first = false -%}
+            {%- else -%}
+              {%- assign concern_labels = concern_labels | append: ' · ' | append: label -%}
+            {%- endif -%}
+          {%- endunless -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endfor -%}
+
+    {%- if concern_bag != '' -%}
+      {%- assign matched_html = '' -%}
+      {%- assign matched_count = 0 -%}
+      {%- assign limit = settings.cart_related_articles_limit | default: 3 -%}
+
+      {%- capture matched_html -%}
+        {%- for a in target_blog.articles limit: 30 -%}
+          {%- if matched_count >= limit -%}{%- break -%}{%- endif -%}
+          {%- assign match = false -%}
+          {%- assign atag_label = '' -%}
+          {%- for at in a.tags -%}
+            {%- assign needle = '|' | append: at | append: '|' -%}
+            {%- if concern_bag contains needle -%}
+              {%- assign match = true -%}
+              {%- assign atag_label = at | remove_first: 'concern:' | remove_first: 'problem:' | replace: '-', ' ' | capitalize -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+          {%- if match -%}
+            {%- assign matched_count = matched_count | plus: 1 -%}
+            <a class="dr-article" href="{{ a.url }}" title="{{ a.title | escape }}">
+              {%- if a.image.src != blank -%}
+                <div class="dr-article__img"><img src="{{ a.image.src | img_url: 'medium' }}" alt="{{ a.title | escape }}" loading="lazy"></div>
+              {%- else -%}
+                <div class="dr-article__img dr-article__img--empty"><i class="fa-solid fa-book-medical"></i></div>
+              {%- endif -%}
+              <div class="dr-article__body">
+                <span class="dr-article__tag">{{ atag_label }}</span>
+                <h4 class="dr-article__title">{{ a.title }}</h4>
+                <div class="dr-article__meta">
+                  <i class="fa-regular fa-clock"></i>
+                  <span>{{ a.published_at | date: '%d/%m/%Y' }}{% if a.author %} · {{ a.author }}{% endif %}</span>
+                </div>
+              </div>
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endcapture -%}
+
+      {%- if matched_count > 0 -%}
+        <div class="dr-cart-mod dr-cart-articles">
+          <div class="dr-cart-mod__head">
+            <div>
+              <h3 class="dr-cart-mod__title">Bài viết liên quan đến vấn đề da của bạn</h3>
+              {%- if concern_labels != blank -%}
+                <p class="dr-cart-mod__hint">Chọn theo tag da bạn đang điều trị: <strong>{{ concern_labels }}</strong></p>
+              {%- endif -%}
+            </div>
+            <a href="{{ target_blog.url }}" class="dr-cart-mod__cta">Xem tất cả bài <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="dr-articles-grid">{{ matched_html }}</div>
+        </div>
+      {%- endif -%}
+
+    {%- endif -%}
+  {%- endif -%}
+{%- endif -%}

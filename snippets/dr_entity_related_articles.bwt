@@ -1,0 +1,73 @@
+{% comment %} Finds articles with one shared canonical entity tag in the configured knowledge blog.
+   Dùng chung setting `dr_blog` với snippets/section_dr_blog.bwt (blog kiến thức đang active
+   ở trang chủ, fallback 'tin-tuc') — KHÔNG dùng `section_blog_url1` (setting của module
+   "Trang chủ - Module Tin tức" cũ, đang ẩn/dr-hide trong templates/product.bwt, chưa từng
+   được cấu hình nên luôn blank). {% endcomment %}
+{% assign entity_blog = blogs[settings.dr_blog | default: 'tin-tuc'] %}
+{% if entity_blog.articles_count > 0 and entity_source.tags.size > 0 %}
+  {% assign related_found = 0 %}
+  {% assign related_available = false %}
+  {% for related_article in entity_blog.articles limit: 24 %}
+    {% unless related_article.url == article.url %}
+      {% for source_tag in entity_source.tags %}
+        {% if source_tag contains 'problem:' or source_tag contains 'concern:' or source_tag contains 'ingredient:' or source_tag contains 'routine:' %}
+          {% for related_tag in related_article.tags %}{% if related_tag == source_tag %}{% assign related_available = true %}{% endif %}{% endfor %}
+        {% endif %}
+      {% endfor %}
+    {% endunless %}
+  {% endfor %}
+  <section class="dr-entity-articles" aria-labelledby="dr-entity-articles-title">
+    <div class="dr-entity-articles__head">
+      <span>Đọc tiếp</span>
+      <h2 id="dr-entity-articles-title">Kiến thức cùng chủ đề</h2>
+    </div>
+    <div class="dr-entity-articles__list">
+    {% for related_article in entity_blog.articles limit: 24 %}
+      {% unless related_article.url == article.url %}
+        {% assign shared_entity = false %}
+        {% for source_tag in entity_source.tags %}
+          {% if source_tag contains 'problem:' or source_tag contains 'concern:' or source_tag contains 'ingredient:' or source_tag contains 'routine:' %}
+            {% for related_tag in related_article.tags %}{% if related_tag == source_tag %}{% assign shared_entity = true %}{% endif %}{% endfor %}
+          {% endif %}
+        {% endfor %}
+        {% if shared_entity and related_found < 3 %}
+          {% assign related_found = related_found | plus: 1 %}
+          <a class="dr-entity-articles__item" href="{{ related_article.url }}">
+            <span class="dr-entity-articles__meta">{{ related_article.published_on | date: 'dd/MM/yyyy' }}</span>
+            <span class="dr-entity-articles__title">{{ related_article.title }}</span>
+            {% if related_article.summary != blank %}<span class="dr-entity-articles__excerpt">{{ related_article.summary | strip_html | truncate: 150 }}</span>{% endif %}
+          </a>
+        {% endif %}
+      {% endunless %}
+    {% endfor %}
+    {% unless related_available %}
+      {% for related_article in entity_blog.articles limit: 4 %}
+        {% unless related_article.url == article.url %}
+          {% assign related_found = related_found | plus: 1 %}
+          {% if related_found <= 3 %}
+          <a class="dr-entity-articles__item" href="{{ related_article.url }}">
+            <span class="dr-entity-articles__meta">{{ related_article.published_on | date: 'dd/MM/yyyy' }}</span>
+            <span class="dr-entity-articles__title">{{ related_article.title }}</span>
+            {% if related_article.summary != blank %}<span class="dr-entity-articles__excerpt">{{ related_article.summary | strip_html | truncate: 150 }}</span>{% endif %}
+          </a>
+          {% endif %}
+        {% endunless %}
+      {% endfor %}
+    {% endunless %}
+    </div>
+  </section>
+{% endif %}
+
+<style>
+.dr-entity-articles{ margin:40px 0 0; padding-top:28px; border-top:1px solid var(--line); }
+.dr-entity-articles__head{ margin-bottom:16px; }
+.dr-entity-articles__head span{ display:block; margin-bottom:5px; color:var(--accent); font-size:var(--fs-xs); font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+.dr-entity-articles__head h2{ margin:0; color:var(--text); font-family:var(--font-primary); font-size:var(--fs-lg); font-weight:600; }
+.dr-entity-articles__list{ display:grid; gap:0; }
+.dr-entity-articles__item{ display:block; padding:16px 0; border-top:1px solid var(--line); }
+.dr-entity-articles__item:first-child{ border-top:0; }
+.dr-entity-articles__meta{ display:block; color:var(--text-soft); font-size:var(--fs-xs); }
+.dr-entity-articles__title{ display:block; margin-top:4px; color:var(--text); font-family:var(--font-primary); font-size:var(--fs-md); font-weight:600; }
+.dr-entity-articles__excerpt{ display:block; margin-top:5px; color:var(--text-soft); font-size:var(--fs-sm); line-height:1.6; }
+.dr-entity-articles__item:hover .dr-entity-articles__title{ color:var(--accent); }
+</style>
