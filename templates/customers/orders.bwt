@@ -6,7 +6,7 @@
 				<div class="block-account">
 					<h5 class="title-account">Trang tài khoản</h5>
 					<p>
-						Xin chào, <span style="color:{{settings.main_color}};">{{ customer.name }}</span>&nbsp;!
+						Xin chào, <span style="color:{{settings.main_color}};">{{ customer.name | default: 'Quý khách' }}</span>&nbsp;!
 					</p>
 					<ul>
 						<li>

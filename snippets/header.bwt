@@ -49,16 +49,33 @@
             <div class="dr-container dr-mega-in">
               <div class="dr-mega-links">
                 {% for sub in link.links %}
-                <a href="{{ sub.url }}">{{ sub.title }} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                <a href="{{ sub.url }}"><i class="fa-solid fa-flask dr-mega-ico" aria-hidden="true"></i>{{ sub.title }} <i class="fa-solid fa-arrow-right dr-mega-arw" aria-hidden="true"></i></a>
                 {% endfor %}
               </div>
               {%- assign mega_title = settings.mega_promo_title | default: 'Chưa rõ vấn đề? Làm hồ sơ da, bác sĩ đọc trực tiếp' -%}
-              {% if mega_title != blank %}
-              <a class="dr-mega-promo" href="{{ settings.mega_promo_url | default: '/dat-lich' }}">
-                <em>{{ settings.mega_promo_eyebrow | default: 'Không biết bắt đầu từ đâu?' }}</em>
-                <b>{{ mega_title }}</b>
-                <span>{{ settings.mega_promo_cta | default: 'Bắt đầu' }} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
-              </a>
+              {%- assign mega_best_col = collections[settings.mega_bestseller_col] -%}
+              {%- assign mega_best_pr = '' -%}
+              {%- if mega_best_col != blank and mega_best_col.products_count > 0 -%}{%- assign mega_best_pr = mega_best_col.products.first -%}{%- endif -%}
+              {% if mega_title != blank or mega_best_pr != blank %}
+              <div class="dr-mega-side">
+                {% if mega_best_pr != blank %}
+                <a class="dr-mega-best" href="{{ mega_best_pr.url }}">
+                  <span class="dr-mega-best-tag">Bán chạy</span>
+                  <img src="{{ mega_best_pr.featured_image.src | img_url: 'compact' }}" alt="{{ mega_best_pr.name }}" width="56" height="56" loading="lazy">
+                  <span class="dr-mega-best-info">
+                    <b>{{ mega_best_pr.name }}</b>
+                    <em>{{ mega_best_pr.price | money }}</em>
+                  </span>
+                </a>
+                {% endif %}
+                {% if mega_title != blank %}
+                <a class="dr-mega-promo" href="{{ settings.mega_promo_url | default: '/dat-lich' }}">
+                  <em>{{ settings.mega_promo_eyebrow | default: 'Không biết bắt đầu từ đâu?' }}</em>
+                  <b>{{ mega_title }}</b>
+                  <span>{{ settings.mega_promo_cta | default: 'Bắt đầu' }} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+                </a>
+                {% endif %}
+              </div>
               {% endif %}
             </div>
           </div>
@@ -70,8 +87,11 @@
     </nav>
     <div class="dr-navactions">
       <a href="/search" data-dr-search-open aria-label="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></a>
+      {% if settings.use_wishlist %}
+      <a href="/favorite" class="dr-hide-mobile" aria-label="Yêu thích"><i class="fa-regular fa-heart"></i></a>
+      {% endif %}
       <a href="/account" class="dr-hide-mobile" aria-label="Tài khoản"><i class="fa-regular fa-user"></i></a>
-      <a href="/cart" aria-label="Giỏ hàng"><i class="fa-solid fa-bag-shopping"></i><span class="dr-cart-count count_item_pr">{{ cart.item_count }}</span></a>
+      <a href="/cart" aria-label="Giỏ hàng" data-dr-cart-open><i class="fa-solid fa-bag-shopping"></i><span class="dr-cart-count count_item_pr">{{ cart.item_count }}</span></a>
     </div>
   </div>
 
@@ -162,8 +182,27 @@
 .dr-siteheader .dr-mega a::after,
 .dr-siteheader--overlay:not(.is-stuck) .dr-mega a::after{ display: none; }
 .dr-siteheader .dr-mega-links a:hover{ color: var(--accent); padding-left: 6px; }
-.dr-mega-links a i{ font-size: 9px; color: var(--gold); opacity: 0; transition: opacity .2s ease; }
-.dr-mega-links a:hover i{ opacity: 1; }
+.dr-mega-ico{ font-size: 12px; width: 16px; color: var(--gold); opacity: .85; }
+.dr-mega-arw{ font-size: 9px; color: var(--gold); opacity: 0; transition: opacity .2s ease; }
+.dr-mega-links a:hover .dr-mega-arw{ opacity: 1; }
+
+/* Cột phải panel — thẻ Best Seller (tuỳ chọn) xếp trên thẻ quảng bá */
+.dr-mega-side{ display: flex; flex-direction: column; gap: 14px; }
+.dr-siteheader .dr-mega-best,
+.dr-siteheader--overlay:not(.is-stuck) .dr-mega-best{
+  position: relative; display: flex; align-items: center; gap: 12px;
+  padding: 12px; border: 1px solid var(--line); border-radius: 12px;
+  text-transform: none; letter-spacing: normal; white-space: normal;
+  transition: border-color .2s ease, box-shadow .2s ease; }
+.dr-mega-best:hover{ border-color: var(--gold); box-shadow: 0 10px 20px -8px rgba(6,32,26,.18); }
+.dr-mega-best img{ flex: none; width: 56px; height: 56px; border-radius: 8px; object-fit: cover; background: var(--bg-soft); }
+.dr-mega-best-tag{ position: absolute; top: -9px; left: 10px; padding: 2px 9px; border-radius: var(--radius-pill);
+  background: var(--emerald); color: var(--gold); font-size: 10px; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase; }
+.dr-mega-best-info{ display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.dr-mega-best-info b{ font-family: var(--font-primary); font-size: var(--fs-sm); font-weight: 600;
+  color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dr-mega-best-info em{ font-style: normal; font-size: var(--fs-sm); font-weight: 700; color: var(--accent); }
 
 /* Thẻ quảng bá — emerald nổi trên panel sáng */
 .dr-siteheader .dr-mega-promo,
@@ -402,8 +441,37 @@
     });
   }
 
-  if (document.readyState !== 'loading') initSrch();
-  else document.addEventListener('DOMContentLoaded', initSrch);
+  /* ══ Mini-cart drawer ══
+     Nội dung giỏ hàng do snippets/ajaxcartfunction.bwt tự nạp qua /cart.js và
+     tiêm vào #CartContainer.CartSideContainer (bên trong .cart-sidebar).
+     Mở/đóng panel tự xử lý ở đây (không phụ thuộc script ajaxcartfunction.bwt —
+     file đó rất lớn/cũ, không đảm bảo luôn chạy được ở mọi môi trường). */
+  function initCart(){
+    var drawer = document.querySelector('.cart-sidebar'),
+        backdrop = document.querySelector('.backdrop__body-backdrop___1rvky');
+    if (!drawer || !backdrop) return;
+    function open(){
+      drawer.className = 'cart-sidebar active';
+      backdrop.className = 'backdrop__body-backdrop___1rvky active';
+    }
+    function shut(){
+      drawer.className = 'cart-sidebar';
+      backdrop.className = 'backdrop__body-backdrop___1rvky';
+    }
+    var openers = document.querySelectorAll('[data-dr-cart-open]');
+    for (var i = 0; i < openers.length; i++){
+      openers[i].addEventListener('click', function(e){ e.preventDefault(); open(); });
+    }
+    var closeBtn = drawer.querySelector('.cart_btn-close');
+    if (closeBtn) closeBtn.addEventListener('click', shut);
+    backdrop.addEventListener('click', shut);
+    document.addEventListener('keydown', function(e){
+      if (e.keyCode === 27 && /active/.test(drawer.className)) shut();
+    });
+  }
+
+  if (document.readyState !== 'loading'){ initSrch(); initCart(); }
+  else document.addEventListener('DOMContentLoaded', function(){ initSrch(); initCart(); });
 })();
 </script>
 

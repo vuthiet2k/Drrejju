@@ -377,6 +377,23 @@
         "default": "/dat-lich"
       },
       {
+        "type": "collection",
+        "id": "mega_bestseller_col",
+        "label": "Mega Menu - Danh mục sản phẩm nổi bật",
+        "info": "Sản phẩm đầu tiên trong danh mục này sẽ hiện trong thẻ mega menu, cạnh thẻ quảng bá. Để trống để ẩn."
+      },
+      {
+        "type": "header",
+        "content": "Danh sách yêu thích (Wishlist)"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_wishlist",
+        "label": "Bật tính năng Yêu thích",
+        "info": "Hiện icon trái tim trên header và trên từng sản phẩm để khách lưu vào danh sách yêu thích.",
+        "default": true
+      },
+      {
         "type": "header",
         "content": "Tìm kiếm trên header"
       },

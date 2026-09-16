@@ -2,7 +2,6 @@
 {{'ajaxcart.scss.css' | asset_url | stylesheet_tag}}
 <div class="backdrop__body-backdrop___1rvky"></div>
 {%include 'ajaxcartfunction'%}
-{% comment%}
 <div id="CartDrawer" class="cart-sidebar">
 	<div class="clearfix cart_heading">
 		<h4 class="cart_title">Giỏ hàng</h4>
@@ -17,7 +16,6 @@
 		</div>
 	</div>
 </div>
-{% endcomment %}
 <script id="SideCartTemplate" type="text/template">
  {% raw %}
 <form action="{% endraw %}{{ routes.cart_url }}{% raw %}" method="post" novalidate class="cart ajaxcart">
