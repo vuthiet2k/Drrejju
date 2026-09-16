@@ -2557,7 +2557,7 @@ header.header{
 		}
 	}
 	.block-content{
-		width: calc(100% - 140px;) ;
+		width: calc(100% - 140px);
 		h3{
 			font-size: 18px;
 			font-weight: 700;

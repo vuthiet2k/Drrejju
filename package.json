@@ -1,10 +1,10 @@
 {
-  "name": "drreju-preview",
+  "name": "drreju-theme-preview",
   "version": "1.0.0",
-  "description": "DR.REJU — Dev preview server for Sapo .bwt theme",
+  "description": "Dev/Vercel preview server for DR.REJU Sapo .bwt theme",
   "scripts": {
     "preview": "node dev-server.js",
-    "build": "node scripts/build-vercel.js"
+    "dev": "node dev-server.js"
   },
   "dependencies": {
     "chokidar": "^3.6.0",

@@ -1,6 +1,5 @@
 # === Node & dependencies ===
 node_modules/
-package-lock.json
 
 # === Logs ===
 *.log
@@ -25,8 +24,7 @@ Thumbs.db
 .env.*.local
 
 # === Local development & tooling ===
-dev-server.js
-preview-mock.js
+# dev-server.js + preview-mock.js are required at runtime by api/index.js (Vercel) — must stay tracked.
 _tools/
 
 # === Drafts (work-in-progress) ===
