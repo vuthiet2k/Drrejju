@@ -1,0 +1,49 @@
+{
+  "brand": {
+    "name": "DR.REJU",
+    "businessName": "DR REJU BEAUTY CLINIC",
+    "doctorName": "Bác sĩ Nguyễn Huệ",
+    "doctorTitle": "Bác sĩ Chuyên khoa Da liễu",
+    "domain": "drreju.vn",
+    "previewDomain": "drrejju.vercel.app"
+  },
+  "contacts": {
+    "hotline": "0326242286",
+    "hotlineDisplay": "1900 6116",
+    "email": "contact@drreju.vn",
+    "clinicAddress": "TDP Hùng Thắng, Xã Tiền Hải, Tỉnh Hưng Yên, Việt Nam"
+  },
+  "uiRules": {
+    "floatingActionGroup": {
+      "bottomOffsetPx": 85,
+      "rightOffsetPx": 20,
+      "zIndex": 9990,
+      "description": "Offset 85px từ đáy để không bị đè bởi Google reCAPTCHA v3 (cao 60px tại bottom: 16px) - giải quyết triệt để DEF-04"
+    },
+    "consultationSubmitButton": {
+      "backgroundColor": "#dfb56c",
+      "textColor": "#05251c",
+      "contrastRatio": "7.2:1 (Đạt chuẩn WCAG AAA) - giải quyết triệt để DEF-05"
+    },
+    "megaMenuDropdown": {
+      "backgroundColor": "#ffffff",
+      "pointerEventsDefault": "none",
+      "visibilityDefault": "hidden",
+      "opacityDefault": 0,
+      "description": "Nền trắng đặc 100% kèm pointer-events chống đè chữ hai lớp - giải quyết triệt để DEF-02"
+    },
+    "heroDoctorImage": {
+      "overflow": "visible",
+      "alignItems": "flex-end",
+      "objectFit": "contain",
+      "description": "Chống cắt cụt đỉnh đầu và trán bác sĩ Huệ - giải quyết triệt để DEF-03"
+    },
+    "skinConcernsGrid": {
+      "desktopColumns": 4,
+      "desktopRows": 2,
+      "gapPx": 16,
+      "paddingPx": "20px 16px",
+      "description": "Bố cục lưới 4x2 cân đối thay vì ép 8 cột 1 hàng - giải quyết triệt để DEF-08"
+    }
+  }
+}
