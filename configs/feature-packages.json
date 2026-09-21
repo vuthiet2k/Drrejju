@@ -1,0 +1,170 @@
+{
+  "version": "1.0.0",
+  "packages": [
+    {
+      "packageId": "pkg-hero-banner",
+      "name": "Hero Section & Doctor Banner",
+      "description": "Banner chính trang chủ và ảnh chân dung Bác sĩ Nguyễn Huệ",
+      "entryTemplate": "templates/index.bwt",
+      "snippets": [
+        "snippets/section_dr_hero.bwt",
+        "snippets/section_doctor_hue_banner.bwt"
+      ],
+      "styles": [
+        "assets/index.scss.bwt"
+      ],
+      "allowedEditFiles": [
+        "snippets/section_dr_hero.bwt",
+        "snippets/section_doctor_hue_banner.bwt",
+        "assets/index.scss.bwt"
+      ],
+      "defectsCovered": [
+        "DEF-03"
+      ]
+    },
+    {
+      "packageId": "pkg-header-nav",
+      "name": "Header Navigation & Mega Menu",
+      "description": "Thanh điều hướng trên cùng, mega menu đa cấp và actions icon",
+      "entryTemplate": "layouts/theme.bwt",
+      "snippets": [
+        "snippets/header.bwt",
+        "snippets/mega-menu.bwt",
+        "snippets/site-nav.bwt"
+      ],
+      "styles": [
+        "assets/main.scss.bwt",
+        "assets/style_page.scss.bwt"
+      ],
+      "allowedEditFiles": [
+        "snippets/header.bwt",
+        "snippets/mega-menu.bwt",
+        "assets/main.scss.bwt"
+      ],
+      "defectsCovered": [
+        "DEF-02",
+        "DEF-09"
+      ]
+    },
+    {
+      "packageId": "pkg-flashsale",
+      "name": "Flash Sale & Deal Countdown",
+      "description": "Khu vực đồng hồ đếm ngược và sản phẩm ưu đãi có hạn giờ",
+      "entryTemplate": "templates/index.bwt",
+      "snippets": [
+        "snippets/section_flashsale.bwt",
+        "snippets/flashsale_product.bwt"
+      ],
+      "styles": [
+        "assets/index.scss.bwt"
+      ],
+      "allowedEditFiles": [
+        "snippets/section_flashsale.bwt",
+        "snippets/flashsale_product.bwt"
+      ],
+      "defectsCovered": [
+        "DEF-01"
+      ]
+    },
+    {
+      "packageId": "pkg-skin-concerns",
+      "name": "Skin Concerns Grid",
+      "description": "Lưới 8 thẻ phân loại vấn đề da da liễu",
+      "entryTemplate": "templates/index.bwt",
+      "snippets": [
+        "snippets/section_dr_concerns.bwt"
+      ],
+      "styles": [
+        "assets/index.scss.bwt"
+      ],
+      "allowedEditFiles": [
+        "snippets/section_dr_concerns.bwt",
+        "assets/index.scss.bwt"
+      ],
+      "defectsCovered": [
+        "DEF-08"
+      ]
+    },
+    {
+      "packageId": "pkg-doctor-profile",
+      "name": "Doctor Nguyen Hue Profile Page",
+      "description": "Trang giới thiệu chi tiết tiểu sử, bằng cấp và phác đồ Bác sĩ Huệ",
+      "entryTemplate": "templates/page.bac-si-hue.bwt",
+      "snippets": [
+        "snippets/dr_entity_context.bwt"
+      ],
+      "styles": [
+        "assets/style_page.scss.bwt"
+      ],
+      "allowedEditFiles": [
+        "templates/page.bac-si-hue.bwt",
+        "assets/style_page.scss.bwt"
+      ],
+      "defectsCovered": []
+    },
+    {
+      "packageId": "pkg-footer-contact",
+      "name": "Footer & Consultation Form",
+      "description": "Chân trang đa cột, form tư vấn và cụm nút Floating Action",
+      "entryTemplate": "layouts/theme.bwt",
+      "snippets": [
+        "snippets/footer.bwt",
+        "snippets/section_dr_contact.bwt"
+      ],
+      "styles": [
+        "assets/contact_style.scss.bwt",
+        "assets/main.scss.bwt"
+      ],
+      "allowedEditFiles": [
+        "snippets/footer.bwt",
+        "snippets/section_dr_contact.bwt",
+        "assets/main.scss.bwt"
+      ],
+      "defectsCovered": [
+        "DEF-04",
+        "DEF-05",
+        "DEF-06"
+      ]
+    },
+    {
+      "packageId": "pkg-cart-checkout",
+      "name": "Cart & Cookie State Management",
+      "description": "Trang giỏ hàng, popup mini-cart và tính toán tổng tiền",
+      "entryTemplate": "templates/cart.bwt",
+      "snippets": [
+        "snippets/ajaxcart.bwt",
+        "snippets/popup-cart.bwt"
+      ],
+      "styles": [
+        "assets/cartpage.scss.bwt",
+        "assets/ajaxcart.scss.bwt"
+      ],
+      "allowedEditFiles": [
+        "templates/cart.bwt",
+        "snippets/ajaxcart.bwt",
+        "assets/cartpage.scss.bwt"
+      ],
+      "defectsCovered": []
+    },
+    {
+      "packageId": "pkg-product-card",
+      "name": "Product Card & Grid Component",
+      "description": "Thẻ sản phẩm tái sử dụng trên toàn hệ thống",
+      "entryTemplate": "snippets/dr_product_card.bwt",
+      "snippets": [
+        "snippets/dr_product_card.bwt",
+        "snippets/dr_pcard_init.bwt"
+      ],
+      "styles": [
+        "assets/product_style.scss.bwt"
+      ],
+      "allowedEditFiles": [
+        "snippets/dr_product_card.bwt",
+        "assets/product_style.scss.bwt"
+      ],
+      "defectsCovered": [
+        "DEF-10"
+      ]
+    }
+  ]
+}
