@@ -4,7 +4,11 @@
   "description": "Dev/Vercel preview server for DR.REJU Sapo .bwt theme",
   "scripts": {
     "preview": "node dev-server.js",
-    "dev": "node dev-server.js"
+    "dev": "node dev-server.js",
+    "verify:task": "node tests/agent-harness/runner.js",
+    "find:feature": "node scripts/find-feature.js",
+    "self:score": "node scripts/self-score.js",
+    "triage:error": "node scripts/triage-error.js"
   },
   "dependencies": {
     "chokidar": "^3.6.0",
