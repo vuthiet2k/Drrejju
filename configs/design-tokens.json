@@ -1,0 +1,38 @@
+{
+  "name": "Dr.REJU Harmonic Design Tokens",
+  "version": "1.0.0",
+  "colors": {
+    "primary": "#05251c",
+    "primaryLight": "#0A2E24",
+    "accentGold": "#dfb56c",
+    "accentGoldDark": "#b48628",
+    "bgLight": "#f8f9fa",
+    "bgWhite": "#ffffff",
+    "textMain": "#1e293b",
+    "textMuted": "#64748b",
+    "borderLight": "#e5e7eb",
+    "error": "#ef4444",
+    "success": "#10b981"
+  },
+  "spacing": {
+    "space-1": "4px",
+    "space-2": "8px",
+    "space-3": "12px",
+    "space-4": "16px",
+    "space-6": "24px",
+    "space-8": "32px",
+    "space-12": "48px",
+    "space-16": "64px"
+  },
+  "typography": {
+    "fontFamily": "'Roboto', sans-serif",
+    "headingFont": "'Playfair Display', serif",
+    "baseFontSize": "15px",
+    "lineHeight": 1.6
+  },
+  "accessibility": {
+    "touchTargetMinPx": 44,
+    "contrastRatioMinNormal": 4.5,
+    "contrastRatioMinLarge": 3.0
+  }
+}
