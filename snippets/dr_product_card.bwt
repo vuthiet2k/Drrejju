@@ -8,7 +8,7 @@
     <div class="swiper-container dr-pcard-swiper">
       <div class="swiper-wrapper">
         {% for image in p.images limit: 6 %}
-        <div class="swiper-slide"><a href="{{ p.url }}" title="{{ p.name | escape }}"><img loading="lazy" src="{{ image.src | img_url: 'large' }}" alt="{{ p.name | escape }}"></a></div>
+        <div class="swiper-slide"><a href="{{ p.url }}" title="{{ p.name | escape }}"><img loading="lazy" decoding="async" src="{{ image.src | img_url: 'large' }}" alt="{{ p.name | escape }}"></a></div>
         {% endfor %}
       </div>
       <div class="swiper-pagination dr-pcard-dots"></div>
@@ -16,7 +16,7 @@
       <span class="dr-pcard-nav dr-pcard-next" aria-label="Ảnh sau"><i class="fa-solid fa-chevron-right"></i></span>
     </div>
     {% else %}
-    <a href="{{ p.url }}" class="dr-pcard-single" title="{{ p.name | escape }}"><img loading="lazy" src="{{ p.featured_image.src | img_url: 'large' }}" alt="{{ p.name | escape }}"></a>
+    <a href="{{ p.url }}" class="dr-pcard-single" title="{{ p.name | escape }}"><img loading="lazy" decoding="async" src="{{ p.featured_image.src | img_url: 'large' }}" alt="{{ p.name | escape }}"></a>
     {% endif %}
 
     {% comment %} Badge / tag góc trên phải.

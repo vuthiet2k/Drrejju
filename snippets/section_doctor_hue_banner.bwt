@@ -7,7 +7,8 @@
   4. Cụm CTA đặt lịch tư vấn 1:1 & Khảo sát da
 {% endcomment %}
 
-<div class="dr-hue-banner-modular" style="width: 100%; max-width: 1280px; margin: 0 auto; padding: 24px 16px; font-family: var(--font-primary, 'Quicksand', sans-serif);">
+<section class="dr-section dr-hue-banner-section">
+<div class="dr-hue-banner-modular" style="width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 16px; font-family: var(--font-primary, 'Quicksand', sans-serif);">
 
   <!-- KHUNG BANNER TỔNG HỢP (HERO COMPOSITE) -->
   <div style="position: relative; background: linear-gradient(135deg, #FBF6EE 0%, #FAF2E2 100%); border: 1.5px solid rgba(223, 186, 115, 0.6); border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(10, 46, 36, 0.08);">
@@ -97,3 +98,5 @@
   </div>
 
 </div>
+
+</section>

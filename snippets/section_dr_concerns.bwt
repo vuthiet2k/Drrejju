@@ -6,7 +6,7 @@
    Bản ghi chọn phương án: _drafts/direction-approved.md {% endcomment %}
 
 {%- assign labels = 'Mụn & bít tắc,Nám & sắc tố,Da nhạy cảm & đỏ,Lão hóa,Da khô & thiếu ẩm,Lỗ chân lông to,Da khi mang thai,Chưa rõ vấn đề?' | split: ',' -%}
-{%- assign imgassets = 'concern-1.png,concern-2.png,concern-3.png,concern-4.png,concern-5.png,concern-6.png,concern-7.png,concern-8.png' | split: ',' -%}
+{%- assign imgassets = 'concern-1.jpg,concern-2.jpg,concern-3.jpg,concern-4.jpg,concern-5.jpg,concern-6.jpg,concern-7.jpg,concern-8.jpg' | split: ',' -%}
 {%- assign concern_urls = '/tri-mun,/tri-nam,/sensilis,/chong-lao-hoa,/duong-am,/da-mun-dau,/dat-lich,/dat-lich' | split: ',' -%}
 
 <section id="concerns" class="dr-section dr-bg dr-concerns">
@@ -34,13 +34,13 @@
         {% if clabel != blank %}
         <a href="{{ curl }}" class="dr-concern-tile" aria-label="{{ clabel | escape }}">
           {% if settings[imgkey] != blank %}
-            <img src="{{ settings[imgkey] | img_url: 'grande' }}" alt="{{ clabel | escape }}" loading="lazy">
+            <img src="{{ settings[imgkey] | img_url: 'grande' }}" alt="{{ clabel | escape }}" loading="lazy" decoding="async">
           {% else %}
             {% comment %} Asset thiếu → ẩn ảnh, tile còn nền đặc + nhãn.
                KHÔNG fallback sang picsum.photos như bản cũ: trên store thật mà thiếu asset
                thì trang sẽ nạp ảnh stock NGẪU NHIÊN từ web — không chấp nhận được với
                thương hiệu y khoa (ảnh không kiểm soát, lại phụ thuộc dịch vụ ngoài). {% endcomment %}
-            <img src="{{ imgassets[i] | asset_url }}" alt="{{ clabel | escape }}" loading="lazy"
+            <img src="{{ imgassets[i] | asset_url }}" alt="{{ clabel | escape }}" loading="lazy" decoding="async"
                  onerror="this.onerror=null;this.style.display='none';this.parentNode.className+=' is-noimg';">
           {% endif %}
           <span class="dr-concern-tile__label">{{ clabel }}</span>
