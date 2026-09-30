@@ -2,11 +2,11 @@
   DR.REJU — Clinical Blog & Knowledge Magazine Template V2 (Production-Ready)
   Design System Parity: Canva Frame 991 & Figma Clinical Magazine Layout
   Warm Luxury: Deep Emerald #0A2E24 + Sand Gold #DFBA73 + Cream #FAF6EF
-  Đã loại bỏ breadcrumb theo yêu cầu UI
+  Tích hợp hoàn toàn các biến Schema Settings chuẩn Sapo
 {% endcomment %}
 
 <div class="dr-blog-page layout-blog" itemscope itemtype="https://schema.org/Blog">
-  <meta itemprop="name" content="{{ blog.title | default: blog.name | default: 'Tạp Chí Da Liễu DR.REJU' }}">
+  <meta itemprop="name" content="{{ settings.dr_blog_mag_title | default: blog.title | default: blog.name | default: 'Tạp Chí Da Liễu DR.REJU' }}">
   <meta itemprop="description" content="{{ blog.description | default: store.description }}">
 
   <div class="dr-mag-container">
@@ -19,7 +19,7 @@
       <!-- Cột 1: Tin mới nhất (Text Feed) -->
       <div class="dr-mag-col-news">
         <div class="dr-mag-heading">
-          <h2 class="dr-mag-heading__title">Tin Mới Nhất</h2>
+          <h2 class="dr-mag-heading__title">{{ settings.dr_mag_news_title | default: 'Tin Mới Nhất' }}</h2>
           <span class="dr-mag-heading__sub">Cập nhật 24h</span>
         </div>
         <ul class="dr-news-feed-list">
@@ -36,36 +36,38 @@
       <div class="dr-mag-col-featured">
         <div class="dr-spotlight-hero-card">
           <div class="dr-spotlight-hero-thumb">
-            <span class="dr-spotlight-badge">Trị Nám Laser</span>
-            <a href="/blogs/tin-tuc/cap-nhat-phac-do-tri-nam-2026">
-              <img src="{{ 'bstk_Hue-2.jpg' | asset_url }}" 
-                   alt="Phác đồ trị nám chuẩn y khoa"
+            <span class="dr-spotlight-badge">{{ settings.dr_mag_spotlight_badge | default: 'Trị Nám Laser' }}</span>
+            <a href="{{ settings.dr_mag_spotlight_url | default: '/blogs/tin-tuc/cap-nhat-phac-do-tri-nam-2026' }}">
+              {%- assign dr_spot_img = settings.dr_mag_spotlight_img -%}
+              {%- if dr_spot_img == blank -%}{%- assign dr_spot_img = 'bstk_Hue-2.jpg' | asset_url -%}{%- endif -%}
+              <img src="{{ dr_spot_img }}" 
+                   alt="{{ settings.dr_mag_spotlight_title | default: 'Phác đồ trị nám chuẩn y khoa' }}"
                    onerror="this.src='https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80'" />
             </a>
           </div>
           <h3 class="dr-spotlight-hero-title">
-            <a href="/blogs/tin-tuc/cap-nhat-phac-do-tri-nam-2026">
-              Cập Nhật Phác Đồ Trị Nám Chuẩn Y Khoa 2026: Kết Hợp Laser & Dưỡng Chất Đường Uống
+            <a href="{{ settings.dr_mag_spotlight_url | default: '/blogs/tin-tuc/cap-nhat-phac-do-tri-nam-2026' }}">
+              {{ settings.dr_mag_spotlight_title | default: 'Cập Nhật Phác Đồ Trị Nám Chuẩn Y Khoa 2026: Kết Hợp Laser & Dưỡng Chất Đường Uống' }}
             </a>
           </h3>
           <div class="dr-spotlight-hero-meta">
-            <span>🩺 Cố vấn: Bs. Nguyễn Huệ</span> • <time>30/09/2026</time>
+            <span>🩺 Cố vấn: {{ settings.dr_blog_advisor | default: 'Bs. Nguyễn Huệ' }}</span> • <time>30/09/2026</time>
           </div>
         </div>
 
         <!-- 3 Horizontal Subcards (Retinol, Chống Nắng, Peptide) -->
         <div class="dr-mag-subcards-row">
           <a href="/blogs/tin-tuc/tagged/retinol" class="dr-mag-subcard">
-            <span class="dr-subcard-tag dr-tag-retinol">Retinol</span>
-            <p class="dr-subcard-title">Retinol 0.3%: Phác đồ phục hồi không bong tróc</p>
+            <span class="dr-subcard-tag dr-tag-retinol">{{ settings.dr_mag_subcard_tag_1 | default: 'Retinol' }}</span>
+            <p class="dr-subcard-title">{{ settings.dr_mag_subcard_title_1 | default: 'Retinol 0.3%: Phác đồ phục hồi không bong tróc' }}</p>
           </a>
           <a href="/blogs/tin-tuc/tagged/chong-nang" class="dr-mag-subcard">
-            <span class="dr-subcard-tag dr-tag-sun">Chống Nắng</span>
-            <p class="dr-subcard-title">Chống nắng vật lý & bảo vệ màng sinh học</p>
+            <span class="dr-subcard-tag dr-tag-sun">{{ settings.dr_mag_subcard_tag_2 | default: 'Chống Nắng' }}</span>
+            <p class="dr-subcard-title">{{ settings.dr_mag_subcard_title_2 | default: 'Chống nắng vật lý & bảo vệ màng sinh học' }}</p>
           </a>
           <a href="/blogs/tin-tuc/tagged/peptide" class="dr-mag-subcard">
-            <span class="dr-subcard-tag dr-tag-peptide">Peptide</span>
-            <p class="dr-subcard-title">Peptide sinh học trong phục hồi màng lipid</p>
+            <span class="dr-subcard-tag dr-tag-peptide">{{ settings.dr_mag_subcard_tag_3 | default: 'Peptide' }}</span>
+            <p class="dr-subcard-title">{{ settings.dr_mag_subcard_title_3 | default: 'Peptide sinh học trong phục hồi màng lipid' }}</p>
           </a>
         </div>
       </div>
@@ -73,7 +75,7 @@
       <!-- Cột 3: Tin xem nhiều nhất (Trending Media List) -->
       <div class="dr-mag-col-trending">
         <div class="dr-mag-heading">
-          <h2 class="dr-mag-heading__title">Xem Nhiều Nhất</h2>
+          <h2 class="dr-mag-heading__title">{{ settings.dr_mag_trending_title | default: 'Xem Nhiều Nhất' }}</h2>
           <span class="dr-mag-heading__sub">Top Reads</span>
         </div>
         <div class="dr-trending-list">
@@ -121,41 +123,43 @@
     <!-- ============================================================
          PHÂN KHU 2: BẢNG TRA CỨU CHUYÊN ĐỀ & BÁC SĨ (TOPIC MATRIX)
          ============================================================ -->
+    {% if settings.dr_mag_matrix_enable != false %}
     <section class="dr-mag-section dr-topic-matrix-section">
       <div class="dr-topic-matrix-grid">
         
         <div class="dr-topic-box">
           <h4 class="dr-topic-title">Retinol Chống Lão Hoá</h4>
-          <p class="dr-topic-author">Chuyên đề duyệt bởi: Bs. Nguyễn Huệ</p>
+          <p class="dr-topic-author">Chuyên đề duyệt bởi: {{ settings.dr_blog_advisor | default: 'Bs. Nguyễn Huệ' }}</p>
         </div>
 
         <div class="dr-topic-box">
           <h4 class="dr-topic-title">Điều Trị Nám Da Chuyên Sâu</h4>
-          <p class="dr-topic-author">Chuyên đề duyệt bởi: Bs. Nguyễn Huệ</p>
+          <p class="dr-topic-author">Chuyên đề duyệt bởi: {{ settings.dr_blog_advisor | default: 'Bs. Nguyễn Huệ' }}</p>
         </div>
 
         <div class="dr-topic-box">
           <h4 class="dr-topic-title">Vitamin C Làm Sáng & Trị Thâm</h4>
-          <p class="dr-topic-author">Chuyên đề duyệt bởi: Bs. Nguyễn Huệ</p>
+          <p class="dr-topic-author">Chuyên đề duyệt bởi: {{ settings.dr_blog_advisor | default: 'Bs. Nguyễn Huệ' }}</p>
         </div>
 
         <div class="dr-topic-box">
           <h4 class="dr-topic-title">Bôi KCN Phổ Rộng SPF/PA</h4>
-          <p class="dr-topic-author">Chuyên đề duyệt bởi: Bs. Nguyễn Huệ</p>
+          <p class="dr-topic-author">Chuyên đề duyệt bởi: {{ settings.dr_blog_advisor | default: 'Bs. Nguyễn Huệ' }}</p>
         </div>
 
         <div class="dr-topic-box">
           <h4 class="dr-topic-title">Routine Skincare Sáng & Tối</h4>
-          <p class="dr-topic-author">Chuyên đề duyệt bởi: Bs. Nguyễn Huệ</p>
+          <p class="dr-topic-author">Chuyên đề duyệt bởi: {{ settings.dr_blog_advisor | default: 'Bs. Nguyễn Huệ' }}</p>
         </div>
 
         <div class="dr-topic-box">
           <h4 class="dr-topic-title">Phục Hồi Da Nhiễm Corticoid</h4>
-          <p class="dr-topic-author">Chuyên đề duyệt bởi: Bs. Nguyễn Huệ</p>
+          <p class="dr-topic-author">Chuyên đề duyệt bởi: {{ settings.dr_blog_advisor | default: 'Bs. Nguyễn Huệ' }}</p>
         </div>
 
       </div>
     </section>
+    {% endif %}
 
     <!-- ============================================================
          PHÂN KHU 3: CHUYÊN ĐỀ HOẠT CHẤT SPOTLIGHT (ARBUTIN TIGER)
@@ -169,15 +173,17 @@
           <span class="dr-mag-heading__sub">Hoạt Chất Châu Âu</span>
         </div>
         <div class="dr-arbutin-banner-thumb">
-          <img src="{{ 'bstk_Hue-4.jpg' | asset_url }}" 
-               alt="Chuyên đề Arbutin và sắc tố da"
+          {%- assign dr_arbutin_img = settings.dr_mag_arbutin_img -%}
+          {%- if dr_arbutin_img == blank -%}{%- assign dr_arbutin_img = 'bstk_Hue-4.jpg' | asset_url -%}{%- endif -%}
+          <img src="{{ dr_arbutin_img }}" 
+               alt="{{ settings.dr_mag_arbutin_title | default: 'Chuyên đề Arbutin và sắc tố da' }}"
                onerror="this.src='https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80'" />
         </div>
         <h3 class="dr-spotlight-hero-title">
-          <a href="#">Arbutin Tiger & Phức Hợp Ức Chế Melanin Đa Tầng Chuẩn Y Khoa 2026</a>
+          <a href="#">{{ settings.dr_mag_arbutin_title | default: 'Arbutin Tiger & Phức Hợp Ức Chế Melanin Đa Tầng Chuẩn Y Khoa 2026' }}</a>
         </h3>
         <p class="dr-spotlight-hero-meta">
-          Nghiên cứu lâm sàng về tỷ lệ giảm đốm nâu và nám mảng khi kết hợp Alpha Arbutin 2% và Niacinamide tinh khiết.
+          {{ settings.dr_mag_arbutin_desc | default: 'Nghiên cứu lâm sàng về tỷ lệ giảm đốm nâu và nám mảng khi kết hợp Alpha Arbutin 2% và Niacinamide tinh khiết.' }}
         </p>
 
         <div class="dr-spotlight-subthumbs-row">
@@ -246,7 +252,7 @@
          ============================================================ -->
     <section class="dr-mag-section">
       <div class="dr-mag-heading">
-        <h2 class="dr-mag-heading__title">Góc Video & Audio Chuyên Sâu Từ Bác Sĩ</h2>
+        <h2 class="dr-mag-heading__title">{{ settings.dr_mag_media_title | default: 'Góc Video & Audio Chuyên Sâu Từ Bác Sĩ' }}</h2>
         <span class="dr-mag-heading__sub">Media Hub</span>
       </div>
 
@@ -334,9 +340,9 @@
           <!-- Banner Audio Podcast với sóng âm thanh -->
           <div class="dr-podcast-banner-card">
             <div>
-              <small style="font-size:10px; font-weight:800; color:var(--dr-gold); text-transform:uppercase; letter-spacing:1px;">Audio Podcast Tập 08</small>
-              <h4 class="dr-podcast-title">Phác Đồ Da Liễu Tiêu Chuẩn Quốc Tế</h4>
-              <span style="font-size:11px; opacity:0.85;">Thời lượng: 18:40 • Bs. Nguyễn Huệ</span>
+              <small style="font-size:10px; font-weight:800; color:var(--dr-gold); text-transform:uppercase; letter-spacing:1px;">{{ settings.dr_mag_podcast_ep | default: 'Audio Podcast Tập 08' }}</small>
+              <h4 class="dr-podcast-title">{{ settings.dr_mag_podcast_title | default: 'Phác Đồ Da Liễu Tiêu Chuẩn Quốc Tế' }}</h4>
+              <span style="font-size:11px; opacity:0.85;">{{ settings.dr_mag_podcast_duration | default: 'Thời lượng: 18:40 • Bs. Nguyễn Huệ' }}</span>
             </div>
             <div class="dr-podcast-wave">
               <span class="dr-wave-bar" style="height:12px; animation-delay:0.1s;"></span>
@@ -357,20 +363,22 @@
     <section class="dr-mag-section">
       <div class="dr-case-study-card">
         <div class="dr-case-study-media">
-          <img src="{{ 'bs_Hue-2.jpg' | asset_url }}" 
-               alt="Ca lâm sàng phục hồi màng lipid"
+          {%- assign dr_case_img = settings.dr_mag_case_img -%}
+          {%- if dr_case_img == blank -%}{%- assign dr_case_img = 'bs_Hue-2.jpg' | asset_url -%}{%- endif -%}
+          <img src="{{ dr_case_img }}" 
+               alt="{{ settings.dr_mag_case_title | default: 'Ca lâm sàng phục hồi màng lipid' }}"
                onerror="this.src='https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80'" />
         </div>
         <div class="dr-case-study-body">
-          <span class="dr-case-study-badge">✦ PHÁC ĐỒ PHỤC HỒI CHUYÊN SÂU DÀNH CHO DA NHIỄM CORTICOID</span>
+          <span class="dr-case-study-badge">{{ settings.dr_mag_case_badge | default: '✦ PHÁC ĐỒ PHỤC HỒI CHUYÊN SÂU DÀNH CHO DA NHIỄM CORTICOID' }}</span>
           <h3 class="dr-case-study-title">
-            Phác Đồ Đa Tầng Phục Hồi Màng Lipid & Tái Sinh Da Nhiễm Corticoid Sau 6 Tuần
+            {{ settings.dr_mag_case_title | default: 'Phác Đồ Đa Tầng Phục Hồi Màng Lipid & Tái Sinh Da Nhiễm Corticoid Sau 6 Tuần' }}
           </h3>
           <p class="dr-case-study-desc">
-            Hướng dẫn chi tiết từ Bs. Nguyễn Huệ về các hoạt chất Ceramide NP, HA phân tử nhỏ kết hợp Bio-Lipid nhằm tái sinh làn da yếu, giãn mao mạch và chấm dứt tình trạng mỏng đỏ sau cai nghiện kem trộn.
+            {{ settings.dr_mag_case_desc | default: 'Hướng dẫn chi tiết từ Bs. Nguyễn Huệ về các hoạt chất Ceramide NP, HA phân tử nhỏ kết hợp Bio-Lipid nhằm tái sinh làn da yếu, giãn mao mạch và chấm dứt tình trạng mỏng đỏ sau cai nghiện kem trộn.' }}
           </p>
-          <a href="/pages/dat-lich" class="dr-btn-primary-emerald">
-            <span>Đọc Toàn Bộ Phác Đồ ➔</span>
+          <a href="{{ settings.dr_mag_case_btn_url | default: '/pages/dat-lich' }}" class="dr-btn-primary-emerald">
+            <span>{{ settings.dr_mag_case_btn_text | default: 'Đọc Toàn Bộ Phác Đồ ➔' }}</span>
           </a>
         </div>
       </div>
@@ -381,7 +389,7 @@
          ============================================================ -->
     <section class="dr-mag-section">
       <div class="dr-mag-heading">
-        <h2 class="dr-mag-heading__title">BÀI VIẾT MỚI NHẤT TỪ CHUYÊN GIA DA LIỄU</h2>
+        <h2 class="dr-mag-heading__title">{{ settings.dr_mag_articles_grid_title | default: 'BÀI VIẾT MỚI NHẤT TỪ CHUYÊN GIA DA LIỄU' }}</h2>
         <span class="dr-mag-heading__sub">Chuyên Khoa</span>
       </div>
 
