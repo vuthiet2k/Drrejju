@@ -36,7 +36,7 @@
 {%if template contains 'search' %}{{ 'search_style.scss.css' | asset_url | stylesheet_tag }}{%endif%}
 {%if template contains 'page.hethong'%}{{ 'hethong.scss.css' | asset_url | stylesheet_tag }}{%endif%}
 		<style>
-	@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 	/* ============================================================
 	   DR.REJU — DESIGN TOKENS (nguồn sự thật cho toàn bộ class dùng chung)
@@ -50,6 +50,13 @@
 	  --emerald-dk: {{ settings.hover_color  | default: '#06201a' }};
 	  --gold:       {{ settings.color_gold   | default: '#DFBA73' }};   /* vàng gold cát — nhấn / nút / icon */
 	  --gold-lt:    {{ settings.color_gold_lt | default: '#E3C17E' }};
+
+	  /* — WARM LUXURY TOKENS (Trang Bác sĩ Nguyễn Huệ V2) — */
+	  --color-warm-dark:  #2B1E16;
+	  --color-warm-cream: #FAF6EF;
+	  --color-warm-soft:  #F1ECE3;
+	  --color-gold-warm:  #DFBA73;
+	  --font-serif:       'Playfair Display', Georgia, serif;
 
 	  /* — BODY (nền sáng) — */
 	  --bg:        #ffffff;   /* trắng — nền chính */
