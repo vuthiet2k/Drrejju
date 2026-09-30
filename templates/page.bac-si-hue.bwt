@@ -1,49 +1,107 @@
 {% comment %}
-  DR.REJU — Template Trang Bác Sĩ Nguyễn Huệ V2 (page.bac-si-hue.bwt)
+  DR.REJU — Template Trang Bác Sĩ Nguyễn Huệ V2.1 (Full 100vw Swiper Hero)
   Thiết kế Warm Organic Luxury & Medical Credibility
-  Nâng cấp toàn diện theo 4 bản thiết kế SVG/Canva (7.jpg, 8.jpg, 9.jpg, 10.jpg)
+  Nâng cấp: Hero 100vw Swiper Slider đa chiều kết hợp nền ảnh bác sĩ & không gian clinic
   Tích hợp hoàn toàn các biến Schema Settings chuẩn Sapo
 {% endcomment %}
 
 <div class="dr-hue-v2-container">
 
   <!-- ============================================================
-       SECTION 1: HERO BANNER (Bản vẽ 7.jpg)
+       SECTION 1: HERO BANNER 100VW SWIPER SLIDER (Bản vẽ 7.jpg Nâng Cấp)
        ============================================================ -->
-  <section class="dr-section dr-hero-section">
-    <div class="dr-inner-wrap dr-hero-grid">
-      
-      <!-- Cột trái: Văn bản định vị & Khẩu hiệu -->
-      <div class="dr-hero-content">
-        <span class="dr-eyebrow">{{ settings.dr_hue_hero_eyebrow | default: 'DR.REJU BEAUTY CLINIC & COSMETICS' }}</span>
-        <h1 class="dr-hero-title">
-          {{ settings.dr_hue_hero_title | default: 'Làn da khỏe đẹp<br>bắt đầu từ sự thấu hiểu<br>dành cho chính bạn' }}
-        </h1>
-        <div class="dr-hero-desc">
-          <p>{{ settings.dr_hue_hero_desc | default: 'Da đẹp không chỉ là bề ngoài, mà là sự tự tin, bình yên và hạnh phúc từ bên trong.<br>Tại Dr.Reju, chúng tôi đồng hành cùng bạn trên hành trình chăm sóc làn da khỏe mạnh, an toàn và bền vững.' }}</p>
+  <section class="dr-hero-100vw-section">
+    <div class="swiper dr-hero-swiper" id="drHueHeroSwiper">
+      <div class="swiper-wrapper">
+        
+        <!-- Slide 1: Bác sĩ Nguyễn Huệ & Định vị cốt lõi -->
+        <div class="swiper-slide dr-hero-slide">
+          <div class="dr-hero-slide-bg">
+            {%- assign dr_hero_img_1 = settings.dr_hue_hero_image -%}
+            {%- if dr_hero_img_1 == blank -%}{%- assign dr_hero_img_1 = 'bs_Hue-1.jpg' | asset_url -%}{%- endif -%}
+            <img src="{{ dr_hero_img_1 }}" 
+                 alt="Bác sĩ Nguyễn Huệ - DR.REJU" 
+                 class="dr-hero-bg-img" 
+                 onerror="this.src='{{ 'bs_nguyen_hue_portrait.jpg' | asset_url }}'" />
+            <div class="dr-hero-scrim"></div>
+          </div>
+          <div class="dr-inner-wrap dr-hero-slide-wrap">
+            <div class="dr-hero-content">
+              <span class="dr-eyebrow">{{ settings.dr_hue_hero_eyebrow | default: 'DR.REJU BEAUTY CLINIC & COSMETICS' }}</span>
+              <h1 class="dr-hero-title">
+                {{ settings.dr_hue_hero_title | default: 'Làn da khỏe đẹp<br>bắt đầu từ sự thấu hiểu<br>dành cho chính bạn' }}
+              </h1>
+              <div class="dr-hero-desc">
+                <p>{{ settings.dr_hue_hero_desc | default: 'Da đẹp không chỉ là bề ngoài, mà là sự tự tin, bình yên và hạnh phúc từ bên trong.<br>Tại Dr.Reju, chúng tôi đồng hành cùng bạn trên hành trình chăm sóc làn da khỏe mạnh, an toàn và bền vững.' }}</p>
+              </div>
+              <div class="dr-hero-ctas">
+                <a href="{{ settings.dr_hue_hero_cta_url | default: '#dat-lich' }}" class="dr-btn-gold">{{ settings.dr_hue_hero_cta_text | default: 'Đăng Ký Tư Vấn Cùng Bác Sĩ →' }}</a>
+                <a href="/pages/quiz" class="dr-btn-outline">Làm Khảo Sát Hồ Sơ Da</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="dr-hero-ctas">
-          <a href="{{ settings.dr_hue_hero_cta_url | default: '#dat-lich' }}" class="dr-btn-gold">{{ settings.dr_hue_hero_cta_text | default: 'Đăng Ký Tư Vấn Cùng Bác Sĩ →' }}</a>
-          <a href="/page.quiz" class="dr-btn-outline">Làm Khảo Sát Hồ Sơ Da</a>
+
+        <!-- Slide 2: Phác đồ thăm khám chuẩn y khoa & Soi da đa tầng -->
+        <div class="swiper-slide dr-hero-slide">
+          <div class="dr-hero-slide-bg">
+            <img src="{{ 'bstk_Hue-1.jpg' | asset_url }}" 
+                 alt="Bác sĩ thăm khám và phân tích da chuyên sâu" 
+                 class="dr-hero-bg-img" 
+                 onerror="this.src='https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1920&q=80'" />
+            <div class="dr-hero-scrim"></div>
+          </div>
+          <div class="dr-inner-wrap dr-hero-slide-wrap">
+            <div class="dr-hero-content">
+              <span class="dr-eyebrow">CHUYÊN GIA DA LIỄU THẨM MỸ NỘI KHOA</span>
+              <h2 class="dr-hero-title">
+                Phác Đồ Cá Nhân Hóa 1:1<br>Chuẩn Y Khoa Cùng Bác Sĩ
+              </h2>
+              <div class="dr-hero-desc">
+                <p>Thăm khám kỹ lưỡng, phân tích cấu trúc da đa tầng và đồng hành liên tục suốt quá trình điều trị để mang lại kết quả bền vững, an toàn từ gốc rễ.</p>
+              </div>
+              <div class="dr-hero-ctas">
+                <a href="#dat-lich" class="dr-btn-gold">Đặt Hẹn Soi Da Trực Tiếp →</a>
+                <a href="/blogs/tin-tuc" class="dr-btn-outline">Xem Case Study Lâm Sàng</a>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- Slide 3: Không gian phòng khám Wabi-Sabi chuẩn y khoa -->
+        <div class="swiper-slide dr-hero-slide">
+          <div class="dr-hero-slide-bg">
+            <img src="{{ 'bstk_Hue-3.jpg' | asset_url }}" 
+                 alt="Không gian phòng khám DR.REJU Beauty Clinic" 
+                 class="dr-hero-bg-img" 
+                 onerror="this.src='https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80'" />
+            <div class="dr-hero-scrim"></div>
+          </div>
+          <div class="dr-inner-wrap dr-hero-slide-wrap">
+            <div class="dr-hero-content">
+              <span class="dr-eyebrow">KHÔNG GIAN TRỊ LIỆU CAO CẤP</span>
+              <h2 class="dr-hero-title">
+                Trải Nghiệm Thư Thái<br>An Tâm Trong Từng Liệu Trình
+              </h2>
+              <div class="dr-hero-desc">
+                <p>Hội tụ các công nghệ hiện đại hàng đầu châu Âu trong một không gian tinh tế, riêng tư và chuẩn mực vô khuẩn y tế đạt chuẩn quốc tế.</p>
+              </div>
+              <div class="dr-hero-ctas">
+                <a href="#dat-lich" class="dr-btn-gold">Nhận Phác Đồ Phục Hồi →</a>
+                <a href="/pages/gioi-thieu" class="dr-btn-outline">Tìm Hiểu Về Dr.Reju</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- Cột phải: Khung ảnh Bác sĩ & Hoa sen vàng kim -->
-      <div class="dr-hero-media">
-        <div class="dr-arch-frame">
-          {% if settings.dr_hue_hero_lotus_enable != false %}
-          <div class="dr-lotus-texture">
-            <img src="{{ 'golden_lotus_pattern.svg' | asset_url }}" alt="Hoa sen DR.REJU" loading="lazy" />
-          </div>
-          {% endif %}
-          <div class="dr-doctor-portrait">
-            {%- assign dr_hero_img = settings.dr_hue_hero_image -%}
-            {%- if dr_hero_img == blank -%}{%- assign dr_hero_img = 'bs_Hue-1.jpg' | asset_url -%}{%- endif -%}
-            <img src="{{ dr_hero_img }}" alt="Bác sĩ Nguyễn Huệ - DR.REJU" onerror="this.src='{{ 'bs_nguyen_hue_portrait.jpg' | asset_url }}'" />
-          </div>
-        </div>
+      <!-- Điều hướng Swiper Slider -->
+      <div class="dr-hero-swiper-nav">
+        <button type="button" class="dr-hero-swiper-btn dr-hero-btn-prev" aria-label="Slide trước">❮</button>
+        <button type="button" class="dr-hero-swiper-btn dr-hero-btn-next" aria-label="Slide kế tiếp">❯</button>
       </div>
-
+      <div class="swiper-pagination dr-hero-pagination"></div>
     </div>
   </section>
 
@@ -403,7 +461,7 @@
     align-items: center;
     justify-content: center;
     padding: 12px 24px;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.9);
     color: #2B1E16 !important;
     font-weight: 700;
     font-size: 13px;
@@ -411,26 +469,81 @@
     border: 1.5px solid #2B1E16;
     text-decoration: none !important;
     transition: all 0.2s;
+    backdrop-filter: blur(4px);
   }
   .dr-btn-outline:hover {
     background: #2B1E16;
     color: #ffffff !important;
   }
 
-  .dr-hero-section {
-    padding-top: 50px;
-    padding-bottom: 70px;
-    background: linear-gradient(180deg, #FDFBF7 0%, #FAF6EF 100%);
+  /* ============================================================
+     HERO 100VW SWIPER FULL BLEED STYLING
+     ============================================================ */
+  .dr-hero-100vw-section {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    overflow: hidden;
+    background-color: var(--color-warm-cream, #FAF6EF);
   }
-  .dr-hero-grid {
+  .dr-hero-swiper {
+    width: 100%;
+    min-height: 580px;
+    height: calc(88vh - 40px);
+    max-height: 740px;
+    position: relative;
+  }
+  .dr-hero-slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 40px;
+    overflow: hidden;
+  }
+  .dr-hero-slide-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .dr-hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center right;
+    display: block;
+  }
+  .dr-hero-scrim {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      rgba(250, 246, 239, 0.97) 0%, 
+      rgba(250, 246, 239, 0.92) 38%, 
+      rgba(250, 246, 239, 0.50) 65%, 
+      rgba(250, 246, 239, 0.15) 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .dr-hero-slide-wrap {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    align-items: center;
+    height: 100%;
   }
   .dr-hero-content {
-    flex: 1 1 580px;
-    max-width: 640px;
+    max-width: 620px;
   }
   .dr-hero-title {
     font-family: var(--font-serif, 'Playfair Display', serif);
@@ -452,50 +565,59 @@
     flex-wrap: wrap;
     gap: 14px;
   }
-  .dr-hero-media {
-    flex: 1 1 440px;
-    max-width: 500px;
-    display: flex;
-    justify-content: center;
-  }
-  .dr-arch-frame {
-    position: relative;
-    width: 100%;
-    max-width: 420px;
-    aspect-ratio: 3/4;
-    border-radius: 200px 200px 24px 24px;
-    background: linear-gradient(135deg, #F8F2E6 0%, #F1E6D2 100%);
-    border: 1.5px solid rgba(223, 186, 115, 0.5);
-    overflow: hidden;
-    box-shadow: 0 15px 35px rgba(43, 30, 22, 0.08);
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-  }
-  .dr-lotus-texture {
+  .dr-hero-swiper-nav {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 160px;
-    opacity: 0.18;
-    pointer-events: none;
-  }
-  .dr-doctor-portrait {
-    width: 100%;
-    height: 94%;
+    bottom: 35px;
+    right: 60px;
+    z-index: 10;
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    position: relative;
-    z-index: 2;
+    gap: 12px;
   }
-  .dr-doctor-portrait img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    object-position: bottom center;
+  .dr-hero-swiper-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    border: 1.5px solid #DFBA73;
+    color: #0A2E24;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: all 0.25s ease;
+  }
+  .dr-hero-swiper-btn:hover {
+    background: #DFBA73;
+    color: #ffffff;
+    transform: scale(1.06);
+  }
+  .dr-hero-pagination {
+    position: absolute;
+    bottom: 25px !important;
+    left: 50% !important;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: auto !important;
+  }
+  .dr-hero-pagination .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: #2B1E16;
+    opacity: 0.25;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+  }
+  .dr-hero-pagination .swiper-pagination-bullet-active {
+    background: #DFBA73;
+    opacity: 1;
+    width: 26px;
+    border-radius: 10px;
   }
 
+  /* INTRO SECTION */
   .dr-intro-section {
     background-color: #ffffff;
   }
@@ -595,6 +717,7 @@
     margin: 0;
   }
 
+  /* JOURNEY SECTION */
   .dr-journey-section {
     background-color: #F8F5EE;
   }
@@ -702,6 +825,7 @@
   .dr-prev { left: 0; }
   .dr-next { right: 0; }
 
+  /* STORY SECTION */
   .dr-story-section {
     background: #ffffff;
   }
@@ -811,6 +935,7 @@
     margin-top: 2px;
   }
 
+  /* FORM SECTION */
   .dr-form-section {
     background: linear-gradient(180deg, #FAF6EF 0%, #F5EFE3 100%);
     padding-bottom: 90px;
@@ -887,18 +1012,15 @@
   }
 
   @media (max-width: 1024px) {
-    .dr-hero-grid,
     .dr-story-grid,
     .dr-intro-header-grid {
       flex-direction: column;
       text-align: center;
       gap: 30px;
     }
-    .dr-hero-ctas,
     .dr-story-footer {
       justify-content: center;
     }
-    .dr-hero-title,
     .dr-serif-title,
     .dr-story-title {
       font-size: 32px;
@@ -908,8 +1030,44 @@
     }
   }
 
+  @media (max-width: 991px) {
+    .dr-hero-swiper {
+      min-height: 520px;
+      height: 560px;
+    }
+    .dr-hero-slide-bg .dr-hero-bg-img {
+      object-position: center;
+    }
+    .dr-hero-scrim {
+      background: linear-gradient(180deg, 
+        rgba(250, 246, 239, 0.94) 0%, 
+        rgba(250, 246, 239, 0.88) 55%, 
+        rgba(250, 246, 239, 0.65) 100%);
+    }
+    .dr-hero-slide-wrap {
+      justify-content: center;
+      text-align: center;
+    }
+    .dr-hero-content {
+      max-width: 100%;
+    }
+    .dr-hero-title {
+      font-size: 32px;
+    }
+    .dr-hero-ctas {
+      justify-content: center;
+    }
+    .dr-hero-swiper-nav {
+      display: none;
+    }
+  }
+
   @media (max-width: 767px) {
     .dr-section { padding: 45px 16px; }
+    .dr-hero-swiper {
+      min-height: 480px;
+      height: 520px;
+    }
     .dr-hero-title,
     .dr-serif-title,
     .dr-story-title {
@@ -930,6 +1088,34 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    // Khởi tạo Swiper Hero 100vw
+    function initHeroSwiper() {
+      if (typeof Swiper !== 'undefined') {
+        new Swiper('#drHueHeroSwiper', {
+          loop: true,
+          effect: 'fade',
+          fadeEffect: { crossFade: true },
+          speed: 900,
+          autoplay: {
+            delay: 5500,
+            disableOnInteraction: false
+          },
+          pagination: {
+            el: '.dr-hero-pagination',
+            clickable: true
+          },
+          navigation: {
+            nextEl: '.dr-hero-btn-next',
+            prevEl: '.dr-hero-btn-prev'
+          }
+        });
+      } else {
+        setTimeout(initHeroSwiper, 100);
+      }
+    }
+    initHeroSwiper();
+
+    // Bước khám lâm sàng
     var stepItems = document.querySelectorAll('.dr-step-item');
     stepItems.forEach(function(item) {
       item.addEventListener('click', function() {
