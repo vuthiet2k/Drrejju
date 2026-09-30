@@ -37,9 +37,7 @@
     <a href="/" class="dr-brand" title="{{ store.name }}" aria-label="{{ store.name | default: 'Dr.REJU' }}">
       <img src="{{ dr_logo_src }}" alt="{{ store.name | default: 'Dr.REJU' }}" class="dr-brand-logo" width="150" height="46">
     </a>
-    {% comment %} Mega menu (phương án H3): nhánh có link con → panel NỀN SÁNG tràn ngang,
-       link chia cột + thẻ quảng bá bên phải. Nhánh không có con → link thường.
-       Bản cũ render phẳng nên bỏ mất toàn bộ link con của main-menu. {% endcomment %}
+    {% comment %} Mega menu (phương án H3) {% endcomment %}
     <nav class="dr-navmenu">
       {% for link in nav.links %}
         {% if link.links.size > 0 %}
@@ -85,19 +83,19 @@
         {% endif %}
       {% endfor %}
     </nav>
-    <div class="dr-navactions">
-      <a href="/search" data-dr-search-open aria-label="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></a>
-      {% if settings.use_wishlist %}
-      <a href="/favorite" class="dr-hide-mobile" aria-label="Yêu thích"><i class="fa-regular fa-heart"></i></a>
-      {% endif %}
-      <a href="/account" class="dr-hide-mobile" aria-label="Tài khoản"><i class="fa-regular fa-user"></i></a>
-      <a href="/cart" aria-label="Giỏ hàng" data-dr-cart-open><i class="fa-solid fa-bag-shopping"></i><span class="dr-cart-count count_item_pr">{{ cart.item_count }}</span></a>
+    <div class="dr-header-actions-wrap" style="display:flex; align-items:center; justify-content:flex-end; margin-left:auto; flex:0 0 auto;">
+      <div class="dr-navactions" style="display:inline-flex; align-items:center; gap:12px; margin:0; padding:0; width:auto;">
+        <a href="/search" data-dr-search-open aria-label="Tìm kiếm" style="display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; color:var(--brand-text);"><i class="fa-solid fa-magnifying-glass"></i></a>
+        {% if settings.use_wishlist %}
+        <a href="/favorite" class="dr-hide-mobile" aria-label="Yêu thích" style="display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; color:var(--brand-text);"><i class="fa-regular fa-heart"></i></a>
+        {% endif %}
+        <a href="/account" class="dr-hide-mobile" aria-label="Tài khoản" style="display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; color:var(--brand-text);"><i class="fa-regular fa-user"></i></a>
+        <a href="/cart" aria-label="Giỏ hàng" data-dr-cart-open style="display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; color:var(--brand-text); position:relative;"><i class="fa-solid fa-bag-shopping"></i><span class="dr-cart-count count_item_pr">{{ cart.item_count }}</span></a>
+      </div>
     </div>
   </div>
 
-  {% comment %} ══ Panel tìm kiếm (phương án S2) — chỉ desktop (≥992px); ≤991px dùng overlay dr_mobile ══
-     Kết quả tức thì lấy từ /search?view=smartjson (templates/search.smartjson.bwt đã có sẵn).
-     Không JS thì icon kính lúp vẫn là link /search — không mất chức năng. {% endcomment %}
+  {% comment %} Panel tìm kiếm (phương án S2) {% endcomment %}
   {%- assign scat = linklists[settings.footer_cat_menu] -%}
   {%- unless scat.links.size > 0 -%}{%- assign scat = linklists['footer-categories'] -%}{%- endunless -%}
 
@@ -120,7 +118,7 @@
       </div>
 
       <aside class="dr-srch-side">
-        {%- assign sugg = settings.header_search_suggest_list | default: 'Retinol,Chống lão hoá,Trị mụn,Kem chống nắng,Serum,Cấp ẩm' | split: ',' -%}
+        {%- assign sugg = settings.header_search_suggest_list | default: 'Retinol,Chống lão hoá,Trị mụn,Kem chống nắng,Serum,Cấp ẩm' | split: ',' -% %}
         {% if sugg.size > 0 %}
         <div class="dr-srch-blk">
           <h6>Từ khoá phổ biến</h6>
@@ -146,9 +144,46 @@
 </header>
 
 <style>
-/* ══ MEGA MENU (H3) — panel NỀN SÁNG tràn ngang ══
-   .dr-navitem--mega phải là position:static để panel lấy mốc định vị là .dr-siteheader
-   (sticky = đã là positioned). Để relative thì panel bó trong bề rộng mục menu. */
+.dr-header-actions-wrap {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  margin-left: auto !important;
+  flex: 0 0 auto !important;
+}
+.dr-navactions {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 12px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex: 0 0 auto !important;
+  width: auto !important;
+}
+.dr-navactions a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 34px !important;
+  height: 34px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  color: var(--brand-text) !important;
+  font-size: 16px !important;
+  border-radius: 50% !important;
+  transition: all .2s ease !important;
+  flex: 0 0 auto !important;
+}
+.dr-navactions a:hover {
+  background: rgba(223, 186, 115, 0.18) !important;
+  color: var(--gold) !important;
+}
+.dr-cart-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+}
 .dr-navitem{ display: flex; align-items: center; }
 .dr-navitem--mega{ position: static; }
 .dr-navlink{ display: inline-flex; align-items: center; gap: 6px; }
@@ -167,10 +202,6 @@
 .dr-mega-in{ display: grid; grid-template-columns: 1fr 300px; gap: 0 44px; padding: 30px 0 34px; }
 .dr-mega-links{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 40px; align-content: start; }
 
-/* ⚠️ Ghi đè rule .dr-navmenu a — nó áp uppercase + màu gold + gạch chân ::after +
-   white-space:nowrap; và rule overlay ở trang chủ còn ép color:#fff.
-   Không ghi đè đủ thì: chữ trắng trên nền trắng, và tiêu đề thẻ quảng bá KHÔNG xuống
-   dòng được nên tràn ra ngoài thẻ. Phải reset cả white-space. */
 .dr-siteheader .dr-mega a,
 .dr-siteheader--overlay:not(.is-stuck) .dr-mega a{
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
@@ -186,7 +217,6 @@
 .dr-mega-arw{ font-size: 9px; color: var(--gold); opacity: 0; transition: opacity .2s ease; }
 .dr-mega-links a:hover .dr-mega-arw{ opacity: 1; }
 
-/* Cột phải panel — thẻ Best Seller (tuỳ chọn) xếp trên thẻ quảng bá */
 .dr-mega-side{ display: flex; flex-direction: column; gap: 14px; }
 .dr-siteheader .dr-mega-best,
 .dr-siteheader--overlay:not(.is-stuck) .dr-mega-best{
@@ -204,7 +234,6 @@
   color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .dr-mega-best-info em{ font-style: normal; font-size: var(--fs-sm); font-weight: 700; color: var(--accent); }
 
-/* Thẻ quảng bá — emerald nổi trên panel sáng */
 .dr-siteheader .dr-mega-promo,
 .dr-siteheader--overlay:not(.is-stuck) .dr-mega-promo{
   display: flex; flex-direction: column; justify-content: flex-end; min-height: 150px;
@@ -224,17 +253,14 @@
   .dr-mega-in{ grid-template-columns: 1fr 260px; gap: 0 30px; }
   .dr-mega-links{ grid-template-columns: repeat(2, 1fr); }
 }
-/* ≤991px dùng drawer mobile (dr_mobile), không cần panel */
 @media (max-width: 991px){ .dr-mega{ display: none; } }
 
-/* ══ PANEL TÌM KIẾM (S2) — cùng ngôn ngữ nền sáng với mega menu ══ */
 .dr-srch{ position: absolute; left: 0; right: 0; top: 100%; z-index: 195;
   background: var(--bg); border-top: 1px solid var(--line);
   box-shadow: 0 20px 44px rgba(6,32,26,.18);
   opacity: 0; visibility: hidden; transform: translateY(6px);
   transition: opacity .22s ease, transform .22s ease, visibility .22s ease; }
 .dr-srch.is-open{ opacity: 1; visibility: visible; transform: none; }
-
 .dr-srch-top{ display: flex; align-items: center; gap: 14px; padding: 18px 40px; }
 .dr-srch-form{ flex: 1; display: flex; align-items: center; gap: 12px; margin: 0;
   height: 50px; padding: 0 8px 0 18px; background: var(--bg-soft); border-radius: var(--radius-pill); }
@@ -254,8 +280,6 @@
   letter-spacing: .14em; text-transform: uppercase; color: var(--text-soft); }
 .dr-srch-res{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px 20px; min-height: 40px; }
 
-/* Hàng kết quả — cùng lưu ý ghi đè như .dr-mega a (rule .dr-navmenu a KHÔNG áp ở đây
-   vì panel nằm ngoài .dr-navmenu, nhưng vẫn khai báo đủ để không phụ thuộc thứ tự CSS) */
 .dr-srch-row{ display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px;
   text-transform: none; letter-spacing: normal; white-space: normal;
   transition: background .18s ease; }
@@ -293,7 +317,6 @@
   .dr-srch-in{ grid-template-columns: 1fr 250px; gap: 0 30px; }
   .dr-srch-res{ grid-template-columns: 1fr; }
 }
-/* ≤991px dùng overlay toàn màn hình của dr_mobile */
 @media (max-width: 991px){ .dr-srch{ display: none; } }
 
 @media (prefers-reduced-motion: reduce){
@@ -305,21 +328,14 @@
 
 <script>
 (function(){
-  /* ══ Tìm kiếm tức thì ══
-     Nguồn: /search?view=smartjson  (templates/search.smartjson.bwt)
-     Dạng trả về: { "searchResultCount": "7", "<id>": {name,url,image,price,compare_price}, ... }
-     → phải bỏ qua khoá searchResultCount khi lặp, nó KHÔNG phải sản phẩm.
-     Lưu ý: preview local không xử lý ?view= nên sẽ trả HTML → JSON.parse lỗi →
-     rơi vào nhánh onFail, panel chỉ hiện thanh "Xem tất cả". Trên Sapo thì có kết quả thật. */
   var MIN_CHARS = 2, DEBOUNCE = 300, DESKTOP = 992;
-  var seq = 0;   /* chống race: chỉ nhận phản hồi của yêu cầu mới nhất */
+  var seq = 0;
 
   function esc(s){
     return String(s == null ? '' : s)
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;');
   }
 
-  /* Dùng chung cho panel desktop và overlay mobile */
   window.drSearchFetch = function(query, onData, onFail){
     var my = ++seq;
     var url = '/search?view=smartjson&type=product&query=' + encodeURIComponent(query);
@@ -404,7 +420,6 @@
       timer = setTimeout(function(){
         window.drSearchFetch(q, function(items, total){ render(items, total, q); },
           function(){
-            /* Không đọc được JSON (vd môi trường preview) → vẫn cho khách sang trang kết quả */
             lb.textContent = 'Nhấn Enter để xem kết quả';
             res.innerHTML = '';
             all.href = '/search?type=product&query=' + encodeURIComponent(q);
@@ -420,7 +435,6 @@
       if (!input.value.replace(/^\s+|\s+$/g, '')) e.preventDefault();
     });
 
-    /* Icon kính lúp: ≥992px mở panel; nhỏ hơn để dr_mobile lo overlay */
     var opens = document.querySelectorAll('[data-dr-search-open]');
     for (var i = 0; i < opens.length; i++){
       opens[i].addEventListener('click', function(e){
@@ -441,11 +455,6 @@
     });
   }
 
-  /* ══ Mini-cart drawer ══
-     Nội dung giỏ hàng do snippets/ajaxcartfunction.bwt tự nạp qua /cart.js và
-     tiêm vào #CartContainer.CartSideContainer (bên trong .cart-sidebar).
-     Mở/đóng panel tự xử lý ở đây (không phụ thuộc script ajaxcartfunction.bwt —
-     file đó rất lớn/cũ, không đảm bảo luôn chạy được ở mọi môi trường). */
   function initCart(){
     var drawer = document.querySelector('.cart-sidebar'),
         backdrop = document.querySelector('.backdrop__body-backdrop___1rvky');
@@ -482,9 +491,7 @@
 (function(){
   var h=document.getElementById('drHeader');
   if(!h) return;
-  // Chống giật: hysteresis (2 mốc lệch nhau, không dao động bật/tắt quanh 1 ngưỡng)
-  // + gom vào requestAnimationFrame + chỉ đụng DOM khi ĐỔI trạng thái.
-  var ON = 80, OFF = 20;      // bật is-stuck khi cuộn quá 80px, tắt khi lên dưới 20px
+  var ON = 80, OFF = 20;
   var stuck = false, ticking = false;
   function apply(){
     ticking = false;
@@ -498,7 +505,6 @@
 })();
 </script>
 
-{% comment %} ===== Language switcher (Google Translate) ===== {% endcomment %}
 <script>
 function googleTranslateElementInit(){
   new google.translate.TranslateElement({ pageLanguage:'vi', includedLanguages:'vi,en,zh-CN,ja,ko', autoDisplay:false }, 'google_translate_element');
@@ -516,8 +522,6 @@ function googleTranslateElementInit(){
     list.querySelectorAll('li').forEach(function(li){ li.classList.toggle('active', li.dataset.lang===lang); });
   }
   function clearGoogtrans(){
-    // Google set cookie googtrans ở nhiều scope domain (vd www.drreju.vn set ở .drreju.vn).
-    // Xóa hết mọi biến thể domain + host-only, nếu không reload sẽ tự dịch lại → kẹt tiếng Anh.
     var host=location.hostname, parts=host.split('.'), domains=[''];
     for(var i=0;i<parts.length-1;i++){ var d=parts.slice(i).join('.'); domains.push(d, '.'+d); }
     domains.push(host, '.'+host);
@@ -534,19 +538,18 @@ function googleTranslateElementInit(){
     var attempts=0;
     translateTimer=setInterval(function(){
       var combo=document.querySelector('.goog-te-combo');
-      if(combo){ clearInterval(translateTimer); translateTimer=null; combo.value=lang; combo.dispatchEvent(new Event('change')); }
+      if(combo){ clearInterval(translateTimer); translateTimer=null; combo.value=lang; combo.dispatchEvent(new Event('change')); setUI(lang); }
       else if(++attempts>30){ clearInterval(translateTimer); translateTimer=null; }
-    },200);
+    }, 150);
   }
   setUI(savedLang);
-  if(savedLang!=='vi') applyTranslate(savedLang);
   btn.addEventListener('click', function(e){ e.stopPropagation(); list.classList.toggle('open'); });
   document.addEventListener('click', function(){ list.classList.remove('open'); });
-  list.querySelectorAll('li').forEach(function(li){
-    li.addEventListener('click', function(){
-      var lang=this.dataset.lang; localStorage.setItem('preferred_lang', lang);
-      setUI(lang); list.classList.remove('open'); applyTranslate(lang);
-    });
+  list.addEventListener('click', function(e){
+    var li=e.target.closest('li'); if(!li) return;
+    var lang=li.dataset.lang;
+    localStorage.setItem('preferred_lang', lang);
+    applyTranslate(lang);
   });
 })();
 </script>
