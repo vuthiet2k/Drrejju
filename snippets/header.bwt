@@ -32,8 +32,7 @@
   {% comment %} Tầng 2: main nav — thấp xuống khi scroll {% endcomment %}
   <div class="dr-container dr-nav">
     <button class="dr-burger" id="drBurger" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
-    {%- assign dr_logo_src = settings.logo_image -%}
-    {%- if dr_logo_src == blank -%}{%- assign dr_logo_src = 'logo.png' | asset_url -%}{%- endif -%}
+    {%- assign dr_logo_src = settings.logo_image -%}\\n    {%- if dr_logo_src == blank -%}{%- assign dr_logo_src = 'logo.png' | asset_url -%}{%- endif -%}
     <a href="/" class="dr-brand" title="{{ store.name }}" aria-label="{{ store.name | default: 'Dr.REJU' }}">
       <img src="{{ dr_logo_src }}" alt="{{ store.name | default: 'Dr.REJU' }}" class="dr-brand-logo" width="150" height="46">
     </a>
@@ -118,7 +117,7 @@
       </div>
 
       <aside class="dr-srch-side">
-        {%- assign sugg = settings.header_search_suggest_list | default: 'Retinol,Chống lão hoá,Trị mụn,Kem chống nắng,Serum,Cấp ẩm' | split: ',' -% %}
+        {%- assign sugg = settings.header_search_suggest_list | default: 'Retinol,Chống lão hoá,Trị mụn,Kem chống nắng,Serum,Cấp ẩm' | split: ',' -%}
         {% if sugg.size > 0 %}
         <div class="dr-srch-blk">
           <h6>Từ khoá phổ biến</h6>
@@ -333,7 +332,7 @@
 
   function esc(s){
     return String(s == null ? '' : s)
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;');
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
   window.drSearchFetch = function(query, onData, onFail){
