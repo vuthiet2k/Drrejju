@@ -39,7 +39,7 @@
     </a>
     {% comment %} Mega menu (phương án H3) {% endcomment %}
     <nav class="dr-navmenu">
-      {% for link in nav.links % ventilators %}
+      {% for link in nav.links %}
         {% if link.links.size > 0 %}
         <div class="dr-navitem dr-navitem--mega">
           <a href="{{ link.url }}" class="dr-navlink" aria-haspopup="true">{{ link.title }} <i class="fa-solid fa-chevron-down dr-navcaret" aria-hidden="true"></i></a>
@@ -333,7 +333,7 @@
 
   function esc(s){
     return String(s == null ? '' : s)
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;');
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
   window.drSearchFetch = function(query, onData, onFail){
@@ -419,7 +419,7 @@
       lb.textContent = 'Đang tìm…';
       timer = setTimeout(function(){
         window.drSearchFetch(q, function(items, total){ render(items, total, q); },
-          function(){\
+          function(){
             lb.textContent = 'Nhấn Enter để xem kết quả';
             res.innerHTML = '';
             all.href = '/search?type=product&query=' + encodeURIComponent(q);
@@ -525,11 +525,11 @@ function googleTranslateElementInit(){
     var host=location.hostname, parts=host.split('.'), domains=[''];
     for(var i=0;i<parts.length-1;i++){ var d=parts.slice(i).join('.'); domains.push(d, '.'+d); }
     domains.push(host, '.'+host);
-    domains.forEach(function(dm){\
+    domains.forEach(function(dm){
       document.cookie='googtrans=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/'+(dm?';domain='+dm:'');
     });
   }
-  function applyTranslate(lang){\
+  function applyTranslate(lang){
     if(translateTimer){ clearInterval(translateTimer); translateTimer=null; }
     if(lang==='vi'){
       clearGoogtrans();
