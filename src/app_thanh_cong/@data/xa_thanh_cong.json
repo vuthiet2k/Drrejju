@@ -1,0 +1,596 @@
+{
+    "id": 18,
+    "location": 14,
+    "version_number": 1,
+    "label": "VR360 Virtual Tour",
+    "data": {
+        "audio": {
+            "file": "https://vr360-builder.metatwin.vn/media/tours/audio/thanh_cong_1.mp3",
+            "loop": false,
+            "volume": 1,
+            "enabled": true,
+            "autoplay": false,
+            "language": "",
+            "description": ""
+        },
+        "title": "VR360 Virtual Tour",
+        "scenes": [
+            {
+                "id": "fly1",
+                "gps": {
+                    "lat": 21.400738722222222,
+                    "lng": 105.80608738888888,
+                    "heading": null,
+                    "altitude": 247.836
+                },
+                "info": "",
+                "name": "UBND xã Thành Công",
+                "group": "Mặc định",
+                "image": "https://vr360-builder.metatwin.vn/media/scenes/originals/Fly1.jpg",
+                "thumb": "https://vr360-builder.metatwin.vn/media/scenes/thumbnails/Fly1_thumb.webp",
+                "hotspots": [
+                    {
+                        "id": "area_mt729acl_c5gwh",
+                        "icon": null,
+                        "type": "area_landmark",
+                        "label": "Đền Đan Hà",
+                        "style": {
+                            "fill": "#38bdf8",
+                            "line": "#ffffff",
+                            "border": "#38bdf8",
+                            "opacity": 0.45,
+                            "hoverFill": "rgba(56, 189, 248, 0.32)",
+                            "borderWidth": 2,
+                            "hoverBorder": "#7dd3fc"
+                        },
+                        "locked": false,
+                        "target": "",
+                        "loai_poi": "ghim_dia_danh",
+                        "metadata": {},
+                        "noi_dung": null,
+                        "vertices": [
+                            {
+                                "lat": -33,
+                                "lon": -154.9
+                            },
+                            {
+                                "lat": -31.8,
+                                "lon": -149.1
+                            },
+                            {
+                                "lat": -30,
+                                "lon": -146.3
+                            },
+                            {
+                                "lat": -27.8,
+                                "lon": -143.6
+                            },
+                            {
+                                "lat": -27.1,
+                                "lon": -140.7
+                            },
+                            {
+                                "lat": -25.6,
+                                "lon": -142.8
+                            },
+                            {
+                                "lat": -26.5,
+                                "lon": -145.4
+                            },
+                            {
+                                "lat": -26.5,
+                                "lon": -149
+                            },
+                            {
+                                "lat": -27.5,
+                                "lon": -154.1
+                            },
+                            {
+                                "lat": -28.3,
+                                "lon": -156.7
+                            },
+                            {
+                                "lat": -33,
+                                "lon": -154.9
+                            }
+                        ],
+                        "entryView": null,
+                        "pointKind": "area_landmark",
+                        "line_height": 40,
+                        "overlay_image": "",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        },
+                        "show_polygon_on_hover": true
+                    },
+                    {
+                        "id": "area_mt72beo4_cld40",
+                        "icon": null,
+                        "type": "area_landmark",
+                        "label": "Đình Đan Hà",
+                        "style": {
+                            "fill": "#38bdf8",
+                            "line": "#ffffff",
+                            "border": "#38bdf8",
+                            "opacity": 0.45,
+                            "hoverFill": "rgba(56, 189, 248, 0.32)",
+                            "borderWidth": 2,
+                            "hoverBorder": "#7dd3fc"
+                        },
+                        "locked": false,
+                        "target": "",
+                        "loai_poi": "ghim_dia_danh",
+                        "metadata": {},
+                        "noi_dung": null,
+                        "vertices": [
+                            {
+                                "lat": -21.6,
+                                "lon": -159.5
+                            },
+                            {
+                                "lat": -23.1,
+                                "lon": -156.2
+                            },
+                            {
+                                "lat": -22,
+                                "lon": -150.7
+                            },
+                            {
+                                "lat": -20.7,
+                                "lon": -151.6
+                            },
+                            {
+                                "lat": -20.3,
+                                "lon": -153.2
+                            },
+                            {
+                                "lat": -20.2,
+                                "lon": -155.5
+                            },
+                            {
+                                "lat": -20.8,
+                                "lon": -159.3
+                            },
+                            {
+                                "lat": -21.6,
+                                "lon": -159.5
+                            }
+                        ],
+                        "entryView": null,
+                        "pointKind": "area_landmark",
+                        "line_height": 48,
+                        "overlay_image": "",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        },
+                        "show_polygon_on_hover": true
+                    },
+                    {
+                        "id": "area_mt72fw8b_bkycn",
+                        "icon": null,
+                        "type": "area_landmark",
+                        "label": "Đình - Chùa Nguyễn Tân",
+                        "style": {
+                            "fill": "#38bdf8",
+                            "line": "#ffffff",
+                            "border": "#38bdf8",
+                            "opacity": 0.45,
+                            "hoverFill": "rgba(56, 189, 248, 0.32)",
+                            "borderWidth": 2,
+                            "hoverBorder": "#7dd3fc"
+                        },
+                        "locked": false,
+                        "target": "",
+                        "loai_poi": "ghim_dia_danh",
+                        "metadata": {},
+                        "noi_dung": null,
+                        "vertices": [
+                            {
+                                "lat": -4.5,
+                                "lon": -110.7
+                            },
+                            {
+                                "lat": -5.4,
+                                "lon": -107.7
+                            },
+                            {
+                                "lat": -3,
+                                "lon": -107.1
+                            },
+                            {
+                                "lat": -3,
+                                "lon": -109.7
+                            },
+                            {
+                                "lat": -4.5,
+                                "lon": -110.7
+                            }
+                        ],
+                        "entryView": null,
+                        "pointKind": "area_landmark",
+                        "line_height": 48,
+                        "overlay_image": "",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        },
+                        "show_polygon_on_hover": true
+                    },
+                    {
+                        "id": "area_mt72gu0t_rbjsg",
+                        "icon": null,
+                        "type": "area_landmark",
+                        "label": "Đình Xuân Dương",
+                        "style": {
+                            "fill": "#38bdf8",
+                            "line": "#ffffff",
+                            "border": "#38bdf8",
+                            "opacity": 0.45,
+                            "hoverFill": "rgba(56, 189, 248, 0.32)",
+                            "borderWidth": 2,
+                            "hoverBorder": "#7dd3fc"
+                        },
+                        "locked": false,
+                        "target": "",
+                        "loai_poi": "ghim_dia_danh",
+                        "metadata": {},
+                        "noi_dung": null,
+                        "vertices": [
+                            {
+                                "lat": -9.1,
+                                "lon": 139.3
+                            },
+                            {
+                                "lat": -12.5,
+                                "lon": 139.4
+                            },
+                            {
+                                "lat": -11.3,
+                                "lon": 143.6
+                            },
+                            {
+                                "lat": -8.5,
+                                "lon": 143.3
+                            },
+                            {
+                                "lat": -9,
+                                "lon": 139.3
+                            }
+                        ],
+                        "entryView": null,
+                        "pointKind": "area_landmark",
+                        "line_height": 40,
+                        "overlay_image": "",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        },
+                        "show_polygon_on_hover": true
+                    },
+                    {
+                        "id": "area_mt72hv2v_ll97i",
+                        "icon": null,
+                        "type": "area_landmark",
+                        "label": "Đình An Miên",
+                        "style": {
+                            "fill": "#38bdf8",
+                            "line": "#ffffff",
+                            "border": "#38bdf8",
+                            "opacity": 0.45,
+                            "hoverFill": "rgba(56, 189, 248, 0.32)",
+                            "borderWidth": 2,
+                            "hoverBorder": "#7dd3fc"
+                        },
+                        "locked": false,
+                        "target": "",
+                        "loai_poi": "ghim_dia_danh",
+                        "metadata": {},
+                        "noi_dung": null,
+                        "vertices": [
+                            {
+                                "lat": -6.6,
+                                "lon": 8.6
+                            },
+                            {
+                                "lat": -9.3,
+                                "lon": 9.7
+                            },
+                            {
+                                "lat": -6.3,
+                                "lon": 13.9
+                            },
+                            {
+                                "lat": -6.3,
+                                "lon": 8.5
+                            }
+                        ],
+                        "entryView": null,
+                        "pointKind": "area_landmark",
+                        "line_height": 48,
+                        "overlay_image": "",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        },
+                        "show_polygon_on_hover": true
+                    },
+                    {
+                        "id": "area_mt72ijcd_rq10a",
+                        "icon": null,
+                        "type": "area_landmark",
+                        "label": "Chùa Vạn Kim",
+                        "style": {
+                            "fill": "#38bdf8",
+                            "line": "#ffffff",
+                            "border": "#38bdf8",
+                            "opacity": 0.45,
+                            "hoverFill": "rgba(56, 189, 248, 0.32)",
+                            "borderWidth": 2,
+                            "hoverBorder": "#7dd3fc"
+                        },
+                        "locked": false,
+                        "target": "",
+                        "loai_poi": "ghim_dia_danh",
+                        "metadata": {},
+                        "noi_dung": null,
+                        "vertices": [
+                            {
+                                "lat": 0.2,
+                                "lon": -40.6
+                            },
+                            {
+                                "lat": 0.7,
+                                "lon": -37.7
+                            },
+                            {
+                                "lat": -0.6,
+                                "lon": -38.9
+                            }
+                        ],
+                        "entryView": null,
+                        "pointKind": "area_landmark",
+                        "line_height": 48,
+                        "overlay_image": "",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        },
+                        "show_polygon_on_hover": true
+                    },
+                    {
+                        "id": "area_mt72jfh1_8o6qu",
+                        "icon": null,
+                        "type": "area_landmark",
+                        "label": "Chùa Linh Phúc",
+                        "style": {
+                            "fill": "#38bdf8",
+                            "line": "#ffffff",
+                            "border": "#38bdf8",
+                            "opacity": 0.45,
+                            "hoverFill": "rgba(56, 189, 248, 0.32)",
+                            "borderWidth": 2,
+                            "hoverBorder": "#7dd3fc"
+                        },
+                        "locked": false,
+                        "target": "",
+                        "loai_poi": "ghim_dia_danh",
+                        "metadata": {},
+                        "noi_dung": null,
+                        "vertices": [
+                            {
+                                "lat": -3.7,
+                                "lon": 77.7
+                            },
+                            {
+                                "lat": -4.4,
+                                "lon": 78
+                            },
+                            {
+                                "lat": -3.2,
+                                "lon": 78.7
+                            }
+                        ],
+                        "entryView": null,
+                        "pointKind": "area_landmark",
+                        "line_height": 44,
+                        "overlay_image": "",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        },
+                        "show_polygon_on_hover": true
+                    },
+                    {
+                        "id": "area_mt72jvuq_prsnt",
+                        "icon": null,
+                        "type": "area_landmark",
+                        "label": "Đình Hạ Đạt",
+                        "style": {
+                            "fill": "#38bdf8",
+                            "line": "#ffffff",
+                            "border": "#38bdf8",
+                            "opacity": 0.45,
+                            "hoverFill": "rgba(56, 189, 248, 0.32)",
+                            "borderWidth": 2,
+                            "hoverBorder": "#7dd3fc"
+                        },
+                        "locked": false,
+                        "target": "",
+                        "loai_poi": "ghim_dia_danh",
+                        "metadata": {},
+                        "noi_dung": null,
+                        "vertices": [
+                            {
+                                "lat": -1.3,
+                                "lon": 59.5
+                            },
+                            {
+                                "lat": -1.4,
+                                "lon": 60.3
+                            },
+                            {
+                                "lat": -1.9,
+                                "lon": 59.8
+                            }
+                        ],
+                        "entryView": null,
+                        "pointKind": "area_landmark",
+                        "line_height": 48,
+                        "overlay_image": "",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        },
+                        "show_polygon_on_hover": true
+                    },
+                    {
+                        "id": "area_mt72l5ek_09mv4",
+                        "icon": null,
+                        "type": "area_landmark",
+                        "label": "Đình Bìa",
+                        "style": {
+                            "fill": "#38bdf8",
+                            "line": "#ffffff",
+                            "border": "#38bdf8",
+                            "opacity": 0.45,
+                            "hoverFill": "rgba(56, 189, 248, 0.32)",
+                            "borderWidth": 2,
+                            "hoverBorder": "#7dd3fc"
+                        },
+                        "locked": false,
+                        "target": "",
+                        "loai_poi": "ghim_dia_danh",
+                        "metadata": {},
+                        "noi_dung": null,
+                        "vertices": [
+                            {
+                                "lat": -3.4,
+                                "lon": 115.4
+                            },
+                            {
+                                "lat": -5.6,
+                                "lon": 115.9
+                            },
+                            {
+                                "lat": -4.4,
+                                "lon": 117.3
+                            }
+                        ],
+                        "entryView": null,
+                        "pointKind": "area_landmark",
+                        "line_height": 48,
+                        "overlay_image": "",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        },
+                        "show_polygon_on_hover": true
+                    },
+                    {
+                        "id": "area_mt72n2kz_4x8v6",
+                        "icon": null,
+                        "type": "area_landmark",
+                        "label": "Hồ Suối Lạnh",
+                        "style": {
+                            "fill": "#38bdf8",
+                            "line": "#ffffff",
+                            "border": "#38bdf8",
+                            "opacity": 0.45,
+                            "hoverFill": "rgba(56, 189, 248, 0.32)",
+                            "borderWidth": 2,
+                            "hoverBorder": "#7dd3fc"
+                        },
+                        "locked": false,
+                        "target": "dji_20260809181351_0214_d",
+                        "loai_poi": "ghim_dia_danh",
+                        "metadata": {},
+                        "noi_dung": null,
+                        "vertices": [
+                            {
+                                "lat": -1.7,
+                                "lon": 100.9
+                            },
+                            {
+                                "lat": -0.8,
+                                "lon": 99.6
+                            },
+                            {
+                                "lat": -2.4,
+                                "lon": 99.9
+                            }
+                        ],
+                        "entryView": null,
+                        "pointKind": "area_landmark",
+                        "line_height": 40,
+                        "overlay_image": "",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        },
+                        "show_polygon_on_hover": true
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 37.9,
+                    "lat": -6.1,
+                    "lon": -261.5
+                }
+            },
+            {
+                "id": "dji_20260809181351_0214_d",
+                "gps": {
+                    "lat": 21.406387944444443,
+                    "lng": 105.77388638888888,
+                    "heading": null,
+                    "altitude": 264.505
+                },
+                "info": "",
+                "name": "Hồ suối lạnh",
+                "group": "Mặc định",
+                "image": "https://vr360-builder.metatwin.vn/media/scenes/originals/DJI_20260809181351_0214_D.jpg",
+                "thumb": "https://vr360-builder.metatwin.vn/media/scenes/thumbnails/DJI_20260809181351_0214_D_thumb.webp",
+                "hotspots": [],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 75,
+                    "lat": 0,
+                    "lon": 0
+                }
+            }
+        ]
+    },
+    "thumbnail": null,
+    "background_audio": "https://vr360-builder.metatwin.vn/media/tours/audio/thanh_cong_1.mp3",
+    "hotspot_point_logo": null,
+    "status": "draft",
+    "changelog": "Created from Projects flow.",
+    "created_by": 1,
+    "created_by_name": "admin",
+    "created_at": "2026-08-24T16:27:15.093123+07:00",
+    "updated_at": "2026-08-25T16:08:54.588278+07:00"
+}

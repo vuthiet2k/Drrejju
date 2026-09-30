@@ -1,0 +1,4748 @@
+[
+  {
+    "id": "48e716a1-6e32-4a86-ade5-bc3b794448f6",
+    "images": [
+      {
+        "id": "14554f62-424b-44e8-bed0-719610f87b3b",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_%E1%BA%A2_N%E1%BB%B1_l%C3%A0m_b%C3%A1nh_gai_1.jpg.jpg",
+        "created_date": "2023-12-21T08:01:50.716653Z",
+        "updated_date": "2023-12-21T08:01:51.851674Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "48e716a1-6e32-4a86-ade5-bc3b794448f6",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "4ca11c01-7fc5-4a53-8388-3845eb7a5c18",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_%E1%BA%A2_N%E1%BB%B1_l%C3%A0m_b%C3%A1nh_gai_2.jpg.jpg",
+        "created_date": "2023-12-21T08:01:50.731653Z",
+        "updated_date": "2023-12-21T08:01:51.858674Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "48e716a1-6e32-4a86-ade5-bc3b794448f6",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "6b4fe255-6c65-461a-bb1e-3a1f5f7575af",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_%E1%BA%A2_N%E1%BB%B1_l%C3%A0m_b%C3%A1nh_gai_3.jpg.jpg",
+        "created_date": "2023-12-21T08:01:50.740653Z",
+        "updated_date": "2023-12-21T08:01:51.867674Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "48e716a1-6e32-4a86-ade5-bc3b794448f6",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "acff69e3-1b46-4be7-bf3e-cdfc1f641186",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2024/03/4f949fa04382bedce793.jpg",
+        "created_date": "2024-03-19T08:21:51.331074Z",
+        "updated_date": "2024-03-19T08:21:52.347218Z",
+        "is_active": true,
+        "created_by": 1,
+        "place": "48e716a1-6e32-4a86-ade5-bc3b794448f6",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "12fb6ada-7485-4212-9498-2f78c684b4e9",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2024/03/17.jpg",
+        "created_date": "2024-03-19T08:21:51.348073Z",
+        "updated_date": "2024-03-19T08:21:52.357217Z",
+        "is_active": true,
+        "created_by": 1,
+        "place": "48e716a1-6e32-4a86-ade5-bc3b794448f6",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "0bb9fa05-2881-4bfc-a842-76987e892457",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2024/03/4f949fa04382bedce793_Hhvn3XU.jpg",
+        "created_date": "2024-03-19T08:23:59.578817Z",
+        "updated_date": "2024-03-19T08:24:00.548825Z",
+        "is_active": true,
+        "created_by": 1,
+        "place": "48e716a1-6e32-4a86-ade5-bc3b794448f6",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "9817d143-0b7d-4063-86b7-84416ca5011b",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2024/03/1.jpg",
+        "created_date": "2024-03-19T08:23:59.630855Z",
+        "updated_date": "2024-03-19T08:24:00.564827Z",
+        "is_active": true,
+        "created_by": 1,
+        "place": "48e716a1-6e32-4a86-ade5-bc3b794448f6",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2024/03/z4697967912772_4fe3f2d9fb044229ed8a4b8897faa82e.jpg",
+    "rating": null,
+    "views": 36,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": "https://thaihai.metatwin.vn/media/media/uploads/audio/2024/1_NhaANu.mp3",
+    "created_date": "2023-12-21T08:01:51.718702Z",
+    "updated_date": "2024-04-01T10:00:01.067630Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Ả Nự Nhà bảo tồn văn hóa ẩm thực",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Mo": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Sa": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Su": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Th": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Tu": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "We": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      }
+    },
+    "description_short": "Nhà Ả Nự Nhà bảo tồn văn hóa ẩm thực",
+    "location": "21.535328291200184,105.8146676791146",
+    "website": "",
+    "description": "<p><span style=\"color: rgb(34, 34, 34);\">Ngôi nhà có nguồn gốc từ gia đình ông Ma Tiến Nhí dân tộc Tày tại Khẩu Đưa, Phú Đình, Định Hoá, Thái Nguyên. Ngôi nhà này đã từng đón đồng chí Lê Quang Đạo, nguyên chủ tịch Quốc Hội, Nguyên chủ tịch Uỷ ban Mặt trận Tổ quốc Việt Nam cùng phu nhân đã ở và làm việc tại ATK Định Hoá trong giao đoạn 1949-1950. Khi đó Đồng chí Lê Quang Đạo là phó bản tuyên truyền Trung Ương Đảng cùng cơ quan Báo Sự thật. Tháng 4 năm 2004 được thông tin gia đình ông Mà Tiến Nhí muốn rỡ bỏ ngôi nhà sàn này để thay thế bởi nhà xây kiên cố Bà Nguyễn Thị Thanh Hải trưởng làng của Bản làng Thái Hải đã tìm đến tận nơi thỏa thuận và mua lại ngôi nhà mang ý nghĩa lịch sử này.</span></p><p><span style=\"color: rgb(34, 34, 34);\"> Ngôi nhà này mang tên “Nhà ả Nự”, có kiến trúc xuyên toang 36 cột tròn, hiện là nơi gia đình 3 thế hệ đang sinh sống. Tại đây, gia đình hằng ngày làm và bảo tồn các loại bánh truyền thống và ẩm thực truyền thống. Du khách khi đến thăm nhà có thể sẽ được xem hoặc tham gia (qua các gói trải nghiệm) quy trình bà con làm các loại bánh dân tộc, thưởng thức các loại bánh hoặc một số món ăn dân tộc bản địa. Đặc biệt quý khách còn có thể cùng bà con đan dây ngũ sắc may mắn bên bếp lửa nhà sàn.</span></p><p><span style=\"color: rgb(34, 34, 34);\"> </span></p><p><span style=\"color: rgb(34, 34, 34);\"> </span></p>"
+  },
+  {
+    "id": "0bd6f8a1-24bb-4f58-be9d-7f7a2188fe4b",
+    "images": [
+      {
+        "id": "94cf8628-1b8f-4f96-96a9-4825dd045a30",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_1.jpg",
+        "created_date": "2023-12-27T12:29:26.014834Z",
+        "updated_date": "2023-12-27T12:29:26.940841Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "0bd6f8a1-24bb-4f58-be9d-7f7a2188fe4b",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "7d9d1868-3b87-431f-a37a-1d42ffcda42f",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_4_T7jBzTL.jpg",
+        "created_date": "2023-12-27T12:29:26.038832Z",
+        "updated_date": "2023-12-27T12:29:26.948841Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "0bd6f8a1-24bb-4f58-be9d-7f7a2188fe4b",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "d189e1e5-be39-4d2d-864f-cffa2a62ba7e",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_11_Rc3cCYj.jpg",
+        "created_date": "2023-12-27T12:31:05.819438Z",
+        "updated_date": "2023-12-27T12:31:06.821143Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "0bd6f8a1-24bb-4f58-be9d-7f7a2188fe4b",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "bb6db377-96c7-4aa7-828a-45459cafd366",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2024/03/Thaihai_13_uGV0aG1.jpg",
+        "created_date": "2024-03-18T02:31:56.040407Z",
+        "updated_date": "2024-03-18T02:31:56.913416Z",
+        "is_active": true,
+        "created_by": 1,
+        "place": "0bd6f8a1-24bb-4f58-be9d-7f7a2188fe4b",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "f3c368be-29ec-4f39-8557-475aa7b4f56e",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2024/03/DSC06553.jpg",
+        "created_date": "2024-03-18T02:33:58.144329Z",
+        "updated_date": "2024-03-18T02:34:21.057118Z",
+        "is_active": true,
+        "created_by": 1,
+        "place": "0bd6f8a1-24bb-4f58-be9d-7f7a2188fe4b",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "d0a13b5c-f015-43f1-8359-059ee584f8b9",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2024/03/IMG_0525.JPG",
+        "created_date": "2024-03-18T02:33:58.158148Z",
+        "updated_date": "2024-03-18T02:34:21.065116Z",
+        "is_active": true,
+        "created_by": 1,
+        "place": "0bd6f8a1-24bb-4f58-be9d-7f7a2188fe4b",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "eddb75a4-f588-49e6-9ab0-54aae3ee6a29",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2024/03/IMG_1100_1.jpg",
+        "created_date": "2024-03-18T02:33:58.174349Z",
+        "updated_date": "2024-03-18T02:34:21.073117Z",
+        "is_active": true,
+        "created_by": 1,
+        "place": "0bd6f8a1-24bb-4f58-be9d-7f7a2188fe4b",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "58d9764c-79bd-4098-8365-deb22afd8696",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2024/03/IMG_0863copy.jpg",
+        "created_date": "2024-03-18T02:33:58.191221Z",
+        "updated_date": "2024-03-18T02:34:21.090118Z",
+        "is_active": true,
+        "created_by": 1,
+        "place": "0bd6f8a1-24bb-4f58-be9d-7f7a2188fe4b",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/2023-12-27_19-28-38_vfYNKr6.jpg",
+    "rating": null,
+    "views": 30,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": "https://thaihai.metatwin.vn/media/media/uploads/audio/2024/2_SanLangCongDong.mp3",
+    "created_date": "2023-12-21T07:57:52.538332Z",
+    "updated_date": "2024-04-01T09:59:34.876282Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Sân làng cộng đồng",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Mo": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Sa": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Su": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Th": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Tu": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "We": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      }
+    },
+    "description_short": "Sân làng",
+    "location": "21.534900, 105.814110",
+    "website": "",
+    "description": "<p><span style=\"color: rgb(34, 34, 34);\">Không gian rộng giữa trung tâm của khu bảo tồn, nơi diễn ra các nghi lễ tâm linh, các ngày hội lớn của Bản làng như: Lễ hội Lồng tồng, Tết cơm mới, Lễ rước lửa hay còn gọi là Lửa làng để tri ân đến vị thần lửa… ngoài ra đây cúng là nơi tổ chức các hoạt động sinh hoạt cộng đồng của bà con dân bản như: hát, múa chầu, các trò chơi dân gian, nhảy sạp, múa rối cạn….</span></p>"
+  },
+  {
+    "id": "4efba537-a455-4a50-a00b-f992a952880b",
+    "images": [
+      {
+        "id": "15125980-ea5b-4295-b27d-c16c8c2ad389",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/ka_xu%C3%A2n.jpg.jpg",
+        "created_date": "2023-12-22T03:52:05.538229Z",
+        "updated_date": "2023-12-22T03:52:06.726239Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "4efba537-a455-4a50-a00b-f992a952880b",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/ka_xu%C3%A2n.jpg.jpg",
+    "rating": null,
+    "views": 14,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": "https://thaihai.metatwin.vn/media/media/uploads/audio/2024/3_KaXuan.mp3",
+    "created_date": "2023-12-22T03:52:06.653237Z",
+    "updated_date": "2024-04-01T09:59:08.303186Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Ka Xuân",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Nhà Ka Xuân - Khu Du Lịch Thái Hải",
+    "location": "21.533198661573866,105.8148503646259",
+    "website": "",
+    "description": "<p><span style=\"color: rgb(34, 34, 34);\">Lượn Ka Xuân: là ngôi nhà có kiến trúc tứ trụ con trồng kẻ truyền trên xà dưới xiên 48 cột tròn, có nguồn gốc từ gia đình ông Hoàng Văn Ngư dân tộc Tày vùng Phúc Lương Đại Từ Thái Nguyên. Tháng 5 năm 2003, nhà được vận chuyển cà phục hồi tại Bản làng Thái.</span></p><p><span style=\"color: rgb(34, 34, 34);\">Hiện tại ngôi nhà này được gia đình Ka Xuân đang sinh sống với 2 thế hệ và đón khách lưu trú nghỉ dưỡng cộng đồng. Ngôi nhà thuộc kiểu nhà đại của người Tày có không gian rất rộng, lát ván gỗ hoàn toàn, lợp lá cọ sẽ mát về mùa hè và ấm về mùa đông, trong nhà có không gian bếp lửa truyền thống ấm áp dành cho mùa đông. Nhà có thể đón được tối đa 25 người lưu trú nghỉ dưỡng. Xung quanh ngôi nhà là không gian tươi xanh của cỏ cây hoa lá và sự bình yên của núi rừng.</span></p>"
+  },
+  {
+    "id": "ec391f46-b3a0-4124-8e57-d3cdb068fcf7",
+    "images": [
+      {
+        "id": "c7d3068b-990d-4bbc-a41b-80839795ddd4",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Gi%E1%BA%BFng_1.jpg_bCkKDjJ.jpg",
+        "created_date": "2023-12-21T07:42:58.795666Z",
+        "updated_date": "2023-12-21T07:43:00.092898Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "ec391f46-b3a0-4124-8e57-d3cdb068fcf7",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "ad4dd739-d99a-4bba-8e33-973cf8e558a9",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Gi%E1%BA%BFng_2.jpg_KEXRpEY.jpg",
+        "created_date": "2023-12-21T07:42:58.815666Z",
+        "updated_date": "2023-12-21T07:43:00.100897Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "ec391f46-b3a0-4124-8e57-d3cdb068fcf7",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/Gi%E1%BA%BFng_2.jpg.jpg",
+    "rating": null,
+    "views": 14,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": "https://thaihai.metatwin.vn/media/media/uploads/audio/2024/5_GiengLang.mp3",
+    "created_date": "2023-12-21T07:42:59.994897Z",
+    "updated_date": "2024-04-01T09:58:47.030158Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Giếng làng",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Mo": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Sa": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Su": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Th": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Tu": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "We": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      }
+    },
+    "description_short": "Giếng làng là nơi được trưởng làng của bản làng Thái Hải xin tâm linh để lựa chọn vị trí phong thủy hài hòa và có mạch nước ngầm, nơi hội tụ sinh khí âm dương từ cha trời mẹ đất",
+    "location": "21.533831, 105.813517",
+    "website": "",
+    "description": "<p><span style=\"color: rgb(34, 34, 34);\">Giếng làng là nơi được trưởng làng của bản làng Thái Hải xin tâm linh để lựa chọn vị trí phong thủy hài hòa và có mạch nước ngầm, nơi hội tụ sinh khí âm dương từ cha trời mẹ đất. Theo quan niệm của người Tày, rửa tay, rửa mặt bằng nước giếng làng có thể xóa bỏ hết những điều không tốt, không may mắn. Do đó tất cả những người con đi làm xa về hoặc du khách đến với làng đều rửa tay để xua đi những điều không may mắn khi di chuyển bên ngoài, mang lại bình an, may mắn khi vào làng.</span></p><p><span style=\"color: rgb(34, 34, 34);\"> Vào những ngày lễ tết truyền thống của người Tày, bà con nơi đây vẫn thực hiện các phong tục xưa như: Lễ rước nước, gánh nước giếng làng đầu năm…</span></p>"
+  },
+  {
+    "id": "6e5de62b-2d92-4a95-8cac-01a8aca0fd1d",
+    "images": [
+      {
+        "id": "62126b6a-bc62-4521-aed0-03833d971a8b",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Khu_l%E1%BB%85_t%C3%A2n_1.jpg.jpg",
+        "created_date": "2023-12-22T03:40:07.309792Z",
+        "updated_date": "2023-12-22T03:40:08.019106Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "6e5de62b-2d92-4a95-8cac-01a8aca0fd1d",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "9f036bb2-5c34-4b04-8298-90e341ce7f72",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Khu_l%E1%BB%85_t%C3%A2n_2.jpg.jpg",
+        "created_date": "2023-12-22T03:40:07.327792Z",
+        "updated_date": "2023-12-22T03:40:08.029107Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "6e5de62b-2d92-4a95-8cac-01a8aca0fd1d",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [
+      {
+        "id": "cff03124-e0bf-4566-87bf-e254715d2009",
+        "image": "https://thaihai.metatwin.vn/media/media/uploads/vr360/2023/12/Khu_l%E1%BB%85_t%C3%A2n_2.jpg.jpg",
+        "rating": null,
+        "views": 4,
+        "created_date": "2023-12-27T12:57:13.927237Z",
+        "updated_date": "2025-09-23T04:51:46.463841Z",
+        "is_active": true,
+        "caption": "Nhà Lễ tân",
+        "link": "https://project.vrpro.vn/thai-hai/#cong_lang_2",
+        "description": "<p class=\"ql-align-justify\"><span style=\"color: rgb(0, 0, 0);\">1. Lễ Tân: là nơi đón khách, nhận thông thông tin đoàn và phòng chờ của khách.</span></p><p class=\"ql-align-justify\"><span style=\"color: rgb(0, 0, 0);\">2. Phòng chờ: nơi nghỉ chân của du khách</span></p><p><br></p>",
+        "created_by": 2,
+        "updated_by": null,
+        "place": "6e5de62b-2d92-4a95-8cac-01a8aca0fd1d",
+        "object_3d": "0ffb13c1-ce0a-4004-9be6-87dce2751505",
+        "relic": null
+      }
+    ],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/Khu_l%E1%BB%85_t%C3%A2n_2.jpg.jpg",
+    "rating": null,
+    "views": 21,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": "https://thaihai.metatwin.vn/media/media/uploads/audio/2024/4_QuayLeTan.mp3",
+    "created_date": "2023-12-22T03:40:07.885106Z",
+    "updated_date": "2024-04-01T09:57:15.221716Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Khu Lễ tân - Phòng chờ",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Nhà Lễ Tân",
+    "location": "21.533421967002397,105.81376635417541",
+    "website": "",
+    "description": "<p><span style=\"color: rgb(34, 34, 34);\">Quầy lễ tân được đặt ở khu vực cổng chính của bản làng Thái Hải, nơi du khách sẽ được tiếp đón, giới thiệu thông tin và đặt các dịch vụ, trải nghiệm như: Trải nghiệm thăm quan văn hóa truyền thống dân tộc Tày, ẩm thực dân tộc, nghỉ dưỡng lưu trú, chăm sóc sức khoẻ và các sản phẩm của bà con dân bản. Tất cả những các nhu cầu của quý về thông tin của các dịch vụ sẽ được bộ phận Lễ Tân giải đáp.</span></p><p><span style=\"color: rgb(34, 34, 34);\">Phòng chờ là nơi dừng nghỉ chân của du khách mỗi khi di chuyển một quãng đường xa tới bản, phòng chờ cũng là nơi đăng ký với Lễ tân các thủ tục Check-in (đăng ký vào khách sạn) và check-out cho khách, nơi du khách nghỉ ngơi, thư giãn hoặc gặp gỡ đối tác.</span></p>"
+  },
+  {
+    "id": "a1579296-a422-452c-a732-86aefe769a60",
+    "images": [
+      {
+        "id": "5c93c054-a788-4663-9f1f-23c6c45ea358",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/DJI_20231031155310_0024_V.JPG.jpg",
+        "created_date": "2023-12-25T06:58:11.136445Z",
+        "updated_date": "2023-12-25T06:58:12.288399Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "a1579296-a422-452c-a732-86aefe769a60",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "294d5cee-f7f5-4a7f-b13b-3d5048bc6f2b",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/DJI_20231031155346_0025_V.JPG.jpg",
+        "created_date": "2023-12-25T06:58:11.151474Z",
+        "updated_date": "2023-12-25T06:58:12.298401Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "a1579296-a422-452c-a732-86aefe769a60",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 1,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2024/03/%E1%BA%A3nh_khu.jpg",
+    "rating": null,
+    "views": 12,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T04:04:56.035644Z",
+    "updated_date": "2024-03-18T02:47:19.141182Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Hồ sinh thái Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Hồ sinh thái Thái Hải",
+    "location": "21.5339365,105.8158125",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "1122fcd7-e6a9-4394-933a-b9271983378e",
+    "images": [],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [
+      {
+        "id": "3c1eb25b-8e57-41d4-bda1-5599c683e794",
+        "image": "https://thaihai.metatwin.vn/media/media/uploads/vr360/2023/12/KhuD.jpg",
+        "rating": null,
+        "views": 8,
+        "created_date": "2023-12-27T12:46:37.748210Z",
+        "updated_date": "2025-09-23T04:52:24.487335Z",
+        "is_active": true,
+        "caption": "Khu Nhà Vip - Khu Du Lịch Thái Hải",
+        "link": "https://project.vrpro.vn/thai-hai/#nha_vip",
+        "description": "<p><span style=\"color: rgb(0, 0, 0);\">Nhà VIP: nhà sàn nhỏ có không gian riêng khép kín dành cho lưu trú nghỉ dưỡng, có đầy đủ trang thiết bị đạt tiêu chuẩn đón khách quốc tế. Trước nhà là hồ nước xung quanh là cảnh quan tươi xanh của núi rừng tạo cho du khách có được sự thư giãn và bình yên.</span></p>",
+        "created_by": 2,
+        "updated_by": null,
+        "place": "1122fcd7-e6a9-4394-933a-b9271983378e",
+        "object_3d": "205fccf5-338d-4034-9b7d-cf5120b4cc70",
+        "relic": null
+      }
+    ],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 1,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2024/03/DSC09462-ARW_DxO_DeepPRIMEXD_AamE6WF.jpg",
+    "rating": null,
+    "views": 58,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T04:03:40.117049Z",
+    "updated_date": "2024-03-18T02:26:49.396631Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Vip - Khu Du Lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Nhà VIP: nhà sàn nhỏ có không gian riêng khép kín dành cho lưu trú nghỉ dưỡng, có đầy đủ trang thiết bị đạt tiêu chuẩn đón khách quốc tế. Trước nhà là hồ nước xung quanh là cảnh quan tươi xanh của núi rừng tạo cho du khách có được sự thư giãn và bình yên.",
+    "location": "21.533784120116678,105.81619798989163",
+    "website": "",
+    "description": "<p><span style=\"color: rgb(34, 34, 34);\">Nhà VIP: Bungalow theo kiến trúc nhà sàn nhỏ bên hồ, là không gian riêng khép kín dành cho lưu trú nghỉ dưỡng phù hợp với khách quốc tế, các đoàn khách gia đình muốn hòa mình vào cảnh quan thiên nhiên tự nhiên. Ngôi nhà được dựng bởi đội thợ mộc của bản làng Thái Hải với chất liệu gỗ, lợp mái lá cọ - những vật liệu sẵn có, gần gũi, thân thiện với thiên nhiên, cung với nét kiến trúc đặc biệt của nhà sàn người Tày sẽ mang lại những phút giây thoải mái, thư giãn và những trải nghiệm độc đáo cho du khách trong suốt quá trình lưu trú.</span></p>"
+  },
+  {
+    "id": "3a5ea564-8ffa-4e47-b644-50f1da092440",
+    "images": [
+      {
+        "id": "75d46c46-b3bf-4c62-b15c-0d4a914efea4",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/10/a4thuocgiatruyen_637655643046474810.jpg",
+        "created_date": "2023-10-23T07:58:37.556947Z",
+        "updated_date": "2023-10-23T07:58:38.658012Z",
+        "is_active": true,
+        "created_by": 1,
+        "place": "3a5ea564-8ffa-4e47-b644-50f1da092440",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "9a916f3c-e476-4f49-af4c-38f0edd8b465",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2024/03/18.jpg",
+        "created_date": "2024-03-18T02:02:03.732892Z",
+        "updated_date": "2024-03-18T02:22:42.049338Z",
+        "is_active": true,
+        "created_by": 1,
+        "place": "3a5ea564-8ffa-4e47-b644-50f1da092440",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 1,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 1,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/10/khu-vuc-nha-san-min.jpg",
+    "rating": null,
+    "views": 27,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-10-23T07:58:38.411010Z",
+    "updated_date": "2024-03-18T02:22:42.026339Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Khu bảo tồn Làng nhà sàn Dân tộc Sinh Thái Thái Hải",
+    "phone_number": "0832192184",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Khu Bảo tồn làng nhà sàn dân tộc sinh thái Thái Hải là khu du lịch tư nhân đầu tiên của tỉnh Thái Nguyên được công nhận là điểm đến du lịch địa phương.",
+    "location": "21.533297488989728, 105.81452191014212",
+    "website": "",
+    "description": "<p>Cách Thủ đô Hà Nội khoảng 70km, trung tâm Thành phố Thái Nguyên 10km, Bản làng Thái Hải được hình thành từ năm 2003, do bà Nguyễn Thị Thanh Hải, một người con dân tộc Tày sinh ra và lớn lên ở vùng ATK Định Hóa, Thái Nguyên, Việt Nam cùng cộng đồng hơn 150 bà con người thiểu số. Với tình yêu đối với văn hóa truyền thống của cha ông, cùng với sự trân quý những giá trị di sản dân tộc Tày có nguy cơ ngày một mai một theo thời gian và sự tâm huyết với việc làm thế nào để bảo tồn và khôi phục lại không gian bản làng Tày cổ của vùng ATK Định Hóa. </p><p>Với tên gọi đầy đủ; Khu bảo tồn Làng nhà sàn Dân tộc Sinh Thái Thái Hải, hay thân thương hơn với tên gọi Bản làng Thái Hải đã trải qua quá trình hình thành và khôi phục trong suốt gần 20 năm. Từ một khu vực đất trống đồi trọc thủa sơ khai, nay đã vươn mình trở thành một trong những điểm đến tiêu biểu của vùng đất Thái Nguyên. </p><p>Hiện nay, những nét văn hóa đặc trưng của người dân tộc Tày đang được bảo tồn tại Bản Làng chúng tôi bao gồm từ những bộ trang phục dân tộc hàng ngày, món ăn dân dã đặc trưng, những nếp nhà sàn ngót nghét nhiều thập kỷ, cho đến các hoạt động lễ hội, giữ gìn tín ngưỡng, lối sống, sinh hoạt gia đình theo đúng phong tục văn hóa cổ truyền của người đồng bào dân tộc Tày. </p><p>Sức hút về giá trị văn hóa được bảo tồn tại bản làng Thái Hải đã được du khách trong nước và quôc tế đón nhận, qua đó lan tỏa tình yêu với văn hóa, với di sản, với những giá trị truyền thống tới du khách. </p><p>Qua hai thập kỷ hình thành và xây dựng, bản làng Thái Hải cũng rất vinh dự khi được các cơ quan đoàn thể và các tổ chức trong và ngoài nước ghi nhận, đánh giá cao và được nhận một số giải thưởng tiêu biểu trong lĩnh vực du lịch;</p><p class=\"ql-align-justify\">Năm 2014: Bản làng Thái Hải là khu du lịch điển hình về xã hội hóa bảo tồn di sản gắn với phát triển du lịch và được công nhận là điểm du lịch địa phương <em>(Quyết định số 1648/QĐ-UBND ngày 31/07/2014)</em>; </p><p class=\"ql-align-justify\">Năm 2016, 2017, Ẩm thực Bản làng Thái Hải lọt vào top 10 nhà hàng đạt tiêu chuẩn phục vụ khách du lịch hàng đầu Việt Nam, được vinh danh tại nhà hát lớn Hà Nội; </p><p class=\"ql-align-justify\">Năm 2018: Liên chi hội Di sản Văn hóa Khu Bảo tồn Làng nhà sàn dân tộc sinh thái Thái Hải được thành lập <em>(Quyết định số 30/QĐ-HDSVHVN ngày 05/9/2018 của Chủ tịch Hội di sản văn hóa Việt Nam)</em>. Kết quả này chính là những mơ ước đã trở thành hiện thực của các thành viên bản làng để trở thành “công dân” di sản đúng nghĩa.</p><p class=\"ql-align-justify\">Năm 2019: Ẩm thực bản làng Thái Hải đạt danh hiệu “Top 5 Nhà hàng ăn uống phục vụ khách du lịch tốt nhất Việt Nam năm 2019” <em>(Quyết định số 2470/QĐ-BVHTTDL tháng 7/2019)</em></p><p class=\"ql-align-justify\"><span style=\"background-color: rgb(252, 253, 254);\">Từ năm 2018 - 2023, </span><span style=\"color: black;\">Khu bảo tồn làng nhà sàn dân tộc sinh thái Thái Hải đã 4 lần được vinh dự đón nhận giải thưởng Du lịch ASEAN</span> (Du lịch bền vững ASEAN và Du lịch cộng đồng ASEAN) và nhiều phần thưởng, giấy khen, bằng khen của địa phương và Trung ương.</p><p>2023: Bản làng Thái Hải vinh dự khi được đón nhận giải thưởng “Làng du lịch tốt nhất 2022” (Best Tourism Villages by UNWTO 2022) của Tổ chức Du lịch Thế giới.</p><p><strong>Trải Nghiệm của du khách</strong></p><p><span style=\"background-color: rgb(252, 253, 254);\">Đến với bản làng Thái Hải, du khách sẽ được tham gia trải nghiệm tham quan, hóa thân vào các phong tục tập quán, các nghi lễ truyền thống và hòa mình với không gian nghỉ dưỡng, ẩm thực xanh đậm chất truyền thống. Đó là những phút giây tận hưởng sự thư thái trên những nếp nhà sàn, hay thưởng thức các món ăn ẩm thực truyền thống dân dã của địa phương. Bên cạnh đó, người dân nơi đây luôn chào đón du khách bằng đạo đức, tình yêu thương, lối sống mộc mạc, giản dị nhưng tràn đầy năng lượng của người đồng bào.</span></p>"
+  },
+  {
+    "id": "e82d7aa5-f7e7-47ff-8112-dd575bb1679a",
+    "images": [
+      {
+        "id": "b0b5d822-924e-4e85-8390-5871f7e2f660",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/ka_tu%E1%BA%A5n_1.jpg.jpg",
+        "created_date": "2023-12-22T04:02:12.760289Z",
+        "updated_date": "2023-12-22T04:02:13.824298Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "e82d7aa5-f7e7-47ff-8112-dd575bb1679a",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "fa1c4207-4bc0-4be0-80c3-385dc8472323",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/ka_tu%E1%BA%A5n_2.jpg.jpg",
+        "created_date": "2023-12-22T04:02:12.780293Z",
+        "updated_date": "2023-12-22T04:02:13.831296Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "e82d7aa5-f7e7-47ff-8112-dd575bb1679a",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/ka_tu%E1%BA%A5n_1.jpg.jpg",
+    "rating": null,
+    "views": 16,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T04:02:13.752297Z",
+    "updated_date": "2023-12-27T13:07:21.862106Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Ka Tuấn Kiều - Khu Du Lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Nhà Ka Tuấn Kiều - Khu Du Lịch Thái Hải",
+    "location": "21.534488166936796,105.81544298974524",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "e8751521-ab1e-4187-b7f8-570c7cf71a91",
+    "images": [
+      {
+        "id": "ad98cf47-60b2-4206-b04e-b19e166cac67",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/tr%E1%BB%AF_thu%E1%BB%91c.jpg.jpg",
+        "created_date": "2023-12-21T07:53:14.691489Z",
+        "updated_date": "2023-12-21T07:53:15.852620Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "e8751521-ab1e-4187-b7f8-570c7cf71a91",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "username": "",
+      "first_name": "",
+      "last_name": ""
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/tr%E1%BB%AF_thu%E1%BB%91c.jpg.jpg",
+    "rating": null,
+    "views": 13,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-21T07:53:15.707650Z",
+    "updated_date": "2023-12-27T13:07:21.820106Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Thuốc",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Mo": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Sa": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Su": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Th": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Tu": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "We": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      }
+    },
+    "description_short": "Nhà Thuốc (trữ thuốc)",
+    "location": "21.534709, 105.814064",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "eb2235fa-862f-479f-a685-efafa4ad06d3",
+    "images": [],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/nh%C3%A0_tr%E1%BA%A1i_qu%C3%A1ch_1.jpg",
+    "rating": null,
+    "views": 11,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T04:06:02.082438Z",
+    "updated_date": "2023-12-27T13:07:21.683104Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Ka Tiến - Khu Du Lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Nhà Ka Tiến - Khu Du Lịch Thái Hải",
+    "location": "21.534575766389864,105.8159977498895",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "09752c36-4d39-4420-ac29-92ec12f0ecd8",
+    "images": [
+      {
+        "id": "585d111c-3581-4cdd-934d-0691e962c196",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/DJI_20231031155310_0024_V.JPG_tNQNxrL.jpg",
+        "created_date": "2023-12-25T06:58:34.392610Z",
+        "updated_date": "2023-12-25T06:58:35.433618Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "09752c36-4d39-4420-ac29-92ec12f0ecd8",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/DJI_20231031155227_0015_V.JPG.jpg",
+    "rating": null,
+    "views": 7,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T04:04:16.618995Z",
+    "updated_date": "2023-12-27T13:07:21.619104Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Cầu Đi Bộ - Khu Du Lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Cầu Đi Bộ - Khu Du Lịch Thái Hải",
+    "location": "21.5339611050822,105.81560297216271",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "ef15a1f9-bea0-42fa-a674-b6b6de22b1ac",
+    "images": [],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/nh%C3%A0_tr%E1%BA%A1i_ph%C3%B2ng_1.jpg",
+    "rating": null,
+    "views": 6,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T04:06:28.592066Z",
+    "updated_date": "2023-12-27T13:07:21.569104Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Ka Hanh - Khu Du Lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Nhà Ka Hanh - Khu Du Lịch Thái Hải",
+    "location": "21.534575766389864,105.8159977498895",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "87709dd3-b79a-4014-bf11-a448e25948cf",
+    "images": [
+      {
+        "id": "27631517-f0b5-4c5f-9c21-c3e85abcb51e",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/ch%C3%B2i_ngh%E1%BB%89.jpg.jpg",
+        "created_date": "2023-12-22T04:05:22.530852Z",
+        "updated_date": "2023-12-22T04:05:23.659439Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "87709dd3-b79a-4014-bf11-a448e25948cf",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/ch%C3%B2i_ngh%E1%BB%89.jpg.jpg",
+    "rating": null,
+    "views": 1,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T04:05:23.538437Z",
+    "updated_date": "2023-12-27T13:07:21.521104Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Chòi nghỉ - Khu du lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Chòi nghỉ - Khu du lịch Thái Hải",
+    "location": "21.53427644787404,105.81535520771592",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "59732ef2-5bcd-4d8d-b7a2-af3f47c8b050",
+    "images": [],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/ka_h%C6%B0ng_3.jpg",
+    "rating": null,
+    "views": 2,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T03:54:53.520617Z",
+    "updated_date": "2023-12-27T13:07:21.417102Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Ka Tuấn Phượng - Khu Du Lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Nhà Ka Tuấn Phượng - Khu Du Lịch Thái Hải",
+    "location": "21.532339484546426,105.81522585519212",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "e2228991-6b85-457f-8699-90774d7f65fe",
+    "images": [],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/Nh%C3%A0_Ke_H%E1%BA%A3o_l%C3%A0m_ch%C3%A8_2.jpg",
+    "rating": null,
+    "views": 2,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T03:55:36.987787Z",
+    "updated_date": "2023-12-27T13:07:21.370133Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Ka Lân - Khu Du Lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Nhà Ka Lân - Khu Du Lịch Thái Hải",
+    "location": "21.532010515504595,105.81518952875399",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "55bffcb0-de4a-45f5-bd63-078bc0dadf8e",
+    "images": [
+      {
+        "id": "c8d0f757-89eb-4520-acd5-e71a9147ad71",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_Ka_Tu%E1%BA%A5n_Hi%C3%AAn_1.jpg.jpg",
+        "created_date": "2023-12-22T03:56:38.588403Z",
+        "updated_date": "2023-12-22T03:56:39.662411Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "55bffcb0-de4a-45f5-bd63-078bc0dadf8e",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "e2d8b59e-be9d-4f7a-99b7-b40bf6ef1f63",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_Ka_Tu%E1%BA%A5n_Hi%C3%AAn_2.jpg.jpg",
+        "created_date": "2023-12-22T03:56:38.601435Z",
+        "updated_date": "2023-12-22T03:56:39.674410Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "55bffcb0-de4a-45f5-bd63-078bc0dadf8e",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "username": "",
+      "first_name": "",
+      "last_name": ""
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/Nh%C3%A0_Ka_Tu%E1%BA%A5n_Hi%C3%AAn_1.jpg.jpg",
+    "rating": null,
+    "views": 1,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T03:56:39.583442Z",
+    "updated_date": "2023-12-27T13:07:21.270133Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Ka Tuấn Hiên - Khu du lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Nhà Ka Tuấn Hiên - Khu du lịch Thái Hải",
+    "location": "21.534676027180968,105.81503954487138",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "0100981f-28ce-4a60-8a4f-dc329637ca05",
+    "images": [
+      {
+        "id": "d61e76d6-b623-42f7-9da9-47f8a474dc85",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/tr%C6%B0%E1%BB%9Dng_h%E1%BB%8Dc_1.jpg_Yv50DT4.jpg",
+        "created_date": "2023-12-22T03:54:03.599863Z",
+        "updated_date": "2023-12-22T03:54:04.637873Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "0100981f-28ce-4a60-8a4f-dc329637ca05",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "8ef26e3f-f455-479c-ab52-49e9cad56f36",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/tr%C6%B0%E1%BB%9Dng_h%E1%BB%8Dc_2.jpg_byx9gcW.jpg",
+        "created_date": "2023-12-22T03:54:03.610864Z",
+        "updated_date": "2023-12-22T03:54:04.645872Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "0100981f-28ce-4a60-8a4f-dc329637ca05",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/tr%C6%B0%E1%BB%9Dng_h%E1%BB%8Dc_1.jpg_COaaKEY.jpg",
+    "rating": null,
+    "views": 2,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T03:54:04.563871Z",
+    "updated_date": "2023-12-27T13:07:21.219101Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Trường tiểu học Thái Hải - Trường Mần Non Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Trường tiểu học Thái Hải - Trường Mần Non Thái Hải",
+    "location": "21.53235281600037,105.8160563720104",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "24c15e3e-96aa-4be5-baf7-d136ec2ab9b1",
+    "images": [
+      {
+        "id": "49b2c234-ad85-4827-9afa-16d37ee9edf4",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/ka_h%C6%B0ng_1.jpg.jpg",
+        "created_date": "2023-12-22T03:52:39.276998Z",
+        "updated_date": "2023-12-22T03:52:40.286610Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "24c15e3e-96aa-4be5-baf7-d136ec2ab9b1",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "ba077ab8-959e-47e9-baa5-fefbe49de6be",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/ka_h%C6%B0ng_2.jpg.jpg",
+        "created_date": "2023-12-22T03:52:39.293999Z",
+        "updated_date": "2023-12-22T03:52:40.303610Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "24c15e3e-96aa-4be5-baf7-d136ec2ab9b1",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "fd224db7-0353-4090-b599-7bf9c4145c8e",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/ka_h%C6%B0ng_3.jpg.jpg",
+        "created_date": "2023-12-22T03:52:39.301998Z",
+        "updated_date": "2023-12-22T03:52:40.311611Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "24c15e3e-96aa-4be5-baf7-d136ec2ab9b1",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "username": "",
+      "first_name": "",
+      "last_name": ""
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/ka_h%C6%B0ng_1.jpg.jpg",
+    "rating": null,
+    "views": null,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T03:52:40.215641Z",
+    "updated_date": "2023-12-27T13:07:21.169101Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Ka Hưng - Khu Du Lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Nhà Ka Hưng - Khu Du Lịch Thái Hải",
+    "location": "21.53292734739791,105.81497221052399",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "4c70a0e0-c0e9-4edc-96c8-48635f625f6b",
+    "images": [
+      {
+        "id": "a0329fcf-a083-4756-8a48-aba2e70efb7d",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/a_th%C6%B0%C6%A1ng_2.jpg.jpg",
+        "created_date": "2023-12-22T03:44:42.928802Z",
+        "updated_date": "2023-12-22T03:44:44.115811Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "4c70a0e0-c0e9-4edc-96c8-48635f625f6b",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "bb7762a5-3169-4e35-a4c0-65ae9482add0",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/a_th%C6%B0%C6%A1ng_3.jpg.jpg",
+        "created_date": "2023-12-22T03:44:42.955802Z",
+        "updated_date": "2023-12-22T03:44:44.122810Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "4c70a0e0-c0e9-4edc-96c8-48635f625f6b",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "00cd928d-9e81-45ea-b6ed-4232a9bc7426",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/a_th%C6%B0%C6%A1ng_4.jpg.jpg",
+        "created_date": "2023-12-22T03:44:42.987867Z",
+        "updated_date": "2023-12-22T03:44:44.131813Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "4c70a0e0-c0e9-4edc-96c8-48635f625f6b",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/a_th%C6%B0%C6%A1ng_2.jpg.jpg",
+    "rating": null,
+    "views": 3,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T03:44:44.025810Z",
+    "updated_date": "2023-12-27T13:07:21.119100Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà A Thương - Khu Du Lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Nhà A Thương - Khu Du Lịch Thái Hải",
+    "location": "21.533634189341598,105.8149458451411",
+    "website": "",
+    "description": "<p><span style=\"color: rgb(0, 0, 0);\">Nhà A Thương: ngôi nhà sàn 36 cột xiên toang làm bằng chất liệu gỗ lợp mái lá cọ. Ngôi nhà dành cho các đoàn khách muốn dùng ẩm thực không gian riêng cho đoàn có điều hòa, âm thanh.</span></p>"
+  },
+  {
+    "id": "6b4b1ee6-ed2b-4c2d-86e8-5360e40cf6f8",
+    "images": [
+      {
+        "id": "96538474-2f0f-4cd6-a0a2-c078528ddc75",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/nh%C3%A0_ong_1.jpg.jpg",
+        "created_date": "2023-12-22T03:45:41.019649Z",
+        "updated_date": "2023-12-22T03:45:42.016661Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "6b4b1ee6-ed2b-4c2d-86e8-5360e40cf6f8",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "8d088f33-3517-4e1e-8d19-a9d91eecd689",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/nh%C3%A0_ong_2.jpg.jpg",
+        "created_date": "2023-12-22T03:45:41.038649Z",
+        "updated_date": "2023-12-22T03:45:42.023661Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "6b4b1ee6-ed2b-4c2d-86e8-5360e40cf6f8",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/nh%C3%A0_ong_2.jpg.jpg",
+    "rating": null,
+    "views": 2,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T03:45:41.935660Z",
+    "updated_date": "2023-12-27T13:07:21.073099Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Ong - Khu Du Lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Nhà Ong - Khu Du Lịch Thái Hải",
+    "location": "21.533466478911347,105.81553881939412",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "c287c09c-055f-4967-94b1-a444b4387412",
+    "images": [
+      {
+        "id": "e66664bd-37cb-40a0-ad6b-4953c4052bf9",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/L%E1%BB%81u_th%C3%B3c.jpg.jpg",
+        "created_date": "2023-12-22T04:00:52.026345Z",
+        "updated_date": "2023-12-22T04:00:53.591973Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "c287c09c-055f-4967-94b1-a444b4387412",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "username": "",
+      "first_name": "",
+      "last_name": ""
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/L%E1%BB%81u_th%C3%B3c.jpg.jpg",
+    "rating": null,
+    "views": null,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T04:00:53.472941Z",
+    "updated_date": "2023-12-27T13:07:21.023098Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Lều Thóc - Khu Du Lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Lều Thóc - Khu Du Lịch Thái Hải",
+    "location": "21.535490293591295,105.81459984669493",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "2d42b388-d201-4d2f-a1e3-bb18c3e75cf9",
+    "images": [
+      {
+        "id": "de0621ba-34ca-4128-b8ae-a433688d3fe7",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/nh%C3%A0_tr%E1%BA%A1i_khoa_1.jpg.jpg",
+        "created_date": "2023-12-22T03:46:26.812494Z",
+        "updated_date": "2023-12-22T03:46:27.615939Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "2d42b388-d201-4d2f-a1e3-bb18c3e75cf9",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "a4c6f2df-dc97-40b6-91a0-7df66c6b0796",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/nh%C3%A0_tr%E1%BA%A1i_khoa_2.jpg.jpg",
+        "created_date": "2023-12-22T03:46:26.821494Z",
+        "updated_date": "2023-12-22T03:46:27.622939Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "2d42b388-d201-4d2f-a1e3-bb18c3e75cf9",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "username": "",
+      "first_name": "",
+      "last_name": ""
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/nh%C3%A0_tr%E1%BA%A1i_khoa_1.jpg.jpg",
+    "rating": null,
+    "views": null,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T03:46:27.538939Z",
+    "updated_date": "2023-12-27T13:07:20.962099Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Trại Khoa - Khu Du Lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Nhà Trại Khoa - Khu Du Lịch Thái Hải",
+    "location": "21.533100701976252,105.81559462884371",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "da429812-749c-41c4-b65e-8422cd0c248e",
+    "images": [],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/Ka_Thanh_Duy%C3%AAn_2.jpg",
+    "rating": null,
+    "views": 2,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T03:57:13.587914Z",
+    "updated_date": "2023-12-27T13:07:20.906097Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Ka Khánh Linh - Khu Du Lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Nhà Ka Khánh Linh - Khu Du Lịch Thái Hải",
+    "location": "21.534584408509104,105.81425537329687",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "6556ec7f-766a-446a-bd5f-ff0c3d18e3cd",
+    "images": [
+      {
+        "id": "b93aa677-e09c-4283-8e39-b16cfd5fb4e5",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/ph%C3%B2ng_kh%C3%A1m_y_1.jpg.jpg",
+        "created_date": "2023-12-22T03:41:31.211312Z",
+        "updated_date": "2023-12-22T03:41:32.213284Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "6556ec7f-766a-446a-bd5f-ff0c3d18e3cd",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "dddbf47e-a4e3-4f98-a489-e07f47ef42ff",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/ph%C3%B2ng_kh%C3%A1m_y_2.jpg.jpg",
+        "created_date": "2023-12-22T03:41:31.228280Z",
+        "updated_date": "2023-12-22T03:41:32.263284Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "6556ec7f-766a-446a-bd5f-ff0c3d18e3cd",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/ph%C3%B2ng_kh%C3%A1m_y_1.jpg.jpg",
+    "rating": null,
+    "views": 2,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T03:41:32.133283Z",
+    "updated_date": "2023-12-27T13:07:20.864096Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Phòng khám chuyên khoa y học cổ truyền Chấn Quốc - Khu Du Lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Mo": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Sa": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Su": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Th": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Tu": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "We": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      }
+    },
+    "description_short": "Phòng khám chuyên khoa y học cổ truyền Chấn Quốc - Khu Du Lịch Thái Hải",
+    "location": "21.53309425258345,105.81422308603045",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "e69a3e0d-8752-4b2e-83b8-74624129fc82",
+    "images": [
+      {
+        "id": "0ba38e18-c15e-4edb-982c-f330488fe787",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/nh%C3%A0_tr%E1%BA%A1i_qu%C3%A1ch_1.jpg.jpg",
+        "created_date": "2023-12-22T03:42:06.947064Z",
+        "updated_date": "2023-12-22T03:42:08.011072Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "e69a3e0d-8752-4b2e-83b8-74624129fc82",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "a83ad3c2-fb6a-4932-b345-f73d4868a2d2",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/nh%C3%A0_tr%E1%BA%A1i_qu%C3%A1ch_2.jpg.jpg",
+        "created_date": "2023-12-22T03:42:06.967063Z",
+        "updated_date": "2023-12-22T03:42:08.023072Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "e69a3e0d-8752-4b2e-83b8-74624129fc82",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "username": "",
+      "first_name": "",
+      "last_name": ""
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/nh%C3%A0_tr%E1%BA%A1i_qu%C3%A1ch_2.jpg.jpg",
+    "rating": null,
+    "views": null,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T03:42:07.947071Z",
+    "updated_date": "2023-12-27T13:07:20.822098Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Trại Quách - Khu du lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Mo": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Sa": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Su": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Th": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Tu": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "We": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      }
+    },
+    "description_short": "Nhà Trại Quách - Khu du lịch Thái Hải",
+    "location": "21.53268421125712,105.81429892944806",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "18ce0206-4b1d-42b7-bf0b-683cc2095a99",
+    "images": [
+      {
+        "id": "5e453bdf-50cd-4ac5-ac3d-40720ddc10a9",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/ka_duy_1.jpg.jpg",
+        "created_date": "2023-12-22T04:02:41.136538Z",
+        "updated_date": "2023-12-22T04:02:42.227812Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "18ce0206-4b1d-42b7-bf0b-683cc2095a99",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/ka_duy_1.jpg.jpg",
+    "rating": null,
+    "views": 2,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T04:02:42.122219Z",
+    "updated_date": "2023-12-27T13:07:20.772097Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Ka Duy - Khu Du Lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Nhà Ka Duy - Khu Du Lịch Thái Hải",
+    "location": "21.53435476474816,105.81565049212833",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "7f8a9c56-d268-429c-82f2-0721275e83bd",
+    "images": [
+      {
+        "id": "645fba83-098f-44fd-8908-e1d8edd73a0e",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/ka_quynh_1.jpg.jpg",
+        "created_date": "2023-12-22T04:01:27.856690Z",
+        "updated_date": "2023-12-22T04:01:28.859493Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "7f8a9c56-d268-429c-82f2-0721275e83bd",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "ea69a4e8-a03b-484c-83c0-a6d007f971fd",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/ka_quynh_2.jpg.jpg",
+        "created_date": "2023-12-22T04:01:27.882839Z",
+        "updated_date": "2023-12-22T04:01:28.867493Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "7f8a9c56-d268-429c-82f2-0721275e83bd",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "username": "",
+      "first_name": "",
+      "last_name": ""
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/ka_quynh_1.jpg.jpg",
+    "rating": null,
+    "views": null,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T04:01:28.786493Z",
+    "updated_date": "2023-12-27T13:07:20.730097Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Ka Quynh - Khu Du Lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Nhà Ka Quynh - Khu Du Lịch Thái Hải",
+    "location": "21.535363301352117,105.81529193085782",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "6965426a-d824-4e08-81c4-ee835208d771",
+    "images": [
+      {
+        "id": "75433585-20a9-45eb-8e9b-66a205e0a126",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/ka_t%C3%A2m_1.jpg.jpg",
+        "created_date": "2023-12-22T03:43:14.639544Z",
+        "updated_date": "2023-12-22T03:43:15.712553Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "6965426a-d824-4e08-81c4-ee835208d771",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "username": "",
+      "first_name": "",
+      "last_name": ""
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/ka_t%C3%A2m_1.jpg.jpg",
+    "rating": null,
+    "views": null,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T03:43:15.632583Z",
+    "updated_date": "2023-12-27T13:07:20.688096Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Ka Tâm - Khu Du Lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Mo": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Sa": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Su": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Th": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Tu": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "We": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      }
+    },
+    "description_short": "Nhà Ka Tâm - Khu Du Lịch Thái Hải",
+    "location": "21.533450461071602,105.81470798234376",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "1c630a40-912e-4a30-9754-877f99ab03b6",
+    "images": [
+      {
+        "id": "b78ff707-91d1-44d6-a1a9-23c1a2434073",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/nh%C3%A0_ph%E1%BB%A5c_v%E1%BB%A5_kh%C3%A1ch_1.jpg_xxaTtiK.jpg",
+        "created_date": "2023-12-22T03:42:43.653325Z",
+        "updated_date": "2023-12-22T03:42:44.801332Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "1c630a40-912e-4a30-9754-877f99ab03b6",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "745b77ad-c148-4280-8f72-4b511f9cc04c",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/nh%C3%A0_ph%E1%BB%A5c_v%E1%BB%A5_kh%C3%A1ch_2.jpg_rTukV3J.jpg",
+        "created_date": "2023-12-22T03:42:43.673325Z",
+        "updated_date": "2023-12-22T03:42:44.810332Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "1c630a40-912e-4a30-9754-877f99ab03b6",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "username": "",
+      "first_name": "",
+      "last_name": ""
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/nh%C3%A0_ph%E1%BB%A5c_v%E1%BB%A5_kh%C3%A1ch_2.jpg.jpg",
+    "rating": null,
+    "views": null,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T03:42:44.702332Z",
+    "updated_date": "2023-12-27T13:07:20.628095Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Phục Vụ Khách (Gia Đình) - Khu Du Lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Mo": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Sa": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Su": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Th": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Tu": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "We": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      }
+    },
+    "description_short": "Nhà Phục Vụ Khách (Gia Đình) - Khu Du Lịch Thái Hải",
+    "location": "21.532502594281098,105.81436947313483",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "3f584340-67be-49b5-9f14-1e2cad469b95",
+    "images": [
+      {
+        "id": "6b6c3acc-8c2e-44c4-8ab9-4414331dd911",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/nh%C3%A0_ph%E1%BB%A5c_v%E1%BB%A5_kh%C3%A1ch_1.jpg.jpg",
+        "created_date": "2023-12-22T03:39:20.557893Z",
+        "updated_date": "2023-12-22T03:39:21.763460Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "3f584340-67be-49b5-9f14-1e2cad469b95",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "5aa0a68a-497f-4939-a03b-f12ffd3fef49",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/nh%C3%A0_ph%E1%BB%A5c_v%E1%BB%A5_kh%C3%A1ch_2.jpg.jpg",
+        "created_date": "2023-12-22T03:39:20.569893Z",
+        "updated_date": "2023-12-22T03:39:21.770461Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "3f584340-67be-49b5-9f14-1e2cad469b95",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/nh%C3%A0_ph%E1%BB%A5c_v%E1%BB%A5_kh%C3%A1ch_1.jpg.jpg",
+    "rating": null,
+    "views": 2,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T03:39:21.691461Z",
+    "updated_date": "2023-12-27T13:07:20.446092Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Khu Phục vụ khách ở - Khu du lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Mo": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Sa": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Su": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Th": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Tu": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "We": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      }
+    },
+    "description_short": "Khu Phục vụ khách ở - Khu du lịch Thái Hải",
+    "location": "21.532615789637205,105.8137003465099",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "43e87fa1-7cc6-4878-9fa0-81d50f1483f9",
+    "images": [
+      {
+        "id": "22923396-4463-431e-a74e-3fd500998f84",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/C%E1%BB%95ng.jpg.jpg",
+        "created_date": "2023-12-22T03:38:32.602674Z",
+        "updated_date": "2023-12-22T03:38:33.869368Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "43e87fa1-7cc6-4878-9fa0-81d50f1483f9",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "username": "",
+      "first_name": "",
+      "last_name": ""
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/C%E1%BB%95ng.jpg.jpg",
+    "rating": null,
+    "views": null,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T03:38:33.774364Z",
+    "updated_date": "2023-12-27T13:07:20.404092Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Cổng vào 1 - Khu du lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Mo": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Sa": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Su": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Th": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Tu": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "We": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      }
+    },
+    "description_short": "Cổng vào 1 - Khu du lịch Thái Hải",
+    "location": "21.531640232769703,105.81367913015333",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "48e83d74-6371-4ed9-94b3-64441918148a",
+    "images": [
+      {
+        "id": "d4132bab-c489-4f11-baee-9f7416202b37",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_A_Nga_1.jpg_hO1VJhp.jpg",
+        "created_date": "2023-12-21T08:02:59.483349Z",
+        "updated_date": "2023-12-21T08:03:00.529499Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "48e83d74-6371-4ed9-94b3-64441918148a",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "d7610c9e-50bd-4b18-98b9-3517f6fb52fc",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_A_Nga_2.jpg_pazfy5m.jpg",
+        "created_date": "2023-12-21T08:02:59.503349Z",
+        "updated_date": "2023-12-21T08:03:00.537500Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "48e83d74-6371-4ed9-94b3-64441918148a",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "1f8f930f-4d20-48b8-bb8e-7bade972e327",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_A_Nga_3.jpg_iK83v8r.jpg",
+        "created_date": "2023-12-21T08:02:59.527349Z",
+        "updated_date": "2023-12-21T08:03:00.546500Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "48e83d74-6371-4ed9-94b3-64441918148a",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "username": "",
+      "first_name": "",
+      "last_name": ""
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/Nh%C3%A0_A_Nga_1.jpg_ePUjOSs.jpg",
+    "rating": null,
+    "views": null,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-21T08:03:00.445498Z",
+    "updated_date": "2023-12-27T13:07:20.362092Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà A Nga",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Mo": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Sa": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Su": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Th": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Tu": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "We": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      }
+    },
+    "description_short": "Nhà A Nga",
+    "location": "21.535002, 105.815000",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "04807c44-887f-4e5a-8a1d-9b7f6de7f1b7",
+    "images": [
+      {
+        "id": "cfc01192-a22a-49ce-90a1-6314aa30a126",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_Ke_Li%C3%AAm_l%C3%A0m_thu%E1%BB%91c__B%E1%BA%BFp_1.jpg.jpg",
+        "created_date": "2023-12-21T08:00:39.776903Z",
+        "updated_date": "2023-12-21T08:00:40.861961Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "04807c44-887f-4e5a-8a1d-9b7f6de7f1b7",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "be12a079-9f6b-4fc9-bfd8-47a9e10ad933",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_Ke_Li%C3%AAm_l%C3%A0m_thu%E1%BB%91c__B%E1%BA%BFp_2.jpg.jpg",
+        "created_date": "2023-12-21T08:00:39.786906Z",
+        "updated_date": "2023-12-21T08:00:40.871966Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "04807c44-887f-4e5a-8a1d-9b7f6de7f1b7",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "71384a96-d15e-4769-b274-bd4a4ab31901",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_Ke_Li%C3%AAm_l%C3%A0m_thu%E1%BB%91c__B%E1%BA%BFp_3.jpg.jpg",
+        "created_date": "2023-12-21T08:00:39.803906Z",
+        "updated_date": "2023-12-21T08:00:40.885931Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "04807c44-887f-4e5a-8a1d-9b7f6de7f1b7",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/Nh%C3%A0_Ke_Li%C3%AAm_l%C3%A0m_thu%E1%BB%91c__B%E1%BA%BFp_3.jpg.jpg",
+    "rating": null,
+    "views": 2,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-21T08:00:40.769958Z",
+    "updated_date": "2023-12-27T13:07:20.311092Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Ke Liêm",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Mo": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Sa": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Su": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Th": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Tu": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "We": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      }
+    },
+    "description_short": "Nhà Ke Liêm (làm thuốc)",
+    "location": "21.535014, 105.813848",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "ef5d1f82-f301-4d18-bd04-45792096f5e9",
+    "images": [
+      {
+        "id": "35b0b824-8767-419d-b712-494fc0c7a82e",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_Ke_%C4%90%E1%BA%B7ng_l%C3%A0m_r%C6%B0%E1%BB%A3u_2.jpg.jpg",
+        "created_date": "2023-12-21T07:58:51.731959Z",
+        "updated_date": "2023-12-21T07:58:52.801991Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "ef5d1f82-f301-4d18-bd04-45792096f5e9",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "9dc68102-28ea-47e8-b707-92a2468b022a",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_Ke_%C4%90%E1%BA%B7ng_l%C3%A0m_r%C6%B0%E1%BB%A3u_3.jpg.jpg",
+        "created_date": "2023-12-21T07:58:51.850962Z",
+        "updated_date": "2023-12-21T07:58:52.819023Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "ef5d1f82-f301-4d18-bd04-45792096f5e9",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "ce21f591-029e-4728-a50c-bad34a90ec9f",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_Ke_%C4%90%E1%BA%B7ng_l%C3%A0m_r%C6%B0%E1%BB%A3u_1.jpg.jpg",
+        "created_date": "2023-12-21T07:58:51.705957Z",
+        "updated_date": "2023-12-21T07:58:52.793992Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "ef5d1f82-f301-4d18-bd04-45792096f5e9",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "username": "",
+      "first_name": "",
+      "last_name": ""
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/Nh%C3%A0_Ke_%C4%90%E1%BA%B7ng_l%C3%A0m_r%C6%B0%E1%BB%A3u_1.jpg.jpg",
+    "rating": null,
+    "views": null,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-21T07:58:52.697989Z",
+    "updated_date": "2023-12-27T13:07:20.253124Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Ke Đặng",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Mo": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Sa": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Su": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Th": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Tu": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "We": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      }
+    },
+    "description_short": "Nhà Ke Đặng (làm rượu)",
+    "location": "21.535221, 105.814198",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "91addb57-9530-4d7a-ba50-4108ef0eb982",
+    "images": [
+      {
+        "id": "31eb96b7-2237-4aee-8e75-002aa29bcc6d",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_th%E1%BB%9D_b%E1%BA%A3n_1.jpg.jpg",
+        "created_date": "2023-12-21T07:55:34.973215Z",
+        "updated_date": "2023-12-21T07:55:36.070226Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "91addb57-9530-4d7a-ba50-4108ef0eb982",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "d18f3186-e8eb-46af-826c-2ea1bc41831c",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_th%E1%BB%9D_b%E1%BA%A3n_2.jpg.jpg",
+        "created_date": "2023-12-21T07:55:35.010182Z",
+        "updated_date": "2023-12-21T07:55:36.080226Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "91addb57-9530-4d7a-ba50-4108ef0eb982",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "username": "",
+      "first_name": "",
+      "last_name": ""
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/Nh%C3%A0_th%E1%BB%9D_b%E1%BA%A3n_1.jpg.jpg",
+    "rating": null,
+    "views": null,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-21T07:55:35.981227Z",
+    "updated_date": "2023-12-27T13:07:20.206092Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà thờ bản",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Mo": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Sa": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Su": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Th": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Tu": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "We": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      }
+    },
+    "description_short": "Nhà thờ bản",
+    "location": "21.535006, 105.814183",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "d1de303c-8e7d-40c6-9a0c-b4611cb5d33c",
+    "images": [
+      {
+        "id": "573fa33f-fa38-490d-9dc3-5cc072e0b166",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_A_Nga_1.jpg.jpg",
+        "created_date": "2023-12-21T07:52:06.585039Z",
+        "updated_date": "2023-12-21T07:52:07.074042Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "d1de303c-8e7d-40c6-9a0c-b4611cb5d33c",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "b54cf4c4-45ac-49eb-ba55-f9c113073aca",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_A_Nga_2.jpg.jpg",
+        "created_date": "2023-12-21T07:52:06.597068Z",
+        "updated_date": "2023-12-21T07:52:07.082041Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "d1de303c-8e7d-40c6-9a0c-b4611cb5d33c",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "feb43fb5-ba84-4b6e-88c4-21f74886f1f7",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_A_Nga_3.jpg.jpg",
+        "created_date": "2023-12-21T07:52:06.605039Z",
+        "updated_date": "2023-12-21T07:52:07.090041Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "d1de303c-8e7d-40c6-9a0c-b4611cb5d33c",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "username": "",
+      "first_name": "",
+      "last_name": ""
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/Nh%C3%A0_A_Nga_1.jpg.jpg",
+    "rating": null,
+    "views": null,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-21T07:52:07.013072Z",
+    "updated_date": "2023-12-27T13:07:20.156092Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Ả Nga",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Mo": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Sa": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Su": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Th": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Tu": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "We": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      }
+    },
+    "description_short": "Nhà Ả Nga (Nhà 10B)",
+    "location": "21.534225, 105.813649",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "979eff56-1433-49ac-946a-35e6fb15d5a3",
+    "images": [
+      {
+        "id": "a3f19306-fe06-4ff9-9d5e-5deb1fc90240",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Gian_h%C3%A0ng_1.jpg.jpg",
+        "created_date": "2023-12-22T03:40:52.696758Z",
+        "updated_date": "2023-12-22T03:40:53.822421Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "979eff56-1433-49ac-946a-35e6fb15d5a3",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "username": "",
+      "first_name": "",
+      "last_name": ""
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/Gian_h%C3%A0ng_1.jpg.jpg",
+    "rating": null,
+    "views": null,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-22T03:40:53.744387Z",
+    "updated_date": "2023-12-27T13:07:20.060089Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Gian Hàng - Khu Du Lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Mo": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Sa": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Su": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Th": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Tu": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "We": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      }
+    },
+    "description_short": "Gian Hàng - Khu Du Lịch Thái Hải",
+    "location": "21.533347798361206,105.81405240608973",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "7a45536b-b440-453a-a179-dbc17cca585e",
+    "images": [
+      {
+        "id": "8f39b4e5-199e-468f-9181-50f698e7460f",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_Ke_H%E1%BA%A3o_l%C3%A0m_ch%C3%A8_1.jpg.jpg",
+        "created_date": "2023-12-21T07:54:48.005474Z",
+        "updated_date": "2023-12-21T07:54:49.112479Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "7a45536b-b440-453a-a179-dbc17cca585e",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "7de6cfb2-7506-40d5-bdf3-9cccd78b9abd",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Nh%C3%A0_Ke_H%E1%BA%A3o_l%C3%A0m_ch%C3%A8_2.jpg.jpg",
+        "created_date": "2023-12-21T07:54:48.027475Z",
+        "updated_date": "2023-12-21T07:54:49.122480Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "7a45536b-b440-453a-a179-dbc17cca585e",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "username": "",
+      "first_name": "",
+      "last_name": ""
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/Nh%C3%A0_Ke_H%E1%BA%A3o_l%C3%A0m_ch%C3%A8_1.jpg.jpg",
+    "rating": null,
+    "views": null,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-21T07:54:48.989477Z",
+    "updated_date": "2023-12-27T13:07:20.018091Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Ke Hảo",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Mo": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Sa": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Su": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Th": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Tu": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "We": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      }
+    },
+    "description_short": "Nhà Ke Hảo (làm chè)",
+    "location": "21.534584, 105.814255",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "74af22c4-d16e-4b2f-9299-1d4c4b895a0d",
+    "images": [
+      {
+        "id": "b08eb693-3870-46c7-9c2d-469c9deaecb9",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Khu_%E1%BA%A9m_th%E1%BB%B1c_2.jpg.jpg",
+        "created_date": "2023-12-21T07:49:39.204467Z",
+        "updated_date": "2023-12-21T07:49:40.358472Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "74af22c4-d16e-4b2f-9299-1d4c4b895a0d",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "74f166bf-2c5a-49db-a4a6-e17bba1d9676",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Khu_%E1%BA%A9m_th%E1%BB%B1c.jpg.jpg",
+        "created_date": "2023-12-21T07:49:39.226468Z",
+        "updated_date": "2023-12-21T07:49:40.369472Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "74af22c4-d16e-4b2f-9299-1d4c4b895a0d",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "7ac856f7-7f34-490e-a1ff-685b90208243",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/N%E1%BA%A5u_c%C6%A1m_1.jpg.jpg",
+        "created_date": "2023-12-21T08:51:15.677718Z",
+        "updated_date": "2023-12-21T08:51:16.814939Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "74af22c4-d16e-4b2f-9299-1d4c4b895a0d",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "4956817c-2b78-4de6-991a-bbf9868b2879",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/N%E1%BA%A5u_c%C6%A1m_2.jpg.jpg",
+        "created_date": "2023-12-21T08:51:15.695748Z",
+        "updated_date": "2023-12-21T08:51:16.821940Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "74af22c4-d16e-4b2f-9299-1d4c4b895a0d",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "2fb47b52-487f-4bd8-ad62-07c48edf9bf0",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/N%E1%BA%A5u_c%C6%A1m_3.jpg.jpg",
+        "created_date": "2023-12-21T08:51:15.703815Z",
+        "updated_date": "2023-12-21T08:51:16.830940Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "74af22c4-d16e-4b2f-9299-1d4c4b895a0d",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "d15ec9db-e0a5-4474-b0ab-60826327431a",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/N%E1%BA%A5u_c%C6%A1m_4.jpg.jpg",
+        "created_date": "2023-12-21T08:51:15.745721Z",
+        "updated_date": "2023-12-21T08:51:16.838940Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "74af22c4-d16e-4b2f-9299-1d4c4b895a0d",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "3f13ee40-6fca-4d71-81a5-51b0042f2dee",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/N%E1%BA%A5u_c%C6%A1m_5.jpg.jpg",
+        "created_date": "2023-12-21T08:51:15.753842Z",
+        "updated_date": "2023-12-21T08:51:16.846940Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "74af22c4-d16e-4b2f-9299-1d4c4b895a0d",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "94e4a86c-c8b2-47d6-9398-b9832133fbdf",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/N%E1%BA%A5u_c%C6%A1m_6.jpg.jpg",
+        "created_date": "2023-12-21T08:51:15.762757Z",
+        "updated_date": "2023-12-21T08:51:16.855940Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "74af22c4-d16e-4b2f-9299-1d4c4b895a0d",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "4e7dbf18-60e1-49b9-b160-527b0ccfd8bc",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/N%E1%BA%A5u_c%C6%A1m_7.jpg.jpg",
+        "created_date": "2023-12-21T08:51:15.770720Z",
+        "updated_date": "2023-12-21T08:51:16.863939Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "74af22c4-d16e-4b2f-9299-1d4c4b895a0d",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "063cd6ae-7b2f-4045-9dda-d014fff7efe6",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/H%E1%BB%99i_tr%C6%B0%E1%BB%9Dng_1.jpg_ZlljsN2.jpg",
+        "created_date": "2023-12-21T08:51:15.778848Z",
+        "updated_date": "2023-12-21T08:51:16.880939Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "74af22c4-d16e-4b2f-9299-1d4c4b895a0d",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "1410d34b-eb01-417f-8b08-dde9ebeacfb4",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/H%E1%BB%99i_tr%C6%B0%E1%BB%9Dng_2.jpg_0eJRsUN.jpg",
+        "created_date": "2023-12-21T08:51:15.786730Z",
+        "updated_date": "2023-12-21T08:51:16.888938Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "74af22c4-d16e-4b2f-9299-1d4c4b895a0d",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "e952967d-8b91-4907-a599-2614f973ae4c",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/H%E1%BB%99i_tr%C6%B0%E1%BB%9Dng_3.jpg.jpg",
+        "created_date": "2023-12-21T08:51:15.795922Z",
+        "updated_date": "2023-12-21T08:51:16.896938Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "74af22c4-d16e-4b2f-9299-1d4c4b895a0d",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "3d26426f-3562-4993-9509-cd4f68f9d2e4",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/H%E1%BB%99i_tr%C6%B0%E1%BB%9Dng_4.jpg.jpg",
+        "created_date": "2023-12-21T08:51:15.803912Z",
+        "updated_date": "2023-12-21T08:51:16.904945Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "74af22c4-d16e-4b2f-9299-1d4c4b895a0d",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/01.10.2020.jpg.jpg",
+    "rating": null,
+    "views": 3,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-21T07:49:40.284472Z",
+    "updated_date": "2023-12-27T13:07:19.976089Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Khu ẩm thực",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Mo": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Sa": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Su": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Th": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Tu": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "We": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      }
+    },
+    "description_short": "Cung cấp dịch vụ ẩm thực",
+    "location": "21.533980, 105.815011",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "87db4245-55dd-4a93-b6f3-6b42616c4b27",
+    "images": [
+      {
+        "id": "9b361271-6d0f-4f5b-8664-98b2b33a9b83",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Ka_Thanh_Duy%C3%AAn_2.jpg.jpg",
+        "created_date": "2023-12-21T07:50:59.757485Z",
+        "updated_date": "2023-12-21T07:51:00.861490Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "87db4245-55dd-4a93-b6f3-6b42616c4b27",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "02c44f19-9981-4740-8921-f164aefce10c",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Ka_Thanh_Duy%C3%AAn_3.jpg.jpg",
+        "created_date": "2023-12-21T07:50:59.771511Z",
+        "updated_date": "2023-12-21T07:51:00.872488Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "87db4245-55dd-4a93-b6f3-6b42616c4b27",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "7364f1f5-1888-4bb2-9ab6-ee553db6f058",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/Ka_Thanh_Duy%C3%AAn.jpg.jpg",
+        "created_date": "2023-12-21T07:50:59.779485Z",
+        "updated_date": "2023-12-21T07:51:00.880489Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "87db4245-55dd-4a93-b6f3-6b42616c4b27",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/Ka_Thanh_Duy%C3%AAn_3.jpg.jpg",
+    "rating": null,
+    "views": 2,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-21T07:51:00.756488Z",
+    "updated_date": "2023-12-27T13:07:19.928089Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Nhà Ka Thanh Duyên",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Mo": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Sa": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Su": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Th": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Tu": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "We": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      }
+    },
+    "description_short": "Nhà Ka Thanh Duyên (Nhà 9B)",
+    "location": "21.534225, 105.813649",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "d90490b9-bb37-43bb-b412-55c342bdf95e",
+    "images": [
+      {
+        "id": "5e5f5201-1476-4437-afa9-bc8fd88749a9",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/H%E1%BB%99i_tr%C6%B0%E1%BB%9Dng_1.jpg_WwdOkHI.jpg",
+        "created_date": "2023-12-21T07:47:59.141520Z",
+        "updated_date": "2023-12-21T07:48:00.326324Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "d90490b9-bb37-43bb-b412-55c342bdf95e",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "17ad09e0-fa7f-46e3-83c1-261ee84552c3",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/H%E1%BB%99i_tr%C6%B0%E1%BB%9Dng_2.jpg_OT21EkY.jpg",
+        "created_date": "2023-12-21T07:47:59.162520Z",
+        "updated_date": "2023-12-21T07:48:00.339358Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": "d90490b9-bb37-43bb-b412-55c342bdf95e",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "username": "",
+      "first_name": "",
+      "last_name": ""
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/12/H%E1%BB%99i_tr%C6%B0%E1%BB%9Dng_1.jpg.jpg",
+    "rating": null,
+    "views": null,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-12-21T07:48:00.248323Z",
+    "updated_date": "2023-12-27T13:07:19.870089Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Hội trường lớn - Khu du lịch Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Mo": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Sa": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Su": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Th": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "Tu": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      },
+      "We": {
+        "is_close": "False",
+        "time_end": "null",
+        "time_start": "null",
+        "is_fulltime": "False"
+      }
+    },
+    "description_short": "Tổ chức các hoạt động tập thể",
+    "location": "21.533614, 105.814374",
+    "website": "",
+    "description": "<p><br></p>"
+  },
+  {
+    "id": "cad6fcad-7a9c-4f28-ba2a-519027833f40",
+    "images": [
+      {
+        "id": "015754b9-6dac-4d06-a86b-45aebf0dfd15",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/10/2023-10-23_15-46-22.jpg",
+        "created_date": "2023-10-23T08:47:56.131864Z",
+        "updated_date": "2023-10-23T08:47:57.190880Z",
+        "is_active": true,
+        "created_by": 1,
+        "place": "cad6fcad-7a9c-4f28-ba2a-519027833f40",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "8080b3f1-a2dd-415e-8853-ec4ddc71be7f",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/10/2023-10-23_15-46-59.jpg",
+        "created_date": "2023-10-23T08:47:56.155863Z",
+        "updated_date": "2023-10-23T08:47:57.198880Z",
+        "is_active": true,
+        "created_by": 1,
+        "place": "cad6fcad-7a9c-4f28-ba2a-519027833f40",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 1,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 1,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/10/2023-10-23_15-46-22.jpg",
+    "rating": null,
+    "views": 2,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-10-23T08:47:57.087883Z",
+    "updated_date": "2023-12-27T13:07:19.778087Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Sân bóng đá Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      },
+      "We": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": true
+      }
+    },
+    "description_short": "Sân bóng nằm ở Khu bảo tồn Làng nhà sàn Dân tộc Sinh thái Thái Hải",
+    "location": "21.53364706089858, 105.81387057639452",
+    "website": "",
+    "description": "<p>Sân bóng nằm ở Khu bảo tồn Làng nhà sàn Dân tộc Sinh thái Thái Hải phục vụ hoạt động bóng đá giải trí</p>"
+  },
+  {
+    "id": "d726d465-5a53-4b7b-b32b-3df146e5b6d5",
+    "images": [
+      {
+        "id": "c58d24dd-d029-43b4-8fcf-9970d985bea4",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/10/2023-10-23_15-26-12.jpg",
+        "created_date": "2023-10-23T08:30:29.521639Z",
+        "updated_date": "2023-10-23T08:30:30.363653Z",
+        "is_active": true,
+        "created_by": 1,
+        "place": "d726d465-5a53-4b7b-b32b-3df146e5b6d5",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "b557dd23-3f73-4483-b423-1c44a02e0606",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/10/2023-10-23_15-26-41.jpg",
+        "created_date": "2023-10-23T08:30:29.553639Z",
+        "updated_date": "2023-10-23T08:30:30.371654Z",
+        "is_active": true,
+        "created_by": 1,
+        "place": "d726d465-5a53-4b7b-b32b-3df146e5b6d5",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "3a5391f9-8065-46f5-bebd-bdbc309a009d",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/10/32818023_2084984858414751_1807195515146731520_n.jpg",
+        "created_date": "2023-10-23T08:30:29.620641Z",
+        "updated_date": "2023-10-23T08:30:30.379655Z",
+        "is_active": true,
+        "created_by": 1,
+        "place": "d726d465-5a53-4b7b-b32b-3df146e5b6d5",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "8d69b1c8-9b17-4783-b3c7-a102b8408f34",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/10/35147082_2097435413836362_3024056885083897856_n.jpg",
+        "created_date": "2023-10-23T08:30:29.628641Z",
+        "updated_date": "2023-10-23T08:30:30.388654Z",
+        "is_active": true,
+        "created_by": 1,
+        "place": "d726d465-5a53-4b7b-b32b-3df146e5b6d5",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "6bd41a25-4922-4e94-85db-169c51337afa",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/10/35549817_2102701176643119_8953375274343333888_n.jpg",
+        "created_date": "2023-10-23T08:30:29.637643Z",
+        "updated_date": "2023-10-23T08:30:30.396653Z",
+        "is_active": true,
+        "created_by": 1,
+        "place": "d726d465-5a53-4b7b-b32b-3df146e5b6d5",
+        "object_3d": null,
+        "festival": null
+      },
+      {
+        "id": "38e433a7-6c05-4f67-83e7-fface4457c4b",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/10/37974638_2146081415638428_1820002360299094016_n.jpg",
+        "created_date": "2023-10-23T08:30:29.645642Z",
+        "updated_date": "2023-10-23T08:30:30.404654Z",
+        "is_active": true,
+        "created_by": 1,
+        "place": "d726d465-5a53-4b7b-b32b-3df146e5b6d5",
+        "object_3d": null,
+        "festival": null
+      }
+    ],
+    "videos": [],
+    "links": [],
+    "virtual_reality": [],
+    "popups": [],
+    "created_by": {
+      "id": 1,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "username": "",
+      "first_name": "",
+      "last_name": ""
+    },
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/place/2023/10/2023-10-23_15-27-05.jpg",
+    "rating": null,
+    "views": 2,
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "audio": null,
+    "created_date": "2023-10-23T08:30:30.291653Z",
+    "updated_date": "2023-12-27T13:07:19.724088Z",
+    "is_active": true,
+    "status": 0,
+    "name": "Trường tiểu học Thái Hải",
+    "phone_number": "",
+    "time_work": {
+      "Fr": {
+        "is_close": false,
+        "time_end": "17:00",
+        "time_start": "06:00",
+        "is_fulltime": false
+      },
+      "Mo": {
+        "is_close": false,
+        "time_end": "17:00",
+        "time_start": "06:00",
+        "is_fulltime": false
+      },
+      "Sa": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": false
+      },
+      "Su": {
+        "is_close": false,
+        "time_end": null,
+        "time_start": null,
+        "is_fulltime": false
+      },
+      "Th": {
+        "is_close": false,
+        "time_end": "17:00",
+        "time_start": "06:00",
+        "is_fulltime": false
+      },
+      "Tu": {
+        "is_close": false,
+        "time_end": "17:00",
+        "time_start": "06:00",
+        "is_fulltime": false
+      },
+      "We": {
+        "is_close": false,
+        "time_end": "17:00",
+        "time_start": "06:00",
+        "is_fulltime": false
+      }
+    },
+    "description_short": "Trường tiểu học nằm ở khu bảo tồn Làng nhà sàn Dân tộc Sinh thái Thái Hải",
+    "location": "21.53242949744259, 105.81360235551243",
+    "website": "",
+    "description": "<p>Trường tiểu học nằm ở khu bảo tồn Làng nhà sàn Dân tộc Sinh thái Thái Hải. <span style=\"color: rgb(85, 85, 85);\">Đây là một địa chỉ uy tín mà các bậc phụ huynh có thể yên tâm để gửi gắm tương lai của con mình. Với môi trường thân thiện, cơ sở vật chất tốt cùng với những giáo viên ưu tú, các bạn nhỏ khi đến với trường sẽ được đào tạo tận tình và được tham gia trải nghiệm các hoạt động vui chơi giải trí vô cùng vui vẻ và ý nghĩa</span></p>"
+  }
+]

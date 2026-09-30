@@ -1,0 +1,733 @@
+{
+    "id": 6,
+    "location": 7,
+    "version_number": 1,
+    "label": "VR360 Virtual Tour",
+    "data": {
+        "audio": {
+            "file": "https://vr360-builder.metatwin.vn/media/tours/audio/dinh_ha_dat_fb516c50-bd33-42f5-acfd-840bd67d4f8b.mp3",
+            "loop": false,
+            "volume": 1,
+            "enabled": true,
+            "autoplay": true,
+            "language": "",
+            "description": ""
+        },
+        "title": "VR360 Virtual Tour",
+        "scenes": [
+            {
+                "id": "dji_20260605103730_0028_d_9",
+                "gps": {
+                    "lat": 21.37582925,
+                    "lng": 105.7794195,
+                    "heading": null,
+                    "altitude": 142.745
+                },
+                "info": "",
+                "name": "Trên Cao",
+                "group": "Mặc định",
+                "image": "https://storage.vanmanhit.com/uploads/panoramas/DJI_20260605103730_0028_D_1784703259082_2363cd.jpg",
+                "thumb": "https://storage.vanmanhit.com/uploads/thumbnails/DJI_20260605103730_0028_D_1784703259082_2363cd.jpg",
+                "autoTour": 1,
+                "hotspots": [
+                    {
+                        "id": "area_msic0o3z_w4ilv",
+                        "icon": null,
+                        "type": "area_landmark",
+                        "label": "Đình Hạ Đạt",
+                        "style": {
+                            "fill": "#fbbf24",
+                            "line": "#ffffff",
+                            "border": "#fbbf24",
+                            "opacity": 0.45,
+                            "hoverFill": "rgba(56, 189, 248, 0.32)",
+                            "borderWidth": 2,
+                            "hoverBorder": "#7dd3fc"
+                        },
+                        "locked": false,
+                        "target": "img_20260605_103412_00_595_12",
+                        "loai_poi": "ghim_dia_danh",
+                        "metadata": {},
+                        "noi_dung": null,
+                        "vertices": [
+                            {
+                                "lat": -46.7,
+                                "lon": 152.8
+                            },
+                            {
+                                "lat": -51.4,
+                                "lon": 104.2
+                            },
+                            {
+                                "lat": -61.1,
+                                "lon": 105.5
+                            },
+                            {
+                                "lat": -76.1,
+                                "lon": 100.9
+                            },
+                            {
+                                "lat": -84.9,
+                                "lon": 113.7
+                            },
+                            {
+                                "lat": -83.1,
+                                "lon": -72.5
+                            },
+                            {
+                                "lat": -72.9,
+                                "lon": -63.9
+                            },
+                            {
+                                "lat": -71.2,
+                                "lon": -87
+                            },
+                            {
+                                "lat": -63.7,
+                                "lon": -114.3
+                            },
+                            {
+                                "lat": -62.1,
+                                "lon": -118.5
+                            },
+                            {
+                                "lat": -64.9,
+                                "lon": -139.8
+                            },
+                            {
+                                "lat": -63.8,
+                                "lon": -157.4
+                            },
+                            {
+                                "lat": -58.5,
+                                "lon": -173.8
+                            },
+                            {
+                                "lat": -55.5,
+                                "lon": 179.4
+                            },
+                            {
+                                "lat": -51.5,
+                                "lon": 166.7
+                            },
+                            {
+                                "lat": -50.8,
+                                "lon": 160.2
+                            },
+                            {
+                                "lat": -47.5,
+                                "lon": 153.1
+                            }
+                        ],
+                        "entryView": null,
+                        "pointKind": "area_landmark",
+                        "line_height": 40,
+                        "overlay_image": "",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        },
+                        "show_polygon_on_hover": true
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 120,
+                    "lat": -38.4,
+                    "lon": 556.5
+                },
+                "autoTourDuration": 10
+            },
+            {
+                "id": "img_20260605_103412_00_595_12",
+                "gps": {
+                    "lat": 21,
+                    "lng": 105,
+                    "heading": null,
+                    "altitude": null
+                },
+                "info": "",
+                "name": "Sân chính",
+                "group": "Mặc định",
+                "image": "https://vr360-builder.metatwin.vn/media/scenes/originals/IMG_20260605_103412_00_595.jpg",
+                "thumb": "https://vr360-builder.metatwin.vn/media/scenes/thumbnails/IMG_20260605_103412_00_595_thumb.webp",
+                "autoTour": 1,
+                "hotspots": [
+                    {
+                        "id": "hotspot",
+                        "lat": 40,
+                        "lon": -20,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Trên Cao",
+                        "target": "dji_20260605103730_0028_d_9",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "preview_expand",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -22.5,
+                        "lon": 174.6,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Trong Đình",
+                        "target": "img_20260605_102305_00_588_5",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -14.4,
+                        "lon": 76.3,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Sân Trái",
+                        "target": "img_20260605_101451_00_585_2",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": {
+                            "fov": 70,
+                            "lat": 5.5,
+                            "lon": -43.8
+                        },
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -17.1,
+                        "lon": -100.2,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Sân Phải",
+                        "target": "img_20260605_101747_00_586_3",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -17.2,
+                        "lon": 106.9,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Miếu",
+                        "target": "img_20260605_103058_00_592_9",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 70,
+                    "lat": -0.2,
+                    "lon": 177.2
+                },
+                "autoTourDuration": 20
+            },
+            {
+                "id": "img_20260605_101451_00_585_2",
+                "gps": {
+                    "lat": 21,
+                    "lng": 105,
+                    "heading": null,
+                    "altitude": null
+                },
+                "info": "",
+                "name": "Sân Trái",
+                "group": "Mặc định",
+                "image": "https://vr360-builder.metatwin.vn/media/scenes/originals/IMG_20260605_101451_00_585.jpg",
+                "thumb": "https://vr360-builder.metatwin.vn/media/scenes/thumbnails/IMG_20260605_101451_00_585_thumb.webp",
+                "autoTour": 0,
+                "hotspots": [
+                    {
+                        "id": "hotspot",
+                        "lat": -11.4,
+                        "lon": 143.2,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Sân Chính",
+                        "target": "img_20260605_103412_00_595_12",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -9.4,
+                        "lon": 122.4,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Miếu",
+                        "target": "img_20260605_103058_00_592_9",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 70,
+                    "lat": 8.5,
+                    "lon": 134.6
+                },
+                "autoTourDuration": 20
+            },
+            {
+                "id": "img_20260605_101747_00_586_3",
+                "gps": {
+                    "lat": 21,
+                    "lng": 105,
+                    "heading": null,
+                    "altitude": null
+                },
+                "info": "",
+                "name": "Sân Phải",
+                "group": "Mặc định",
+                "image": "https://vr360-builder.metatwin.vn/media/scenes/originals/IMG_20260605_101747_00_586.jpg",
+                "thumb": "https://vr360-builder.metatwin.vn/media/scenes/thumbnails/IMG_20260605_101747_00_586_thumb.webp",
+                "autoTour": 0,
+                "hotspots": [
+                    {
+                        "id": "hotspot",
+                        "lat": -15.8,
+                        "lon": 5.7,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Sân Chính",
+                        "target": "img_20260605_103412_00_595_12",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": {
+                            "fov": 85,
+                            "lat": -1.8,
+                            "lon": 87.2
+                        },
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 70,
+                    "lat": -1.6,
+                    "lon": 561.1
+                },
+                "autoTourDuration": 20
+            },
+            {
+                "id": "img_20260605_102305_00_588_5",
+                "gps": {
+                    "lat": 21,
+                    "lng": 105,
+                    "heading": null,
+                    "altitude": null
+                },
+                "info": "",
+                "name": "Ban Chính",
+                "group": "Mặc định",
+                "image": "https://vr360-builder.metatwin.vn/media/scenes/originals/IMG_20260605_102305_00_588.jpg",
+                "thumb": "https://vr360-builder.metatwin.vn/media/scenes/thumbnails/IMG_20260605_102305_00_588_thumb.webp",
+                "autoTour": 1,
+                "hotspots": [
+                    {
+                        "id": "hotspot",
+                        "lat": -24.2,
+                        "lon": 63.8,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Ban Trái",
+                        "target": "img_20260605_102504_00_590_7",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -27.4,
+                        "lon": -60,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Ban Phải",
+                        "target": "img_20260605_102414_00_589_6",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -27.7,
+                        "lon": 0.9,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Sân Chính",
+                        "target": "img_20260605_103412_00_595_12",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": {
+                            "fov": 85,
+                            "lat": 5.1,
+                            "lon": 353.2
+                        },
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 85,
+                    "lat": -3.5,
+                    "lon": -181.2
+                },
+                "autoTourDuration": 60
+            },
+            {
+                "id": "img_20260605_102414_00_589_6",
+                "gps": {
+                    "lat": 21,
+                    "lng": 105,
+                    "heading": null,
+                    "altitude": null
+                },
+                "info": "",
+                "name": "Ban Phải",
+                "group": "Mặc định",
+                "image": "https://vr360-builder.metatwin.vn/media/scenes/originals/IMG_20260605_102414_00_589.jpg",
+                "thumb": "https://vr360-builder.metatwin.vn/media/scenes/thumbnails/IMG_20260605_102414_00_589_thumb.webp",
+                "autoTour": 0,
+                "hotspots": [
+                    {
+                        "id": "hotspot",
+                        "lat": -25.9,
+                        "lon": 58.4,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Ban Chính",
+                        "target": "img_20260605_102305_00_588_5",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 70,
+                    "lat": -9.8,
+                    "lon": 154.8
+                },
+                "autoTourDuration": 20
+            },
+            {
+                "id": "img_20260605_102504_00_590_7",
+                "gps": {
+                    "lat": 21,
+                    "lng": 105,
+                    "heading": null,
+                    "altitude": null
+                },
+                "info": "",
+                "name": "Ban Trái",
+                "group": "Mặc định",
+                "image": "https://vr360-builder.metatwin.vn/media/scenes/originals/IMG_20260605_102504_00_590.jpg",
+                "thumb": "https://vr360-builder.metatwin.vn/media/scenes/thumbnails/IMG_20260605_102504_00_590_thumb.webp",
+                "autoTour": 0,
+                "hotspots": [
+                    {
+                        "id": "hotspot",
+                        "lat": -24.3,
+                        "lon": 5.7,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Ban Chính",
+                        "target": "img_20260605_102305_00_588_5",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 85,
+                    "lat": -15.1,
+                    "lon": -177.5
+                },
+                "autoTourDuration": 20
+            },
+            {
+                "id": "img_20260605_103058_00_592_9",
+                "gps": {
+                    "lat": 21,
+                    "lng": 105,
+                    "heading": null,
+                    "altitude": null
+                },
+                "info": "",
+                "name": "Miếu",
+                "group": "Mặc định",
+                "image": "https://vr360-builder.metatwin.vn/media/scenes/originals/IMG_20260605_103058_00_592.jpg",
+                "thumb": "https://vr360-builder.metatwin.vn/media/scenes/thumbnails/IMG_20260605_103058_00_592_thumb.webp",
+                "autoTour": 1,
+                "hotspots": [
+                    {
+                        "id": "hotspot",
+                        "lat": -15.5,
+                        "lon": -41.4,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Sau Miếu",
+                        "target": "img_20260605_102625_00_591_8",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": {
+                            "fov": 70,
+                            "lat": 2.2,
+                            "lon": -141.5
+                        },
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -12.6,
+                        "lon": 102.1,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Sân Chính",
+                        "target": "img_20260605_103412_00_595_12",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": {
+                            "fov": 85,
+                            "lat": -1.7,
+                            "lon": 264.6
+                        },
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -19.4,
+                        "lon": -128.8,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Sân Cổng",
+                        "target": "img_20260605_101451_00_585_2",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": {
+                            "fov": 70,
+                            "lat": 4.3,
+                            "lon": 312.7
+                        },
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 70,
+                    "lat": -2.9,
+                    "lon": 4.3
+                },
+                "autoTourDuration": 60
+            },
+            {
+                "id": "img_20260605_102625_00_591_8",
+                "gps": {
+                    "lat": 21,
+                    "lng": 105,
+                    "heading": null,
+                    "altitude": null
+                },
+                "info": "",
+                "name": "Sau Miếu",
+                "group": "Mặc định",
+                "image": "https://vr360-builder.metatwin.vn/media/scenes/originals/IMG_20260605_102625_00_591.jpg",
+                "thumb": "https://vr360-builder.metatwin.vn/media/scenes/thumbnails/IMG_20260605_102625_00_591_thumb.webp",
+                "autoTour": 0,
+                "hotspots": [
+                    {
+                        "id": "hotspot",
+                        "lat": -14.7,
+                        "lon": 19.8,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Miếu",
+                        "target": "img_20260605_103058_00_592_9",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": {
+                            "fov": 70,
+                            "lat": 0.5,
+                            "lon": 176.7
+                        },
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 70,
+                    "lat": -0.7,
+                    "lon": -362.3
+                },
+                "autoTourDuration": 20
+            }
+        ]
+    },
+    "thumbnail": null,
+    "background_audio": "https://vr360-builder.metatwin.vn/media/tours/audio/dinh_ha_dat_fb516c50-bd33-42f5-acfd-840bd67d4f8b.mp3",
+    "hotspot_point_logo": null,
+    "status": "archived",
+    "changelog": "Created from Projects flow.",
+    "created_by": 1,
+    "created_by_name": "admin",
+    "created_at": "2026-07-31T11:10:33.054585+07:00",
+    "updated_at": "2026-09-18T16:39:54.921318+07:00"
+}

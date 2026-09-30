@@ -1,0 +1,617 @@
+[
+  {
+    "id": "obj-1",
+    "name": "Nhà Ka Hanh - Khu Du Lịch Thái Hải",
+    "description_short": "",
+    "description": "",
+    "avatar": "",
+    "views": 14,
+    "updated_date": "09/01/2024 07:40",
+    "vr360_link": "",
+    "object_data": {
+      "id": "654b38422a2fb36353212c95"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-2",
+    "name": "Nhà Ka Tiến - Khu Du Lịch Thái Hải",
+    "description_short": "",
+    "description": "",
+    "avatar": "",
+    "views": 0,
+    "updated_date": "09/01/2024 07:40",
+    "vr360_link": "",
+    "object_data": {
+      "id": "654b36052a2fb36353212c8b"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-3",
+    "name": "Chòi nghỉ - Khu du lịch Thái Hải",
+    "description_short": "",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/ch%C3%B2i_ngh%E1%BB%89.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 07:40",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6549fdc52a2fb36353212c19"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-4",
+    "name": "Cầu Đi Bộ - Khu Du Lịch Thái Hải",
+    "description_short": "",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/DJI_20231031155227_0015_V.JPG.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 07:39",
+    "vr360_link": "",
+    "object_data": {
+      "id": "65324348442378a67b2c0c62"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-5",
+    "name": "Nhà Ka Duy - Khu Du Lịch Thái Hải",
+    "description_short": "Nhà Ka Duy - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/ka_duy_1.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 07:39",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6537adaa442378a67b2c0e66"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-6",
+    "name": "Nhà Ka Tuấn Kiều - Khu Du Lịch Thái Hải",
+    "description_short": "Nhà Ka Tuấn Kiều - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/ka_tu%E1%BA%A5n_1.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 07:38",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6537ad04442378a67b2c0e57"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-7",
+    "name": "Nhà Ka Quynh - Khu Du Lịch Thái Hải",
+    "description_short": "Nhà Ka Quynh - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/ka_quynh_1.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 07:38",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6537ad0a442378a67b2c0e5c"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-8",
+    "name": "Lều Thóc - Khu Du Lịch Thái Hải",
+    "description_short": "Lều Thóc - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/L%E1%BB%81u_th%C3%B3c.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 07:37",
+    "vr360_link": "",
+    "object_data": {
+      "id": "654cae692a2fb36353212ef7"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-9",
+    "name": "Nhà Ka KHánh Linh - Khu Du Lịch Thái Hải",
+    "description_short": "Nhà Ka KHánh Linh - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "",
+    "views": 0,
+    "updated_date": "09/01/2024 07:37",
+    "vr360_link": "",
+    "object_data": {
+      "id": "654dd7f82a2fb36353212f8a"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-10",
+    "name": "Nhà Ka Tuấn Hiên - Khu du lịch Thái Hải",
+    "description_short": "Nhà Ka Tuấn Hiên - Khu du lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/Nh%C3%A0_Ka_Tu%E1%BA%A5n_Hi%C3%AAn_1.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 07:36",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6531f4b916728df83a9475c6"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-11",
+    "name": "Nhà A Nga- Khu Du Lịch Thái Hải",
+    "description_short": "Nhà A Nga- Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/Nh%C3%A0_A_Nga_2.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 07:36",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6531f23d16728df83a9475be"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-12",
+    "name": "Nhà Ả Nự (làm bánh gai) - Khu Du Lịch Thái",
+    "description_short": "Nhà Ả Nự (làm bánh gai) - Khu Du Lịch Thái",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/Nh%C3%A0_%E1%BA%A2_N%E1%BB%B1_l%C3%A0m_b%C3%A1nh_gai_1.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 07:35",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6532092316728df83a947609"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-13",
+    "name": "Nhà Ke Liêm (làm thuốc)",
+    "description_short": "Nhà Ke Liêm (làm thuốc)",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/Nh%C3%A0_Ke_Li%C3%AAm_l%C3%A0m_thu%E1%BB%91c__B%E1%BA%BFp_3.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 07:35",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6532090916728df83a9475fa"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-14",
+    "name": "Nhà Ke Đặng (làm rượu) - Khu Du  Lịch Thái Hải",
+    "description_short": "Nhà Ke Đặng (làm rượu) - Khu Du  Lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/Nh%C3%A0_Ke_%C4%90%E1%BA%B7ng_l%C3%A0m_r%C6%B0%E1%BB%A3u_1.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 07:34",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6532091016728df83a9475ff"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-15",
+    "name": "Nhà thờ bản - Khu Du Lịch Thái Hải",
+    "description_short": "Nhà thờ bản - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/Nh%C3%A0_th%E1%BB%9D_b%E1%BA%A3n_1.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 07:33",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6532091616728df83a947604"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-16",
+    "name": "Nhà Ke Hảo (làm chè) - Khu Du Lịch Thái Hải",
+    "description_short": "Nhà Ke Hảo (làm chè) - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/Nh%C3%A0_Ke_H%E1%BA%A3o_l%C3%A0m_ch%C3%A8_1.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 07:33",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6537b7a9442378a67b2c0e7b"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-17",
+    "name": "Nhà Thuốc (trữ thuốc)",
+    "description_short": "Nhà Thuốc (trữ thuốc)",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/tr%E1%BB%AF_thu%E1%BB%91c.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 07:32",
+    "vr360_link": "",
+    "object_data": {
+      "id": "65324354442378a67b2c0c67"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-18",
+    "name": "Nhà Ả Nga (Nhà 10B)",
+    "description_short": "Nhà Ả Nga (Nhà 10B)",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/Nh%C3%A0_A_Nga_1.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 04:47",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6530ffdd85432d2a86b296e6"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-19",
+    "name": "Nhà Ka Thanh Duyên (Nhà 9B)",
+    "description_short": "Nhà Ka Thanh Duyên (Nhà 9B)",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/Ka_Thanh_Duy%C3%AAn_2.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 04:46",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6531ec2e85432d2a86b29724"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-20",
+    "name": "Khu ẩm thực - Khu Du Lịch Thái Hải",
+    "description_short": "Khu ẩm thực - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/Khu_%E1%BA%A9m_th%E1%BB%B1c_2.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 04:45",
+    "vr360_link": "",
+    "object_data": {
+      "id": "652f913485432d2a86b2934a"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-21",
+    "name": "Hội trường lớn - Khu Du Lịch Thái Hải",
+    "description_short": "Hội trường lớn - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/H%E1%BB%99i_tr%C6%B0%E1%BB%9Dng_1.jpg.jpg",
+    "views": 4,
+    "updated_date": "09/01/2024 04:45",
+    "vr360_link": "",
+    "object_data": {
+      "id": "652fa5fc85432d2a86b2940f"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-22",
+    "name": "Sân Bóng Đá - Khu Du Lịch Thái Hải",
+    "description_short": "Sân Bóng Đá - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/S%C3%A2n_b%C3%B3ng_%C4%91%C3%A1.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 04:44",
+    "vr360_link": "",
+    "object_data": {
+      "id": "652fad1e85432d2a86b29489"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-23",
+    "name": "Giếng Nước - Khu Du Lịch Thái Hải",
+    "description_short": "Giếng Nước - Khu Du Lịch Thái Hải",
+    "description": "Vị trí của giếng do trưởng làng xin trời đất để đặt vị trí...",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/Gi%E1%BA%BFng_2.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 04:43",
+    "vr360_link": "",
+    "object_data": {
+      "id": "653b2cb42a2fb36353212645"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-24",
+    "name": "Nhà Ka Lân - Khu Du Lịch Thái Hải",
+    "description_short": "Nhà Ka Lân - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "",
+    "views": 0,
+    "updated_date": "09/01/2024 04:43",
+    "vr360_link": "",
+    "object_data": {
+      "id": "654dd7eb2a2fb36353212f80"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-25",
+    "name": "Nhà Ka Tuấn Phượng - Khu Du Lịch Thái Hải",
+    "description_short": "Nhà Ka Tuấn Phượng - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "",
+    "views": 0,
+    "updated_date": "09/01/2024 04:42",
+    "vr360_link": "",
+    "object_data": {
+      "id": "654dd7f12a2fb36353212f85"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-26",
+    "name": "Trường tiểu học Thái Hải - Trường Mần Non Thái Hải",
+    "description_short": "Trường tiểu học Thái Hải - Trường Mần Non Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/tr%C6%B0%E1%BB%9Dng_h%E1%BB%8Dc_1.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 04:42",
+    "vr360_link": "",
+    "object_data": {
+      "id": "65378ee5442378a67b2c0e11"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-27",
+    "name": "Nhà Ka Hưng - Khu Du Lịch Thái Hải",
+    "description_short": "Nhà Ka Hưng - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/ka_h%C6%B0ng_1.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 04:41",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6535f43a442378a67b2c0cfc"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-28",
+    "name": "Nhà Ka Xuân - Khu Du Lịch Thái Hải",
+    "description_short": "Nhà Ka Xuân - Khu Du Lịch Thái Hải",
+    "description": "Nhà Ka Xuân ngôi nhà 36 cột dành cho ngủ nghỉ dưỡng lưu trú...",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/ka_xu%C3%A2n.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 04:41",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6535f2fa442378a67b2c0cf2"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-29",
+    "name": "Nhà Trại Khoa - Khu Du Lịch Thái Hải",
+    "description_short": "Nhà Trại Khoa - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/nh%C3%A0_tr%E1%BA%A1i_khoa_1.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 04:40",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6535fc49442378a67b2c0d12"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-30",
+    "name": "Nhà Ong - Khu Du Lịch Thái Hải",
+    "description_short": "Nhà Ong - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/nh%C3%A0_ong_2.jpg.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 04:39",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6535fc42442378a67b2c0d0d"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-31",
+    "name": "Nhà A Thương - Khu Du Lịch Thái Hải",
+    "description_short": "Nhà A Thương - Khu Du Lịch Thái Hải",
+    "description": "Nhà A Thương: ngôi nhà sàn 36 cột xiên toang làm bằng chất liệu gỗ lợp mái lá cọ...",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/a_th%C6%B0%C6%A1ng_1.jpg",
+    "views": 5,
+    "updated_date": "09/01/2024 04:38",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6535f066442378a67b2c0ce8"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-32",
+    "name": "Nhà Ka Tâm - Khu Du Lịch Thái Hải",
+    "description_short": "Nhà Ka Tâm - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/ka_t%C3%A2m_1.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 04:37",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6535f061442378a67b2c0ce3"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-33",
+    "name": "Nhà Phục Vụ Khách (Gia Đình) - Khu Du Lịch Thái Hải",
+    "description_short": "Nhà Phục Vụ Khách (Gia Đình) - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/nh%C3%A0_ph%E1%BB%A5c_v%E1%BB%A5_kh%C3%A1ch_1.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 04:36",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6530e68685432d2a86b29618"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-34",
+    "name": "Nhà Trại Quách - Khu du lịch Thái Hải",
+    "description_short": "Nhà Trại Quách - Khu du lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/nh%C3%A0_tr%E1%BA%A1i_qu%C3%A1ch_1.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 04:36",
+    "vr360_link": "",
+    "object_data": {
+      "id": "652fb0ac85432d2a86b294a2"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-35",
+    "name": "Phòng khám chuyên khoa y học cổ truyền Chấn Quốc - Khu Du Lịch Thái Hải",
+    "description_short": "Phòng khám chuyên khoa y học cổ truyền Chấn Quốc - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/ph%C3%B2ng_kh%C3%A1m_y_2.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 04:34",
+    "vr360_link": "",
+    "object_data": {
+      "id": "652faeb785432d2a86b29493"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-36",
+    "name": "Gian Hàng - Khu Du Lịch Thái Hải",
+    "description_short": "Gian Hàng - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/Gian_h%C3%A0ng_1.jpg",
+    "views": 2,
+    "updated_date": "09/01/2024 04:33",
+    "vr360_link": "",
+    "object_data": {
+      "id": "652fad0d85432d2a86b2947f"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-37",
+    "name": "Sân Khấu - Khu Du Lịch Thái Hải",
+    "description_short": "Sân Khấu - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/S%C3%A2n_kh%E1%BA%A5u_2.jpg",
+    "views": 0,
+    "updated_date": "09/01/2024 04:32",
+    "vr360_link": "",
+    "object_data": {
+      "id": "6530a53985432d2a86b294d1"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-38",
+    "name": "Lồng Công",
+    "description_short": "",
+    "description": "Lồng Công",
+    "avatar": "",
+    "views": 0,
+    "updated_date": "09/01/2024 04:31",
+    "vr360_link": "",
+    "object_data": {
+      "id": "654e05922a2fb363532130a2"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-39",
+    "name": "Khu Lễ Tân - Khu Du Lịch Thái Hải",
+    "description_short": "Khu Lễ Tân - Khu Du Lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/Khu_l%E1%BB%85_t%C3%A2n_2.jpg",
+    "views": 1,
+    "updated_date": "09/01/2024 04:29",
+    "vr360_link": "https://project.vrpro.vn/thai-hai/#cong_lang_2",
+    "object_data": {
+      "id": "652fa9ae85432d2a86b2943c"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-40",
+    "name": "Cổng vào 1 - Khu du lịch Thái Hải",
+    "description_short": "Cổng vào 1 - Khu du lịch Thái Hải",
+    "description": "",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/C%E1%BB%95ng.jpg",
+    "views": 1,
+    "updated_date": "09/01/2024 04:23",
+    "vr360_link": "https://project.vrpro.vn/thai-hai/#tong_quan_lang_thai_hai",
+    "object_data": {
+      "id": "6549af5c2a2fb36353212b7b"
+    },
+    "images": [],
+    "ratings": []
+  },
+  {
+    "id": "obj-41",
+    "name": "Nhà Vip - Khu Du Lịch Thái Hải",
+    "description_short": "Khu nhà VIP dành cho khách lưu trú",
+    "description": "Nhà VIP: nhà sàn nhỏ có không gian riêng khép kín dành cho lưu trú nghỉ dưỡng, có đầy đủ trang thiết bị đạt tiêu chuẩn đón khách quốc tế...",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/avatar/2024/01/nahf_vip_2.jpg.jpg",
+    "views": 5,
+    "updated_date": "02/01/2024 10:20",
+    "vr360_link": "https://project.vrpro.vn/thai-hai/#nha_vip",
+    "object_data": {
+      "id": "653f27e12a2fb363532127bf"
+    },
+    "images": [],
+    "ratings": []
+  }
+]

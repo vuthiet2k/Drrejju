@@ -1,0 +1,24 @@
+{
+    "logo1": "https://tttmdungtan.metatwin.vn/media/photos/logo/logotinhthainguyen_r5lOZFX.png",
+    "logo2": "https://tttmdungtan.metatwin.vn/media/photos/logo/logosovanhoa_fzJ5NPr.png",
+    "bg_login": null,
+    "bg_head": "https://tttmdungtan.metatwin.vn/media/photos/logo/1_UnMevUE.jpg",
+    "config": {
+        "fax": "",
+        "key": null,
+        "lat": "21.47254633602889",
+        "lng": "105.86807367996843",
+        "tilt": "60",
+        "zoom": "",
+        "donvi": "",
+        "phone": "0912562020",
+        "coquan": "",
+        "address": "30 Tháng 4, Cải Đan, Sông Công, Thái Nguyên",
+        "bearing": "90",
+        "viewbox": "21.466136,105.866689,21.482033,105.873541",
+        "map_type": "map3d",
+        "trip_link": "KHU DU LỊCH SINH THÁI DŨNG TÂN",
+        "water_effect": "1",
+        "location_type": "[{\"name\":\"Tạp hóa\",\"class\":\"ri-shopping-cart-line\",\"type_search\":\"grocery_store\"},{\"name\":\"Trường học\",\"class\":\"ri-building-4-fill\",\"type_search\":\"education\"},{\"name\":\"Điểm du lịch\",\"class\":\"ri-ancient-gate-line\",\"type_search\":\"tourist_attraction\"},{\"name\":\"Trạm xăng\",\"class\":\"ri-gas-station-fill\",\"type_search\":\"gas_station\"}]"
+    }
+}

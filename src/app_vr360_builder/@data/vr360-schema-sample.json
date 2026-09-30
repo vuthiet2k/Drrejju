@@ -1,0 +1,215 @@
+{
+  "cau_hinh_he_thong": {
+    "ten_nen_tang": "VR360 Virtual Tour",
+    "phien_ban_cau_hinh": "2.0",
+    "ngon_ngu": "vi",
+    "tu_dong_xoay": true,
+    "hien_thi_la_ban": true,
+    "am_thanh_nen": {
+      "duong_dan_file_audio": "",
+      "tu_dong_phat": false,
+      "lap_lai": true,
+      "am_luong": 0.4
+    }
+  },
+  "title": "Tour VR360 Mẫu — Cổng / Sân trung tâm / Coffee Hà Lan",
+  "scenes": [
+    {
+      "id": "cong_chinh",
+      "name": "Cổng",
+      "group": "Khu vực chính",
+      "image": "https://storage.vanmanhit.com/uploads/panoramas/cong-chinh.jpg",
+      "thumb": "https://storage.vanmanhit.com/uploads/thumbs/cong-chinh.jpg",
+      "info": "Cổng vào chính của không gian tham quan.",
+      "thong_tin_gioi_thieu": {
+        "tieu_de_hop_thong_tin": "Cổng chính",
+        "noi_dung_van_ban": "Cổng chính là điểm khởi đầu của hành trình tham quan ảo. Từ đây du khách có thể quan sát toàn cảnh khu vực và lựa chọn lộ trình khám phá phù hợp.",
+        "anh_dai_dien_2d": "https://storage.vanmanhit.com/uploads/gioi-thieu/cong-chinh-2d.jpg"
+      },
+      "am_thanh_thuyet_minh": {
+        "duong_dan_file_audio": "https://storage.vanmanhit.com/uploads/audio/cong-chinh.mp3",
+        "tu_dong_phat": false,
+        "thoi_luong_giay": 42
+      },
+      "gps": { "lat": 21.408420, "lng": 105.785475, "altitude": 12, "heading": null },
+      "initialView": { "lon": 0, "lat": 0, "fov": 75 },
+      "hotspots": [
+        {
+          "lon": 15.5,
+          "lat": -2,
+          "label": "Sân trung tâm",
+          "target": "san_trung_tam",
+          "type": "nav",
+          "icon": "dot",
+          "loai_poi": "chuyen_canh",
+          "khi_dua_chuot_vao": {
+            "hien_thi_anh_thu_nho": true,
+            "duong_dan_thumbnail": "https://storage.vanmanhit.com/uploads/thumbs/san-trung-tam.jpg",
+            "van_ban_huong_dan": "Bấm để đi vào Sân trung tâm"
+          },
+          "entryView": { "lon": 180, "lat": 0, "fov": 75 }
+        },
+        {
+          "lon": -95,
+          "lat": 6,
+          "label": "Núi Tam Đảo",
+          "target": "",
+          "type": "poi",
+          "icon": null,
+          "loai_poi": "ghim_dia_danh",
+          "chieu_cao_duong_ghim": 64,
+          "khi_dua_chuot_vao": {
+            "hien_thi_anh_thu_nho": false,
+            "duong_dan_thumbnail": "",
+            "van_ban_huong_dan": "Dãy Tam Đảo nhìn từ cổng — cách khoảng 12km"
+          },
+          "thong_tin_gioi_thieu": {
+            "tieu_de_hop_thong_tin": "Dãy núi Tam Đảo",
+            "noi_dung_van_ban": "Dãy Tam Đảo trải dài phía xa, là phông nền tự nhiên đặc trưng nhìn từ khu vực cổng. Thẻ ghim đánh dấu vị trí địa lý ở khoảng cách xa, ngoài tầm chạm trực tiếp của camera.",
+            "anh_dai_dien_2d": ""
+          },
+          "entryView": null
+        }
+      ]
+    },
+    {
+      "id": "san_trung_tam",
+      "name": "Sân trung tâm",
+      "group": "Khu vực chính",
+      "image": "https://storage.vanmanhit.com/uploads/panoramas/san-trung-tam.jpg",
+      "thumb": "https://storage.vanmanhit.com/uploads/thumbs/san-trung-tam.jpg",
+      "info": "Không gian sân giữa, điểm trung chuyển tới các khu vực khác.",
+      "thong_tin_gioi_thieu": {
+        "tieu_de_hop_thong_tin": "Sân trung tâm",
+        "noi_dung_van_ban": "Sân trung tâm là không gian rộng nằm ở lõi khu vực tham quan, kết nối tới các điểm đến chính. Đây cũng là nơi tổ chức các hoạt động, sự kiện cộng đồng.",
+        "anh_dai_dien_2d": "https://storage.vanmanhit.com/uploads/gioi-thieu/san-trung-tam-2d.jpg"
+      },
+      "am_thanh_thuyet_minh": {
+        "duong_dan_file_audio": "https://storage.vanmanhit.com/uploads/audio/san-trung-tam.mp3",
+        "tu_dong_phat": true,
+        "thoi_luong_giay": 68
+      },
+      "gps": { "lat": 21.408502, "lng": 105.785601, "altitude": 12, "heading": null },
+      "initialView": { "lon": 0, "lat": 0, "fov": 75 },
+      "hotspots": [
+        {
+          "lon": -160,
+          "lat": -2,
+          "label": "Cổng",
+          "target": "cong_chinh",
+          "type": "nav",
+          "icon": "dot",
+          "loai_poi": "chuyen_canh",
+          "khi_dua_chuot_vao": {
+            "hien_thi_anh_thu_nho": true,
+            "duong_dan_thumbnail": "https://storage.vanmanhit.com/uploads/thumbs/cong-chinh.jpg",
+            "van_ban_huong_dan": "Bấm để quay lại Cổng"
+          },
+          "entryView": null
+        },
+        {
+          "lon": 40,
+          "lat": -3,
+          "label": "Coffee Hà Lan",
+          "target": "coffee_ha_lan",
+          "type": "nav",
+          "icon": "dot",
+          "loai_poi": "chuyen_canh",
+          "khi_dua_chuot_vao": {
+            "hien_thi_anh_thu_nho": true,
+            "duong_dan_thumbnail": "https://storage.vanmanhit.com/uploads/thumbs/coffee-ha-lan.jpg",
+            "van_ban_huong_dan": "Bấm để ghé Coffee Hà Lan"
+          },
+          "entryView": { "lon": 0, "lat": 0, "fov": 80 }
+        },
+        {
+          "lon": 5,
+          "lat": 8,
+          "label": "Giếng cổ",
+          "target": "",
+          "type": "poi",
+          "icon": null,
+          "loai_poi": "thong_tin_van_ban",
+          "khi_dua_chuot_vao": {
+            "hien_thi_anh_thu_nho": true,
+            "duong_dan_thumbnail": "https://storage.vanmanhit.com/uploads/thumbs/gieng-co.jpg",
+            "van_ban_huong_dan": "Giếng cổ hơn 100 năm tuổi — bấm để xem thông tin chi tiết"
+          },
+          "thong_tin_gioi_thieu": {
+            "tieu_de_hop_thong_tin": "Giếng cổ",
+            "noi_dung_van_ban": "Giếng cổ nằm giữa sân, gắn liền với đời sống sinh hoạt của cộng đồng qua nhiều thế hệ. Miệng giếng được xếp bằng đá ong, nước trong quanh năm.",
+            "anh_dai_dien_2d": "https://storage.vanmanhit.com/uploads/gioi-thieu/gieng-co-2d.jpg"
+          },
+          "entryView": null
+        },
+        {
+          "lon": -60,
+          "lat": 3,
+          "label": "Ảnh xưa của sân trung tâm",
+          "target": "",
+          "type": "poi",
+          "icon": null,
+          "loai_poi": "thu_vien_anh",
+          "khi_dua_chuot_vao": {
+            "hien_thi_anh_thu_nho": true,
+            "duong_dan_thumbnail": "https://storage.vanmanhit.com/uploads/thumbs/anh-xua-san.jpg",
+            "van_ban_huong_dan": "Bấm để xem thư viện ảnh xưa"
+          },
+          "entryView": null
+        }
+      ]
+    },
+    {
+      "id": "coffee_ha_lan",
+      "name": "Coffee Hà Lan",
+      "group": "Dịch vụ",
+      "image": "https://storage.vanmanhit.com/uploads/panoramas/coffee-ha-lan.jpg",
+      "thumb": "https://storage.vanmanhit.com/uploads/thumbs/coffee-ha-lan.jpg",
+      "info": "Quán cà phê phong cách Hà Lan trong khuôn viên tham quan.",
+      "thong_tin_gioi_thieu": {
+        "tieu_de_hop_thong_tin": "Coffee Hà Lan",
+        "noi_dung_van_ban": "Quán cà phê phong cách Hà Lan là điểm dừng chân thư giãn trong khuôn viên, kết hợp không gian mở với kiến trúc mộc mạc.",
+        "anh_dai_dien_2d": "https://storage.vanmanhit.com/uploads/gioi-thieu/coffee-ha-lan-2d.jpg"
+      },
+      "am_thanh_thuyet_minh": {
+        "duong_dan_file_audio": "",
+        "tu_dong_phat": false,
+        "thoi_luong_giay": 0
+      },
+      "gps": { "lat": 21.408699, "lng": 105.785820, "altitude": 12, "heading": null },
+      "initialView": { "lon": 0, "lat": 0, "fov": 75 },
+      "hotspots": [
+        {
+          "lon": -140,
+          "lat": -2,
+          "label": "Sân trung tâm",
+          "target": "san_trung_tam",
+          "type": "nav",
+          "icon": "dot",
+          "loai_poi": "chuyen_canh",
+          "khi_dua_chuot_vao": {
+            "hien_thi_anh_thu_nho": true,
+            "duong_dan_thumbnail": "https://storage.vanmanhit.com/uploads/thumbs/san-trung-tam.jpg",
+            "van_ban_huong_dan": "Bấm để quay lại Sân trung tâm"
+          },
+          "entryView": null
+        },
+        {
+          "lon": 10,
+          "lat": 5,
+          "label": "Video giới thiệu quán",
+          "target": "",
+          "type": "poi",
+          "icon": null,
+          "loai_poi": "phat_video",
+          "khi_dua_chuot_vao": {
+            "hien_thi_anh_thu_nho": true,
+            "duong_dan_thumbnail": "https://storage.vanmanhit.com/uploads/thumbs/video-gioi-thieu.jpg",
+            "van_ban_huong_dan": "Bấm để xem video giới thiệu Coffee Hà Lan"
+          },
+          "entryView": null
+        }
+      ]
+    }
+  ]
+}

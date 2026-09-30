@@ -1,0 +1,1190 @@
+{
+    "id": 9,
+    "location": 11,
+    "version_number": 1,
+    "label": "VR360 Virtual Tour",
+    "data": {
+        "audio": {
+            "file": "https://vr360-builder.metatwin.vn/media/tours/audio/den_dan_ha_ba255adb-64c5-449a-8568-bb777a31e855.mp3",
+            "loop": false,
+            "volume": 1,
+            "enabled": true,
+            "autoplay": true,
+            "language": "",
+            "description": ""
+        },
+        "title": "VR360 Virtual Tour",
+        "scenes": [
+            {
+                "id": "dji_20260714160002_0183_d_13",
+                "gps": {
+                    "lat": 21.400738722222222,
+                    "lng": 105.80608738888888,
+                    "heading": null,
+                    "altitude": 247.836
+                },
+                "info": "",
+                "name": "Trên Cao",
+                "group": "Mặc định",
+                "image": "https://storage.vanmanhit.com/uploads/panoramas/Fly1_1784605663884_07e0de.jpg",
+                "thumb": "https://storage.vanmanhit.com/uploads/thumbnails/Fly1_1784605663884_07e0de.jpg",
+                "autoTour": 1,
+                "hotspots": [
+                    {
+                        "id": "area_msi9talo_xq05f",
+                        "icon": null,
+                        "type": "area_landmark",
+                        "label": "Đền Đan Hà",
+                        "style": {
+                            "fill": "#fbbf24",
+                            "line": "#ffffff",
+                            "border": "#fbbf24",
+                            "opacity": 0.45,
+                            "hoverFill": "rgba(56, 189, 248, 0.32)",
+                            "borderWidth": 2,
+                            "hoverBorder": "#7dd3fc"
+                        },
+                        "locked": false,
+                        "target": "dji_20260714170457_0188_d_2",
+                        "loai_poi": "ghim_dia_danh",
+                        "metadata": {},
+                        "noi_dung": null,
+                        "vertices": [
+                            {
+                                "lat": -25.3,
+                                "lon": -143
+                            },
+                            {
+                                "lat": -26.5,
+                                "lon": -149
+                            },
+                            {
+                                "lat": -27.4,
+                                "lon": -153.6
+                            },
+                            {
+                                "lat": -27.9,
+                                "lon": -156.1
+                            },
+                            {
+                                "lat": -30.8,
+                                "lon": -154.6
+                            },
+                            {
+                                "lat": -32.5,
+                                "lon": -154.9
+                            },
+                            {
+                                "lat": -33.3,
+                                "lon": -154.7
+                            },
+                            {
+                                "lat": -31.8,
+                                "lon": -148.7
+                            },
+                            {
+                                "lat": -30.4,
+                                "lon": -146.1
+                            },
+                            {
+                                "lat": -29,
+                                "lon": -145.4
+                            },
+                            {
+                                "lat": -28.1,
+                                "lon": -143.8
+                            },
+                            {
+                                "lat": -27.5,
+                                "lon": -141.6
+                            },
+                            {
+                                "lat": -27.2,
+                                "lon": -141.1
+                            },
+                            {
+                                "lat": -26,
+                                "lon": -141.7
+                            },
+                            {
+                                "lat": -25.4,
+                                "lon": -143.1
+                            }
+                        ],
+                        "entryView": null,
+                        "pointKind": "area_landmark",
+                        "line_height": 40,
+                        "overlay_image": "",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        },
+                        "show_polygon_on_hover": true
+                    },
+                    {
+                        "id": "area_msi9u64y_ccagb",
+                        "icon": null,
+                        "type": "area_landmark",
+                        "label": "UBND Xã Thành Công",
+                        "style": {
+                            "fill": "#fbbf24",
+                            "line": "#ffffff",
+                            "border": "#fbbf24",
+                            "opacity": 0.45,
+                            "hoverFill": "rgba(56, 189, 248, 0.32)",
+                            "borderWidth": 2,
+                            "hoverBorder": "#7dd3fc"
+                        },
+                        "locked": false,
+                        "target": "",
+                        "loai_poi": "ghim_dia_danh",
+                        "metadata": {},
+                        "noi_dung": null,
+                        "vertices": [
+                            {
+                                "lat": -36.7,
+                                "lon": -176
+                            },
+                            {
+                                "lat": -35.4,
+                                "lon": 176.9
+                            },
+                            {
+                                "lat": -33.6,
+                                "lon": 177.4
+                            },
+                            {
+                                "lat": -29.1,
+                                "lon": 179
+                            },
+                            {
+                                "lat": -27.4,
+                                "lon": 179.2
+                            },
+                            {
+                                "lat": -25,
+                                "lon": -178.9
+                            },
+                            {
+                                "lat": -25.4,
+                                "lon": -170.3
+                            },
+                            {
+                                "lat": -26,
+                                "lon": -169.5
+                            },
+                            {
+                                "lat": -26.3,
+                                "lon": -168.5
+                            },
+                            {
+                                "lat": -26.7,
+                                "lon": -163.1
+                            },
+                            {
+                                "lat": -30.8,
+                                "lon": -163.9
+                            },
+                            {
+                                "lat": -31.1,
+                                "lon": -162.7
+                            },
+                            {
+                                "lat": -33,
+                                "lon": -163.1
+                            },
+                            {
+                                "lat": -34.4,
+                                "lon": -164.8
+                            },
+                            {
+                                "lat": -36.9,
+                                "lon": -165.9
+                            },
+                            {
+                                "lat": -36.7,
+                                "lon": -176
+                            }
+                        ],
+                        "entryView": null,
+                        "pointKind": "area_landmark",
+                        "line_height": 40,
+                        "overlay_image": "",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        },
+                        "show_polygon_on_hover": true
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 70,
+                    "lat": -21.3,
+                    "lon": 186.6
+                },
+                "autoTourDuration": 10
+            },
+            {
+                "id": "dji_20260714170457_0188_d_2",
+                "gps": {
+                    "lat": 21.401964944444444,
+                    "lng": 105.80753569444444,
+                    "heading": null,
+                    "altitude": 150.005
+                },
+                "info": "",
+                "name": "Đền Đan Hà",
+                "group": "Mặc định",
+                "image": "https://storage.vanmanhit.com/uploads/panoramas/1_1784605665283_8a4fb3.jpg",
+                "thumb": "https://storage.vanmanhit.com/uploads/thumbnails/1_1784605665283_8a4fb3.jpg",
+                "autoTour": 1,
+                "hotspots": [
+                    {
+                        "id": "hotspot",
+                        "lat": -19.3,
+                        "lon": -174.7,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Sân Đền ",
+                        "target": "dji_20260714170158_0181_d_1",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": {
+                            "fov": 75,
+                            "lat": 11.8,
+                            "lon": -185.1
+                        },
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": 23.3,
+                        "lon": 20.7,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Trên Cao",
+                        "target": "dji_20260714160002_0183_d_13",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "preview_expand",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 70,
+                    "lat": 2.6,
+                    "lon": 180.8
+                },
+                "autoTourDuration": 19
+            },
+            {
+                "id": "dji_20260714170158_0181_d_1",
+                "gps": {
+                    "lat": 21.40198138888889,
+                    "lng": 105.80733147222222,
+                    "heading": null,
+                    "altitude": 151.505
+                },
+                "info": "",
+                "name": "Sân Cổng Đền",
+                "group": "Mặc định",
+                "image": "https://storage.vanmanhit.com/uploads/panoramas/2_1784605666874_d2eb9e.jpg",
+                "thumb": "https://storage.vanmanhit.com/uploads/thumbnails/2_1784605666874_d2eb9e.jpg",
+                "autoTour": 1,
+                "hotspots": [
+                    {
+                        "id": "hotspot",
+                        "lat": -20.4,
+                        "lon": -14.4,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Cổng Đền Đan Hà",
+                        "target": "dji_20260714170457_0188_d_2",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": {
+                            "fov": 86,
+                            "lat": 1.7,
+                            "lon": 362.4
+                        },
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -18.8,
+                        "lon": 148.6,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Sân Đền Chính",
+                        "target": "dji_20260714165957_0178_d_14",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -20.1,
+                        "lon": -160.5,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Sân Bên Phải",
+                        "target": "dji_20260714172529_0215_d_10",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 70,
+                    "lat": -0.3,
+                    "lon": -184.4
+                },
+                "autoTourDuration": 44
+            },
+            {
+                "id": "dji_20260714165957_0178_d_14",
+                "gps": {
+                    "lat": 21.40194875,
+                    "lng": 105.80718505555555,
+                    "heading": null,
+                    "altitude": 151.505
+                },
+                "info": "",
+                "name": "Sân Đền Chính",
+                "group": "Mặc định",
+                "image": "https://storage.vanmanhit.com/uploads/panoramas/DJI_20260714165957_0178_D_1784371645390_1292a1.jpg",
+                "thumb": "https://storage.vanmanhit.com/uploads/thumbnails/DJI_20260714165957_0178_D_1784371645390_1292a1.jpg",
+                "autoTour": 0,
+                "hotspots": [
+                    {
+                        "id": "hotspot",
+                        "lat": -16.4,
+                        "lon": -11.4,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Sân Đền Chính",
+                        "target": "dji_20260714170158_0181_d_1",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": {
+                            "fov": 80,
+                            "lat": -10.8,
+                            "lon": -14.4
+                        },
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -34.5,
+                        "lon": 177.6,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Thềm",
+                        "target": "dji_20260714170829_0192_d_3",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -12.4,
+                        "lon": -92.7,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Sân Bên Phải",
+                        "target": "dji_20260714172529_0215_d_10",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hs_msjztsxo_jbspf",
+                        "lat": -6.5,
+                        "lon": 84.8,
+                        "icon": null,
+                        "type": "gallery",
+                        "label": "Danh Sách Công Đức",
+                        "locked": false,
+                        "target": "",
+                        "loai_poi": "thu_vien_anh",
+                        "noi_dung": {
+                            "tieu_de": "",
+                            "danh_sach_anh": [
+                                "https://vr360-builder.metatwin.vn/media/tours/hotspot_info/v9/hs_msjztsxo_jbspf/img_20260605_134516-2f5a036a.jpg",
+                                "https://vr360-builder.metatwin.vn/media/tours/hotspot_info/v9/hs_msjztsxo_jbspf/img_20260605_134508-19f19556.jpg"
+                            ]
+                        },
+                        "entryView": null,
+                        "pointKind": "gallery",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 100,
+                    "lat": -0.7,
+                    "lon": 177.6
+                },
+                "autoTourDuration": 20
+            },
+            {
+                "id": "dji_20260714170829_0192_d_3",
+                "gps": {
+                    "lat": 21.401956055555555,
+                    "lng": 105.80713352777778,
+                    "heading": null,
+                    "altitude": 151.505
+                },
+                "info": "",
+                "name": "Thềm ",
+                "group": "Mặc định",
+                "image": "https://storage.vanmanhit.com/uploads/panoramas/4_1784605669186_4b09e6.jpg",
+                "thumb": "https://storage.vanmanhit.com/uploads/thumbnails/4_1784605669186_4b09e6.jpg",
+                "autoTour": 0,
+                "hotspots": [
+                    {
+                        "id": "hotspot",
+                        "lat": -29.3,
+                        "lon": -19.9,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Sân Đền Chính 2",
+                        "target": "dji_20260714165957_0178_d_14",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": {
+                            "fov": 120,
+                            "lat": -0.2,
+                            "lon": 341.9
+                        },
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -21.6,
+                        "lon": -177.4,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Trong Đền",
+                        "target": "dji_20260714170950_0194_d_4",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 70,
+                    "lat": 2.3,
+                    "lon": 180
+                },
+                "autoTourDuration": 20
+            },
+            {
+                "id": "dji_20260714170950_0194_d_4",
+                "gps": {
+                    "lat": 21.401961777777775,
+                    "lng": 105.80710630555555,
+                    "heading": null,
+                    "altitude": 152.205
+                },
+                "info": "",
+                "name": "Trong Đền ",
+                "group": "Mặc định",
+                "image": "https://storage.vanmanhit.com/uploads/panoramas/6_1784605670465_43a080.jpg",
+                "thumb": "https://storage.vanmanhit.com/uploads/thumbnails/6_1784605670465_43a080.jpg",
+                "autoTour": 0,
+                "hotspots": [
+                    {
+                        "id": "hotspot",
+                        "lat": -41,
+                        "lon": -0.5,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Ban Chính",
+                        "target": "dji_20260714171021_0195_d_5",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -26.2,
+                        "lon": 55.9,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Ban Bên Phải",
+                        "target": "dji_20260714171229_0200_d_13",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -24.8,
+                        "lon": -56.6,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Ban Bên Trái",
+                        "target": "dji_20260714171144_0198_d_14",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -39.4,
+                        "lon": -179.2,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Thềm",
+                        "target": "dji_20260714170829_0192_d_3",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": {
+                            "fov": 100,
+                            "lat": -3.7,
+                            "lon": 363.1
+                        },
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 90,
+                    "lat": -0.6,
+                    "lon": 0.7
+                },
+                "autoTourDuration": 20
+            },
+            {
+                "id": "dji_20260714171021_0195_d_5",
+                "gps": {
+                    "lat": 21.40196322222222,
+                    "lng": 105.80709488888888,
+                    "heading": null,
+                    "altitude": 151.705
+                },
+                "info": "",
+                "name": "Ban Chính",
+                "group": "Mặc định",
+                "image": "https://storage.vanmanhit.com/uploads/panoramas/7_1784605671852_4a79e3.jpg",
+                "thumb": "https://storage.vanmanhit.com/uploads/thumbnails/7_1784605671852_4a79e3.jpg",
+                "autoTour": 1,
+                "hotspots": [
+                    {
+                        "id": "hotspot",
+                        "lat": -27.2,
+                        "lon": 4,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Cửa Đền",
+                        "target": "dji_20260714170950_0194_d_4",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": {
+                            "fov": 120,
+                            "lat": -7.2,
+                            "lon": 180.8
+                        },
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -23.1,
+                        "lon": -88.1,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Ban Bên Phải ",
+                        "target": "dji_20260714171229_0200_d_13",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -21.8,
+                        "lon": 96.6,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Ban Bên Trái",
+                        "target": "dji_20260714171144_0198_d_14",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 70,
+                    "lat": -2.7,
+                    "lon": -176
+                },
+                "autoTourDuration": 8
+            },
+            {
+                "id": "img_20260605_142309_00_624_14",
+                "gps": {
+                    "lat": 0,
+                    "lng": 0,
+                    "heading": null,
+                    "altitude": 150.038
+                },
+                "info": "",
+                "name": "Sau Ban Chính",
+                "group": "Mặc định",
+                "image": "https://storage.vanmanhit.com/uploads/panoramas/10_1784605676161_c776d4.jpg",
+                "thumb": "https://storage.vanmanhit.com/uploads/thumbnails/10_1784605676161_c776d4.jpg",
+                "autoTour": 1,
+                "hotspots": [
+                    {
+                        "id": "hotspot",
+                        "lat": -30.8,
+                        "lon": -11.7,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Ban Chính",
+                        "target": "dji_20260714171021_0195_d_5",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": {
+                            "fov": 120,
+                            "lat": -0.1,
+                            "lon": 6.1
+                        },
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -42.7,
+                        "lon": -167,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Bên trong ban bên trong",
+                        "target": "13_13",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": {
+                            "fov": 120,
+                            "lat": -11.6,
+                            "lon": 184.9
+                        },
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 70,
+                    "lat": -11.4,
+                    "lon": 178
+                },
+                "autoTourDuration": 20
+            },
+            {
+                "id": "13_13",
+                "gps": {
+                    "lat": 21.402010416666666,
+                    "lng": 105.80700911111111,
+                    "heading": null,
+                    "altitude": 150.458
+                },
+                "info": "",
+                "name": "Ban Thờ bên trong",
+                "group": "Mặc định",
+                "image": "https://storage.vanmanhit.com/uploads/panoramas/13_1784605680470_c44cf8.jpg",
+                "thumb": "https://storage.vanmanhit.com/uploads/thumbnails/13_1784605680470_c44cf8.jpg",
+                "autoTour": 1,
+                "hotspots": [
+                    {
+                        "id": "hotspot",
+                        "lat": -3.9,
+                        "lon": 7.5,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Lối ra",
+                        "target": "img_20260605_142309_00_624_14",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "preview_expand",
+                        "entryView": {
+                            "fov": 120,
+                            "lat": -0.1,
+                            "lon": 360.8
+                        },
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 90,
+                    "lat": -14.1,
+                    "lon": 184.6
+                },
+                "autoTourDuration": 20
+            },
+            {
+                "id": "dji_20260714171229_0200_d_13",
+                "gps": {
+                    "lat": 21.40198994444444,
+                    "lng": 105.80709586111111,
+                    "heading": null,
+                    "altitude": 152.605
+                },
+                "info": "",
+                "name": "Ban Bên Phải",
+                "group": "Mặc định",
+                "image": "https://storage.vanmanhit.com/uploads/panoramas/DJI_20260714171229_0200_D_1784605673715_34d1f2.jpg",
+                "thumb": "https://storage.vanmanhit.com/uploads/thumbnails/DJI_20260714171229_0200_D_1784605673715_34d1f2.jpg",
+                "autoTour": 0,
+                "hotspots": [
+                    {
+                        "id": "hotspot",
+                        "lat": -32.2,
+                        "lon": 84.9,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Ban Chính",
+                        "target": "dji_20260714171021_0195_d_5",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": {
+                            "fov": 85,
+                            "lat": -2,
+                            "lon": -262.8
+                        },
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -14.9,
+                        "lon": 149.4,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Ban Bên Trong",
+                        "target": "img_20260605_142309_00_624_14",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "preview_expand",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hs_msk04058_gqfgp",
+                        "lat": -40.5,
+                        "lon": -103.9,
+                        "icon": null,
+                        "type": "gallery",
+                        "label": "Bằng Xếp Hạng",
+                        "locked": false,
+                        "target": "",
+                        "loai_poi": "thu_vien_anh",
+                        "noi_dung": {
+                            "tieu_de": "",
+                            "danh_sach_anh": [
+                                "https://vr360-builder.metatwin.vn/media/tours/hotspot_info/v9/hs_msk04058_gqfgp/img_20260605_142603-656f09fd.jpg"
+                            ]
+                        },
+                        "entryView": null,
+                        "pointKind": "gallery",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 70,
+                    "lat": -20.2,
+                    "lon": -175.3
+                },
+                "autoTourDuration": 20
+            },
+            {
+                "id": "dji_20260714171144_0198_d_14",
+                "gps": {
+                    "lat": 21.401941277777777,
+                    "lng": 105.8070866111111,
+                    "heading": null,
+                    "altitude": 152.605
+                },
+                "info": "",
+                "name": "Ban Bên Trái",
+                "group": "Mặc định",
+                "image": "https://storage.vanmanhit.com/uploads/panoramas/8_1784605674993_8041c3.jpg",
+                "thumb": "https://storage.vanmanhit.com/uploads/thumbnails/8_1784605674993_8041c3.jpg",
+                "autoTour": 0,
+                "hotspots": [
+                    {
+                        "id": "hotspot",
+                        "lat": -36.2,
+                        "lon": 5.7,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Ban Chính",
+                        "target": "dji_20260714171021_0195_d_5",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": {
+                            "fov": 85,
+                            "lat": 0.9,
+                            "lon": -85.2
+                        },
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -11.7,
+                        "lon": -59.9,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Ban Bên Trong",
+                        "target": "img_20260605_142309_00_624_14",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "preview_expand",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 70,
+                    "lat": -15.4,
+                    "lon": -89.7
+                },
+                "autoTourDuration": 20
+            },
+            {
+                "id": "dji_20260714172529_0215_d_10",
+                "gps": {
+                    "lat": 21.402059777777776,
+                    "lng": 105.80717105555556,
+                    "heading": null,
+                    "altitude": 148.733
+                },
+                "info": "",
+                "name": "Sân Phải",
+                "group": "Mặc định",
+                "image": "https://storage.vanmanhit.com/uploads/panoramas/3-B_1784605677135_5eadbe.jpg",
+                "thumb": "https://storage.vanmanhit.com/uploads/thumbnails/3-B_1784605677135_5eadbe.jpg",
+                "autoTour": 0,
+                "hotspots": [
+                    {
+                        "id": "hotspot",
+                        "lat": -15.9,
+                        "lon": -7.8,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Sân Đền Chính 2",
+                        "target": "dji_20260714165957_0178_d_14",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    },
+                    {
+                        "id": "hotspot",
+                        "lat": -21.5,
+                        "lon": 79.8,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Ban Thờ sau Đền",
+                        "target": "dji_20260714173921_0220_d_12",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": null,
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 70,
+                    "lat": 7,
+                    "lon": 89.2
+                },
+                "autoTourDuration": 20
+            },
+            {
+                "id": "dji_20260714173921_0220_d_12",
+                "gps": {
+                    "lat": 21.401969777777776,
+                    "lng": 105.8069015,
+                    "heading": null,
+                    "altitude": 147.644
+                },
+                "info": "",
+                "name": "Ban Thờ Sau Đền",
+                "group": "Mặc định",
+                "image": "https://storage.vanmanhit.com/uploads/panoramas/Sau4_1784605679112_222c5b.jpg",
+                "thumb": "https://storage.vanmanhit.com/uploads/thumbnails/Sau4_1784605679112_222c5b.jpg",
+                "autoTour": 1,
+                "hotspots": [
+                    {
+                        "id": "hotspot",
+                        "lat": -13.8,
+                        "lon": -58.9,
+                        "icon": "dot",
+                        "type": "nav",
+                        "label": "Sân Phải",
+                        "target": "dji_20260714172529_0215_d_10",
+                        "loai_poi": "chuyen_canh",
+                        "navStyle": "default",
+                        "entryView": {
+                            "fov": 120,
+                            "lat": -10.9,
+                            "lon": 272.8
+                        },
+                        "pointKind": "nav",
+                        "khi_dua_chuot_vao": {
+                            "van_ban_huong_dan": "",
+                            "duong_dan_thumbnail": "",
+                            "hien_thi_anh_thu_nho": false
+                        }
+                    }
+                ],
+                "transition": {
+                    "speed": 10,
+                    "effect": "fade",
+                    "enabled": true,
+                    "duration": 1200,
+                    "rotation": true
+                },
+                "initialView": {
+                    "fov": 90,
+                    "lat": -11,
+                    "lon": 178.3
+                },
+                "autoTourDuration": 20
+            }
+        ]
+    },
+    "thumbnail": null,
+    "background_audio": "https://vr360-builder.metatwin.vn/media/tours/audio/den_dan_ha_ba255adb-64c5-449a-8568-bb777a31e855.mp3",
+    "hotspot_point_logo": null,
+    "status": "archived",
+    "changelog": "Created from Projects flow.",
+    "created_by": 1,
+    "created_by_name": "admin",
+    "created_at": "2026-08-07T08:27:46.056562+07:00",
+    "updated_at": "2026-09-18T11:06:16.183554+07:00"
+}

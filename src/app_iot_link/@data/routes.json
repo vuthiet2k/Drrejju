@@ -1,0 +1,80 @@
+[
+  {
+    "id": "route-1",
+    "name": "Cổng làng - Khu bảo tồn nhà sàn",
+    "phone_number": "",
+    "description": "<p>Lộ trình chỉ dẫn đường du khách đến khu bảo tồn nhà sản</p><p><br></p>",
+    "route_link": "",
+    "origin": {
+      "name": "Cổng vào 1 - Khu du lịch Thái Hải",
+      "location": "21.531640232769703,105.81367913015333"
+    },
+    "destination": {
+      "name": "Sân làng cộng đồng",
+      "location": "21.534900,105.814110"
+    },
+    "points": [
+      {
+        "name": "Sân làng cộng đồng",
+        "location": "21.534900,105.814110"
+      },
+      {
+        "name": "Cổng vào 1 - Khu du lịch Thái Hải",
+        "location": "21.531640232769703,105.81367913015333"
+      }
+    ],
+    "ratings": []
+  },
+  {
+    "id": "route-2",
+    "name": "Cổng làng - Khu nhà nghỉ cộng đồng",
+    "phone_number": "",
+    "description": "<p>Lộ trình chỉ dẫn đường du khách đến nhà nghỉ cộng đồng</p>",
+    "route_link": "",
+    "origin": {
+      "name": "Khu Lễ tân - Phòng chờ",
+      "location": "21.533421967002397,105.81376635417541"
+    },
+    "destination": {
+      "name": "Nhà Ka Xuân",
+      "location": "21.533198661573866,105.8148503646259"
+    },
+    "points": [
+      {
+        "name": "Nhà Ka Xuân",
+        "location": "21.533198661573866,105.8148503646259"
+      },
+      {
+        "name": "Khu Lễ tân - Phòng chờ",
+        "location": "21.533421967002397,105.81376635417541"
+      }
+    ],
+    "ratings": []
+  },
+  {
+    "id": "route-3",
+    "name": "Nhà lễ tân - Nhà VIP",
+    "phone_number": "",
+    "description": "<p>Lộ trình chỉ dẫn đường đi đến khu nhà VIP dành cho du khách</p>",
+    "route_link": "",
+    "origin": {
+      "name": "Khu Lễ tân - Phòng chờ",
+      "location": "21.533421967002397,105.81376635417541"
+    },
+    "destination": {
+      "name": "Nhà Vip - Khu Du Lịch Thái Hải",
+      "location": "21.533784120116678,105.81619798989163"
+    },
+    "points": [
+      {
+        "name": "Khu Lễ tân - Phòng chờ",
+        "location": "21.533421967002397,105.81376635417541"
+      },
+      {
+        "name": "Nhà Vip - Khu Du Lịch Thái Hải",
+        "location": "21.533784120116678,105.81619798989163"
+      }
+    ],
+    "ratings": []
+  }
+]

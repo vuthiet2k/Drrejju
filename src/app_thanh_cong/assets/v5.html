@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>VR360 Tour Viewer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --primary: #8B1A2B;
+    --primary-light: #B22E42;
+    --primary-dark: #6B1020;
+    --accent: #D4A853;
+    --bg-dark: rgba(20, 20, 28, 0.85);
+    --bg-glass: rgba(255, 255, 255, 0.08);
+    --text: #FFFFFF;
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --sidebar-w: 280px;
+    --radius: 12px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  html, body {
+    width: 100%; height: 100%;
+    overflow: hidden;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background: #0a0a0f;
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ══════════ LOADING SCREEN ══════════ */
+  #loading-screen {
+    position: fixed; inset: 0; z-index: 9999;
+    background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+  }
+  #loading-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+  .loading-logo {
+    font-size: 42px; font-weight: 700; letter-spacing: 3px;
+    background: linear-gradient(135deg, var(--primary-light), var(--accent));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .loading-subtitle {
+    font-size: 13px; color: var(--text-muted); letter-spacing: 6px;
+    text-transform: uppercase; margin-bottom: 40px;
+  }
+  .loading-bar-container {
+    width: 320px; height: 3px;
+    background: rgba(255,255,255,0.08); border-radius: 4px;
+    overflow: hidden; position: relative;
+  }
+  .loading-bar {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+  .loading-percent {
+    margin-top: 16px; font-size: 14px; font-weight: 500;
+    color: var(--text-muted); letter-spacing: 2px;
+  }
+
+  /* ══════════ CANVAS ══════════ */
+  #viewer-canvas {
+    position: fixed; inset: 0; z-index: 1;
+    cursor: grab;
+  }
+  #viewer-canvas:active { cursor: grabbing; }
+
+  /* ══════════ TOP BAR ══════════ */
+  .top-bar {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100; height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 20px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 100%);
+    pointer-events: none;
+  }
+  .top-bar > * { pointer-events: auto; }
+
+  .scene-badge {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--primary);
+    padding: 8px 20px 8px 14px;
+    border-radius: 24px;
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 20px rgba(139, 26, 43, 0.4);
+    transform: translateY(-60px);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .scene-badge.show { transform: translateY(0); }
+  .scene-badge svg { width: 16px; height: 16px; }
+
+  .brand-logo {
+    font-size: 18px; font-weight: 700;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, #fff, var(--accent));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    text-shadow: none;
+  }
+
+  /* ══════════ SIDEBAR ══════════ */
+  .sidebar {
+    position: fixed; top: 0; left: 0; bottom: 0;
+    width: var(--sidebar-w); z-index: 200;
+    background: var(--bg-dark);
+    backdrop-filter: blur(30px) saturate(1.5);
+    -webkit-backdrop-filter: blur(30px) saturate(1.5);
+    border-right: 1px solid rgba(255,255,255,0.06);
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .sidebar.open { transform: translateX(0); }
+
+  .sidebar-header {
+    padding: 20px; display: flex;
+    align-items: center; justify-content: space-between;
+    background: var(--primary);
+    min-height: 72px;
+  }
+  .sidebar-header h2 {
+    font-size: 14px; font-weight: 600;
+    letter-spacing: 0.5px; line-height: 1.4;
+  }
+  .sidebar-close {
+    width: 32px; height: 32px;
+    background: rgba(255,255,255,0.15);
+    border: none; border-radius: 50%;
+    color: #fff; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background var(--transition);
+  }
+  .sidebar-close:hover { background: rgba(255,255,255,0.25); }
+
+  .sidebar-body {
+    flex: 1; overflow-y: auto; padding: 8px 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.1) transparent;
+  }
+
+  .nav-group-title {
+    padding: 14px 20px 8px;
+    font-size: 11px; font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+
+  .nav-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 20px; cursor: pointer;
+    transition: all var(--transition);
+    position: relative; border-left: 3px solid transparent;
+  }
+  .nav-item:hover {
+    background: rgba(255,255,255,0.04);
+    border-left-color: rgba(255,255,255,0.2);
+  }
+  .nav-item.active {
+    background: rgba(139, 26, 43, 0.15);
+    border-left-color: var(--primary);
+  }
+  .nav-item-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--text-muted);
+    flex-shrink: 0;
+    transition: all var(--transition);
+  }
+  .nav-item.active .nav-item-dot { background: var(--primary-light); box-shadow: 0 0 8px var(--primary-light); }
+  .nav-item-label {
+    font-size: 13px; font-weight: 400;
+    color: var(--text-muted);
+    transition: color var(--transition);
+  }
+  .nav-item.active .nav-item-label,
+  .nav-item:hover .nav-item-label { color: var(--text); }
+
+  .nav-item-preview {
+    width: 40px; height: 40px; border-radius: 8px;
+    background-size: cover; background-position: center;
+    flex-shrink: 0; border: 2px solid rgba(255,255,255,0.06);
+    transition: border-color var(--transition);
+  }
+  .nav-item.active .nav-item-preview { border-color: var(--primary-light); }
+
+  /* ══════════ LEFT TOOLBAR ══════════ */
+  .left-toolbar {
+    position: fixed; left: 16px; top: 50%;
+    transform: translateY(-50%);
+    z-index: 150;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .tool-btn {
+    width: 44px; height: 44px;
+    background: var(--bg-dark);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all var(--transition);
+  }
+  .tool-btn:hover { background: rgba(40,40,55,0.95); color: #fff; border-color: rgba(255,255,255,0.15); }
+  .tool-btn.active { color: var(--accent); border-color: var(--accent); }
+  .tool-btn svg { width: 20px; height: 20px; }
+
+  /* ══════════ BOTTOM BAR ══════════ */
+  .bottom-bar {
+    position: fixed; bottom: 20px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 150;
+    display: flex; align-items: center; gap: 6px;
+    padding: 6px;
+    background: var(--bg-dark);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 28px;
+  }
+
+  .bottom-btn {
+    width: 44px; height: 44px;
+    background: transparent;
+    border: none; border-radius: 50%;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all var(--transition);
+    position: relative;
+  }
+  .bottom-btn:hover { color: #fff; background: rgba(255,255,255,0.08); }
+  .bottom-btn.active { color: var(--accent); }
+  .bottom-btn svg { width: 20px; height: 20px; }
+
+  .bottom-divider {
+    width: 1px; height: 24px;
+    background: rgba(255,255,255,0.1);
+    margin: 0 2px;
+  }
+
+  /* ══════════ COMPASS ══════════ */
+  .compass {
+    position: fixed; bottom: 24px; left: 24px;
+    z-index: 150; width: 52px; height: 52px;
+  }
+  .compass-ring {
+    width: 100%; height: 100%;
+    border: 2px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-dark);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: relative;
+    transition: transform 0.15s ease-out;
+  }
+  .compass-needle {
+    width: 2px; height: 20px;
+    background: linear-gradient(to top, var(--text-muted) 50%, #ef4444 50%);
+    border-radius: 2px;
+  }
+  .compass-n {
+    position: absolute; top: 3px; font-size: 8px;
+    font-weight: 700; color: #ef4444;
+    letter-spacing: 1px;
+  }
+
+  /* ══════════ HOTSPOTS (CSS for HTML overlay hotspots) ══════════ */
+  .hotspot-container {
+    position: fixed; inset: 0; z-index: 50;
+    pointer-events: none;
+  }
+  .hotspot {
+    position: absolute;
+    pointer-events: auto;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .hotspot.hidden { opacity: 0; pointer-events: none; transform: translate(-50%, -50%) scale(0.5); }
+
+  .hotspot-marker {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+  }
+  .hotspot-icon {
+    width: 40px; height: 40px;
+    background: var(--primary);
+    border: 3px solid #fff;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .hotspot:hover .hotspot-icon {
+    transform: rotate(-45deg) scale(1.15);
+    box-shadow: 0 6px 25px rgba(139, 26, 43, 0.5);
+  }
+  .hotspot-icon svg {
+    transform: rotate(45deg);
+    width: 16px; height: 16px; color: #fff;
+  }
+
+  .hotspot-label {
+    background: var(--primary);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    text-transform: uppercase;
+  }
+
+  /* Navigation hotspot (arrow to next scene) */
+  .hotspot-nav {
+    width: 52px; height: 52px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: hotspot-pulse 2s ease infinite;
+  }
+  .hotspot-nav:hover {
+    background: rgba(255,255,255,0.3);
+    border-color: #fff;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  .hotspot-nav svg { width: 24px; height: 24px; color: #fff; }
+
+  @keyframes hotspot-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.2); }
+    50% { box-shadow: 0 0 0 12px rgba(255,255,255,0); }
+  }
+
+  /* ══════════ MINIMAP ══════════ */
+  .minimap {
+    position: fixed; bottom: 24px; right: 24px;
+    z-index: 150; width: 160px; height: 100px;
+    background: var(--bg-dark);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all var(--transition);
+    opacity: 0; transform: scale(0.9);
+  }
+  .minimap.show { opacity: 1; transform: scale(1); }
+  .minimap img {
+    width: 100%; height: 100%;
+    object-fit: cover; opacity: 0.7;
+  }
+  .minimap-dot {
+    position: absolute;
+    width: 10px; height: 10px;
+    background: var(--primary);
+    border: 2px solid #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(139, 26, 43, 0.5);
+    transition: all 0.5s ease;
+  }
+
+  /* ══════════ SCENE THUMBNAILS ══════════ */
+  .thumb-strip {
+    position: fixed; bottom: 84px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 140;
+    display: flex; gap: 8px;
+    padding: 8px;
+    background: var(--bg-dark);
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    opacity: 0; pointer-events: none;
+    transition: all 0.4s ease;
+    max-width: 90vw;
+    overflow-x: auto;
+  }
+  .thumb-strip.show { opacity: 1; pointer-events: auto; }
+  .thumb-strip::-webkit-scrollbar { height: 0; }
+
+  .thumb-item {
+    width: 80px; height: 50px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    flex-shrink: 0;
+    border: 2px solid transparent;
+    transition: all var(--transition);
+    position: relative;
+  }
+  .thumb-item.active { border-color: var(--primary-light); }
+  .thumb-item:hover { border-color: rgba(255,255,255,0.3); }
+  .thumb-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .thumb-item-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 2px 4px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    font-size: 8px; font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* ══════════ VIEW SETTER PANEL (Dev Tool) ══════════ */
+  .view-setter {
+    position: fixed; top: 64px; right: 20px;
+    z-index: 250;
+    width: 320px;
+    background: rgba(10, 10, 18, 0.92);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    padding: 0;
+    opacity: 0; pointer-events: none;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    font-variant-numeric: tabular-nums;
+  }
+  .view-setter.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+  .view-setter-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .view-setter-header h4 {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--accent);
+  }
+  .view-setter-close {
+    background: none; border: none; color: var(--text-muted);
+    cursor: pointer; padding: 2px;
+  }
+
+  .view-setter-body { padding: 16px; }
+
+  .view-setter-row {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 12px;
+  }
+  .view-setter-label {
+    font-size: 11px; font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 1px; text-transform: uppercase;
+    width: 36px; flex-shrink: 0;
+  }
+  .view-setter-value {
+    flex: 1;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 14px; font-weight: 500;
+    color: #fff;
+    font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+    text-align: center;
+  }
+  .view-setter-slider {
+    flex: 1;
+    -webkit-appearance: none; appearance: none;
+    height: 4px; background: rgba(255,255,255,0.1);
+    border-radius: 4px; outline: none;
+  }
+  .view-setter-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 16px; height: 16px;
+    background: var(--primary-light);
+    border-radius: 50%; cursor: pointer;
+    border: 2px solid #fff;
+  }
+
+  .view-setter-scene {
+    padding: 8px 12px;
+    background: rgba(139, 26, 43, 0.15);
+    border: 1px solid rgba(139, 26, 43, 0.3);
+    border-radius: 8px;
+    font-size: 13px; font-weight: 500;
+    color: var(--primary-light);
+    margin-bottom: 14px;
+    text-align: center;
+  }
+
+  .view-setter-actions {
+    display: flex; gap: 8px;
+    margin-top: 4px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .view-setter-btn {
+    flex: 1; padding: 10px;
+    border: none; border-radius: 8px;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .view-setter-btn.primary {
+    background: var(--primary);
+    color: #fff;
+  }
+  .view-setter-btn.primary:hover { background: var(--primary-light); }
+  .view-setter-btn.secondary {
+    background: rgba(255,255,255,0.08);
+    color: var(--text-muted);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .view-setter-btn.secondary:hover { background: rgba(255,255,255,0.12); color: #fff; }
+
+  .view-setter-output {
+    margin-top: 12px; padding: 10px;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', 'SF Mono', monospace;
+    font-size: 11px; line-height: 1.6;
+    color: var(--text-muted);
+    white-space: pre-wrap; word-break: break-all;
+    max-height: 160px; overflow-y: auto;
+    display: none;
+  }
+  .view-setter-output.show { display: block; }
+
+  .toast {
+    position: fixed; bottom: 100px; left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    z-index: 9999;
+    background: rgba(34, 197, 94, 0.9);
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 13px; font-weight: 500;
+    opacity: 0; pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ══════════ INFO PANEL ══════════ */
+  .info-panel {
+    position: fixed; right: 20px; top: 50%;
+    transform: translateY(-50%) translateX(120%);
+    z-index: 200;
+    width: 300px;
+    background: var(--bg-dark);
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .info-panel.show { transform: translateY(-50%) translateX(0); }
+  .info-panel h3 {
+    font-size: 16px; font-weight: 600; margin-bottom: 12px;
+    color: var(--accent);
+  }
+  .info-panel p {
+    font-size: 13px; line-height: 1.6; color: var(--text-muted);
+  }
+  .info-panel-close {
+    position: absolute; top: 12px; right: 12px;
+    background: none; border: none; color: var(--text-muted);
+    cursor: pointer; padding: 4px;
+  }
+
+  /* ══════════ ANIMATIONS ══════════ */
+  @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in { animation: fade-in 0.5s ease both; }
+  .slide-up { animation: slide-up 0.5s ease both; }
+
+  /* ══════════ RESPONSIVE ══════════ */
+  @media (max-width: 768px) {
+    :root { --sidebar-w: 260px; }
+    .minimap { display: none; }
+    .bottom-bar { bottom: 12px; }
+    .left-toolbar { left: 8px; }
+    .compass { left: 12px; bottom: 16px; width: 44px; height: 44px; }
+    .thumb-strip { bottom: 72px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ LOADING SCREEN ══════════ -->
+<div id="loading-screen">
+  <div class="loading-logo">VR360</div>
+  <div class="loading-subtitle">Virtual Tour</div>
+  <div class="loading-bar-container">
+    <div class="loading-bar" id="loading-bar"></div>
+  </div>
+  <div class="loading-percent" id="loading-percent">0%</div>
+</div>
+
+<!-- ══════════ CANVAS ══════════ -->
+<canvas id="viewer-canvas"></canvas>
+
+<!-- ══════════ TOP BAR ══════════ -->
+<div class="top-bar">
+  <div class="scene-badge" id="scene-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+    </svg>
+    <span id="scene-badge-text">TỔNG QUAN</span>
+  </div>
+  <div class="brand-logo">VR360</div>
+</div>
+
+<!-- ══════════ SIDEBAR ══════════ -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div>
+      <h2>VR360 VIRTUAL TOUR</h2>
+    </div>
+    <button class="sidebar-close" onclick="toggleSidebar()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+  <div class="sidebar-body" id="sidebar-body"></div>
+</div>
+
+<!-- ══════════ LEFT TOOLBAR ══════════ -->
+<div class="left-toolbar">
+  <button class="tool-btn" onclick="toggleSidebar()" title="Menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 12h18M3 6h18M3 18h18"/>
+    </svg>
+  </button>
+  <button class="tool-btn" onclick="toggleFullscreen()" title="Toàn màn hình">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+    </svg>
+  </button>
+  <button class="tool-btn" id="autorotate-btn" onclick="toggleAutorotate()" title="Tự xoay">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 12a9 9 0 11-6.219-8.56"/>
+      <polyline points="21 3 21 9 15 9"/>
+    </svg>
+  </button>
+  <button class="tool-btn" onclick="toggleInfo()" title="Thông tin">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
+    </svg>
+  </button>
+  <button class="tool-btn" id="viewsetter-btn" onclick="toggleViewSetter()" title="Set góc nhìn (Dev)" style="border-color: rgba(212,168,83,0.3);">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+    </svg>
+  </button>
+</div>
+
+<!-- ══════════ BOTTOM BAR ══════════ -->
+<div class="bottom-bar">
+  <button class="bottom-btn" onclick="goToScene(0)" title="Trang chủ">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+    </svg>
+  </button>
+  <div class="bottom-divider"></div>
+  <button class="bottom-btn" onclick="prevScene()" title="Trước">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="15 18 9 12 15 6"/>
+    </svg>
+  </button>
+  <button class="bottom-btn" id="thumb-toggle-btn" onclick="toggleThumbnails()" title="Danh sách">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+      <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+    </svg>
+  </button>
+  <button class="bottom-btn" onclick="nextScene()" title="Tiếp">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="9 18 15 12 9 6"/>
+    </svg>
+  </button>
+  <div class="bottom-divider"></div>
+  <button class="bottom-btn" id="sound-btn" onclick="toggleSound()" title="Âm thanh">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      <path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14"/>
+    </svg>
+  </button>
+</div>
+
+<!-- ══════════ COMPASS ══════════ -->
+<div class="compass">
+  <div class="compass-ring" id="compass-ring">
+    <span class="compass-n">N</span>
+    <div class="compass-needle"></div>
+  </div>
+</div>
+
+<!-- ══════════ THUMBNAIL STRIP ══════════ -->
+<div class="thumb-strip" id="thumb-strip"></div>
+
+<!-- ══════════ INFO PANEL ══════════ -->
+<div class="info-panel" id="info-panel">
+  <button class="info-panel-close" onclick="toggleInfo()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </button>
+  <h3 id="info-title">Thông tin</h3>
+  <p id="info-desc">Mô tả chi tiết về địa điểm hiện tại.</p>
+</div>
+
+<!-- ══════════ VIEW SETTER PANEL (Dev Tool) ══════════ -->
+<div class="view-setter" id="view-setter">
+  <div class="view-setter-header">
+    <h4>⚙ Set Góc Nhìn Mặc Định</h4>
+    <button class="view-setter-close" onclick="toggleViewSetter()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+  <div class="view-setter-body">
+    <div class="view-setter-scene" id="vs-scene-name">Scene: —</div>
+
+    <div class="view-setter-row">
+      <span class="view-setter-label">LON</span>
+      <div class="view-setter-value" id="vs-lon">0.0°</div>
+    </div>
+    <div class="view-setter-row">
+      <span class="view-setter-label">LAT</span>
+      <div class="view-setter-value" id="vs-lat">0.0°</div>
+    </div>
+    <div class="view-setter-row">
+      <span class="view-setter-label">FOV</span>
+      <div class="view-setter-value" id="vs-fov">75°</div>
+      <input type="range" class="view-setter-slider" id="vs-fov-slider" min="30" max="120" value="75"
+        oninput="window.vr360.targetFov = +this.value;">
+    </div>
+
+    <div class="view-setter-actions">
+      <button class="view-setter-btn primary" onclick="saveCurrentView()">
+        💾 Lưu góc nhìn này
+      </button>
+      <button class="view-setter-btn secondary" onclick="exportAllViews()">
+        📋 Export JSON
+      </button>
+    </div>
+
+    <div class="view-setter-output" id="vs-output"></div>
+  </div>
+</div>
+
+<!-- ══════════ TOAST ══════════ -->
+<div class="toast" id="toast"></div>
+
+<!-- ══════════ HOTSPOT CONTAINER ══════════ -->
+<div class="hotspot-container" id="hotspot-container"></div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+
+// ╔══════════════════════════════════════════╗
+// ║        LOAD TOUR DATA FROM JSON          ║
+// ╚══════════════════════════════════════════╝
+
+const response = await fetch('totdong-data.json');
+const TOUR_DATA = await response.json();
+// ╔══════════════════════════════════════════╗
+// ║          THREE.JS PANORAMA ENGINE        ║
+// ╚══════════════════════════════════════════╝
+
+class VR360Engine {
+  constructor(canvas) {
+    this.canvas = canvas;
+    this.scenes = TOUR_DATA.scenes;
+    this.currentSceneIndex = 0;
+    this.isTransitioning = false;
+
+    // Camera control
+    this.lon = 0; this.lat = 0;
+    this.targetLon = 0; this.targetLat = 0;
+    this.phi = 0; this.theta = 0;
+    this.fov = 75; this.targetFov = 75;
+
+    // Interaction
+    this.isUserInteracting = false;
+    this.pointerStart = { x: 0, y: 0 };
+    this.pointerDelta = { lon: 0, lat: 0 };
+    this.momentum = { lon: 0, lat: 0 };
+
+    // Autorotate
+    this.autorotate = true;
+    this.autorotateSpeed = 0.15;
+    this.lastInteractionTime = 0;
+    this.autorotateDelay = 5000;
+
+    // Image cache & preload
+    this.textureCache = new Map();
+    this.textureLoader = new THREE.TextureLoader();
+
+    // Init
+    this.initRenderer();
+    this.initScene();
+    this.initEvents();
+    this.loadInitialScene();
+  }
+
+  initRenderer() {
+    this.renderer = new THREE.WebGLRenderer({
+      canvas: this.canvas,
+      antialias: true,
+      alpha: false,
+      powerPreference: 'high-performance'
+    });
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.outputColorSpace = THREE.SRGBColorSpace;
+    // Enable tone mapping for better image quality
+    this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    this.renderer.toneMappingExposure = 1.0;
+  }
+
+  initScene() {
+    // ── Main panorama scene ──
+    this.scene = new THREE.Scene();
+    this.camera = new THREE.PerspectiveCamera(
+      this.fov,
+      window.innerWidth / window.innerHeight,
+      0.1, 1100
+    );
+
+    // Panorama sphere (only one needed now)
+    const geo = new THREE.SphereGeometry(500, 80, 60);
+    geo.scale(-1, 1, 1);
+
+    this.primaryMaterial = new THREE.MeshBasicMaterial({
+      color: 0x111111,
+      side: THREE.FrontSide
+    });
+    this.primarySphere = new THREE.Mesh(geo, this.primaryMaterial);
+    this.scene.add(this.primarySphere);
+
+    // ── Crossfade overlay system (render-to-texture) ──
+    // This captures a "screenshot" of the old view and displays it
+    // as a flat screen-filling quad. When we swap the panorama texture
+    // and snap the camera to a new angle, we fade this quad out,
+    // creating a smooth blend between the old view and the new view.
+
+    const w = this.renderer.domElement.width;
+    const h = this.renderer.domElement.height;
+
+    this.renderTarget = new THREE.WebGLRenderTarget(w, h, {
+      minFilter: THREE.LinearFilter,
+      magFilter: THREE.LinearFilter,
+      format: THREE.RGBAFormat
+    });
+
+    // Orthographic scene: a single full-screen quad
+    this.overlayScene = new THREE.Scene();
+    this.overlayCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+
+    this.overlayMaterial = new THREE.MeshBasicMaterial({
+      map: this.renderTarget.texture,
+      transparent: true,
+      opacity: 0,
+      depthTest: false,
+      depthWrite: false,
+    });
+    const quadGeo = new THREE.PlaneGeometry(2, 2);
+    this.overlayQuad = new THREE.Mesh(quadGeo, this.overlayMaterial);
+    this.overlayScene.add(this.overlayQuad);
+
+    // Transition state
+    this.fadeOpacity = 0;       // 0 = no overlay, 1 = full overlay
+    this.isFading = false;
+  }
+
+  // ── IMAGE LOADING WITH PROGRESSIVE STRATEGY ──
+  loadTexture(url) {
+    return new Promise((resolve, reject) => {
+      if (this.textureCache.has(url)) {
+        resolve(this.textureCache.get(url));
+        return;
+      }
+      this.textureLoader.load(
+        url,
+        (texture) => {
+          texture.colorSpace = THREE.SRGBColorSpace;
+          texture.minFilter = THREE.LinearFilter;
+          texture.magFilter = THREE.LinearFilter;
+          texture.generateMipmaps = false;
+          this.textureCache.set(url, texture);
+          resolve(texture);
+        },
+        undefined,
+        (err) => {
+          console.warn('Texture load error:', url, err);
+          reject(err);
+        }
+      );
+    });
+  }
+
+  async loadInitialScene() {
+    const scene = this.scenes[0];
+    const loadingBar = document.getElementById('loading-bar');
+    const loadingPercent = document.getElementById('loading-percent');
+
+    // Simulate progressive loading
+    let progress = 0;
+    const updateProgress = (p) => {
+      progress = p;
+      loadingBar.style.width = p + '%';
+      loadingPercent.textContent = Math.round(p) + '%';
+    };
+
+    // Step 1: Load thumbnail first (fast preview)
+    updateProgress(20);
+    try {
+      const thumbTex = await this.loadTexture(scene.thumb);
+      this.primaryMaterial.map = thumbTex;
+      this.primaryMaterial.color.set(0xffffff); // white = no tint, show texture at full brightness
+      this.primaryMaterial.needsUpdate = true;
+      updateProgress(40);
+    } catch(e) { updateProgress(40); }
+
+    // Step 2: Load full resolution
+    try {
+      const fullTex = await this.loadTexture(scene.image);
+      this.primaryMaterial.map = fullTex;
+      this.primaryMaterial.needsUpdate = true;
+      updateProgress(80);
+    } catch(e) { updateProgress(80); }
+
+    // Step 3: Preload adjacent scenes thumbnails
+    const preloadPromises = this.scenes.slice(1, 4).map(s =>
+      this.loadTexture(s.thumb).catch(() => null)
+    );
+    await Promise.allSettled(preloadPromises);
+    updateProgress(100);
+
+    // Set initial view — snap immediately, no lerp
+    this.lon = scene.initialView?.lon ?? 0;
+    this.lat = scene.initialView?.lat ?? 0;
+    this.fov = scene.initialView?.fov ?? 75;
+    this.targetLon = this.lon;
+    this.targetLat = this.lat;
+    this.targetFov = this.fov;
+
+    // Hide loading screen
+    setTimeout(() => {
+      document.getElementById('loading-screen').classList.add('hidden');
+      document.getElementById('scene-badge').classList.add('show');
+      this.updateUI();
+      this.updateHotspots();   // ← FIX: Load hotspots for the first scene
+      this.startRenderLoop();
+
+      // Start preloading all full-res images in background
+      this.preloadAllScenes();
+    }, 400);
+  }
+
+  // Background preload all scenes for instant transitions later
+  async preloadAllScenes() {
+    for (const scene of this.scenes) {
+      if (!this.textureCache.has(scene.image)) {
+        await this.loadTexture(scene.image).catch(() => null);
+        // Small delay to not block the main thread
+        await new Promise(r => setTimeout(r, 100));
+      }
+    }
+  }
+
+  // ── SCENE TRANSITION WITH RENDER-TO-TEXTURE CROSSFADE ──
+  // How it works:
+  //   1. Render current view → WebGLRenderTarget (screenshot)
+  //   2. Show screenshot as full-screen overlay (opacity=1)
+  //   3. Swap sphere texture + snap camera to new angle (invisible, behind overlay)
+  //   4. Fade overlay 1→0: user sees old view smoothly blend into new view
+  //
+  // This solves the angle-change problem because the "old view" is a flat
+  // screenshot that doesn't rotate when the camera snaps to a new angle.
+
+  async transitionToScene(index, instant = false) {
+    if (this.isTransitioning || index === this.currentSceneIndex) return;
+    if (index < 0 || index >= this.scenes.length) return;
+
+    this.isTransitioning = true;
+    const scene = this.scenes[index];
+    const duration = instant ? 0 : 800; // ms
+
+    // ── FIX: Hide old hotspots IMMEDIATELY so they don't show during crossfade ──
+    document.getElementById('hotspot-container').innerHTML = '';
+
+    try {
+      // ── Step 1: Get new texture ready ──
+      let texture = this.textureCache.get(scene.image);
+      if (!texture) {
+        texture = this.textureCache.get(scene.thumb);
+        if (!texture) {
+          texture = await this.loadTexture(scene.thumb);
+        }
+        // Load full-res in background
+        this.loadTexture(scene.image).then(fullTex => {
+          if (this.currentSceneIndex === index) {
+            this.primaryMaterial.map = fullTex;
+            this.primaryMaterial.needsUpdate = true;
+          }
+        }).catch(() => {});
+      }
+
+      if (instant || duration === 0) {
+        // Instant switch: no animation
+        this.primaryMaterial.map = texture;
+        this.primaryMaterial.needsUpdate = true;
+        this.snapCameraToView(scene);
+      } else {
+        // ── Step 2: Capture current frame as screenshot ──
+        // Resize render target to match canvas (in case of resize)
+        const w = this.renderer.domElement.width;
+        const h = this.renderer.domElement.height;
+        this.renderTarget.setSize(w, h);
+
+        // Render current panorama view to the render target
+        this.renderer.setRenderTarget(this.renderTarget);
+        this.renderer.render(this.scene, this.camera);
+        this.renderer.setRenderTarget(null);
+
+        // ── Step 3: Show overlay (screenshot) at full opacity ──
+        this.overlayMaterial.opacity = 1;
+        this.fadeOpacity = 1;
+        this.isFading = true;
+
+        // ── Step 4: Swap texture + snap camera (hidden behind overlay) ──
+        this.primaryMaterial.map = texture;
+        this.primaryMaterial.needsUpdate = true;
+        this.snapCameraToView(scene);
+
+        // ── Step 5: Animate overlay fade-out ──
+        await this.animateFadeOut(duration);
+      }
+
+      this.currentSceneIndex = index;
+      this.updateUI();
+      this.updateHotspots();
+      this.lastInteractionTime = Date.now();
+      this.preloadAdjacentScenes(index);
+
+    } catch (err) {
+      console.error('Transition error:', err);
+    }
+
+    this.isTransitioning = false;
+  }
+
+  // Instantly set camera to a scene's default view
+  snapCameraToView(scene) {
+    const newLon = scene.initialView?.lon ?? 0;
+    const newLat = scene.initialView?.lat ?? 0;
+    const newFov = scene.initialView?.fov ?? 75;
+
+    // Set BOTH current and target to same value → no lerp drift
+    this.lon = newLon;
+    this.lat = newLat;
+    this.targetLon = newLon;
+    this.targetLat = newLat;
+    this.fov = newFov;
+    this.targetFov = newFov;
+    this.momentum.lon = 0;
+    this.momentum.lat = 0;
+
+    // Force immediate camera update
+    this.phi = THREE.MathUtils.degToRad(90 - this.lat);
+    this.theta = THREE.MathUtils.degToRad(this.lon);
+    const target = new THREE.Vector3(
+      500 * Math.sin(this.phi) * Math.cos(this.theta),
+      500 * Math.cos(this.phi),
+      500 * Math.sin(this.phi) * Math.sin(this.theta)
+    );
+    this.camera.fov = this.fov;
+    this.camera.updateProjectionMatrix();
+    this.camera.lookAt(target);
+  }
+
+  // Fade the screenshot overlay from 1 → 0
+  animateFadeOut(duration) {
+    return new Promise(resolve => {
+      const startTime = performance.now();
+      const tick = (now) => {
+        const elapsed = now - startTime;
+        const t = Math.min(elapsed / duration, 1);
+        // Smooth ease: cubic in-out for natural feel
+        const eased = t < 0.5
+          ? 4 * t * t * t
+          : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+        this.fadeOpacity = 1 - eased;
+        this.overlayMaterial.opacity = this.fadeOpacity;
+
+        if (t < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          this.fadeOpacity = 0;
+          this.overlayMaterial.opacity = 0;
+          this.isFading = false;
+          resolve();
+        }
+      };
+      requestAnimationFrame(tick);
+    });
+  }
+
+  preloadAdjacentScenes(index) {
+    const adjacent = [index - 1, index + 1, index + 2].filter(
+      i => i >= 0 && i < this.scenes.length
+    );
+    adjacent.forEach(i => {
+      const s = this.scenes[i];
+      if (!this.textureCache.has(s.image)) {
+        this.loadTexture(s.image).catch(() => null);
+      }
+    });
+  }
+
+  // ── INTERACTION HANDLERS ──
+  initEvents() {
+    const canvas = this.canvas;
+
+    // Mouse
+    canvas.addEventListener('pointerdown', (e) => this.onPointerDown(e));
+    canvas.addEventListener('pointermove', (e) => this.onPointerMove(e));
+    canvas.addEventListener('pointerup', (e) => this.onPointerUp(e));
+
+    // Wheel zoom
+    canvas.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      this.targetFov = Math.max(30, Math.min(100, this.targetFov + e.deltaY * 0.05));
+      this.lastInteractionTime = Date.now();
+    }, { passive: false });
+
+    // Touch pinch zoom
+    let lastTouchDist = 0;
+    canvas.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 2) {
+        lastTouchDist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+      }
+    }, { passive: true });
+    canvas.addEventListener('touchmove', (e) => {
+      if (e.touches.length === 2) {
+        const dist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        const delta = (lastTouchDist - dist) * 0.1;
+        this.targetFov = Math.max(30, Math.min(100, this.targetFov + delta));
+        lastTouchDist = dist;
+      }
+    }, { passive: true });
+
+    // Resize
+    window.addEventListener('resize', () => {
+      this.camera.aspect = window.innerWidth / window.innerHeight;
+      this.camera.updateProjectionMatrix();
+      this.renderer.setSize(window.innerWidth, window.innerHeight);
+      // Keep render target in sync for clean screenshots
+      const w = this.renderer.domElement.width;
+      const h = this.renderer.domElement.height;
+      this.renderTarget.setSize(w, h);
+    });
+
+    // Keyboard
+    window.addEventListener('keydown', (e) => {
+      switch(e.key) {
+        case 'ArrowLeft': this.targetLon -= 10; break;
+        case 'ArrowRight': this.targetLon += 10; break;
+        case 'ArrowUp': this.targetLat = Math.min(85, this.targetLat + 10); break;
+        case 'ArrowDown': this.targetLat = Math.max(-85, this.targetLat - 10); break;
+        case '+': case '=': this.targetFov = Math.max(30, this.targetFov - 5); break;
+        case '-': this.targetFov = Math.min(100, this.targetFov + 5); break;
+      }
+      this.lastInteractionTime = Date.now();
+    });
+  }
+
+  onPointerDown(e) {
+    this.isUserInteracting = true;
+    this.pointerStart.x = e.clientX;
+    this.pointerStart.y = e.clientY;
+    this.pointerDelta.lon = this.targetLon;
+    this.pointerDelta.lat = this.targetLat;
+    this.momentum.lon = 0;
+    this.momentum.lat = 0;
+    this.lastInteractionTime = Date.now();
+    this.canvas.setPointerCapture(e.pointerId);
+  }
+
+  onPointerMove(e) {
+    if (!this.isUserInteracting) return;
+    const sensitivity = 0.15 * (this.fov / 75);
+    const newLon = this.pointerDelta.lon - (e.clientX - this.pointerStart.x) * sensitivity;
+    const newLat = this.pointerDelta.lat + (e.clientY - this.pointerStart.y) * sensitivity;
+
+    this.momentum.lon = (newLon - this.targetLon) * 0.5;
+    this.momentum.lat = (newLat - this.targetLat) * 0.5;
+
+    this.targetLon = newLon;
+    this.targetLat = Math.max(-85, Math.min(85, newLat));
+  }
+
+  onPointerUp(e) {
+    this.isUserInteracting = false;
+    this.lastInteractionTime = Date.now();
+  }
+
+  // ── RENDER LOOP ──
+  startRenderLoop() {
+    const render = () => {
+      requestAnimationFrame(render);
+
+      // Autorotate
+      if (this.autorotate && !this.isUserInteracting) {
+        const timeSinceInteraction = Date.now() - this.lastInteractionTime;
+        if (timeSinceInteraction > this.autorotateDelay) {
+          this.targetLon += this.autorotateSpeed;
+        }
+      }
+
+      // Apply momentum
+      if (!this.isUserInteracting) {
+        this.momentum.lon *= 0.95;
+        this.momentum.lat *= 0.95;
+        if (Math.abs(this.momentum.lon) > 0.01) this.targetLon += this.momentum.lon;
+        if (Math.abs(this.momentum.lat) > 0.01) this.targetLat += this.momentum.lat;
+        this.targetLat = Math.max(-85, Math.min(85, this.targetLat));
+      }
+
+      // Smooth interpolation (lerp)
+      this.lon += (this.targetLon - this.lon) * 0.1;
+      this.lat += (this.targetLat - this.lat) * 0.1;
+      this.fov += (this.targetFov - this.fov) * 0.1;
+
+      // Update camera
+      this.camera.fov = this.fov;
+      this.camera.updateProjectionMatrix();
+
+      this.phi = THREE.MathUtils.degToRad(90 - this.lat);
+      this.theta = THREE.MathUtils.degToRad(this.lon);
+
+      const target = new THREE.Vector3(
+        500 * Math.sin(this.phi) * Math.cos(this.theta),
+        500 * Math.cos(this.phi),
+        500 * Math.sin(this.phi) * Math.sin(this.theta)
+      );
+      this.camera.lookAt(target);
+
+      // Render panorama scene
+      this.renderer.render(this.scene, this.camera);
+
+      // Render crossfade overlay on top (when transitioning)
+      if (this.isFading && this.fadeOpacity > 0.001) {
+        this.renderer.autoClear = false;
+        this.renderer.render(this.overlayScene, this.overlayCamera);
+        this.renderer.autoClear = true;
+      }
+
+      // Update compass
+      this.updateCompass();
+
+      // Update hotspot positions
+      this.updateHotspotPositions();
+
+      // Update view setter panel live values
+      this.updateViewSetterLive();
+    };
+    render();
+  }
+
+  updateViewSetterLive() {
+    const vsPanel = document.getElementById('view-setter');
+    if (!vsPanel || !vsPanel.classList.contains('show')) return;
+
+    const scene = this.scenes[this.currentSceneIndex];
+    document.getElementById('vs-scene-name').textContent = `Scene: ${scene.name} (${scene.id})`;
+    document.getElementById('vs-lon').textContent = `${this.lon.toFixed(1)}°`;
+    document.getElementById('vs-lat').textContent = `${this.lat.toFixed(1)}°`;
+    document.getElementById('vs-fov').textContent = `${this.fov.toFixed(1)}°`;
+    document.getElementById('vs-fov-slider').value = Math.round(this.fov);
+  }
+
+  updateCompass() {
+    const compassRing = document.getElementById('compass-ring');
+    if (compassRing) {
+      compassRing.style.transform = `rotate(${this.lon % 360}deg)`;
+    }
+  }
+
+  // ── HOTSPOT SYSTEM ──
+  updateHotspots() {
+    const container = document.getElementById('hotspot-container');
+    container.innerHTML = '';
+    const scene = this.scenes[this.currentSceneIndex];
+    if (!scene.hotspots) return;
+
+    scene.hotspots.forEach((hs, i) => {
+      const el = document.createElement('div');
+      el.className = 'hotspot';
+      el.dataset.lon = hs.lon;
+      el.dataset.lat = hs.lat;
+      el.dataset.index = i;
+
+      if (hs.type === 'nav') {
+        el.innerHTML = `
+          <div class="hotspot-nav">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>`;
+      } else {
+        el.innerHTML = `
+          <div class="hotspot-marker">
+            <div class="hotspot-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="hotspot-label">${hs.label}</div>
+          </div>`;
+      }
+
+      el.addEventListener('click', () => {
+        const targetIndex = this.scenes.findIndex(s => s.id === hs.target);
+        if (targetIndex >= 0) this.transitionToScene(targetIndex);
+      });
+
+      container.appendChild(el);
+    });
+  }
+
+  updateHotspotPositions() {
+    const container = document.getElementById('hotspot-container');
+    const hotspots = container.querySelectorAll('.hotspot');
+
+    hotspots.forEach(el => {
+      const hsLon = parseFloat(el.dataset.lon);
+      const hsLat = parseFloat(el.dataset.lat);
+
+      // Convert hotspot spherical coords to 3D point
+      const hsPhi = THREE.MathUtils.degToRad(90 - hsLat);
+      const hsTheta = THREE.MathUtils.degToRad(hsLon);
+      const point = new THREE.Vector3(
+        500 * Math.sin(hsPhi) * Math.cos(hsTheta),
+        500 * Math.cos(hsPhi),
+        500 * Math.sin(hsPhi) * Math.sin(hsTheta)
+      );
+
+      // Project to screen
+      const projected = point.clone().project(this.camera);
+      const x = (projected.x * 0.5 + 0.5) * window.innerWidth;
+      const y = (-projected.y * 0.5 + 0.5) * window.innerHeight;
+
+      // Check if behind camera
+      const cameraDir = new THREE.Vector3();
+      this.camera.getWorldDirection(cameraDir);
+      const toHotspot = point.clone().normalize();
+      const dot = cameraDir.dot(toHotspot);
+
+      if (dot < 0 || x < -100 || x > window.innerWidth + 100 || y < -100 || y > window.innerHeight + 100) {
+        el.classList.add('hidden');
+      } else {
+        el.classList.remove('hidden');
+        el.style.left = x + 'px';
+        el.style.top = y + 'px';
+        // Scale based on distance from center for depth effect
+        const distFromCenter = Math.sqrt(
+          Math.pow(projected.x, 2) + Math.pow(projected.y, 2)
+        );
+        const scale = Math.max(0.6, 1 - distFromCenter * 0.15);
+        el.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      }
+    });
+  }
+
+  // ── UI UPDATE ──
+  updateUI() {
+    const scene = this.scenes[this.currentSceneIndex];
+
+    // Scene badge
+    const badge = document.getElementById('scene-badge');
+    const badgeText = document.getElementById('scene-badge-text');
+    badge.classList.remove('show');
+    setTimeout(() => {
+      badgeText.textContent = scene.name;
+      badge.classList.add('show');
+    }, 200);
+
+    // Info panel
+    document.getElementById('info-title').textContent = scene.name;
+    document.getElementById('info-desc').textContent = scene.info || '';
+
+    // Sidebar active state
+    document.querySelectorAll('.nav-item').forEach((item, i) => {
+      item.classList.toggle('active', i === this.currentSceneIndex);
+    });
+
+    // Thumbnail active state
+    document.querySelectorAll('.thumb-item').forEach((item, i) => {
+      item.classList.toggle('active', i === this.currentSceneIndex);
+    });
+
+    // Hash
+    window.location.hash = scene.id;
+  }
+}
+
+// ╔══════════════════════════════════════════╗
+// ║            INITIALIZE APP                ║
+// ╚══════════════════════════════════════════╝
+
+const canvas = document.getElementById('viewer-canvas');
+const engine = new VR360Engine(canvas);
+
+// Make engine accessible for UI functions
+window.vr360 = engine;
+
+// ── Build Sidebar ──
+function buildSidebar() {
+  const body = document.getElementById('sidebar-body');
+  const groups = {};
+  TOUR_DATA.scenes.forEach((scene, i) => {
+    const g = scene.group || 'Mặc định';
+    if (!groups[g]) groups[g] = [];
+    groups[g].push({ scene, index: i });
+  });
+
+  let html = '';
+  for (const [group, items] of Object.entries(groups)) {
+    html += `<div class="nav-group-title">${group}</div>`;
+    items.forEach(({ scene, index }) => {
+      html += `
+        <div class="nav-item ${index === 0 ? 'active' : ''}" data-index="${index}" onclick="goToScene(${index})">
+          <div class="nav-item-preview" style="background-image:url('${scene.thumb}')"></div>
+          <div>
+            <div class="nav-item-label">${scene.name}</div>
+          </div>
+          <div class="nav-item-dot"></div>
+        </div>`;
+    });
+  }
+  body.innerHTML = html;
+}
+
+// ── Build Thumbnails ──
+function buildThumbnails() {
+  const strip = document.getElementById('thumb-strip');
+  let html = '';
+  TOUR_DATA.scenes.forEach((scene, i) => {
+    html += `
+      <div class="thumb-item ${i === 0 ? 'active' : ''}" onclick="goToScene(${i})">
+        <img src="${scene.thumb}" alt="${scene.name}" loading="lazy">
+        <div class="thumb-item-label">${scene.name}</div>
+      </div>`;
+  });
+  strip.innerHTML = html;
+}
+
+buildSidebar();
+buildThumbnails();
+
+// ╔══════════════════════════════════════════╗
+// ║          GLOBAL UI FUNCTIONS             ║
+// ╚══════════════════════════════════════════╝
+
+window.goToScene = (index) => {
+  engine.transitionToScene(index);
+};
+
+window.nextScene = () => {
+  const next = (engine.currentSceneIndex + 1) % engine.scenes.length;
+  engine.transitionToScene(next);
+};
+
+window.prevScene = () => {
+  const prev = (engine.currentSceneIndex - 1 + engine.scenes.length) % engine.scenes.length;
+  engine.transitionToScene(prev);
+};
+
+window.toggleSidebar = () => {
+  document.getElementById('sidebar').classList.toggle('open');
+};
+
+window.toggleFullscreen = () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(() => {});
+  } else {
+    document.exitFullscreen();
+  }
+};
+
+window.toggleAutorotate = () => {
+  engine.autorotate = !engine.autorotate;
+  document.getElementById('autorotate-btn').classList.toggle('active', engine.autorotate);
+};
+
+window.toggleInfo = () => {
+  document.getElementById('info-panel').classList.toggle('show');
+};
+
+window.toggleThumbnails = () => {
+  const strip = document.getElementById('thumb-strip');
+  strip.classList.toggle('show');
+  document.getElementById('thumb-toggle-btn').classList.toggle('active', strip.classList.contains('show'));
+};
+
+window.toggleSound = () => {
+  const btn = document.getElementById('sound-btn');
+  btn.classList.toggle('active');
+};
+
+// ── View Setter (Dev Tool) ──
+window.toggleViewSetter = () => {
+  const panel = document.getElementById('view-setter');
+  const btn = document.getElementById('viewsetter-btn');
+  panel.classList.toggle('show');
+  btn.classList.toggle('active', panel.classList.contains('show'));
+};
+
+window.saveCurrentView = () => {
+  const e = engine;
+  const scene = e.scenes[e.currentSceneIndex];
+  // Save current camera angles as this scene's default
+  scene.initialView = {
+    lon: Math.round(e.lon * 10) / 10,
+    lat: Math.round(e.lat * 10) / 10,
+    fov: Math.round(e.fov * 10) / 10
+  };
+  showToast(`✅ Đã lưu góc nhìn cho "${scene.name}": lon=${scene.initialView.lon}°, lat=${scene.initialView.lat}°, fov=${scene.initialView.fov}°`);
+};
+
+window.exportAllViews = () => {
+  const output = document.getElementById('vs-output');
+  const data = engine.scenes.map(s => ({
+    id: s.id,
+    name: s.name,
+    initialView: s.initialView || { lon: 0, lat: 0, fov: 75 }
+  }));
+  const json = JSON.stringify(data, null, 2);
+  output.textContent = json;
+  output.classList.add('show');
+
+  // Copy to clipboard
+  navigator.clipboard.writeText(json).then(() => {
+    showToast('📋 Đã copy JSON vào clipboard!');
+  }).catch(() => {
+    showToast('⚠ Không thể copy, hãy copy thủ công từ bảng bên dưới');
+  });
+};
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toast._timeout);
+  toast._timeout = setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+// Set initial autorotate button state
+document.getElementById('autorotate-btn').classList.add('active');
+
+// Handle hash navigation
+window.addEventListener('hashchange', () => {
+  const hash = window.location.hash.slice(1);
+  const index = engine.scenes.findIndex(s => s.id === hash);
+  if (index >= 0) engine.transitionToScene(index);
+});
+
+// Check initial hash
+const initialHash = window.location.hash.slice(1);
+if (initialHash) {
+  const index = engine.scenes.findIndex(s => s.id === initialHash);
+  if (index > 0) {
+    setTimeout(() => engine.transitionToScene(index), 1000);
+  }
+}
+</script>
+</body>
+</html>

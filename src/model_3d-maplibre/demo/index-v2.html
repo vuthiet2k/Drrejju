@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>3D Model on Map — Enhanced Rendering (demo)</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/maplibre-gl@5.16.0/dist/maplibre-gl.css"
+    />
+    <script src="https://unpkg.com/maplibre-gl@5.16.0/dist/maplibre-gl.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body,
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+      DEMO STANDALONE. Đây là bản chạy trực tiếp bằng CDN (không dùng
+      bundler), giữ nguyên logic gốc để đối chiếu với code đã tách trong
+      ../common/. Khi tích hợp trong Vue app, dùng ../index.js thay vì
+      copy code từ file này.
+    -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+        }
+      }
+    </script>
+    <div id="map"></div>
+
+    <script type="module">
+      import * as THREE from "three";
+      import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+
+      // ============================================
+      // WATER SHADER MATERIAL
+      // ============================================
+      function createWaterMaterial() {
+        return new THREE.ShaderMaterial({
+          transparent: true,
+          depthWrite: false,
+          side: THREE.DoubleSide,
+          uniforms: {
+            time: { value: 0 },
+            colorDeep: { value: new THREE.Color('#000') },
+            colorShallow: { value: new THREE.Color('#49b6d6') },
+            colorFoam: { value: new THREE.Color('#dff6ff') },
+            colorBack: { value: new THREE.Color('#0a3f52') },
+            opacity: { value: 0.9 },
+            waveAmp: { value: 0.1 },
+            waveFreq: { value: 0.01 },
+            waveSpeed: { value: 1 },
+          },
+          vertexShader: `
+            uniform float time;
+            uniform float waveAmp;
+            uniform float waveFreq;
+            uniform float waveSpeed;
+
+            varying vec3 vWorldPos;
+            varying vec3 vNormal;
+
+            void main() {
+              vec3 pos = position;
+              float t = time * waveSpeed;
+              float wave1 = sin((pos.x + t) * waveFreq) * 0.5;
+              float wave2 = cos((pos.z - t) * waveFreq * 1.3) * 0.5;
+              float wave3 = sin((pos.x + pos.z + t) * waveFreq * 0.7) * 0.5;
+              float height = (wave1 + wave2 + wave3) * waveAmp;
+              pos.y += height;
+
+              vec4 worldPos = modelMatrix * vec4(pos, 1.0);
+              vWorldPos = worldPos.xyz;
+              vNormal = normalize(mat3(modelMatrix) * normal);
+
+              gl_Position = projectionMatrix * viewMatrix * worldPos;
+            }
+          `,
+          fragmentShader: `
+            uniform vec3 colorDeep;
+            uniform vec3 colorShallow;
+            uniform vec3 colorFoam;
+            uniform vec3 colorBack;
+            uniform float opacity;
+
+            varying vec3 vWorldPos;
+            varying vec3 vNormal;
+
+            void main() {
+              vec3 viewDir = normalize(cameraPosition - vWorldPos);
+              float fresnel = pow(1.0 - max(dot(normalize(vNormal), viewDir), 0.0), 3.0);
+              float foam = smoothstep(0.65, 0.95, fresnel);
+              vec3 baseColor = mix(colorDeep, colorShallow, fresnel + 0.2);
+              vec3 color = mix(baseColor, colorFoam, foam);
+              if (!gl_FrontFacing) {
+                color = mix(colorBack, baseColor, 0.3);
+              }
+              gl_FragColor = vec4(color, opacity);
+            }
+          `,
+        });
+      }
+
+      // ============================================
+      // MODEL LOADER WITH ENHANCED RENDERING
+      // ============================================
+      class SymmetryModelLoader {
+        constructor(scene) {
+          this.scene = scene;
+          this.loader = new GLTFLoader();
+          this.loadedModels = new Map();
+          this.waterMaterial = createWaterMaterial();
+        }
+
+        applyMaterial(child) {
+          if (!child.isMesh) return;
+
+          const materials = Array.isArray(child.material)
+            ? child.material
+            : [child.material];
+
+          for (const mat of materials) {
+            if (mat.reflectivity !== undefined) mat.reflectivity = 0;
+            if (mat.refractionRatio !== undefined) mat.refractionRatio = 0;
+            if (mat.transmission !== undefined) mat.transmission = 0;
+            mat.side = THREE.DoubleSide;
+            mat.needsUpdate = true;
+          }
+
+          if (typeof child.name === 'string' && child.name.startsWith('Water')) {
+            child.material = this.waterMaterial;
+          }
+        }
+
+        deepClone(object) {
+          const clone = object.clone(true);
+
+          clone.traverse((obj) => {
+            if (obj.isMesh) {
+              obj.geometry = obj.geometry.clone();
+
+              if (Array.isArray(obj.material)) {
+                obj.material = obj.material.map((m) => m.clone());
+              } else if (obj.material) {
+                obj.material = obj.material.clone();
+              }
+            }
+          });
+
+          return clone;
+        }
+
+        createMirror(original, scaleX, scaleY, scaleZ, rotationY = 0) {
+          const clone = this.deepClone(original);
+
+          clone.scale.x *= scaleX;
+          clone.scale.y *= scaleY;
+          clone.scale.z *= scaleZ;
+
+          if (rotationY !== 0) {
+            clone.rotation.y += rotationY;
+          }
+
+          return clone;
+        }
+
+        loadModel(config) {
+          return new Promise((resolve, reject) => {
+            this.loader.load(
+              config.path,
+              (gltf) => {
+                const model = gltf.scene;
+
+                model.position.set(
+                  config.position?.x || 0,
+                  config.position?.y || 0,
+                  config.position?.z || 0
+                );
+                const toRad = (deg) => (deg * Math.PI) / 180;
+                model.rotation.set(
+                  toRad(config.rotation?.x || 0),
+                  toRad(config.rotation?.y || 0),
+                  toRad(config.rotation?.z || 0)
+                );
+                model.scale.set(
+                  config.scale?.x || 1,
+                  config.scale?.y || 1,
+                  config.scale?.z || 1
+                );
+
+                model.traverse((child) => this.applyMaterial(child));
+
+                const group = new THREE.Group();
+                group.name = config.id;
+                group.add(model);
+
+                const center = config.mirrorCenter || { x: 0, y: 0, z: 0 };
+                const offset = config.mirrorOffset || { x: 0, y: 0, z: 0 };
+
+                if (config.symmetry === "x2") {
+                  const axis = config.mirrorAxis || "x";
+                  let clone;
+
+                  if (axis === "x") {
+                    clone = this.createMirror(model, -1, 1, 1);
+                    clone.position.x = 2 * center.x - model.position.x;
+                  } else if (axis === "y") {
+                    clone = this.createMirror(model, 1, -1, 1);
+                    clone.position.y = 2 * center.y - model.position.y;
+                  } else if (axis === "z") {
+                    clone = this.createMirror(model, 1, 1, -1);
+                    clone.position.z = 2 * center.z - model.position.z;
+                  }
+
+                  if (clone) {
+                    clone.traverse((child) => this.applyMaterial(child));
+                    group.add(clone);
+                  }
+
+                  console.log(`[${config.id}] Loaded with x2 symmetry (${axis} axis)`);
+
+                } else if (config.symmetry === "x4") {
+                  const rotations = config.cloneRotations || [0, 0, 0];
+                  const toRad = (deg) => (deg * Math.PI) / 180;
+
+                  const clone1 = model.clone();
+                  clone1.scale.x *= -1;
+                  clone1.position.x += offset.x;
+                  clone1.rotation.y += toRad(rotations[0]);
+
+                  const clone2 = model.clone();
+                  clone2.scale.z *= -1;
+                  clone2.position.z += offset.z;
+                  clone2.rotation.y += toRad(rotations[1]);
+
+                  const clone3 = model.clone();
+                  clone3.scale.x *= -1;
+                  clone3.scale.z *= -1;
+                  clone3.position.x += offset.x;
+                  clone3.position.z += offset.z;
+                  clone3.rotation.y += toRad(rotations[2]);
+
+                  [clone1, clone2, clone3].forEach(clone => {
+                    clone.traverse((child) => this.applyMaterial(child));
+                    group.add(clone);
+                  });
+
+                  console.log(`[${config.id}] Loaded with x4 mirror symmetry (rotations: ${rotations})`);
+
+                } else {
+                  console.log(`[${config.id}] Loaded without symmetry`);
+                }
+
+                this.scene.add(group);
+                this.loadedModels.set(config.id, group);
+                resolve(group);
+              },
+              (progress) => {},
+              (error) => {
+                console.error(`Error loading ${config.id}:`, error);
+                reject(error);
+              }
+            );
+          });
+        }
+
+        async loadFromConfig(configUrl) {
+          try {
+            const response = await fetch(configUrl);
+            const config = await response.json();
+
+            const promises = config.models
+              .filter(m => !m.disabled)
+              .map(modelConfig => this.loadModel(modelConfig));
+
+            await Promise.all(promises);
+            console.log("All models loaded successfully");
+          } catch (error) {
+            console.error("Error loading config:", error);
+          }
+        }
+      }
+
+      // ============================================
+      // MAP SETUP
+      // ============================================
+      const lat = 20.87827
+      const lng = 105.6734513063995
+
+      const map = new maplibregl.Map({
+        container: "map",
+        style: "https://tiles.openfreemap.org/styles/bright",
+        zoom: 18,
+        center: [lng, lat],
+        pitch: 60,
+        canvasContextAttributes: { antialias: true },
+      });
+
+      const modelOrigin = [lng, lat];
+      const modelAltitude = 0;
+      const modelRotate = [Math.PI / 2, 0, 0];
+
+      const modelAsMercatorCoordinate =
+        maplibregl.MercatorCoordinate.fromLngLat(modelOrigin, modelAltitude);
+
+      const modelTransform = {
+        translateX: modelAsMercatorCoordinate.x,
+        translateY: modelAsMercatorCoordinate.y,
+        translateZ: modelAsMercatorCoordinate.z,
+        rotateX: modelRotate[0],
+        rotateY: modelRotate[1],
+        rotateZ: modelRotate[2],
+        scale: modelAsMercatorCoordinate.meterInMercatorCoordinateUnits(),
+      };
+
+      // ============================================
+      // CUSTOM LAYER WITH LIGHTING + TONE MAPPING
+      // ============================================
+      const customLayer = {
+        id: "3d-model",
+        type: "custom",
+        renderingMode: "3d",
+        onAdd(map, gl) {
+          this.camera = new THREE.Camera();
+          this.scene = new THREE.Scene();
+
+          const hemiLight = new THREE.HemisphereLight(0xffffff, 0xd9d2c7, 1.0);
+          this.scene.add(hemiLight);
+
+          const dirLight1 = new THREE.DirectionalLight(0xffffff, 1.1);
+          dirLight1.position.set(10, 12, 6);
+          this.scene.add(dirLight1);
+
+          const dirLight2 = new THREE.DirectionalLight(0xffffff, 0.6);
+          dirLight2.position.set(-8, 6, -4);
+          this.scene.add(dirLight2);
+
+          this.modelLoader = new SymmetryModelLoader(this.scene);
+          this.modelLoader.loadFromConfig("../@data/models-config.json");
+
+          this.map = map;
+          this.clock = new THREE.Clock();
+
+          this.renderer = new THREE.WebGLRenderer({
+            canvas: map.getCanvas(),
+            context: gl,
+            antialias: true,
+          });
+
+          this.renderer.autoClear = false;
+          this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+          this.renderer.toneMappingExposure = 1.0;
+        },
+        render(gl, args) {
+          const waterMat = this.modelLoader?.waterMaterial;
+          if (waterMat?.uniforms?.time) {
+            waterMat.uniforms.time.value = this.clock.getElapsedTime();
+          }
+
+          const rotationX = new THREE.Matrix4().makeRotationAxis(
+            new THREE.Vector3(1, 0, 0),
+            modelTransform.rotateX,
+          );
+          const rotationY = new THREE.Matrix4().makeRotationAxis(
+            new THREE.Vector3(0, 1, 0),
+            modelTransform.rotateY,
+          );
+          const rotationZ = new THREE.Matrix4().makeRotationAxis(
+            new THREE.Vector3(0, 0, 1),
+            modelTransform.rotateZ,
+          );
+
+          const m = new THREE.Matrix4().fromArray(
+            args.defaultProjectionData.mainMatrix,
+          );
+          const l = new THREE.Matrix4()
+            .makeTranslation(
+              modelTransform.translateX,
+              modelTransform.translateY,
+              modelTransform.translateZ,
+            )
+            .scale(
+              new THREE.Vector3(
+                modelTransform.scale,
+                -modelTransform.scale,
+                modelTransform.scale,
+              ),
+            )
+            .multiply(rotationX)
+            .multiply(rotationY)
+            .multiply(rotationZ);
+
+          this.camera.projectionMatrix = m.multiply(l);
+          this.renderer.resetState();
+          this.renderer.render(this.scene, this.camera);
+          this.map.triggerRepaint();
+        },
+      };
+
+      map.on("style.load", () => {
+        map.addLayer(customLayer);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,265 @@
+[
+  {
+    "id": "b536db4c-415a-4e25-9da5-2a753a596814",
+    "name": "Tết Cơm mới (Thái Hải)",
+    "avatar": "https://thaihai.metatwin.vn/media/media/uploads/festival/2023/12/TetComMoi_1.jpg",
+    "festival_type": "d4c1c767-7413-4f40-9fc5-37b82136e6c8",
+    "place": {
+      "id": "91addb57-9530-4d7a-ba50-4108ef0eb982",
+      "name": "Nhà thờ bản",
+      "created_by": 2,
+      "updated_by": null,
+      "location": "21.535006, 105.814183"
+    },
+    "start_date": "2023-11-22T06:30:00Z",
+    "end_date": "2023-11-22T15:30:00Z",
+    "description_short": "Đã thành phong tục, sau khi kết thúc mùa thu hoạch lúa, các gia đình người dân tộc Tày lại sửa soạn lễ cúng trời đất, tổ tiên và muôn loài để cầu mong mưa thuận gió hòa, bình an, may mắn trong lao động, sản xuất và cuộc sống.",
+    "rate_current_user": null,
+    "bookmark_current": false,
+    "description": "<p class=\"ql-align-justify\">Trong văn hóa người dân tộc Tày ở Thái Nguyên, Tết cơm mới là một trong 6 dịp Tết quan trọng trong năm, gồm: Nguyên đán, Rằm tháng Giêng, 3-3 tảo mộ, 5-5 diệt sâu bọ, Rằm tháng 7 và 10-10 cúng cơm mới (lúa mới). Tết cơm mới không chỉ có ý nghĩa đối với đời sống sinh hoạt, mang ý nghĩa tâm linh mà còn giáo dục đạo đức, lối sống cho các thế hệ; đồng thời bảo tồn, phát huy nét đẹp văn hóa truyền thống của dân tộc Tày.&nbsp;</p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\">Theo phong tục, vào đúng ngày 10-10 Âm lịch, sau khi kết thúc mùa thu hoạch lúa trong năm, các gia đình sẽ sửa soạn những mâm cơm đủ màu sắc, các loại bánh thơm ngon nhất làm từ nông sản mới thu hoạch để dâng lễ&nbsp;tạ ơn trời đất, tổ tiên. Đây cũng là dịp để người Tày tỏ lòng biết ơn những công cụ sản xuất, loại cây cho họ thức ăn và lương thực và cầu mong trời đất cho mưa thuận, gió hòa, mùa màng tốt tươi.&nbsp;</p><p class=\"ql-align-justify\"><br></p><p>Từ nhiều năm nay, người Tày sinh sống tại Khu du lịch sinh thái Thái Hải (xóm Mỹ Hào, xã Thịnh Đức, T.P Thái Nguyên) đã tổ chức Tết Cơm mới hằng năm theo truyền thống của người Tày Thái Nguyên. Đây là nghi lễ được người Tày coi trọng và giữ gìn từ nhiều đời nay. Nó vừa phản ánh tín ngưỡng tâm linh, vừa biểu hiện nét văn hóa truyền thống đặc trưng, mang tính nhân văn sâu sắc.</p><p><br></p><p><em>(Nguồn: ST)</em></p><p><br></p>",
+    "images": [
+      {
+        "id": "735766d5-8d1b-4e79-bc87-109324379339",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_2.jpg",
+        "created_date": "2023-12-27T09:17:42.079326Z",
+        "updated_date": "2023-12-27T09:17:42.634331Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": null,
+        "object_3d": null,
+        "festival": "b536db4c-415a-4e25-9da5-2a753a596814"
+      },
+      {
+        "id": "78a030b2-58fd-4073-825a-bdaa641402a9",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_3.jpg",
+        "created_date": "2023-12-27T09:17:42.099326Z",
+        "updated_date": "2023-12-27T09:17:42.641330Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": null,
+        "object_3d": null,
+        "festival": "b536db4c-415a-4e25-9da5-2a753a596814"
+      },
+      {
+        "id": "88e11fc7-01d4-430c-9fc6-8d41c27b5958",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_4.jpg",
+        "created_date": "2023-12-27T09:17:42.107326Z",
+        "updated_date": "2023-12-27T09:17:42.650332Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": null,
+        "object_3d": null,
+        "festival": "b536db4c-415a-4e25-9da5-2a753a596814"
+      },
+      {
+        "id": "3f45c8d0-bea6-44a4-a330-130c8e6ba594",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_5.jpg",
+        "created_date": "2023-12-27T09:17:42.116326Z",
+        "updated_date": "2023-12-27T09:17:42.658330Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": null,
+        "object_3d": null,
+        "festival": "b536db4c-415a-4e25-9da5-2a753a596814"
+      },
+      {
+        "id": "2bb6ff13-f5fb-4e52-9ee8-812aa36353fb",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_6.jpg",
+        "created_date": "2023-12-27T09:17:42.124326Z",
+        "updated_date": "2023-12-27T09:17:42.666331Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": null,
+        "object_3d": null,
+        "festival": "b536db4c-415a-4e25-9da5-2a753a596814"
+      },
+      {
+        "id": "9138d90a-8eb8-47a4-91b6-68f8d841cd6f",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_7.jpg",
+        "created_date": "2023-12-27T09:17:42.132326Z",
+        "updated_date": "2023-12-27T09:17:42.675331Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": null,
+        "object_3d": null,
+        "festival": "b536db4c-415a-4e25-9da5-2a753a596814"
+      },
+      {
+        "id": "4eca7547-d685-4f2f-8854-0d2ba82ce499",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_8.jpg",
+        "created_date": "2023-12-27T09:17:42.141325Z",
+        "updated_date": "2023-12-27T09:17:42.683331Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": null,
+        "object_3d": null,
+        "festival": "b536db4c-415a-4e25-9da5-2a753a596814"
+      },
+      {
+        "id": "7531dc25-fe37-419c-be55-52459e725fde",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_9.jpg",
+        "created_date": "2023-12-27T09:17:42.199327Z",
+        "updated_date": "2023-12-27T09:17:42.691331Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": null,
+        "object_3d": null,
+        "festival": "b536db4c-415a-4e25-9da5-2a753a596814"
+      },
+      {
+        "id": "c3fcb701-f5c8-44b1-aa1c-73c53952d2cc",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_10.jpg",
+        "created_date": "2023-12-27T09:17:42.249328Z",
+        "updated_date": "2023-12-27T09:17:42.700332Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": null,
+        "object_3d": null,
+        "festival": "b536db4c-415a-4e25-9da5-2a753a596814"
+      },
+      {
+        "id": "f45a82a1-f843-4e06-9b96-6d489b0b02be",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_11.jpg",
+        "created_date": "2023-12-27T09:17:42.291327Z",
+        "updated_date": "2023-12-27T09:17:42.708331Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": null,
+        "object_3d": null,
+        "festival": "b536db4c-415a-4e25-9da5-2a753a596814"
+      },
+      {
+        "id": "fc578bdb-90a4-4fc7-aae9-bbfd6eb7fac2",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_2_7opTJJ8.jpg",
+        "created_date": "2023-12-27T09:20:17.979002Z",
+        "updated_date": "2023-12-27T09:20:18.248005Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": null,
+        "object_3d": null,
+        "festival": "b536db4c-415a-4e25-9da5-2a753a596814"
+      },
+      {
+        "id": "b2ddbd10-e63b-4195-bca6-dc43535e6dab",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_3_Ff1fX8O.jpg",
+        "created_date": "2023-12-27T09:20:17.992033Z",
+        "updated_date": "2023-12-27T09:20:18.260005Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": null,
+        "object_3d": null,
+        "festival": "b536db4c-415a-4e25-9da5-2a753a596814"
+      },
+      {
+        "id": "b3e1c25b-e514-4277-901b-64ebc96fd1ad",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_4_aUPOG3x.jpg",
+        "created_date": "2023-12-27T09:20:18.034003Z",
+        "updated_date": "2023-12-27T09:20:18.268004Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": null,
+        "object_3d": null,
+        "festival": "b536db4c-415a-4e25-9da5-2a753a596814"
+      },
+      {
+        "id": "b0ba0acd-a2d7-4f7f-91f3-60160ad5598c",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_5_4zxDrx8.jpg",
+        "created_date": "2023-12-27T09:20:18.047034Z",
+        "updated_date": "2023-12-27T09:20:18.277004Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": null,
+        "object_3d": null,
+        "festival": "b536db4c-415a-4e25-9da5-2a753a596814"
+      },
+      {
+        "id": "502bf34f-3c47-4899-8654-9b422eb365c0",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_6_JfIYJiS.jpg",
+        "created_date": "2023-12-27T09:20:18.059004Z",
+        "updated_date": "2023-12-27T09:20:18.285005Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": null,
+        "object_3d": null,
+        "festival": "b536db4c-415a-4e25-9da5-2a753a596814"
+      },
+      {
+        "id": "e3e4f2f2-f480-492f-b290-1590b7ee4060",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_7_64FrBYZ.jpg",
+        "created_date": "2023-12-27T09:20:18.072003Z",
+        "updated_date": "2023-12-27T09:20:18.293005Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": null,
+        "object_3d": null,
+        "festival": "b536db4c-415a-4e25-9da5-2a753a596814"
+      },
+      {
+        "id": "87058448-8362-4f46-b947-65cece973e93",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_8_C8ukEwb.jpg",
+        "created_date": "2023-12-27T09:20:18.084003Z",
+        "updated_date": "2023-12-27T09:20:18.302005Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": null,
+        "object_3d": null,
+        "festival": "b536db4c-415a-4e25-9da5-2a753a596814"
+      },
+      {
+        "id": "a004f7c4-631e-48e7-88cb-939d21c7d825",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_9_iDIgXNq.jpg",
+        "created_date": "2023-12-27T09:20:18.097005Z",
+        "updated_date": "2023-12-27T09:20:18.310006Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": null,
+        "object_3d": null,
+        "festival": "b536db4c-415a-4e25-9da5-2a753a596814"
+      },
+      {
+        "id": "5e3821b7-2fc7-470e-8729-dfbbbc55dc81",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_10_iAASP0y.jpg",
+        "created_date": "2023-12-27T09:20:18.109005Z",
+        "updated_date": "2023-12-27T09:20:18.318005Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": null,
+        "object_3d": null,
+        "festival": "b536db4c-415a-4e25-9da5-2a753a596814"
+      },
+      {
+        "id": "82893560-c545-4ee6-9a11-632dfd37fb1e",
+        "img": "https://thaihai.metatwin.vn/media/media/uploads/img/2023/12/TetComMoi_11_25NDfyu.jpg",
+        "created_date": "2023-12-27T09:20:18.122003Z",
+        "updated_date": "2023-12-27T09:20:18.327005Z",
+        "is_active": true,
+        "created_by": 2,
+        "place": null,
+        "object_3d": null,
+        "festival": "b536db4c-415a-4e25-9da5-2a753a596814"
+      }
+    ],
+    "videos": [],
+    "created_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "updated_by": {
+      "id": 2,
+      "username": "dev",
+      "first_name": "Demo",
+      "last_name": "Demo",
+      "photo": "https://thaihai.metatwin.vn/media/photos/avatar-1.jpg"
+    },
+    "created_date": "2023-12-27T09:12:12.835076Z",
+    "updated_date": "2023-12-27T13:07:19.533086Z",
+    "is_active": true,
+    "rating": null,
+    "views": 103,
+    "status": "Đã kết thúc.",
+    "audio": null
+  }
+]

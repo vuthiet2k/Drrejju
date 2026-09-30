@@ -1,0 +1,53 @@
+[
+  {
+    "id": "732f58a3-484d-48a9-aabd-16865a75fe7c",
+    "image": "https://tttmdungtan.metatwin.vn/media/media/uploads/vr360/2023/12/IMG_20231101_150129.jpg",
+    "rating": null,
+    "views": null,
+    "created_date": "2023-12-26T08:31:08.650265Z",
+    "updated_date": "2023-12-26T08:31:08.650265Z",
+    "is_active": true,
+    "caption": "Dũng Tân 2",
+    "link": "https://vrpro.vn/dung-tan/",
+    "description": "<p><br></p>",
+    "created_by": 2,
+    "updated_by": null,
+    "place": null,
+    "object_3d": null,
+    "relic": null
+  },
+  {
+    "id": "c42a7a7a-0b1a-4fa8-8bd7-e15a17d3b8a1",
+    "image": "https://tttmdungtan.metatwin.vn/media/media/uploads/vr360/2023/12/4.jpg",
+    "rating": null,
+    "views": null,
+    "created_date": "2023-12-26T08:30:35.074347Z",
+    "updated_date": "2023-12-26T08:30:35.074347Z",
+    "is_active": true,
+    "caption": "Dũng Tân 1",
+    "link": "https://vrpro.vn/dung-tan/",
+    "description": "<p><br></p>",
+    "created_by": 2,
+    "updated_by": null,
+    "place": null,
+    "object_3d": null,
+    "relic": null
+  },
+  {
+    "id": "da799b78-466a-4147-b677-514b616f35f1",
+    "image": "https://tttmdungtan.metatwin.vn/media/media/uploads/vr360/2023/12/1.jpg",
+    "rating": null,
+    "views": 3,
+    "created_date": "2023-12-25T10:20:01.611675Z",
+    "updated_date": "2023-12-26T08:30:08.975194Z",
+    "is_active": true,
+    "caption": "Tổng quan Dũng Tân",
+    "link": "https://vrpro.vn/dung-tan/",
+    "description": "<p><br></p>",
+    "created_by": 2,
+    "updated_by": null,
+    "place": null,
+    "object_3d": null,
+    "relic": null
+  }
+]

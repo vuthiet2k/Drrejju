@@ -1,0 +1,24 @@
+{
+    "logo1": "https://thaihai.metatwin.vn/media/photos/logo/logo-thai-nguyen.ace7cc4b.svg",
+    "logo2": "https://thaihai.metatwin.vn/media/photos/logo/logosovanhoa.png",
+    "bg_login": "/media/hoghenhche/intro/slide-1.jpg",
+    "bg_head": "/media/hoghenhche/intro/slide-1.jpg",
+    "config": {
+        "fax": "",
+        "key": null,
+        "lat": "21.51403741374644",
+        "lng": " 105.78070548321774",
+        "tilt": "30",
+        "zoom": "",
+        "donvi": "",
+        "phone": "",
+        "coquan": "",
+        "address": "Bình Sơn, Sông Công, Thái Nguyên",
+        "bearing": "360",
+        "viewbox": "21.503828,105.760515,21.528421,105.804375",
+        "map_type": "map3d",
+        "trip_link": "DU LỊCH SINH THÁI CỘNG ĐỒNG HỒ GHỀNH CHÈ",
+        "water_effect": "1",
+        "location_type": "[{\"name\":\"Tạp hóa\",\"class\":\"ri-shopping-cart-line\",\"type_search\":\"grocery_store\"},{\"name\":\"Trường học\",\"class\":\"ri-building-4-fill\",\"type_search\":\"education\"},{\"name\":\"Điểm du lịch\",\"class\":\"ri-ancient-gate-line\",\"type_search\":\"tourist_attraction\"},{\"name\":\"Trạm xăng\",\"class\":\"ri-gas-station-fill\",\"type_search\":\"gas_station\"}]"
+    }
+}

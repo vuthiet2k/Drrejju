@@ -1,0 +1,35 @@
+[
+  {
+    "id": "relic-1",
+    "name": "Khu D: Nhà VIP",
+    "type": 1,
+    "total_area": 50000,
+    "total_works": 10,
+    "keywords": "",
+    "description": "",
+    "avatar": "",
+    "ratings": []
+  },
+  {
+    "id": "relic-2",
+    "name": "Khu B: Bảo Tồn Văn Hóa",
+    "type": 1,
+    "total_area": 40000,
+    "total_works": 18,
+    "keywords": "",
+    "description": "",
+    "avatar": "",
+    "ratings": []
+  },
+  {
+    "id": "relic-3",
+    "name": "Khu A: Nhà Nghỉ Cộng Đồng",
+    "type": 1,
+    "total_area": 70000,
+    "total_works": 25,
+    "keywords": "",
+    "description": "",
+    "avatar": "",
+    "ratings": []
+  }
+]

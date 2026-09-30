@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VR360 Tour Builder v2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg-0:#0c0c14;--bg-1:#12121c;--bg-2:#1a1a28;--bg-3:#222234;--bg-4:#2a2a40;
+    --border:rgba(255,255,255,0.06);--border-hover:rgba(255,255,255,0.12);
+    --primary:#6C5CE7;--primary-light:#A29BFE;--primary-dim:rgba(108,92,231,0.15);
+    --accent:#00CEC9;--accent-dim:rgba(0,206,201,0.15);
+    --danger:#FF6B6B;--danger-dim:rgba(255,107,107,0.15);
+    --warning:#FECA57;--success:#55EFC4;
+    --text:#E8E8F0;--text-muted:rgba(232,232,240,0.5);--text-dim:rgba(232,232,240,0.3);
+    --mono:'JetBrains Mono',monospace;--sans:'Be Vietnam Pro',sans-serif;
+    --radius:8px;--radius-lg:12px;--transition:0.2s ease;
+    --left-w:280px;--right-w:320px;--topbar-h:48px;
+  }
+  html,body{width:100%;height:100%;overflow:hidden;font-family:var(--sans);background:var(--bg-0);color:var(--text);-webkit-font-smoothing:antialiased;font-size:13px}
+  .app{display:flex;flex-direction:column;height:100vh}
+  .topbar{height:var(--topbar-h);flex-shrink:0;background:var(--bg-1);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:8px;z-index:100}
+  .main{flex:1;display:flex;overflow:hidden}
+  .topbar-brand{font-size:14px;font-weight:700;letter-spacing:1px;background:linear-gradient(135deg,var(--primary-light),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-right:16px;flex-shrink:0}
+  .topbar-sep{width:1px;height:24px;background:var(--border);margin:0 8px}
+  .tb-btn{display:flex;align-items:center;gap:6px;padding:6px 14px;border:1px solid var(--border);background:var(--bg-2);color:var(--text-muted);border-radius:6px;cursor:pointer;font-family:var(--sans);font-size:12px;font-weight:500;transition:all var(--transition);white-space:nowrap}
+  .tb-btn:hover{background:var(--bg-3);color:var(--text);border-color:var(--border-hover)}
+  .tb-btn.primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+  .tb-btn.primary:hover{background:var(--primary-light)}
+  .tb-btn svg{width:15px;height:15px;flex-shrink:0}
+  .topbar-spacer{flex:1}
+
+  /* LEFT PANEL */
+  .left-panel{width:var(--left-w);flex-shrink:0;background:var(--bg-1);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+  .panel-header{padding:14px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);flex-shrink:0}
+  .panel-title{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted)}
+
+  /* ★ VIRTUAL SCROLL CONTAINER */
+  .scene-list{flex:1;overflow-y:auto;position:relative;scrollbar-width:thin;scrollbar-color:var(--bg-4) transparent}
+  .scene-list-inner{position:relative;width:100%;padding:0 8px}
+
+  .scene-card{display:flex;align-items:center;gap:10px;padding:10px;margin-bottom:4px;background:var(--bg-2);border:1px solid transparent;border-radius:var(--radius);cursor:pointer;transition:background .15s,border-color .15s;position:absolute;left:8px;right:8px;contain:layout style paint}
+  .scene-card:hover{background:var(--bg-3);border-color:var(--border-hover)}
+  .scene-card.active{border-color:var(--primary);background:var(--primary-dim)}
+  .scene-card.dragover{border-color:var(--accent);border-style:dashed}
+  .scene-thumb{width:56px;height:36px;border-radius:4px;overflow:hidden;background:var(--bg-4);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:18px}
+  .scene-thumb img{width:100%;height:100%;object-fit:cover}
+  .scene-meta{flex:1;min-width:0}
+  .scene-name{font-size:12px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .scene-info{font-size:10px;color:var(--text-dim);margin-top:2px;font-family:var(--mono)}
+  .scene-num{position:absolute;top:4px;left:4px;font-size:9px;font-weight:700;color:var(--text-dim);background:var(--bg-0);padding:1px 5px;border-radius:3px;font-family:var(--mono)}
+  .scene-delete{opacity:0;background:none;border:none;color:var(--danger);cursor:pointer;padding:4px;transition:opacity .15s;flex-shrink:0}
+  .scene-card:hover .scene-delete{opacity:1}
+  .scene-upload-badge{position:absolute;top:4px;right:4px;font-size:8px;font-weight:700;padding:1px 5px;border-radius:3px;font-family:var(--mono);background:#10B981;color:#fff}
+
+  .add-scene-area{margin:8px;padding:24px;text-align:center;border:2px dashed var(--border);border-radius:var(--radius);color:var(--text-dim);cursor:pointer;transition:all var(--transition);font-size:12px;flex-shrink:0}
+  .add-scene-area:hover{border-color:var(--primary);color:var(--primary-light)}
+  .add-scene-area.dragover{border-color:var(--accent);background:var(--accent-dim);color:var(--accent)}
+  .add-scene-area input{display:none}
+
+  /* CENTER */
+  .center-panel{flex:1;position:relative;background:var(--bg-0);overflow:hidden}
+  #builder-canvas{width:100%;height:100%;cursor:grab}
+  #builder-canvas:active{cursor:grabbing}
+  #builder-canvas.placing-hotspot{cursor:crosshair!important}
+  .viewer-empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--text-dim);z-index:5}
+  .viewer-empty svg{width:64px;height:64px;margin-bottom:16px;opacity:0.3}
+  .viewer-empty p{font-size:14px}
+  .crosshair-overlay{position:absolute;inset:0;pointer-events:none;z-index:15;display:none}
+  .crosshair-overlay.active{display:block}
+  .crosshair-msg{position:absolute;top:16px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--bg-0);padding:8px 20px;border-radius:20px;font-size:12px;font-weight:600;pointer-events:none;animation:pulse-badge 1.5s ease infinite}
+  @keyframes pulse-badge{0%,100%{box-shadow:0 0 0 0 rgba(0,206,201,0.4)}50%{box-shadow:0 0 0 8px rgba(0,206,201,0)}}
+  .view-hud{position:absolute;bottom:12px;left:12px;display:flex;gap:8px;z-index:20;pointer-events:auto}
+  .hud-chip{background:rgba(0,0,0,0.7);backdrop-filter:blur(10px);padding:5px 12px;border-radius:6px;font-family:var(--mono);font-size:11px;color:var(--text-muted);border:1px solid var(--border)}
+  .hud-chip span{color:var(--accent);font-weight:500}
+
+  /* ★ PERF: Hotspots GPU layer */
+  .builder-hotspot{position:absolute;pointer-events:auto;z-index:12;cursor:pointer;will-change:transform;backface-visibility:hidden}
+  .builder-hotspot.hidden{opacity:0;pointer-events:none}
+  .builder-hotspot.selected .bh-dot{border-color:var(--warning);box-shadow:0 0 12px var(--warning)}
+  .bh-dot{width:28px;height:28px;background:var(--primary);border:3px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,0.5);transition:transform .15s;font-size:10px;font-weight:700;color:#fff}
+  .builder-hotspot:hover .bh-dot{transform:scale(1.2)}
+  .bh-label{position:absolute;top:100%;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.8);color:#fff;padding:2px 8px;border-radius:4px;font-size:10px;white-space:nowrap;margin-top:4px}
+
+  /* RIGHT PANEL */
+  .right-panel{width:var(--right-w);flex-shrink:0;background:var(--bg-1);border-left:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+  .right-scroll{flex:1;overflow-y:auto;padding:0;scrollbar-width:thin;scrollbar-color:var(--bg-4) transparent}
+  .prop-section{border-bottom:1px solid var(--border);padding:16px}
+  .prop-section-title{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+  .prop-section-title svg{width:14px;height:14px;color:var(--primary-light)}
+  .prop-row{margin-bottom:10px}
+  .prop-label{font-size:11px;color:var(--text-muted);margin-bottom:4px;display:block}
+  .prop-input{width:100%;padding:8px 10px;background:var(--bg-2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:var(--sans);font-size:12px;transition:border-color var(--transition);outline:none}
+  .prop-input:focus{border-color:var(--primary)}
+  .prop-input::placeholder{color:var(--text-dim)}
+  .prop-input-mono{font-family:var(--mono);font-size:11px;letter-spacing:0.5px}
+  textarea.prop-input{resize:vertical;min-height:60px;line-height:1.5}
+  select.prop-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:30px}
+  .prop-row-inline{display:flex;gap:8px}
+  .prop-row-inline .prop-row{flex:1;margin-bottom:0}
+  .prop-btn{width:100%;padding:9px;border:1px solid var(--border);background:var(--bg-2);color:var(--text-muted);border-radius:6px;cursor:pointer;font-family:var(--sans);font-size:12px;font-weight:500;transition:all var(--transition);display:flex;align-items:center;justify-content:center;gap:6px}
+  .prop-btn:hover{background:var(--bg-3);color:var(--text);border-color:var(--border-hover)}
+  .prop-btn.primary{background:var(--primary-dim);color:var(--primary-light);border-color:var(--primary)}
+  .prop-btn.primary:hover{background:var(--primary);color:#fff}
+  .prop-btn.accent{background:var(--accent-dim);color:var(--accent);border-color:rgba(0,206,201,0.3)}
+  .prop-btn.accent:hover{background:var(--accent);color:var(--bg-0)}
+  .prop-btn.danger{color:var(--danger);border-color:rgba(255,107,107,0.2)}
+  .prop-btn.danger:hover{background:var(--danger-dim)}
+  .prop-btn svg{width:14px;height:14px}
+  .hs-list{display:flex;flex-direction:column;gap:6px}
+  .hs-card{padding:10px;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;transition:all var(--transition)}
+  .hs-card:hover{border-color:var(--border-hover)}
+  .hs-card.selected{border-color:var(--warning);background:rgba(254,202,87,0.05)}
+  .hs-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+  .hs-card-title{font-size:12px;font-weight:500;display:flex;align-items:center;gap:6px}
+  .hs-card-title .hs-idx{background:var(--primary-dim);color:var(--primary-light);padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700;font-family:var(--mono)}
+  .hs-card-coords{font-family:var(--mono);font-size:10px;color:var(--text-dim)}
+  .hs-card-btn{background:none;border:none;color:var(--text-dim);cursor:pointer;padding:2px;border-radius:4px;transition:all var(--transition)}
+  .hs-card-btn:hover{color:var(--text);background:var(--bg-4)}
+  .hs-card-btn.del:hover{color:var(--danger)}
+  .empty-state{text-align:center;padding:32px 16px;color:var(--text-dim);font-size:12px;line-height:1.6}
+  .empty-state svg{width:40px;height:40px;margin-bottom:12px;opacity:0.3}
+
+  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);z-index:9999;padding:10px 24px;border-radius:8px;font-size:13px;font-weight:500;opacity:0;pointer-events:none;transition:all 0.3s ease;box-shadow:0 8px 30px rgba(0,0,0,0.4)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .toast.success{background:#10B981;color:#fff}
+  .toast.info{background:var(--primary);color:#fff}
+  .toast.error{background:var(--danger);color:#fff}
+
+  .api-status{display:flex;align-items:center;gap:6px;padding:4px 12px 4px 8px;border:1px solid var(--border);border-radius:6px;cursor:pointer;font-size:11px;font-weight:500;transition:all var(--transition);background:var(--bg-2);white-space:nowrap}
+  .api-status:hover{background:var(--bg-3);border-color:var(--border-hover)}
+  .api-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;transition:background 0.3s}
+  .api-dot.off{background:var(--text-dim)}
+  .api-dot.on{background:#10B981;box-shadow:0 0 6px #10B981}
+  .api-dot.loading{background:var(--warning);animation:dot-pulse 1s ease infinite}
+  @keyframes dot-pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+  .api-status-label{color:var(--text-muted)}
+  .api-status.connected .api-status-label{color:#10B981}
+
+  .modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center}
+  .modal-overlay.show{display:flex}
+  .modal{background:var(--bg-1);border:1px solid var(--border);border-radius:var(--radius-lg);width:560px;max-height:80vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+  .modal-header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+  .modal-header h3{font-size:15px;font-weight:600}
+  .modal-close{background:none;border:none;color:var(--text-muted);cursor:pointer;padding:4px}
+  .modal-body{padding:20px;overflow-y:auto;flex:1}
+  .modal-footer{padding:14px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px}
+  .json-preview{width:100%;min-height:300px;max-height:50vh;background:var(--bg-0);border:1px solid var(--border);border-radius:var(--radius);padding:14px;font-family:var(--mono);font-size:11px;line-height:1.6;color:var(--accent);resize:vertical;outline:none}
+
+  /* Loading indicator on canvas */
+  .canvas-loading{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:6;color:var(--accent);font-size:12px;font-family:var(--mono);background:rgba(0,0,0,0.7);padding:8px 16px;border-radius:6px;display:none}
+  .canvas-loading.show{display:block}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <div class="topbar-brand">VR360 BUILDER</div>
+    <div class="topbar-sep"></div>
+    <button class="tb-btn" onclick="addSceneFromFiles()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      Thêm ảnh
+    </button>
+    <button class="tb-btn" onclick="importJSON()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+      Import JSON
+    </button>
+    <div class="topbar-sep"></div>
+    <button class="tb-btn" onclick="loadFromServer()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+      Load Tour
+    </button>
+    <button class="tb-btn" style="background:var(--accent-dim);color:var(--accent);border-color:rgba(0,206,201,0.3);" onclick="saveToServer()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-8H7v8M7 3v5h8"/><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/></svg>
+      Save Tour
+    </button>
+    <div class="topbar-spacer"></div>
+    <div class="api-status" id="api-status" onclick="openApiSettings()">
+      <div class="api-dot off" id="api-dot"></div>
+      <span class="api-status-label" id="api-status-label">Chưa kết nối</span>
+    </div>
+    <div class="topbar-sep"></div>
+    <button class="tb-btn primary" onclick="exportJSON()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+      Export JSON
+    </button>
+  </div>
+
+  <div class="main">
+    <div class="left-panel">
+      <div class="panel-header">
+        <span class="panel-title">Scenes</span>
+        <span style="font-family:var(--mono);font-size:11px;color:var(--text-dim)" id="scene-count">0</span>
+      </div>
+      <div class="scene-list" id="scene-list">
+        <div class="scene-list-inner" id="scene-list-inner"></div>
+      </div>
+      <div class="add-scene-area" id="add-scene-area" onclick="document.getElementById('file-input').click()">
+        <input type="file" id="file-input" multiple accept="image/*" onchange="handleFileInput(event)">
+        + Kéo thả hoặc click để thêm ảnh 360°
+      </div>
+    </div>
+
+    <div class="center-panel" id="center-panel">
+      <canvas id="builder-canvas"></canvas>
+      <div class="canvas-loading" id="canvas-loading">⏳ Đang tải ảnh...</div>
+      <div class="viewer-empty" id="viewer-empty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        <p>Thêm ảnh panorama 360° để bắt đầu</p>
+      </div>
+      <div class="crosshair-overlay" id="crosshair-overlay">
+        <div class="crosshair-msg">🎯 Click vào panorama để đặt hotspot — ESC để hủy</div>
+      </div>
+      <div class="viewer-overlay" style="position:absolute;inset:0;pointer-events:none;z-index:10;">
+        <div class="view-hud" id="view-hud" style="display:none;pointer-events:auto;">
+          <div class="hud-chip">LON <span id="hud-lon">0.0</span>°</div>
+          <div class="hud-chip">LAT <span id="hud-lat">0.0</span>°</div>
+          <div class="hud-chip">FOV <span id="hud-fov">75</span>°</div>
+        </div>
+      </div>
+      <div id="hotspot-layer" style="position:absolute;inset:0;z-index:12;pointer-events:none;"></div>
+    </div>
+
+    <div class="right-panel">
+      <div class="right-scroll" id="right-scroll">
+        <div id="right-content">
+          <div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <p>Chọn một scene ở bên trái<br>để chỉnh sửa thuộc tính</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modals -->
+<div class="modal-overlay" id="export-modal">
+  <div class="modal">
+    <div class="modal-header"><h3>📦 Export TOUR_DATA</h3><button class="modal-close" onclick="closeModal('export-modal')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+    <div class="modal-body"><textarea class="json-preview" id="export-json" readonly></textarea></div>
+    <div class="modal-footer"><button class="tb-btn" onclick="closeModal('export-modal')">Đóng</button><button class="tb-btn primary" onclick="copyExportJSON()">📋 Copy</button></div>
+  </div>
+</div>
+<div class="modal-overlay" id="import-modal">
+  <div class="modal">
+    <div class="modal-header"><h3>📥 Import JSON</h3><button class="modal-close" onclick="closeModal('import-modal')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+    <div class="modal-body"><textarea class="json-preview" id="import-json" style="color:var(--text)" placeholder="Paste JSON..."></textarea></div>
+    <div class="modal-footer"><button class="tb-btn" onclick="closeModal('import-modal')">Hủy</button><button class="tb-btn primary" onclick="doImportJSON()">Import</button></div>
+  </div>
+</div>
+<div class="modal-overlay" id="api-modal">
+  <div class="modal" style="width:480px">
+    <div class="modal-header"><h3>⚡ API Server</h3><button class="modal-close" onclick="closeModal('api-modal')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+    <div class="modal-body">
+      <div style="margin-bottom:14px"><label style="font-size:11px;color:var(--text-muted);display:block;margin-bottom:4px">API Endpoint</label><div style="display:flex;gap:8px"><input class="prop-input prop-input-mono" id="api-url-input" placeholder="http://localhost:8360" style="flex:1"><button class="tb-btn" onclick="testApiConnection()" id="api-test-btn">🔌 Test</button></div></div>
+      <div id="api-test-result" style="display:none;padding:10px;border-radius:6px;font-size:12px;margin-bottom:12px"></div>
+    </div>
+    <div class="modal-footer"><button class="tb-btn" onclick="closeModal('api-modal')">Hủy</button><button class="tb-btn primary" onclick="saveApiSettings()">💾 Lưu</button></div>
+  </div>
+</div>
+<div class="modal-overlay" id="load-modal">
+  <div class="modal" style="width:520px">
+    <div class="modal-header"><h3>📂 Chọn Tour</h3><button class="modal-close" onclick="closeModal('load-modal')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+    <div class="modal-body" id="load-modal-body"><div class="empty-state">Đang tải...</div></div>
+    <div class="modal-footer"><button class="tb-btn" onclick="closeModal('load-modal')">Đóng</button></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+
+// ══════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════
+const state = {
+  scenes: [],
+  activeSceneIndex: -1,
+  selectedHotspotIndex: -1,
+  placingHotspot: false,
+};
+
+// ══════════════════════════════════════
+//  ★ PERF 1: LRU TEXTURE CACHE (max 3)
+//  3 textures * ~128MB = ~384MB max VRAM
+// ══════════════════════════════════════
+class LRUTextureCache {
+  constructor(max = 3) { this.max = max; this.entries = []; }
+
+  get(url) {
+    const idx = this.entries.findIndex(e => e.url === url);
+    if (idx < 0) return null;
+    // Move to front (most recent)
+    const [entry] = this.entries.splice(idx, 1);
+    this.entries.unshift(entry);
+    return entry.texture;
+  }
+
+  set(url, texture) {
+    // Remove if exists
+    const idx = this.entries.findIndex(e => e.url === url);
+    if (idx >= 0) {
+      this.entries[idx].texture.dispose();
+      this.entries.splice(idx, 1);
+    }
+    // Evict oldest if full
+    while (this.entries.length >= this.max) {
+      const old = this.entries.pop();
+      old.texture.dispose();
+      console.log(`[LRU] Evicted texture: ${old.url.slice(-30)}`);
+    }
+    this.entries.unshift({ url, texture });
+  }
+
+  has(url) { return this.entries.some(e => e.url === url); }
+}
+
+// ══════════════════════════════════════
+//  ★ PERF 2: ImageBitmap TEXTURE LOADER
+//  Decode + downscale OFF main thread
+//  Max 4096px width → ~64MB instead of ~128MB
+// ══════════════════════════════════════
+const MAX_TEXTURE_WIDTH = 4096;
+
+// ★ Convert ImageBitmap → Canvas → Three.js CanvasTexture
+// Fixes: (1) flipY mismatch, (2) half-image on some browsers
+function bitmapToTexture(bmp) {
+  const canvas = document.createElement('canvas');
+  // Downscale if wider than MAX, keeping aspect ratio
+  if (bmp.width > MAX_TEXTURE_WIDTH) {
+    canvas.width = MAX_TEXTURE_WIDTH;
+    canvas.height = Math.round(bmp.height * (MAX_TEXTURE_WIDTH / bmp.width));
+  } else {
+    canvas.width = bmp.width;
+    canvas.height = bmp.height;
+  }
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(bmp, 0, 0, canvas.width, canvas.height);
+  bmp.close(); // Free ImageBitmap memory
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.minFilter = THREE.LinearFilter;
+  texture.magFilter = THREE.LinearFilter;
+  texture.generateMipmaps = false;
+  return texture;
+}
+
+async function loadTextureOptimized(url, abortSignal) {
+  const res = await fetch(url, { signal: abortSignal });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const blob = await res.blob();
+  if (abortSignal?.aborted) throw new DOMException('Aborted', 'AbortError');
+
+  // Decode OFF main thread (no resize here — canvas handles it)
+  const bmp = await createImageBitmap(blob);
+  if (abortSignal?.aborted) { bmp.close(); throw new DOMException('Aborted', 'AbortError'); }
+
+  return bitmapToTexture(bmp);
+}
+
+async function loadTextureFromFile(file, abortSignal) {
+  const bmp = await createImageBitmap(file);
+  if (abortSignal?.aborted) { bmp.close(); throw new DOMException('Aborted', 'AbortError'); }
+
+  return bitmapToTexture(bmp);
+}
+
+// ══════════════════════════════════════
+//  ★ PERF 3: THUMBNAIL GENERATOR
+//  Small 112x72 JPEG for sidebar
+// ══════════════════════════════════════
+function generateThumb(file) {
+  return new Promise(resolve => {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => {
+      const c = document.createElement('canvas');
+      c.width = 112; c.height = 72;
+      const ctx = c.getContext('2d');
+      const srcR = img.width / img.height, dstR = 112 / 72;
+      let sx=0,sy=0,sw=img.width,sh=img.height;
+      if(srcR>dstR){sw=img.height*dstR;sx=(img.width-sw)/2}
+      else{sh=img.width/dstR;sy=(img.height-sh)/2}
+      ctx.drawImage(img, sx, sy, sw, sh, 0, 0, 112, 72);
+      URL.revokeObjectURL(url);
+      resolve(c.toDataURL('image/jpeg', 0.4));
+    };
+    img.onerror = () => resolve(url);
+    img.src = url;
+  });
+}
+
+// ══════════════════════════════════════
+//  ★ PERF 4: THREE.JS ENGINE
+//  - On-demand rendering (no continuous loop)
+//  - Reduced sphere geometry
+//  - Reuse Vector3 objects
+// ══════════════════════════════════════
+class PreviewEngine {
+  constructor(canvas) {
+    this.canvas = canvas;
+    this.lon = 0; this.lat = 0;
+    this.targetLon = 0; this.targetLat = 0;
+    this.fov = 75; this.targetFov = 75;
+    this.isInteracting = false;
+    this.pointerStart = { x:0, y:0 };
+    this.pointerDelta = { lon:0, lat:0 };
+    this.hasTexture = false;
+
+    // ★ PERF: Track if we need to render
+    this._needsRender = true;
+    this._animating = false;
+    this._rafId = 0;
+    this._loadAbort = null; // AbortController for current load
+
+    this._initRenderer();
+    this._initScene();
+    this._initEvents();
+    this._startLoop();
+  }
+
+  _initRenderer() {
+    const p = this.canvas.parentElement;
+    this.renderer = new THREE.WebGLRenderer({
+      canvas: this.canvas, antialias: false, // ★ PERF: no AA for panorama
+      alpha: false, powerPreference: 'high-performance'
+    });
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); // ★ PERF: cap DPR
+    this.renderer.setSize(p.clientWidth, p.clientHeight);
+    this.renderer.outputColorSpace = THREE.SRGBColorSpace;
+  }
+
+  _initScene() {
+    this.scene = new THREE.Scene();
+    const p = this.canvas.parentElement;
+    this.camera = new THREE.PerspectiveCamera(this.fov, p.clientWidth / p.clientHeight, 1, 1100);
+    // ★ PERF: Reduced segments 60x40 (was 80x60)
+    const geo = new THREE.SphereGeometry(500, 60, 40);
+    geo.scale(-1, 1, 1);
+    this.material = new THREE.MeshBasicMaterial({ color: 0x111111 });
+    this.sphere = new THREE.Mesh(geo, this.material);
+    this.scene.add(this.sphere);
+    this.textureCache = new LRUTextureCache(3);
+    this.raycaster = new THREE.Raycaster();
+    this.mouse = new THREE.Vector2();
+    this._lookAt = new THREE.Vector3();
+    this._proj = new THREE.Vector3();
+    this._camDir = new THREE.Vector3();
+  }
+
+  // ★ PERF 5: ABORT-AWARE TEXTURE LOADING
+  async loadPanorama(url, file) {
+    // Cancel any in-flight load
+    if (this._loadAbort) this._loadAbort.abort();
+    this._loadAbort = new AbortController();
+    const signal = this._loadAbort.signal;
+
+    // Check cache first
+    const cached = this.textureCache.get(url);
+    if (cached) {
+      this.material.map = cached;
+      this.material.color = null;
+      this.material.needsUpdate = true;
+      this.hasTexture = true;
+      this.requestRender();
+      return;
+    }
+
+    // Show loading indicator
+    document.getElementById('canvas-loading').classList.add('show');
+
+    try {
+      let texture;
+      if (file) {
+        texture = await loadTextureFromFile(file, signal);
+      } else {
+        texture = await loadTextureOptimized(url, signal);
+      }
+
+      if (signal.aborted) { texture.dispose(); return; }
+
+      this.textureCache.set(url, texture);
+      this.material.map = texture;
+      this.material.color = null;
+      this.material.needsUpdate = true;
+      this.hasTexture = true;
+      this.requestRender();
+    } catch (e) {
+      if (e.name === 'AbortError') return; // Expected, user switched scenes
+      console.error('loadPanorama error:', e);
+    } finally {
+      if (!signal.aborted) {
+        document.getElementById('canvas-loading').classList.remove('show');
+      }
+    }
+  }
+
+  setView(lon, lat, fov) {
+    this.lon = this.targetLon = lon;
+    this.lat = this.targetLat = lat;
+    this.fov = this.targetFov = fov ?? 75;
+    this.requestRender();
+  }
+
+  getView() {
+    return {
+      lon: Math.round(this.lon * 10) / 10,
+      lat: Math.round(this.lat * 10) / 10,
+      fov: Math.round(this.fov * 10) / 10,
+    };
+  }
+
+  // ★ PERF 6: ON-DEMAND RENDERING
+  // Only spin the render loop when something changed
+  requestRender() {
+    this._needsRender = true;
+    if (!this._animating) {
+      this._animating = true;
+      this._rafId = requestAnimationFrame(() => this._renderLoop());
+    }
+  }
+
+  _renderLoop() {
+    // Interpolate
+    const lonD = Math.abs(this.targetLon - this.lon);
+    const latD = Math.abs(this.targetLat - this.lat);
+    const fovD = Math.abs(this.targetFov - this.fov);
+    const animating = lonD > 0.01 || latD > 0.01 || fovD > 0.01;
+
+    if (animating) {
+      this.lon += (this.targetLon - this.lon) * 0.12;
+      this.lat += (this.targetLat - this.lat) * 0.12;
+      this.fov += (this.targetFov - this.fov) * 0.12;
+    } else {
+      this.lon = this.targetLon;
+      this.lat = this.targetLat;
+      this.fov = this.targetFov;
+    }
+
+    this.camera.fov = this.fov;
+    this.camera.updateProjectionMatrix();
+    const phi = THREE.MathUtils.degToRad(90 - this.lat);
+    const theta = THREE.MathUtils.degToRad(this.lon);
+    this._lookAt.set(
+      500 * Math.sin(phi) * Math.cos(theta),
+      500 * Math.cos(phi),
+      500 * Math.sin(phi) * Math.sin(theta)
+    );
+    this.camera.lookAt(this._lookAt);
+    this.renderer.render(this.scene, this.camera);
+
+    // Update overlays (throttled)
+    this._updateHUD();
+    this._updateHotspots();
+
+    // Continue loop only if still animating or interacting
+    if (animating || this.isInteracting || this._needsRender) {
+      this._needsRender = false;
+      this._rafId = requestAnimationFrame(() => this._renderLoop());
+    } else {
+      this._animating = false;
+      // One final hotspot update
+      this._updateHotspots();
+    }
+  }
+
+  _startLoop() {
+    // Initial render
+    this.requestRender();
+  }
+
+  // Throttled HUD
+  _hudFrame = 0;
+  _lastHud = ['', '', ''];
+  _updateHUD() {
+    if (++this._hudFrame % 5 !== 0) return; // ~12fps
+    const sL = this.lon.toFixed(1), sA = this.lat.toFixed(1), sF = this.fov.toFixed(0);
+    if (sL !== this._lastHud[0]) { document.getElementById('hud-lon').textContent = sL; this._lastHud[0] = sL; }
+    if (sA !== this._lastHud[1]) { document.getElementById('hud-lat').textContent = sA; this._lastHud[1] = sA; }
+    if (sF !== this._lastHud[2]) { document.getElementById('hud-fov').textContent = sF; this._lastHud[2] = sF; }
+  }
+
+  // Throttled hotspot positions
+  _hsFrame = 0;
+  _updateHotspots() {
+    if (++this._hsFrame % 3 !== 0) return; // ~20fps
+    updateBuilderHotspots(this);
+  }
+
+  screenToSphere(cx, cy) {
+    const r = this.canvas.getBoundingClientRect();
+    this.mouse.x = ((cx - r.left) / r.width) * 2 - 1;
+    this.mouse.y = -((cy - r.top) / r.height) * 2 + 1;
+    this.raycaster.setFromCamera(this.mouse, this.camera);
+    const hits = this.raycaster.intersectObject(this.sphere);
+    if (!hits.length) return null;
+    const p = hits[0].point;
+    const d = Math.sqrt(p.x*p.x + p.y*p.y + p.z*p.z);
+    return {
+      lon: Math.round(THREE.MathUtils.radToDeg(Math.atan2(p.z, p.x)) * 10) / 10,
+      lat: Math.round((90 - THREE.MathUtils.radToDeg(Math.acos(p.y / d))) * 10) / 10,
+    };
+  }
+
+  sphereToScreen(lon, lat) {
+    const phi = THREE.MathUtils.degToRad(90 - lat);
+    const theta = THREE.MathUtils.degToRad(lon);
+    this._proj.set(
+      500 * Math.sin(phi) * Math.cos(theta),
+      500 * Math.cos(phi),
+      500 * Math.sin(phi) * Math.sin(theta)
+    );
+    const proj = this._proj.clone().project(this.camera);
+    this.camera.getWorldDirection(this._camDir);
+    if (this._camDir.dot(this._proj.clone().normalize()) < 0) return null;
+    const r = this.canvas.getBoundingClientRect();
+    return {
+      x: (proj.x * 0.5 + 0.5) * r.width,
+      y: (-proj.y * 0.5 + 0.5) * r.height,
+      scale: Math.max(0.5, 1 - Math.sqrt(proj.x**2 + proj.y**2) * 0.2),
+    };
+  }
+
+  _initEvents() {
+    const c = this.canvas;
+    c.addEventListener('pointerdown', e => {
+      if (state.placingHotspot) return;
+      this.isInteracting = true;
+      this.pointerStart = { x: e.clientX, y: e.clientY };
+      this.pointerDelta = { lon: this.targetLon, lat: this.targetLat };
+      c.setPointerCapture(e.pointerId);
+      this.requestRender();
+    });
+    c.addEventListener('pointermove', e => {
+      if (!this.isInteracting) return;
+      const s = 0.15 * (this.fov / 75);
+      this.targetLon = this.pointerDelta.lon - (e.clientX - this.pointerStart.x) * s;
+      this.targetLat = Math.max(-85, Math.min(85, this.pointerDelta.lat + (e.clientY - this.pointerStart.y) * s));
+      this.requestRender();
+    });
+    c.addEventListener('pointerup', () => {
+      this.isInteracting = false;
+      this.requestRender(); // One more frame to settle
+    });
+    c.addEventListener('wheel', e => {
+      e.preventDefault();
+      this.targetFov = Math.max(30, Math.min(120, this.targetFov + e.deltaY * 0.05));
+      this.requestRender();
+    }, { passive: false });
+    c.addEventListener('click', e => {
+      if (!state.placingHotspot) return;
+      const coords = this.screenToSphere(e.clientX, e.clientY);
+      if (coords) placeNewHotspot(coords.lon, coords.lat);
+    });
+    window.addEventListener('resize', () => {
+      const p = this.canvas.parentElement;
+      this.camera.aspect = p.clientWidth / p.clientHeight;
+      this.camera.updateProjectionMatrix();
+      this.renderer.setSize(p.clientWidth, p.clientHeight);
+      this.requestRender();
+    });
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && state.placingHotspot) cancelPlacingHotspot();
+    });
+  }
+}
+
+const engine = new PreviewEngine(document.getElementById('builder-canvas'));
+
+// ══════════════════════════════════════
+//  HOTSPOT LAYER (optimized)
+// ══════════════════════════════════════
+const hotspotLayer = document.getElementById('hotspot-layer');
+
+function updateBuilderHotspots(eng) {
+  if (state.activeSceneIndex < 0) { if (hotspotLayer.children.length) hotspotLayer.innerHTML = ''; return; }
+  const hs = state.scenes[state.activeSceneIndex].hotspots;
+  const n = hs.length;
+
+  while (hotspotLayer.children.length > n) hotspotLayer.removeChild(hotspotLayer.lastChild);
+  while (hotspotLayer.children.length < n) {
+    const el = document.createElement('div');
+    el.className = 'builder-hotspot';
+    el.style.pointerEvents = 'auto';
+    el.innerHTML = '<div class="bh-dot"></div><div class="bh-label"></div>';
+    hotspotLayer.appendChild(el);
+  }
+
+  for (let i = 0; i < n; i++) {
+    const el = hotspotLayer.children[i];
+    const pos = eng.sphereToScreen(hs[i].lon, hs[i].lat);
+    if (!pos) { if (!el.classList.contains('hidden')) el.classList.add('hidden'); continue; }
+    if (el.classList.contains('hidden')) el.classList.remove('hidden');
+    el.classList.toggle('selected', i === state.selectedHotspotIndex);
+    el.style.transform = `translate3d(${pos.x - 14}px,${pos.y - 14}px,0) scale(${pos.scale})`;
+    const dot = el.firstElementChild, label = el.lastElementChild;
+    const num = String(i + 1);
+    if (dot.textContent !== num) dot.textContent = num;
+    const txt = hs[i].label || 'Hotspot ' + (i + 1);
+    if (label.textContent !== txt) label.textContent = txt;
+    if (el._i !== i) { el._i = i; el.onclick = e => { e.stopPropagation(); window.B.selectHotspot(i); }; }
+  }
+}
+
+// ══════════════════════════════════════
+//  ★ PERF 7: VIRTUAL SCROLL SCENE LIST
+//  Only render visible items (huge win for 72+)
+// ══════════════════════════════════════
+const CARD_H = 62; // height per card (56 + margins)
+const sceneListEl = document.getElementById('scene-list');
+const sceneListInner = document.getElementById('scene-list-inner');
+let _vsPool = []; // DOM element pool
+let _vsRenderedRange = [-1, -1];
+
+function virtualScrollUpdate() {
+  const total = state.scenes.length;
+  document.getElementById('scene-count').textContent = total;
+  sceneListInner.style.height = (total * CARD_H + 8) + 'px';
+
+  const scrollTop = sceneListEl.scrollTop;
+  const viewH = sceneListEl.clientHeight;
+  const startIdx = Math.max(0, Math.floor(scrollTop / CARD_H) - 2); // 2 buffer
+  const endIdx = Math.min(total, Math.ceil((scrollTop + viewH) / CARD_H) + 2);
+
+  // Only re-render if range changed
+  if (_vsRenderedRange[0] === startIdx && _vsRenderedRange[1] === endIdx &&
+      _vsPool.length === endIdx - startIdx) {
+    // Just update active state
+    _vsPool.forEach((el, pi) => {
+      const i = startIdx + pi;
+      el.classList.toggle('active', i === state.activeSceneIndex);
+    });
+    return;
+  }
+  _vsRenderedRange = [startIdx, endIdx];
+
+  // Resize pool
+  while (_vsPool.length > endIdx - startIdx) {
+    const el = _vsPool.pop();
+    el.remove();
+  }
+  while (_vsPool.length < endIdx - startIdx) {
+    const el = document.createElement('div');
+    el.className = 'scene-card';
+    el.draggable = true;
+    el.innerHTML = `
+      <span class="scene-num"></span>
+      <span class="scene-upload-badge uploaded" style="display:none">☁</span>
+      <div class="scene-thumb"><img src="" alt="" loading="lazy" decoding="async"></div>
+      <div class="scene-meta"><div class="scene-name"></div><div class="scene-info"></div></div>
+      <button class="scene-delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg></button>
+    `;
+    sceneListInner.appendChild(el);
+    _vsPool.push(el);
+  }
+
+  // Update content
+  for (let pi = 0; pi < _vsPool.length; pi++) {
+    const i = startIdx + pi;
+    const el = _vsPool[pi];
+    const s = state.scenes[i];
+    if (!s) { el.style.display = 'none'; continue; }
+    el.style.display = '';
+    el.style.top = (i * CARD_H + 4) + 'px';
+    el.dataset.index = i;
+    el.classList.toggle('active', i === state.activeSceneIndex);
+
+    el.querySelector('.scene-num').textContent = i + 1;
+    const badge = el.querySelector('.scene-upload-badge');
+    badge.style.display = s.exportUrl ? '' : 'none';
+    const img = el.querySelector('.scene-thumb img');
+    const thumbSrc = s._serverThumb || s.thumb || s.image;
+    if (img.src !== thumbSrc && img.getAttribute('src') !== thumbSrc) img.src = thumbSrc;
+    el.querySelector('.scene-name').textContent = s.name;
+    el.querySelector('.scene-info').textContent = `${s.hotspots.length} hotspot · ${s.group}`;
+
+    // Events (rebind only if index changed)
+    if (el._boundIdx !== i) {
+      el._boundIdx = i;
+      el.onclick = () => window.B.selectScene(i);
+      el.querySelector('.scene-delete').onclick = ev => { ev.stopPropagation(); window.B.removeScene(i); };
+    }
+  }
+}
+
+// Scroll listener
+sceneListEl.addEventListener('scroll', virtualScrollUpdate, { passive: true });
+
+// Drag-and-drop via delegation on sceneListInner
+sceneListInner.addEventListener('dragstart', e => {
+  const card = e.target.closest('.scene-card');
+  if (card) { e.dataTransfer.setData('text/plain', card.dataset.index); card.style.opacity = '0.5'; }
+});
+sceneListInner.addEventListener('dragend', e => {
+  const card = e.target.closest('.scene-card');
+  if (card) card.style.opacity = '';
+});
+sceneListInner.addEventListener('dragover', e => {
+  e.preventDefault();
+  const card = e.target.closest('.scene-card');
+  if (card) card.classList.add('dragover');
+});
+sceneListInner.addEventListener('dragleave', e => {
+  const card = e.target.closest('.scene-card');
+  if (card) card.classList.remove('dragover');
+});
+sceneListInner.addEventListener('drop', e => {
+  e.preventDefault();
+  const card = e.target.closest('.scene-card');
+  if (!card) return;
+  card.classList.remove('dragover');
+  const from = parseInt(e.dataTransfer.getData('text/plain'));
+  const to = parseInt(card.dataset.index);
+  if (from !== to && !isNaN(from) && !isNaN(to)) {
+    const [moved] = state.scenes.splice(from, 1);
+    state.scenes.splice(to, 0, moved);
+    if (state.activeSceneIndex === from) state.activeSceneIndex = to;
+    else if (from < state.activeSceneIndex && to >= state.activeSceneIndex) state.activeSceneIndex--;
+    else if (from > state.activeSceneIndex && to <= state.activeSceneIndex) state.activeSceneIndex++;
+    virtualScrollUpdate();
+  }
+});
+
+function renderSceneList() { virtualScrollUpdate(); }
+
+// ══════════════════════════════════════
+//  SCENE MANAGEMENT
+// ══════════════════════════════════════
+function generateId(name) {
+  return name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/đ/g,'d').replace(/Đ/g,'D').replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'') || 'scene_' + Date.now();
+}
+
+async function addScene(file) {
+  const localUrl = URL.createObjectURL(file);
+  const rawName = file.name.replace(/\.[^.]+$/,'').replace(/[_-]+/g,' ');
+  const name = rawName.charAt(0).toUpperCase() + rawName.slice(1);
+  const scene = {
+    id: generateId(name) + '_' + state.scenes.length,
+    name, group: 'Mặc định', image: localUrl, thumb: localUrl, info: '',
+    initialView: { lon:0, lat:0, fov:75 }, hotspots: [],
+    _file: file, exportUrl: '', _serverThumb: '',
+  };
+  state.scenes.push(scene);
+  renderSceneList();
+  if (state.scenes.length === 1) selectScene(0);
+  document.getElementById('viewer-empty').style.display = 'none';
+
+  // Generate thumb in background
+  generateThumb(file).then(t => { scene.thumb = t; renderSceneList(); });
+}
+
+function removeScene(index) {
+  if (!confirm(`Xóa scene "${state.scenes[index].name}"?`)) return;
+  const rem = state.scenes.splice(index, 1)[0];
+  if (rem.image?.startsWith('blob:')) URL.revokeObjectURL(rem.image);
+  if (state.activeSceneIndex === index) {
+    state.activeSceneIndex = -1; state.selectedHotspotIndex = -1;
+    if (state.scenes.length > 0) selectScene(Math.min(index, state.scenes.length - 1));
+    else { renderRightPanel(); document.getElementById('viewer-empty').style.display = ''; }
+  } else if (state.activeSceneIndex > index) state.activeSceneIndex--;
+  renderSceneList();
+}
+
+async function selectScene(index) {
+  if (index < 0 || index >= state.scenes.length) return;
+  state.activeSceneIndex = index;
+  state.selectedHotspotIndex = -1;
+  cancelPlacingHotspot();
+  const s = state.scenes[index];
+  // ★ PERF: Pass file for direct ImageBitmap decode (skip fetch for local files)
+  await engine.loadPanorama(s.image, s._file);
+  engine.setView(s.initialView.lon, s.initialView.lat, s.initialView.fov);
+  document.getElementById('viewer-empty').style.display = 'none';
+  document.getElementById('view-hud').style.display = '';
+  renderSceneList();
+  renderRightPanel();
+
+  // Scroll to active in virtual list
+  const cardTop = index * CARD_H;
+  if (cardTop < sceneListEl.scrollTop || cardTop > sceneListEl.scrollTop + sceneListEl.clientHeight - CARD_H) {
+    sceneListEl.scrollTop = cardTop - CARD_H;
+  }
+}
+
+// ══════════════════════════════════════
+//  RIGHT PANEL
+// ══════════════════════════════════════
+function renderRightPanel() {
+  const el = document.getElementById('right-content');
+  if (state.activeSceneIndex < 0) {
+    el.innerHTML = '<div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><p>Chọn một scene để chỉnh sửa</p></div>';
+    return;
+  }
+  const s = state.scenes[state.activeSceneIndex];
+  const opts = state.scenes.map((sc,i) => `<option value="${sc.id}" ${i===state.activeSceneIndex?'disabled':''}>${sc.name}</option>`).join('');
+  el.innerHTML = `
+    <div class="prop-section">
+      <div class="prop-section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg> Scene Properties</div>
+      <div class="prop-row"><label class="prop-label">Tên scene</label><input class="prop-input" value="${s.name}" onchange="B.updateScene('name',this.value)"></div>
+      <div class="prop-row"><label class="prop-label">Ảnh</label>
+        <div style="display:flex;gap:8px;align-items:center">
+          <div style="width:80px;height:45px;border-radius:6px;overflow:hidden;background:var(--bg-3);flex-shrink:0;border:1px solid var(--border)"><img src="${s.thumb||s.image}" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>
+          <div style="flex:1"><button class="prop-btn" onclick="B.replaceImage()" style="padding:6px">Thay ảnh</button>
+          <span style="font-size:10px;color:var(--text-dim);font-family:var(--mono);display:block;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${s._file?s._file.name.substring(0,30):s.exportUrl?s.exportUrl.split('/').pop().substring(0,30):'—'}</span></div>
+        </div>
+        <input type="file" id="replace-image-input" accept="image/*" style="display:none" onchange="B.handleReplaceImage(event)">
+      </div>
+      <div class="prop-row-inline"><div class="prop-row"><label class="prop-label">ID</label><input class="prop-input prop-input-mono" value="${s.id}" onchange="B.updateScene('id',this.value)"></div><div class="prop-row"><label class="prop-label">Nhóm</label><input class="prop-input" value="${s.group}" onchange="B.updateScene('group',this.value)"></div></div>
+      <div class="prop-row"><label class="prop-label">Mô tả</label><textarea class="prop-input" onchange="B.updateScene('info',this.value)">${s.info}</textarea></div>
+      <div class="prop-row"><label class="prop-label">URL ${s.exportUrl?'<span style="color:#10B981">☁ Uploaded</span>':'<span style="color:var(--text-dim)">Chưa upload</span>'}</label><input class="prop-input prop-input-mono" value="${s.exportUrl||''}" readonly></div>
+    </div>
+    <div class="prop-section">
+      <div class="prop-section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2"/></svg> Góc nhìn</div>
+      <div class="prop-row-inline">
+        <div class="prop-row"><label class="prop-label">LON</label><input class="prop-input prop-input-mono" type="number" step="0.1" value="${s.initialView.lon}" onchange="B.updateView('lon',+this.value)"></div>
+        <div class="prop-row"><label class="prop-label">LAT</label><input class="prop-input prop-input-mono" type="number" step="0.1" value="${s.initialView.lat}" onchange="B.updateView('lat',+this.value)"></div>
+        <div class="prop-row"><label class="prop-label">FOV</label><input class="prop-input prop-input-mono" type="number" step="1" min="30" max="120" value="${s.initialView.fov}" onchange="B.updateView('fov',+this.value)"></div>
+      </div>
+      <div class="prop-row" style="margin-top:4px"><button class="prop-btn primary" onclick="B.saveCurrentView()">Lưu góc nhìn hiện tại</button></div>
+    </div>
+    <div class="prop-section">
+      <div class="prop-section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Hotspots (${s.hotspots.length})</div>
+      <div class="prop-row"><button class="prop-btn accent" onclick="B.startPlacingHotspot()">+ Thêm hotspot</button></div>
+      <div class="hs-list">${s.hotspots.length===0?'<div style="text-align:center;color:var(--text-dim);padding:16px;font-size:11px">Chưa có hotspot</div>':s.hotspots.map((h,i)=>`
+        <div class="hs-card ${i===state.selectedHotspotIndex?'selected':''}" onclick="B.selectHotspot(${i})">
+          <div class="hs-card-header"><div class="hs-card-title"><span class="hs-idx">${i+1}</span>${h.label||'Hotspot '+(i+1)}</div>
+          <button class="hs-card-btn del" onclick="event.stopPropagation();B.removeHotspot(${i})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+          <div class="hs-card-coords">lon:${h.lon}° lat:${h.lat}° → ${h.target||'—'} (${h.type})</div>
+        </div>`).join('')}</div>
+    </div>
+    ${state.selectedHotspotIndex>=0&&s.hotspots[state.selectedHotspotIndex]?(()=>{const h=s.hotspots[state.selectedHotspotIndex];return `
+    <div class="prop-section" style="background:rgba(254,202,87,0.03)">
+      <div class="prop-section-title" style="color:var(--warning)">Hotspot #${state.selectedHotspotIndex+1}</div>
+      <div class="prop-row"><label class="prop-label">Nhãn</label><input class="prop-input" value="${h.label}" onchange="B.updateHotspot('label',this.value)"></div>
+      <div class="prop-row-inline"><div class="prop-row"><label class="prop-label">LON</label><input class="prop-input prop-input-mono" type="number" step="0.1" value="${h.lon}" onchange="B.updateHotspot('lon',+this.value)"></div><div class="prop-row"><label class="prop-label">LAT</label><input class="prop-input prop-input-mono" type="number" step="0.1" value="${h.lat}" onchange="B.updateHotspot('lat',+this.value)"></div></div>
+      <div class="prop-row"><label class="prop-label">Loại</label><select class="prop-input" onchange="B.updateHotspot('type',this.value)"><option value="poi" ${h.type==='poi'?'selected':''}>📍 POI</option><option value="nav" ${h.type==='nav'?'selected':''}>➡️ NAV</option></select></div>
+      <div class="prop-row"><label class="prop-label">Scene đích</label><select class="prop-input" onchange="B.updateHotspot('target',this.value)"><option value="">— Chọn —</option>${opts}</select></div>
+      <div class="prop-row" style="margin-top:8px"><button class="prop-btn danger" onclick="B.removeHotspot(${state.selectedHotspotIndex})">Xóa hotspot</button></div>
+    </div>`;})():''}`;
+  if(state.selectedHotspotIndex>=0&&s.hotspots[state.selectedHotspotIndex]){const ss=el.querySelectorAll('select');const t=ss[ss.length-1];if(t)t.value=s.hotspots[state.selectedHotspotIndex].target||'';}
+}
+
+// ══════════════════════════════════════
+//  HOTSPOT PLACEMENT
+// ══════════════════════════════════════
+function startPlacingHotspot() {
+  if (state.activeSceneIndex < 0) return;
+  state.placingHotspot = true;
+  document.getElementById('builder-canvas').classList.add('placing-hotspot');
+  document.getElementById('crosshair-overlay').classList.add('active');
+  toast('info', '🎯 Click vào panorama để đặt hotspot');
+}
+function cancelPlacingHotspot() {
+  state.placingHotspot = false;
+  document.getElementById('builder-canvas').classList.remove('placing-hotspot');
+  document.getElementById('crosshair-overlay').classList.remove('active');
+}
+function placeNewHotspot(lon, lat) {
+  if (state.activeSceneIndex < 0) return;
+  const hs = state.scenes[state.activeSceneIndex].hotspots;
+  hs.push({ lon, lat, label: 'Hotspot ' + (hs.length + 1), target: '', type: 'poi' });
+  state.selectedHotspotIndex = hs.length - 1;
+  cancelPlacingHotspot();
+  renderRightPanel(); renderSceneList();
+  engine.requestRender();
+  toast('success', `✅ Hotspot tại lon:${lon}°, lat:${lat}°`);
+}
+
+// ══════════════════════════════════════
+//  API
+// ══════════════════════════════════════
+const api = {
+  baseUrl:'', connected:false, currentTourId:null,
+  init(){const s=localStorage.getItem('vr360_api_url');if(s){this.baseUrl=s;this.testConnection(true)}},
+  url(p){return this.baseUrl+p},
+  updateUI(s){const d=document.getElementById('api-dot'),l=document.getElementById('api-status-label'),w=document.getElementById('api-status');d.className='api-dot '+s;w.classList.toggle('connected',s==='on');if(s==='on'){l.textContent=this.baseUrl.replace(/^https?:\/\//,'');this.connected=true}else if(s==='loading'){l.textContent='Đang kết nối...'}else{l.textContent='Chưa kết nối';this.connected=false}},
+  async testConnection(silent=false){if(!this.baseUrl){this.updateUI('off');return false}this.updateUI('loading');try{const r=await fetch(this.url('/api/health'),{signal:AbortSignal.timeout(5000)});if(!r.ok)throw new Error(`HTTP ${r.status}`);const d=await r.json();this.updateUI('on');if(!silent){const e=document.getElementById('api-test-result');e.style.display='block';e.style.background='rgba(16,185,129,0.1)';e.style.border='1px solid rgba(16,185,129,0.3)';e.style.color='#10B981';e.innerHTML=`✅ OK — ${d.panoramas||0} ảnh, ${d.tours||0} tour`}return true}catch(e){this.updateUI('off');if(!silent){const el=document.getElementById('api-test-result');el.style.display='block';el.style.background='rgba(255,107,107,0.1)';el.style.border='1px solid rgba(255,107,107,0.3)';el.style.color='#FF6B6B';el.innerHTML=`❌ ${e.message}`}return false}},
+  async upload(f){if(!this.connected)return null;try{const fd=new FormData();fd.append('files',f);const r=await fetch(this.url('/api/upload'),{method:'POST',body:fd});if(!r.ok)throw new Error(`HTTP ${r.status}`);const d=await r.json();if(d.images?.[0]){const i=d.images[0];return{image_url:this.url(i.image_url),thumb_url:this.url(i.thumb_url),filename:i.filename}}}catch(e){console.warn('Upload:',e.message)}return null},
+  async saveTour(d){if(!this.connected){toast('error','❌ Chưa kết nối');return null}try{const m=this.currentTourId?'PUT':'POST',p=this.currentTourId?`/api/tours/${this.currentTourId}`:'/api/tours';const r=await fetch(this.url(p),{method:m,headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});if(!r.ok)throw new Error(`HTTP ${r.status}`);const res=await r.json();this.currentTourId=res.tour_id||this.currentTourId;return res}catch(e){toast('error','❌ '+e.message);return null}},
+  async listTours(){if(!this.connected)return[];try{const r=await fetch(this.url('/api/tours'));if(!r.ok)throw new Error();const d=await r.json();return d.tours||[]}catch{return[]}},
+  async loadTour(id){if(!this.connected)return null;try{const r=await fetch(this.url(`/api/tours/${id}`));if(!r.ok)throw new Error();return await r.json()}catch(e){toast('error','❌ '+e.message);return null}},
+};
+api.init();
+
+// ══════════════════════════════════════
+//  EXPORT / IMPORT
+// ══════════════════════════════════════
+function cloneForExport(){return state.scenes.map(s=>({id:s.id,name:s.name,group:s.group,image:s.image,thumb:s.thumb,info:s.info,exportUrl:s.exportUrl||'',_serverThumb:s._serverThumb||'',_file:s._file||null,initialView:{...s.initialView},hotspots:s.hotspots.map(h=>({...h}))}))}
+function buildJson(c){return{title:"VR360 Virtual Tour",scenes:c.map(s=>({id:s.id,name:s.name,group:s.group,image:s.exportUrl||s.image,thumb:s._serverThumb||s.exportUrl||s.thumb,info:s.info,initialView:{...s.initialView},hotspots:s.hotspots.map(h=>({...h}))}))}}
+async function uploadClone(c,prog){const p=c.filter(x=>x._file&&!x.exportUrl);if(!p.length)return{ok:true,up:0,fail:0};if(!api.connected)return{ok:false,up:0,fail:0};let up=0,fail=0;for(let i=0;i<p.length;i++){if(prog)prog(i+1,p.length,p[i].name);try{const r=await api.upload(p[i]._file);if(r){p[i].exportUrl=r.image_url;p[i]._serverThumb=r.thumb_url;up++}else fail++}catch{fail++}}return{ok:!fail,up,fail}}
+function syncBack(c){c.forEach((x,i)=>{const s=state.scenes[i];if(s&&x.exportUrl&&s.id===x.id){s.exportUrl=x.exportUrl;s._serverThumb=x._serverThumb}})}
+
+async function exportJSON(){
+  const ta=document.getElementById('export-json');
+  try{
+    const c=cloneForExport(),p=c.filter(x=>x._file&&!x.exportUrl);
+    if(!p.length||!api.connected){ta.value=JSON.stringify(buildJson(c),null,2);document.getElementById('export-modal').classList.add('show');return}
+    ta.value='⏳ Uploading...';document.getElementById('export-modal').classList.add('show');
+    const r=await uploadClone(c,(i,t,n)=>{ta.value=`⏳ ${i}/${t}: ${n}`});
+    ta.value=JSON.stringify(buildJson(c),null,2);syncBack(c);
+    if(r.up)toast('success',`☁️ ${r.up} ảnh uploaded`);if(r.fail)toast('info',`⚠ ${r.fail} thất bại`);
+  }catch(e){ta.value='❌ '+e.message;document.getElementById('export-modal').classList.add('show')}
+}
+function copyExportJSON(){const t=document.getElementById('export-json');t.select();navigator.clipboard.writeText(t.value).then(()=>toast('success','📋 Copied!'))}
+function importJSON(){document.getElementById('import-json').value='';document.getElementById('import-modal').classList.add('show')}
+function doImportJSON(){
+  try{
+    const d=JSON.parse(document.getElementById('import-json').value.trim());
+    const sc=d.scenes||d;if(!Array.isArray(sc))throw new Error('Invalid');
+    state.scenes=sc.map(s=>({id:s.id||generateId(s.name||'scene'),name:s.name||'Scene',group:s.group||'Mặc định',image:s.image||'',thumb:s.thumb||s.image||'',exportUrl:s.image||'',_serverThumb:s.thumb||'',_file:null,info:s.info||'',initialView:{lon:0,lat:0,fov:75,...(s.initialView||{})},hotspots:(s.hotspots||[]).map(h=>({lon:h.lon||0,lat:h.lat||0,label:h.label||'',target:h.target||'',type:h.type||'poi'}))}));
+    state.activeSceneIndex=-1;state.selectedHotspotIndex=-1;
+    closeModal('import-modal');renderSceneList();renderRightPanel();
+    if(state.scenes.length>0)selectScene(0);
+    toast('success',`✅ ${state.scenes.length} scenes imported`);
+  }catch(e){toast('error','❌ '+e.message)}
+}
+
+// ══════════════════════════════════════
+//  UTILS & FILE HANDLING
+// ══════════════════════════════════════
+function handleFileInput(e){Array.from(e.target.files).forEach(f=>{if(f.type.startsWith('image/'))addScene(f)});e.target.value=''}
+function addSceneFromFiles(){document.getElementById('file-input').click()}
+function closeModal(id){document.getElementById(id).classList.remove('show')}
+function toast(type,msg){const e=document.getElementById('toast');e.textContent=msg;e.className='toast '+type+' show';clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),3000)}
+
+const addArea=document.getElementById('add-scene-area');
+addArea.addEventListener('dragover',e=>{e.preventDefault();addArea.classList.add('dragover')});
+addArea.addEventListener('dragleave',()=>addArea.classList.remove('dragover'));
+addArea.addEventListener('drop',e=>{e.preventDefault();addArea.classList.remove('dragover');Array.from(e.dataTransfer.files).forEach(f=>{if(f.type.startsWith('image/'))addScene(f)})});
+
+function openApiSettings(){document.getElementById('api-url-input').value=api.baseUrl;document.getElementById('api-test-result').style.display='none';document.getElementById('api-modal').classList.add('show')}
+async function testApiConnection(){const u=document.getElementById('api-url-input').value.trim().replace(/\/+$/,'');if(!u){toast('error','❌ Nhập URL');return}api.baseUrl=u;const b=document.getElementById('api-test-btn');b.textContent='⏳...';b.disabled=true;await api.testConnection(false);b.textContent='🔌 Test';b.disabled=false}
+function saveApiSettings(){const u=document.getElementById('api-url-input').value.trim().replace(/\/+$/,'');api.baseUrl=u;if(u){localStorage.setItem('vr360_api_url',u);api.testConnection(true).then(ok=>{if(ok)toast('success',`✅ ${u}`);else toast('error','⚠ Chưa kết nối')})}else{localStorage.removeItem('vr360_api_url');api.updateUI('off')}closeModal('api-modal')}
+
+async function saveToServer(){
+  if(!api.connected){toast('error','❌ Chưa kết nối');return}
+  if(!state.scenes.length){toast('error','❌ Chưa có scene');return}
+  try{const c=cloneForExport(),p=c.filter(x=>x._file&&!x.exportUrl);
+    if(p.length){toast('info',`⏳ Upload ${p.length} ảnh...`);const r=await uploadClone(c);if(!r.ok){toast('error','❌ Upload thất bại');return}}
+    const res=await api.saveTour(buildJson(c));if(res){syncBack(c);toast('success',`✅ Saved! ID: ${res.tour_id||api.currentTourId}`)}
+  }catch(e){toast('error','❌ '+e.message)}
+}
+
+async function loadFromServer(){
+  if(!api.connected){toast('error','❌ Chưa kết nối');return}
+  const body=document.getElementById('load-modal-body');body.innerHTML='<div class="empty-state">⏳...</div>';
+  document.getElementById('load-modal').classList.add('show');
+  const tours=await api.listTours();
+  if(!tours.length){body.innerHTML='<div class="empty-state">Chưa có tour</div>';return}
+  body.innerHTML=tours.map(t=>{const d=t.updated_at?new Date(t.updated_at*1000).toLocaleString('vi-VN'):'—';
+    return `<div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:6px;cursor:pointer" onmouseenter="this.style.borderColor='var(--primary)'" onmouseleave="this.style.borderColor='var(--border)'" onclick="window._loadTour('${t.tour_id}')"><div style="width:40px;height:40px;background:var(--primary-dim);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px">🗺️</div><div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:500">${t.title||'Untitled'}</div><div style="font-size:10px;color:var(--text-dim);font-family:var(--mono);margin-top:2px">${t.scene_count} scenes · ${d}</div></div></div>`}).join('');
+}
+
+window._loadTour = async id => {
+  const d = await api.loadTour(id); if(!d)return;
+  state.scenes=(d.scenes||[]).map(s=>{
+    const img=s.image?.startsWith('/')?api.url(s.image):(s.image||'');
+    const th=s.thumb?.startsWith('/')?api.url(s.thumb):(s.thumb||img);
+    return{id:s.id||generateId(s.name||'scene'),name:s.name||'Scene',group:s.group||'Mặc định',image:img,thumb:th,exportUrl:s.image||'',_serverThumb:s.thumb||'',_file:null,info:s.info||'',initialView:{lon:0,lat:0,fov:75,...(s.initialView||{})},hotspots:(s.hotspots||[]).map(h=>({lon:h.lon||0,lat:h.lat||0,label:h.label||'',target:h.target||'',type:h.type||'poi'}))};
+  });
+  api.currentTourId=id;state.activeSceneIndex=-1;state.selectedHotspotIndex=-1;
+  closeModal('load-modal');renderSceneList();renderRightPanel();
+  if(state.scenes.length>0)selectScene(0);
+  document.getElementById('viewer-empty').style.display=state.scenes.length?'none':'';
+  toast('success',`✅ "${d.title||id}" — ${state.scenes.length} scenes`);
+};
+
+// ══════════════════════════════════════
+//  GLOBAL API
+// ══════════════════════════════════════
+window.B = {
+  selectScene: i => selectScene(i),
+  removeScene: i => removeScene(i),
+  updateScene: (k,v) => { if(state.activeSceneIndex<0)return;const s=state.scenes[state.activeSceneIndex];if(k==='imageUrl')s.exportUrl=v;else s[k]=v;renderSceneList(); },
+  replaceImage: () => { if(state.activeSceneIndex<0)return;document.getElementById('replace-image-input').click(); },
+  handleReplaceImage: async ev => {
+    const f=ev.target.files?.[0];if(!f||!f.type.startsWith('image/')||state.activeSceneIndex<0)return;
+    const url=URL.createObjectURL(f),s=state.scenes[state.activeSceneIndex];
+    if(s.image?.startsWith('blob:'))URL.revokeObjectURL(s.image);
+    s.image=url;s._file=f;s.exportUrl='';s._serverThumb='';
+    generateThumb(f).then(t=>{s.thumb=t;renderSceneList()});
+    await engine.loadPanorama(url,f);renderSceneList();renderRightPanel();
+    toast('info',`✅ Đã thay ảnh "${s.name}"`);ev.target.value='';
+  },
+  updateView: (k,v) => { if(state.activeSceneIndex<0)return;state.scenes[state.activeSceneIndex].initialView[k]=v;const iv=state.scenes[state.activeSceneIndex].initialView;engine.setView(iv.lon,iv.lat,iv.fov); },
+  saveCurrentView: () => { if(state.activeSceneIndex<0)return;const v=engine.getView();state.scenes[state.activeSceneIndex].initialView=v;renderRightPanel();toast('success',`✅ lon=${v.lon}° lat=${v.lat}° fov=${v.fov}°`); },
+  startPlacingHotspot: () => startPlacingHotspot(),
+  selectHotspot: i => { state.selectedHotspotIndex=(state.selectedHotspotIndex===i)?-1:i;renderRightPanel();engine.requestRender(); },
+  removeHotspot: i => { if(state.activeSceneIndex<0)return;state.scenes[state.activeSceneIndex].hotspots.splice(i,1);if(state.selectedHotspotIndex===i)state.selectedHotspotIndex=-1;else if(state.selectedHotspotIndex>i)state.selectedHotspotIndex--;renderRightPanel();renderSceneList();engine.requestRender(); },
+  updateHotspot: (k,v) => { if(state.activeSceneIndex<0||state.selectedHotspotIndex<0)return;state.scenes[state.activeSceneIndex].hotspots[state.selectedHotspotIndex][k]=v;renderRightPanel();engine.requestRender(); },
+};
+
+renderSceneList();
+window.exportJSON=exportJSON;window.importJSON=importJSON;window.doImportJSON=doImportJSON;
+window.copyExportJSON=copyExportJSON;window.closeModal=closeModal;window.addSceneFromFiles=addSceneFromFiles;
+window.handleFileInput=handleFileInput;window.openApiSettings=openApiSettings;
+window.testApiConnection=testApiConnection;window.saveApiSettings=saveApiSettings;
+window.saveToServer=saveToServer;window.loadFromServer=loadFromServer;
+</script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+/**
+ * Dữ liệu chuẩn hóa Di tích Lịch sử & Không gian Số hóa Xã Định Hóa (ATK Thái Nguyên)
+ * Kế thừa kiến trúc Zero Hard-Coding và phân tầng dữ liệu cho Home Portal v2
+ */
+
+export const communeFacts = [
+  { k: "Diện tích tự nhiên", v: "520,72 km²" },
+  { k: "Đơn vị hành chính", v: "Thị trấn Chợ Chu & 22 xã" },
+  { k: "Dân số toàn huyện", v: "~ 92.500 người" },
+  { k: "Bản sắc dân tộc", v: "Tày · Nùng · Sán Chay · Dao · Kinh" },
+  { k: "Trung tâm hành chính", v: "Thị trấn Chợ Chu & Xã Định Hóa" },
+  { k: "Di tích Quốc gia ĐB", v: "ATK Định Hóa (128 điểm di tích)" },
+  { k: "Di tích lịch sử cấp tỉnh", v: "Chùa Hang · Đình Quan Đế · Bãi Hội" },
+  { k: "Thắng cảnh tiêu biểu", v: "Thác Khuôn Tát · Chùa Hang · Đồi Tỉ" },
+];
+
+export const quickStats = [
+  { value: "128", label: "Điểm Di Tích ATK" },
+  { value: "08", label: "Di Tích Tiêu Biểu" },
+  { value: "04", label: "Mô Hình 3D" },
+  { value: "16", label: "Không Gian VR360" },
+];
+
+export const timelineMilestones = [
+  {
+    year: "1719",
+    period: "Thời Hậu Lê",
+    title: "Khởi dựng Tiên Lữ Phật Động (Chùa Hang)",
+    desc: "Danh thắng tự nhiên trong lòng núi đá vôi kỳ vĩ được nhân dân tôn tạo làm nơi thờ Phật và sinh hoạt tâm linh.",
+    image: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80",
+    active: false,
+  },
+  {
+    year: "1945",
+    period: "Năm 1945",
+    title: "Khởi nghĩa Chợ Chu giải phóng chính quyền",
+    desc: "Cuộc mít tinh vũ trang tại sân Đình Quan Đế tập hợp hàng nghìn quần chúng nhân dân lật đổ ách thống trị thực dân phong kiến.",
+    image: "https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?auto=format&fit=crop&w=1200&q=80",
+    active: false,
+  },
+  {
+    year: "1946",
+    period: "Năm 1946",
+    title: "Bác Hồ và Trung ương chọn Định Hóa làm trung tâm ATK",
+    desc: "Vùng đất hiểm trở 'tiến có thể đánh, lui có thể giữ' được xác lập làm căn cứ đầu não kháng chiến toàn quốc.",
+    image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80",
+    active: false,
+  },
+  {
+    year: "1947–1948",
+    period: "Giai đoạn 1947 - 1948",
+    title: "Đại bản doanh lãnh đạo chiến thắng Việt Bắc Thu - Đông 1947",
+    desc: "Chủ tịch Hồ Chí Minh cùng Đại tướng Võ Nguyên Giáp trực tiếp chỉ huy bẻ gãy gọng kìm tấn công của thực dân Pháp lên chiến khu.",
+    image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=80",
+    active: true,
+  },
+  {
+    year: "1950",
+    period: "Năm 1950",
+    title: "Bác Hồ thăm Xưởng quân giới K77 và làm việc tại Chùa Hang",
+    desc: "Sau thắng lợi vang dội của Chiến dịch Biên giới Thu Đông 1950, Người về thăm động viên công nhân quân giới và chỉ đạo chiến trường.",
+    image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80",
+    active: false,
+  },
+  {
+    year: "1951",
+    period: "Năm 1951",
+    title: "Đại hội Đảng toàn quốc lần thứ II",
+    desc: "Cột mốc lịch sử vạch ra đường lối đưa cuộc kháng chiến trường kỳ đi đến thắng lợi hoàn toàn.",
+    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80",
+    active: false,
+  },
+  {
+    year: "1954–Nay",
+    period: "1954 Đến Nay",
+    title: "Bảo tồn & Số hóa Di tích Quốc gia Đặc biệt ATK",
+    desc: "Quần thể di tích được xếp hạng Di tích Quốc gia Đặc biệt và chuyển đổi số toàn diện trên nền tảng 3D/VR360.",
+    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80",
+    active: false,
+  },
+];
+
+export const heritageSites = [
+  {
+    id: "DT01",
+    slug: "chua-hang",
+    name: "Chùa Hang (Tiên Lữ Phật Động)",
+    category: "Di tích lịch sử - Danh thắng",
+    badge: "DI TÍCH LỊCH SỬ CẤP TỈNH",
+    highlight: false,
+    image: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80",
+    desc: "Danh thắng có tự độc đáo nằm trong lòng hang đá vôi kỳ vĩ gắn với thời kỳ kháng chiến và nơi lưu trú, làm việc của Bác Hồ sau chiến dịch Biên giới 1950.",
+    has3D: false,
+    hasVR: true,
+  },
+  {
+    id: "DT02",
+    slug: "xuong-k77-doi-can",
+    name: "Xưởng Đội Cấn — Nhà máy Quân giới K77",
+    category: "Di tích Lịch sử Quân sự",
+    badge: "DI TÍCH QUỐC GIA ĐẶC BIỆT",
+    highlight: false,
+    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
+    desc: "Cái nôi chế tạo vũ khí dã chiến hiện đại của quân đội ta, nơi vinh dự đón Bác Hồ về thăm đúng ngày sinh nhật 19/5/1950.",
+    has3D: true,
+    hasVR: true,
+  },
+  {
+    id: "DT03",
+    slug: "doi-ti-bo-tong-tham-muu",
+    name: "Cơ quan Bộ Tổng Tham Mưu QĐND VN (Đồi Tỉ)",
+    category: "Đại bản doanh Quân sự",
+    badge: "ĐIỂM NỔI BẬT",
+    highlight: true,
+    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+    desc: "Đại bản doanh đầu não quân sự trong cuộc kháng chiến toàn quốc, nơi phát lệnh các chiến dịch lớn và đỉnh cao là Chiến dịch Điện Biên Phủ.",
+    has3D: true,
+    hasVR: true,
+  },
+  {
+    id: "DT04",
+    slug: "cuc-tong-thanh-tra-bai-hoi",
+    name: "Địa điểm Cục Tổng Thanh Tra (Bãi Hội)",
+    category: "Di tích Cơ quan Trung ương",
+    badge: "DI TÍCH LỊCH SỬ CẤP TỈNH",
+    highlight: false,
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
+    desc: "Nơi thành lập và làm việc của Ban Thanh tra Chính phủ tiền thân trong thời kỳ kháng chiến gian khổ.",
+    has3D: false,
+    hasVR: true,
+  },
+  {
+    id: "DT05",
+    slug: "dinh-quan-de",
+    name: "Đình Quan Đế (Thị trấn Chợ Chu)",
+    category: "Kiến trúc Cổ & Cách mạng",
+    badge: "DI TÍCH LỊCH SỬ CẤP TỈNH",
+    highlight: false,
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+    desc: "Nơi diễn ra cuộc mít tinh vũ trang lịch sử ngày 28/3/1945 lật đổ chính quyền phát xít, thành lập chính quyền cách mạng đầu tiên.",
+    has3D: true,
+    hasVR: true,
+  },
+  {
+    id: "DT06",
+    slug: "tieu-doan-187-bai-a",
+    name: "Tiểu đoàn 187 Bãi Á",
+    category: "Di tích Lịch sử Quân sự",
+    badge: "DI TÍCH QUỐC GIA ĐẶC BIỆT",
+    highlight: false,
+    image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+    desc: "Doanh trại và địa điểm huấn luyện của đơn vị cận vệ bảo vệ vòng trong an toàn cho Bác Hồ và Trung ương Đảng.",
+    has3D: false,
+    hasVR: true,
+  },
+];
+
+export const festivalEvents = [
+  {
+    id: "FE01",
+    dateDay: "28",
+    dateMonth: "T3",
+    title: "Ngày hội truyền thống 28/3 tại Đình Quan Đế",
+    subtitle: "Lễ kỷ niệm khởi nghĩa vũ trang Chợ Chu",
+    desc: "Lễ hội tái hiện khí thế sục sôi của hàng nghìn quần chúng nhân dân vùng lên lật đổ ách thống trị thực dân phong kiến, thành lập chính quyền cách mạng Định Hóa năm 1945.",
+    image: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=800&q=80",
+    siteId: "DT05",
+  },
+  {
+    id: "FE02",
+    dateDay: "19",
+    dateMonth: "T5",
+    title: "Ngày truyền thống 19/5 tại Xưởng Đội Cấn (K77)",
+    subtitle: "Kỷ niệm Bác Hồ về thăm xưởng vũ khí",
+    desc: "Hoạt động truyền thống của cán bộ và nhân dân tôn vinh tinh thần tự lực cánh sinh của công nhân xưởng quân giới khi vinh dự được Bác Hồ về thăm đúng ngày sinh nhật Người năm 1950.",
+    image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80",
+    siteId: "DT02",
+  },
+];
+
+export const bentoGalleryItems = [
+  {
+    id: "BG01",
+    title: "Không gian Khảo cứu Bảo tàng ATK",
+    category: "LƯU TRỮ VĂN KHỐ",
+    image: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=800&q=80",
+    span: "col-span-1 md:col-span-2",
+  },
+  {
+    id: "BG02",
+    title: "Mô hình 3D Lán Nứa ATK",
+    category: "KHÔNG GIAN 3D",
+    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+    span: "col-span-1",
+  },
+  {
+    id: "BG03",
+    title: "Khám Phá Văn Hóa & Lễ Hội",
+    category: "TRUNG TÂM DI SẢN",
+    isAction: true,
+    span: "col-span-1 md:col-span-1",
+  },
+  {
+    id: "BG04",
+    title: "Cổ vật Lò rèn Quân giới K77",
+    category: "HIỆN VẬT LỊCH SỬ",
+    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
+    span: "col-span-1",
+  },
+  {
+    id: "BG05",
+    title: "Phong cảnh Đại ngàn Việt Bắc",
+    category: "DANH THẮNG TỰ NHIÊN",
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+    span: "col-span-1 md:col-span-2",
+  },
+];

@@ -1,0 +1,24 @@
+{
+    "logo1": "https://thaihai.metatwin.vn/media/photos/logo/logo-thai-nguyen.ace7cc4b.svg",
+    "logo2": "https://thaihai.metatwin.vn/media/photos/logo/logosovanhoa.png",
+    "bg_login": "https://thaihai.metatwin.vn/media/photos/logo/DJI_20231031155304_0020_V.JPG.jpg",
+    "bg_head": "https://thaihai.metatwin.vn/media/photos/logo/DJI_20231031155235_0017_V.JPG_JAanPJD.jpg",
+    "config": {
+        "fax": "",
+        "key": null,
+        "lat": "21.533264",
+        "lng": "105.814735",
+        "tilt": "65.6",
+        "zoom": "18.00",
+        "donvi": "",
+        "phone": "0975585869",
+        "coquan": "",
+        "address": "Xóm Cường - Xã Thịnh Đức - Thành phố Thái Nguyên - Thái Nguyên",
+        "bearing": "76.0",
+        "viewbox": "21.522630,105.805081,21.539636,105.830830",
+        "map_type": "map3d",
+        "trip_link": "Khu bảo tồn làng nhà sàn dân tộc sinh thái Thái Hải",
+        "water_effect": "0",
+        "location_type": "[{\"name\":\"Tạp hóa\",\"class\":\"ri-shopping-cart-line\",\"type_search\":\"grocery_store\"},{\"name\":\"Trường học\",\"class\":\"ri-building-4-fill\",\"type_search\":\"education\"},{\"name\":\"Điểm du lịch\",\"class\":\"ri-ancient-gate-line\",\"type_search\":\"tourist_attraction\"},{\"name\":\"Trạm xăng\",\"class\":\"ri-gas-station-fill\",\"type_search\":\"gas_station\"}]"
+    }
+}
