@@ -1,8 +1,12 @@
 {% comment %} DR.REJU — Header (clone bố cục L'Oréal: utility bar + main nav; scroll → đậm & thu gọn) {% endcomment %}
 {% assign menu_alias = settings.main_menu | default: 'main-menu' %}
 {% assign nav = linklists[menu_alias] %}
+{% assign is_light_header = false %}
+{% if template contains 'bac-si-hue' %}
+  {% assign is_light_header = true %}
+{% endif %}
 
-<header class="dr-siteheader{% if template == 'index' %} dr-siteheader--overlay{% endif %}" id="drHeader">
+<header class="dr-siteheader{% if template == 'index' %} dr-siteheader--overlay{% elsif is_light_header %} dr-siteheader--light-hero{% endif %}" id="drHeader">
 
   {% comment %} Tầng 1: utility bar — thu gọn khi scroll {% endcomment %}
   <div class="dr-utilbar">
@@ -50,8 +54,7 @@
                 <a href="{{ sub.url }}"><i class="fa-solid fa-flask dr-mega-ico" aria-hidden="true"></i>{{ sub.title }} <i class="fa-solid fa-arrow-right dr-mega-arw" aria-hidden="true"></i></a>
                 {% endfor %}
               </div>
-              {%- assign mega_title = settings.mega_promo_title | default: 'Chưa rõ vấn đề? Làm hồ sơ da, bác sĩ đọc trực tiếp' -%}
-              {%- assign mega_best_col = collections[settings.mega_bestseller_col] -%}
+              {%- assign mega_title = settings.mega_promo_title | default: 'Chưa rõ vấn đề? Làm hồ sơ da, bác sĩ đọc trực tiếp' -%}\\n              {%- assign mega_best_col = collections[settings.mega_bestseller_col] -%}
               {%- assign mega_best_pr = '' -%}
               {%- if mega_best_col != blank and mega_best_col.products_count > 0 -%}{%- assign mega_best_pr = mega_best_col.products.first -%}{%- endif -%}
               {% if mega_title != blank or mega_best_pr != blank %}
@@ -144,6 +147,63 @@
 </header>
 
 <style>
+/* ============================================================
+   LIGHT HERO TRANSPARENT HEADER (Trang Bác sĩ Huệ)
+   Trong suốt khi ở đầu trang, chỉ có border-bottom và shadow bottom
+   ============================================================ */
+.dr-siteheader--light-hero:not(.is-stuck) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: transparent !important;
+  border-bottom: 1px solid rgba(223, 186, 115, 0.45) !important;
+  box-shadow: 0 4px 18px rgba(43, 30, 22, 0.08) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+
+.dr-siteheader--light-hero:not(.is-stuck) .dr-utilbar {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(223, 186, 115, 0.25) !important;
+}
+
+.dr-siteheader--light-hero:not(.is-stuck) .dr-util-left a,
+.dr-siteheader--light-hero:not(.is-stuck) .lang-btn,
+.dr-siteheader--light-hero:not(.is-stuck) .dr-navmenu a,
+.dr-siteheader--light-hero:not(.is-stuck) .dr-navactions a,
+.dr-siteheader--light-hero:not(.is-stuck) .dr-burger {
+  color: #0A2E24 !important;
+}
+
+.dr-siteheader--light-hero:not(.is-stuck) .dr-navmenu a:hover,
+.dr-siteheader--light-hero:not(.is-stuck) .dr-util-left a:hover,
+.dr-siteheader--light-hero:not(.is-stuck) .dr-navactions a:hover,
+.dr-siteheader--light-hero:not(.is-stuck) .lang-btn:hover {
+  color: #8C6627 !important;
+}
+
+.dr-siteheader--light-hero:not(.is-stuck) .dr-navmenu a::after {
+  background: #DFBA73 !important;
+}
+
+.dr-siteheader--light-hero:not(.is-stuck) .dr-cart-count {
+  background: #0A2E24 !important;
+  color: #DFBA73 !important;
+}
+
+.dr-siteheader--light-hero.is-stuck {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--brand-bg, #0A2E24) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32) !important;
+  border-bottom: 1px solid rgba(223, 186, 115, 0.2) !important;
+}
+
 .dr-header-actions-wrap {
   display: flex !important;
   align-items: center !important;
