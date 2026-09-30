@@ -242,29 +242,45 @@ function buildPagesObj() {
   return obj;
 }
 
-// ── 7. Blogs / Articles ──────────────────────────────────────────────────
-function makeArticle(id, title, handle, excerpt) {
+// ── 7. Blogs / Articles (Khớp Frame 991) ──────────────────────────────────
+function makeArticle(id, title, handle, excerpt, tags = [], image = 'bstk_Hue-1.jpg') {
   return {
     id, title, handle, url: `/blogs/tin-tuc/${handle}`,
-    excerpt, content: `<p>${excerpt}</p>`,
-    image: { src: img('0A2E24/DFBA73', 'Blog'), alt: title },
+    excerpt, summary: excerpt, content: `<p>${excerpt}</p>`,
+    image: { src: `/assets/${image}`, alt: title },
     published_on: new Date(Date.now() - id * 86400000).toISOString(),
-    author: 'DR.REJU', tags: [], comments_count: 0,
+    author: 'Bs. Nguyễn Huệ', tags: tags || [], comments_count: 0,
   };
 }
+
 const articleList = [
-  makeArticle(1, '5 dấu hiệu da bạn đang lão hoá sớm', 'dau-hieu-lao-hoa-som', 'Nhận biết sớm các dấu hiệu lão hoá để có phác đồ điều trị kịp thời.'),
-  makeArticle(2, 'Retinol dùng sao cho đúng?', 'retinol-dung-sao-cho-dung', 'Hướng dẫn sử dụng Retinol an toàn, hiệu quả, tránh kích ứng.'),
-  makeArticle(3, 'Chống nắng — lá chắn quan trọng nhất', 'chong-nang-la-chan-quan-trong', 'Vì sao chống nắng là bước không thể thiếu trong mọi phác đồ da liễu.'),
+  makeArticle(1, 'Cập Nhật Phác Đồ Trị Nám Chuẩn Y Khoa 2026: Kết Hợp Laser & Dưỡng Chất Đường Uống', 'cap-nhat-phac-do-tri-nam-2026', 'Phác đồ kết hợp điều trị laser chuyên sâu cùng viên uống và hoạt chất phục hồi màng lipid.', ['Trị nám', 'Laser', 'Nổi bật'], 'bstk_Hue-2.jpg'),
+  makeArticle(2, 'Retinol: Thành phần vàng trong chống lão hoá – Cách dùng đúng để không kích ứng', 'retinol-thanh-phan-vang', 'Hướng dẫn sử dụng Retinol an toàn, nồng độ từ 0.3% - 1.0% hiệu quả cho da nhạy cảm.', ['Retinol', 'Chống lão hoá'], 'bs_Hue-1.jpg'),
+  makeArticle(3, 'Vitamin C trong skincare: Phân biệt các dạng & chọn nồng độ phù hợp', 'vitamin-c-skincare', 'Phân tích L-Ascorbic Acid, SAP, MAP và giải pháp bảo vệ da trước gốc tự do.', ['Vitamin C', 'Làm sáng da'], 'bs_Hue-2.jpg'),
+  makeArticle(4, '5 bước xây dựng routine skincare buổi sáng chuẩn chuyên gia', '5-buoc-skincare-sang', 'Các bước làm sạch, cấp ẩm, tinh chất đặc trị và kem chống nắng phổ rộng.', ['Routine', 'Chuyên gia'], 'bs_Hue-3.jpg'),
+  makeArticle(5, 'Chứng Nhận Vàng Về Hoạt Chất SYN-AKE & Multi-Peptide Complex Trong Chống Lão Hóa', 'syn-ake-multi-peptide', 'Nghiên cứu lâm sàng về hiệu quả ức chế co cơ và làm mờ nếp nhăn tĩnh.', ['Peptide', 'Chống lão hoá'], 'bstk_Hue-1.jpg'),
+  makeArticle(6, 'Ứng Dụng Tranexamic Acid 3% Trong Ức Chế Melanin & Điều Trị Nám Y Khoa', 'tranexamic-acid-3-tri-nam', 'Giải pháp ức chế plasmin và ngăn chặn tích tụ melanin dưới đáy biểu bì.', ['Trị nám', 'Tranexamic Acid'], 'bstk_Hue-2.jpg'),
+  makeArticle(7, 'Cân Bằng Hệ Vi Sinh Da & Giải Pháp Kiểm Soát Dầu Mụn Dứt Điểm Từ Gốc', 'can-bang-he-vi-sinh-da', 'Tái thiết màng sinh học và ức chế vi khuẩn C.acnes tự nhiên.', ['Mụn', 'Vi sinh da'], 'bstk_Hue-3.jpg'),
+  makeArticle(8, 'Phác Đồ Đa Tầng Phục Hồi Màng Lipid & Tái Sinh Da Nhiễm Corticoid Sau 6 Tuần', 'phuc-hoi-da-nhiem-corticoid', 'Quy trình phục hồi màng Ceramide NP và nuôi dưỡng da giãn mao mạch.', ['Corticoid', 'Phục hồi'], 'bstk_Hue-4.jpg'),
 ];
+
 const blogs = {
-  'tin-tuc': { title: 'Tin tức', handle: 'tin-tuc', url: '/blogs/tin-tuc', articles: articleList },
+  'tin-tuc': {
+    title: 'Tin tức',
+    name: 'Tạp Chí Da Liễu DR.REJU',
+    handle: 'tin-tuc',
+    url: '/blogs/tin-tuc',
+    articles: articleList,
+    articles_count: articleList.length,
+    all_tags: ['Retinol', 'Trị nám', 'Chống nắng', 'Peptide', 'SYN-AKE', 'Tranexamic Acid', 'Vi sinh da'],
+  },
 };
+
 function buildBlogsObj() {
   const obj = { ...blogs };
   Object.values(settings).forEach((v) => {
     if (typeof v === 'string' && v && !obj[v] && !v.includes(' ') && !v.startsWith('#') && !v.startsWith('http')) {
-      obj[v] = { title: handleToTitle(v), handle: v, url: `/blogs/${v}`, articles: [] };
+      obj[v] = { title: handleToTitle(v), handle: v, url: `/blogs/${v}`, articles: [], articles_count: 0, all_tags: [] };
     }
   });
   return obj;
@@ -337,8 +353,8 @@ function getContext(templateName = 'index', routeParams = {}) {
     product: currentProduct, collection: currentCollection, collections: collectionsObj,
     search,
     paginate: {
-      current_page: 1, pages: Math.ceil(products.length / 12),
-      items: products.length, page_size: 12,
+      current_page: 1, pages: Math.ceil(articleList.length / 12),
+      items: articleList.length, page_size: 12,
       next: null, previous: null,
     },
     errors: null,
