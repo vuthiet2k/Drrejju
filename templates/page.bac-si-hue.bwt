@@ -1,149 +1,958 @@
 {% comment %}
-  DR.REJU — Template Trang Bác Sĩ Nguyễn Huệ (page.bac-si-hue.bwt)
-  Brand Tokens: Emerald #0A2E24 + Gold #DFBA73 + Cream #FAF6EF
-  Triết lý: "Đồng Hành Để Da Bạn Khỏe Thật, Từ Gốc — Chấm Dứt Điều Trị Da Theo Cảm Tính"
+  DR.REJU — Template Trang Bác Sĩ Nguyễn Huệ V2 (page.bac-si-hue.bwt)
+  Thiết kế Warm Organic Luxury & Medical Credibility
+  Nâng cấp toàn diện theo 4 bản thiết kế SVG/Canva (7.jpg, 8.jpg, 9.jpg, 10.jpg)
 {% endcomment %}
 
-<div class="page-bac-si-hue-wrapper" style="background-color: var(--bg-alt, #FAF6EF); color: var(--text, #17140F); font-family: var(--font-primary, 'Quicksand', sans-serif);">
+<div class="dr-hue-v2-container">
 
-  <!-- TOP ANNOUNCEMENT BAR -->
-  <aside style="background-color: var(--emerald-dk, #06201a); color: var(--gold, #DFBA73); padding: 8px 16px; text-align: center; font-size: 11px; font-weight: 700; letter-spacing: 0.5px;">
-    <span>✦ PHÁC ĐỒ ĐIỀU TRỊ DA CHUẨN Y KHOA — TRỰC TIẾP TƯ VẤN BỞI BÁC SĨ NGUYỄN HUỆ ✦</span>
-  </aside>
-
-  <!-- HERO SECTION -->
-  <section style="padding: 60px 20px; max-width: 1280px; margin: 0 auto;">
-    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px;">
+  <!-- ============================================================
+       SECTION 1: HERO BANNER (Bản vẽ 7.jpg)
+       ============================================================ -->
+  <section class="dr-section dr-hero-section">
+    <div class="dr-inner-wrap dr-hero-grid">
       
-      <!-- Left Content -->
-      <div style="flex: 1 1 600px; max-width: 680px;">
-        <div style="display: inline-block; padding: 6px 14px; border-radius: 999px; background: rgba(10, 46, 36, 0.08); border: 1px solid rgba(10, 46, 36, 0.2); color: var(--emerald, #0A2E24); font-size: 11px; font-weight: 700; text-transform: uppercase; margin-bottom: 16px;">
-          ✦ Chuyên Gia Da Liễu Lâm Sàng & Dược Mỹ Phẩm
-        </div>
-
-        <h1 style="font-size: 42px; font-weight: 800; color: var(--emerald, #0A2E24); margin: 0 0 16px 0; line-height: 1.2;">
-          Bác Sĩ NGUYỄN HUỆ
+      <!-- Cột trái: Văn bản định vị & Khẩu hiệu -->
+      <div class="dr-hero-content">
+        <span class="dr-eyebrow">DR.REJU BEAUTY CLINIC & COSMETICS</span>
+        <h1 class="dr-hero-title">
+          Làn da khỏe đẹp<br>
+          bắt đầu từ sự thấu hiểu<br>
+          dành cho chính bạn
         </h1>
+        <div class="dr-hero-desc">
+          <p>Da đẹp không chỉ là bề ngoài, mà là sự tự tin, bình yên và hạnh phúc từ bên trong.</p>
+          <p>Tại Dr.Reju, chúng tôi đồng hành cùng bạn trên hành trình chăm sóc làn da khỏe mạnh, an toàn và bền vững.</p>
+        </div>
+        <div class="dr-hero-ctas">
+          <a href="#dat-lich" class="dr-btn-gold">Đăng Ký Tư Vấn Cùng Bác Sĩ →</a>
+          <a href="/page.quiz" class="dr-btn-outline">Làm Khảo Sát Hồ Sơ Da</a>
+        </div>
+      </div>
 
-        <!-- Master Slogan Banner -->
-        <div style="background: var(--emerald, #0A2E24); color: #fff; padding: 24px; border-radius: 16px; border: 1px solid rgba(223, 186, 115, 0.4); margin-bottom: 24px; box-shadow: 0 10px 25px rgba(10, 46, 36, 0.2);">
-          <div style="font-size: 22px; font-weight: 800; color: var(--gold, #DFBA73); margin-bottom: 6px; letter-spacing: 0.5px;">
-            "ĐỒNG HÀNH ĐỂ DA BẠN KHỎE THẬT, TỪ GỐC"
+      <!-- Cột phải: Khung ảnh Bác sĩ & Hoa sen vàng kim -->
+      <div class="dr-hero-media">
+        <div class="dr-arch-frame">
+          <div class="dr-lotus-texture">
+            <img src="{{ 'golden_lotus_pattern.svg' | asset_url }}" alt="Hoa sen DR.REJU" loading="lazy" />
           </div>
-          <div style="font-size: 13px; color: #f0f0f0; font-weight: 500;">
-            ❝ Chấm dứt điều trị da theo cảm tính bằng phác đồ cá nhân hóa 1:1 ❞
+          <div class="dr-doctor-portrait">
+            <img src="{{ 'bs_Hue-1.jpg' | asset_url }}" alt="Bác sĩ Nguyễn Huệ - DR.REJU" onerror="this.src='{{ 'bs_nguyen_hue_portrait.jpg' | asset_url }}'" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 2: LỜI CHÀO & 4 CARD TỰ SỰ (Bản vẽ 8.jpg)
+       ============================================================ -->
+  <section class="dr-section dr-intro-section">
+    <div class="dr-inner-wrap">
+      
+      <!-- Hàng trên: Lời ngỏ & Chân dung trống đồng Đông Sơn -->
+      <div class="dr-intro-header-grid">
+        <div class="dr-intro-letter">
+          <h2 class="dr-serif-title">Xin chào!<br>Rất vui được gặp bạn tại Dr.Reju!</h2>
+          <p class="dr-letter-body">
+            Tôi tin rằng mỗi người phụ nữ đều xứng đáng được lắng nghe, thấu hiểu và chăm sóc một cách an toàn, khoa học. Dr.Reju ra đời với mong muốn đồng hành cùng bạn trên hành trình chăm sóc làn da và yêu thương chính mình.
+          </p>
+        </div>
+        <div class="dr-intro-portrait-wrap">
+          <div class="dr-drum-texture">
+            <img src="{{ 'dong_son_drum_pattern.svg' | asset_url }}" alt="Họa tiết Trống Đồng" loading="lazy" />
+          </div>
+          <div class="dr-intro-doctor-img">
+            <img src="{{ 'bs_Hue-2.jpg' | asset_url }}" alt="Bác sĩ Da liễu Nguyễn Huệ" onerror="this.src='{{ 'bs_nguyen_hue_portrait.jpg' | asset_url }}'" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Hàng dưới: Lưới 4 card tự sự -->
+      <div class="dr-qa-grid">
+        
+        <!-- Card 01 -->
+        <div class="dr-qa-card">
+          <div class="dr-qa-card-top">
+            <span class="dr-qa-badge">01</span>
+            <div class="dr-qa-icon">
+              {% include 'dr_hue_icons_svg', icon: 'user_doctor' %}
+            </div>
+          </div>
+          <h3 class="dr-qa-title">Tôi là ai?</h3>
+          <p class="dr-qa-text">
+            Tôi là Bác sĩ Nguyễn Huệ – bác sĩ da liễu thẩm mỹ nội khoa. Tôi yêu công việc của mình, yêu làn da và những câu chuyện đằng sau mỗi khách hàng.
+          </p>
+        </div>
+
+        <!-- Card 02 -->
+        <div class="dr-qa-card">
+          <div class="dr-qa-card-top">
+            <span class="dr-qa-badge">02</span>
+            <div class="dr-qa-icon">
+              {% include 'dr_hue_icons_svg', icon: 'lightbulb' %}
+            </div>
+          </div>
+          <h3 class="dr-qa-title">Tôi đã bước vào ngành này như thế nào?</h3>
+          <p class="dr-qa-text">
+            Tôi đến với da liễu thẩm mỹ từ mong muốn giúp mọi người cải thiện những vấn đề về như mụn, nám, sẹo, lão hoá một cách an toàn và khoa học.
+          </p>
+        </div>
+
+        <!-- Card 03 -->
+        <div class="dr-qa-card">
+          <div class="dr-qa-card-top">
+            <span class="dr-qa-badge">03</span>
+            <div class="dr-qa-icon">
+              {% include 'dr_hue_icons_svg', icon: 'clinic_heart' %}
+            </div>
+          </div>
+          <h3 class="dr-qa-title">Tôi đang xây dựng điều gì?</h3>
+          <p class="dr-qa-text">
+            Tôi đang xây dựng Dr.Reju – một phòng khám da liễu thẩm mỹ nội khoa uy tín, an toàn, nơi mỗi khách hàng được thăm khám kỹ lưỡng và có phác đồ cá nhân hoá.
+          </p>
+        </div>
+
+        <!-- Card 04 -->
+        <div class="dr-qa-card">
+          <div class="dr-qa-card-top">
+            <span class="dr-qa-badge">04</span>
+            <div class="dr-qa-icon">
+              {% include 'dr_hue_icons_svg', icon: 'book_open' %}
+            </div>
+          </div>
+          <h3 class="dr-qa-title">Tôi muốn chia sẻ trên trang này?</h3>
+          <p class="dr-qa-text">
+            Tôi mong muốn chia sẻ kiến thức da liễu chính thống, thói quen chăm sóc da khoa học và những câu chuyện truyền cảm hứng về phụ nữ, người mẹ và hành trình phát triển bản thân.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 3: HÀNH TRÌNH CHĂM SÓC DA (Bản vẽ 9.jpg)
+       ============================================================ -->
+  <section class="dr-section dr-journey-section">
+    <div class="dr-inner-wrap">
+      
+      <div class="dr-section-header">
+        <h2 class="dr-serif-title text-center">HÀNH TRÌNH CHĂM SÓC DA</h2>
+        <div class="dr-title-ornament">✦ ✦ ✦</div>
+      </div>
+
+      <!-- Ảnh khám thực tế tại phòng khám -->
+      <div class="dr-journey-media-card">
+        <div class="dr-journey-media-wrap">
+          <img src="{{ 'bstk_Hue-1.jpg' | asset_url }}" alt="Bác sĩ Nguyễn Huệ thăm khám và soi da" onerror="this.src='https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80'" />
+        </div>
+      </div>
+
+      <!-- Thanh quy trình 6 bước hình bình hành vát góc -->
+      <div class="dr-steps-carousel-wrap">
+        <div class="dr-steps-container" id="drStepsList">
+          
+          <div class="dr-step-item" data-step="1">
+            <div class="dr-step-box">
+              <div class="dr-step-icon">
+                {% include 'dr_hue_icons_svg', icon: 'doctor_exam' %}
+              </div>
+              <span class="dr-step-label">Thăm khám</span>
+            </div>
+          </div>
+
+          <div class="dr-step-item" data-step="2">
+            <div class="dr-step-box">
+              <div class="dr-step-icon">
+                {% include 'dr_hue_icons_svg', icon: 'dermoscopy' %}
+              </div>
+              <span class="dr-step-label">Phân tích da</span>
+            </div>
+          </div>
+
+          <div class="dr-step-item active" data-step="3">
+            <div class="dr-step-box">
+              <div class="dr-step-icon">
+                {% include 'dr_hue_icons_svg', icon: 'prescription' %}
+              </div>
+              <span class="dr-step-label">Phác đồ cá nhân</span>
+            </div>
+          </div>
+
+          <div class="dr-step-item" data-step="4">
+            <div class="dr-step-box">
+              <div class="dr-step-icon">
+                {% include 'dr_hue_icons_svg', icon: 'shield_medical' %}
+              </div>
+              <span class="dr-step-label">Điều trị an toàn</span>
+            </div>
+          </div>
+
+          <div class="dr-step-item" data-step="5">
+            <div class="dr-step-box">
+              <div class="dr-step-icon">
+                {% include 'dr_hue_icons_svg', icon: 'chat_heart' %}
+              </div>
+              <span class="dr-step-label">Theo dõi 1:1</span>
+            </div>
+          </div>
+
+          <div class="dr-step-item" data-step="6">
+            <div class="dr-step-box">
+              <div class="dr-step-icon">
+                {% include 'dr_hue_icons_svg', icon: 'cycle_leaf' %}
+              </div>
+              <span class="dr-step-label">Duy trì bền vững</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Nút điều hướng -->
+        <button type="button" class="dr-nav-arrow dr-prev" id="drStepPrev" aria-label="Bước trước">❮</button>
+        <button type="button" class="dr-nav-arrow dr-next" id="drStepNext" aria-label="Bước tiếp">❯</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 4: CÂU CHUYỆN DR.REJU (Bản vẽ 10.jpg)
+       ============================================================ -->
+  <section class="dr-section dr-story-section">
+    <div class="dr-inner-wrap dr-story-grid">
+      
+      <!-- Cột trái: Ảnh không gian trị liệu chuẩn Wabi-Sabi -->
+      <div class="dr-story-media">
+        <div class="dr-spa-photo-frame">
+          <img src="{{ 'bstk_Hue-3.jpg' | asset_url }}" alt="Không gian phòng khám DR.REJU" onerror="this.src='https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80'" />
+        </div>
+      </div>
+
+      <!-- Cột phải: Triết lý & 3 Trụ cột -->
+      <div class="dr-story-content">
+        <span class="dr-eyebrow">CÂU CHUYỆN DR.REJU</span>
+        <h2 class="dr-story-title">
+          Vẻ đẹp bắt đầu<br>
+          từ sự <em>thấu hiểu</em>
+        </h2>
+
+        <div class="dr-story-paragraphs">
+          <p>
+            Dr.Reju được sáng lập bởi Bác sĩ Nguyễn Huệ — với mong muốn mang đến cho phụ nữ một hành trình chăm sóc làn da an toàn, khoa học và đầy yêu thương.
+          </p>
+          <p>
+            Chúng tôi tin rằng mỗi làn da đều có câu chuyện riêng, và vẻ đẹp thật sự chỉ bền vững khi được nuôi dưỡng từ sự thấu hiểu, kiến thức chuyên môn và những giải pháp cá nhân hoá phù hợp.
+          </p>
+          <p>
+            Tại Dr.Reju, chúng tôi không chỉ điều trị làn da, mà còn đồng hành cùng bạn trên hành trình tìm lại sự tự tin, cân bằng và hạnh phúc trong chính mình.
+          </p>
+        </div>
+
+        <!-- 3 Trụ cột -->
+        <div class="dr-pillars-list">
+          <div class="dr-pillar-item">
+            <h4 class="dr-pillar-name">Lắng nghe làn da</h4>
+            <p class="dr-pillar-desc">Hiểu rõ tình trạng, nhu cầu và những băn khoăn của bạn bằng sự tận tâm và chuyên môn.</p>
+          </div>
+
+          <div class="dr-pillar-item">
+            <h4 class="dr-pillar-name">Cá nhân hoá phác đồ</h4>
+            <p class="dr-pillar-desc">Xây dựng giải pháp điều trị riêng biệt, an toàn và phù hợp với mục tiêu của từng làn da.</p>
+          </div>
+
+          <div class="dr-pillar-item">
+            <h4 class="dr-pillar-name">Đồng hành bền vững</h4>
+            <p class="dr-pillar-desc">Luôn ở bên bạn trong suốt hành trình, hướng đến vẻ đẹp khỏe mạnh, tự nhiên và lâu dài.</p>
           </div>
         </div>
 
-        <p style="font-size: 14px; line-height: 1.7; color: var(--text-soft, #6E675C); margin-bottom: 28px;">
-          Hơn 10 năm kinh nghiệm điều trị da liễu chuyên sâu. Phục hồi dứt điểm hơn 15.000 ca da nhiễm Corticoid, mụn viêm bọc và nám mảng bằng hoạt chất chuẩn y khoa Châu Âu.
+        <!-- Chữ ký & CTA -->
+        <div class="dr-story-footer">
+          <div class="dr-signature-block">
+            <div class="dr-handwriting">Dr. Nguyễn Huệ</div>
+            <div class="dr-sub-title">BÁC SĨ NGUYỄN HUỆ — DR.REJU</div>
+          </div>
+          <a href="#dat-lich" class="dr-btn-gold dr-btn-pill">Khám phá thêm</a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 5: FORM ĐẶT LỊCH TƯ VẤN 1:1 (#dat-lich)
+       ============================================================ -->
+  <section id="dat-lich" class="dr-section dr-form-section">
+    <div class="dr-inner-wrap dr-form-container">
+      <div class="dr-form-card">
+        
+        <span class="dr-eyebrow text-center d-block">TƯ VẤN TRỰC TIẾP 1:1</span>
+        <h2 class="dr-serif-title text-center">ĐĂNG KÝ TƯ VẤN CÙNG BS. NGUYỄN HUỆ</h2>
+        <p class="dr-form-subtext text-center">
+          Bác sĩ sẽ liên hệ thăm khám, phân tích tình trạng da và xây dựng phác đồ phục hồi cá nhân hóa trong vòng 24h.
         </p>
 
-        <!-- CTA Buttons -->
-        <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 36px;">
-          <a href="#dat-lich" style="padding: 14px 28px; border-radius: 999px; background: var(--gold, #DFBA73); color: var(--emerald, #0A2E24); font-weight: 800; font-size: 13px; text-decoration: none; box-shadow: 0 4px 14px rgba(223, 186, 115, 0.4);">
-            Đăng Ký Tư Vấn Cùng Bác Sĩ →
-          </a>
-          <a href="/page.quiz" style="padding: 14px 24px; border-radius: 999px; background: #fff; border: 2px solid var(--emerald, #0A2E24); color: var(--emerald, #0A2E24); font-weight: 700; font-size: 13px; text-decoration: none;">
-            Làm Khảo Sát Hồ Sơ Da
-          </a>
-        </div>
+        {% form 'contact' %}
+          {% if form.posted_successfully? %}
+            <div class="dr-alert-success">
+              ✓ Đã gửi yêu cầu tư vấn thành công! Bác sĩ Nguyễn Huệ sẽ liên hệ bạn sớm nhất qua Zalo/Số điện thoại.
+            </div>
+          {% endif %}
 
-        <!-- Metrics -->
-        <div style="display: flex; gap: 32px; border-top: 1px solid var(--line, #E7E0D6); padding-top: 20px;">
-          <div>
-            <div style="font-size: 26px; font-weight: 800; color: var(--emerald, #0A2E24);">10+ Năm</div>
-            <div style="font-size: 11px; color: var(--text-soft, #6E675C);">Kinh nghiệm lâm sàng</div>
+          <div class="dr-input-group">
+            <label class="dr-input-label">Họ và Tên của bạn *</label>
+            <input type="text" required name="contact[name]" placeholder="Ví dụ: Nguyễn Thị Thuỳ Linh" class="dr-input-control" />
           </div>
-          <div>
-            <div style="font-size: 26px; font-weight: 800; color: var(--emerald, #0A2E24);">15.000+</div>
-            <div style="font-size: 11px; color: var(--text-soft, #6E675C);">Ca phục hồi thành công</div>
+
+          <div class="dr-input-group">
+            <label class="dr-input-label">Số Điện Thoại (Zalo nhận phác đồ) *</label>
+            <input type="tel" required name="contact[phone]" placeholder="Ví dụ: 0967 194 063" class="dr-input-control" />
           </div>
-          <div>
-            <div style="font-size: 26px; font-weight: 800; color: var(--gold, #DFBA73);">100%</div>
-            <div style="font-size: 11px; color: var(--text-soft, #6E675C);">Phác đồ chuẩn Y Khoa</div>
+
+          <div class="dr-input-group">
+            <label class="dr-input-label">Tình trạng da bạn đang gặp phải *</label>
+            <textarea rows="3" name="contact[body]" placeholder="Mô tả tình trạng: Da nhiễm Corticoid, Mụn viêm, Nám mảng, da mỏng đỏ..." class="dr-input-control"></textarea>
           </div>
-        </div>
+
+          <button type="submit" class="dr-btn-submit">
+            GỬI YÊU CẦU TƯ VẤN CHO BÁC SĨ NGUYỄN HUỆ →
+          </button>
+        {% endform %}
+
       </div>
-
-      <!-- Right Doctor Frame -->
-      <div style="flex: 1 1 400px; max-width: 480px;">
-        <div style="background: #fff; padding: 16px; border-radius: 24px; border: 1px solid rgba(223, 186, 115, 0.5); box-shadow: 0 20px 40px rgba(0,0,0,0.08);">
-          <div style="aspect-ratio: 3/4; border-radius: 16px; background: var(--bg-soft, #F1ECE3); overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center;">
-            <img src="{{ 'bs_nguyen_hue_portrait.jpg' | asset_url }}" alt="Bác sĩ Nguyễn Huệ" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80'" />
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 3 NGUYÊN TẮC ĐIỀU TRỊ -->
-  <section style="background: var(--emerald, #0A2E24); color: #fff; padding: 70px 20px;">
-    <div style="max-width: 1280px; margin: 0 auto; text-align: center;">
-      <h2 style="font-size: 28px; font-weight: 800; color: var(--gold, #DFBA73); margin-bottom: 40px;">
-        VÌ SAO CẦN "CHẤM DỨT ĐIỀU TRỊ DA THEO CẢM TÍNH"?
-      </h2>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; text-align: left;">
-        <div style="background: var(--emerald-dk, #06201a); padding: 28px; border-radius: 16px; border: 1px solid rgba(223, 186, 115, 0.3);">
-          <div style="font-size: 24px; font-weight: 800; color: var(--gold, #DFBA73); margin-bottom: 10px;">01</div>
-          <h3 style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 8px;">Chẩn Đoán Đúng Tầng Tổn Thương</h3>
-          <p style="font-size: 12px; color: #cbd5e1; line-height: 1.6;">Xác định rõ tổn thương ở màng Ceramide, biểu bì hay trung bì để điều trị trúng đích tận gốc.</p>
-        </div>
-
-        <div style="background: var(--emerald-dk, #06201a); padding: 28px; border-radius: 16px; border: 1px solid rgba(223, 186, 115, 0.3);">
-          <div style="font-size: 24px; font-weight: 800; color: var(--gold, #DFBA73); margin-bottom: 10px;">02</div>
-          <h3 style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 8px;">Phục Hồi Trước — Treatment Sau</h3>
-          <p style="font-size: 12px; color: #cbd5e1; line-height: 1.6;">Tuyệt đối không tấn công hoạt chất mạnh trên nền da yếu. Hàng rào khỏe mạnh là gốc của làn da đẹp.</p>
-        </div>
-
-        <div style="background: var(--emerald-dk, #06201a); padding: 28px; border-radius: 16px; border: 1px solid rgba(223, 186, 115, 0.3);">
-          <div style="font-size: 24px; font-weight: 800; color: var(--gold, #DFBA73); margin-bottom: 10px;">03</div>
-          <h3 style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 8px;">Đồng Hành 1:1 Theo Chu Kỳ 14-28 Ngày</h3>
-          <p style="font-size: 12px; color: #cbd5e1; line-height: 1.6;">Theo dõi sát sao phản ứng sinh học của da và tinh chỉnh liều lượng dược mỹ phẩm theo từng chu kỳ.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FORM ĐẶT HẸN TƯ VẤN 1:1 -->
-  <section id="dat-lich" style="padding: 70px 20px; max-width: 800px; margin: 0 auto;">
-    <div style="background: #fff; padding: 40px; border-radius: 24px; border: 1px solid rgba(223, 186, 115, 0.5); box-shadow: 0 15px 35px rgba(0,0,0,0.06);">
-      <h2 style="font-size: 22px; font-weight: 800; color: var(--emerald, #0A2E24); text-align: center; margin-bottom: 8px;">
-        ĐĂNG KÝ TƯ VẤN TRỰC TIẾP CÙNG BS. NGUYỄN HUỆ
-      </h2>
-      <p style="text-align: center; font-size: 12px; color: var(--text-soft, #6E675C); margin-bottom: 30px;">
-        Bác sĩ sẽ liên hệ thăm khám và gửi phác đồ phục hồi da chi tiết cho bạn trong vòng 24h
-      </p>
-
-      {% form 'contact' %}
-        {% if form.posted_successfully? %}
-          <div style="background: #ecfdf5; border: 1px solid #059669; color: #047857; padding: 14px; border-radius: 12px; font-size: 13px; font-weight: 700; margin-bottom: 20px; text-align: center;">
-            ✓ Đã gửi yêu cầu tư vấn thành công! Bác sĩ Nguyễn Huệ sẽ liên hệ bạn sớm nhất.
-          </div>
-        {% endif %}
-
-        <div style="margin-bottom: 16px;">
-          <label style="display: block; font-size: 12px; font-weight: 700; color: var(--emerald, #0A2E24); margin-bottom: 6px;">Họ và Tên của bạn *</label>
-          <input type="text" required name="contact[name]" placeholder="Ví dụ: Nguyễn Thị Thuỳ Linh" style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid var(--line, #E7E0D6); background: var(--bg-alt, #FAF6EF); font-size: 13px;" />
-        </div>
-
-        <div style="margin-bottom: 16px;">
-          <label style="display: block; font-size: 12px; font-weight: 700; color: var(--emerald, #0A2E24); margin-bottom: 6px;">Số Điện Thoại (Zalo nhận phác đồ) *</label>
-          <input type="tel" required name="contact[phone]" placeholder="Ví dụ: 0967 194 063" style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid var(--line, #E7E0D6); background: var(--bg-alt, #FAF6EF); font-size: 13px; font-family: monospace;" />
-        </div>
-
-        <div style="margin-bottom: 24px;">
-          <label style="display: block; font-size: 12px; font-weight: 700; color: var(--emerald, #0A2E24); margin-bottom: 6px;">Tình trạng da bạn đang gặp phải *</label>
-          <textarea rows="3" name="contact[body]" placeholder="Mô tả tình trạng: Da nhiễm Corticoid, Mụn viêm, Nám mảng, da mỏng đỏ..." style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid var(--line, #E7E0D6); background: var(--bg-alt, #FAF6EF); font-size: 13px;"></textarea>
-        </div>
-
-        <button type="submit" style="width: 100%; padding: 16px; border-radius: 999px; background: var(--gold, #DFBA73); color: var(--emerald, #0A2E24); font-weight: 800; font-size: 14px; border: none; cursor: pointer; box-shadow: 0 4px 14px rgba(223, 186, 115, 0.4);">
-          GỬI YÊU CẦU TƯ VẤN CHO BÁC SĨ NGUYỄN HUỆ →
-        </button>
-      {% endform %}
     </div>
   </section>
 
 </div>
+
+<!-- ============================================================
+     STYLESHEET V2 CHUYÊN BIỆT CHO TRANG BÁC SĨ HUỆ
+     ============================================================ -->
+<style>
+  /* Cấu hình cơ bản */
+  .dr-hue-v2-container {
+    background-color: var(--color-warm-cream, #FAF6EF);
+    color: var(--color-warm-dark, #2B1E16);
+    font-family: var(--font-primary, 'Quicksand', sans-serif);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  .dr-section {
+    padding: 70px 20px;
+    position: relative;
+  }
+  .dr-inner-wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+  .text-center { text-align: center; }
+  .d-block { display: block; }
+
+  /* Eyebrow & Titles */
+  .dr-eyebrow {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #8C7355;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .dr-serif-title {
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--color-warm-dark, #2B1E16);
+    line-height: 1.25;
+    margin: 0 0 16px 0;
+  }
+  .dr-title-ornament {
+    color: var(--color-gold-warm, #DFBA73);
+    font-size: 12px;
+    letter-spacing: 6px;
+    margin-bottom: 36px;
+    text-align: center;
+  }
+
+  /* Nút bấm CTA */
+  .dr-btn-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 28px;
+    background: linear-gradient(135deg, #DFBA73 0%, #C49746 100%);
+    color: #2B1E16 !important;
+    font-weight: 800;
+    font-size: 13px;
+    border-radius: 999px;
+    text-decoration: none !important;
+    box-shadow: 0 4px 15px rgba(223, 186, 115, 0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  .dr-btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(223, 186, 115, 0.5);
+  }
+  .dr-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background: #ffffff;
+    color: #2B1E16 !important;
+    font-weight: 700;
+    font-size: 13px;
+    border-radius: 999px;
+    border: 1.5px solid #2B1E16;
+    text-decoration: none !important;
+    transition: all 0.2s;
+  }
+  .dr-btn-outline:hover {
+    background: #2B1E16;
+    color: #ffffff !important;
+  }
+
+  /* Section 1: Hero Banner */
+  .dr-hero-section {
+    padding-top: 50px;
+    padding-bottom: 70px;
+    background: linear-gradient(180deg, #FDFBF7 0%, #FAF6EF 100%);
+  }
+  .dr-hero-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .dr-hero-content {
+    flex: 1 1 580px;
+    max-width: 640px;
+  }
+  .dr-hero-title {
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--color-warm-dark, #2B1E16);
+    margin: 0 0 20px 0;
+  }
+  .dr-hero-desc {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #5A4D41;
+    margin-bottom: 30px;
+  }
+  .dr-hero-desc p { margin-bottom: 8px; }
+  .dr-hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .dr-hero-media {
+    flex: 1 1 440px;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+  }
+  .dr-arch-frame {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 3/4;
+    border-radius: 200px 200px 24px 24px;
+    background: linear-gradient(135deg, #F8F2E6 0%, #F1E6D2 100%);
+    border: 1.5px solid rgba(223, 186, 115, 0.5);
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(43, 30, 22, 0.08);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .dr-lotus-texture {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 160px;
+    opacity: 0.18;
+    pointer-events: none;
+  }
+  .dr-doctor-portrait {
+    width: 100%;
+    height: 94%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+  .dr-doctor-portrait img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+  }
+
+  /* Section 2: Intro & 4 Cards */
+  .dr-intro-section {
+    background-color: #ffffff;
+  }
+  .dr-intro-header-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 50px;
+  }
+  .dr-intro-letter {
+    flex: 1 1 600px;
+  }
+  .dr-letter-body {
+    font-size: 14.5px;
+    line-height: 1.8;
+    color: #5A4D41;
+  }
+  .dr-intro-portrait-wrap {
+    flex: 1 1 360px;
+    max-width: 400px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .dr-drum-texture {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    opacity: 0.12;
+    pointer-events: none;
+  }
+  .dr-intro-doctor-img {
+    position: relative;
+    z-index: 2;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #DFBA73;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  }
+  .dr-intro-doctor-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .dr-qa-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .dr-qa-card {
+    background: #FAF6EF;
+    border: 1px solid rgba(223, 186, 115, 0.35);
+    border-radius: 16px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .dr-qa-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(223, 186, 115, 0.2);
+    background: #ffffff;
+  }
+  .dr-qa-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .dr-qa-badge {
+    font-size: 13px;
+    font-weight: 800;
+    color: #DFBA73;
+    background: rgba(223, 186, 115, 0.15);
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+  .dr-qa-icon {
+    color: #2B1E16;
+  }
+  .dr-qa-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #2B1E16;
+    margin: 0 0 10px 0;
+    line-height: 1.35;
+    min-height: 40px;
+  }
+  .dr-qa-text {
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: #5A4D41;
+    margin: 0;
+  }
+
+  /* Section 3: Hành Trình 6 Bước */
+  .dr-journey-section {
+    background-color: #F8F5EE;
+  }
+  .dr-journey-media-card {
+    max-width: 960px;
+    margin: 0 auto 36px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+    border: 1.5px solid rgba(223, 186, 115, 0.4);
+    background: #fff;
+  }
+  .dr-journey-media-wrap {
+    aspect-ratio: 16/9;
+    max-height: 480px;
+    width: 100%;
+    overflow: hidden;
+  }
+  .dr-journey-media-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .dr-steps-carousel-wrap {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 45px;
+  }
+  .dr-steps-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 10px 0;
+    scrollbar-width: none;
+  }
+  .dr-steps-container::-webkit-scrollbar { display: none; }
+  .dr-step-item {
+    flex: 1 1 150px;
+    min-width: 140px;
+    cursor: pointer;
+    transform: skewX(-12deg);
+    transition: all 0.25s;
+  }
+  .dr-step-box {
+    background: #ffffff;
+    border: 1px solid rgba(223, 186, 115, 0.5);
+    border-radius: 8px;
+    padding: 14px 10px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    transition: all 0.25s;
+  }
+  .dr-step-box > * {
+    transform: skewX(12deg);
+  }
+  .dr-step-icon {
+    color: #2B1E16;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: center;
+  }
+  .dr-step-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #2B1E16;
+    display: block;
+    white-space: nowrap;
+  }
+  .dr-step-item.active .dr-step-box,
+  .dr-step-item:hover .dr-step-box {
+    background: linear-gradient(135deg, #B58428 0%, #DFBA73 100%);
+    border-color: #DFBA73;
+    box-shadow: 0 8px 20px rgba(181, 132, 40, 0.3);
+  }
+  .dr-step-item.active .dr-step-icon,
+  .dr-step-item.active .dr-step-label,
+  .dr-step-item:hover .dr-step-icon,
+  .dr-step-item:hover .dr-step-label {
+    color: #ffffff;
+  }
+  .dr-nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid #DFBA73;
+    color: #2B1E16;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    transition: all 0.2s;
+  }
+  .dr-nav-arrow:hover {
+    background: #DFBA73;
+    color: #fff;
+  }
+  .dr-prev { left: 0; }
+  .dr-next { right: 0; }
+
+  /* Section 4: Story & Pillars */
+  .dr-story-section {
+    background: #ffffff;
+  }
+  .dr-story-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+  }
+  .dr-story-media {
+    flex: 1 1 460px;
+    max-width: 520px;
+  }
+  .dr-spa-photo-frame {
+    aspect-ratio: 4/5;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    border: 1.5px solid rgba(223, 186, 115, 0.4);
+  }
+  .dr-spa-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .dr-story-content {
+    flex: 1 1 540px;
+    max-width: 620px;
+  }
+  .dr-story-title {
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--color-warm-dark, #2B1E16);
+    margin: 0 0 18px 0;
+  }
+  .dr-story-title em {
+    font-style: italic;
+    color: #9C712B;
+  }
+  .dr-story-paragraphs {
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: #5A4D41;
+    margin-bottom: 24px;
+  }
+  .dr-story-paragraphs p { margin-bottom: 10px; }
+  .dr-pillars-list {
+    border-top: 1px solid #E7E0D6;
+    padding-top: 18px;
+    margin-bottom: 24px;
+  }
+  .dr-pillar-item {
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed rgba(231, 224, 214, 0.7);
+  }
+  .dr-pillar-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .dr-pillar-name {
+    font-size: 14px;
+    font-weight: 800;
+    color: #2B1E16;
+    margin: 0 0 4px 0;
+    position: relative;
+    padding-left: 14px;
+  }
+  .dr-pillar-name::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    color: #DFBA73;
+    font-size: 10px;
+    top: 2px;
+  }
+  .dr-pillar-desc {
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: #6E675C;
+    margin: 0;
+    padding-left: 14px;
+  }
+  .dr-story-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 14px;
+  }
+  .dr-handwriting {
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: 26px;
+    font-style: italic;
+    font-weight: 700;
+    color: #2B1E16;
+  }
+  .dr-sub-title {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #8C7355;
+    margin-top: 2px;
+  }
+
+  /* Section 5: Form Tư Vấn */
+  .dr-form-section {
+    background: linear-gradient(180deg, #FAF6EF 0%, #F5EFE3 100%);
+    padding-bottom: 90px;
+  }
+  .dr-form-card {
+    max-width: 740px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 44px 36px;
+    border: 1.5px solid rgba(223, 186, 115, 0.4);
+    box-shadow: 0 15px 40px rgba(43, 30, 22, 0.07);
+  }
+  .dr-form-subtext {
+    font-size: 13px;
+    color: #6E675C;
+    margin-bottom: 28px;
+  }
+  .dr-input-group {
+    margin-bottom: 18px;
+  }
+  .dr-input-label {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #2B1E16;
+    margin-bottom: 6px;
+  }
+  .dr-input-control {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid #E7E0D6;
+    background-color: #FAF6EF;
+    font-size: 13.5px;
+    color: #2B1E16;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s, background-color 0.2s;
+  }
+  .dr-input-control:focus {
+    border-color: #DFBA73;
+    background-color: #ffffff;
+  }
+  .dr-btn-submit {
+    width: 100%;
+    padding: 16px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #DFBA73 0%, #B8860B 100%);
+    color: #05251c;
+    font-weight: 800;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(184, 134, 11, 0.35);
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+    margin-top: 10px;
+  }
+  .dr-btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(184, 134, 11, 0.45);
+  }
+  .dr-alert-success {
+    background-color: #ecfdf5;
+    border: 1px solid #059669;
+    color: #047857;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  /* Responsive Breakpoints */
+  @media (max-width: 1024px) {
+    .dr-hero-grid,
+    .dr-story-grid,
+    .dr-intro-header-grid {
+      flex-direction: column;
+      text-align: center;
+      gap: 30px;
+    }
+    .dr-hero-ctas,
+    .dr-story-footer {
+      justify-content: center;
+    }
+    .dr-hero-title,
+    .dr-serif-title,
+    .dr-story-title {
+      font-size: 32px;
+    }
+    .dr-qa-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .dr-section { padding: 45px 16px; }
+    .dr-hero-title,
+    .dr-serif-title,
+    .dr-story-title {
+      font-size: 26px;
+    }
+    .dr-qa-grid {
+      grid-template-columns: 1fr;
+    }
+    .dr-form-card {
+      padding: 28px 18px;
+    }
+    .dr-steps-carousel-wrap {
+      padding: 0 10px;
+    }
+    .dr-nav-arrow { display: none; }
+  }
+</style>
+
+<!-- Script tương tác nhẹ cho thanh 6 bước -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var stepItems = document.querySelectorAll('.dr-step-item');
+    stepItems.forEach(function(item) {
+      item.addEventListener('click', function() {
+        stepItems.forEach(function(el) { el.classList.remove('active'); });
+        item.classList.add('active');
+      });
+    });
+
+    var prevBtn = document.getElementById('drStepPrev');
+    var nextBtn = document.getElementById('drStepNext');
+    var list = document.getElementById('drStepsList');
+    if (prevBtn && nextBtn && list) {
+      prevBtn.addEventListener('click', function() { list.scrollBy({ left: -200, behavior: 'smooth' }); });
+      nextBtn.addEventListener('click', function() { list.scrollBy({ left: 200, behavior: 'smooth' }); });
+    }
+  });
+</script>
