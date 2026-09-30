@@ -32,14 +32,14 @@
   {% comment %} Tầng 2: main nav — thấp xuống khi scroll {% endcomment %}
   <div class="dr-container dr-nav">
     <button class="dr-burger" id="drBurger" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
-    {%- assign dr_logo_src = settings.logo_image -%}\
-    {%- if dr_logo_src == blank -%}{%- assign dr_logo_src = 'logo.png' | asset_url -%}{%- endif -%}\
+    {%- assign dr_logo_src = settings.logo_image -%}
+    {%- if dr_logo_src == blank -%}{%- assign dr_logo_src = 'logo.png' | asset_url -%}{%- endif -%}
     <a href="/" class="dr-brand" title="{{ store.name }}" aria-label="{{ store.name | default: 'Dr.REJU' }}">
       <img src="{{ dr_logo_src }}" alt="{{ store.name | default: 'Dr.REJU' }}" class="dr-brand-logo" width="150" height="46">
     </a>
     {% comment %} Mega menu (phương án H3) {% endcomment %}
     <nav class="dr-navmenu">
-      {% for link in nav.links %}
+      {% for link in nav.links % ventilators %}
         {% if link.links.size > 0 %}
         <div class="dr-navitem dr-navitem--mega">
           <a href="{{ link.url }}" class="dr-navlink" aria-haspopup="true">{{ link.title }} <i class="fa-solid fa-chevron-down dr-navcaret" aria-hidden="true"></i></a>
@@ -118,7 +118,7 @@
       </div>
 
       <aside class="dr-srch-side">
-        {%- assign sugg = settings.header_search_suggest_list | default: 'Retinol,Chống lão hoá,Trị mụn,Kem chống nắng,Serum,Cấp ẩm' | split: ',' -%}\
+        {%- assign sugg = settings.header_search_suggest_list | default: 'Retinol,Chống lão hoá,Trị mụn,Kem chống nắng,Serum,Cấp ẩm' | split: ',' -%}
         {% if sugg.size > 0 %}
         <div class="dr-srch-blk">
           <h6>Từ khoá phổ biến</h6>
@@ -419,7 +419,7 @@
       lb.textContent = 'Đang tìm…';
       timer = setTimeout(function(){
         window.drSearchFetch(q, function(items, total){ render(items, total, q); },
-          function(){
+          function(){\
             lb.textContent = 'Nhấn Enter để xem kết quả';
             res.innerHTML = '';
             all.href = '/search?type=product&query=' + encodeURIComponent(q);
@@ -525,11 +525,11 @@ function googleTranslateElementInit(){
     var host=location.hostname, parts=host.split('.'), domains=[''];
     for(var i=0;i<parts.length-1;i++){ var d=parts.slice(i).join('.'); domains.push(d, '.'+d); }
     domains.push(host, '.'+host);
-    domains.forEach(function(dm){
+    domains.forEach(function(dm){\
       document.cookie='googtrans=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/'+(dm?';domain='+dm:'');
     });
   }
-  function applyTranslate(lang){
+  function applyTranslate(lang){\
     if(translateTimer){ clearInterval(translateTimer); translateTimer=null; }
     if(lang==='vi'){
       clearGoogtrans();
