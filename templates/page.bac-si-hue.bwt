@@ -1,5 +1,5 @@
 {% comment %}
-  DR.REJU — Template Trang Bác Sĩ Nguyễn Huệ V2.1 (Full 100vw Swiper Hero)
+  DR.REJU — Template Trang Bác Sĩ Nguyễn Huệ V2.2 (Full 100vw Swiper Hero + Transparent Header Coordination)
   Thiết kế Warm Organic Luxury & Medical Credibility
   Nâng cấp: Hero 100vw Swiper Slider đa chiều kết hợp nền ảnh bác sĩ & không gian clinic
   Tích hợp hoàn toàn các biến Schema Settings chuẩn Sapo
@@ -478,6 +478,7 @@
 
   /* ============================================================
      HERO 100VW SWIPER FULL BLEED STYLING
+     Tích hợp đệm phía trên để header trong suốt overlay hoàn hảo
      ============================================================ */
   .dr-hero-100vw-section {
     position: relative;
@@ -488,12 +489,13 @@
     margin-right: -50vw;
     overflow: hidden;
     background-color: var(--color-warm-cream, #FAF6EF);
+    margin-top: 0;
   }
   .dr-hero-swiper {
     width: 100%;
-    min-height: 580px;
-    height: calc(88vh - 40px);
-    max-height: 740px;
+    min-height: 640px;
+    height: 94vh;
+    max-height: 820px;
     position: relative;
   }
   .dr-hero-slide {
@@ -525,9 +527,9 @@
     height: 100%;
     background: linear-gradient(90deg, 
       rgba(250, 246, 239, 0.97) 0%, 
-      rgba(250, 246, 239, 0.92) 38%, 
-      rgba(250, 246, 239, 0.50) 65%, 
-      rgba(250, 246, 239, 0.15) 100%);
+      rgba(250, 246, 239, 0.90) 38%, 
+      rgba(250, 246, 239, 0.45) 65%, 
+      rgba(250, 246, 239, 0.12) 100%);
     z-index: 2;
     pointer-events: none;
   }
@@ -537,7 +539,7 @@
     width: 100%;
     max-width: 1240px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 130px 20px 50px 20px; /* Chừa 130px cho header trong suốt */
     display: flex;
     align-items: center;
     height: 100%;
@@ -547,17 +549,17 @@
   }
   .dr-hero-title {
     font-family: var(--font-serif, 'Playfair Display', serif);
-    font-size: 42px;
+    font-size: 44px;
     font-weight: 800;
     line-height: 1.25;
     color: var(--color-warm-dark, #2B1E16);
     margin: 0 0 20px 0;
   }
   .dr-hero-desc {
-    font-size: 14px;
+    font-size: 14.5px;
     line-height: 1.75;
     color: #5A4D41;
-    margin-bottom: 30px;
+    margin-bottom: 32px;
   }
   .dr-hero-desc p { margin-bottom: 8px; }
   .dr-hero-ctas {
@@ -1032,19 +1034,20 @@
 
   @media (max-width: 991px) {
     .dr-hero-swiper {
-      min-height: 520px;
-      height: 560px;
+      min-height: 560px;
+      height: 600px;
     }
     .dr-hero-slide-bg .dr-hero-bg-img {
       object-position: center;
     }
     .dr-hero-scrim {
       background: linear-gradient(180deg, 
-        rgba(250, 246, 239, 0.94) 0%, 
+        rgba(250, 246, 239, 0.95) 0%, 
         rgba(250, 246, 239, 0.88) 55%, 
         rgba(250, 246, 239, 0.65) 100%);
     }
     .dr-hero-slide-wrap {
+      padding-top: 90px;
       justify-content: center;
       text-align: center;
     }
@@ -1065,8 +1068,8 @@
   @media (max-width: 767px) {
     .dr-section { padding: 45px 16px; }
     .dr-hero-swiper {
-      min-height: 480px;
-      height: 520px;
+      min-height: 520px;
+      height: 560px;
     }
     .dr-hero-title,
     .dr-serif-title,
