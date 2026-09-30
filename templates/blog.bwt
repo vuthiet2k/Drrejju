@@ -2,9 +2,8 @@
   DR.REJU — Clinical Blog & Knowledge Magazine Template V2 (Production-Ready)
   Design System Parity: Canva Frame 991 & Figma Clinical Magazine Layout
   Warm Luxury: Deep Emerald #0A2E24 + Sand Gold #DFBA73 + Cream #FAF6EF
+  Đã loại bỏ breadcrumb theo yêu cầu UI
 {% endcomment %}
-
-{% include 'breadcrumb' %}
 
 <div class="dr-blog-page layout-blog" itemscope itemtype="https://schema.org/Blog">
   <meta itemprop="name" content="{{ blog.title | default: blog.name | default: 'Tạp Chí Da Liễu DR.REJU' }}">
@@ -24,39 +23,29 @@
           <span class="dr-mag-heading__sub">Cập nhật 24h</span>
         </div>
         <ul class="dr-news-feed-list">
-          {% if blog.articles.size > 0 %}
-            {% for art in blog.articles limit: 6 %}
-              <li class="dr-news-feed-item">
-                <a href="{{ art.url }}" title="{{ art.title | escape }}">
-                  {{ art.title }}
-                </a>
-              </li>
-            {% endfor %}
-          {% else %}
-            <li class="dr-news-feed-item"><a href="#">Retinol: Thành phần vàng trong chống lão hoá – Cách dùng đúng để không kích ứng</a></li>
-            <li class="dr-news-feed-item"><a href="#">Vitamin C trong skincare: Phân biệt các dạng & chọn nồng độ phù hợp</a></li>
-            <li class="dr-news-feed-item"><a href="#">5 bước xây dựng routine skincare buổi sáng chuẩn chuyên gia</a></li>
-            <li class="dr-news-feed-item"><a href="#">Phục hồi màng bảo vệ da sau peel & laser: Nguyên tắc vàng từ bác sĩ</a></li>
-            <li class="dr-news-feed-item"><a href="#">Acid Hyaluronic đa phân tử: Cấp nước tầng sâu hay chỉ là chiêu trò?</a></li>
-          {% endif %}
+          <li class="dr-news-feed-item"><a href="/blogs/tin-tuc/retinol-thanh-phan-vang">Retinol: Thành phần vàng trong chống lão hoá – Cách dùng đúng để không kích ứng</a></li>
+          <li class="dr-news-feed-item"><a href="/blogs/tin-tuc/vitamin-c-skincare">Vitamin C trong skincare: Phân biệt các dạng & chọn nồng độ phù hợp</a></li>
+          <li class="dr-news-feed-item"><a href="/blogs/tin-tuc/5-buoc-skincare-sang">5 bước xây dựng routine skincare buổi sáng chuẩn chuyên gia</a></li>
+          <li class="dr-news-feed-item"><a href="/blogs/tin-tuc/phuc-hoi-da-nhiem-corticoid">Phục hồi màng bảo vệ da sau peel & laser: Nguyên tắc vàng từ bác sĩ</a></li>
+          <li class="dr-news-feed-item"><a href="/blogs/tin-tuc/syn-ake-multi-peptide">Acid Hyaluronic đa phân tử: Cấp nước tầng sâu hay chỉ là chiêu trò?</a></li>
+          <li class="dr-news-feed-item"><a href="/blogs/tin-tuc/can-bang-he-vi-sinh-da">Cân bằng hệ vi sinh da: Giải pháp kiểm soát dầu mụn dứt điểm</a></li>
         </ul>
       </div>
 
       <!-- Cột 2: Spotlight tâm điểm + 3 Subcards -->
       <div class="dr-mag-col-featured">
-        {% assign spotlight = blog.articles.first %}
         <div class="dr-spotlight-hero-card">
           <div class="dr-spotlight-hero-thumb">
             <span class="dr-spotlight-badge">Trị Nám Laser</span>
-            <a href="{% if spotlight %}{{ spotlight.url }}{% else %}#{% endif %}">
+            <a href="/blogs/tin-tuc/cap-nhat-phac-do-tri-nam-2026">
               <img src="{{ 'bstk_Hue-2.jpg' | asset_url }}" 
                    alt="Phác đồ trị nám chuẩn y khoa"
                    onerror="this.src='https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80'" />
             </a>
           </div>
           <h3 class="dr-spotlight-hero-title">
-            <a href="{% if spotlight %}{{ spotlight.url }}{% else %}#{% endif %}">
-              {% if spotlight %}{{ spotlight.title }}{% else %}Cập Nhật Phác Đồ Trị Nám Chuẩn Y Khoa 2026: Kết Hợp Laser & Dưỡng Chất Đường Uống{% endif %}
+            <a href="/blogs/tin-tuc/cap-nhat-phac-do-tri-nam-2026">
+              Cập Nhật Phác Đồ Trị Nám Chuẩn Y Khoa 2026: Kết Hợp Laser & Dưỡng Chất Đường Uống
             </a>
           </h3>
           <div class="dr-spotlight-hero-meta">
@@ -88,21 +77,42 @@
           <span class="dr-mag-heading__sub">Top Reads</span>
         </div>
         <div class="dr-trending-list">
-          {% for art in blog.articles limit: 5 %}
-            <a href="{{ art.url }}" class="dr-trending-item" title="{{ art.title | escape }}">
-              <div class="dr-trending-thumb">
-                {% if art.image != null and art.image.src != blank %}
-                  <img src="{{ art.image.src }}" alt="{{ art.title | escape }}" loading="lazy" />
-                {% else %}
-                  <img src="{{ 'bs_Hue-3.jpg' | asset_url }}" alt="Bài viết Dr.REJU" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=200&q=80'" />
-                {% endif }
-              </div>
-              <div>
-                <h4 class="dr-trending-title">{{ art.title }}</h4>
-                <span class="dr-trending-date">{{ art.published_on | date: 'dd/MM/yyyy' | default: '30/09/2026' }}</span>
-              </div>
-            </a>
-          {% endfor %}
+          <a href="/blogs/tin-tuc/retinol-thanh-phan-vang" class="dr-trending-item">
+            <div class="dr-trending-thumb">
+              <img src="{{ 'bs_Hue-1.jpg' | asset_url }}" alt="Retinol" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=200&q=80'" />
+            </div>
+            <div>
+              <h4 class="dr-trending-title">Retinol: Thành phần vàng trong chống lão hoá – Cách dùng đúng để không kích ứng</h4>
+              <span class="dr-trending-date">Bs. Nguyễn Huệ • 28/09/2026</span>
+            </div>
+          </a>
+          <a href="/blogs/tin-tuc/vitamin-c-skincare" class="dr-trending-item">
+            <div class="dr-trending-thumb">
+              <img src="{{ 'bs_Hue-2.jpg' | asset_url }}" alt="Vitamin C" onerror="this.src='https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=200&q=80'" />
+            </div>
+            <div>
+              <h4 class="dr-trending-title">Vitamin C trong skincare: Phân biệt các dạng & chọn nồng độ phù hợp</h4>
+              <span class="dr-trending-date">Bs. Nguyễn Huệ • 25/09/2026</span>
+            </div>
+          </a>
+          <a href="/blogs/tin-tuc/5-buoc-skincare-sang" class="dr-trending-item">
+            <div class="dr-trending-thumb">
+              <img src="{{ 'bs_Hue-3.jpg' | asset_url }}" alt="Routine Skincare" onerror="this.src='https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=200&q=80'" />
+            </div>
+            <div>
+              <h4 class="dr-trending-title">5 bước xây dựng routine skincare buổi sáng chuẩn chuyên gia</h4>
+              <span class="dr-trending-date">Bs. Nguyễn Huệ • 22/09/2026</span>
+            </div>
+          </a>
+          <a href="/blogs/tin-tuc/tranexamic-acid-3-tri-nam" class="dr-trending-item">
+            <div class="dr-trending-thumb">
+              <img src="{{ 'bstk_Hue-3.jpg' | asset_url }}" alt="Tranexamic Acid" onerror="this.src='https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=200&q=80'" />
+            </div>
+            <div>
+              <h4 class="dr-trending-title">Nám da: Nguyên nhân, phân loại và phác đồ điều trị dứt điểm 2026</h4>
+              <span class="dr-trending-date">Bs. Nguyễn Huệ • 18/09/2026</span>
+            </div>
+          </a>
         </div>
       </div>
 
@@ -383,9 +393,9 @@
             <img src="{{ 'bstk_Hue-1.jpg' | asset_url }}" alt="SYN-AKE Peptide" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80'" />
           </div>
           <h3 class="dr-grid-card-title">
-            <a href="#">Chứng Nhận Vàng Về Hoạt Chất SYN-AKE & Multi-Peptide Complex Trong Chống Lão Hóa</a>
+            <a href="/blogs/tin-tuc/syn-ake-multi-peptide">Chứng Nhận Vàng Về Hoạt Chất SYN-AKE & Multi-Peptide Complex Trong Chống Lão Hóa</a>
           </h3>
-          <a href="#" class="dr-btn-read-sm">Đọc Bài Viết ➔</a>
+          <a href="/blogs/tin-tuc/syn-ake-multi-peptide" class="dr-btn-read-sm">Đọc Bài Viết ➔</a>
         </article>
 
         <!-- Card 2 -->
@@ -394,9 +404,9 @@
             <img src="{{ 'bstk_Hue-2.jpg' | asset_url }}" alt="Tranexamic Acid" onerror="this.src='https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=400&q=80'" />
           </div>
           <h3 class="dr-grid-card-title">
-            <a href="#">Ứng Dụng Tranexamic Acid 3% Trong Ức Chế Melanin & Điều Trị Nám Y Khoa</a>
+            <a href="/blogs/tin-tuc/tranexamic-acid-3-tri-nam">Ứng Dụng Tranexamic Acid 3% Trong Ức Chế Melanin & Điều Trị Nám Y Khoa</a>
           </h3>
-          <a href="#" class="dr-btn-read-sm">Đọc Bài Viết ➔</a>
+          <a href="/blogs/tin-tuc/tranexamic-acid-3-tri-nam" class="dr-btn-read-sm">Đọc Bài Viết ➔</a>
         </article>
 
         <!-- Card 3 -->
@@ -405,9 +415,9 @@
             <img src="{{ 'bstk_Hue-3.jpg' | asset_url }}" alt="Vi sinh da Microbiome" onerror="this.src='https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=400&q=80'" />
           </div>
           <h3 class="dr-grid-card-title">
-            <a href="#">Cân Bằng Hệ Vi Sinh Da & Giải Pháp Kiểm Soát Dầu Mụn Dứt Điểm Từ Gốc</a>
+            <a href="/blogs/tin-tuc/can-bang-he-vi-sinh-da">Cân Bằng Hệ Vi Sinh Da & Giải Pháp Kiểm Soát Dầu Mụn Dứt Điểm Từ Gốc</a>
           </h3>
-          <a href="#" class="dr-btn-read-sm">Đọc Bài Viết ➔</a>
+          <a href="/blogs/tin-tuc/can-bang-he-vi-sinh-da" class="dr-btn-read-sm">Đọc Bài Viết ➔</a>
         </article>
 
       </div>
