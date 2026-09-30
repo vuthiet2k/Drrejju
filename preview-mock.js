@@ -1,19 +1,23 @@
 /**
  * preview-mock.js — Giả lập Sapo Liquid context cho dev-server.js (DR.REJU)
  *
- * Đọc settings thật từ configs/settings_data.json (1023 keys có sẵn), rồi tự
+ * Đọc settings thật từ config/settings_data.json hoặc configs/settings_data.json, rồi tự
  * sinh fallback cho MỌI object (collections[handle], linklists[handle],
  * pages[handle], blogs[handle]) mà settings trỏ tới nhưng không có data thật —
  * để mọi section render được mà không cần khai báo tay từng handle.
  */
 
-const fs = require('fs');
+const fs = require('path');
 const path = require('path');
 
-// ── 1. Settings thật từ configs/settings_data.json ────────────────────────
+// ── 1. Settings thật từ config/ hoặc configs/settings_data.json ─────────────
 let realSettings = {};
 try {
-  const raw = fs.readFileSync(path.join(__dirname, 'configs/settings_data.json'), 'utf8');
+  const fsNative = require('fs');
+  const targetPath = fsNative.existsSync(path.join(__dirname, 'config/settings_data.json'))
+    ? path.join(__dirname, 'config/settings_data.json')
+    : path.join(__dirname, 'configs/settings_data.json');
+  const raw = fsNative.readFileSync(targetPath, 'utf8');
   const data = JSON.parse(raw.replace(/^﻿/, ''));
   realSettings = data.current || {};
 } catch (e) {
